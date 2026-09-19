@@ -1,0 +1,683 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Lección 2.3 · Multiplicación y división en problemas verbales — Matemáticas Nivel 1</title>
+<style>
+  :root{
+    --azul:#00695c; --azul-osc:#004d40; --azul-cl:#e0f2f1;
+    --tinta:#1a2330; --gris:#5b6675; --linea:#dde3ea;
+    --crema:#f6f4ee; --papel:#ffffff;
+    --verde:#2e7d4f; --verde-cl:#e7f4ec;
+    --ambar:#b06f00; --ambar-cl:#fdf3df;
+    --rojo:#c0392b; --rojo-cl:#fdecea;
+    --sombra:0 2px 10px rgba(0,77,64,.10);
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    font-family:'Segoe UI','Helvetica Neue',system-ui,sans-serif;
+    background:var(--crema); color:var(--tinta);
+    line-height:1.65; font-size:17px;
+  }
+  .envoltura{max-width:880px;margin:0 auto;padding:0 20px 80px;}
+
+  header.principal{
+    background:linear-gradient(135deg,#004d40 0%,#00695c 55%,#00897b 100%);
+    color:#fff;padding:46px 38px 40px;border-radius:0 0 22px 22px;
+    box-shadow:0 6px 22px rgba(0,77,64,.30);
+  }
+  .envoltura-header{max-width:880px;margin:0 auto;padding:0 20px;}
+  .ruta{font-size:13px;letter-spacing:.6px;text-transform:uppercase;opacity:.85;margin-bottom:14px;}
+  header.principal h1{font-size:30px;font-weight:700;line-height:1.25;margin-bottom:8px;}
+  header.principal .lema{font-size:16px;opacity:.93;font-weight:400;max-width:620px;}
+  .chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px;}
+  .chip{
+    background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.28);
+    padding:6px 14px;border-radius:30px;font-size:13px;font-weight:600;
+  }
+
+  section{
+    background:var(--papel);margin-top:22px;padding:30px 34px;
+    border-radius:14px;box-shadow:var(--sombra);
+  }
+  .num-seccion{
+    display:inline-flex;align-items:center;justify-content:center;
+    width:34px;height:34px;background:var(--azul);color:#fff;
+    border-radius:9px;font-weight:700;font-size:17px;margin-right:12px;flex-shrink:0;
+  }
+  h2{display:flex;align-items:center;font-size:23px;color:var(--azul-osc);margin-bottom:16px;font-weight:700;}
+  h3{font-size:18px;color:var(--azul-osc);margin:22px 0 10px;font-weight:700;}
+  p{margin:11px 0;}
+  ul,ol{margin:11px 0 11px 26px;}
+  li{margin:6px 0;}
+  strong{color:var(--azul-osc);}
+
+  .caja{border-radius:11px;padding:18px 22px;margin:18px 0;border-left:5px solid;}
+  .caja-objetivo{background:var(--azul-cl);border-color:var(--azul);}
+  .caja-objetivo h2{margin-bottom:10px;}
+  .caja-tip{background:var(--verde-cl);border-color:var(--verde);}
+  .caja-tip strong{color:var(--verde);}
+  .caja-ojo{background:var(--ambar-cl);border-color:var(--ambar);}
+  .caja-ojo strong{color:var(--ambar);}
+  .caja-recurso{background:#eef2f7;border-color:var(--gris);}
+
+  .etiqueta{
+    display:inline-block;font-size:12px;font-weight:700;letter-spacing:.5px;
+    text-transform:uppercase;padding:3px 10px;border-radius:5px;margin-bottom:6px;
+  }
+  .et-verde{background:var(--verde);color:#fff;}
+  .et-ambar{background:var(--ambar);color:#fff;}
+  .et-azul{background:var(--azul);color:#fff;}
+
+  .modalidades{display:flex;gap:14px;margin-top:14px;flex-wrap:wrap;}
+  .modo{
+    flex:1;min-width:240px;border-radius:9px;padding:13px 16px;
+    background:#fff;border:1px solid var(--linea);
+  }
+  .modo-pres{border-top:4px solid var(--azul);}
+  .modo-line{border-top:4px solid var(--verde);}
+  .modo .modo-tit{display:block;font-weight:700;font-size:14px;margin-bottom:5px;}
+  .modo-pres .modo-tit{color:var(--azul-osc);}
+  .modo-line .modo-tit{color:var(--verde);}
+  .modo p{margin:4px 0 0;font-size:15px;}
+
+  /* ── TABLA PALABRAS CLAVE ── */
+  .tabla-clave{width:100%;border-collapse:collapse;margin:16px 0;font-size:15px;}
+  .tabla-clave th,.tabla-clave td{border:1px solid var(--linea);padding:11px 14px;text-align:left;vertical-align:top;}
+  .tabla-clave th{color:#fff;font-size:14px;}
+  .tabla-clave th.mult{background:var(--azul);}
+  .tabla-clave th.div{background:var(--ambar);}
+  .tabla-clave td .pal{font-weight:700;color:var(--azul-osc);}
+
+  /* ── TABLA PROPIEDADES ── */
+  .tabla-prop{width:100%;border-collapse:collapse;margin:14px 0;font-size:15px;}
+  .tabla-prop th,.tabla-prop td{border:1px solid var(--linea);padding:10px 13px;text-align:left;vertical-align:top;}
+  .tabla-prop th{background:var(--azul-osc);color:#fff;font-size:14px;}
+  .tabla-prop td:first-child{font-weight:700;color:var(--azul-osc);background:var(--azul-cl);white-space:nowrap;}
+  .tabla-prop code{
+    font-family:'Consolas',monospace;background:#fff;border:1px solid var(--linea);
+    border-radius:5px;padding:2px 7px;font-size:14px;
+  }
+
+  .ejemplo{
+    background:var(--crema);border:1px dashed var(--azul);
+    border-radius:11px;padding:18px 22px;margin:18px 0;
+  }
+  .ejemplo .titulo-ej{font-weight:700;color:var(--azul-osc);margin-bottom:8px;font-size:15px;}
+  .paso{margin:8px 0 8px 4px;padding-left:32px;position:relative;}
+  .paso .n{
+    position:absolute;left:0;top:0;width:24px;height:24px;background:var(--azul);
+    color:#fff;border-radius:50%;font-size:13px;font-weight:700;
+    display:flex;align-items:center;justify-content:center;
+  }
+
+  .practica{
+    border:2px solid var(--azul-cl);border-radius:12px;
+    padding:20px 22px;margin:20px 0;background:#fbfdfc;
+  }
+  .practica .cabe{display:flex;align-items:center;gap:10px;margin-bottom:6px;}
+  .practica .cabe .ico{font-size:22px;}
+  .practica .cabe h4{font-size:16px;color:var(--azul-osc);}
+  .pregunta-int{font-size:17px;font-weight:600;margin:14px 0 12px;}
+  .opciones{display:flex;flex-direction:column;gap:9px;}
+  .opcion{
+    border:2px solid var(--linea);border-radius:9px;padding:11px 16px;
+    cursor:pointer;background:#fff;transition:.16s;font-size:16px;
+    text-align:left;font-family:inherit;color:var(--tinta);
+  }
+  .opcion:hover{border-color:var(--azul);background:var(--azul-cl);}
+  .opcion.correcta{border-color:var(--verde);background:var(--verde-cl);font-weight:600;}
+  .opcion.incorrecta{border-color:var(--rojo);background:var(--rojo-cl);}
+  .opcion:disabled{cursor:default;}
+  .respuesta-int{margin-top:12px;padding:11px 15px;border-radius:8px;font-size:15px;display:none;}
+  .respuesta-int.bien{background:var(--verde-cl);color:var(--verde);display:block;}
+  .respuesta-int.mal{background:var(--rojo-cl);color:var(--rojo);display:block;}
+
+  .btn{
+    font-family:inherit;font-size:15px;font-weight:600;padding:9px 20px;
+    background:var(--azul);color:#fff;border:none;border-radius:8px;cursor:pointer;transition:.16s;
+  }
+  .btn:hover{background:var(--azul-osc);}
+  .btn-sec{background:#fff;color:var(--azul);border:2px solid var(--azul);}
+  .btn-sec:hover{background:var(--azul-cl);}
+
+  .quiz-bloque{margin:18px 0;padding:18px 20px;border-radius:11px;background:var(--crema);border:1px solid var(--linea);}
+  .quiz-bloque .qnum{
+    display:inline-block;background:var(--azul-osc);color:#fff;font-size:13px;
+    font-weight:700;padding:3px 11px;border-radius:20px;margin-bottom:8px;
+  }
+  .quiz-bloque .pregunta{font-weight:600;font-size:16px;margin-bottom:12px;}
+  .marcador{text-align:center;padding:26px;border-radius:13px;margin-top:20px;display:none;}
+  .marcador.visible{display:block;}
+  .marcador .puntaje{font-size:46px;font-weight:800;margin:6px 0;}
+  .marcador .mensaje{font-size:17px;}
+  .barra-prog{height:10px;background:var(--linea);border-radius:6px;overflow:hidden;margin:14px 0;}
+  .barra-prog span{display:block;height:100%;background:var(--verde);width:0;transition:width .5s;}
+
+  .tabla-rubrica{width:100%;border-collapse:collapse;margin:14px 0;font-size:14px;}
+  .tabla-rubrica th,.tabla-rubrica td{border:1px solid var(--linea);padding:10px 12px;text-align:left;vertical-align:top;}
+  .tabla-rubrica th{background:var(--azul-osc);color:#fff;font-size:13px;}
+  .tabla-rubrica td:first-child{font-weight:600;color:var(--azul-osc);background:var(--azul-cl);}
+  .nivel-cab{background:#37474f !important;text-align:center;}
+
+  .cierre{
+    background:linear-gradient(135deg,#004d40,#00897b);color:#fff;
+    border-radius:14px;padding:28px 32px;margin-top:24px;
+  }
+  .cierre h2{color:#fff;}
+  .cierre strong{color:#9BFF8F;font-weight:700;text-shadow:0 1px 2px rgba(0,0,0,.45);}
+  .cierre .num-seccion{background:rgba(255,255,255,.22);}
+  .flecha-sig{
+    display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.16);
+    border:1px solid rgba(255,255,255,.3);padding:10px 18px;border-radius:9px;
+    margin-top:12px;font-weight:600;font-size:15px;
+  }
+
+  footer{text-align:center;padding:30px 20px;color:var(--gris);font-size:13px;}
+
+  @media(max-width:560px){
+    header.principal{padding:34px 22px;}
+    header.principal h1{font-size:24px;}
+    section{padding:24px 20px;}
+  }
+</style>
+</head>
+<body>
+
+<header class="principal">
+  <div class="envoltura-header">
+    <div class="ruta">Matemáticas · Nivel 1 · Tema 2 — Multiplicación y división</div>
+    <h1>Lección 2.3 · Multiplicación y división en problemas verbales</h1>
+    <p class="lema">Decidir cuándo multiplicar y cuándo dividir en problemas reales, y usar las propiedades para calcular con rapidez.</p>
+    <div class="chips">
+      <span class="chip">⏱️ 4 horas (2 sinc. + 2 asinc.)</span>
+      <span class="chip">📘 Steck-Vaughn</span>
+      <span class="chip">🔑 Palabras clave · Propiedades</span>
+    </div>
+  </div>
+</header>
+
+<div class="envoltura">
+
+  <!-- OBJETIVOS -->
+  <section>
+    <div class="caja caja-objetivo">
+      <h2><span class="num-seccion">🎯</span>Objetivos de la clase</h2>
+      <p>Al terminar esta lección, usted podrá:</p>
+      <ul>
+        <li><strong>Identificar</strong> si un problema verbal requiere multiplicación o división.</li>
+        <li><strong>Plantear y resolver</strong> problemas de un paso con cualquiera de las cuatro operaciones.</li>
+        <li><strong>Aplicar</strong> las propiedades de las operaciones para simplificar cálculos.</li>
+        <li><strong>Verificar</strong> el resultado e interpretarlo con sentido en el contexto.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- CONEXIÓN -->
+  <section>
+    <h2><span class="num-seccion">1</span>Cierre del Tema 2: poner todo junto</h2>
+    <p>En la <strong>Lección 2.1</strong> aprendió a multiplicar y en la <strong>2.2</strong> a dividir. Igual que en el Tema 1 con la suma y la resta, ahora el reto no es <em>calcular</em>, sino <strong>decidir qué calcular</strong> cuando el problema llega escrito en palabras.</p>
+    <p>La pregunta clave de hoy es: <strong>"¿esto se multiplica o se divide?"</strong></p>
+    <div class="caja caja-tip">
+      <span class="etiqueta et-verde">Idea clave</span>
+      <p><strong>Multiplicamos</strong> cuando tenemos varios grupos iguales y queremos el total. <strong>Dividimos</strong> cuando tenemos un total y queremos repartirlo en grupos iguales, o saber cuántos grupos caben.</p>
+    </div>
+  </section>
+
+  <!-- PALABRAS CLAVE -->
+  <section>
+    <h2><span class="num-seccion">2</span>Palabras clave: multiplicar o dividir</h2>
+    <p>Como en el Tema 1, ciertas palabras del enunciado son <strong>pistas</strong>. Esta es su tabla de referencia para las dos nuevas operaciones:</p>
+
+    <table class="tabla-clave">
+      <thead>
+        <tr>
+          <th class="mult">✖️ Indican MULTIPLICACIÓN</th>
+          <th class="div">➗ Indican DIVISIÓN</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <span class="pal">por cada</span> · <span class="pal">cada uno</span><br>
+            <span class="pal">el total de... grupos</span><br>
+            <span class="pal">veces más</span> · <span class="pal">el doble / triple</span><br>
+            <span class="pal">en total</span> (con grupos iguales)<br>
+            <span class="pal">a razón de</span>
+          </td>
+          <td>
+            <span class="pal">repartir en partes iguales</span><br>
+            <span class="pal">por persona / por grupo</span><br>
+            <span class="pal">¿cuántos grupos?</span><br>
+            <span class="pal">cada cuántos</span> · <span class="pal">la mitad / un tercio</span><br>
+            <span class="pal">dividir entre</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="caja caja-ojo">
+      <span class="etiqueta et-ambar">¡Ojo!</span>
+      <p>Las palabras clave ayudan, pero lo más seguro es <strong>imaginar la situación</strong>: ¿estoy juntando grupos iguales (multiplico) o estoy repartiendo un total (divido)? La imagen mental nunca falla.</p>
+    </div>
+  </section>
+
+  <!-- LOS 4 PASOS -->
+  <section>
+    <h2><span class="num-seccion">3</span>Los 4 pasos, otra vez</h2>
+    <p>El método de los 4 pasos que aprendió en la Lección 1.3 sirve para <strong>cualquier</strong> problema verbal — también para multiplicar y dividir:</p>
+    <ol>
+      <li><strong>Leo y subrayo</strong> los datos y lo que me preguntan.</li>
+      <li><strong>Decido la operación:</strong> ¿junto grupos iguales o reparto un total?</li>
+      <li><strong>Resuelvo</strong> con el algoritmo estándar.</li>
+      <li><strong>¿Tiene sentido?</strong> Reviso la respuesta con su unidad y, si hay residuo, decido qué hacer con él.</li>
+    </ol>
+
+    <h3>Ejemplo: un problema de multiplicación</h3>
+    <div class="ejemplo">
+      <div class="titulo-ej">📋 "Un salón tiene 18 filas de sillas. En cada fila hay 24 sillas. ¿Cuántas sillas hay en total?"</div>
+      <div class="paso"><span class="n">1</span><strong>Subrayo:</strong> datos → 18 filas, 24 sillas por fila. Pregunta → total de sillas.</div>
+      <div class="paso"><span class="n">2</span><strong>Decido:</strong> "por cada fila" hay 24 sillas — son grupos iguales que se juntan. Es <strong>multiplicación</strong>.</div>
+      <div class="paso"><span class="n">3</span><strong>Resuelvo:</strong> 18 × 24 = 432.</div>
+      <div class="paso"><span class="n">✓</span><strong>¿Tiene sentido?</strong> 432 sillas para 18 filas es razonable. La respuesta es <strong>432 sillas</strong>.</div>
+    </div>
+
+    <h3>Ejemplo: un problema de división</h3>
+    <div class="ejemplo">
+      <div class="titulo-ej">📋 "Una empresa reparte 384 cajas en partes iguales entre 8 camiones. ¿Cuántas cajas lleva cada camión?"</div>
+      <div class="paso"><span class="n">1</span><strong>Subrayo:</strong> datos → 384 cajas, 8 camiones. Pregunta → cajas por camión.</div>
+      <div class="paso"><span class="n">2</span><strong>Decido:</strong> "repartir en partes iguales" y "por camión" — reparto un total. Es <strong>división</strong>.</div>
+      <div class="paso"><span class="n">3</span><strong>Resuelvo:</strong> 384 ÷ 8 = 48.</div>
+      <div class="paso"><span class="n">✓</span><strong>¿Tiene sentido?</strong> 48 cajas por camión es razonable. La respuesta es <strong>48 cajas</strong>.</div>
+    </div>
+
+    <div class="practica">
+      <div class="cabe"><span class="ico">✏️</span><h4>Práctica 1 — ¿Multiplico o divido?</h4></div>
+      <p class="pregunta-int">"Un paquete trae 12 jabones. ¿Cuántos jabones hay en 15 paquetes?" ¿Qué operación se necesita?</p>
+      <div class="opciones" data-quiz="p1">
+        <button class="opcion" data-correcta="si">Multiplicación: 12 × 15</button>
+        <button class="opcion" data-correcta="no">División: 15 ÷ 12</button>
+        <button class="opcion" data-correcta="no">Suma: 12 + 15</button>
+      </div>
+      <div class="respuesta-int" id="r-p1"></div>
+    </div>
+
+    <div class="practica">
+      <div class="cabe"><span class="ico">✏️</span><h4>Práctica 2 — Resolver el problema</h4></div>
+      <p class="pregunta-int">"525 estudiantes se reparten en partes iguales entre 7 salones. ¿Cuántos estudiantes hay en cada salón?"</p>
+      <div class="opciones" data-quiz="p2">
+        <button class="opcion" data-correcta="no">532 estudiantes</button>
+        <button class="opcion" data-correcta="si">75 estudiantes</button>
+        <button class="opcion" data-correcta="no">85 estudiantes</button>
+        <button class="opcion" data-correcta="no">3 675 estudiantes</button>
+      </div>
+      <div class="respuesta-int" id="r-p2"></div>
+    </div>
+  </section>
+
+  <!-- PROPIEDADES -->
+  <section>
+    <h2><span class="num-seccion">4</span>Las propiedades como atajo de cálculo</h2>
+    <p>Las propiedades de las operaciones no son solo teoría: son <strong>atajos</strong> que permiten calcular más rápido, a veces hasta de memoria. Esta es su tabla de referencia:</p>
+
+    <table class="tabla-prop">
+      <thead>
+        <tr><th>Propiedad</th><th>Qué dice</th><th>Cómo ayuda</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Conmutativa</td>
+          <td>El orden no cambia el resultado.<br><code>6 × 9 = 9 × 6</code></td>
+          <td>Permite ordenar los factores como más le convenga.</td>
+        </tr>
+        <tr>
+          <td>Asociativa</td>
+          <td>Puede agrupar como prefiera.<br><code>(2 × 5) × 7 = 2 × (5 × 7)</code></td>
+          <td>Agrupe primero lo que dé un número redondo (2 × 5 = 10).</td>
+        </tr>
+        <tr>
+          <td>Distributiva</td>
+          <td>Puede separar un factor en partes.<br><code>25 × 4 = (20 × 4) + (5 × 4)</code></td>
+          <td>Convierte una multiplicación difícil en dos fáciles.</td>
+        </tr>
+        <tr>
+          <td>Del cero y del uno</td>
+          <td><code>n × 0 = 0</code> &nbsp;·&nbsp; <code>n × 1 = n</code></td>
+          <td>Resultado inmediato, sin calcular.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="ejemplo">
+      <div class="titulo-ej">Atajo: calcular 25 × 4 mentalmente</div>
+      <div class="paso"><span class="n">1</span>Con la propiedad distributiva: 25 × 4 = (20 × 4) + (5 × 4).</div>
+      <div class="paso"><span class="n">2</span>20 × 4 = 80 &nbsp;y&nbsp; 5 × 4 = 20.</div>
+      <div class="paso"><span class="n">✓</span>80 + 20 = <strong>100</strong>. Sin papel, solo de cabeza.</div>
+    </div>
+
+    <div class="practica">
+      <div class="cabe"><span class="ico">✏️</span><h4>Práctica 3 — ¿Qué propiedad es?</h4></div>
+      <p class="pregunta-int">La igualdad <strong>(4 × 2) × 5 = 4 × (2 × 5)</strong> ilustra la propiedad:</p>
+      <div class="opciones" data-quiz="p3">
+        <button class="opcion" data-correcta="no">Conmutativa</button>
+        <button class="opcion" data-correcta="si">Asociativa</button>
+        <button class="opcion" data-correcta="no">Distributiva</button>
+        <button class="opcion" data-correcta="no">Del cero</button>
+      </div>
+      <div class="respuesta-int" id="r-p3"></div>
+    </div>
+  </section>
+
+  <!-- PRÁCTICA GUIADA -->
+  <section>
+    <h2><span class="num-seccion">5</span>Práctica guiada en clase</h2>
+    <p>Estas actividades se hacen <strong>en la sesión sincrónica</strong>. Cada actividad incluye una variante para la <strong>clase presencial</strong> y otra para la <strong>clase en línea</strong>; el objetivo de aprendizaje es el mismo en ambas.</p>
+
+    <div class="caja caja-recurso">
+      <span class="etiqueta et-azul">Actividad A · "¿Multiplico o divido?"</span>
+      <p>Los estudiantes reciben doce problemas y los clasifican como multiplicación o división antes de resolverlos. Luego verifican con la operación inversa.</p>
+      <div class="modalidades">
+        <div class="modo modo-pres">
+          <span class="modo-tit">🏫 Presencial</span>
+          <p>Reparta tarjetas con problemas impresos. Cada estudiante las coloca en una de dos columnas en la pizarra ("×" o "÷"), las resuelve y verifica con la operación inversa. El grupo revisa la clasificación juntos.</p>
+        </div>
+        <div class="modo modo-line">
+          <span class="modo-tit">💻 En línea</span>
+          <p>Muestre los problemas en diapositivas. Los estudiantes indican en el chat "×" o "÷" para cada uno. Como alternativa, una pizarra colaborativa con dos columnas para arrastrar y luego resolver.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="caja caja-recurso">
+      <span class="etiqueta et-azul">Actividad B · "Atajos con propiedades"</span>
+      <p>El grupo busca, para varias multiplicaciones, qué propiedad permite resolverlas más rápido y de memoria.</p>
+      <div class="modalidades">
+        <div class="modo modo-pres">
+          <span class="modo-tit">🏫 Presencial</span>
+          <p>El profesor escribe cálculos en la pizarra (por ejemplo, 25 × 8, 2 × 17 × 5). Los estudiantes proponen en voz alta qué propiedad usar y resuelven mentalmente. Se premia la explicación, no solo la respuesta.</p>
+        </div>
+        <div class="modo modo-line">
+          <span class="modo-tit">💻 En línea</span>
+          <p>El profesor presenta los cálculos en pantalla. Los estudiantes escriben en el chat la propiedad que usarían y el resultado. Se comentan las distintas estrategias en grupo.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="caja caja-recurso">
+      <span class="etiqueta et-azul">Actividad C · Foro "El problema de mi trabajo o mi cocina"</span>
+      <p>Cada estudiante inventa un problema verbal de multiplicación o división con datos reales de su vida y resuelve el de un compañero.</p>
+      <div class="modalidades">
+        <div class="modo modo-pres">
+          <span class="modo-tit">🏫 Presencial</span>
+          <p>Cada estudiante escribe su problema en una tarjeta. Las tarjetas se intercambian al azar; cada quien resuelve el que recibió y lo devuelve a su autor para verificar.</p>
+        </div>
+        <div class="modo modo-line">
+          <span class="modo-tit">💻 En línea</span>
+          <p>Cada estudiante publica su problema en el foro de Brightspace y resuelve el de al menos un compañero respondiendo a su mensaje. El autor confirma si la solución es correcta.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TAREA ASINCRÓNICA -->
+  <section>
+    <h2><span class="num-seccion">6</span>Tarea asincrónica</h2>
+    <p>Estas actividades se realizan <strong>por su cuenta</strong>, dentro de las 2 horas asincrónicas de la lección.</p>
+    <ul>
+      <li><strong>Foro de Brightspace:</strong> publique un problema verbal de multiplicación o división con datos reales de su trabajo, cocina o un viaje, y resuelva el problema de un compañero.</li>
+      <li><strong>Brightspace:</strong> realice el quiz de la lección (abajo puede practicarlo antes).</li>
+      <li><strong>Actividad personal:</strong> calcule un gasto repetido de su vida con multiplicación (por ejemplo, el costo de la gasolina en un mes) y un reparto con división (por ejemplo, un presupuesto entre los días de la semana).</li>
+    </ul>
+  </section>
+
+  <!-- QUIZ -->
+  <section>
+    <h2><span class="num-seccion">7</span>Quiz de práctica</h2>
+    <p>Responda las <strong>8 preguntas</strong>. Al final verá su puntaje y podrá repasar lo que falló. Puede repetir el quiz las veces que quiera. <strong>Sin calculadora.</strong></p>
+
+    <form id="quiz">
+      <div class="quiz-bloque">
+        <span class="qnum">Pregunta 1</span>
+        <p class="pregunta">"Una tienda recibió 9 cajas y cada caja trae 48 productos. ¿Cuántos productos recibió?" ¿Qué operación se usa?</p>
+        <div class="opciones" data-q="1">
+          <button type="button" class="opcion" data-c="si">Multiplicación</button>
+          <button type="button" class="opcion" data-c="no">División</button>
+        </div>
+      </div>
+
+      <div class="quiz-bloque">
+        <span class="qnum">Pregunta 2</span>
+        <p class="pregunta">"672 botellas se reparten en partes iguales en 6 cajas. ¿Cuántas botellas van en cada caja?" ¿Qué operación se usa?</p>
+        <div class="opciones" data-q="2">
+          <button type="button" class="opcion" data-c="no">Multiplicación</button>
+          <button type="button" class="opcion" data-c="si">División</button>
+        </div>
+      </div>
+
+      <div class="quiz-bloque">
+        <span class="qnum">Pregunta 3</span>
+        <p class="pregunta">"Un trabajador gana $128 por día. ¿Cuánto gana en 6 días?"</p>
+        <div class="opciones" data-q="3">
+          <button type="button" class="opcion" data-c="no">$134</button>
+          <button type="button" class="opcion" data-c="si">$768</button>
+          <button type="button" class="opcion" data-c="no">$728</button>
+          <button type="button" class="opcion" data-c="no">$648</button>
+        </div>
+      </div>
+
+      <div class="quiz-bloque">
+        <span class="qnum">Pregunta 4</span>
+        <p class="pregunta">"Una caja de 96 lápices se reparte en partes iguales entre 8 estudiantes. ¿Cuántos lápices recibe cada uno?"</p>
+        <div class="opciones" data-q="4">
+          <button type="button" class="opcion" data-c="no">10 lápices</button>
+          <button type="button" class="opcion" data-c="si">12 lápices</button>
+          <button type="button" class="opcion" data-c="no">14 lápices</button>
+          <button type="button" class="opcion" data-c="no">104 lápices</button>
+        </div>
+      </div>
+
+      <div class="quiz-bloque">
+        <span class="qnum">Pregunta 5</span>
+        <p class="pregunta">¿Cuál de estas frases indica una <strong>división</strong>?</p>
+        <div class="opciones" data-q="5">
+          <button type="button" class="opcion" data-c="no">"por cada caja"</button>
+          <button type="button" class="opcion" data-c="no">"el doble de"</button>
+          <button type="button" class="opcion" data-c="si">"repartir en partes iguales"</button>
+          <button type="button" class="opcion" data-c="no">"a razón de"</button>
+        </div>
+      </div>
+
+      <div class="quiz-bloque">
+        <span class="qnum">Pregunta 6</span>
+        <p class="pregunta">La igualdad <strong>7 × 5 = 5 × 7</strong> ilustra la propiedad:</p>
+        <div class="opciones" data-q="6">
+          <button type="button" class="opcion" data-c="si">Conmutativa</button>
+          <button type="button" class="opcion" data-c="no">Asociativa</button>
+          <button type="button" class="opcion" data-c="no">Distributiva</button>
+          <button type="button" class="opcion" data-c="no">Del uno</button>
+        </div>
+      </div>
+
+      <div class="quiz-bloque">
+        <span class="qnum">Pregunta 7</span>
+        <p class="pregunta">"Un autobús lleva 52 personas. Si cada persona pagó $3, ¿cuánto dinero se recaudó en total?"</p>
+        <div class="opciones" data-q="7">
+          <button type="button" class="opcion" data-c="no">$55</button>
+          <button type="button" class="opcion" data-c="si">$156</button>
+          <button type="button" class="opcion" data-c="no">$146</button>
+          <button type="button" class="opcion" data-c="no">$17</button>
+        </div>
+      </div>
+
+      <div class="quiz-bloque">
+        <span class="qnum">Pregunta 8</span>
+        <p class="pregunta">"Una familia ahorra $150 cada mes. ¿Cuánto habrá ahorrado en un año (12 meses)?"</p>
+        <div class="opciones" data-q="8">
+          <button type="button" class="opcion" data-c="no">$162</button>
+          <button type="button" class="opcion" data-c="si">$1 800</button>
+          <button type="button" class="opcion" data-c="no">$1 500</button>
+          <button type="button" class="opcion" data-c="no">$1 200</button>
+        </div>
+      </div>
+    </form>
+
+    <div style="text-align:center;margin-top:18px;">
+      <button class="btn" id="btn-calificar">Ver mi resultado</button>
+      <button class="btn btn-sec" id="btn-reintentar" style="display:none;">Intentar de nuevo</button>
+    </div>
+
+    <div class="marcador" id="marcador">
+      <div class="barra-prog"><span id="barra"></span></div>
+      <div class="puntaje" id="puntaje"></div>
+      <div class="mensaje" id="mensaje"></div>
+    </div>
+  </section>
+
+  <!-- RÚBRICA -->
+  <section>
+    <h2><span class="num-seccion">8</span>Rúbrica de evaluación</h2>
+    <p>Rúbrica de resolución de problemas. Cada criterio se evalúa en cuatro niveles.</p>
+    <table class="tabla-rubrica">
+      <thead>
+        <tr>
+          <th>Criterio</th>
+          <th class="nivel-cab">Logrado (4)</th>
+          <th class="nivel-cab">Satisfactorio (3)</th>
+          <th class="nivel-cab">En proceso (2)</th>
+          <th class="nivel-cab">Por reforzar (1)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Identifica la operación correcta</td>
+          <td>Distingue multiplicación y división con seguridad y lo justifica.</td>
+          <td>Elige la operación correcta casi siempre.</td>
+          <td>Duda; se apoya solo en palabras clave aisladas.</td>
+          <td>Elige la operación equivocada.</td>
+        </tr>
+        <tr>
+          <td>Plantea la operación</td>
+          <td>Escribe la operación con los datos en el orden correcto.</td>
+          <td>Plantea la operación correctamente.</td>
+          <td>Plantea la operación pero invierte los datos.</td>
+          <td>No logra plantear la operación.</td>
+        </tr>
+        <tr>
+          <td>Calcula correctamente</td>
+          <td>Resuelve sin errores y aplica propiedades como atajo.</td>
+          <td>Resuelve bien; un descuido aislado.</td>
+          <td>Comete errores en el algoritmo.</td>
+          <td>No completa el cálculo.</td>
+        </tr>
+        <tr>
+          <td>Verifica e interpreta</td>
+          <td>Verifica con la operación inversa y expresa la respuesta con unidades y sentido.</td>
+          <td>Expresa la respuesta con unidades.</td>
+          <td>Da el número sin unidad ni verificación.</td>
+          <td>No interpreta el resultado.</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- CIERRE -->
+  <div class="cierre">
+    <h2><span class="num-seccion">➡️</span>Lo que viene en el próximo tema</h2>
+    <p>Con esta lección cierra el <strong>Tema 2 · Multiplicación y división de números enteros</strong>. Ya domina las <strong>cuatro operaciones</strong> con números enteros y sabe resolver problemas verbales con todas ellas.</p>
+    <p>En el <strong>Tema 3 · Decimales: conceptos y operaciones</strong> dará un paso muy útil para la vida diaria: trabajar con los números que aparecen en los precios y el dinero. La <strong>Lección 3.1</strong> le enseñará a leer, escribir, comparar y redondear decimales. A partir de ahí también empezará a usar la calculadora <strong>TI-30XS</strong> para verificar.</p>
+    <div class="flecha-sig">➡️ &nbsp;Próxima: Tema 3 · Lección 3.1 · Leer, escribir, comparar y redondear decimales</div>
+  </div>
+
+</div>
+
+<footer>
+  Matemáticas · Nivel 1 · Lección 2.3 — Spanish ASE Math · AE 0170-0321<br>
+  City Colleges of Chicago · Truman College · Prof. José M. Fernández
+</footer>
+
+<script>
+  const respuestasPractica = {
+    p1:"Es una MULTIPLICACIÓN: 12 × 15 = 180 jabones. Son 15 grupos iguales de 12; juntar grupos iguales es multiplicar.",
+    p2:"Es una DIVISIÓN: 525 ÷ 7 = 75 estudiantes por salón. 'Repartir en partes iguales' indica dividir el total.",
+    p3:"Es la propiedad ASOCIATIVA: cambia la forma de agrupar los factores con los paréntesis, pero el resultado (40) no cambia."
+  };
+  document.querySelectorAll('.opciones[data-quiz]').forEach(function(grupo){
+    const id = grupo.getAttribute('data-quiz');
+    grupo.querySelectorAll('.opcion').forEach(function(op){
+      op.addEventListener('click', function(){
+        const acerto = op.getAttribute('data-correcta') === 'si';
+        grupo.querySelectorAll('.opcion').forEach(function(o){
+          o.disabled = true;
+          if(o.getAttribute('data-correcta') === 'si') o.classList.add('correcta');
+        });
+        if(!acerto) op.classList.add('incorrecta');
+        const r = document.getElementById('r-'+id);
+        r.className = 'respuesta-int ' + (acerto ? 'bien' : 'mal');
+        r.textContent = (acerto ? '✓ ¡Muy bien! ' : '✗ Revise: ') + respuestasPractica[id];
+      });
+    });
+  });
+
+  const totalPreguntas = 8;
+  const seleccion = {};
+  document.querySelectorAll('#quiz .opciones').forEach(function(grupo){
+    const q = grupo.getAttribute('data-q');
+    grupo.querySelectorAll('.opcion').forEach(function(op){
+      op.addEventListener('click', function(){
+        grupo.querySelectorAll('.opcion').forEach(function(o){
+          o.style.borderColor = ''; o.style.background = '';
+        });
+        op.style.borderColor = '#00695c';
+        op.style.background = '#e0f2f1';
+        seleccion[q] = op;
+      });
+    });
+  });
+
+  document.getElementById('btn-calificar').addEventListener('click', function(){
+    let correctas = 0;
+    document.querySelectorAll('#quiz .opciones').forEach(function(grupo){
+      const q = grupo.getAttribute('data-q');
+      grupo.querySelectorAll('.opcion').forEach(function(o){
+        o.disabled = true;
+        if(o.getAttribute('data-c') === 'si') o.classList.add('correcta');
+      });
+      const elegida = seleccion[q];
+      if(elegida){
+        if(elegida.getAttribute('data-c') === 'si') correctas++;
+        else elegida.classList.add('incorrecta');
+      }
+    });
+    const marc = document.getElementById('marcador');
+    const pct = Math.round(correctas/totalPreguntas*100);
+    document.getElementById('puntaje').textContent = correctas + ' / ' + totalPreguntas;
+    let msg, color;
+    if(pct >= 88){ msg='¡Excelente! Cerró el Tema 2 con dominio de las cuatro operaciones. Está listo para el Tema 3.'; color='#e7f4ec'; }
+    else if(pct >= 63){ msg='¡Buen trabajo! Repase las preguntas en rojo y vuelva a intentarlo.'; color='#fdf3df'; }
+    else { msg='Repasemos juntos. Vuelva a leer las secciones 2, 3 y 4, y reintente el quiz.'; color='#fdecea'; }
+    marc.style.background = color;
+    document.getElementById('mensaje').textContent = msg;
+    marc.classList.add('visible');
+    document.getElementById('barra').style.width = pct + '%';
+    document.getElementById('btn-calificar').style.display = 'none';
+    document.getElementById('btn-reintentar').style.display = 'inline-block';
+    marc.scrollIntoView({behavior:'smooth', block:'center'});
+  });
+
+  document.getElementById('btn-reintentar').addEventListener('click', function(){
+    document.querySelectorAll('#quiz .opcion').forEach(function(o){
+      o.disabled = false;
+      o.classList.remove('correcta','incorrecta');
+      o.style.borderColor = ''; o.style.background = '';
+    });
+    for(const k in seleccion) delete seleccion[k];
+    document.getElementById('marcador').classList.remove('visible');
+    document.getElementById('btn-calificar').style.display = 'inline-block';
+    document.getElementById('btn-reintentar').style.display = 'none';
+    document.getElementById('quiz').scrollIntoView({behavior:'smooth', block:'start'});
+  });
+</script>
+
+</body>
+</html>

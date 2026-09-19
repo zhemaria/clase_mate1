@@ -1,0 +1,1655 @@
+<!DOCTYPE html>
+
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Lección 5.1 · Patrones numéricos y de figuras — Matemáticas Nivel 1</title>
+<style>
+      :root {
+        --azul: #bf4500;
+        --azul-osc: #8c2f08;
+        --azul-cl: #fff3e0;
+        --tinta: #1a2330;
+        --gris: #5b6675;
+        --linea: #dde3ea;
+        --crema: #f6f4ee;
+        --papel: #ffffff;
+        --verde: #286b44;
+        --verde-cl: #e7f4ec;
+        --ambar: #804c00;
+        --ambar-cl: #fdf3df;
+        --rojo: #b5342a;
+        --rojo-cl: #fdecea;
+        --sombra: 0 2px 10px rgba(191, 54, 12, 0.1);
+      }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        font-family: 'Segoe UI', 'Helvetica Neue', system-ui, sans-serif;
+        background: var(--crema);
+        color: var(--tinta);
+        line-height: 1.65;
+        font-size: 17px;
+      }
+      .envoltura {
+        max-width: 880px;
+        margin: 0 auto;
+        padding: 0 20px 80px;
+      }
+
+      header.principal {
+        background: linear-gradient(135deg, #7a2806 0%, #a13a00 55%, #b34d00 100%);
+        color: #fff;
+        padding: 46px 38px 40px;
+        border-radius: 0 0 22px 22px;
+        box-shadow: 0 6px 22px rgba(191, 54, 12, 0.3);
+      }
+      .envoltura-header {
+        max-width: 880px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+      .ruta {
+        font-size: 13px;
+        letter-spacing: 0.6px;
+        text-transform: uppercase;
+        opacity: 0.85;
+        margin-bottom: 14px;
+      }
+      header.principal h1 {
+        font-size: 30px;
+        font-weight: 700;
+        line-height: 1.25;
+        margin-bottom: 8px;
+      }
+      header.principal .lema {
+        font-size: 16px;
+        opacity: 0.93;
+        font-weight: 400;
+        max-width: 620px;
+      }
+      .chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 20px;
+      }
+      .chip {
+        background: rgba(255, 255, 255, 0.16);
+        border: 1px solid rgba(255, 255, 255, 0.28);
+        padding: 6px 14px;
+        border-radius: 30px;
+        font-size: 13px;
+        font-weight: 600;
+      }
+
+      section {
+        background: var(--papel);
+        margin-top: 22px;
+        padding: 30px 34px;
+        border-radius: 14px;
+        box-shadow: var(--sombra);
+      }
+      .num-seccion {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 34px;
+        height: 34px;
+        background: var(--azul);
+        color: #fff;
+        border-radius: 9px;
+        font-weight: 700;
+        font-size: 17px;
+        margin-right: 12px;
+        flex-shrink: 0;
+      }
+      h2 {
+        display: flex;
+        align-items: center;
+        font-size: 23px;
+        color: var(--azul-osc);
+        margin-bottom: 16px;
+        font-weight: 700;
+      }
+      h3 {
+        font-size: 18px;
+        color: var(--azul-osc);
+        margin: 22px 0 10px;
+        font-weight: 700;
+      }
+      p {
+        margin: 11px 0;
+      }
+      ul,
+      ol {
+        margin: 11px 0 11px 26px;
+      }
+      li {
+        margin: 6px 0;
+      }
+      strong {
+        color: var(--azul-osc);
+      }
+
+      .caja {
+        border-radius: 11px;
+        padding: 18px 22px;
+        margin: 18px 0;
+        border-left: 5px solid;
+      }
+      .caja-objetivo {
+        background: var(--azul-cl);
+        border-color: var(--azul);
+      }
+      .caja-objetivo h2 {
+        margin-bottom: 10px;
+      }
+      .caja-tip {
+        background: var(--verde-cl);
+        border-color: var(--verde);
+      }
+      .caja-tip strong {
+        color: var(--verde);
+      }
+      .caja-ojo {
+        background: var(--ambar-cl);
+        border-color: var(--ambar);
+      }
+      .caja-ojo strong {
+        color: var(--ambar);
+      }
+      .caja-recurso {
+        background: #eef2f7;
+        border-color: var(--gris);
+      }
+
+      .etiqueta {
+        display: inline-block;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+        padding: 3px 10px;
+        border-radius: 5px;
+        margin-bottom: 6px;
+      }
+      .et-verde {
+        background: var(--verde);
+        color: #fff;
+      }
+      .et-ambar {
+        background: var(--ambar);
+        color: #fff;
+      }
+      .et-azul {
+        background: var(--azul);
+        color: #fff;
+      }
+
+      .modalidades {
+        display: flex;
+        gap: 14px;
+        margin-top: 14px;
+        flex-wrap: wrap;
+      }
+      .modo {
+        flex: 1;
+        min-width: 240px;
+        border-radius: 9px;
+        padding: 13px 16px;
+        background: #fff;
+        border: 1px solid var(--linea);
+      }
+      .modo-pres {
+        border-top: 4px solid var(--azul);
+      }
+      .modo-line {
+        border-top: 4px solid var(--verde);
+      }
+      .modo .modo-tit {
+        display: block;
+        font-weight: 700;
+        font-size: 14px;
+        margin-bottom: 5px;
+      }
+      .modo-pres .modo-tit {
+        color: var(--azul-osc);
+      }
+      .modo-line .modo-tit {
+        color: var(--verde);
+      }
+      .modo p {
+        margin: 4px 0 0;
+        font-size: 15px;
+      }
+
+      /* ── SECUENCIA NUMÉRICA ── */
+      .secuencia {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        align-items: center;
+        margin: 16px 0;
+      }
+      .term {
+        min-width: 54px;
+        height: 54px;
+        border-radius: 10px;
+        background: var(--azul-cl);
+        border: 2px solid var(--azul);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 21px;
+        font-weight: 700;
+        color: var(--azul-osc);
+        padding: 0 8px;
+      }
+      .term.incog {
+        background: #fff;
+        border-style: dashed;
+        color: var(--gris);
+      }
+      .salto {
+        font-size: 13px;
+        color: var(--azul);
+        font-weight: 700;
+        text-align: center;
+        min-width: 44px;
+      }
+      .salto small {
+        display: block;
+        font-size: 11px;
+        color: #4a5462;
+        font-weight: 400;
+      }
+
+      /* ── FIGURAS ── */
+      .figuras {
+        display: flex;
+        gap: 24px;
+        flex-wrap: wrap;
+        align-items: flex-end;
+        margin: 16px 0;
+      }
+      .fig {
+        text-align: center;
+      }
+      .fig .cuadritos {
+        display: inline-grid;
+        gap: 3px;
+      }
+      .fig .cuad {
+        width: 18px;
+        height: 18px;
+        background: var(--azul);
+        border-radius: 3px;
+      }
+      .fig .etq {
+        font-size: 13px;
+        color: #4a5462;
+        margin-top: 6px;
+      }
+
+      /* ── TABLA ENTRADA-SALIDA ── */
+      .tabla-es {
+        border-collapse: collapse;
+        margin: 14px 0;
+        font-size: 16px;
+      }
+      .tabla-es th,
+      .tabla-es td {
+        border: 1px solid var(--linea);
+        padding: 9px 22px;
+        text-align: center;
+      }
+      .tabla-es th {
+        background: var(--azul-osc);
+        color: #fff;
+        font-size: 14px;
+      }
+      .tabla-es td {
+        font-weight: 700;
+        font-size: 18px;
+      }
+      .tabla-es .col-e {
+        background: var(--azul-cl);
+      }
+      .tabla-es .col-s {
+        background: var(--verde-cl);
+      }
+
+      .ejemplo {
+        background: var(--crema);
+        border: 1px dashed var(--azul);
+        border-radius: 11px;
+        padding: 18px 22px;
+        margin: 18px 0;
+      }
+      .ejemplo .titulo-ej {
+        font-weight: 700;
+        color: var(--azul-osc);
+        margin-bottom: 8px;
+        font-size: 15px;
+      }
+      .paso {
+        margin: 8px 0 8px 4px;
+        padding-left: 32px;
+        position: relative;
+      }
+      .paso .n {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 24px;
+        height: 24px;
+        background: var(--azul);
+        color: #fff;
+        border-radius: 50%;
+        font-size: 13px;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .practica {
+        border: 2px solid var(--azul-cl);
+        border-radius: 12px;
+        padding: 20px 22px;
+        margin: 20px 0;
+        background: #fffdfa;
+      }
+      .practica .cabe {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 6px;
+      }
+      .practica .cabe .ico {
+        font-size: 22px;
+      }
+      .practica .cabe h3 {
+        font-size: 16px;
+        color: var(--azul-osc);
+        margin: 0;
+      }
+      .pregunta-int {
+        font-size: 17px;
+        font-weight: 600;
+        margin: 14px 0 12px;
+      }
+      .opciones {
+        display: flex;
+        flex-direction: column;
+        gap: 9px;
+      }
+      .opcion {
+        border: 2px solid var(--linea);
+        border-radius: 9px;
+        padding: 11px 16px;
+        cursor: pointer;
+        background: #fff;
+        transition: 0.16s;
+        font-size: 16px;
+        text-align: left;
+        font-family: inherit;
+        color: var(--tinta);
+      }
+      .opcion:hover {
+        border-color: var(--azul);
+        background: var(--azul-cl);
+      }
+      .opcion.correcta {
+        border-color: var(--verde);
+        background: var(--verde-cl);
+        font-weight: 600;
+      }
+      .opcion.incorrecta {
+        border-color: var(--rojo);
+        background: var(--rojo-cl);
+      }
+      .opcion:disabled {
+        cursor: default;
+      }
+      .respuesta-int {
+        margin-top: 12px;
+        padding: 11px 15px;
+        border-radius: 8px;
+        font-size: 15px;
+        display: none;
+      }
+      .respuesta-int.bien {
+        background: var(--verde-cl);
+        color: var(--verde);
+        display: block;
+      }
+      .respuesta-int.mal {
+        background: var(--rojo-cl);
+        color: var(--rojo);
+        display: block;
+      }
+
+      .btn {
+        font-family: inherit;
+        font-size: 15px;
+        font-weight: 600;
+        padding: 9px 20px;
+        background: var(--azul);
+        color: #fff;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: 0.16s;
+      }
+      .btn:hover {
+        background: var(--azul-osc);
+      }
+      .btn-sec {
+        background: #fff;
+        color: var(--azul-osc);
+        border: 2px solid var(--azul);
+      }
+      .btn-sec:hover {
+        background: var(--azul-cl);
+      }
+
+      .quiz-bloque {
+        margin: 18px 0;
+        padding: 18px 20px;
+        border-radius: 11px;
+        background: var(--crema);
+        border: 1px solid var(--linea);
+      }
+      .quiz-bloque .qnum {
+        display: inline-block;
+        background: var(--azul-osc);
+        color: #fff;
+        font-size: 13px;
+        font-weight: 700;
+        padding: 3px 11px;
+        border-radius: 20px;
+        margin-bottom: 8px;
+      }
+      .quiz-bloque .pregunta {
+        font-weight: 600;
+        font-size: 16px;
+        margin-bottom: 12px;
+      }
+      .marcador {
+        text-align: center;
+        padding: 26px;
+        border-radius: 13px;
+        margin-top: 20px;
+        display: none;
+      }
+      .marcador.visible {
+        display: block;
+      }
+      .marcador .puntaje {
+        font-size: 46px;
+        font-weight: 800;
+        margin: 6px 0;
+      }
+      .marcador .mensaje {
+        font-size: 17px;
+      }
+      .barra-prog {
+        height: 10px;
+        background: var(--linea);
+        border-radius: 6px;
+        overflow: hidden;
+        margin: 14px 0;
+      }
+      .barra-prog span {
+        display: block;
+        height: 100%;
+        background: var(--verde);
+        width: 0;
+        transition: width 0.5s;
+      }
+
+      .tabla-rubrica {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 14px 0;
+        font-size: 14px;
+      }
+      .tabla-rubrica th,
+      .tabla-rubrica td {
+        border: 1px solid var(--linea);
+        padding: 10px 12px;
+        text-align: left;
+        vertical-align: top;
+      }
+      .tabla-rubrica thead th {
+        background: var(--azul-osc);
+        color: #fff;
+        font-size: 13px;
+      }
+      .tabla-rubrica tbody th {
+        font-weight: 600;
+        color: var(--azul-osc);
+        background: var(--azul-cl);
+        font-size: 14px;
+        text-align: left;
+      }
+      .nivel-cab {
+        background: #2f3d46;
+        color: #fff;
+        text-align: center;
+      }
+
+      .cierre {
+        background: linear-gradient(135deg, #7a2806, #b34d00);
+        color: #fff;
+        border-radius: 14px;
+        padding: 28px 32px;
+        margin-top: 24px;
+      }
+      .cierre h2 {
+        color: #fff;
+      }
+      .cierre strong {
+        color: #eafde6;
+        font-weight: 700;
+      }
+      .cierre .num-seccion {
+        background: rgba(255, 255, 255, 0.22);
+      }
+      .flecha-sig {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: rgba(255, 255, 255, 0.16);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        padding: 10px 18px;
+        border-radius: 9px;
+        margin-top: 12px;
+        font-weight: 600;
+        font-size: 15px;
+      }
+
+      footer {
+        text-align: center;
+        padding: 30px 20px;
+        color: var(--gris);
+        font-size: 13px;
+      }
+
+      /* ── CONTENEDOR DE ENLACES A INTERACTIVOS ── */
+      .interactivos {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 16px;
+        margin: 20px 0;
+      }
+      .interactivos .titulo-grupo {
+        grid-column: 1/-1;
+        font-size: 14px;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+        color: var(--azul-osc);
+        display: flex;
+        align-items: center;
+        gap: 9px;
+        margin-bottom: 2px;
+      }
+      .interactivos .titulo-grupo::before {
+        content: '';
+        width: 26px;
+        height: 3px;
+        background: var(--azul);
+        border-radius: 3px;
+      }
+
+      .enlace-int {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        text-decoration: none;
+        color: var(--tinta);
+        background: var(--papel);
+        border: 1px solid var(--linea);
+        border-left: 5px solid var(--azul);
+        border-radius: 11px;
+        padding: 15px 18px;
+        box-shadow: var(--sombra);
+        transition:
+          transform 0.18s,
+          box-shadow 0.18s,
+          border-color 0.18s;
+      }
+      .enlace-int:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 7px 20px rgba(26, 35, 126, 0.18);
+      }
+      .enlace-int .ico-int {
+        flex-shrink: 0;
+        width: 50px;
+        height: 50px;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 28px;
+        background: var(--azul-cl);
+      }
+      .enlace-int .txt-int {
+        display: flex;
+        flex-direction: column;
+        min-width: 0;
+      }
+      .enlace-int .titulo-int {
+        font-weight: 700;
+        color: var(--azul-osc);
+        font-size: 16px;
+        line-height: 1.3;
+      }
+      .enlace-int .desc-int {
+        font-size: 13px;
+        color: #4a5462;
+        margin-top: 3px;
+        line-height: 1.4;
+      }
+      .enlace-int .flecha-int {
+        margin-left: auto;
+        flex-shrink: 0;
+        font-size: 20px;
+        color: var(--azul);
+        transition: transform 0.18s;
+      }
+      .enlace-int:hover .flecha-int {
+        transform: translateX(4px);
+      }
+
+      /* Variantes de color por tipo de interactivo */
+      .enlace-int.int-verde {
+        border-left-color: var(--verde);
+      }
+      .enlace-int.int-verde .ico-int {
+        background: var(--verde-cl);
+      }
+      .enlace-int.int-verde .titulo-int {
+        color: var(--verde);
+      }
+      .enlace-int.int-verde .flecha-int {
+        color: var(--verde);
+      }
+
+      .enlace-int.int-ambar {
+        border-left-color: var(--ambar);
+      }
+      .enlace-int.int-ambar .ico-int {
+        background: var(--ambar-cl);
+      }
+      .enlace-int.int-ambar .titulo-int {
+        color: var(--ambar);
+      }
+      .enlace-int.int-ambar .flecha-int {
+        color: var(--ambar);
+      }
+
+      .enlace-int.int-rojo {
+        border-left-color: var(--rojo);
+      }
+      .enlace-int.int-rojo .ico-int {
+        background: var(--rojo-cl);
+      }
+      .enlace-int.int-rojo .titulo-int {
+        color: var(--rojo);
+      }
+      .enlace-int.int-rojo .flecha-int {
+        color: var(--rojo);
+      }
+
+      @media (max-width: 560px) {
+        .interactivos {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      /* Un solo enlace: que ocupe todo el ancho de la sección */
+      .interactivos:has(.enlace-int:only-of-type) {
+        grid-template-columns: 1fr;
+      }
+
+      @media (max-width: 560px) {
+        header.principal {
+          padding: 34px 22px;
+        }
+        header.principal h1 {
+          font-size: 24px;
+        }
+        section {
+          padding: 24px 20px;
+        }
+      }
+
+      /* ── FOCO VISIBLE (WCAG 2.4.7) ── */
+      a:focus-visible,
+      button:focus-visible,
+      [tabindex]:focus-visible {
+        outline: 3px solid var(--azul-osc);
+        outline-offset: 2px;
+      }
+
+      /* ── MOVIMIENTO REDUCIDO ── */
+      @media (prefers-reduced-motion: reduce) {
+        * {
+          transition: none !important;
+        }
+        .enlace-int:hover {
+          transform: none;
+        }
+        html {
+          scroll-behavior: auto;
+        }
+      }
+
+      /* ── MARCAS DE RESPUESTA (no depender del color) ── */
+      .marca {
+        font-weight: 700;
+        margin-right: 6px;
+      }
+      .opcion.elegida {
+        border-color: var(--azul);
+        background: var(--azul-cl);
+      }
+      .opcion:disabled {
+        color: var(--tinta);
+        opacity: 1;
+      }
+
+      /* ── TABLAS RESPONSIVAS (DUA) ── */
+      .tabla-scroll {
+        overflow-x: auto;
+        overflow-y: hidden;
+        -webkit-overflow-scrolling: touch;
+        max-width: 100%;
+        margin: 18px 0 0;
+        border: 1px solid var(--linea);
+        border-radius: 8px;
+        background: var(--papel);
+      }
+      .tabla-scroll:focus,
+      .tabla-scroll:focus-visible {
+        outline: 3px solid var(--azul);
+        outline-offset: 2px;
+      }
+      .tabla-scroll > table {
+        margin: 0;
+        min-width: 100%;
+      }
+      .aviso-desliza {
+        margin: 8px 0 18px;
+        padding: 8px 12px;
+        font-size: 14px;
+        font-weight: 600;
+        color: #5c3900;
+        background: #fdf3df;
+        border-left: 4px solid #5c3900;
+        border-radius: 5px;
+      }
+      .cap-oculto {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0 0 0 0);
+        white-space: nowrap;
+        border: 0;
+      }
+      @media print {
+        .tabla-scroll {
+          overflow: visible;
+          border: 0;
+        }
+        .aviso-desliza {
+          display: none;
+        }
+      }
+    </style>
+</head>
+<body>
+<header class="principal">
+<div class="envoltura-header">
+<p class="ruta">Matemáticas · Nivel 1 · Tema 5 — Patrones y pensamiento algebraico</p>
+<h1>Lección 5.1 · Patrones numéricos y de figuras</h1>
+<p class="lema">Descubrir la regla escondida detrás de una secuencia: el primer paso hacia el álgebra.</p>
+<div class="chips">
+<span class="chip"><span aria-hidden="true">⏱️</span> 4 horas (2 sinc. + 2 asinc.)</span>
+<span class="chip"><span aria-hidden="true">🔍</span> Encontrar la regla</span>
+<span class="chip"><span aria-hidden="true">📘</span> MyOpenMath</span>
+</div>
+</div>
+</header>
+<div class="envoltura">
+<!-- OBJETIVOS -->
+<section>
+<div class="caja caja-objetivo">
+<h2>
+<span aria-hidden="true" class="num-seccion">🎯</span>
+            Objetivos de la clase
+          </h2>
+<p>Al terminar esta lección, usted podrá:</p>
+<ul>
+<li>
+<strong>Identificar la regla</strong>
+              de una secuencia numérica o de figuras.
+            </li>
+<li>
+<strong>Extender</strong>
+              una secuencia al menos tres términos más.
+            </li>
+<li>
+<strong>Encontrar</strong>
+              un término que falta en medio de una secuencia.
+            </li>
+<li>
+<strong>Comunicar la regla</strong>
+              de un patrón con palabras claras.
+            </li>
+</ul>
+</div>
+</section>
+<!-- DE LOS NÚMEROS A LAS IDEAS -->
+<section>
+<h2>
+<span aria-hidden="true" class="num-seccion">1</span>
+          Un nuevo tipo de pensamiento
+        </h2>
+<p>
+          En los Temas 1 al 4 aprendió a
+          <strong>operar</strong>
+          : sumar, restar, multiplicar y dividir enteros, decimales y fracciones. Eso fue la aritmética.
+        </p>
+<p>
+          El Tema 5 da un paso nuevo. Ya no se trata solo de calcular un resultado, sino de
+          <strong>descubrir la idea escondida</strong>
+          detrás de los números. Cuando ve la fila 2, 4, 6, 8... su mente nota algo: "van de dos en dos". Eso es un
+          <strong>patrón</strong>
+          , y reconocerlo es el primer paso hacia el
+          <strong>álgebra</strong>
+          .
+        </p>
+<div class="caja caja-tip">
+<span class="etiqueta et-verde">Idea clave</span>
+<p>
+            Un
+            <strong>patrón</strong>
+            (o secuencia) es una serie de números o figuras que sigue una
+            <strong>regla</strong>
+            . Si usted descubre la regla, puede predecir lo que viene después — aunque nunca lo haya visto.
+          </p>
+</div>
+</section>
+<!-- PATRONES NUMÉRICOS -->
+<section>
+<h2>
+<span aria-hidden="true" class="num-seccion">2</span>
+          Patrones numéricos
+        </h2>
+<p>
+          En un patrón numérico, cada número se llama
+          <strong>término</strong>
+          . La
+          <strong>regla</strong>
+          dice cómo se pasa de un término al siguiente. Para descubrirla, observe
+          <strong>qué cambia entre un término y el otro</strong>
+          .
+        </p>
+<h3>Patrones de suma o resta</h3>
+<p>Mire esta secuencia. ¿Qué pasa de un número al siguiente?</p>
+<div aria-label="Secuencia: 3, más 5, 8, más 5, 13, más 5, 18, más 5, término desconocido." class="secuencia" role="img">
+<div class="term">3</div>
+<div class="salto">
+            +5
+            <small aria-hidden="true">salto</small>
+</div>
+<div class="term">8</div>
+<div class="salto">
+            +5
+            <small aria-hidden="true">salto</small>
+</div>
+<div class="term">13</div>
+<div class="salto">
+            +5
+            <small aria-hidden="true">salto</small>
+</div>
+<div class="term">18</div>
+<div class="salto">
+            +5
+            <small aria-hidden="true">salto</small>
+</div>
+<div class="term incog">?</div>
+</div>
+<div class="ejemplo">
+<p class="titulo-ej">Descubrir la regla de 3, 8, 13, 18...</p>
+<p class="paso">
+<span aria-hidden="true" class="n">1</span>
+            Veo cuánto cambia: de 3 a 8 hay +5; de 8 a 13 hay +5; de 13 a 18 hay +5.
+          </p>
+<p class="paso">
+<span aria-hidden="true" class="n">2</span>
+            La regla es:
+            <strong>sumar 5 cada vez</strong>
+            .
+          </p>
+<p class="paso">
+<span aria-hidden="true" class="n">✓</span>
+            El término que falta: 18 + 5 =
+            <strong>23</strong>
+            .
+          </p>
+</div>
+<h3>Patrones de multiplicación</h3>
+<p>
+          No todos los patrones suman. En este, cada término se obtiene
+          <strong>multiplicando</strong>
+          :
+        </p>
+<div aria-label="Secuencia: 2, por 2, 4, por 2, 8, por 2, 16, por 2, término desconocido." class="secuencia" role="img">
+<div class="term">2</div>
+<div class="salto">
+            ×2
+            <small aria-hidden="true">salto</small>
+</div>
+<div class="term">4</div>
+<div class="salto">
+            ×2
+            <small aria-hidden="true">salto</small>
+</div>
+<div class="term">8</div>
+<div class="salto">
+            ×2
+            <small aria-hidden="true">salto</small>
+</div>
+<div class="term">16</div>
+<div class="salto">
+            ×2
+            <small aria-hidden="true">salto</small>
+</div>
+<div class="term incog">?</div>
+</div>
+<p>
+          Aquí la regla es
+          <strong>multiplicar por 2 cada vez</strong>
+          . El término que falta: 16 × 2 =
+          <strong>32</strong>
+          .
+        </p>
+<div class="caja caja-ojo">
+<span class="etiqueta et-ambar">Consejo para descubrir la regla</span>
+<p>
+            Pregúntese primero:
+            <strong>¿los números crecen poco a poco o muy rápido?</strong>
+            Si crecen despacio y parejo, suele ser una suma. Si crecen muy rápido (se duplican, se triplican), suele ser una multiplicación.
+          </p>
+</div>
+<div class="practica">
+<div class="cabe">
+<span aria-hidden="true" class="ico">✏️</span>
+<h3>Práctica 1 — Extender una secuencia</h3>
+</div>
+<p class="pregunta-int" id="t-p1">
+            ¿Qué número sigue en la secuencia
+            <strong>7, 11, 15, 19, ___</strong>
+            ?
+          </p>
+<div aria-labelledby="t-p1" class="opciones" data-quiz="p1" role="group">
+<button class="opcion" data-correcta="no" type="button">21</button>
+<button class="opcion" data-correcta="si" type="button">23</button>
+<button class="opcion" data-correcta="no" type="button">24</button>
+<button class="opcion" data-correcta="no" type="button">38</button>
+</div>
+<div aria-live="polite" class="respuesta-int" id="r-p1" role="status"></div>
+</div>
+<div class="practica">
+<div class="cabe">
+<span aria-hidden="true" class="ico">✏️</span>
+<h3>Práctica 2 — El término que falta en medio</h3>
+</div>
+<p class="pregunta-int" id="t-p2">
+            En la secuencia
+            <strong>5, 10, ___, 20, 25</strong>
+            , ¿qué número falta?
+          </p>
+<div aria-labelledby="t-p2" class="opciones" data-quiz="p2" role="group">
+<button class="opcion" data-correcta="no" type="button">12</button>
+<button class="opcion" data-correcta="si" type="button">15</button>
+<button class="opcion" data-correcta="no" type="button">14</button>
+<button class="opcion" data-correcta="no" type="button">18</button>
+</div>
+<div aria-live="polite" class="respuesta-int" id="r-p2" role="status"></div>
+</div>
+<div class="interactivos">
+<span class="titulo-grupo">Practica en línea</span>
+<a class="enlace-int" href="https://zhemaria.github.io/math/patron_aritmetico/" rel="noopener" target="_blank">
+<span aria-hidden="true" class="ico-int">🧮</span>
+<span class="txt-int">
+<span class="titulo-int">Patrones aritméticos</span>
+<span class="desc-int">Practica la creación de patrones aritméticos y sus elementos</span>
+</span>
+<span aria-hidden="true" class="flecha-int">→</span>
+<span class="cap-oculto"> (se abre en una ventana nueva)</span></a>
+</div>
+</section>
+<!-- PATRONES DE FIGURAS -->
+<section>
+<h2>
+<span aria-hidden="true" class="num-seccion">3</span>
+          Patrones de figuras
+        </h2>
+<p>
+          Los patrones no son solo de números: también las
+          <strong>figuras</strong>
+          pueden seguir una regla. Mire cómo crecen estos cuadrados:
+        </p>
+<div class="figuras">
+<div class="fig">
+<div aria-hidden="true" class="cuadritos" style="grid-template-columns: repeat(1, 18px)">
+<div class="cuad"></div>
+</div>
+<p class="etq">Figura 1 · 1 cuadrito</p>
+</div>
+<div class="fig">
+<div aria-hidden="true" class="cuadritos" style="grid-template-columns: repeat(2, 18px)">
+<div class="cuad"></div>
+<div class="cuad"></div>
+<div class="cuad"></div>
+<div class="cuad"></div>
+</div>
+<p class="etq">Figura 2 · 4 cuadritos</p>
+</div>
+<div class="fig">
+<div aria-hidden="true" class="cuadritos" style="grid-template-columns: repeat(3, 18px)">
+<div class="cuad"></div>
+<div class="cuad"></div>
+<div class="cuad"></div>
+<div class="cuad"></div>
+<div class="cuad"></div>
+<div class="cuad"></div>
+<div class="cuad"></div>
+<div class="cuad"></div>
+<div class="cuad"></div>
+</div>
+<p class="etq">Figura 3 · 9 cuadritos</p>
+</div>
+</div>
+<p>
+          La cantidad de cuadritos forma una secuencia numérica:
+          <strong>1, 4, 9...</strong>
+          Para extender un patrón de figuras, conviene
+          <strong>contar y pasar a números</strong>
+          : así el patrón de figuras se convierte en un patrón numérico, más fácil de analizar.
+        </p>
+<div class="caja caja-tip">
+<span class="etiqueta et-verde">Truco</span>
+<p>
+            Todo patrón de figuras se puede convertir en un patrón numérico contando algo: cuántos cuadritos, cuántos puntos, cuántos lados. Una vez que tiene los números, busca la regla como en la
+            sección anterior.
+          </p>
+</div>
+<div class="practica">
+<div class="cabe">
+<span aria-hidden="true" class="ico">✏️</span>
+<h3>Práctica 3 — Patrón de figuras</h3>
+</div>
+<p class="pregunta-int" id="t-p3">Una secuencia de figuras tiene 3, 6, 9, 12 puntos. ¿Cuántos puntos tendrá la siguiente figura?</p>
+<div aria-labelledby="t-p3" class="opciones" data-quiz="p3" role="group">
+<button class="opcion" data-correcta="no" type="button">13</button>
+<button class="opcion" data-correcta="si" type="button">15</button>
+<button class="opcion" data-correcta="no" type="button">16</button>
+<button class="opcion" data-correcta="no" type="button">24</button>
+</div>
+<div aria-live="polite" class="respuesta-int" id="r-p3" role="status"></div>
+</div>
+</section>
+<!-- TABLAS ENTRADA-SALIDA -->
+<section>
+<h2>
+<span aria-hidden="true" class="num-seccion">4</span>
+          Tablas de entrada y salida
+        </h2>
+<p>
+          Una forma muy útil de mostrar una regla es la
+          <strong>tabla de entrada y salida</strong>
+          . La
+          <strong>entrada</strong>
+          es el número que ponemos; la
+          <strong>salida</strong>
+          es el número que sale después de aplicar la regla.
+        </p>
+<div aria-label="Tabla de entrada y salida (tabla desplazable horizontalmente)" class="tabla-scroll" role="region" tabindex="0"><table class="tabla-es"><caption class="cap-oculto">Tabla de entrada y salida: cada entrada y la salida que le corresponde</caption>
+<thead>
+<tr>
+<th scope="col">Entrada</th>
+<th scope="col">Salida</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="col-e">1</td>
+<td class="col-s">4</td>
+</tr>
+<tr>
+<td class="col-e">2</td>
+<td class="col-s">5</td>
+</tr>
+<tr>
+<td class="col-e">3</td>
+<td class="col-s">6</td>
+</tr>
+<tr>
+<td class="col-e">4</td>
+<td class="col-s">7</td>
+</tr>
+</tbody>
+</table></div><p class="aviso-desliza"><span aria-hidden="true">↔</span> Deslice la tabla horizontalmente para ver todas las columnas.</p>
+<div class="ejemplo">
+<p class="titulo-ej">Descubrir la regla de la tabla</p>
+<p class="paso">
+<span aria-hidden="true" class="n">1</span>
+            Comparo cada entrada con su salida: de 1 sale 4, de 2 sale 5, de 3 sale 6.
+          </p>
+<p class="paso">
+<span aria-hidden="true" class="n">2</span>
+            ¿Qué le pasó a cada entrada? A cada una se le sumó 3.
+          </p>
+<p class="paso">
+<span aria-hidden="true" class="n">✓</span>
+            La regla es:
+            <strong>la salida es la entrada más 3</strong>
+            . Si la entrada fuera 10, la salida sería 13.
+          </p>
+</div>
+<div class="caja caja-ojo">
+<span class="etiqueta et-ambar">¡Ojo!</span>
+<p>
+            En una tabla de entrada-salida, la regla relaciona
+            <strong>cada entrada con su propia salida</strong>
+            — no compara una fila con la siguiente. Mire siempre el par horizontal: entrada → salida.
+          </p>
+</div>
+<div class="practica">
+<div class="cabe">
+<span aria-hidden="true" class="ico">✏️</span>
+<h3>Práctica 4 — Tabla de entrada y salida</h3>
+</div>
+<p class="pregunta-int" id="t-p4">En una tabla, la entrada 2 da salida 6; la entrada 3 da salida 9; la entrada 4 da salida 12. ¿Cuál es la regla?</p>
+<div aria-labelledby="t-p4" class="opciones" data-quiz="p4" role="group">
+<button class="opcion" data-correcta="no" type="button">La salida es la entrada más 4.</button>
+<button class="opcion" data-correcta="si" type="button">La salida es la entrada multiplicada por 3.</button>
+<button class="opcion" data-correcta="no" type="button">La salida es la entrada más 3.</button>
+<button class="opcion" data-correcta="no" type="button">La salida es la entrada menos 3.</button>
+</div>
+<div aria-live="polite" class="respuesta-int" id="r-p4" role="status"></div>
+</div>
+</section>
+<!-- PRÁCTICA GUIADA -->
+<section>
+<h2>
+<span aria-hidden="true" class="num-seccion">5</span>
+          Práctica guiada en clase
+        </h2>
+<p>
+          Estas actividades se hacen
+          <strong>en la sesión sincrónica</strong>
+          . Cada actividad incluye una variante para la
+          <strong>clase presencial</strong>
+          y otra para la
+          <strong>clase en línea</strong>
+          ; el objetivo de aprendizaje es el mismo en ambas.
+        </p>
+<div class="caja caja-recurso">
+<span class="etiqueta et-azul">Actividad A · "Adivina la regla"</span>
+<p>En parejas, un estudiante crea una secuencia con una regla secreta y el otro la adivina en un máximo de tres intentos.</p>
+<div class="modalidades">
+<div class="modo modo-pres">
+<span class="modo-tit">🏫 Presencial</span>
+<p>
+                Cada pareja trabaja con papel: uno escribe los primeros cuatro términos de su secreta; el compañero propone la regla y el quinto término. Luego intercambian roles. Se comparten las
+                reglas más ingeniosas.
+              </p>
+</div>
+<div class="modo modo-line">
+<span class="modo-tit">💻 En línea</span>
+<p>En salas pequeñas (breakout rooms) de dos, un estudiante escribe su secuencia en el chat y el otro responde con la regla y el siguiente término. El profesor recorre las salas.</p>
+</div>
+</div>
+</div>
+<div class="caja caja-recurso">
+<span class="etiqueta et-azul">Actividad B · "El patrón del salón"</span>
+<p>Los estudiantes buscan patrones reales en objetos a su alrededor y los expresan como secuencias numéricas.</p>
+<div class="modalidades">
+<div class="modo modo-pres">
+<span class="modo-tit">🏫 Presencial</span>
+<p>El grupo cuenta objetos del salón que forman patrones: filas de sillas, baldosas del piso, ventanas. Para cada uno, escriben la secuencia y la regla en el pizarrón.</p>
+</div>
+<div class="modo modo-line">
+<span class="modo-tit">💻 En línea</span>
+<p>Cada estudiante busca un patrón en su propia casa (escalones, ventanas, azulejos), lo cuenta y publica en el chat la secuencia y la regla. El grupo comenta los ejemplos.</p>
+</div>
+</div>
+</div>
+<div class="caja caja-recurso">
+<span class="etiqueta et-azul">Actividad C · "Construir la tabla"</span>
+<p>Dada una regla, los estudiantes completan una tabla de entrada y salida; dada una tabla, descubren la regla.</p>
+<div class="modalidades">
+<div class="modo modo-pres">
+<span class="modo-tit">🏫 Presencial</span>
+<p>Reparta tarjetas: unas con una regla (los estudiantes completan la tabla), otras con una tabla a medias (descubren la regla). Verifican en parejas.</p>
+</div>
+<div class="modo modo-line">
+<span class="modo-tit">💻 En línea</span>
+<p>Muestre tablas y reglas en diapositivas. Los estudiantes completan en papel y publican en el chat la regla o los valores faltantes. El grupo revisa juntos.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- TAREA ASINCRÓNICA -->
+<section>
+<h2>
+<span aria-hidden="true" class="num-seccion">6</span>
+          Tarea asincrónica
+        </h2>
+<p>
+          Estas actividades se realizan
+          <strong>por su cuenta</strong>
+          , dentro de las 2 horas asincrónicas de la lección. Encontrará los enlaces a continuación de la lección.
+        </p>
+<ul>
+<li>
+<strong>MyOpenMath:</strong>
+            complete las 
+            <strong> secuencias</strong>
+            para identificar la regla y extenderlas. Cada una da retroalimentación inmediata en el ejercicio N1-Lección 5.1 · Patrones numéricos y de figuras.
+          </li>
+<li>
+<strong>Brightspace:</strong>
+            realice el quiz Patrones numéricos.
+          </li>
+<li>
+<strong>Actividad personal:</strong>
+            observe un patrón de su vida diaria (su salario cada semana, los días que se repiten, los números de las casas de su calle). Escriba la secuencia y describa la regla con palabras.
+          </li>
+</ul>
+</section>
+<!-- QUIZ -->
+<section>
+<h2>
+<span aria-hidden="true" class="num-seccion">7</span>
+          Quiz de práctica
+        </h2>
+<p>
+          Responda las
+          <strong>8 preguntas</strong>
+          . Al final verá su puntaje y podrá repasar lo que falló. Puede repetir el quiz las veces que quiera.
+        </p>
+<div id="quiz">
+<div class="quiz-bloque">
+<span class="qnum">Pregunta 1</span>
+<p class="pregunta" id="t-q1">
+              ¿Qué número sigue en la secuencia
+              <strong>4, 8, 12, 16, ___</strong>
+              ?
+            </p>
+<div aria-labelledby="t-q1" class="opciones" data-q="1" role="group">
+<button class="opcion" data-c="no" type="button">18</button>
+<button class="opcion" data-c="si" type="button">20</button>
+<button class="opcion" data-c="no" type="button">24</button>
+<button class="opcion" data-c="no" type="button">32</button>
+</div>
+</div>
+<div class="quiz-bloque">
+<span class="qnum">Pregunta 2</span>
+<p class="pregunta" id="t-q2">
+              ¿Cuál es la regla de la secuencia
+              <strong>50, 45, 40, 35...</strong>
+              ?
+            </p>
+<div aria-labelledby="t-q2" class="opciones" data-q="2" role="group">
+<button class="opcion" data-c="no" type="button">Sumar 5 cada vez.</button>
+<button class="opcion" data-c="si" type="button">Restar 5 cada vez.</button>
+<button class="opcion" data-c="no" type="button">Multiplicar por 5 cada vez.</button>
+<button class="opcion" data-c="no" type="button">Dividir entre 5 cada vez.</button>
+</div>
+</div>
+<div class="quiz-bloque">
+<span class="qnum">Pregunta 3</span>
+<p class="pregunta" id="t-q3">
+              ¿Qué número falta en la secuencia
+              <strong>6, 12, ___, 24, 30</strong>
+              ?
+            </p>
+<div aria-labelledby="t-q3" class="opciones" data-q="3" role="group">
+<button class="opcion" data-c="si" type="button">18</button>
+<button class="opcion" data-c="no" type="button">16</button>
+<button class="opcion" data-c="no" type="button">20</button>
+<button class="opcion" data-c="no" type="button">15</button>
+</div>
+</div>
+<div class="quiz-bloque">
+<span class="qnum">Pregunta 4</span>
+<p class="pregunta" id="t-q4">
+              ¿Qué número sigue en la secuencia
+              <strong>3, 6, 12, 24, ___</strong>
+              ?
+            </p>
+<div aria-labelledby="t-q4" class="opciones" data-q="4" role="group">
+<button class="opcion" data-c="no" type="button">36</button>
+<button class="opcion" data-c="si" type="button">48</button>
+<button class="opcion" data-c="no" type="button">30</button>
+<button class="opcion" data-c="no" type="button">27</button>
+</div>
+</div>
+<div class="quiz-bloque">
+<span class="qnum">Pregunta 5</span>
+<p class="pregunta" id="t-q5">Una secuencia de figuras tiene 5, 10, 15, 20 puntos. ¿Cuántos puntos tendrá la siguiente?</p>
+<div aria-labelledby="t-q5" class="opciones" data-q="5" role="group">
+<button class="opcion" data-c="si" type="button">25</button>
+<button class="opcion" data-c="no" type="button">22</button>
+<button class="opcion" data-c="no" type="button">30</button>
+<button class="opcion" data-c="no" type="button">40</button>
+</div>
+</div>
+<div class="quiz-bloque">
+<span class="qnum">Pregunta 6</span>
+<p class="pregunta" id="t-q6">En una tabla, la entrada 1 da salida 5, la entrada 2 da salida 6, la entrada 3 da salida 7. ¿Cuál es la regla?</p>
+<div aria-labelledby="t-q6" class="opciones" data-q="6" role="group">
+<button class="opcion" data-c="si" type="button">La salida es la entrada más 4.</button>
+<button class="opcion" data-c="no" type="button">La salida es la entrada por 5.</button>
+<button class="opcion" data-c="no" type="button">La salida es la entrada más 1.</button>
+<button class="opcion" data-c="no" type="button">La salida es la entrada menos 4.</button>
+</div>
+</div>
+<div class="quiz-bloque">
+<span class="qnum">Pregunta 7</span>
+<p class="pregunta" id="t-q7">
+              Con la regla "la salida es la entrada multiplicada por 4", si la entrada es
+              <strong>5</strong>
+              , ¿cuál es la salida?
+            </p>
+<div aria-labelledby="t-q7" class="opciones" data-q="7" role="group">
+<button class="opcion" data-c="no" type="button">9</button>
+<button class="opcion" data-c="si" type="button">20</button>
+<button class="opcion" data-c="no" type="button">45</button>
+<button class="opcion" data-c="no" type="button">1</button>
+</div>
+</div>
+<div class="quiz-bloque">
+<span class="qnum">Pregunta 8</span>
+<p class="pregunta" id="t-q8">Una persona ahorra así: semana 1 tiene $20, semana 2 tiene $35, semana 3 tiene $50. Si sigue el patrón, ¿cuánto tendrá en la semana 4?</p>
+<div aria-labelledby="t-q8" class="opciones" data-q="8" role="group">
+<button class="opcion" data-c="no" type="button">$55</button>
+<button class="opcion" data-c="si" type="button">$65</button>
+<button class="opcion" data-c="no" type="button">$70</button>
+<button class="opcion" data-c="no" type="button">$60</button>
+</div>
+</div>
+</div>
+<div style="text-align: center; margin-top: 18px">
+<button class="btn" id="btn-calificar" type="button">Ver mi resultado</button>
+<button class="btn btn-sec" id="btn-reintentar" style="display: none" type="button">Intentar de nuevo</button>
+</div>
+<div aria-live="polite" class="marcador" id="marcador" role="status">
+<div aria-hidden="true" class="barra-prog"><span id="barra"></span></div>
+<p class="puntaje" id="puntaje"></p>
+<p class="mensaje" id="mensaje"></p>
+</div>
+</section>
+<!-- RÚBRICA -->
+<section>
+<h2>
+<span aria-hidden="true" class="num-seccion">8</span>
+          Rúbrica de evaluación
+        </h2>
+<p>Rúbrica de pensamiento algebraico inicial. Cada criterio se evalúa en cuatro niveles.</p>
+<div aria-label="Rúbrica de evaluación de patrones (tabla desplazable horizontalmente)" class="tabla-scroll" role="region" tabindex="0"><table class="tabla-rubrica"><caption class="cap-oculto">Rúbrica de evaluación de patrones: criterios y sus cuatro niveles de logro</caption>
+<thead>
+<tr>
+<th scope="col">Criterio</th>
+<th class="nivel-cab" scope="col">Logrado (4)</th>
+<th class="nivel-cab" scope="col">Satisfactorio (3)</th>
+<th class="nivel-cab" scope="col">En proceso (2)</th>
+<th class="nivel-cab" scope="col">Por reforzar (1)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th scope="row">Identifica la regla de la secuencia</th>
+<td>Halla la regla en patrones de suma, resta y multiplicación.</td>
+<td>Identifica la regla en patrones de suma y resta.</td>
+<td>Identifica la regla solo en patrones simples de suma.</td>
+<td>No reconoce la regla del patrón.</td>
+</tr>
+<tr>
+<th scope="row">Extiende la secuencia</th>
+<td>Extiende sin errores y encuentra términos faltantes en medio.</td>
+<td>Extiende la secuencia hacia adelante correctamente.</td>
+<td>Extiende con algún error de cálculo.</td>
+<td>No logra extender la secuencia.</td>
+</tr>
+<tr>
+<th scope="row">Trabaja con tablas de entrada-salida</th>
+<td>Descubre la regla y completa la tabla con seguridad.</td>
+<td>Completa la tabla correctamente.</td>
+<td>Confunde la regla horizontal con la vertical.</td>
+<td>No interpreta la tabla.</td>
+</tr>
+<tr>
+<th scope="row">Comunica la regla con palabras</th>
+<td>Explica la regla con claridad y precisión.</td>
+<td>Comunica la regla de forma comprensible.</td>
+<td>Describe la regla de forma vaga o incompleta.</td>
+<td>No logra expresar la regla.</td>
+</tr>
+</tbody>
+</table></div><p class="aviso-desliza"><span aria-hidden="true">↔</span> Deslice la tabla horizontalmente para ver todas las columnas.</p>
+</section>
+<!-- CIERRE -->
+<div class="cierre">
+<h2>
+<span aria-hidden="true" class="num-seccion">➡️</span>
+          Lo que viene en la próxima lección
+        </h2>
+<p>Ya sabe descubrir la regla de un patrón y comunicarla con palabras. Ese es justo el puente hacia el álgebra.</p>
+<p>
+          En la
+          <strong>Lección 5.2 · Lenguaje algebraico e incógnitas simples</strong>
+          dará el siguiente paso: aprenderá a escribir esas reglas con
+          <strong>símbolos</strong>
+          en vez de palabras, usando una letra o un cuadrito para representar un número que todavía no conocemos — la
+          <strong>incógnita</strong>
+          . Es el momento en que las matemáticas empiezan a usar su propio idioma.
+        </p>
+<p class="flecha-sig">➡️  Próxima: Lección 5.2 · Lenguaje algebraico e incógnitas simples</p>
+</div>
+</div>
+<footer>
+      Matemáticas · Nivel 1 · Lección 5.1 — Spanish ASE Math · AE 0170-0321
+      <br/>
+      City Colleges of Chicago · Truman College · Prof. José M. Fernández
+    </footer>
+    <script>
+      // ── PRÁCTICA INTERACTIVA ──
+      var respuestasPractica = {
+        p1: 'Sigue el 23. La regla es sumar 4 cada vez (7→11→15→19). El siguiente es 19 + 4 = 23.',
+        p2: 'Falta el 15. La regla es sumar 5 cada vez. Después de 10 viene 10 + 5 = 15, y luego 15 + 5 = 20. ✓',
+        p3: 'La siguiente figura tendrá 15 puntos. La regla es sumar 3 cada vez (3, 6, 9, 12). El siguiente es 12 + 3 = 15.',
+        p4: 'La regla es: la salida es la entrada multiplicada por 3. De 2 sale 6, de 3 sale 9, de 4 sale 12 — cada salida es el triple de la entrada.'
+      };
+
+      document.querySelectorAll('.opciones[data-quiz]').forEach(function (grupo) {
+        var id = grupo.getAttribute('data-quiz');
+        grupo.querySelectorAll('.opcion').forEach(function (op) {
+          op.addEventListener('click', function () {
+            var acerto = op.getAttribute('data-correcta') === 'si';
+            grupo.querySelectorAll('.opcion').forEach(function (o) {
+              o.disabled = true;
+              if (o.getAttribute('data-correcta') === 'si') {
+                o.classList.add('correcta');
+                o.insertAdjacentHTML('afterbegin', '<span class="marca">\u2713 Correcta:</span> ');
+              }
+            });
+            if (!acerto) {
+              op.classList.add('incorrecta');
+              op.insertAdjacentHTML('afterbegin', '<span class="marca">\u2717 Su respuesta:</span> ');
+            }
+            var r = document.getElementById('r-' + id);
+            r.className = 'respuesta-int ' + (acerto ? 'bien' : 'mal');
+            r.textContent = (acerto ? 'Correcto. ' : 'Revise: ') + respuestasPractica[id];
+          });
+        });
+      });
+
+      // ── QUIZ FINAL ──
+      var totalPreguntas = 8;
+      var seleccion = {};
+
+      document.querySelectorAll('#quiz .opciones').forEach(function (grupo) {
+        var q = grupo.getAttribute('data-q');
+        grupo.querySelectorAll('.opcion').forEach(function (op) {
+          op.setAttribute('aria-pressed', 'false');
+          op.addEventListener('click', function () {
+            grupo.querySelectorAll('.opcion').forEach(function (o) {
+              o.classList.remove('elegida');
+              o.setAttribute('aria-pressed', 'false');
+            });
+            op.classList.add('elegida');
+            op.setAttribute('aria-pressed', 'true');
+            seleccion[q] = op;
+          });
+        });
+      });
+
+      document.getElementById('btn-calificar').addEventListener('click', function () {
+        var correctas = 0;
+        document.querySelectorAll('#quiz .opciones').forEach(function (grupo) {
+          var q = grupo.getAttribute('data-q');
+          grupo.querySelectorAll('.opcion').forEach(function (o) {
+            o.disabled = true;
+            if (o.getAttribute('data-c') === 'si') {
+              o.classList.add('correcta');
+              o.insertAdjacentHTML('afterbegin', '<span class="marca">\u2713 Correcta:</span> ');
+            }
+          });
+          var elegida = seleccion[q];
+          if (elegida) {
+            if (elegida.getAttribute('data-c') === 'si') {
+              correctas++;
+            } else {
+              elegida.classList.add('incorrecta');
+              elegida.insertAdjacentHTML('afterbegin', '<span class="marca">\u2717 Su respuesta:</span> ');
+            }
+          }
+        });
+
+        var marc = document.getElementById('marcador');
+        var pct = Math.round((correctas / totalPreguntas) * 100);
+        document.getElementById('puntaje').textContent = correctas + ' de ' + totalPreguntas + ' correctas';
+
+        var msg, color;
+        if (pct >= 88) {
+          msg = 'Excelente. Domina los patrones y está listo para la Lección 5.2.';
+          color = '#e7f4ec';
+        } else if (pct >= 63) {
+          msg = 'Buen trabajo. Repase las preguntas marcadas como incorrectas y vuelva a intentarlo.';
+          color = '#fdf3df';
+        } else {
+          msg = 'Repasemos juntos. Vuelva a leer las secciones anteriores y reintente el quiz.';
+          color = '#fdecea';
+        }
+
+        marc.style.background = color;
+        document.getElementById('mensaje').textContent = msg;
+        marc.classList.add('visible');
+        document.getElementById('barra').style.width = pct + '%';
+        document.getElementById('btn-calificar').style.display = 'none';
+
+        var reintentar = document.getElementById('btn-reintentar');
+        reintentar.style.display = 'inline-block';
+        reintentar.focus();
+      });
+
+      document.getElementById('btn-reintentar').addEventListener('click', function () {
+        document.querySelectorAll('#quiz .opcion').forEach(function (o) {
+          o.disabled = false;
+          o.classList.remove('correcta', 'incorrecta', 'elegida');
+          o.setAttribute('aria-pressed', 'false');
+          var marca = o.querySelector('.marca');
+          if (marca) {
+            marca.remove();
+          }
+        });
+        for (var k in seleccion) {
+          delete seleccion[k];
+        }
+        document.getElementById('marcador').classList.remove('visible');
+        document.getElementById('puntaje').textContent = '';
+        document.getElementById('mensaje').textContent = '';
+        document.getElementById('btn-calificar').style.display = 'inline-block';
+        document.getElementById('btn-reintentar').style.display = 'none';
+        var primera = document.querySelector('#quiz .opcion');
+        if (primera) {
+          primera.focus();
+        }
+      });
+
+      // ── TABLAS RESPONSIVAS ──
+      // Los contenedores y avisos ya están en el marcado, para que los
+      // revisores que no ejecutan JavaScript los detecten.
+      (function () {
+        var TEXTO_AVISO = '\u2194 Deslice la tabla horizontalmente para ver todas las columnas.';
+        var pares = [];
+
+        document.querySelectorAll('table').forEach(function (t) {
+          var caja = t.parentNode;
+          if (!caja.classList.contains('tabla-scroll')) {
+            var cap = t.querySelector('caption');
+            var etiqueta = (cap ? cap.textContent.trim() : 'Tabla de datos') + ' (tabla desplazable horizontalmente)';
+            var nueva = document.createElement('div');
+            nueva.className = 'tabla-scroll';
+            nueva.setAttribute('role', 'region');
+            nueva.setAttribute('tabindex', '0');
+            nueva.setAttribute('aria-label', etiqueta);
+            t.parentNode.insertBefore(nueva, t);
+            nueva.appendChild(t);
+            caja = nueva;
+          }
+          var aviso = caja.nextElementSibling;
+          if (!aviso || !aviso.classList.contains('aviso-desliza')) {
+            aviso = document.createElement('p');
+            aviso.className = 'aviso-desliza';
+            aviso.textContent = TEXTO_AVISO;
+            caja.parentNode.insertBefore(aviso, caja.nextSibling);
+          }
+          pares.push({ caja: caja, aviso: aviso });
+        });
+
+        function actualizar() {
+          pares.forEach(function (p) {
+            p.aviso.style.display = p.caja.scrollWidth > p.caja.clientWidth + 2 ? 'block' : 'none';
+          });
+        }
+        actualizar();
+
+        var tm;
+        window.addEventListener('resize', function () {
+          clearTimeout(tm);
+          tm = setTimeout(actualizar, 150);
+        });
+      })();
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,1424 @@
+<!DOCTYPE html>
+
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Lección 6.1 · Sistema inglés: longitud, peso y capacidad</title>
+<style>
+      :root {
+        --azul: #4e342e;
+        --azul-osc: #3e2723;
+        --azul-cl: #efebe9;
+        --tinta: #1a2330;
+        --gris: #5b6675;
+        --linea: #dde3ea;
+        --crema: #f6f4ee;
+        --papel: #ffffff;
+        --verde: #1a472d;
+        --verde-cl: #e7f4ec;
+        --ambar: #804c00;
+        --ambar-cl: #fdf3df;
+        --rojo: #b5342a;
+        --rojo-cl: #fdecea;
+        --sombra: 0 2px 10px rgba(62, 39, 35, 0.12);
+      }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        font-family: 'Segoe UI', 'Helvetica Neue', system-ui, sans-serif;
+        background: var(--crema);
+        color: var(--tinta);
+        line-height: 1.65;
+        font-size: 17px;
+      }
+      .envoltura {
+        max-width: 880px;
+        margin: 0 auto;
+        padding: 0 20px 80px;
+      }
+
+      header.principal {
+        background: linear-gradient(135deg, #3e2723 0%, #4e342e 55%, #6d4c41 100%);
+        color: #fff;
+        padding: 46px 38px 40px;
+        border-radius: 0 0 22px 22px;
+        box-shadow: 0 6px 22px rgba(62, 39, 35, 0.3);
+      }
+      .envoltura-header {
+        max-width: 880px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+      .ruta {
+        font-size: 13px;
+        letter-spacing: 0.6px;
+        text-transform: uppercase;
+        opacity: 0.85;
+        margin-bottom: 14px;
+      }
+      header.principal h1 {
+        font-size: 30px;
+        font-weight: 700;
+        line-height: 1.25;
+        margin-bottom: 8px;
+      }
+      header.principal .lema {
+        font-size: 16px;
+        opacity: 0.93;
+        font-weight: 400;
+        max-width: 620px;
+      }
+      .chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 20px;
+      }
+      .chip {
+        background: rgba(255, 255, 255, 0.16);
+        border: 1px solid rgba(255, 255, 255, 0.28);
+        padding: 6px 14px;
+        border-radius: 30px;
+        font-size: 13px;
+        font-weight: 600;
+      }
+
+      section {
+        background: var(--papel);
+        margin-top: 22px;
+        padding: 30px 34px;
+        border-radius: 14px;
+        box-shadow: var(--sombra);
+      }
+      .num-seccion {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 34px;
+        height: 34px;
+        background: var(--azul);
+        color: #fff;
+        border-radius: 9px;
+        font-weight: 700;
+        font-size: 17px;
+        margin-right: 12px;
+        flex-shrink: 0;
+      }
+      h2 {
+        display: flex;
+        align-items: center;
+        font-size: 23px;
+        color: var(--azul-osc);
+        margin-bottom: 16px;
+        font-weight: 700;
+      }
+      h3 {
+        font-size: 18px;
+        color: var(--azul-osc);
+        margin: 22px 0 10px;
+        font-weight: 700;
+      }
+      p {
+        margin: 11px 0;
+      }
+      ul,
+      ol {
+        margin: 11px 0 11px 26px;
+      }
+      li {
+        margin: 6px 0;
+      }
+      strong {
+        color: var(--azul-osc);
+      }
+
+      .caja {
+        border-radius: 11px;
+        padding: 18px 22px;
+        margin: 18px 0;
+        border-left: 5px solid;
+      }
+      .caja-objetivo {
+        background: var(--azul-cl);
+        border-color: var(--azul);
+      }
+      .caja-objetivo h2 {
+        margin-bottom: 10px;
+      }
+      .caja-tip {
+        background: var(--verde-cl);
+        border-color: var(--verde);
+      }
+      .caja-tip strong {
+        color: var(--verde);
+      }
+      .caja-ojo {
+        background: var(--ambar-cl);
+        border-color: var(--ambar);
+      }
+      .caja-ojo strong {
+        color: var(--ambar);
+      }
+      .caja-recurso {
+        background: #eef2f7;
+        border-color: var(--gris);
+      }
+
+      .etiqueta {
+        display: inline-block;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+        padding: 3px 10px;
+        border-radius: 5px;
+        margin-bottom: 6px;
+      }
+      .et-verde {
+        background: var(--verde);
+        color: #fff;
+      }
+      .et-ambar {
+        background: var(--ambar);
+        color: #fff;
+      }
+      .et-azul {
+        background: var(--azul);
+        color: #fff;
+      }
+
+      .modalidades {
+        display: flex;
+        gap: 14px;
+        margin-top: 14px;
+        flex-wrap: wrap;
+      }
+      .modo {
+        flex: 1;
+        min-width: 240px;
+        border-radius: 9px;
+        padding: 13px 16px;
+        background: #fff;
+        border: 1px solid var(--linea);
+      }
+      .modo-pres {
+        border-top: 4px solid var(--azul);
+      }
+      .modo-line {
+        border-top: 4px solid var(--verde);
+      }
+      .modo .modo-tit {
+        display: block;
+        font-weight: 700;
+        font-size: 14px;
+        margin-bottom: 5px;
+      }
+      .modo-pres .modo-tit {
+        color: var(--azul-osc);
+      }
+      .modo-line .modo-tit {
+        color: var(--verde);
+      }
+      .modo p {
+        margin: 4px 0 0;
+        font-size: 15px;
+      }
+
+      /* ── TABLA DE EQUIVALENCIAS ── */
+      .tabla-eq {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 14px 0;
+        font-size: 16px;
+      }
+      .tabla-eq th,
+      .tabla-eq td {
+        border: 1px solid var(--linea);
+        padding: 10px 13px;
+        text-align: left;
+      }
+      .tabla-eq th {
+        background: var(--azul-osc);
+        color: #fff;
+        font-size: 14px;
+      }
+      .tabla-eq td.equiv {
+        font-family: 'Consolas', monospace;
+        font-weight: 700;
+        color: var(--azul-osc);
+        background: var(--azul-cl);
+      }
+      .tabla-eq caption {
+        font-weight: 700;
+        color: var(--azul-osc);
+        text-align: left;
+        padding: 8px 0 4px;
+        font-size: 15px;
+      }
+
+      /* ── DIRECCIÓN DE CONVERSIÓN ── */
+      .conversion {
+        display: flex;
+        gap: 14px;
+        flex-wrap: wrap;
+        margin: 16px 0;
+      }
+      .conv-dir {
+        flex: 1;
+        min-width: 240px;
+        border-radius: 10px;
+        padding: 15px 18px;
+      }
+      .conv-grande {
+        background: #e7f4ec;
+        border: 2px solid var(--verde);
+      }
+      .conv-peque {
+        background: var(--ambar-cl);
+        border: 2px solid var(--ambar);
+      }
+      .conv-dir .ct {
+        font-weight: 700;
+        font-size: 15px;
+        margin-bottom: 5px;
+      }
+      .conv-grande .ct {
+        color: var(--verde);
+      }
+      .conv-peque .ct {
+        color: var(--ambar);
+      }
+
+      .ejemplo {
+        background: var(--crema);
+        border: 1px dashed var(--azul);
+        border-radius: 11px;
+        padding: 18px 22px;
+        margin: 18px 0;
+      }
+      .ejemplo .titulo-ej {
+        font-weight: 700;
+        color: var(--azul-osc);
+        margin-bottom: 8px;
+        font-size: 15px;
+      }
+      .paso {
+        margin: 8px 0 8px 4px;
+        padding-left: 32px;
+        position: relative;
+      }
+      .paso .n {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 24px;
+        height: 24px;
+        background: var(--azul);
+        color: #fff;
+        border-radius: 50%;
+        font-size: 13px;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .practica {
+        border: 2px solid var(--azul-cl);
+        border-radius: 12px;
+        padding: 20px 22px;
+        margin: 20px 0;
+        background: #fdfcfb;
+      }
+      .practica .cabe {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 6px;
+      }
+      .practica .cabe .ico {
+        font-size: 22px;
+      }
+      .practica .cabe h3 {
+        font-size: 16px;
+        color: var(--azul-osc);
+        margin: 0;
+      }
+      .pregunta-int {
+        font-size: 17px;
+        font-weight: 600;
+        margin: 14px 0 12px;
+      }
+      .opciones {
+        display: flex;
+        flex-direction: column;
+        gap: 9px;
+      }
+      .opcion {
+        border: 2px solid var(--linea);
+        border-radius: 9px;
+        padding: 11px 16px;
+        cursor: pointer;
+        background: #fff;
+        transition: 0.16s;
+        font-size: 16px;
+        text-align: left;
+        font-family: inherit;
+        color: var(--tinta);
+      }
+      .opcion:hover {
+        border-color: var(--azul);
+        background: var(--azul-cl);
+      }
+      .opcion.correcta {
+        border-color: var(--verde);
+        background: var(--verde-cl);
+        font-weight: 600;
+      }
+      .opcion.incorrecta {
+        border-color: var(--rojo);
+        background: var(--rojo-cl);
+      }
+      .opcion:disabled {
+        cursor: default;
+      }
+      .respuesta-int {
+        margin-top: 12px;
+        padding: 11px 15px;
+        border-radius: 8px;
+        font-size: 15px;
+        display: none;
+      }
+      .respuesta-int.bien {
+        background: var(--verde-cl);
+        color: var(--verde);
+        display: block;
+      }
+      .respuesta-int.mal {
+        background: var(--rojo-cl);
+        color: var(--rojo);
+        display: block;
+      }
+
+      .btn {
+        font-family: inherit;
+        font-size: 15px;
+        font-weight: 600;
+        padding: 9px 20px;
+        background: var(--azul);
+        color: #fff;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: 0.16s;
+      }
+      .btn:hover {
+        background: var(--azul-osc);
+      }
+      .btn-sec {
+        background: #fff;
+        color: var(--azul);
+        border: 2px solid var(--azul);
+      }
+      .btn-sec:hover {
+        background: var(--azul-cl);
+      }
+
+      .quiz-bloque {
+        margin: 18px 0;
+        padding: 18px 20px;
+        border-radius: 11px;
+        background: var(--crema);
+        border: 1px solid var(--linea);
+      }
+      .quiz-bloque .qnum {
+        display: inline-block;
+        background: var(--azul-osc);
+        color: #fff;
+        font-size: 13px;
+        font-weight: 700;
+        padding: 3px 11px;
+        border-radius: 20px;
+        margin-bottom: 8px;
+      }
+      .quiz-bloque .pregunta {
+        font-weight: 600;
+        font-size: 16px;
+        margin-bottom: 12px;
+      }
+      .marcador {
+        text-align: center;
+        padding: 26px;
+        border-radius: 13px;
+        margin-top: 20px;
+        display: none;
+      }
+      .marcador.visible {
+        display: block;
+      }
+      .marcador .puntaje {
+        font-size: 46px;
+        font-weight: 800;
+        margin: 6px 0;
+      }
+      .marcador .mensaje {
+        font-size: 17px;
+      }
+      .barra-prog {
+        height: 10px;
+        background: var(--linea);
+        border-radius: 6px;
+        overflow: hidden;
+        margin: 14px 0;
+      }
+      .barra-prog span {
+        display: block;
+        height: 100%;
+        background: var(--verde);
+        width: 0;
+        transition: width 0.5s;
+      }
+
+      .tabla-rubrica {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 14px 0;
+        font-size: 14px;
+      }
+      .tabla-rubrica th,
+      .tabla-rubrica td {
+        border: 1px solid var(--linea);
+        padding: 10px 12px;
+        text-align: left;
+        vertical-align: top;
+      }
+      .tabla-rubrica thead th {
+        background: var(--azul-osc);
+        color: #fff;
+        font-size: 13px;
+      }
+      .tabla-rubrica tbody th {
+        font-weight: 600;
+        color: var(--azul-osc);
+        background: var(--azul-cl);
+        font-size: 14px;
+        text-align: left;
+      }
+      .nivel-cab {
+        background: #2f3d46;
+        color: #fff;
+        text-align: center;
+      }
+
+      .cierre {
+        background: linear-gradient(135deg, #3e2723, #6d4c41);
+        color: #fff;
+        border-radius: 14px;
+        padding: 28px 32px;
+        margin-top: 24px;
+      }
+      .cierre h2 {
+        color: #fff;
+      }
+      .cierre strong {
+        color: #eafde6;
+        font-weight: 700;
+      }
+      .cierre .num-seccion {
+        background: rgba(255, 255, 255, 0.22);
+      }
+      .flecha-sig {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: rgba(255, 255, 255, 0.16);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        padding: 10px 18px;
+        border-radius: 9px;
+        margin-top: 12px;
+        font-weight: 600;
+        font-size: 15px;
+      }
+
+      footer {
+        text-align: center;
+        padding: 30px 20px;
+        color: var(--gris);
+        font-size: 13px;
+      }
+
+      @media (max-width: 560px) {
+        header.principal {
+          padding: 34px 22px;
+        }
+        header.principal h1 {
+          font-size: 24px;
+        }
+        section {
+          padding: 24px 20px;
+        }
+      }
+
+      /* ── FOCO VISIBLE (WCAG 2.4.7) ── */
+      a:focus-visible,
+      button:focus-visible,
+      [tabindex]:focus-visible {
+        outline: 3px solid var(--azul-osc);
+        outline-offset: 2px;
+      }
+
+      /* ── MOVIMIENTO REDUCIDO ── */
+      @media (prefers-reduced-motion: reduce) {
+        * {
+          transition: none !important;
+        }
+        html {
+          scroll-behavior: auto;
+        }
+      }
+
+      /* ── MARCAS DE RESPUESTA (no depender del color) ── */
+      .marca {
+        font-weight: 700;
+        margin-right: 6px;
+      }
+      .opcion.elegida {
+        border-color: var(--azul);
+        background: var(--azul-cl);
+      }
+      .opcion:disabled {
+        color: var(--tinta);
+        opacity: 1;
+      }
+
+      /* ── TABLAS RESPONSIVAS (DUA) ── */
+      .tabla-scroll {
+        overflow-x: auto;
+        overflow-y: hidden;
+        -webkit-overflow-scrolling: touch;
+        max-width: 100%;
+        margin: 18px 0 0;
+        border: 1px solid var(--linea);
+        border-radius: 8px;
+        background: var(--papel);
+      }
+      .tabla-scroll:focus,
+      .tabla-scroll:focus-visible {
+        outline: 3px solid var(--azul);
+        outline-offset: 2px;
+      }
+      .tabla-scroll > table {
+        margin: 0;
+        min-width: 100%;
+      }
+      .aviso-desliza {
+        margin: 8px 0 18px;
+        padding: 8px 12px;
+        font-size: 14px;
+        font-weight: 600;
+        color: #5c3900;
+        background: #fdf3df;
+        border-left: 4px solid #5c3900;
+        border-radius: 5px;
+      }
+      .cap-oculto {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0 0 0 0);
+        white-space: nowrap;
+        border: 0;
+      }
+      @media print {
+        .tabla-scroll {
+          overflow: visible;
+          border: 0;
+        }
+        .aviso-desliza {
+          display: none;
+        }
+      }
+    </style>
+</head>
+<body>
+<header class="principal">
+<div class="envoltura-header">
+<p class="ruta">Matemáticas · Nivel 1 · Tema 6 — Sistemas de medidas y el tiempo</p>
+<h1>Lección 6.1 · Sistema inglés: longitud, peso y capacidad</h1>
+<p class="lema">Las unidades que se usan cada día en Estados Unidos: pulgadas, libras, galones — y cómo convertir entre ellas.</p>
+<div class="chips">
+<span class="chip"><span aria-hidden="true">⏱️</span> 4 horas (2 sinc. + 2 asinc.)</span>
+<span class="chip"><span aria-hidden="true">📏</span> Sistema inglés (U.S. customary)</span>
+<span class="chip"><span aria-hidden="true">📘</span> MyOpenMath</span>
+</div>
+</div>
+</header>
+<div class="envoltura">
+<!-- OBJETIVOS -->
+<section>
+<div class="caja caja-objetivo">
+<h2>
+<span aria-hidden="true" class="num-seccion">🎯</span>
+            Objetivos de la clase
+          </h2>
+<p>Al terminar esta lección, usted podrá:</p>
+<ul>
+<li>
+<strong>Identificar</strong>
+              las unidades del sistema inglés para longitud, peso y capacidad.
+            </li>
+<li>
+<strong>Elegir</strong>
+              la unidad apropiada según lo que se quiere medir.
+            </li>
+<li>
+<strong>Convertir</strong>
+              entre unidades del mismo sistema usando tablas de equivalencias.
+            </li>
+<li>
+<strong>Resolver</strong>
+              problemas reales de medición en el hogar y el trabajo.
+            </li>
+</ul>
+</div>
+</section>
+<!-- POR QUÉ -->
+<section>
+<h2>
+<span aria-hidden="true" class="num-seccion">1</span>
+          Medir es parte de la vida diaria
+        </h2>
+<p>
+          Después de los temas de aritmética y patrones, el Tema 6 lleva las matemáticas a algo muy concreto:
+          <strong>medir</strong>
+          . Usted mide todos los días — la estatura de un hijo, el peso de la compra, la gasolina del carro, los ingredientes de una receta.
+        </p>
+<p>
+          En Estados Unidos se usa principalmente el
+          <strong>sistema inglés</strong>
+          (también llamado
+          <em>U.S. customary</em>
+          ). Sus unidades —pulgadas, pies, libras, galones— son las que verá en el supermercado, en el trabajo y en el examen GED.
+        </p>
+<div class="caja caja-tip">
+<span class="etiqueta et-verde">Tres cosas que medimos</span>
+<p>
+            En esta lección trabajamos tres tipos de medida:
+            <strong>longitud</strong>
+            (qué tan largo),
+            <strong>peso</strong>
+            (qué tan pesado) y
+            <strong>capacidad</strong>
+            (cuánto líquido cabe).
+          </p>
+</div>
+</section>
+<!-- LONGITUD -->
+<section>
+<h2>
+<span aria-hidden="true" class="num-seccion">2</span>
+          Longitud: pulgadas, pies, yardas y millas
+        </h2>
+<p>
+          La
+          <strong>longitud</strong>
+          mide qué tan largo o lejos está algo. Estas son las unidades del sistema inglés y sus equivalencias:
+        </p>
+<div aria-label="📏 Equivalencias de longitud (tabla desplazable horizontalmente)" class="tabla-scroll" role="region" tabindex="0"><table class="tabla-eq">
+<caption><span aria-hidden="true">📏</span> Equivalencias de longitud</caption>
+<thead>
+<tr>
+<th scope="col">Equivalencia</th>
+<th scope="col">Se usa para medir</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="equiv" scope="row">12 pulgadas (in) = 1 pie (ft)</th>
+<td>la altura de una mesa, el largo de un libro</td>
+</tr>
+<tr>
+<th class="equiv" scope="row">3 pies (ft) = 1 yarda (yd)</th>
+<td>una tela, un cuarto de una casa</td>
+</tr>
+<tr>
+<th class="equiv" scope="row">5 280 pies (ft) = 1 milla (mi)</th>
+<td>la distancia entre dos ciudades</td>
+</tr>
+</tbody>
+</table></div><p class="aviso-desliza"><span aria-hidden="true">↔</span> Deslice la tabla horizontalmente para ver todas las columnas.</p>
+<div class="caja caja-tip">
+<span class="etiqueta et-verde">Para tener una idea</span>
+<p>
+            Una
+            <strong>pulgada</strong>
+            es aproximadamente el ancho de un dedo pulgar. Un
+            <strong>pie</strong>
+            es más o menos el largo de un zapato de adulto. Una
+            <strong>yarda</strong>
+            es casi un paso largo.
+          </p>
+</div>
+</section>
+<!-- PESO Y CAPACIDAD -->
+<section>
+<h2>
+<span aria-hidden="true" class="num-seccion">3</span>
+          Peso y capacidad
+        </h2>
+<p>
+          El
+          <strong>peso</strong>
+          mide qué tan pesado es algo. La
+          <strong>capacidad</strong>
+          mide cuánto líquido cabe en un recipiente.
+        </p>
+<div aria-label="⚖️ Equivalencias de peso (tabla desplazable horizontalmente)" class="tabla-scroll" role="region" tabindex="0"><table class="tabla-eq">
+<caption><span aria-hidden="true">⚖️</span> Equivalencias de peso</caption>
+<thead>
+<tr>
+<th scope="col">Equivalencia</th>
+<th scope="col">Se usa para medir</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="equiv" scope="row">16 onzas (oz) = 1 libra (lb)</th>
+<td>una bolsa de frutas, una carta</td>
+</tr>
+<tr>
+<th class="equiv" scope="row">2 000 libras (lb) = 1 tonelada (ton)</th>
+<td>un carro, una carga pesada</td>
+</tr>
+</tbody>
+</table></div><p class="aviso-desliza"><span aria-hidden="true">↔</span> Deslice la tabla horizontalmente para ver todas las columnas.</p>
+<div aria-label="🥤 Equivalencias de capacidad (tabla desplazable horizontalmente)" class="tabla-scroll" role="region" tabindex="0"><table class="tabla-eq">
+<caption><span aria-hidden="true">🥤</span> Equivalencias de capacidad</caption>
+<thead>
+<tr>
+<th scope="col">Equivalencia</th>
+<th scope="col">Se usa para medir</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="equiv" scope="row">8 onzas líquidas (fl oz) = 1 taza (cup)</th>
+<td>un vaso de jugo</td>
+</tr>
+<tr>
+<th class="equiv" scope="row">2 tazas (cups) = 1 pinta (pint)</th>
+<td>una porción de helado</td>
+</tr>
+<tr>
+<th class="equiv" scope="row">2 pintas (pints) = 1 cuarto (quart)</th>
+<td>un envase de leche pequeño</td>
+</tr>
+<tr>
+<th class="equiv" scope="row">4 cuartos (quarts) = 1 galón (gallon)</th>
+<td>la leche de la semana, la gasolina</td>
+</tr>
+</tbody>
+</table></div><p class="aviso-desliza"><span aria-hidden="true">↔</span> Deslice la tabla horizontalmente para ver todas las columnas.</p>
+<div class="practica">
+<div class="cabe">
+<span aria-hidden="true" class="ico">✏️</span>
+<h3>Práctica 1 — Elegir la unidad apropiada</h3>
+</div>
+<p class="pregunta-int" id="t-p1">¿Qué unidad es más apropiada para medir la distancia entre Chicago y Nueva York?</p>
+<div aria-labelledby="t-p1" class="opciones" data-quiz="p1" role="group">
+<button class="opcion" data-correcta="no" type="button">Pulgadas</button>
+<button class="opcion" data-correcta="no" type="button">Pies</button>
+<button class="opcion" data-correcta="si" type="button">Millas</button>
+<button class="opcion" data-correcta="no" type="button">Yardas</button>
+</div>
+<div aria-live="polite" class="respuesta-int" id="r-p1" role="status"></div>
+</div>
+<div class="practica">
+<div class="cabe">
+<span aria-hidden="true" class="ico">✏️</span>
+<h3>Práctica 2 — Elegir la unidad apropiada</h3>
+</div>
+<p class="pregunta-int" id="t-p2">¿Qué unidad es más apropiada para medir cuánta leche compra para la semana?</p>
+<div aria-labelledby="t-p2" class="opciones" data-quiz="p2" role="group">
+<button class="opcion" data-correcta="no" type="button">Onzas líquidas</button>
+<button class="opcion" data-correcta="si" type="button">Galones</button>
+<button class="opcion" data-correcta="no" type="button">Libras</button>
+<button class="opcion" data-correcta="no" type="button">Millas</button>
+</div>
+<div aria-live="polite" class="respuesta-int" id="r-p2" role="status"></div>
+</div>
+</section>
+<!-- CONVERTIR -->
+<section>
+<h2>
+<span aria-hidden="true" class="num-seccion">4</span>
+          Convertir entre unidades
+        </h2>
+<p>
+<strong>Convertir</strong>
+          es cambiar una medida de una unidad a otra — por ejemplo, pasar de pies a pulgadas. La pregunta clave que decide todo es:
+          <strong>¿estoy pasando a una unidad más grande o más pequeña?</strong>
+</p>
+<div class="conversion">
+<div class="conv-dir conv-peque">
+<p class="ct"><span aria-hidden="true">⬇️</span> A una unidad MÁS PEQUEÑA → multiplico</p>
+<p style="margin: 4px 0 0; font-size: 15px">
+              De pies a pulgadas, de libras a onzas. Como las unidades son más pequeñas, hacen falta más: por eso se
+              <strong>multiplica</strong>
+              .
+            </p>
+</div>
+<div class="conv-dir conv-grande">
+<p class="ct"><span aria-hidden="true">⬆️</span> A una unidad MÁS GRANDE → divido</p>
+<p style="margin: 4px 0 0; font-size: 15px">
+              De pulgadas a pies, de onzas a libras. Como las unidades son más grandes, hacen falta menos: por eso se
+              <strong>divide</strong>
+              .
+            </p>
+</div>
+</div>
+<div class="ejemplo">
+<p class="titulo-ej">Convertir 5 pies a pulgadas</p>
+<p class="paso">
+<span aria-hidden="true" class="n">1</span>
+            Paso de pies (grande) a pulgadas (más pequeña): voy a
+            <strong>multiplicar</strong>
+            .
+          </p>
+<p class="paso">
+<span aria-hidden="true" class="n">2</span>
+            La equivalencia: 1 pie = 12 pulgadas.
+          </p>
+<p class="paso">
+<span aria-hidden="true" class="n">3</span>
+            Multiplico: 5 × 12 = 60.
+          </p>
+<p class="paso">
+<span aria-hidden="true" class="n">✓</span>
+            5 pies =
+            <strong>60 pulgadas</strong>
+            .
+          </p>
+</div>
+<div class="ejemplo">
+<p class="titulo-ej">Convertir 48 onzas a libras</p>
+<p class="paso">
+<span aria-hidden="true" class="n">1</span>
+            Paso de onzas (pequeña) a libras (más grande): voy a
+            <strong>dividir</strong>
+            .
+          </p>
+<p class="paso">
+<span aria-hidden="true" class="n">2</span>
+            La equivalencia: 16 onzas = 1 libra.
+          </p>
+<p class="paso">
+<span aria-hidden="true" class="n">3</span>
+            Divido: 48 ÷ 16 = 3.
+          </p>
+<p class="paso">
+<span aria-hidden="true" class="n">✓</span>
+            48 onzas =
+            <strong>3 libras</strong>
+            .
+          </p>
+</div>
+<div class="caja caja-ojo">
+<span class="etiqueta et-ambar">¡Ojo! Una forma de no equivocarse</span>
+<p>
+            Piénselo con lógica: al pasar a una unidad más pequeña, el
+            <em>número</em>
+            se hace más grande (60 pulgadas es más número que 5 pies, aunque sea el mismo largo). Si su resultado va en la dirección contraria, revise si multiplicó cuando debía dividir.
+          </p>
+</div>
+<div class="practica">
+<div class="cabe">
+<span aria-hidden="true" class="ico">✏️</span>
+<h3>Práctica 3 — Convertir</h3>
+</div>
+<p class="pregunta-int" id="t-p3">
+            ¿Cuántas pulgadas hay en
+            <strong>3 pies</strong>
+            ?
+          </p>
+<div aria-labelledby="t-p3" class="opciones" data-quiz="p3" role="group">
+<button class="opcion" data-correcta="no" type="button">15 pulgadas</button>
+<button class="opcion" data-correcta="si" type="button">36 pulgadas</button>
+<button class="opcion" data-correcta="no" type="button">12 pulgadas</button>
+<button class="opcion" data-correcta="no" type="button">4 pulgadas</button>
+</div>
+<div aria-live="polite" class="respuesta-int" id="r-p3" role="status"></div>
+</div>
+<div class="practica">
+<div class="cabe">
+<span aria-hidden="true" class="ico">✏️</span>
+<h3>Práctica 4 — Convertir</h3>
+</div>
+<p class="pregunta-int" id="t-p4">
+            ¿Cuántos galones hay en
+            <strong>12 cuartos</strong>
+            ?
+          </p>
+<div aria-labelledby="t-p4" class="opciones" data-quiz="p4" role="group">
+<button class="opcion" data-correcta="no" type="button">48 galones</button>
+<button class="opcion" data-correcta="si" type="button">3 galones</button>
+<button class="opcion" data-correcta="no" type="button">6 galones</button>
+<button class="opcion" data-correcta="no" type="button">16 galones</button>
+</div>
+<div aria-live="polite" class="respuesta-int" id="r-p4" role="status"></div>
+</div>
+</section>
+<!-- PRÁCTICA GUIADA -->
+<section>
+<h2>
+<span aria-hidden="true" class="num-seccion">5</span>
+          Práctica guiada en clase
+        </h2>
+<p>
+          Estas actividades se hacen
+          <strong>en la sesión sincrónica</strong>
+          . Cada actividad incluye una variante para la
+          <strong>clase presencial</strong>
+          y otra para la
+          <strong>clase en línea</strong>
+          ; el objetivo de aprendizaje es el mismo en ambas.
+        </p>
+<div class="caja caja-recurso">
+<span class="etiqueta et-azul">Actividad A · "Medir objetos reales"</span>
+<p>Los estudiantes miden objetos para tener una idea concreta del tamaño de cada unidad antes de hacer conversiones abstractas.</p>
+<div class="modalidades">
+<div class="modo modo-pres">
+<span class="modo-tit">🏫 Presencial</span>
+<p>
+                Reparta reglas y cintas métricas. Los estudiantes miden objetos del salón (una mesa, un libro, la pizarra) en pulgadas y pies, y comparan: ¿cuántas pulgadas tiene esa mesa? ¿cuántos
+                pies?
+              </p>
+</div>
+<div class="modo modo-line">
+<span class="modo-tit">💻 En línea</span>
+<p>
+                Cada estudiante mide tres objetos de su casa con una regla o cinta y reporta en el chat las medidas en pulgadas y en pies. El grupo comenta qué unidad fue más cómoda para cada objeto.
+              </p>
+</div>
+</div>
+</div>
+<div class="caja caja-recurso">
+<span class="etiqueta et-azul">Actividad B · "El maestro carpintero y la mamá cocinera"</span>
+<p>Dos escenarios de conversión: uno de longitud y peso (carpintería), otro de capacidad (cocina).</p>
+<div class="modalidades">
+<div class="modo modo-pres">
+<span class="modo-tit">🏫 Presencial</span>
+<p>
+                Reparta dos juegos de tarjetas: "el carpintero" (convertir pies, pulgadas, libras) y "la cocinera" (convertir tazas, pintas, cuartos, galones). En parejas, resuelven con verificación
+                cruzada.
+              </p>
+</div>
+<div class="modo modo-line">
+<span class="modo-tit">💻 En línea</span>
+<p>
+                Muestre los dos escenarios en diapositivas. En salas pequeñas (breakout rooms), cada pareja resuelve un escenario y luego lo presenta al grupo grande explicando si multiplicó o
+                dividió.
+              </p>
+</div>
+</div>
+</div>
+<div class="caja caja-recurso">
+<span class="etiqueta et-azul">Actividad C · "¿Más grande o más pequeña?"</span>
+<p>Antes de convertir, los estudiantes practican decidir la dirección: ¿multiplico o divido?</p>
+<div class="modalidades">
+<div class="modo modo-pres">
+<span class="modo-tit">🏫 Presencial</span>
+<p>El profesor dice una conversión (por ejemplo, "de yardas a pies"). Los estudiantes levantan una tarjeta: "×" o "÷", y explican por qué. Luego resuelven la conversión completa.</p>
+</div>
+<div class="modo modo-line">
+<span class="modo-tit">💻 En línea</span>
+<p>El profesor presenta conversiones en diapositivas. Los estudiantes responden en el chat "×" o "÷" antes de resolver. Cierre con una encuesta (poll) sobre un caso dudoso.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- TAREA ASINCRÓNICA -->
+<section>
+<h2>
+<span aria-hidden="true" class="num-seccion">6</span>
+          Tarea asincrónica
+        </h2>
+<p>
+          Estas actividades se realizan
+          <strong>por su cuenta</strong>
+          , dentro de las 2 horas asincrónicas de la lección.
+        </p>
+<ul>
+<li>
+<strong>MyOpenMath:</strong>
+            complete los
+            <strong>10 ejercicios</strong>
+            de conversión de longitud, peso y capacidad. Cada uno da retroalimentación inmediata.
+          </li>
+<li>
+<strong>Brightspace:</strong>
+            realice el quiz de la lección (abajo puede practicarlo antes).
+          </li>
+<li>
+<strong>Actividad personal:</strong>
+            revise tres productos de su casa. Anote sus medidas (peso en libras u onzas, capacidad en galones o cuartos) y convierta una de ellas a otra unidad.
+          </li>
+</ul>
+</section>
+<!-- QUIZ -->
+<section>
+<h2>
+<span aria-hidden="true" class="num-seccion">7</span>
+          Quiz de práctica
+        </h2>
+<p>
+          Responda las
+          <strong>8 preguntas</strong>
+          . Al final verá su puntaje y podrá repasar lo que falló. Puede repetir el quiz las veces que quiera.
+        </p>
+<div id="quiz">
+<div class="quiz-bloque">
+<span class="qnum">Pregunta 1</span>
+<p class="pregunta" id="t-q1">¿Cuántas pulgadas hay en 1 pie?</p>
+<div aria-labelledby="t-q1" class="opciones" data-q="1" role="group">
+<button class="opcion" data-c="no" type="button">3</button>
+<button class="opcion" data-c="no" type="button">10</button>
+<button class="opcion" data-c="si" type="button">12</button>
+<button class="opcion" data-c="no" type="button">16</button>
+</div>
+</div>
+<div class="quiz-bloque">
+<span class="qnum">Pregunta 2</span>
+<p class="pregunta" id="t-q2">¿Qué unidad es más apropiada para medir el peso de una manzana?</p>
+<div aria-labelledby="t-q2" class="opciones" data-q="2" role="group">
+<button class="opcion" data-c="no" type="button">Toneladas</button>
+<button class="opcion" data-c="si" type="button">Onzas</button>
+<button class="opcion" data-c="no" type="button">Galones</button>
+<button class="opcion" data-c="no" type="button">Millas</button>
+</div>
+</div>
+<div class="quiz-bloque">
+<span class="qnum">Pregunta 3</span>
+<p class="pregunta" id="t-q3">Para convertir de yardas a pies (de una unidad grande a una más pequeña), se debe:</p>
+<div aria-labelledby="t-q3" class="opciones" data-q="3" role="group">
+<button class="opcion" data-c="si" type="button">Multiplicar</button>
+<button class="opcion" data-c="no" type="button">Dividir</button>
+<button class="opcion" data-c="no" type="button">Sumar</button>
+<button class="opcion" data-c="no" type="button">Restar</button>
+</div>
+</div>
+<div class="quiz-bloque">
+<span class="qnum">Pregunta 4</span>
+<p class="pregunta" id="t-q4">¿Cuántos pies hay en 4 yardas?</p>
+<div aria-labelledby="t-q4" class="opciones" data-q="4" role="group">
+<button class="opcion" data-c="no" type="button">7 pies</button>
+<button class="opcion" data-c="si" type="button">12 pies</button>
+<button class="opcion" data-c="no" type="button">16 pies</button>
+<button class="opcion" data-c="no" type="button">48 pies</button>
+</div>
+</div>
+<div class="quiz-bloque">
+<span class="qnum">Pregunta 5</span>
+<p class="pregunta" id="t-q5">¿Cuántas libras hay en 32 onzas?</p>
+<div aria-labelledby="t-q5" class="opciones" data-q="5" role="group">
+<button class="opcion" data-c="si" type="button">2 libras</button>
+<button class="opcion" data-c="no" type="button">16 libras</button>
+<button class="opcion" data-c="no" type="button">48 libras</button>
+<button class="opcion" data-c="no" type="button">512 libras</button>
+</div>
+</div>
+<div class="quiz-bloque">
+<span class="qnum">Pregunta 6</span>
+<p class="pregunta" id="t-q6">¿Cuántas tazas hay en 3 pintas?</p>
+<div aria-labelledby="t-q6" class="opciones" data-q="6" role="group">
+<button class="opcion" data-c="no" type="button">1 taza y media</button>
+<button class="opcion" data-c="si" type="button">6 tazas</button>
+<button class="opcion" data-c="no" type="button">5 tazas</button>
+<button class="opcion" data-c="no" type="button">8 tazas</button>
+</div>
+</div>
+<div class="quiz-bloque">
+<span class="qnum">Pregunta 7</span>
+<p class="pregunta" id="t-q7">Una receta necesita 2 cuartos de caldo. ¿Cuántas pintas son?</p>
+<div aria-labelledby="t-q7" class="opciones" data-q="7" role="group">
+<button class="opcion" data-c="no" type="button">1 pinta</button>
+<button class="opcion" data-c="si" type="button">4 pintas</button>
+<button class="opcion" data-c="no" type="button">8 pintas</button>
+<button class="opcion" data-c="no" type="button">2 pintas</button>
+</div>
+</div>
+<div class="quiz-bloque">
+<span class="qnum">Pregunta 8</span>
+<p class="pregunta" id="t-q8">Un carpintero tiene una tabla de 2 yardas. ¿Cuántas pulgadas mide en total? (1 yarda = 3 pies; 1 pie = 12 pulgadas)</p>
+<div aria-labelledby="t-q8" class="opciones" data-q="8" role="group">
+<button class="opcion" data-c="no" type="button">24 pulgadas</button>
+<button class="opcion" data-c="si" type="button">72 pulgadas</button>
+<button class="opcion" data-c="no" type="button">36 pulgadas</button>
+<button class="opcion" data-c="no" type="button">6 pulgadas</button>
+</div>
+</div>
+</div>
+<div style="text-align: center; margin-top: 18px">
+<button class="btn" id="btn-calificar" type="button">Ver mi resultado</button>
+<button class="btn btn-sec" id="btn-reintentar" style="display: none" type="button">Intentar de nuevo</button>
+</div>
+<div aria-live="polite" class="marcador" id="marcador" role="status">
+<div aria-hidden="true" class="barra-prog"><span id="barra"></span></div>
+<p class="puntaje" id="puntaje"></p>
+<p class="mensaje" id="mensaje"></p>
+</div>
+</section>
+<!-- RÚBRICA -->
+<section>
+<h2>
+<span aria-hidden="true" class="num-seccion">8</span>
+          Rúbrica de evaluación
+        </h2>
+<p>Rúbrica de medición práctica. Cada criterio se evalúa en cuatro niveles.</p>
+<div aria-label="Rúbrica de evaluación: criterios y sus niveles de logro (tabla desplazable horizontalmente)" class="tabla-scroll" role="region" tabindex="0"><table class="tabla-rubrica"><caption class="cap-oculto">Rúbrica de evaluación: criterios y sus niveles de logro</caption>
+<thead>
+<tr>
+<th scope="col">Criterio</th>
+<th class="nivel-cab" scope="col">Logrado (4)</th>
+<th class="nivel-cab" scope="col">Satisfactorio (3)</th>
+<th class="nivel-cab" scope="col">En proceso (2)</th>
+<th class="nivel-cab" scope="col">Por reforzar (1)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th scope="row">Identifica las unidades</th>
+<td>Reconoce todas las unidades de longitud, peso y capacidad.</td>
+<td>Reconoce la mayoría de las unidades.</td>
+<td>Confunde algunas unidades entre sí.</td>
+<td>No identifica las unidades del sistema inglés.</td>
+</tr>
+<tr>
+<th scope="row">Elige la unidad apropiada</th>
+<td>Elige siempre la unidad adecuada al contexto.</td>
+<td>Elige la unidad apropiada casi siempre.</td>
+<td>Elige unidades poco prácticas para el contexto.</td>
+<td>No relaciona la unidad con lo que se mide.</td>
+</tr>
+<tr>
+<th scope="row">Decide la dirección de la conversión</th>
+<td>Decide siempre si multiplicar o dividir y lo justifica.</td>
+<td>Decide la dirección correctamente casi siempre.</td>
+<td>Duda con frecuencia entre multiplicar y dividir.</td>
+<td>No identifica la dirección de la conversión.</td>
+</tr>
+<tr>
+<th scope="row">Convierte y expresa el resultado</th>
+<td>Convierte sin errores y con la unidad correcta.</td>
+<td>Convierte bien con un descuido aislado.</td>
+<td>Comete errores de cálculo en la conversión.</td>
+<td>No logra completar la conversión.</td>
+</tr>
+</tbody>
+</table></div><p class="aviso-desliza"><span aria-hidden="true">↔</span> Deslice la tabla horizontalmente para ver todas las columnas.</p>
+</section>
+<!-- CIERRE -->
+<div class="cierre">
+<h2>
+<span aria-hidden="true" class="num-seccion">➡️</span>
+          Lo que viene en la próxima lección
+        </h2>
+<p>Ya conoce el sistema inglés de medidas y sabe convertir entre sus unidades. Pero el sistema inglés no es el único.</p>
+<p>
+          En la
+          <strong>Lección 6.2 · Sistema métrico, tiempo y temperatura</strong>
+          conocerá el
+          <strong>sistema métrico</strong>
+          —metros, gramos, litros—, que se usa en casi todo el mundo y resulta más sencillo porque trabaja de diez en diez. También aprenderá a manejar unidades de
+          <strong>tiempo</strong>
+          y de
+          <strong>temperatura</strong>
+          .
+        </p>
+<p class="flecha-sig">➡️  Próxima: Lección 6.2 · Sistema métrico, tiempo y temperatura</p>
+</div>
+</div>
+<footer>
+      Matemáticas · Nivel 1 · Lección 6.1 — Spanish ASE Math · AE 0170-0321
+      <br/>
+      City Colleges of Chicago · Truman College · Prof. José M. Fernández
+    </footer>
+<script>
+      // ── PRÁCTICA INTERACTIVA ──
+      var respuestasPractica = {
+        p1: 'Las millas son la unidad apropiada para distancias largas entre ciudades. Pulgadas o pies darían números enormes e incómodos.',
+        p2: 'Los galones son la unidad apropiada para la leche de una semana. La leche se vende y se mide en galones y cuartos.',
+        p3: '3 pies = 36 pulgadas. Paso de pies a pulgadas (unidad más pequeña): multiplico. 3 × 12 = 36.',
+        p4: '12 cuartos = 3 galones. Paso de cuartos a galones (unidad más grande): divido. 12 ÷ 4 = 3.'
+      };
+
+      document.querySelectorAll('.opciones[data-quiz]').forEach(function (grupo) {
+        var id = grupo.getAttribute('data-quiz');
+        grupo.querySelectorAll('.opcion').forEach(function (op) {
+          op.addEventListener('click', function () {
+            var acerto = op.getAttribute('data-correcta') === 'si';
+            grupo.querySelectorAll('.opcion').forEach(function (o) {
+              o.disabled = true;
+              if (o.getAttribute('data-correcta') === 'si') {
+                o.classList.add('correcta');
+                o.insertAdjacentHTML('afterbegin', '<span class="marca">\u2713 Correcta:</span> ');
+              }
+            });
+            if (!acerto) {
+              op.classList.add('incorrecta');
+              op.insertAdjacentHTML('afterbegin', '<span class="marca">\u2717 Su respuesta:</span> ');
+            }
+            var r = document.getElementById('r-' + id);
+            r.className = 'respuesta-int ' + (acerto ? 'bien' : 'mal');
+            r.textContent = (acerto ? 'Correcto. ' : 'Revise: ') + respuestasPractica[id];
+          });
+        });
+      });
+
+      // ── QUIZ FINAL ──
+      var totalPreguntas = 8;
+      var seleccion = {};
+
+      document.querySelectorAll('#quiz .opciones').forEach(function (grupo) {
+        var q = grupo.getAttribute('data-q');
+        grupo.querySelectorAll('.opcion').forEach(function (op) {
+          op.setAttribute('aria-pressed', 'false');
+          op.addEventListener('click', function () {
+            grupo.querySelectorAll('.opcion').forEach(function (o) {
+              o.classList.remove('elegida');
+              o.setAttribute('aria-pressed', 'false');
+            });
+            op.classList.add('elegida');
+            op.setAttribute('aria-pressed', 'true');
+            seleccion[q] = op;
+          });
+        });
+      });
+
+      document.getElementById('btn-calificar').addEventListener('click', function () {
+        var correctas = 0;
+        document.querySelectorAll('#quiz .opciones').forEach(function (grupo) {
+          var q = grupo.getAttribute('data-q');
+          grupo.querySelectorAll('.opcion').forEach(function (o) {
+            o.disabled = true;
+            if (o.getAttribute('data-c') === 'si') {
+              o.classList.add('correcta');
+              o.insertAdjacentHTML('afterbegin', '<span class="marca">\u2713 Correcta:</span> ');
+            }
+          });
+          var elegida = seleccion[q];
+          if (elegida) {
+            if (elegida.getAttribute('data-c') === 'si') {
+              correctas++;
+            } else {
+              elegida.classList.add('incorrecta');
+              elegida.insertAdjacentHTML('afterbegin', '<span class="marca">\u2717 Su respuesta:</span> ');
+            }
+          }
+        });
+
+        var marc = document.getElementById('marcador');
+        var pct = Math.round((correctas / totalPreguntas) * 100);
+        document.getElementById('puntaje').textContent = correctas + ' de ' + totalPreguntas + ' correctas';
+
+        var msg, color;
+        if (pct >= 88) {
+          msg = 'Excelente. Domina el sistema inglés de medidas. Está listo para la Lección 6.2.';
+          color = '#e7f4ec';
+        } else if (pct >= 63) {
+          msg = 'Buen trabajo. Repase las preguntas marcadas como incorrectas y vuelva a intentarlo.';
+          color = '#fdf3df';
+        } else {
+          msg = 'Repasemos juntos. Vuelva a leer las secciones 2, 3 y 4, y reintente el quiz.';
+          color = '#fdecea';
+        }
+
+        marc.style.background = color;
+        document.getElementById('mensaje').textContent = msg;
+        marc.classList.add('visible');
+        document.getElementById('barra').style.width = pct + '%';
+        document.getElementById('btn-calificar').style.display = 'none';
+
+        var reintentar = document.getElementById('btn-reintentar');
+        reintentar.style.display = 'inline-block';
+        reintentar.focus();
+      });
+
+      document.getElementById('btn-reintentar').addEventListener('click', function () {
+        document.querySelectorAll('#quiz .opcion').forEach(function (o) {
+          o.disabled = false;
+          o.classList.remove('correcta', 'incorrecta', 'elegida');
+          o.setAttribute('aria-pressed', 'false');
+          var marca = o.querySelector('.marca');
+          if (marca) {
+            marca.remove();
+          }
+        });
+        for (var k in seleccion) {
+          delete seleccion[k];
+        }
+        document.getElementById('marcador').classList.remove('visible');
+        document.getElementById('puntaje').textContent = '';
+        document.getElementById('mensaje').textContent = '';
+        document.getElementById('btn-calificar').style.display = 'inline-block';
+        document.getElementById('btn-reintentar').style.display = 'none';
+        var primera = document.querySelector('#quiz .opcion');
+        if (primera) {
+          primera.focus();
+        }
+      });
+
+      // ── TABLAS RESPONSIVAS ──
+      // Los contenedores y avisos ya están en el marcado, para que los
+      // revisores que no ejecutan JavaScript los detecten.
+      (function () {
+        var TEXTO_AVISO = '\u2194 Deslice la tabla horizontalmente para ver todas las columnas.';
+        var pares = [];
+
+        document.querySelectorAll('table').forEach(function (t) {
+          var caja = t.parentNode;
+          if (!caja.classList.contains('tabla-scroll')) {
+            var cap = t.querySelector('caption');
+            var etiqueta = (cap ? cap.textContent.trim() : 'Tabla de datos') + ' (tabla desplazable horizontalmente)';
+            var nueva = document.createElement('div');
+            nueva.className = 'tabla-scroll';
+            nueva.setAttribute('role', 'region');
+            nueva.setAttribute('tabindex', '0');
+            nueva.setAttribute('aria-label', etiqueta);
+            t.parentNode.insertBefore(nueva, t);
+            nueva.appendChild(t);
+            caja = nueva;
+          }
+          var aviso = caja.nextElementSibling;
+          if (!aviso || !aviso.classList.contains('aviso-desliza')) {
+            aviso = document.createElement('p');
+            aviso.className = 'aviso-desliza';
+            aviso.textContent = TEXTO_AVISO;
+            caja.parentNode.insertBefore(aviso, caja.nextSibling);
+          }
+          pares.push({ caja: caja, aviso: aviso });
+        });
+
+        function actualizar() {
+          pares.forEach(function (p) {
+            p.aviso.style.display = p.caja.scrollWidth > p.caja.clientWidth + 2 ? 'block' : 'none';
+          });
+        }
+        actualizar();
+
+        var tm;
+        window.addEventListener('resize', function () {
+          clearTimeout(tm);
+          tm = setTimeout(actualizar, 150);
+        });
+      })();
+    </script>
+</body>
+</html>

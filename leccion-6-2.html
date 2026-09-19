@@ -1,0 +1,1612 @@
+<!DOCTYPE html>
+
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Lección 6.2 · Sistema métrico, tiempo y temperatura — Matemáticas Nivel 1</title>
+<style>
+      :root {
+        --azul: #4e342e;
+        --azul-osc: #3e2723;
+        --azul-cl: #efebe9;
+        --tinta: #1a2330;
+        --gris: #5b6675;
+        --linea: #dde3ea;
+        --crema: #f6f4ee;
+        --papel: #ffffff;
+        --verde: #276b44;
+        --verde-cl: #e7f4ec;
+        --ambar: #7d4e00;
+        --ambar-cl: #fdf3df;
+        --rojo: #b5342a;
+        --rojo-cl: #fdecea;
+        --sombra: 0 2px 10px rgba(62, 39, 35, 0.12);
+      }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        font-family: 'Segoe UI', 'Helvetica Neue', system-ui, sans-serif;
+        background: var(--crema);
+        color: var(--tinta);
+        line-height: 1.65;
+        font-size: 17px;
+      }
+      .envoltura {
+        max-width: 880px;
+        margin: 0 auto;
+        padding: 0 20px 80px;
+      }
+
+      header.principal {
+        background: linear-gradient(135deg, #3e2723 0%, #4e342e 55%, #6d4c41 100%);
+        color: #fff;
+        padding: 46px 38px 40px;
+        border-radius: 0 0 22px 22px;
+        box-shadow: 0 6px 22px rgba(62, 39, 35, 0.3);
+      }
+      .envoltura-header {
+        max-width: 880px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+      .ruta {
+        font-size: 13px;
+        letter-spacing: 0.6px;
+        text-transform: uppercase;
+        opacity: 0.85;
+        margin-bottom: 14px;
+      }
+      header.principal h1 {
+        font-size: 30px;
+        font-weight: 700;
+        line-height: 1.25;
+        margin-bottom: 8px;
+      }
+      header.principal .lema {
+        font-size: 16px;
+        opacity: 0.93;
+        font-weight: 400;
+        max-width: 620px;
+      }
+      .chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 20px;
+      }
+      .chip {
+        background: rgba(255, 255, 255, 0.16);
+        border: 1px solid rgba(255, 255, 255, 0.28);
+        padding: 6px 14px;
+        border-radius: 30px;
+        font-size: 13px;
+        font-weight: 600;
+      }
+
+      section {
+        background: var(--papel);
+        margin-top: 22px;
+        padding: 30px 34px;
+        border-radius: 14px;
+        box-shadow: var(--sombra);
+      }
+      .num-seccion {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 34px;
+        height: 34px;
+        background: var(--azul);
+        color: #fff;
+        border-radius: 9px;
+        font-weight: 700;
+        font-size: 17px;
+        margin-right: 12px;
+        flex-shrink: 0;
+      }
+      h2 {
+        display: flex;
+        align-items: center;
+        font-size: 23px;
+        color: var(--azul-osc);
+        margin-bottom: 16px;
+        font-weight: 700;
+      }
+      h3 {
+        font-size: 18px;
+        color: var(--azul-osc);
+        margin: 22px 0 10px;
+        font-weight: 700;
+      }
+      p {
+        margin: 11px 0;
+      }
+      ul,
+      ol {
+        margin: 11px 0 11px 26px;
+      }
+      li {
+        margin: 6px 0;
+      }
+      strong {
+        color: var(--azul-osc);
+      }
+
+      .caja {
+        border-radius: 11px;
+        padding: 18px 22px;
+        margin: 18px 0;
+        border-left: 5px solid;
+      }
+      .caja-objetivo {
+        background: var(--azul-cl);
+        border-color: var(--azul);
+      }
+      .caja-objetivo h2 {
+        margin-bottom: 10px;
+      }
+      .caja-tip {
+        background: var(--verde-cl);
+        border-color: var(--verde);
+      }
+      .caja-tip strong {
+        color: var(--verde);
+      }
+      .caja-ojo {
+        background: var(--ambar-cl);
+        border-color: var(--ambar);
+      }
+      .caja-ojo strong {
+        color: var(--ambar);
+      }
+      .caja-recurso {
+        background: #eef2f7;
+        border-color: var(--gris);
+      }
+
+      .etiqueta {
+        display: inline-block;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+        padding: 3px 10px;
+        border-radius: 5px;
+        margin-bottom: 6px;
+      }
+      .et-verde {
+        background: var(--verde);
+        color: #fff;
+      }
+      .et-ambar {
+        background: var(--ambar);
+        color: #fff;
+      }
+      .et-azul {
+        background: var(--azul);
+        color: #fff;
+      }
+
+      .modalidades {
+        display: flex;
+        gap: 14px;
+        margin-top: 14px;
+        flex-wrap: wrap;
+      }
+      .modo {
+        flex: 1;
+        min-width: 240px;
+        border-radius: 9px;
+        padding: 13px 16px;
+        background: #fff;
+        border: 1px solid var(--linea);
+      }
+      .modo-pres {
+        border-top: 4px solid var(--azul);
+      }
+      .modo-line {
+        border-top: 4px solid var(--verde);
+      }
+      .modo .modo-tit {
+        display: block;
+        font-weight: 700;
+        font-size: 14px;
+        margin-bottom: 5px;
+      }
+      .modo-pres .modo-tit {
+        color: var(--azul-osc);
+      }
+      .modo-line .modo-tit {
+        color: var(--verde);
+      }
+      .modo p {
+        margin: 4px 0 0;
+        font-size: 15px;
+      }
+
+      /* ── ESCALERA MÉTRICA ── */
+      .escalera {
+        margin: 18px 0;
+        padding: 0;
+        list-style: none;
+      }
+      .escalon {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      .escalon .peldano {
+        background: var(--azul-cl);
+        border: 2px solid var(--azul);
+        border-radius: 8px;
+        padding: 8px 14px;
+        font-weight: 700;
+        color: var(--azul-osc);
+        min-width: 170px;
+      }
+      .escalon .peldano .pref {
+        font-size: 15px;
+      }
+      .escalon .peldano .equiv {
+        font-size: 12px;
+        color: var(--gris);
+        font-weight: 400;
+        display: block;
+      }
+      .escalon.base .peldano {
+        background: #fff3e0;
+        border-color: var(--ambar);
+      }
+      .flecha-baja {
+        color: var(--ambar);
+        font-weight: 700;
+        font-size: 13px;
+      }
+      .flecha-sube {
+        color: var(--verde);
+        font-weight: 700;
+        font-size: 13px;
+      }
+
+      /* ── RELOJ ── */
+      .reloj-demo {
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        margin: 16px 0;
+      }
+      .reloj {
+        width: 130px;
+        height: 130px;
+        border-radius: 50%;
+        border: 5px solid var(--azul-osc);
+        background: #fff;
+        position: relative;
+      }
+      .reloj .centro {
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        background: var(--azul-osc);
+        border-radius: 50%;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 3;
+      }
+      .reloj .manecilla {
+        position: absolute;
+        left: 50%;
+        bottom: 50%;
+        transform-origin: bottom center;
+        background: var(--azul-osc);
+        border-radius: 3px;
+      }
+      .reloj .hora {
+        width: 6px;
+        height: 38px;
+      }
+      .reloj .minuto {
+        width: 4px;
+        height: 52px;
+        background: var(--azul);
+      }
+      .reloj .num12,
+      .reloj .num3,
+      .reloj .num6,
+      .reloj .num9 {
+        position: absolute;
+        font-weight: 700;
+        color: var(--azul-osc);
+        font-size: 14px;
+      }
+      .reloj .num12 {
+        top: 6px;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+      .reloj .num3 {
+        right: 8px;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+      .reloj .num6 {
+        bottom: 6px;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+      .reloj .num9 {
+        left: 8px;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+      .reloj-etq {
+        text-align: center;
+        font-size: 14px;
+        color: var(--gris);
+      }
+      .reloj-digital {
+        background: var(--azul-osc);
+        color: #7cfc8a;
+        font-family: 'Consolas', monospace;
+        font-size: 30px;
+        font-weight: 700;
+        padding: 14px 24px;
+        border-radius: 10px;
+        letter-spacing: 2px;
+      }
+
+      /* ── TERMÓMETRO ── */
+      .temp-fila {
+        display: flex;
+        gap: 14px;
+        flex-wrap: wrap;
+        margin: 14px 0;
+      }
+      .temp-card {
+        flex: 1;
+        min-width: 150px;
+        border-radius: 10px;
+        padding: 13px 16px;
+        text-align: center;
+        border: 2px solid var(--linea);
+        background: #fff;
+      }
+      .temp-card .grados {
+        font-size: 24px;
+        font-weight: 800;
+      }
+      .temp-card .desc {
+        font-size: 13px;
+        color: var(--gris);
+        margin-top: 4px;
+      }
+      .temp-frio {
+        border-color: #1565c0;
+      }
+      .temp-frio .grados {
+        color: #1565c0;
+      }
+      .temp-templado {
+        border-color: #276b44;
+      }
+      .temp-templado .grados {
+        color: #276b44;
+      }
+      .temp-calor {
+        border-color: #bf4500;
+      }
+      .temp-calor .grados {
+        color: #bf4500;
+      }
+
+      .ejemplo {
+        background: var(--crema);
+        border: 1px dashed var(--azul);
+        border-radius: 11px;
+        padding: 18px 22px;
+        margin: 18px 0;
+      }
+      .ejemplo .titulo-ej {
+        font-weight: 700;
+        color: var(--azul-osc);
+        margin-bottom: 8px;
+        font-size: 15px;
+      }
+      .paso {
+        margin: 8px 0 8px 4px;
+        padding-left: 32px;
+        position: relative;
+      }
+      .paso .n {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 24px;
+        height: 24px;
+        background: var(--azul);
+        color: #fff;
+        border-radius: 50%;
+        font-size: 13px;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .formula {
+        font-family: 'Consolas', monospace;
+        font-weight: 700;
+        color: var(--azul-osc);
+        background: var(--azul-cl);
+        border-radius: 6px;
+        padding: 6px 12px;
+        display: inline-block;
+      }
+
+      .practica {
+        border: 2px solid var(--azul-cl);
+        border-radius: 12px;
+        padding: 20px 22px;
+        margin: 20px 0;
+        background: #fdfcfb;
+      }
+      .practica .cabe {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 6px;
+      }
+      .practica .cabe .ico {
+        font-size: 22px;
+      }
+      .practica .cabe h3 {
+        font-size: 16px;
+        color: var(--azul-osc);
+        margin: 0;
+      }
+      .pregunta-int {
+        font-size: 17px;
+        font-weight: 600;
+        margin: 14px 0 12px;
+      }
+      .opciones {
+        display: flex;
+        flex-direction: column;
+        gap: 9px;
+      }
+      .opcion {
+        border: 2px solid var(--linea);
+        border-radius: 9px;
+        padding: 11px 16px;
+        cursor: pointer;
+        background: #fff;
+        transition: 0.16s;
+        font-size: 16px;
+        text-align: left;
+        font-family: inherit;
+        color: var(--tinta);
+      }
+      .opcion:hover {
+        border-color: var(--azul);
+        background: var(--azul-cl);
+      }
+      .opcion.correcta {
+        border-color: var(--verde);
+        background: var(--verde-cl);
+        font-weight: 600;
+      }
+      .opcion.incorrecta {
+        border-color: var(--rojo);
+        background: var(--rojo-cl);
+      }
+      .opcion:disabled {
+        cursor: default;
+      }
+      .respuesta-int {
+        margin-top: 12px;
+        padding: 11px 15px;
+        border-radius: 8px;
+        font-size: 15px;
+        display: none;
+      }
+      .respuesta-int.bien {
+        background: var(--verde-cl);
+        color: var(--verde);
+        display: block;
+      }
+      .respuesta-int.mal {
+        background: var(--rojo-cl);
+        color: var(--rojo);
+        display: block;
+      }
+
+      .btn {
+        font-family: inherit;
+        font-size: 15px;
+        font-weight: 600;
+        padding: 9px 20px;
+        background: var(--azul);
+        color: #fff;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: 0.16s;
+      }
+      .btn:hover {
+        background: var(--azul-osc);
+      }
+      .btn-sec {
+        background: #fff;
+        color: var(--azul);
+        border: 2px solid var(--azul);
+      }
+      .btn-sec:hover {
+        background: var(--azul-cl);
+      }
+
+      .quiz-bloque {
+        margin: 18px 0;
+        padding: 18px 20px;
+        border-radius: 11px;
+        background: var(--crema);
+        border: 1px solid var(--linea);
+      }
+      .quiz-bloque .qnum {
+        display: inline-block;
+        background: var(--azul-osc);
+        color: #fff;
+        font-size: 13px;
+        font-weight: 700;
+        padding: 3px 11px;
+        border-radius: 20px;
+        margin-bottom: 8px;
+      }
+      .quiz-bloque .pregunta {
+        font-weight: 600;
+        font-size: 16px;
+        margin-bottom: 12px;
+      }
+      .marcador {
+        text-align: center;
+        padding: 26px;
+        border-radius: 13px;
+        margin-top: 20px;
+        display: none;
+      }
+      .marcador.visible {
+        display: block;
+      }
+      .marcador .puntaje {
+        font-size: 46px;
+        font-weight: 800;
+        margin: 6px 0;
+      }
+      .marcador .mensaje {
+        font-size: 17px;
+      }
+      .barra-prog {
+        height: 10px;
+        background: var(--linea);
+        border-radius: 6px;
+        overflow: hidden;
+        margin: 14px 0;
+      }
+      .barra-prog span {
+        display: block;
+        height: 100%;
+        background: var(--verde);
+        width: 0;
+        transition: width 0.5s;
+      }
+
+      .tabla-rubrica {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 14px 0;
+        font-size: 14px;
+      }
+      .tabla-rubrica th,
+      .tabla-rubrica td {
+        border: 1px solid var(--linea);
+        padding: 10px 12px;
+        text-align: left;
+        vertical-align: top;
+      }
+      .tabla-rubrica thead th {
+        background: var(--azul-osc);
+        color: #fff;
+        font-size: 13px;
+      }
+      .tabla-rubrica tbody th {
+        font-weight: 600;
+        color: var(--azul-osc);
+        background: var(--azul-cl);
+        font-size: 14px;
+        text-align: left;
+      }
+      .nivel-cab {
+        background: #2f3d46;
+        color: #fff;
+        text-align: center;
+      }
+
+      .cierre {
+        background: linear-gradient(135deg, #3e2723, #6d4c41);
+        color: #fff;
+        border-radius: 14px;
+        padding: 28px 32px;
+        margin-top: 24px;
+      }
+      .cierre h2 {
+        color: #fff;
+      }
+      .cierre strong {
+        color: #eafde6;
+        font-weight: 700;
+      }
+      .cierre .num-seccion {
+        background: rgba(255, 255, 255, 0.22);
+      }
+      .flecha-sig {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: rgba(255, 255, 255, 0.16);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        padding: 10px 18px;
+        border-radius: 9px;
+        margin-top: 12px;
+        font-weight: 600;
+        font-size: 15px;
+      }
+
+      footer {
+        text-align: center;
+        padding: 30px 20px;
+        color: var(--gris);
+        font-size: 13px;
+      }
+
+      @media (max-width: 560px) {
+        header.principal {
+          padding: 34px 22px;
+        }
+        header.principal h1 {
+          font-size: 24px;
+        }
+        section {
+          padding: 24px 20px;
+        }
+      }
+
+      /* ── FOCO VISIBLE (WCAG 2.4.7) ── */
+      a:focus-visible,
+      button:focus-visible,
+      [tabindex]:focus-visible {
+        outline: 3px solid var(--azul-osc);
+        outline-offset: 2px;
+      }
+
+      /* ── MOVIMIENTO REDUCIDO ── */
+      @media (prefers-reduced-motion: reduce) {
+        * {
+          transition: none !important;
+        }
+        html {
+          scroll-behavior: auto;
+        }
+      }
+
+      /* ── MARCAS DE RESPUESTA (no depender del color) ── */
+      .marca {
+        font-weight: 700;
+        margin-right: 6px;
+      }
+      .opcion.elegida {
+        border-color: var(--azul);
+        background: var(--azul-cl);
+      }
+      .opcion:disabled {
+        color: var(--tinta);
+        opacity: 1;
+      }
+
+      /* ── TABLAS RESPONSIVAS (DUA) ── */
+      .tabla-scroll {
+        overflow-x: auto;
+        overflow-y: hidden;
+        -webkit-overflow-scrolling: touch;
+        max-width: 100%;
+        margin: 18px 0 0;
+        border: 1px solid var(--linea);
+        border-radius: 8px;
+        background: var(--papel);
+      }
+      .tabla-scroll:focus,
+      .tabla-scroll:focus-visible {
+        outline: 3px solid var(--azul);
+        outline-offset: 2px;
+      }
+      .tabla-scroll > table {
+        margin: 0;
+        min-width: 100%;
+      }
+      .aviso-desliza {
+        margin: 8px 0 18px;
+        padding: 8px 12px;
+        font-size: 14px;
+        font-weight: 600;
+        color: #5c3900;
+        background: #fdf3df;
+        border-left: 4px solid #5c3900;
+        border-radius: 5px;
+      }
+      .cap-oculto {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0 0 0 0);
+        white-space: nowrap;
+        border: 0;
+      }
+      @media print {
+        .tabla-scroll {
+          overflow: visible;
+          border: 0;
+        }
+        .aviso-desliza {
+          display: none;
+        }
+      }
+    </style>
+</head>
+<body>
+<header class="principal">
+<div class="envoltura-header">
+<p class="ruta">Matemáticas · Nivel 1 · Tema 6 — Sistemas de medidas y el tiempo</p>
+<h1>Lección 6.2 · Sistema métrico, tiempo y temperatura</h1>
+<p class="lema">El sistema métrico que va de diez en diez, leer la hora y calcular duraciones, y entender la temperatura.</p>
+<div class="chips">
+<span class="chip"><span aria-hidden="true">⏱️</span> 4 horas (2 sinc. + 2 asinc.)</span>
+<span class="chip"><span aria-hidden="true">📐</span> Escalera métrica</span>
+<span class="chip"><span aria-hidden="true">🕐</span> Tiempo y temperatura</span>
+</div>
+</div>
+</header>
+<div class="envoltura">
+<!-- OBJETIVOS -->
+<section>
+<div class="caja caja-objetivo">
+<h2>
+<span aria-hidden="true" class="num-seccion">🎯</span>
+            Objetivos de la clase
+          </h2>
+<p>Al terminar esta lección, usted podrá:</p>
+<ul>
+<li>
+<strong>Convertir</strong>
+              entre unidades del sistema métrico usando la escalera de prefijos.
+            </li>
+<li>
+<strong>Leer la hora</strong>
+              en un reloj analógico y en uno digital.
+            </li>
+<li>
+<strong>Calcular duraciones</strong>
+              de tiempo, con y sin cruce de horas.
+            </li>
+<li>
+<strong>Interpretar</strong>
+              una temperatura en grados Fahrenheit y Celsius en contextos cotidianos.
+            </li>
+</ul>
+</div>
+</section>
+<!-- EL SISTEMA MÉTRICO -->
+<section>
+<h2>
+<span aria-hidden="true" class="num-seccion">1</span>
+          El sistema métrico: todo de diez en diez
+        </h2>
+<p>
+          En la
+          <strong>Lección 6.1</strong>
+          aprendió el sistema inglés, con sus equivalencias variadas (12, 16, 5 280...). Hoy conocerá el
+          <strong>sistema métrico</strong>
+          , que se usa en casi todo el mundo y tiene una gran ventaja:
+          <strong>todo funciona de diez en diez</strong>
+          .
+        </p>
+<p>
+          El sistema métrico tiene una unidad base para cada medida: el
+          <strong>metro</strong>
+          (longitud), el
+          <strong>gramo</strong>
+          (peso) y el
+          <strong>litro</strong>
+          (capacidad). Y usa
+          <strong>prefijos</strong>
+          para hacer la unidad más grande o más pequeña.
+        </p>
+<div class="caja caja-tip">
+<span class="etiqueta et-verde">Los prefijos más usados</span>
+<p>
+<strong>kilo-</strong>
+            significa mil (un kilómetro = 1 000 metros).
+            <strong>centi-</strong>
+            significa una centésima (un centímetro = la centésima parte de un metro).
+            <strong>mili-</strong>
+            significa una milésima (un mililitro = la milésima parte de un litro).
+          </p>
+</div>
+</section>
+<!-- LA ESCALERA MÉTRICA -->
+<section>
+<h2>
+<span aria-hidden="true" class="num-seccion">2</span>
+          La escalera métrica
+        </h2>
+<p>
+          La mejor herramienta para convertir en el sistema métrico es la
+          <strong>escalera métrica</strong>
+          . Cada escalón vale 10 veces más que el de abajo. La regla es sencilla:
+        </p>
+<ul>
+<li>
+<strong>Bajar un escalón</strong>
+            (a una unidad más pequeña) → multiplicar por 10.
+          </li>
+<li>
+<strong>Subir un escalón</strong>
+            (a una unidad más grande) → dividir entre 10.
+          </li>
+</ul>
+<ol class="escalera">
+<li class="escalon">
+<div class="peldano">
+<span class="pref">kilo (k)</span>
+<span class="equiv">1 000 unidades</span>
+</div>
+<span class="flecha-sube">↑ ÷10 para subir</span>
+</li>
+<li class="escalon" style="margin-left: 28px">
+<div class="peldano">
+<span class="pref">hecto (h)</span>
+<span class="equiv">100 unidades</span>
+</div>
+</li>
+<li class="escalon" style="margin-left: 56px">
+<div class="peldano">
+<span class="pref">deca (da)</span>
+<span class="equiv">10 unidades</span>
+</div>
+</li>
+<li class="escalon" style="margin-left: 84px">
+<div class="peldano base">
+<span class="pref">UNIDAD BASE</span>
+<span class="equiv">metro · gramo · litro</span>
+</div>
+</li>
+<li class="escalon" style="margin-left: 112px">
+<div class="peldano">
+<span class="pref">deci (d)</span>
+<span class="equiv">0.1 de la unidad</span>
+</div>
+</li>
+<li class="escalon" style="margin-left: 140px">
+<div class="peldano">
+<span class="pref">centi (c)</span>
+<span class="equiv">0.01 de la unidad</span>
+</div>
+</li>
+<li class="escalon" style="margin-left: 168px">
+<div class="peldano">
+<span class="pref">mili (m)</span>
+<span class="equiv">0.001 de la unidad</span>
+</div>
+<span class="flecha-baja">↓ ×10 para bajar</span>
+</li>
+</ol>
+<div class="ejemplo">
+<p class="titulo-ej">Convertir 3 metros a centímetros</p>
+<p class="paso">
+<span aria-hidden="true" class="n">1</span>
+            Del metro (unidad base) al centímetro hay que
+            <strong>bajar 2 escalones</strong>
+            (deci, centi).
+          </p>
+<p class="paso">
+<span aria-hidden="true" class="n">2</span>
+            Bajar significa multiplicar por 10 cada escalón: × 10 × 10 = × 100.
+          </p>
+<p class="paso">
+<span aria-hidden="true" class="n">3</span>
+            Multiplico: 3 × 100 = 300.
+          </p>
+<p class="paso">
+<span aria-hidden="true" class="n">✓</span>
+            3 metros =
+            <strong>300 centímetros</strong>
+            .
+          </p>
+</div>
+<div class="ejemplo">
+<p class="titulo-ej">Convertir 5 000 gramos a kilogramos</p>
+<p class="paso">
+<span aria-hidden="true" class="n">1</span>
+            Del gramo (base) al kilogramo hay que
+            <strong>subir 3 escalones</strong>
+            (deca, hecto, kilo).
+          </p>
+<p class="paso">
+<span aria-hidden="true" class="n">2</span>
+            Subir significa dividir entre 10 cada escalón: ÷ 10 ÷ 10 ÷ 10 = ÷ 1 000.
+          </p>
+<p class="paso">
+<span aria-hidden="true" class="n">3</span>
+            Divido: 5 000 ÷ 1 000 = 5.
+          </p>
+<p class="paso">
+<span aria-hidden="true" class="n">✓</span>
+            5 000 gramos =
+            <strong>5 kilogramos</strong>
+            .
+          </p>
+</div>
+<div class="practica">
+<div class="cabe">
+<span aria-hidden="true" class="ico">✏️</span>
+<h3>Práctica 1 — Convertir en el sistema métrico</h3>
+</div>
+<p class="pregunta-int" id="t-p1">
+            ¿Cuántos centímetros hay en
+            <strong>2 metros</strong>
+            ?
+          </p>
+<div aria-labelledby="t-p1" class="opciones" data-quiz="p1" role="group">
+<button class="opcion" data-correcta="no" type="button">20 cm</button>
+<button class="opcion" data-correcta="si" type="button">200 cm</button>
+<button class="opcion" data-correcta="no" type="button">2 000 cm</button>
+<button class="opcion" data-correcta="no" type="button">0.02 cm</button>
+</div>
+<div aria-live="polite" class="respuesta-int" id="r-p1" role="status"></div>
+</div>
+<div class="practica">
+<div class="cabe">
+<span aria-hidden="true" class="ico">✏️</span>
+<h3>Práctica 2 — Convertir en el sistema métrico</h3>
+</div>
+<p class="pregunta-int" id="t-p2">
+            ¿Cuántos kilómetros son
+            <strong>4 000 metros</strong>
+            ?
+          </p>
+<div aria-labelledby="t-p2" class="opciones" data-quiz="p2" role="group">
+<button class="opcion" data-correcta="si" type="button">4 km</button>
+<button class="opcion" data-correcta="no" type="button">40 km</button>
+<button class="opcion" data-correcta="no" type="button">400 km</button>
+<button class="opcion" data-correcta="no" type="button">4 000 000 km</button>
+</div>
+<div aria-live="polite" class="respuesta-int" id="r-p2" role="status"></div>
+</div>
+</section>
+<!-- EL TIEMPO -->
+<section>
+<h2>
+<span aria-hidden="true" class="num-seccion">3</span>
+          Leer la hora y calcular duraciones
+        </h2>
+<p>
+          El
+          <strong>tiempo</strong>
+          se mide en horas, minutos y segundos. Recuerde dos equivalencias básicas:
+          <strong>1 hora = 60 minutos</strong>
+          y
+          <strong>1 minuto = 60 segundos</strong>
+          .
+        </p>
+<h3>El reloj analógico y el digital</h3>
+<div class="reloj-demo">
+<div>
+<div aria-label="Reloj analógico marcando las cuatro y 18 minutos." class="reloj" role="img">
+<span class="num12">12</span>
+<span class="num3">3</span>
+<span class="num6">6</span>
+<span class="num9">9</span>
+<div class="manecilla hora" style="transform: rotate(127deg)"></div>
+<div class="manecilla minuto" style="transform: rotate(54deg)"></div>
+<div class="centro"></div>
+</div>
+<p class="reloj-etq">Reloj analógico</p>
+</div>
+<div>
+<div class="reloj-digital">4 : 18</div>
+<p class="reloj-etq" style="margin-top: 6px">Reloj digital · la misma hora</p>
+</div>
+</div>
+<p>
+          En el reloj analógico, la
+          <strong>manecilla corta</strong>
+          marca la hora y la
+          <strong>larga</strong>
+          marca los minutos. El reloj digital muestra directamente la hora y los minutos separados por dos puntos.
+        </p>
+<h3>Calcular cuánto tiempo dura algo</h3>
+<div class="ejemplo">
+<p class="titulo-ej">"Salgo a las 8:45 am y el viaje dura 1 hora 20 minutos. ¿A qué hora llego?"</p>
+<p class="paso">
+<span aria-hidden="true" class="n">1</span>
+            Primero sumo la hora completa: 8:45 + 1 hora = 9:45.
+          </p>
+<p class="paso">
+<span aria-hidden="true" class="n">2</span>
+            Ahora sumo los 20 minutos: 9:45 + 20 min = 10:05 (porque 45 + 20 = 65 min, y 65 min son 1 hora y 5 min).
+          </p>
+<p class="paso">
+<span aria-hidden="true" class="n">✓</span>
+            Llego a las
+            <strong>10:05 am</strong>
+            .
+          </p>
+</div>
+<div class="caja caja-ojo">
+<span class="etiqueta et-ambar">¡Ojo! El tiempo va de 60 en 60</span>
+<p>
+            Cuando los minutos suman
+            <strong>60 o más</strong>
+            , hay que cambiar 60 minutos por 1 hora. No existe la hora "9:65" — esos 65 minutos son las 10:05.
+          </p>
+</div>
+<div class="practica">
+<div class="cabe">
+<span aria-hidden="true" class="ico">✏️</span>
+<h3>Práctica 3 — Calcular una duración</h3>
+</div>
+<p class="pregunta-int" id="t-p3">Una clase empieza a las 2:00 pm y termina a las 3:30 pm. ¿Cuánto dura?</p>
+<div aria-labelledby="t-p3" class="opciones" data-quiz="p3" role="group">
+<button class="opcion" data-correcta="no" type="button">1 hora</button>
+<button class="opcion" data-correcta="si" type="button">1 hora y 30 minutos</button>
+<button class="opcion" data-correcta="no" type="button">30 minutos</button>
+<button class="opcion" data-correcta="no" type="button">2 horas y 30 minutos</button>
+</div>
+<div aria-live="polite" class="respuesta-int" id="r-p3" role="status"></div>
+</div>
+</section>
+<!-- TEMPERATURA -->
+<section>
+<h2>
+<span aria-hidden="true" class="num-seccion">4</span>
+          La temperatura: Fahrenheit y Celsius
+        </h2>
+<p>
+          La
+          <strong>temperatura</strong>
+          mide qué tan caliente o frío está algo. Hay dos escalas:
+          <strong>Fahrenheit (°F)</strong>
+          , usada en Estados Unidos, y
+          <strong>Celsius (°C)</strong>
+          , usada en casi todo el mundo.
+        </p>
+<div class="temp-fila">
+<div class="temp-card temp-frio">
+<p class="grados">32 °F</p>
+<p class="desc">= 0 °C · el agua se congela</p>
+</div>
+<div class="temp-card temp-templado">
+<p class="grados">68 °F</p>
+<p class="desc">= 20 °C · clima agradable</p>
+</div>
+<div class="temp-card temp-calor">
+<p class="grados">212 °F</p>
+<p class="desc">= 100 °C · el agua hierve</p>
+</div>
+</div>
+<h3>Convertir entre °F y °C</h3>
+<p>
+          Existen dos fórmulas. En el examen GED
+          <strong>se le entregan</strong>
+          , así que no hay que memorizarlas; basta con saber usarlas:
+        </p>
+<ul>
+<li>
+            De Celsius a Fahrenheit:
+            <span class="formula">°F = (°C × 9 ÷ 5) + 32</span>
+</li>
+<li>
+            De Fahrenheit a Celsius:
+            <span class="formula">°C = (°F − 32) × 5 ÷ 9</span>
+</li>
+</ul>
+<div class="ejemplo">
+<p class="titulo-ej">Convertir 25 °C a Fahrenheit</p>
+<p class="paso">
+<span aria-hidden="true" class="n">1</span>
+            Uso la fórmula: °F = (°C × 9 ÷ 5) + 32.
+          </p>
+<p class="paso">
+<span aria-hidden="true" class="n">2</span>
+            Sustituyo: °F = (25 × 9 ÷ 5) + 32 = (225 ÷ 5) + 32 = 45 + 32.
+          </p>
+<p class="paso">
+<span aria-hidden="true" class="n">✓</span>
+            25 °C =
+            <strong>77 °F</strong>
+            — un día cálido y agradable.
+          </p>
+</div>
+<div class="caja caja-tip">
+<span class="etiqueta et-verde">Para tener una idea</span>
+<p>
+            No siempre hace falta convertir con la fórmula. Para la vida diaria basta con saber unos puntos de referencia: 0 °C (32 °F) es congelación, 20 °C (68 °F) es agradable, 37 °C (98.6 °F) es
+            la temperatura del cuerpo.
+          </p>
+</div>
+<div class="practica">
+<div class="cabe">
+<span aria-hidden="true" class="ico">✏️</span>
+<h3>Práctica 4 — Temperatura en contexto</h3>
+</div>
+<p class="pregunta-int" id="t-p4">El termómetro marca 3 °C. ¿Qué ropa es más apropiada?</p>
+<div aria-labelledby="t-p4" class="opciones" data-quiz="p4" role="group">
+<button class="opcion" data-correcta="no" type="button">Ropa ligera de verano</button>
+<button class="opcion" data-correcta="si" type="button">Abrigo, hace mucho frío</button>
+<button class="opcion" data-correcta="no" type="button">Traje de baño</button>
+<button class="opcion" data-correcta="no" type="button">Una camiseta sin mangas</button>
+</div>
+<div aria-live="polite" class="respuesta-int" id="r-p4" role="status"></div>
+</div>
+</section>
+<!-- PRÁCTICA GUIADA -->
+<section>
+<h2>
+<span aria-hidden="true" class="num-seccion">5</span>
+          Práctica guiada en clase
+        </h2>
+<p>
+          Estas actividades se hacen
+          <strong>en la sesión sincrónica</strong>
+          . Cada actividad incluye una variante para la
+          <strong>clase presencial</strong>
+          y otra para la
+          <strong>clase en línea</strong>
+          ; el objetivo de aprendizaje es el mismo en ambas.
+        </p>
+<div class="caja caja-recurso">
+<span class="etiqueta et-azul">Actividad A · "Subir y bajar la escalera"</span>
+<p>Los estudiantes practican conversiones métricas usando la escalera de prefijos como guía visual permanente.</p>
+<div class="modalidades">
+<div class="modo modo-pres">
+<span class="modo-tit">🏫 Presencial</span>
+<p>Dibuje la escalera métrica grande en la pizarra. Para cada conversión, un estudiante pasa y "camina" físicamente los escalones contando los ×10 o ÷10 necesarios, y luego calcula.</p>
+</div>
+<div class="modo modo-line">
+<span class="modo-tit">💻 En línea</span>
+<p>
+                Comparta la escalera métrica en una diapositiva fija. Para cada conversión, los estudiantes escriben en el chat cuántos escalones suben o bajan y el resultado. El grupo revisa juntos.
+              </p>
+</div>
+</div>
+</div>
+<div class="caja caja-recurso">
+<span class="etiqueta et-azul">Actividad B · "El viaje en autobús"</span>
+<p>A partir de un horario real, los estudiantes calculan duraciones y horas de llegada.</p>
+<div class="modalidades">
+<div class="modo modo-pres">
+<span class="modo-tit">🏫 Presencial</span>
+<p>
+                Reparta horarios reales de autobús o metro. En parejas, los estudiantes calculan: ¿cuánto dura el trayecto? ¿A qué hora llego si salgo a tal hora? Usan un reloj de pared como apoyo.
+              </p>
+</div>
+<div class="modo modo-line">
+<span class="modo-tit">💻 En línea</span>
+<p>
+                Comparta un horario de transporte en una diapositiva. Los estudiantes resuelven los cálculos de duración y hora de llegada, y publican sus respuestas en el chat para revisarlas en
+                grupo.
+              </p>
+</div>
+</div>
+</div>
+<div class="caja caja-recurso">
+<span class="etiqueta et-azul">Actividad C · "¿Qué ropa me pongo?"</span>
+<p>Los estudiantes interpretan temperaturas en °F y °C traduciéndolas a recomendaciones de vestimenta.</p>
+<div class="modalidades">
+<div class="modo modo-pres">
+<span class="modo-tit">🏫 Presencial</span>
+<p>Reparta tarjetas con temperaturas en °F y °C. Cada estudiante decide qué ropa recomendaría para esa temperatura y lo explica. El grupo discute los casos límite.</p>
+</div>
+<div class="modo modo-line">
+<span class="modo-tit">💻 En línea</span>
+<p>Muestre tarjetas de temperatura en diapositivas. Los estudiantes responden en el chat con la recomendación de ropa. Cierre con una encuesta (poll) sobre un caso intermedio.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- TAREA ASINCRÓNICA -->
+<section>
+<h2>
+<span aria-hidden="true" class="num-seccion">6</span>
+          Tarea asincrónica
+        </h2>
+<p>
+          Estas actividades se realizan
+          <strong>por su cuenta</strong>
+          , dentro de las 2 horas asincrónicas de la lección.
+        </p>
+<ul>
+<li>
+<strong>MyOpenMath:</strong>
+            complete los
+            <strong>8 ejercicios</strong>
+            de conversión métrica y
+            <strong>4 de tiempo</strong>
+            (leer la hora y calcular duración). Cada uno da retroalimentación inmediata.
+          </li>
+<li>
+<strong>Brightspace:</strong>
+            realice el quiz de la lección (abajo puede practicarlo antes).
+          </li>
+<li>
+<strong>Actividad personal:</strong>
+            mire las etiquetas de tres productos de su casa. Anote sus medidas métricas (gramos, mililitros) y convierta una a una unidad más grande o más pequeña.
+          </li>
+</ul>
+</section>
+<!-- QUIZ -->
+<section>
+<h2>
+<span aria-hidden="true" class="num-seccion">7</span>
+          Quiz de práctica
+        </h2>
+<p>
+          Responda las
+          <strong>8 preguntas</strong>
+          . Al final verá su puntaje y podrá repasar lo que falló. Puede repetir el quiz las veces que quiera.
+        </p>
+<div id="quiz">
+<div class="quiz-bloque">
+<span class="qnum">Pregunta 1</span>
+<p class="pregunta" id="t-q1">
+              El prefijo
+              <strong>kilo-</strong>
+              significa:
+            </p>
+<div aria-labelledby="t-q1" class="opciones" data-q="1" role="group">
+<button class="opcion" data-c="no" type="button">una centésima</button>
+<button class="opcion" data-c="si" type="button">mil</button>
+<button class="opcion" data-c="no" type="button">una milésima</button>
+<button class="opcion" data-c="no" type="button">diez</button>
+</div>
+</div>
+<div class="quiz-bloque">
+<span class="qnum">Pregunta 2</span>
+<p class="pregunta" id="t-q2">En la escalera métrica, para subir un escalón (a una unidad más grande) se debe:</p>
+<div aria-labelledby="t-q2" class="opciones" data-q="2" role="group">
+<button class="opcion" data-c="no" type="button">Multiplicar por 10</button>
+<button class="opcion" data-c="si" type="button">Dividir entre 10</button>
+<button class="opcion" data-c="no" type="button">Sumar 10</button>
+<button class="opcion" data-c="no" type="button">Restar 10</button>
+</div>
+</div>
+<div class="quiz-bloque">
+<span class="qnum">Pregunta 3</span>
+<p class="pregunta" id="t-q3">¿Cuántos metros hay en 1 kilómetro?</p>
+<div aria-labelledby="t-q3" class="opciones" data-q="3" role="group">
+<button class="opcion" data-c="no" type="button">100 metros</button>
+<button class="opcion" data-c="si" type="button">1 000 metros</button>
+<button class="opcion" data-c="no" type="button">10 metros</button>
+<button class="opcion" data-c="no" type="button">10 000 metros</button>
+</div>
+</div>
+<div class="quiz-bloque">
+<span class="qnum">Pregunta 4</span>
+<p class="pregunta" id="t-q4">¿Cuántos gramos hay en 3 kilogramos?</p>
+<div aria-labelledby="t-q4" class="opciones" data-q="4" role="group">
+<button class="opcion" data-c="no" type="button">300 gramos</button>
+<button class="opcion" data-c="si" type="button">3 000 gramos</button>
+<button class="opcion" data-c="no" type="button">30 gramos</button>
+<button class="opcion" data-c="no" type="button">0.003 gramos</button>
+</div>
+</div>
+<div class="quiz-bloque">
+<span class="qnum">Pregunta 5</span>
+<p class="pregunta" id="t-q5">¿Cuántos minutos hay en 1 hora?</p>
+<div aria-labelledby="t-q5" class="opciones" data-q="5" role="group">
+<button class="opcion" data-c="no" type="button">100</button>
+<button class="opcion" data-c="si" type="button">60</button>
+<button class="opcion" data-c="no" type="button">30</button>
+<button class="opcion" data-c="no" type="button">24</button>
+</div>
+</div>
+<div class="quiz-bloque">
+<span class="qnum">Pregunta 6</span>
+<p class="pregunta" id="t-q6">Una película empieza a las 7:15 pm y dura 2 horas. ¿A qué hora termina?</p>
+<div aria-labelledby="t-q6" class="opciones" data-q="6" role="group">
+<button class="opcion" data-c="si" type="button">9:15 pm</button>
+<button class="opcion" data-c="no" type="button">9:30 pm</button>
+<button class="opcion" data-c="no" type="button">8:15 pm</button>
+<button class="opcion" data-c="no" type="button">9:45 pm</button>
+</div>
+</div>
+<div class="quiz-bloque">
+<span class="qnum">Pregunta 7</span>
+<p class="pregunta" id="t-q7">Un trabajo empieza a las 9:40 am y dura 45 minutos. ¿A qué hora termina?</p>
+<div aria-labelledby="t-q7" class="opciones" data-q="7" role="group">
+<button class="opcion" data-c="no" type="button">10:15 am</button>
+<button class="opcion" data-c="si" type="button">10:25 am</button>
+<button class="opcion" data-c="no" type="button">9:85 am</button>
+<button class="opcion" data-c="no" type="button">10:05 am</button>
+</div>
+</div>
+<div class="quiz-bloque">
+<span class="qnum">Pregunta 8</span>
+<p class="pregunta" id="t-q8">El agua se congela a 0 °C. ¿A cuántos grados Fahrenheit equivale? (use °F = (°C × 9 ÷ 5) + 32)</p>
+<div aria-labelledby="t-q8" class="opciones" data-q="8" role="group">
+<button class="opcion" data-c="no" type="button">0 °F</button>
+<button class="opcion" data-c="si" type="button">32 °F</button>
+<button class="opcion" data-c="no" type="button">100 °F</button>
+<button class="opcion" data-c="no" type="button">212 °F</button>
+</div>
+</div>
+</div>
+<div style="text-align: center; margin-top: 18px">
+<button class="btn" id="btn-calificar" type="button">Ver mi resultado</button>
+<button class="btn btn-sec" id="btn-reintentar" style="display: none" type="button">Intentar de nuevo</button>
+</div>
+<div aria-live="polite" class="marcador" id="marcador" role="status">
+<div aria-hidden="true" class="barra-prog"><span id="barra"></span></div>
+<p class="puntaje" id="puntaje"></p>
+<p class="mensaje" id="mensaje"></p>
+</div>
+</section>
+<!-- RÚBRICA -->
+<section>
+<h2>
+<span aria-hidden="true" class="num-seccion">8</span>
+          Rúbrica de evaluación
+        </h2>
+<p>Rúbrica de medición métrica y temporal. Cada criterio se evalúa en cuatro niveles.</p>
+<div aria-label="Rúbrica de evaluación: criterios y sus niveles de logro (tabla desplazable horizontalmente)" class="tabla-scroll" role="region" tabindex="0"><table class="tabla-rubrica"><caption class="cap-oculto">Rúbrica de evaluación: criterios y sus niveles de logro</caption>
+<thead>
+<tr>
+<th scope="col">Criterio</th>
+<th class="nivel-cab" scope="col">Logrado (4)</th>
+<th class="nivel-cab" scope="col">Satisfactorio (3)</th>
+<th class="nivel-cab" scope="col">En proceso (2)</th>
+<th class="nivel-cab" scope="col">Por reforzar (1)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th scope="row">Aplica la escalera métrica</th>
+<td>Convierte sin errores aplicando ×10 o ÷10 por escalón.</td>
+<td>Convierte correctamente casi siempre.</td>
+<td>Confunde la dirección o el número de escalones.</td>
+<td>No aplica la escalera métrica.</td>
+</tr>
+<tr>
+<th scope="row">Lee la hora</th>
+<td>Lee con seguridad el reloj analógico y el digital.</td>
+<td>Lee bien la hora en la mayoría de los casos.</td>
+<td>Lee el reloj digital pero duda con el analógico.</td>
+<td>No logra leer la hora.</td>
+</tr>
+<tr>
+<th scope="row">Calcula duraciones</th>
+<td>Calcula duraciones con y sin cruce de horas.</td>
+<td>Calcula duraciones simples correctamente.</td>
+<td>Se equivoca cuando los minutos pasan de 60.</td>
+<td>No logra calcular duraciones.</td>
+</tr>
+<tr>
+<th scope="row">Interpreta la temperatura</th>
+<td>Interpreta °F y °C en contexto y usa la fórmula dada.</td>
+<td>Interpreta la temperatura en contexto cotidiano.</td>
+<td>Confunde las escalas Fahrenheit y Celsius.</td>
+<td>No interpreta la temperatura.</td>
+</tr>
+</tbody>
+</table></div><p class="aviso-desliza"><span aria-hidden="true">↔</span> Deslice la tabla horizontalmente para ver todas las columnas.</p>
+</section>
+<!-- CIERRE -->
+<div class="cierre">
+<h2>
+<span aria-hidden="true" class="num-seccion">➡️</span>
+          Lo que viene en la próxima lección
+        </h2>
+<p>Ya conoce los dos sistemas de medida —inglés y métrico—, sabe leer la hora, calcular duraciones e interpretar temperaturas. Tiene todas las herramientas de medición.</p>
+<p>
+          En la
+          <strong>Lección 6.3 · Problemas aplicados de medición en contexto real</strong>
+          pondrá todo en práctica: resolverá problemas auténticos de cocina, salud, construcción, viaje y trabajo, donde tendrá que
+          <strong>identificar el sistema de medida, elegir la unidad y convertir</strong>
+          cuando haga falta. Es la lección que cierra el Tema 6.
+        </p>
+<p class="flecha-sig">➡️  Próxima: Lección 6.3 · Problemas aplicados de medición en contexto real</p>
+</div>
+</div>
+<footer>
+      Matemáticas · Nivel 1 · Lección 6.2 — Spanish ASE Math · AE 0170-0321
+      <br/>
+      City Colleges of Chicago · Truman College · Prof. José M. Fernández
+    </footer>
+<script>
+      // ── PRÁCTICA INTERACTIVA ──
+      var respuestasPractica = {
+        p1: '2 metros = 200 centímetros. Del metro al centímetro se bajan 2 escalones: × 10 × 10 = × 100. Entonces 2 × 100 = 200.',
+        p2: '4 000 metros = 4 kilómetros. Del metro al kilómetro se suben 3 escalones: ÷ 10 ÷ 10 ÷ 10 = ÷ 1 000. Entonces 4 000 ÷ 1 000 = 4.',
+        p3: 'De 2:00 a 3:30 hay 1 hora y 30 minutos: de 2:00 a 3:00 es 1 hora, y de 3:00 a 3:30 son 30 minutos más.',
+        p4: '3 °C es una temperatura muy fría, cercana a la congelación (0 °C). Lo apropiado es un abrigo.'
+      };
+
+      document.querySelectorAll('.opciones[data-quiz]').forEach(function (grupo) {
+        var id = grupo.getAttribute('data-quiz');
+        grupo.querySelectorAll('.opcion').forEach(function (op) {
+          op.addEventListener('click', function () {
+            var acerto = op.getAttribute('data-correcta') === 'si';
+            grupo.querySelectorAll('.opcion').forEach(function (o) {
+              o.disabled = true;
+              if (o.getAttribute('data-correcta') === 'si') {
+                o.classList.add('correcta');
+                o.insertAdjacentHTML('afterbegin', '<span class="marca">\u2713 Correcta:</span> ');
+              }
+            });
+            if (!acerto) {
+              op.classList.add('incorrecta');
+              op.insertAdjacentHTML('afterbegin', '<span class="marca">\u2717 Su respuesta:</span> ');
+            }
+            var r = document.getElementById('r-' + id);
+            r.className = 'respuesta-int ' + (acerto ? 'bien' : 'mal');
+            r.textContent = (acerto ? 'Correcto. ' : 'Revise: ') + respuestasPractica[id];
+          });
+        });
+      });
+
+      // ── QUIZ FINAL ──
+      var totalPreguntas = 8;
+      var seleccion = {};
+
+      document.querySelectorAll('#quiz .opciones').forEach(function (grupo) {
+        var q = grupo.getAttribute('data-q');
+        grupo.querySelectorAll('.opcion').forEach(function (op) {
+          op.setAttribute('aria-pressed', 'false');
+          op.addEventListener('click', function () {
+            grupo.querySelectorAll('.opcion').forEach(function (o) {
+              o.classList.remove('elegida');
+              o.setAttribute('aria-pressed', 'false');
+            });
+            op.classList.add('elegida');
+            op.setAttribute('aria-pressed', 'true');
+            seleccion[q] = op;
+          });
+        });
+      });
+
+      document.getElementById('btn-calificar').addEventListener('click', function () {
+        var correctas = 0;
+        document.querySelectorAll('#quiz .opciones').forEach(function (grupo) {
+          var q = grupo.getAttribute('data-q');
+          grupo.querySelectorAll('.opcion').forEach(function (o) {
+            o.disabled = true;
+            if (o.getAttribute('data-c') === 'si') {
+              o.classList.add('correcta');
+              o.insertAdjacentHTML('afterbegin', '<span class="marca">\u2713 Correcta:</span> ');
+            }
+          });
+          var elegida = seleccion[q];
+          if (elegida) {
+            if (elegida.getAttribute('data-c') === 'si') {
+              correctas++;
+            } else {
+              elegida.classList.add('incorrecta');
+              elegida.insertAdjacentHTML('afterbegin', '<span class="marca">\u2717 Su respuesta:</span> ');
+            }
+          }
+        });
+
+        var marc = document.getElementById('marcador');
+        var pct = Math.round((correctas / totalPreguntas) * 100);
+        document.getElementById('puntaje').textContent = correctas + ' de ' + totalPreguntas + ' correctas';
+
+        var msg, color;
+        if (pct >= 88) {
+          msg = 'Excelente. Domina el sistema métrico, el tiempo y la temperatura. Está listo para la Lección 6.3.';
+          color = '#e7f4ec';
+        } else if (pct >= 63) {
+          msg = 'Buen trabajo. Repase las preguntas marcadas como incorrectas y vuelva a intentarlo.';
+          color = '#fdf3df';
+        } else {
+          msg = 'Repasemos juntos. Vuelva a leer las secciones 2, 3 y 4, y reintente el quiz.';
+          color = '#fdecea';
+        }
+
+        marc.style.background = color;
+        document.getElementById('mensaje').textContent = msg;
+        marc.classList.add('visible');
+        document.getElementById('barra').style.width = pct + '%';
+        document.getElementById('btn-calificar').style.display = 'none';
+
+        var reintentar = document.getElementById('btn-reintentar');
+        reintentar.style.display = 'inline-block';
+        reintentar.focus();
+      });
+
+      document.getElementById('btn-reintentar').addEventListener('click', function () {
+        document.querySelectorAll('#quiz .opcion').forEach(function (o) {
+          o.disabled = false;
+          o.classList.remove('correcta', 'incorrecta', 'elegida');
+          o.setAttribute('aria-pressed', 'false');
+          var marca = o.querySelector('.marca');
+          if (marca) {
+            marca.remove();
+          }
+        });
+        for (var k in seleccion) {
+          delete seleccion[k];
+        }
+        document.getElementById('marcador').classList.remove('visible');
+        document.getElementById('puntaje').textContent = '';
+        document.getElementById('mensaje').textContent = '';
+        document.getElementById('btn-calificar').style.display = 'inline-block';
+        document.getElementById('btn-reintentar').style.display = 'none';
+        var primera = document.querySelector('#quiz .opcion');
+        if (primera) {
+          primera.focus();
+        }
+      });
+
+      // ── TABLAS RESPONSIVAS ──
+      // Los contenedores y avisos ya están en el marcado, para que los
+      // revisores que no ejecutan JavaScript los detecten.
+      (function () {
+        var TEXTO_AVISO = '\u2194 Deslice la tabla horizontalmente para ver todas las columnas.';
+        var pares = [];
+
+        document.querySelectorAll('table').forEach(function (t) {
+          var caja = t.parentNode;
+          if (!caja.classList.contains('tabla-scroll')) {
+            var cap = t.querySelector('caption');
+            var etiqueta = (cap ? cap.textContent.trim() : 'Tabla de datos') + ' (tabla desplazable horizontalmente)';
+            var nueva = document.createElement('div');
+            nueva.className = 'tabla-scroll';
+            nueva.setAttribute('role', 'region');
+            nueva.setAttribute('tabindex', '0');
+            nueva.setAttribute('aria-label', etiqueta);
+            t.parentNode.insertBefore(nueva, t);
+            nueva.appendChild(t);
+            caja = nueva;
+          }
+          var aviso = caja.nextElementSibling;
+          if (!aviso || !aviso.classList.contains('aviso-desliza')) {
+            aviso = document.createElement('p');
+            aviso.className = 'aviso-desliza';
+            aviso.textContent = TEXTO_AVISO;
+            caja.parentNode.insertBefore(aviso, caja.nextSibling);
+          }
+          pares.push({ caja: caja, aviso: aviso });
+        });
+
+        function actualizar() {
+          pares.forEach(function (p) {
+            p.aviso.style.display = p.caja.scrollWidth > p.caja.clientWidth + 2 ? 'block' : 'none';
+          });
+        }
+        actualizar();
+
+        var tm;
+        window.addEventListener('resize', function () {
+          clearTimeout(tm);
+          tm = setTimeout(actualizar, 150);
+        });
+      })();
+    </script>
+</body>
+</html>

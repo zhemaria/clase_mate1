@@ -1,0 +1,1443 @@
+<!DOCTYPE html>
+
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Lección 7.2 · Perímetro de polígonos — Matemáticas Nivel 1</title>
+<style>
+      :root {
+        --azul: #37474f;
+        --azul-osc: #263238;
+        --azul-cl: #eceff1;
+        --tinta: #1a2330;
+        --gris: #5b6675;
+        --linea: #dde3ea;
+        --crema: #f6f4ee;
+        --papel: #ffffff;
+        --verde: #276b44;
+        --verde-cl: #e7f4ec;
+        --ambar: #7d4e00;
+        --ambar-cl: #fdf3df;
+        --rojo: #b5342a;
+        --rojo-cl: #fdecea;
+        --acento: #006974;
+        --sombra: 0 2px 10px rgba(38, 50, 56, 0.12);
+      }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        font-family: 'Segoe UI', 'Helvetica Neue', system-ui, sans-serif;
+        background: var(--crema);
+        color: var(--tinta);
+        line-height: 1.65;
+        font-size: 17px;
+      }
+      .envoltura {
+        max-width: 880px;
+        margin: 0 auto;
+        padding: 0 20px 80px;
+      }
+
+      header.principal {
+        background: linear-gradient(135deg, #263238 0%, #37474f 55%, #455a64 100%);
+        color: #fff;
+        padding: 46px 38px 40px;
+        border-radius: 0 0 22px 22px;
+        box-shadow: 0 6px 22px rgba(38, 50, 56, 0.3);
+      }
+      .envoltura-header {
+        max-width: 880px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+      .ruta {
+        font-size: 13px;
+        letter-spacing: 0.6px;
+        text-transform: uppercase;
+        opacity: 0.85;
+        margin-bottom: 14px;
+      }
+      header.principal h1 {
+        font-size: 30px;
+        font-weight: 700;
+        line-height: 1.25;
+        margin-bottom: 8px;
+      }
+      header.principal .lema {
+        font-size: 16px;
+        opacity: 0.93;
+        font-weight: 400;
+        max-width: 620px;
+      }
+      .chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 20px;
+      }
+      .chip {
+        background: rgba(255, 255, 255, 0.16);
+        border: 1px solid rgba(255, 255, 255, 0.28);
+        padding: 6px 14px;
+        border-radius: 30px;
+        font-size: 13px;
+        font-weight: 600;
+      }
+
+      section {
+        background: var(--papel);
+        margin-top: 22px;
+        padding: 30px 34px;
+        border-radius: 14px;
+        box-shadow: var(--sombra);
+      }
+      .num-seccion {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 34px;
+        height: 34px;
+        background: var(--acento);
+        color: #fff;
+        border-radius: 9px;
+        font-weight: 700;
+        font-size: 17px;
+        margin-right: 12px;
+        flex-shrink: 0;
+      }
+      h2 {
+        display: flex;
+        align-items: center;
+        font-size: 23px;
+        color: var(--azul-osc);
+        margin-bottom: 16px;
+        font-weight: 700;
+      }
+      h3 {
+        font-size: 18px;
+        color: var(--azul-osc);
+        margin: 22px 0 10px;
+        font-weight: 700;
+      }
+      p {
+        margin: 11px 0;
+      }
+      ul,
+      ol {
+        margin: 11px 0 11px 26px;
+      }
+      li {
+        margin: 6px 0;
+      }
+      strong {
+        color: var(--azul-osc);
+      }
+
+      .caja {
+        border-radius: 11px;
+        padding: 18px 22px;
+        margin: 18px 0;
+        border-left: 5px solid;
+      }
+      .caja-objetivo {
+        background: var(--azul-cl);
+        border-color: var(--acento);
+      }
+      .caja-objetivo h2 {
+        margin-bottom: 10px;
+      }
+      .caja-tip {
+        background: var(--verde-cl);
+        border-color: var(--verde);
+      }
+      .caja-tip strong {
+        color: var(--verde);
+      }
+      .caja-ojo {
+        background: var(--ambar-cl);
+        border-color: var(--ambar);
+      }
+      .caja-ojo strong {
+        color: var(--ambar);
+      }
+      .caja-recurso {
+        background: #eef2f7;
+        border-color: var(--gris);
+      }
+
+      .etiqueta {
+        display: inline-block;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+        padding: 3px 10px;
+        border-radius: 5px;
+        margin-bottom: 6px;
+      }
+      .et-verde {
+        background: var(--verde);
+        color: #fff;
+      }
+      .et-ambar {
+        background: var(--ambar);
+        color: #fff;
+      }
+      .et-azul {
+        background: var(--acento);
+        color: #fff;
+      }
+
+      .modalidades {
+        display: flex;
+        gap: 14px;
+        margin-top: 14px;
+        flex-wrap: wrap;
+      }
+      .modo {
+        flex: 1;
+        min-width: 240px;
+        border-radius: 9px;
+        padding: 13px 16px;
+        background: #fff;
+        border: 1px solid var(--linea);
+      }
+      .modo-pres {
+        border-top: 4px solid var(--acento);
+      }
+      .modo-line {
+        border-top: 4px solid var(--verde);
+      }
+      .modo .modo-tit {
+        display: block;
+        font-weight: 700;
+        font-size: 14px;
+        margin-bottom: 5px;
+      }
+      .modo-pres .modo-tit {
+        color: var(--azul-osc);
+      }
+      .modo-line .modo-tit {
+        color: var(--verde);
+      }
+      .modo p {
+        margin: 4px 0 0;
+        font-size: 15px;
+      }
+
+      /* ── FÓRMULAS ── */
+      .formulas {
+        display: flex;
+        gap: 14px;
+        flex-wrap: wrap;
+        margin: 16px 0;
+      }
+      .form-card {
+        flex: 1;
+        min-width: 200px;
+        background: var(--azul-cl);
+        border-radius: 10px;
+        padding: 15px 16px;
+        text-align: center;
+        border-bottom: 4px solid var(--acento);
+      }
+      .form-card svg {
+        display: block;
+        margin: 0 auto 8px;
+      }
+      .form-card .fnom {
+        font-weight: 700;
+        color: var(--azul-osc);
+        font-size: 15px;
+      }
+      .form-card .formula {
+        font-family: 'Consolas', monospace;
+        font-weight: 700;
+        color: var(--acento);
+        font-size: 17px;
+        margin-top: 5px;
+      }
+      .form-card .fnota {
+        font-size: 12.5px;
+        color: var(--gris);
+        margin-top: 3px;
+      }
+
+      /* ── FIGURA CON MEDIDAS ── */
+      .fig-medida {
+        text-align: center;
+        margin: 14px 0;
+      }
+      .fig-medida svg {
+        display: block;
+        margin: 0 auto;
+      }
+
+      .ejemplo {
+        background: var(--crema);
+        border: 1px dashed var(--acento);
+        border-radius: 11px;
+        padding: 18px 22px;
+        margin: 18px 0;
+      }
+      .ejemplo .titulo-ej {
+        font-weight: 700;
+        color: var(--azul-osc);
+        margin-bottom: 8px;
+        font-size: 15px;
+      }
+      .paso {
+        margin: 8px 0 8px 4px;
+        padding-left: 32px;
+        position: relative;
+      }
+      .paso .n {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 24px;
+        height: 24px;
+        background: var(--acento);
+        color: #fff;
+        border-radius: 50%;
+        font-size: 13px;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .practica {
+        border: 2px solid var(--azul-cl);
+        border-radius: 12px;
+        padding: 20px 22px;
+        margin: 20px 0;
+        background: #fbfcfc;
+      }
+      .practica .cabe {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 6px;
+      }
+      .practica .cabe .ico {
+        font-size: 22px;
+      }
+      .practica .cabe h3 {
+        font-size: 16px;
+        color: var(--azul-osc);
+        margin: 0;
+      }
+      .pregunta-int {
+        font-size: 17px;
+        font-weight: 600;
+        margin: 14px 0 12px;
+      }
+      .opciones {
+        display: flex;
+        flex-direction: column;
+        gap: 9px;
+      }
+      .opcion {
+        border: 2px solid var(--linea);
+        border-radius: 9px;
+        padding: 11px 16px;
+        cursor: pointer;
+        background: #fff;
+        transition: 0.16s;
+        font-size: 16px;
+        text-align: left;
+        font-family: inherit;
+        color: var(--tinta);
+      }
+      .opcion:hover {
+        border-color: var(--acento);
+        background: var(--azul-cl);
+      }
+      .opcion.correcta {
+        border-color: var(--verde);
+        background: var(--verde-cl);
+        font-weight: 600;
+      }
+      .opcion.incorrecta {
+        border-color: var(--rojo);
+        background: var(--rojo-cl);
+      }
+      .opcion:disabled {
+        cursor: default;
+      }
+      .respuesta-int {
+        margin-top: 12px;
+        padding: 11px 15px;
+        border-radius: 8px;
+        font-size: 15px;
+        display: none;
+      }
+      .respuesta-int.bien {
+        background: var(--verde-cl);
+        color: var(--verde);
+        display: block;
+      }
+      .respuesta-int.mal {
+        background: var(--rojo-cl);
+        color: var(--rojo);
+        display: block;
+      }
+
+      .btn {
+        font-family: inherit;
+        font-size: 15px;
+        font-weight: 600;
+        padding: 9px 20px;
+        background: var(--acento);
+        color: #fff;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: 0.16s;
+      }
+      .btn:hover {
+        background: #006064;
+      }
+      .btn-sec {
+        background: #fff;
+        color: var(--acento);
+        border: 2px solid var(--acento);
+      }
+      .btn-sec:hover {
+        background: var(--azul-cl);
+      }
+
+      .quiz-bloque {
+        margin: 18px 0;
+        padding: 18px 20px;
+        border-radius: 11px;
+        background: var(--crema);
+        border: 1px solid var(--linea);
+      }
+      .quiz-bloque .qnum {
+        display: inline-block;
+        background: var(--azul-osc);
+        color: #fff;
+        font-size: 13px;
+        font-weight: 700;
+        padding: 3px 11px;
+        border-radius: 20px;
+        margin-bottom: 8px;
+      }
+      .quiz-bloque .pregunta {
+        font-weight: 600;
+        font-size: 16px;
+        margin-bottom: 12px;
+      }
+      .quiz-bloque svg {
+        display: block;
+        margin: 8px auto;
+      }
+      .marcador {
+        text-align: center;
+        padding: 26px;
+        border-radius: 13px;
+        margin-top: 20px;
+        display: none;
+      }
+      .marcador.visible {
+        display: block;
+      }
+      .marcador .puntaje {
+        font-size: 46px;
+        font-weight: 800;
+        margin: 6px 0;
+      }
+      .marcador .mensaje {
+        font-size: 17px;
+      }
+      .barra-prog {
+        height: 10px;
+        background: var(--linea);
+        border-radius: 6px;
+        overflow: hidden;
+        margin: 14px 0;
+      }
+      .barra-prog span {
+        display: block;
+        height: 100%;
+        background: var(--verde);
+        width: 0;
+        transition: width 0.5s;
+      }
+
+      .tabla-rubrica {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 14px 0;
+        font-size: 14px;
+      }
+      .tabla-rubrica th,
+      .tabla-rubrica td {
+        border: 1px solid var(--linea);
+        padding: 10px 12px;
+        text-align: left;
+        vertical-align: top;
+      }
+      .tabla-rubrica thead th {
+        background: var(--azul-osc);
+        color: #fff;
+        font-size: 13px;
+      }
+      .tabla-rubrica tbody th {
+        font-weight: 600;
+        color: var(--azul-osc);
+        background: var(--azul-cl);
+        font-size: 14px;
+        text-align: left;
+      }
+      .nivel-cab {
+        background: #2f3d46;
+        color: #fff;
+        text-align: center;
+      }
+
+      .cierre {
+        background: linear-gradient(135deg, #263238, #455a64);
+        color: #fff;
+        border-radius: 14px;
+        padding: 28px 32px;
+        margin-top: 24px;
+      }
+      .cierre h2 {
+        color: #fff;
+      }
+      .cierre strong {
+        color: #eafde6;
+        font-weight: 700;
+      }
+      .cierre .num-seccion {
+        background: rgba(255, 255, 255, 0.22);
+      }
+      .flecha-sig {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: rgba(255, 255, 255, 0.16);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        padding: 10px 18px;
+        border-radius: 9px;
+        margin-top: 12px;
+        font-weight: 600;
+        font-size: 15px;
+      }
+
+      footer {
+        text-align: center;
+        padding: 30px 20px;
+        color: var(--gris);
+        font-size: 13px;
+      }
+
+      @media (max-width: 560px) {
+        header.principal {
+          padding: 34px 22px;
+        }
+        header.principal h1 {
+          font-size: 24px;
+        }
+        section {
+          padding: 24px 20px;
+        }
+      }
+
+      /* ── FOCO VISIBLE (WCAG 2.4.7) ── */
+      a:focus-visible,
+      button:focus-visible,
+      [tabindex]:focus-visible {
+        outline: 3px solid var(--azul-osc);
+        outline-offset: 2px;
+      }
+
+      /* ── MOVIMIENTO REDUCIDO ── */
+      @media (prefers-reduced-motion: reduce) {
+        * {
+          transition: none !important;
+        }
+        html {
+          scroll-behavior: auto;
+        }
+      }
+
+      /* ── MARCAS DE RESPUESTA (no depender del color) ── */
+      .marca {
+        font-weight: 700;
+        margin-right: 6px;
+      }
+      .opcion.elegida {
+        border-color: var(--azul);
+        background: var(--azul-cl);
+      }
+      .opcion:disabled {
+        color: var(--tinta);
+        opacity: 1;
+      }
+
+      /* ── TABLAS RESPONSIVAS (DUA) ── */
+      .tabla-scroll {
+        overflow-x: auto;
+        overflow-y: hidden;
+        -webkit-overflow-scrolling: touch;
+        max-width: 100%;
+        margin: 18px 0 0;
+        border: 1px solid var(--linea);
+        border-radius: 8px;
+        background: var(--papel);
+      }
+      .tabla-scroll:focus,
+      .tabla-scroll:focus-visible {
+        outline: 3px solid var(--azul);
+        outline-offset: 2px;
+      }
+      .tabla-scroll > table {
+        margin: 0;
+        min-width: 100%;
+      }
+      .aviso-desliza {
+        margin: 8px 0 18px;
+        padding: 8px 12px;
+        font-size: 14px;
+        font-weight: 600;
+        color: #5c3900;
+        background: #fdf3df;
+        border-left: 4px solid #5c3900;
+        border-radius: 5px;
+      }
+      .cap-oculto {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0 0 0 0);
+        white-space: nowrap;
+        border: 0;
+      }
+      @media print {
+        .tabla-scroll {
+          overflow: visible;
+          border: 0;
+        }
+        .aviso-desliza {
+          display: none;
+        }
+      }
+    </style>
+</head>
+<body>
+<header class="principal">
+<div class="envoltura-header">
+<p class="ruta">Matemáticas · Nivel 1 · Tema 7 — Geometría</p>
+<h1>Lección 7.2 · Perímetro de polígonos</h1>
+<p class="lema">Calcular la distancia alrededor de una figura: para cercar, enmarcar o bordear.</p>
+<div class="chips">
+<span class="chip"><span aria-hidden="true">⏱️</span> 4 horas (2 sinc. + 2 asinc.)</span>
+<span class="chip"><span aria-hidden="true">📏</span> Perímetro</span>
+<span class="chip"><span aria-hidden="true">📘</span> MyOpenMath</span>
+</div>
+</div>
+</header>
+<div class="envoltura">
+<!-- OBJETIVOS -->
+<section>
+<div class="caja caja-objetivo">
+<h2>
+<span aria-hidden="true" class="num-seccion">🎯</span>
+            Objetivos de la clase
+          </h2>
+<p>Al terminar esta lección, usted podrá:</p>
+<ul>
+<li>
+<strong>Explicar</strong>
+              qué es el perímetro de una figura.
+            </li>
+<li>
+<strong>Calcular</strong>
+              el perímetro sumando todos los lados o usando una fórmula.
+            </li>
+<li>
+<strong>Hallar</strong>
+              un lado desconocido cuando se conoce el perímetro.
+            </li>
+<li>
+<strong>Resolver</strong>
+              problemas reales de perímetro: cercar, enmarcar, bordear.
+            </li>
+</ul>
+</div>
+</section>
+<!-- QUÉ ES -->
+<section>
+<h2>
+<span aria-hidden="true" class="num-seccion">1</span>
+          ¿Qué es el perímetro?
+        </h2>
+<p>
+          En la
+          <strong>Lección 7.1</strong>
+          aprendió a reconocer y nombrar las figuras. Ahora va a empezar a
+          <strong>medirlas</strong>
+          .
+        </p>
+<p>
+          El
+          <strong>perímetro</strong>
+          es la
+          <strong>distancia alrededor</strong>
+          de una figura — el total que mide su borde. Imagine que camina pegado a la orilla de un terreno hasta volver al punto de partida: lo que caminó es el perímetro.
+        </p>
+<div class="caja caja-tip">
+<span class="etiqueta et-verde">Idea clave</span>
+<p>
+            Para hallar el perímetro de cualquier polígono, basta con
+            <strong>sumar la longitud de todos sus lados</strong>
+            . El perímetro se mide en unidades de
+            <strong>longitud</strong>
+            : centímetros, metros, pies — las mismas del Tema 6.
+          </p>
+</div>
+<div class="caja caja-ojo">
+<span class="etiqueta et-ambar">¿Dónde se usa?</span>
+<p>
+            El perímetro aparece cada vez que se necesita rodear algo: cuánta
+            <strong>cerca</strong>
+            comprar para un terreno, cuánta
+            <strong>moldura</strong>
+            para enmarcar un cuadro, cuánta
+            <strong>cinta</strong>
+            para bordear una mesa.
+          </p>
+</div>
+</section>
+<!-- SUMAR LADOS -->
+<section>
+<h2>
+<span aria-hidden="true" class="num-seccion">2</span>
+          Perímetro: sumar todos los lados
+        </h2>
+<p>
+          El método que
+          <strong>siempre funciona</strong>
+          , para cualquier polígono, es sumar todos sus lados. Veámoslo con un polígono irregular de 5 lados:
+        </p>
+<div class="fig-medida">
+<svg aria-label="Pentágono irregular con lados de 7, 6, 8, 9 y 5 metros." height="170" role="img" viewbox="0 0 240 170" width="240" xmlns="http://www.w3.org/2000/svg">
+<polygon fill="#eceff1" points="50,30 170,20 210,90 130,150 40,110" stroke="#006974" stroke-width="3"></polygon>
+<text fill="#263238" font-size="14" font-weight="700" x="100" y="18">7 m</text>
+<text fill="#263238" font-size="14" font-weight="700" x="200" y="55">6 m</text>
+<text fill="#263238" font-size="14" font-weight="700" x="178" y="130">8 m</text>
+<text fill="#263238" font-size="14" font-weight="700" x="75" y="142">9 m</text>
+<text fill="#263238" font-size="14" font-weight="700" x="20" y="70">5 m</text>
+</svg>
+</div>
+<div class="ejemplo">
+<p class="titulo-ej">Perímetro de un polígono de 5 lados</p>
+<p class="paso">
+<span aria-hidden="true" class="n">1</span>
+            Anoto la longitud de cada lado: 7 m, 6 m, 8 m, 9 m y 5 m.
+          </p>
+<p class="paso">
+<span aria-hidden="true" class="n">2</span>
+            Los sumo todos: 7 + 6 + 8 + 9 + 5.
+          </p>
+<p class="paso">
+<span aria-hidden="true" class="n">3</span>
+            El total: 7 + 6 = 13; 13 + 8 = 21; 21 + 9 = 30; 30 + 5 = 35.
+          </p>
+<p class="paso">
+<span aria-hidden="true" class="n">✓</span>
+            El perímetro es
+            <strong>35 metros</strong>
+            .
+          </p>
+</div>
+<div class="caja caja-ojo">
+<span class="etiqueta et-ambar">¡Ojo! No olvide ningún lado</span>
+<p>
+            El error más común es
+            <strong>saltarse un lado</strong>
+            al sumar. Una buena costumbre: marque cada lado con una palomita a medida que lo va sumando, para no dejar ninguno fuera.
+          </p>
+</div>
+<div class="practica">
+<div class="cabe">
+<span aria-hidden="true" class="ico">✏️</span>
+<h3>Práctica 1 — Sumar los lados</h3>
+</div>
+<p class="pregunta-int" id="t-p1">Un triángulo tiene lados de 6 cm, 8 cm y 10 cm. ¿Cuál es su perímetro?</p>
+<div aria-labelledby="t-p1" class="opciones" data-quiz="p1" role="group">
+<button class="opcion" data-correcta="no" type="button">18 cm</button>
+<button class="opcion" data-correcta="si" type="button">24 cm</button>
+<button class="opcion" data-correcta="no" type="button">480 cm</button>
+<button class="opcion" data-correcta="no" type="button">14 cm</button>
+</div>
+<div aria-live="polite" class="respuesta-int" id="r-p1" role="status"></div>
+</div>
+</section>
+<!-- FÓRMULAS -->
+<section>
+<h2>
+<span aria-hidden="true" class="num-seccion">3</span>
+          Fórmulas para el cuadrado y el rectángulo
+        </h2>
+<p>
+          Sumar todos los lados siempre funciona. Pero para dos figuras muy comunes —el
+          <strong>cuadrado</strong>
+          y el
+          <strong>rectángulo</strong>
+          — hay
+          <strong>fórmulas</strong>
+          que son atajos, porque sus lados se repiten.
+        </p>
+<div class="formulas">
+<div class="form-card">
+<svg aria-label="Cuadrado con los cuatro lados iguales, rotulado «lado»." height="80" role="img" viewbox="0 0 80 80" width="80" xmlns="http://www.w3.org/2000/svg">
+<rect fill="#eceff1" height="44" stroke="#006974" stroke-width="3" width="44" x="18" y="18"></rect>
+<text fill="#263238" font-size="12" font-weight="700" x="34" y="14">lado</text>
+</svg>
+<div class="fnom">Cuadrado</div>
+<div class="formula">P = 4 × lado</div>
+<div class="fnota">Los 4 lados son iguales</div>
+</div>
+<div class="form-card">
+<svg aria-label="Rectángulo rotulado con «largo» en el lado horizontal y «ancho» en el vertical." height="80" role="img" viewbox="0 0 100 80" width="100" xmlns="http://www.w3.org/2000/svg">
+<rect fill="#eceff1" height="36" stroke="#006974" stroke-width="3" width="64" x="14" y="24"></rect>
+<text fill="#263238" font-size="12" font-weight="700" x="32" y="20">largo</text>
+<text fill="#263238" font-size="12" font-weight="700" x="80" y="46">ancho</text>
+</svg>
+<div class="fnom">Rectángulo</div>
+<div class="formula">P = 2 × largo + 2 × ancho</div>
+<div class="fnota">Lados opuestos iguales</div>
+</div>
+</div>
+<div class="ejemplo">
+<p class="titulo-ej">Perímetro de un cuadrado de 7 m de lado</p>
+<p class="paso">
+<span aria-hidden="true" class="n">1</span>
+            Uso la fórmula del cuadrado: P = 4 × lado.
+          </p>
+<p class="paso">
+<span aria-hidden="true" class="n">2</span>
+            Sustituyo el lado por 7: P = 4 × 7.
+          </p>
+<p class="paso">
+<span aria-hidden="true" class="n">✓</span>
+            P =
+            <strong>28 metros</strong>
+            .
+          </p>
+</div>
+<div class="ejemplo">
+<p class="titulo-ej">Perímetro de un rectángulo de 10 m de largo y 4 m de ancho</p>
+<p class="paso">
+<span aria-hidden="true" class="n">1</span>
+            Uso la fórmula del rectángulo: P = 2 × largo + 2 × ancho.
+          </p>
+<p class="paso">
+<span aria-hidden="true" class="n">2</span>
+            Sustituyo: P = (2 × 10) + (2 × 4) = 20 + 8.
+          </p>
+<p class="paso">
+<span aria-hidden="true" class="n">✓</span>
+            P =
+            <strong>28 metros</strong>
+            .
+          </p>
+</div>
+<div class="caja caja-tip">
+<span class="etiqueta et-verde">La fórmula es solo un atajo</span>
+<p>Si olvida la fórmula, no pasa nada: sume los cuatro lados directamente. Un rectángulo de 10 y 4 tiene lados 10 + 4 + 10 + 4 = 28. La fórmula da el mismo resultado, más rápido.</p>
+</div>
+<div class="practica">
+<div class="cabe">
+<span aria-hidden="true" class="ico">✏️</span>
+<h3>Práctica 2 — Perímetro del cuadrado</h3>
+</div>
+<p class="pregunta-int" id="t-p2">¿Cuál es el perímetro de un cuadrado cuyo lado mide 9 cm?</p>
+<div aria-labelledby="t-p2" class="opciones" data-quiz="p2" role="group">
+<button class="opcion" data-correcta="no" type="button">18 cm</button>
+<button class="opcion" data-correcta="no" type="button">81 cm</button>
+<button class="opcion" data-correcta="si" type="button">36 cm</button>
+<button class="opcion" data-correcta="no" type="button">13 cm</button>
+</div>
+<div aria-live="polite" class="respuesta-int" id="r-p2" role="status"></div>
+</div>
+<div class="practica">
+<div class="cabe">
+<span aria-hidden="true" class="ico">✏️</span>
+<h3>Práctica 3 — Perímetro del rectángulo</h3>
+</div>
+<p class="pregunta-int" id="t-p3">Un rectángulo mide 12 m de largo y 5 m de ancho. ¿Cuál es su perímetro?</p>
+<div aria-labelledby="t-p3" class="opciones" data-quiz="p3" role="group">
+<button class="opcion" data-correcta="no" type="button">17 m</button>
+<button class="opcion" data-correcta="no" type="button">60 m</button>
+<button class="opcion" data-correcta="si" type="button">34 m</button>
+<button class="opcion" data-correcta="no" type="button">24 m</button>
+</div>
+<div aria-live="polite" class="respuesta-int" id="r-p3" role="status"></div>
+</div>
+</section>
+<!-- LADO DESCONOCIDO -->
+<section>
+<h2>
+<span aria-hidden="true" class="num-seccion">4</span>
+          Hallar un lado cuando se conoce el perímetro
+        </h2>
+<p>
+          A veces el problema es al revés: le dan el
+          <strong>perímetro</strong>
+          y le piden hallar un
+          <strong>lado que falta</strong>
+          . Aquí se usa el pensamiento algebraico de la Lección 5.2: plantear y despejar.
+        </p>
+<div class="ejemplo">
+<p class="titulo-ej">"Un cuadrado tiene un perímetro de 32 m. ¿Cuánto mide cada lado?"</p>
+<p class="paso">
+<span aria-hidden="true" class="n">1</span>
+            Sé que en el cuadrado: P = 4 × lado. Conozco P = 32.
+          </p>
+<p class="paso">
+<span aria-hidden="true" class="n">2</span>
+            Planteo la ecuación: 4 × lado = 32.
+          </p>
+<p class="paso">
+<span aria-hidden="true" class="n">3</span>
+            Despejo con la operación inversa: lado = 32 ÷ 4.
+          </p>
+<p class="paso">
+<span aria-hidden="true" class="n">✓</span>
+            Cada lado mide
+            <strong>8 metros</strong>
+            .
+          </p>
+</div>
+<div class="ejemplo">
+<p class="titulo-ej">"Un triángulo tiene un perímetro de 20 cm. Dos de sus lados miden 7 cm y 6 cm. ¿Cuánto mide el tercero?"</p>
+<p class="paso">
+<span aria-hidden="true" class="n">1</span>
+            El perímetro es la suma de los tres lados: 7 + 6 + lado = 20.
+          </p>
+<p class="paso">
+<span aria-hidden="true" class="n">2</span>
+            Primero sumo los lados conocidos: 7 + 6 = 13.
+          </p>
+<p class="paso">
+<span aria-hidden="true" class="n">3</span>
+            El lado que falta: 20 − 13 = 7.
+          </p>
+<p class="paso">
+<span aria-hidden="true" class="n">✓</span>
+            El tercer lado mide
+            <strong>7 cm</strong>
+            .
+          </p>
+</div>
+<div class="practica">
+<div class="cabe">
+<span aria-hidden="true" class="ico">✏️</span>
+<h3>Práctica 4 — Hallar el lado</h3>
+</div>
+<p class="pregunta-int" id="t-p4">Un cuadrado tiene un perímetro de 24 cm. ¿Cuánto mide cada lado?</p>
+<div aria-labelledby="t-p4" class="opciones" data-quiz="p4" role="group">
+<button class="opcion" data-correcta="no" type="button">12 cm</button>
+<button class="opcion" data-correcta="si" type="button">6 cm</button>
+<button class="opcion" data-correcta="no" type="button">96 cm</button>
+<button class="opcion" data-correcta="no" type="button">8 cm</button>
+</div>
+<div aria-live="polite" class="respuesta-int" id="r-p4" role="status"></div>
+</div>
+</section>
+<!-- PROBLEMAS REALES -->
+<section>
+<h2>
+<span aria-hidden="true" class="num-seccion">5</span>
+          Problemas reales de perímetro
+        </h2>
+<p>
+          El perímetro resuelve problemas muy concretos. La clave es darse cuenta de que la pregunta —cercar, enmarcar, bordear— pide la
+          <strong>distancia alrededor</strong>
+          .
+        </p>
+<div class="ejemplo">
+<p class="titulo-ej"><span aria-hidden="true">📋</span> "Un jardín rectangular mide 15 m de largo y 8 m de ancho. ¿Cuántos metros de cerca se necesitan para rodearlo?"</p>
+<p class="paso">
+<span aria-hidden="true" class="n">1</span>
+            Cercar todo el jardín = hallar el perímetro del rectángulo.
+          </p>
+<p class="paso">
+<span aria-hidden="true" class="n">2</span>
+            Uso la fórmula: P = (2 × 15) + (2 × 8) = 30 + 16.
+          </p>
+<p class="paso">
+<span aria-hidden="true" class="n">✓</span>
+            Se necesitan
+            <strong>46 metros</strong>
+            de cerca.
+          </p>
+</div>
+<div class="practica">
+<div class="cabe">
+<span aria-hidden="true" class="ico">✏️</span>
+<h3>Práctica 5 — Problema real</h3>
+</div>
+<p class="pregunta-int" id="t-p5">Para enmarcar un cuadro cuadrado de 40 cm de lado, ¿cuántos centímetros de moldura se necesitan?</p>
+<div aria-labelledby="t-p5" class="opciones" data-quiz="p5" role="group">
+<button class="opcion" data-correcta="no" type="button">80 cm</button>
+<button class="opcion" data-correcta="si" type="button">160 cm</button>
+<button class="opcion" data-correcta="no" type="button">1 600 cm</button>
+<button class="opcion" data-correcta="no" type="button">44 cm</button>
+</div>
+<div aria-live="polite" class="respuesta-int" id="r-p5" role="status"></div>
+</div>
+</section>
+<!-- PRÁCTICA GUIADA -->
+<section>
+<h2>
+<span aria-hidden="true" class="num-seccion">6</span>
+          Práctica guiada en clase
+        </h2>
+<p>
+          Estas actividades se hacen
+          <strong>en la sesión sincrónica</strong>
+          . Cada actividad incluye una variante para la
+          <strong>clase presencial</strong>
+          y otra para la
+          <strong>clase en línea</strong>
+          ; el objetivo de aprendizaje es el mismo en ambas.
+        </p>
+<div class="caja caja-recurso">
+<span class="etiqueta et-azul">Actividad A · "Medir y calcular"</span>
+<p>Los estudiantes miden figuras dibujadas con una regla, calculan el perímetro y verifican midiendo de nuevo.</p>
+<div class="modalidades">
+<div class="modo modo-pres">
+<span class="modo-tit">🏫 Presencial</span>
+<p>Reparta hojas con figuras dibujadas en cuadrícula. Cada estudiante mide los lados con la regla, calcula el perímetro y compara su resultado con el de un compañero.</p>
+</div>
+<div class="modo modo-line">
+<span class="modo-tit">💻 En línea</span>
+<p>Comparta figuras con sus medidas marcadas en una diapositiva. Los estudiantes calculan el perímetro en papel y publican el resultado en el chat. El grupo revisa juntos.</p>
+</div>
+</div>
+</div>
+<div class="caja caja-recurso">
+<span class="etiqueta et-azul">Actividad B · "El jardinero"</span>
+<p>A partir del plano de un jardín irregular de 5 lados, los estudiantes calculan cuántos metros de cerca se necesitan.</p>
+<div class="modalidades">
+<div class="modo modo-pres">
+<span class="modo-tit">🏫 Presencial</span>
+<p>
+                Reparta el plano del jardín irregular con las medidas de sus 5 lados. En parejas, los estudiantes calculan el perímetro. Luego diseñan su propio jardín rectangular con un perímetro
+                dado (por ejemplo, 24 m): ¿cuántas dimensiones distintas son posibles?
+              </p>
+</div>
+<div class="modo modo-line">
+<span class="modo-tit">💻 En línea</span>
+<p>
+                Comparta el plano del jardín en una diapositiva. Los estudiantes calculan la cerca necesaria y publican su respuesta. Para el reto del jardín de 24 m, proponen dimensiones en el chat y
+                el grupo las compara.
+              </p>
+</div>
+</div>
+</div>
+<div class="caja caja-recurso">
+<span class="etiqueta et-azul">Actividad C · "El lado que falta"</span>
+<p>Los estudiantes practican hallar un lado desconocido a partir del perímetro conocido.</p>
+<div class="modalidades">
+<div class="modo modo-pres">
+<span class="modo-tit">🏫 Presencial</span>
+<p>Reparta tarjetas con figuras donde se da el perímetro y faltan uno o más lados. Cada estudiante plantea la ecuación y despeja el lado faltante; verifican en parejas.</p>
+</div>
+<div class="modo modo-line">
+<span class="modo-tit">💻 En línea</span>
+<p>Muestre las figuras con lado faltante en diapositivas. Los estudiantes escriben en el chat la ecuación y el lado que hallaron. El grupo revisa los procedimientos juntos.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- TAREA ASINCRÓNICA -->
+<section>
+<h2>
+<span aria-hidden="true" class="num-seccion">7</span>
+          Tarea asincrónica
+        </h2>
+<p>
+          Estas actividades se realizan
+          <strong>por su cuenta</strong>
+          , dentro de las 2 horas asincrónicas de la lección.
+        </p>
+<ul>
+<li>
+<strong>MyOpenMath:</strong>
+            complete los
+            <strong>8 problemas</strong>
+            de perímetro (calcular el perímetro y hallar lados faltantes). Cada uno da retroalimentación inmediata.
+          </li>
+<li>
+<strong>Brightspace:</strong>
+            realice el quiz de la lección (abajo puede practicarlo antes).
+          </li>
+<li>
+<strong>Actividad personal:</strong>
+            mida con una cinta el perímetro de una mesa, una ventana o una habitación de su casa. Anote las medidas y el perímetro total.
+          </li>
+</ul>
+</section>
+<!-- QUIZ -->
+<section>
+<h2>
+<span aria-hidden="true" class="num-seccion">8</span>
+          Quiz de práctica
+        </h2>
+<p>
+          Responda las
+          <strong>8 preguntas</strong>
+          . Al final verá su puntaje y podrá repasar lo que falló. Puede repetir el quiz las veces que quiera.
+        </p>
+<div id="quiz">
+<div class="quiz-bloque">
+<span class="qnum">Pregunta 1</span>
+<p class="pregunta" id="t-q1">El perímetro de una figura es:</p>
+<div aria-labelledby="t-q1" class="opciones" data-q="1" role="group">
+<button class="opcion" data-c="no" type="button">El espacio que ocupa por dentro.</button>
+<button class="opcion" data-c="si" type="button">La distancia alrededor de la figura.</button>
+<button class="opcion" data-c="no" type="button">El número de lados que tiene.</button>
+<button class="opcion" data-c="no" type="button">El lado más largo.</button>
+</div>
+</div>
+<div class="quiz-bloque">
+<span class="qnum">Pregunta 2</span>
+<p class="pregunta" id="t-q2">Un triángulo tiene lados de 5 m, 9 m y 11 m. ¿Cuál es su perímetro?</p>
+<div aria-labelledby="t-q2" class="opciones" data-q="2" role="group">
+<button class="opcion" data-c="no" type="button">20 m</button>
+<button class="opcion" data-c="si" type="button">25 m</button>
+<button class="opcion" data-c="no" type="button">495 m</button>
+<button class="opcion" data-c="no" type="button">16 m</button>
+</div>
+</div>
+<div class="quiz-bloque">
+<span class="qnum">Pregunta 3</span>
+<p class="pregunta" id="t-q3">La fórmula del perímetro de un cuadrado es:</p>
+<div aria-labelledby="t-q3" class="opciones" data-q="3" role="group">
+<button class="opcion" data-c="si" type="button">P = 4 × lado</button>
+<button class="opcion" data-c="no" type="button">P = lado + lado</button>
+<button class="opcion" data-c="no" type="button">P = lado × lado</button>
+<button class="opcion" data-c="no" type="button">P = 2 × lado</button>
+</div>
+</div>
+<div class="quiz-bloque">
+<span class="qnum">Pregunta 4</span>
+<p class="pregunta" id="t-q4">¿Cuál es el perímetro de un cuadrado de 11 cm de lado?</p>
+<div aria-labelledby="t-q4" class="opciones" data-q="4" role="group">
+<button class="opcion" data-c="no" type="button">22 cm</button>
+<button class="opcion" data-c="si" type="button">44 cm</button>
+<button class="opcion" data-c="no" type="button">121 cm</button>
+<button class="opcion" data-c="no" type="button">15 cm</button>
+</div>
+</div>
+<div class="quiz-bloque">
+<span class="qnum">Pregunta 5</span>
+<p class="pregunta" id="t-q5">Un rectángulo mide 14 m de largo y 6 m de ancho. ¿Cuál es su perímetro?</p>
+<div aria-labelledby="t-q5" class="opciones" data-q="5" role="group">
+<button class="opcion" data-c="si" type="button">40 m</button>
+<button class="opcion" data-c="no" type="button">20 m</button>
+<button class="opcion" data-c="no" type="button">84 m</button>
+<button class="opcion" data-c="no" type="button">34 m</button>
+</div>
+</div>
+<div class="quiz-bloque">
+<span class="qnum">Pregunta 6</span>
+<p class="pregunta" id="t-q6">Un cuadrado tiene un perímetro de 36 cm. ¿Cuánto mide cada lado?</p>
+<div aria-labelledby="t-q6" class="opciones" data-q="6" role="group">
+<button class="opcion" data-c="si" type="button">9 cm</button>
+<button class="opcion" data-c="no" type="button">18 cm</button>
+<button class="opcion" data-c="no" type="button">144 cm</button>
+<button class="opcion" data-c="no" type="button">6 cm</button>
+</div>
+</div>
+<div class="quiz-bloque">
+<span class="qnum">Pregunta 7</span>
+<p class="pregunta" id="t-q7">Un triángulo tiene un perímetro de 30 cm. Dos lados miden 11 cm y 9 cm. ¿Cuánto mide el tercero?</p>
+<div aria-labelledby="t-q7" class="opciones" data-q="7" role="group">
+<button class="opcion" data-c="si" type="button">10 cm</button>
+<button class="opcion" data-c="no" type="button">20 cm</button>
+<button class="opcion" data-c="no" type="button">50 cm</button>
+<button class="opcion" data-c="no" type="button">8 cm</button>
+</div>
+</div>
+<div class="quiz-bloque">
+<span class="qnum">Pregunta 8</span>
+<p class="pregunta" id="t-q8">Se quiere poner cerca alrededor de un terreno rectangular de 20 m de largo y 15 m de ancho. ¿Cuántos metros de cerca se necesitan?</p>
+<div aria-labelledby="t-q8" class="opciones" data-q="8" role="group">
+<button class="opcion" data-c="no" type="button">35 m</button>
+<button class="opcion" data-c="si" type="button">70 m</button>
+<button class="opcion" data-c="no" type="button">300 m</button>
+<button class="opcion" data-c="no" type="button">50 m</button>
+</div>
+</div>
+</div>
+<div style="text-align: center; margin-top: 18px">
+<button class="btn" id="btn-calificar" type="button">Ver mi resultado</button>
+<button class="btn btn-sec" id="btn-reintentar" style="display: none" type="button">Intentar de nuevo</button>
+</div>
+<div aria-live="polite" class="marcador" id="marcador" role="status">
+<div aria-hidden="true" class="barra-prog"><span id="barra"></span></div>
+<p class="puntaje" id="puntaje"></p>
+<p class="mensaje" id="mensaje"></p>
+</div>
+</section>
+<!-- RÚBRICA -->
+<section>
+<h2>
+<span aria-hidden="true" class="num-seccion">9</span>
+          Rúbrica de evaluación
+        </h2>
+<p>Rúbrica de cálculo de perímetro. Cada criterio se evalúa en cuatro niveles.</p>
+<div aria-label="Rúbrica de evaluación: criterios y sus niveles de logro (tabla desplazable horizontalmente)" class="tabla-scroll" role="region" tabindex="0"><table class="tabla-rubrica"><caption class="cap-oculto">Rúbrica de evaluación: criterios y sus niveles de logro</caption>
+<thead>
+<tr>
+<th scope="col">Criterio</th>
+<th class="nivel-cab" scope="col">Logrado (4)</th>
+<th class="nivel-cab" scope="col">Satisfactorio (3)</th>
+<th class="nivel-cab" scope="col">En proceso (2)</th>
+<th class="nivel-cab" scope="col">Por reforzar (1)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th scope="row">Aplica la fórmula correcta</th>
+<td>Elige y aplica la fórmula adecuada a cada figura.</td>
+<td>Aplica la fórmula correcta casi siempre.</td>
+<td>Confunde la fórmula del cuadrado y del rectángulo.</td>
+<td>No aplica fórmulas de perímetro.</td>
+</tr>
+<tr>
+<th scope="row">Suma todos los lados</th>
+<td>Suma todos los lados sin omitir ninguno.</td>
+<td>Suma los lados correctamente casi siempre.</td>
+<td>A veces se salta un lado al sumar.</td>
+<td>No logra sumar los lados correctamente.</td>
+</tr>
+<tr>
+<th scope="row">Expresa el resultado con unidades</th>
+<td>Da el resultado con la unidad lineal correcta.</td>
+<td>Incluye la unidad en el resultado.</td>
+<td>Da el número sin unidad.</td>
+<td>El resultado es incorrecto.</td>
+</tr>
+<tr>
+<th scope="row">Resuelve problemas de aplicación</th>
+<td>Resuelve problemas de cercar, enmarcar y hallar lados.</td>
+<td>Resuelve la mayoría de los problemas aplicados.</td>
+<td>Plantea bien pero comete errores de cálculo.</td>
+<td>No interpreta el problema de aplicación.</td>
+</tr>
+</tbody>
+</table></div><p class="aviso-desliza"><span aria-hidden="true">↔</span> Deslice la tabla horizontalmente para ver todas las columnas.</p>
+</section>
+<!-- CIERRE -->
+<div class="cierre">
+<h2>
+<span aria-hidden="true" class="num-seccion">➡️</span>
+          Lo que viene en la próxima lección
+        </h2>
+<p>Ya sabe calcular el perímetro —la distancia alrededor de una figura— y resolver problemas de cercar y enmarcar.</p>
+<p>
+          En la
+          <strong>Lección 7.3 · Área de rectángulos y triángulos</strong>
+          aprenderá a medir algo distinto: el
+          <strong>área</strong>
+          , que es el espacio que cubre una figura por dentro. Verá la diferencia entre rodear una figura (perímetro) y rellenarla (área), y resolverá problemas como cuánto piso o pintura se necesita.
+          Es la lección que cierra el Tema 7.
+        </p>
+<p class="flecha-sig">➡️  Próxima: Lección 7.3 · Área de rectángulos y triángulos</p>
+</div>
+</div>
+<footer>
+      Matemáticas · Nivel 1 · Lección 7.2 — Spanish ASE Math · AE 0170-0321
+      <br/>
+      City Colleges of Chicago · Truman College · Prof. José M. Fernández
+    </footer>
+<script>
+      // ── PRÁCTICA INTERACTIVA ──
+      var respuestasPractica = {
+        p1: 'Perímetro = 6 + 8 + 10 = 24 cm. Se suman los tres lados del triángulo.',
+        p2: 'P = 4 × lado = 4 × 9 = 36 cm. En el cuadrado los cuatro lados son iguales.',
+        p3: 'P = (2 × 12) + (2 × 5) = 24 + 10 = 34 m. Use la fórmula del rectángulo.',
+        p4: 'P = 4 × lado, entonces 4 × lado = 24. Despejo: lado = 24 ÷ 4 = 6 cm.',
+        p5: 'Enmarcar = perímetro del cuadrado: P = 4 × 40 = 160 cm de moldura.'
+      };
+
+      document.querySelectorAll('.opciones[data-quiz]').forEach(function (grupo) {
+        var id = grupo.getAttribute('data-quiz');
+        grupo.querySelectorAll('.opcion').forEach(function (op) {
+          op.addEventListener('click', function () {
+            var acerto = op.getAttribute('data-correcta') === 'si';
+            grupo.querySelectorAll('.opcion').forEach(function (o) {
+              o.disabled = true;
+              if (o.getAttribute('data-correcta') === 'si') {
+                o.classList.add('correcta');
+                o.insertAdjacentHTML('afterbegin', '<span class="marca">\u2713 Correcta:</span> ');
+              }
+            });
+            if (!acerto) {
+              op.classList.add('incorrecta');
+              op.insertAdjacentHTML('afterbegin', '<span class="marca">\u2717 Su respuesta:</span> ');
+            }
+            var r = document.getElementById('r-' + id);
+            r.className = 'respuesta-int ' + (acerto ? 'bien' : 'mal');
+            r.textContent = (acerto ? 'Correcto. ' : 'Revise: ') + respuestasPractica[id];
+          });
+        });
+      });
+
+      // ── QUIZ FINAL ──
+      var totalPreguntas = 8;
+      var seleccion = {};
+
+      document.querySelectorAll('#quiz .opciones').forEach(function (grupo) {
+        var q = grupo.getAttribute('data-q');
+        grupo.querySelectorAll('.opcion').forEach(function (op) {
+          op.setAttribute('aria-pressed', 'false');
+          op.addEventListener('click', function () {
+            grupo.querySelectorAll('.opcion').forEach(function (o) {
+              o.classList.remove('elegida');
+              o.setAttribute('aria-pressed', 'false');
+            });
+            op.classList.add('elegida');
+            op.setAttribute('aria-pressed', 'true');
+            seleccion[q] = op;
+          });
+        });
+      });
+
+      document.getElementById('btn-calificar').addEventListener('click', function () {
+        var correctas = 0;
+        document.querySelectorAll('#quiz .opciones').forEach(function (grupo) {
+          var q = grupo.getAttribute('data-q');
+          grupo.querySelectorAll('.opcion').forEach(function (o) {
+            o.disabled = true;
+            if (o.getAttribute('data-c') === 'si') {
+              o.classList.add('correcta');
+              o.insertAdjacentHTML('afterbegin', '<span class="marca">\u2713 Correcta:</span> ');
+            }
+          });
+          var elegida = seleccion[q];
+          if (elegida) {
+            if (elegida.getAttribute('data-c') === 'si') {
+              correctas++;
+            } else {
+              elegida.classList.add('incorrecta');
+              elegida.insertAdjacentHTML('afterbegin', '<span class="marca">\u2717 Su respuesta:</span> ');
+            }
+          }
+        });
+
+        var marc = document.getElementById('marcador');
+        var pct = Math.round((correctas / totalPreguntas) * 100);
+        document.getElementById('puntaje').textContent = correctas + ' de ' + totalPreguntas + ' correctas';
+
+        var msg, color;
+        if (pct >= 88) {
+          msg = 'Excelente. Domina el cálculo del perímetro. Está listo para la Lección 7.3.';
+          color = '#e7f4ec';
+        } else if (pct >= 63) {
+          msg = 'Buen trabajo. Repase las preguntas marcadas como incorrectas y vuelva a intentarlo.';
+          color = '#fdf3df';
+        } else {
+          msg = 'Repasemos juntos. Vuelva a leer las secciones 2, 3 y 4, y reintente el quiz.';
+          color = '#fdecea';
+        }
+
+        marc.style.background = color;
+        document.getElementById('mensaje').textContent = msg;
+        marc.classList.add('visible');
+        document.getElementById('barra').style.width = pct + '%';
+        document.getElementById('btn-calificar').style.display = 'none';
+
+        var reintentar = document.getElementById('btn-reintentar');
+        reintentar.style.display = 'inline-block';
+        reintentar.focus();
+      });
+
+      document.getElementById('btn-reintentar').addEventListener('click', function () {
+        document.querySelectorAll('#quiz .opcion').forEach(function (o) {
+          o.disabled = false;
+          o.classList.remove('correcta', 'incorrecta', 'elegida');
+          o.setAttribute('aria-pressed', 'false');
+          var marca = o.querySelector('.marca');
+          if (marca) {
+            marca.remove();
+          }
+        });
+        for (var k in seleccion) {
+          delete seleccion[k];
+        }
+        document.getElementById('marcador').classList.remove('visible');
+        document.getElementById('puntaje').textContent = '';
+        document.getElementById('mensaje').textContent = '';
+        document.getElementById('btn-calificar').style.display = 'inline-block';
+        document.getElementById('btn-reintentar').style.display = 'none';
+        var primera = document.querySelector('#quiz .opcion');
+        if (primera) {
+          primera.focus();
+        }
+      });
+
+      // ── TABLAS RESPONSIVAS ──
+      // Los contenedores y avisos ya están en el marcado, para que los
+      // revisores que no ejecutan JavaScript los detecten.
+      (function () {
+        var TEXTO_AVISO = '\u2194 Deslice la tabla horizontalmente para ver todas las columnas.';
+        var pares = [];
+
+        document.querySelectorAll('table').forEach(function (t) {
+          var caja = t.parentNode;
+          if (!caja.classList.contains('tabla-scroll')) {
+            var cap = t.querySelector('caption');
+            var etiqueta = (cap ? cap.textContent.trim() : 'Tabla de datos') + ' (tabla desplazable horizontalmente)';
+            var nueva = document.createElement('div');
+            nueva.className = 'tabla-scroll';
+            nueva.setAttribute('role', 'region');
+            nueva.setAttribute('tabindex', '0');
+            nueva.setAttribute('aria-label', etiqueta);
+            t.parentNode.insertBefore(nueva, t);
+            nueva.appendChild(t);
+            caja = nueva;
+          }
+          var aviso = caja.nextElementSibling;
+          if (!aviso || !aviso.classList.contains('aviso-desliza')) {
+            aviso = document.createElement('p');
+            aviso.className = 'aviso-desliza';
+            aviso.textContent = TEXTO_AVISO;
+            caja.parentNode.insertBefore(aviso, caja.nextSibling);
+          }
+          pares.push({ caja: caja, aviso: aviso });
+        });
+
+        function actualizar() {
+          pares.forEach(function (p) {
+            p.aviso.style.display = p.caja.scrollWidth > p.caja.clientWidth + 2 ? 'block' : 'none';
+          });
+        }
+        actualizar();
+
+        var tm;
+        window.addEventListener('resize', function () {
+          clearTimeout(tm);
+          tm = setTimeout(actualizar, 150);
+        });
+      })();
+    </script>
+</body>
+</html>

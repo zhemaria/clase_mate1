@@ -1,0 +1,1562 @@
+<!DOCTYPE html>
+
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Lección 7.3 · Área de rectángulos y triángulos — Matemáticas Nivel 1</title>
+<style>
+      :root {
+        --azul: #37474f;
+        --azul-osc: #263238;
+        --azul-cl: #eceff1;
+        --tinta: #1a2330;
+        --gris: #5b6675;
+        --linea: #dde3ea;
+        --crema: #f6f4ee;
+        --papel: #ffffff;
+        --verde: #276b44;
+        --verde-cl: #e7f4ec;
+        --ambar: #7d4e00;
+        --ambar-cl: #fdf3df;
+        --rojo: #b5342a;
+        --rojo-cl: #fdecea;
+        --acento: #006974;
+        --sombra: 0 2px 10px rgba(38, 50, 56, 0.12);
+      }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        font-family: 'Segoe UI', 'Helvetica Neue', system-ui, sans-serif;
+        background: var(--crema);
+        color: var(--tinta);
+        line-height: 1.65;
+        font-size: 17px;
+      }
+      .envoltura {
+        max-width: 880px;
+        margin: 0 auto;
+        padding: 0 20px 80px;
+      }
+
+      header.principal {
+        background: linear-gradient(135deg, #263238 0%, #37474f 55%, #455a64 100%);
+        color: #fff;
+        padding: 46px 38px 40px;
+        border-radius: 0 0 22px 22px;
+        box-shadow: 0 6px 22px rgba(38, 50, 56, 0.3);
+      }
+      .envoltura-header {
+        max-width: 880px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+      .ruta {
+        font-size: 13px;
+        letter-spacing: 0.6px;
+        text-transform: uppercase;
+        opacity: 0.85;
+        margin-bottom: 14px;
+      }
+      header.principal h1 {
+        font-size: 30px;
+        font-weight: 700;
+        line-height: 1.25;
+        margin-bottom: 8px;
+      }
+      header.principal .lema {
+        font-size: 16px;
+        opacity: 0.93;
+        font-weight: 400;
+        max-width: 620px;
+      }
+      .chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 20px;
+      }
+      .chip {
+        background: rgba(255, 255, 255, 0.16);
+        border: 1px solid rgba(255, 255, 255, 0.28);
+        padding: 6px 14px;
+        border-radius: 30px;
+        font-size: 13px;
+        font-weight: 600;
+      }
+
+      section {
+        background: var(--papel);
+        margin-top: 22px;
+        padding: 30px 34px;
+        border-radius: 14px;
+        box-shadow: var(--sombra);
+      }
+      .num-seccion {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 34px;
+        height: 34px;
+        background: var(--acento);
+        color: #fff;
+        border-radius: 9px;
+        font-weight: 700;
+        font-size: 17px;
+        margin-right: 12px;
+        flex-shrink: 0;
+      }
+      h2 {
+        display: flex;
+        align-items: center;
+        font-size: 23px;
+        color: var(--azul-osc);
+        margin-bottom: 16px;
+        font-weight: 700;
+      }
+      h3 {
+        font-size: 18px;
+        color: var(--azul-osc);
+        margin: 22px 0 10px;
+        font-weight: 700;
+      }
+      p {
+        margin: 11px 0;
+      }
+      ul,
+      ol {
+        margin: 11px 0 11px 26px;
+      }
+      li {
+        margin: 6px 0;
+      }
+      strong {
+        color: var(--azul-osc);
+      }
+
+      .caja {
+        border-radius: 11px;
+        padding: 18px 22px;
+        margin: 18px 0;
+        border-left: 5px solid;
+      }
+      .caja-objetivo {
+        background: var(--azul-cl);
+        border-color: var(--acento);
+      }
+      .caja-objetivo h2 {
+        margin-bottom: 10px;
+      }
+      .caja-tip {
+        background: var(--verde-cl);
+        border-color: var(--verde);
+      }
+      .caja-tip strong {
+        color: var(--verde);
+      }
+      .caja-ojo {
+        background: var(--ambar-cl);
+        border-color: var(--ambar);
+      }
+      .caja-ojo strong {
+        color: var(--ambar);
+      }
+      .caja-recurso {
+        background: #eef2f7;
+        border-color: var(--gris);
+      }
+
+      .etiqueta {
+        display: inline-block;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+        padding: 3px 10px;
+        border-radius: 5px;
+        margin-bottom: 6px;
+      }
+      .et-verde {
+        background: var(--verde);
+        color: #fff;
+      }
+      .et-ambar {
+        background: var(--ambar);
+        color: #fff;
+      }
+      .et-azul {
+        background: var(--acento);
+        color: #fff;
+      }
+
+      .modalidades {
+        display: flex;
+        gap: 14px;
+        margin-top: 14px;
+        flex-wrap: wrap;
+      }
+      .modo {
+        flex: 1;
+        min-width: 240px;
+        border-radius: 9px;
+        padding: 13px 16px;
+        background: #fff;
+        border: 1px solid var(--linea);
+      }
+      .modo-pres {
+        border-top: 4px solid var(--acento);
+      }
+      .modo-line {
+        border-top: 4px solid var(--verde);
+      }
+      .modo .modo-tit {
+        display: block;
+        font-weight: 700;
+        font-size: 14px;
+        margin-bottom: 5px;
+      }
+      .modo-pres .modo-tit {
+        color: var(--azul-osc);
+      }
+      .modo-line .modo-tit {
+        color: var(--verde);
+      }
+      .modo p {
+        margin: 4px 0 0;
+        font-size: 15px;
+      }
+
+      /* ── FÓRMULAS ── */
+      .formulas {
+        display: flex;
+        gap: 14px;
+        flex-wrap: wrap;
+        margin: 16px 0;
+      }
+      .form-card {
+        flex: 1;
+        min-width: 200px;
+        background: var(--azul-cl);
+        border-radius: 10px;
+        padding: 15px 16px;
+        text-align: center;
+        border-bottom: 4px solid var(--acento);
+      }
+      .form-card svg {
+        display: block;
+        margin: 0 auto 8px;
+      }
+      .form-card .fnom {
+        font-weight: 700;
+        color: var(--azul-osc);
+        font-size: 15px;
+      }
+      .form-card .formula {
+        font-family: 'Consolas', monospace;
+        font-weight: 700;
+        color: var(--acento);
+        font-size: 17px;
+        margin-top: 5px;
+      }
+      .form-card .fnota {
+        font-size: 12.5px;
+        color: var(--gris);
+        margin-top: 3px;
+      }
+
+      .fig-medida {
+        text-align: center;
+        margin: 14px 0;
+      }
+      .fig-medida svg {
+        display: block;
+        margin: 0 auto;
+      }
+
+      /* ── COMPARACIÓN PERÍMETRO VS ÁREA ── */
+      .comparacion {
+        display: flex;
+        gap: 14px;
+        flex-wrap: wrap;
+        margin: 16px 0;
+      }
+      .comp-card {
+        flex: 1;
+        min-width: 240px;
+        border-radius: 11px;
+        padding: 16px 18px;
+      }
+      .comp-perim {
+        background: #fff3e0;
+        border: 2px solid var(--ambar);
+      }
+      .comp-area {
+        background: var(--verde-cl);
+        border: 2px solid var(--verde);
+      }
+      .comp-card .comp-tit {
+        font-weight: 700;
+        font-size: 16px;
+        margin-bottom: 6px;
+      }
+      .comp-perim .comp-tit {
+        color: var(--ambar);
+      }
+      .comp-area .comp-tit {
+        color: var(--verde);
+      }
+      .comp-card p {
+        margin: 5px 0;
+        font-size: 14.5px;
+      }
+
+      .ejemplo {
+        background: var(--crema);
+        border: 1px dashed var(--acento);
+        border-radius: 11px;
+        padding: 18px 22px;
+        margin: 18px 0;
+      }
+      .ejemplo .titulo-ej {
+        font-weight: 700;
+        color: var(--azul-osc);
+        margin-bottom: 8px;
+        font-size: 15px;
+      }
+      .paso {
+        margin: 8px 0 8px 4px;
+        padding-left: 32px;
+        position: relative;
+      }
+      .paso .n {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 24px;
+        height: 24px;
+        background: var(--acento);
+        color: #fff;
+        border-radius: 50%;
+        font-size: 13px;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .practica {
+        border: 2px solid var(--azul-cl);
+        border-radius: 12px;
+        padding: 20px 22px;
+        margin: 20px 0;
+        background: #fbfcfc;
+      }
+      .practica .cabe {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 6px;
+      }
+      .practica .cabe .ico {
+        font-size: 22px;
+      }
+      .practica .cabe h3 {
+        font-size: 16px;
+        color: var(--azul-osc);
+        margin: 0;
+      }
+      .pregunta-int {
+        font-size: 17px;
+        font-weight: 600;
+        margin: 14px 0 12px;
+      }
+      .opciones {
+        display: flex;
+        flex-direction: column;
+        gap: 9px;
+      }
+      .opcion {
+        border: 2px solid var(--linea);
+        border-radius: 9px;
+        padding: 11px 16px;
+        cursor: pointer;
+        background: #fff;
+        transition: 0.16s;
+        font-size: 16px;
+        text-align: left;
+        font-family: inherit;
+        color: var(--tinta);
+      }
+      .opcion:hover {
+        border-color: var(--acento);
+        background: var(--azul-cl);
+      }
+      .opcion.correcta {
+        border-color: var(--verde);
+        background: var(--verde-cl);
+        font-weight: 600;
+      }
+      .opcion.incorrecta {
+        border-color: var(--rojo);
+        background: var(--rojo-cl);
+      }
+      .opcion:disabled {
+        cursor: default;
+      }
+      .respuesta-int {
+        margin-top: 12px;
+        padding: 11px 15px;
+        border-radius: 8px;
+        font-size: 15px;
+        display: none;
+      }
+      .respuesta-int.bien {
+        background: var(--verde-cl);
+        color: var(--verde);
+        display: block;
+      }
+      .respuesta-int.mal {
+        background: var(--rojo-cl);
+        color: var(--rojo);
+        display: block;
+      }
+
+      .btn {
+        font-family: inherit;
+        font-size: 15px;
+        font-weight: 600;
+        padding: 9px 20px;
+        background: var(--acento);
+        color: #fff;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: 0.16s;
+      }
+      .btn:hover {
+        background: #006064;
+      }
+      .btn-sec {
+        background: #fff;
+        color: var(--acento);
+        border: 2px solid var(--acento);
+      }
+      .btn-sec:hover {
+        background: var(--azul-cl);
+      }
+
+      .quiz-bloque {
+        margin: 18px 0;
+        padding: 18px 20px;
+        border-radius: 11px;
+        background: var(--crema);
+        border: 1px solid var(--linea);
+      }
+      .quiz-bloque .qnum {
+        display: inline-block;
+        background: var(--azul-osc);
+        color: #fff;
+        font-size: 13px;
+        font-weight: 700;
+        padding: 3px 11px;
+        border-radius: 20px;
+        margin-bottom: 8px;
+      }
+      .quiz-bloque .pregunta {
+        font-weight: 600;
+        font-size: 16px;
+        margin-bottom: 12px;
+      }
+      .marcador {
+        text-align: center;
+        padding: 26px;
+        border-radius: 13px;
+        margin-top: 20px;
+        display: none;
+      }
+      .marcador.visible {
+        display: block;
+      }
+      .marcador .puntaje {
+        font-size: 46px;
+        font-weight: 800;
+        margin: 6px 0;
+      }
+      .marcador .mensaje {
+        font-size: 17px;
+      }
+      .barra-prog {
+        height: 10px;
+        background: var(--linea);
+        border-radius: 6px;
+        overflow: hidden;
+        margin: 14px 0;
+      }
+      .barra-prog span {
+        display: block;
+        height: 100%;
+        background: var(--verde);
+        width: 0;
+        transition: width 0.5s;
+      }
+
+      .tabla-rubrica {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 14px 0;
+        font-size: 14px;
+      }
+      .tabla-rubrica th,
+      .tabla-rubrica td {
+        border: 1px solid var(--linea);
+        padding: 10px 12px;
+        text-align: left;
+        vertical-align: top;
+      }
+      .tabla-rubrica thead th {
+        background: var(--azul-osc);
+        color: #fff;
+        font-size: 13px;
+      }
+      .tabla-rubrica tbody th {
+        font-weight: 600;
+        color: var(--azul-osc);
+        background: var(--azul-cl);
+        font-size: 14px;
+        text-align: left;
+      }
+      .nivel-cab {
+        background: #2f3d46;
+        color: #fff;
+        text-align: center;
+      }
+
+      .cierre {
+        background: linear-gradient(135deg, #263238, #455a64);
+        color: #fff;
+        border-radius: 14px;
+        padding: 28px 32px;
+        margin-top: 24px;
+      }
+      .cierre h2 {
+        color: #fff;
+      }
+      .cierre strong {
+        color: #eafde6;
+        font-weight: 700;
+      }
+      .cierre .num-seccion {
+        background: rgba(255, 255, 255, 0.22);
+      }
+      .flecha-sig {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: rgba(255, 255, 255, 0.16);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        padding: 10px 18px;
+        border-radius: 9px;
+        margin-top: 12px;
+        font-weight: 600;
+        font-size: 15px;
+      }
+
+      footer {
+        text-align: center;
+        padding: 30px 20px;
+        color: var(--gris);
+        font-size: 13px;
+      }
+
+      @media (max-width: 560px) {
+        header.principal {
+          padding: 34px 22px;
+        }
+        header.principal h1 {
+          font-size: 24px;
+        }
+        section {
+          padding: 24px 20px;
+        }
+      }
+      .tarjeta-interactiva {
+        display: block;
+        text-decoration: none;
+        background: linear-gradient(135deg, #0a1f1a 0%, #073d2d 100%);
+        border: 2px solid var(--c-ciencias);
+        border-radius: 10px;
+        padding: 22px 24px;
+        margin: 22px 0;
+        position: relative;
+        overflow: hidden;
+        transition:
+          transform 0.18s,
+          box-shadow 0.18s,
+          border-color 0.18s;
+        color: #e5f4ee;
+      }
+      .tarjeta-interactiva:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 12px 28px rgba(15, 122, 92, 0.25);
+        border-color: #6ee7b7;
+      }
+      .tarjeta-interactiva::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 140px;
+        height: 100%;
+        background: radial-gradient(circle at 70% 30%, rgba(110, 231, 183, 0.18) 0%, transparent 60%), radial-gradient(circle at 90% 70%, rgba(244, 114, 182, 0.12) 0%, transparent 50%);
+        pointer-events: none;
+      }
+
+      .tarjeta-interactiva .ti-descripcion strong {
+        color: #6ee7b7;
+      }
+      .tarjeta-interactiva .ti-cta {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: #34d399;
+        color: #051410;
+        padding: 9px 18px;
+        border-radius: 6px;
+        font-weight: 700;
+        font-size: 14px;
+        letter-spacing: 0.02em;
+        transition: background 0.15s;
+        position: relative;
+      }
+      .tarjeta-interactiva:hover .ti-cta {
+        background: #6ee7b7;
+      }
+      .tarjeta-interactiva .ti-cta .flecha {
+        transition: transform 0.15s;
+      }
+      .tarjeta-interactiva:hover .ti-cta .flecha {
+        transform: translateX(3px);
+      }
+      .tarjeta-interactiva h4 {
+        color: #fbbf24;
+      }
+      .tarjeta-interactiva .ti-icono {
+        font-size: 1.6rem;
+      }
+
+      @media (max-width: 640px) {
+        .tarjeta-interactiva {
+          padding: 18px 18px;
+        }
+        .tarjeta-interactiva h4 {
+          font-size: 17px;
+        }
+        .tarjeta-interactiva .ti-descripcion {
+          font-size: 14px;
+        }
+      }
+
+      /* ── FOCO VISIBLE (WCAG 2.4.7) ── */
+      a:focus-visible,
+      button:focus-visible,
+      [tabindex]:focus-visible {
+        outline: 3px solid var(--azul-osc);
+        outline-offset: 2px;
+      }
+
+      /* ── MOVIMIENTO REDUCIDO ── */
+      @media (prefers-reduced-motion: reduce) {
+        * {
+          transition: none !important;
+        }
+        html {
+          scroll-behavior: auto;
+        }
+      }
+
+      /* ── MARCAS DE RESPUESTA (no depender del color) ── */
+      .marca {
+        font-weight: 700;
+        margin-right: 6px;
+      }
+      .opcion.elegida {
+        border-color: var(--azul);
+        background: var(--azul-cl);
+      }
+      .opcion:disabled {
+        color: var(--tinta);
+        opacity: 1;
+      }
+
+      /* ── TABLAS RESPONSIVAS (DUA) ── */
+      .tabla-scroll {
+        overflow-x: auto;
+        overflow-y: hidden;
+        -webkit-overflow-scrolling: touch;
+        max-width: 100%;
+        margin: 18px 0 0;
+        border: 1px solid var(--linea);
+        border-radius: 8px;
+        background: var(--papel);
+      }
+      .tabla-scroll:focus,
+      .tabla-scroll:focus-visible {
+        outline: 3px solid var(--azul);
+        outline-offset: 2px;
+      }
+      .tabla-scroll > table {
+        margin: 0;
+        min-width: 100%;
+      }
+      .aviso-desliza {
+        margin: 8px 0 18px;
+        padding: 8px 12px;
+        font-size: 14px;
+        font-weight: 600;
+        color: #5c3900;
+        background: #fdf3df;
+        border-left: 4px solid #5c3900;
+        border-radius: 5px;
+      }
+      .cap-oculto {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0 0 0 0);
+        white-space: nowrap;
+        border: 0;
+      }
+      @media print {
+        .tabla-scroll {
+          overflow: visible;
+          border: 0;
+        }
+        .aviso-desliza {
+          display: none;
+        }
+      }
+    </style>
+</head>
+<body>
+<header class="principal">
+<div class="envoltura-header">
+<p class="ruta">Matemáticas · Nivel 1 · Tema 7 — Geometría</p>
+<h1>Lección 7.3 · Área de rectángulos y triángulos</h1>
+<p class="lema">Medir el espacio que cubre una figura por dentro: para pisos, alfombras y pintura.</p>
+<div class="chips">
+<span class="chip"><span aria-hidden="true">⏱️</span> 4 horas (2 sinc. + 2 asinc.)</span>
+<span class="chip"><span aria-hidden="true">📦</span> Área en unidades cuadradas</span>
+<span class="chip"><span aria-hidden="true">📘</span> MyOpenMath · Steck-Vaughn</span>
+</div>
+</div>
+</header>
+<div class="envoltura">
+<!-- OBJETIVOS -->
+<section>
+<div class="caja caja-objetivo">
+<h2>
+<span aria-hidden="true" class="num-seccion">🎯</span>
+            Objetivos de la clase
+          </h2>
+<p>Al terminar esta lección, usted podrá:</p>
+<ul>
+<li>
+<strong>Explicar</strong>
+              qué es el área y por qué se mide en unidades cuadradas.
+            </li>
+<li>
+<strong>Calcular</strong>
+              el área de rectángulos y cuadrados con la fórmula A = base × altura.
+            </li>
+<li>
+<strong>Calcular</strong>
+              el área de triángulos con la fórmula A = ½ × base × altura.
+            </li>
+<li>
+<strong>Distinguir</strong>
+              cuándo se necesita el perímetro y cuándo el área.
+            </li>
+</ul>
+</div>
+</section>
+<!-- QUÉ ES EL ÁREA -->
+<section>
+<h2>
+<span aria-hidden="true" class="num-seccion">1</span>
+          ¿Qué es el área?
+        </h2>
+<p>
+          En la
+          <strong>Lección 7.2</strong>
+          aprendió el perímetro: la distancia
+          <em>alrededor</em>
+          de una figura. Hoy verá algo distinto: el
+          <strong>área</strong>
+          .
+        </p>
+<p>
+          El
+          <strong>área</strong>
+          es el espacio que cubre una figura
+          <strong>por dentro</strong>
+          — la superficie. Si el perímetro es el borde de un terreno, el área es todo el terreno; si el perímetro es el marco de un cuadro, el área es la pintura completa.
+        </p>
+<p>
+          El área se mide
+          <strong>contando cuántos cuadrados</strong>
+          caben dentro de la figura. Por eso se expresa en
+          <strong>unidades cuadradas</strong>
+          : centímetros cuadrados (cm²), metros cuadrados (m²), pies cuadrados (ft²).
+        </p>
+<div class="fig-medida">
+<svg aria-label="Rectángulo cubierto por una cuadrícula de cuadrados de una unidad: 5 cuadrados de ancho por 3 de alto, 15 en total." height="150" role="img" viewbox="0 0 220 150" width="220" xmlns="http://www.w3.org/2000/svg">
+<g fill="#eceff1" stroke="#006974" stroke-width="1.5">
+<rect height="30" width="30" x="30" y="30"></rect>
+<rect height="30" width="30" x="60" y="30"></rect>
+<rect height="30" width="30" x="90" y="30"></rect>
+<rect height="30" width="30" x="120" y="30"></rect>
+<rect height="30" width="30" x="150" y="30"></rect>
+<rect height="30" width="30" x="30" y="60"></rect>
+<rect height="30" width="30" x="60" y="60"></rect>
+<rect height="30" width="30" x="90" y="60"></rect>
+<rect height="30" width="30" x="120" y="60"></rect>
+<rect height="30" width="30" x="150" y="60"></rect>
+<rect height="30" width="30" x="30" y="90"></rect>
+<rect height="30" width="30" x="60" y="90"></rect>
+<rect height="30" width="30" x="90" y="90"></rect>
+<rect height="30" width="30" x="120" y="90"></rect>
+<rect height="30" width="30" x="150" y="90"></rect>
+</g>
+<rect fill="none" height="90" stroke="#263238" stroke-width="3" width="150" x="30" y="30"></rect>
+<text fill="#263238" font-size="13" font-weight="700" x="95" y="22">5 cuadrados</text>
+<text fill="#263238" font-size="13" font-weight="700" x="6" y="80">3</text>
+</svg>
+</div>
+<div class="caja caja-tip">
+<span class="etiqueta et-verde">Idea clave</span>
+<p>
+            Este rectángulo tiene 3 filas de 5 cuadrados. Se pueden contar uno por uno (son 15), pero es más rápido
+            <strong>multiplicar</strong>
+            : 5 × 3 = 15 cuadrados. Esa multiplicación es la base de la fórmula del área.
+          </p>
+</div>
+</section>
+<!-- ÁREA DEL RECTÁNGULO -->
+<section>
+<h2>
+<span aria-hidden="true" class="num-seccion">2</span>
+          Área del rectángulo y del cuadrado
+        </h2>
+<p>
+          Como vio en la cuadrícula, el área de un rectángulo se obtiene
+          <strong>multiplicando su base por su altura</strong>
+          :
+        </p>
+<div class="formulas">
+<div class="form-card">
+<svg aria-label="Rectángulo rotulado con «base» en el lado horizontal y «altura» en el vertical." height="74" role="img" viewbox="0 0 100 74" width="100" xmlns="http://www.w3.org/2000/svg">
+<rect fill="#eceff1" height="38" stroke="#006974" stroke-width="3" width="64" x="14" y="20"></rect>
+<text fill="#263238" font-size="12" font-weight="700" x="32" y="16">base</text>
+<text fill="#263238" font-size="12" font-weight="700" x="80" y="44">altura</text>
+</svg>
+<div class="fnom">Rectángulo y cuadrado</div>
+<div class="formula">A = base × altura</div>
+<div class="fnota">El cuadrado: A = lado × lado</div>
+</div>
+<div class="form-card">
+<svg aria-label="Triángulo con la base rotulada y la altura marcada con una línea de puntos." height="74" role="img" viewbox="0 0 100 74" width="100" xmlns="http://www.w3.org/2000/svg">
+<polygon fill="#eceff1" points="20,58 80,58 54,16" stroke="#006974" stroke-width="3"></polygon>
+<line stroke="#7d4e00" stroke-dasharray="4 3" stroke-width="2" x1="54" x2="54" y1="16" y2="58"></line>
+<text fill="#263238" font-size="12" font-weight="700" x="36" y="70">base</text>
+<text fill="#7d4e00" font-size="12" font-weight="700" x="58" y="40">altura</text>
+</svg>
+<div class="fnom">Triángulo</div>
+<div class="formula">A = ½ × base × altura</div>
+<div class="fnota">La mitad del rectángulo</div>
+</div>
+</div>
+<div class="ejemplo">
+<p class="titulo-ej">Área de un rectángulo de 8 m de base y 5 m de altura</p>
+<p class="paso">
+<span aria-hidden="true" class="n">1</span>
+            Uso la fórmula: A = base × altura.
+          </p>
+<p class="paso">
+<span aria-hidden="true" class="n">2</span>
+            Sustituyo: A = 8 × 5.
+          </p>
+<p class="paso">
+<span aria-hidden="true" class="n">3</span>
+            Calculo: 8 × 5 = 40.
+          </p>
+<p class="paso">
+<span aria-hidden="true" class="n">✓</span>
+            El área es
+            <strong>40 metros cuadrados (40 m²)</strong>
+            .
+          </p>
+</div>
+<div class="caja caja-ojo">
+<span class="etiqueta et-ambar">¡Ojo! El área va en unidades cuadradas</span>
+<p>
+            El perímetro se da en metros (m); el área se da en metros
+            <strong>cuadrados</strong>
+            (m²). El pequeño "2" recuerda que el área cuenta
+            <em>cuadrados</em>
+            , no longitud. No lo olvide en su respuesta.
+          </p>
+</div>
+<div class="practica">
+<div class="cabe">
+<span aria-hidden="true" class="ico">✏️</span>
+<h3>Práctica 1 — Área del rectángulo</h3>
+</div>
+<p class="pregunta-int" id="t-p1">Un rectángulo tiene 9 cm de base y 6 cm de altura. ¿Cuál es su área?</p>
+<div aria-labelledby="t-p1" class="opciones" data-quiz="p1" role="group">
+<button class="opcion" data-correcta="no" type="button">15 cm²</button>
+<button class="opcion" data-correcta="si" type="button">54 cm²</button>
+<button class="opcion" data-correcta="no" type="button">30 cm²</button>
+<button class="opcion" data-correcta="no" type="button">27 cm²</button>
+</div>
+<div aria-live="polite" class="respuesta-int" id="r-p1" role="status"></div>
+</div>
+<div class="practica">
+<div class="cabe">
+<span aria-hidden="true" class="ico">✏️</span>
+<h3>Práctica 2 — Área del cuadrado</h3>
+</div>
+<p class="pregunta-int" id="t-p2">Un cuadrado mide 7 m de lado. ¿Cuál es su área?</p>
+<div aria-labelledby="t-p2" class="opciones" data-quiz="p2" role="group">
+<button class="opcion" data-correcta="no" type="button">28 m²</button>
+<button class="opcion" data-correcta="no" type="button">14 m²</button>
+<button class="opcion" data-correcta="si" type="button">49 m²</button>
+<button class="opcion" data-correcta="no" type="button">21 m²</button>
+</div>
+<div aria-live="polite" class="respuesta-int" id="r-p2" role="status"></div>
+</div>
+</section>
+<!-- ÁREA DEL TRIÁNGULO -->
+<section>
+<h2>
+<span aria-hidden="true" class="num-seccion">3</span>
+          Área del triángulo
+        </h2>
+<p>
+          El área del triángulo tiene una relación bonita con la del rectángulo:
+          <strong>un triángulo es exactamente la mitad de un rectángulo</strong>
+          de la misma base y la misma altura. Por eso su fórmula lleva el
+          <strong>½</strong>
+          :
+        </p>
+<p style="text-align: center">
+<span class="formula" style="font-size: 18px; font-family: Consolas, monospace; font-weight: bold; color: #006974; background: #eceff1; border-radius: 6px; padding: 6px 12px; display: inline-block">
+            A = ½ × base × altura
+          </span>
+</p>
+<div class="caja caja-tip">
+<span class="etiqueta et-verde">¿Qué es la altura del triángulo?</span>
+<p>
+            La
+            <strong>base</strong>
+            es uno de los lados. La
+            <strong>altura</strong>
+            es la distancia desde esa base hasta el vértice de arriba, medida en línea recta (perpendicular). En las figuras se marca con una línea punteada.
+          </p>
+</div>
+<div class="ejemplo">
+<p class="titulo-ej">Área de un triángulo de 10 cm de base y 6 cm de altura</p>
+<p class="paso">
+<span aria-hidden="true" class="n">1</span>
+            Uso la fórmula: A = ½ × base × altura.
+          </p>
+<p class="paso">
+<span aria-hidden="true" class="n">2</span>
+            Primero multiplico base × altura: 10 × 6 = 60.
+          </p>
+<p class="paso">
+<span aria-hidden="true" class="n">3</span>
+            Ahora tomo la mitad: 60 ÷ 2 = 30.
+          </p>
+<p class="paso">
+<span aria-hidden="true" class="n">✓</span>
+            El área es
+            <strong>30 centímetros cuadrados (30 cm²)</strong>
+            .
+          </p>
+</div>
+<div class="caja caja-ojo">
+<span class="etiqueta et-ambar">Un orden cómodo</span>
+<p>
+            Para el triángulo, lo más sencillo es: primero multiplicar base × altura, y
+            <strong>al final</strong>
+            dividir entre 2. Si divide al principio puede complicarse; dejándolo para el final, casi siempre trabaja con números enteros.
+          </p>
+</div>
+<div class="practica">
+<div class="cabe">
+<span aria-hidden="true" class="ico">✏️</span>
+<h3>Práctica 3 — Área del triángulo</h3>
+</div>
+<p class="pregunta-int" id="t-p3">Un triángulo tiene 8 m de base y 5 m de altura. ¿Cuál es su área?</p>
+<div aria-labelledby="t-p3" class="opciones" data-quiz="p3" role="group">
+<button class="opcion" data-correcta="no" type="button">40 m²</button>
+<button class="opcion" data-correcta="si" type="button">20 m²</button>
+<button class="opcion" data-correcta="no" type="button">13 m²</button>
+<button class="opcion" data-correcta="no" type="button">26 m²</button>
+</div>
+<div aria-live="polite" class="respuesta-int" id="r-p3" role="status"></div>
+</div>
+<div class="practica">
+<div class="cabe">
+<span aria-hidden="true" class="ico">✏️</span>
+<h3>Práctica 4 — Área del triángulo</h3>
+</div>
+<p class="pregunta-int" id="t-p4">Un triángulo tiene 12 cm de base y 7 cm de altura. ¿Cuál es su área?</p>
+<div aria-labelledby="t-p4" class="opciones" data-quiz="p4" role="group">
+<button class="opcion" data-correcta="no" type="button">84 cm²</button>
+<button class="opcion" data-correcta="si" type="button">42 cm²</button>
+<button class="opcion" data-correcta="no" type="button">19 cm²</button>
+<button class="opcion" data-correcta="no" type="button">38 cm²</button>
+</div>
+<div aria-live="polite" class="respuesta-int" id="r-p4" role="status"></div>
+</div>
+</section>
+<!-- PERÍMETRO VS ÁREA -->
+<section>
+<h2>
+<span aria-hidden="true" class="num-seccion">4</span>
+          Perímetro o área: ¿cuál necesito?
+        </h2>
+<p>Esta es una de las distinciones más importantes del Tema 7. Perímetro y área miden cosas distintas, y muchos problemas se equivocan al confundirlos.</p>
+<div class="comparacion">
+<div class="comp-card comp-perim">
+<div class="comp-tit">📏 Perímetro — el borde</div>
+<p>
+              Es la distancia
+              <strong>alrededor</strong>
+              . Se mide en unidades normales (m, cm, ft).
+            </p>
+<p>
+<strong>Se usa para:</strong>
+              cercar un terreno, enmarcar un cuadro, poner moldura, bordear con cinta.
+            </p>
+</div>
+<div class="comp-card comp-area">
+<div class="comp-tit">📦 Área — el interior</div>
+<p>
+              Es el espacio que se
+              <strong>cubre por dentro</strong>
+              . Se mide en unidades cuadradas (m², cm², ft²).
+            </p>
+<p>
+<strong>Se usa para:</strong>
+              alfombrar un piso, pintar una pared, sembrar un terreno, colocar baldosas.
+            </p>
+</div>
+</div>
+<div class="caja caja-tip">
+<span class="etiqueta et-verde">La pregunta que lo resuelve</span>
+<p>
+            Ante un problema, pregúntese: ¿esto
+            <strong>rodea</strong>
+            la figura o la
+            <strong>rellena</strong>
+            ? Rodear (una cerca alrededor) → perímetro. Rellenar (alfombra que cubre el piso) → área.
+          </p>
+</div>
+<div class="practica">
+<div class="cabe">
+<span aria-hidden="true" class="ico">✏️</span>
+<h3>Práctica 5 — ¿Perímetro o área?</h3>
+</div>
+<p class="pregunta-int" id="t-p5">Para saber cuánta alfombra se necesita para cubrir el piso de una sala, ¿qué se debe calcular?</p>
+<div aria-labelledby="t-p5" class="opciones" data-quiz="p5" role="group">
+<button class="opcion" data-correcta="no" type="button">El perímetro</button>
+<button class="opcion" data-correcta="si" type="button">El área</button>
+<button class="opcion" data-correcta="no" type="button">El número de lados</button>
+</div>
+<div aria-live="polite" class="respuesta-int" id="r-p5" role="status"></div>
+</div>
+<div class="practica">
+<div class="cabe">
+<span aria-hidden="true" class="ico">✏️</span>
+<h3>Práctica 6 — Problema real de área</h3>
+</div>
+<p class="pregunta-int" id="t-p6">Una sala rectangular mide 6 m de base y 4 m de altura. ¿Cuántos metros cuadrados de piso de madera se necesitan?</p>
+<div aria-labelledby="t-p6" class="opciones" data-quiz="p6" role="group">
+<button class="opcion" data-correcta="no" type="button">20 m²</button>
+<button class="opcion" data-correcta="si" type="button">24 m²</button>
+<button class="opcion" data-correcta="no" type="button">10 m²</button>
+<button class="opcion" data-correcta="no" type="button">12 m²</button>
+</div>
+<div aria-live="polite" class="respuesta-int" id="r-p6" role="status"></div>
+</div>
+</section>
+<!-- ===== TARJETA INTERACTIVA:  Balanceo químico ===== -->
+<a class="tarjeta-interactiva" href="https://zhemaria.github.io/math/area" rel="noopener" target="_blank">
+<div class="ti-cabecera">
+<span aria-hidden="true" class="ti-icono">📎</span>
+<span class="ti-eyebrow">Recurso interactivo</span>
+</div>
+<h3><span aria-hidden="true">🗺️</span> Área y Perímetro</h3>
+<p class="ti-descripcion">
+          Practica el cálculo del
+          <strong>área</strong>
+          y del
+          <strong>perímetro</strong>
+          de forma interactiva. Practicarás las medidas de lados, alturas.
+        </p>
+<span class="ti-cta">
+          ▶ Abrir el interactivo
+          <span class="flecha">→</span>
+</span>
+<span class="cap-oculto"> (se abre en una ventana nueva)</span></a>
+<!-- PRÁCTICA GUIADA -->
+<section>
+<h2>
+<span aria-hidden="true" class="num-seccion">5</span>
+          Práctica guiada en clase
+        </h2>
+<p>
+          Estas actividades se hacen
+          <strong>en la sesión sincrónica</strong>
+          . Cada actividad incluye una variante para la
+          <strong>clase presencial</strong>
+          y otra para la
+          <strong>clase en línea</strong>
+          ; el objetivo de aprendizaje es el mismo en ambas.
+        </p>
+<div class="caja caja-recurso">
+<span class="etiqueta et-azul">Actividad A · "Contar cuadrados"</span>
+<p>Antes de usar la fórmula, los estudiantes descubren el área contando cuadrados en una cuadrícula.</p>
+<div class="modalidades">
+<div class="modo modo-pres">
+<span class="modo-tit">🏫 Presencial</span>
+<p>Reparta hojas con figuras dibujadas sobre cuadrícula centimétrica. Los estudiantes cuentan los cuadrados de cada figura y luego verifican que la fórmula da el mismo número.</p>
+</div>
+<div class="modo modo-line">
+<span class="modo-tit">💻 En línea</span>
+<p>Comparta figuras sobre cuadrícula en una diapositiva. Los estudiantes cuentan los cuadrados, escriben el total en el chat y comprueban con la fórmula. El grupo revisa juntos.</p>
+</div>
+</div>
+</div>
+<div class="caja caja-recurso">
+<span class="etiqueta et-azul">Actividad B · "Reforma del apartamento"</span>
+<p>A partir del plano de un apartamento simple, los estudiantes calculan el área de cada cuarto.</p>
+<div class="modalidades">
+<div class="modo modo-pres">
+<span class="modo-tit">🏫 Presencial</span>
+<p>
+                Reparta el plano de un apartamento (sala rectangular + dormitorio triangular). En parejas, los estudiantes calculan cuántos m² de piso de madera necesita la sala y cuántos m² de
+                alfombra el dormitorio.
+              </p>
+</div>
+<div class="modo modo-line">
+<span class="modo-tit">💻 En línea</span>
+<p>Comparta el plano del apartamento en una diapositiva. En salas pequeñas (breakout rooms), las parejas calculan las áreas y al volver presentan sus resultados al grupo.</p>
+</div>
+</div>
+</div>
+<div class="caja caja-recurso">
+<span class="etiqueta et-azul">Actividad C · "Perímetro Y área"</span>
+<p>Dado un mismo rectángulo, los estudiantes calculan las dos medidas y explican la diferencia.</p>
+<div class="modalidades">
+<div class="modo modo-pres">
+<span class="modo-tit">🏫 Presencial</span>
+<p>Para un rectángulo dado, cada estudiante calcula el perímetro y el área, y escribe una frase explicando para qué serviría cada uno. Se comparten varias frases en el pizarrón.</p>
+</div>
+<div class="modo modo-line">
+<span class="modo-tit">💻 En línea</span>
+<p>Muestre un rectángulo con sus medidas. Los estudiantes calculan perímetro y área, y publican en el chat una frase que explique la diferencia. El grupo comenta las respuestas.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- TAREA ASINCRÓNICA -->
+<section>
+<h2>
+<span aria-hidden="true" class="num-seccion">6</span>
+          Tarea asincrónica
+        </h2>
+<p>
+          Estas actividades se realizan
+          <strong>por su cuenta</strong>
+          , dentro de las 2 horas asincrónicas de la lección.
+        </p>
+<ul>
+<li>
+<strong>MyOpenMath:</strong>
+            complete los
+            <strong>10 problemas</strong>
+            de área de rectángulos y triángulos. Cada uno da retroalimentación inmediata.
+          </li>
+<li>
+<strong>Brightspace:</strong>
+            realice el quiz de la lección (abajo puede practicarlo antes).
+          </li>
+<li>
+<strong>Actividad personal:</strong>
+            elija una habitación de su casa. Mida su base y su altura, calcule el área en metros cuadrados y piense cuánta pintura o piso necesitaría.
+          </li>
+</ul>
+</section>
+<!-- QUIZ -->
+<section>
+<h2>
+<span aria-hidden="true" class="num-seccion">7</span>
+          Quiz de práctica
+        </h2>
+<p>
+          Responda las
+          <strong>8 preguntas</strong>
+          . Al final verá su puntaje y podrá repasar lo que falló. Puede repetir el quiz las veces que quiera.
+        </p>
+<div id="quiz">
+<div class="quiz-bloque">
+<span class="qnum">Pregunta 1</span>
+<p class="pregunta" id="t-q1">El área de una figura es:</p>
+<div aria-labelledby="t-q1" class="opciones" data-q="1" role="group">
+<button class="opcion" data-c="no" type="button">La distancia alrededor de la figura.</button>
+<button class="opcion" data-c="si" type="button">El espacio que cubre por dentro.</button>
+<button class="opcion" data-c="no" type="button">El número de vértices.</button>
+<button class="opcion" data-c="no" type="button">El lado más largo.</button>
+</div>
+</div>
+<div class="quiz-bloque">
+<span class="qnum">Pregunta 2</span>
+<p class="pregunta" id="t-q2">El área se expresa en:</p>
+<div aria-labelledby="t-q2" class="opciones" data-q="2" role="group">
+<button class="opcion" data-c="no" type="button">Unidades normales (m, cm).</button>
+<button class="opcion" data-c="si" type="button">Unidades cuadradas (m², cm²).</button>
+<button class="opcion" data-c="no" type="button">Grados.</button>
+<button class="opcion" data-c="no" type="button">Litros.</button>
+</div>
+</div>
+<div class="quiz-bloque">
+<span class="qnum">Pregunta 3</span>
+<p class="pregunta" id="t-q3">¿Cuál es el área de un rectángulo de 10 cm de base y 4 cm de altura?</p>
+<div aria-labelledby="t-q3" class="opciones" data-q="3" role="group">
+<button class="opcion" data-c="si" type="button">40 cm²</button>
+<button class="opcion" data-c="no" type="button">28 cm²</button>
+<button class="opcion" data-c="no" type="button">14 cm²</button>
+<button class="opcion" data-c="no" type="button">20 cm²</button>
+</div>
+</div>
+<div class="quiz-bloque">
+<span class="qnum">Pregunta 4</span>
+<p class="pregunta" id="t-q4">¿Cuál es el área de un cuadrado de 6 m de lado?</p>
+<div aria-labelledby="t-q4" class="opciones" data-q="4" role="group">
+<button class="opcion" data-c="si" type="button">36 m²</button>
+<button class="opcion" data-c="no" type="button">24 m²</button>
+<button class="opcion" data-c="no" type="button">12 m²</button>
+<button class="opcion" data-c="no" type="button">18 m²</button>
+</div>
+</div>
+<div class="quiz-bloque">
+<span class="qnum">Pregunta 5</span>
+<p class="pregunta" id="t-q5">La fórmula del área del triángulo es:</p>
+<div aria-labelledby="t-q5" class="opciones" data-q="5" role="group">
+<button class="opcion" data-c="no" type="button">A = base × altura</button>
+<button class="opcion" data-c="si" type="button">A = ½ × base × altura</button>
+<button class="opcion" data-c="no" type="button">A = 4 × lado</button>
+<button class="opcion" data-c="no" type="button">A = base + altura</button>
+</div>
+</div>
+<div class="quiz-bloque">
+<span class="qnum">Pregunta 6</span>
+<p class="pregunta" id="t-q6">¿Cuál es el área de un triángulo de 14 cm de base y 6 cm de altura?</p>
+<div aria-labelledby="t-q6" class="opciones" data-q="6" role="group">
+<button class="opcion" data-c="si" type="button">42 cm²</button>
+<button class="opcion" data-c="no" type="button">84 cm²</button>
+<button class="opcion" data-c="no" type="button">20 cm²</button>
+<button class="opcion" data-c="no" type="button">40 cm²</button>
+</div>
+</div>
+<div class="quiz-bloque">
+<span class="qnum">Pregunta 7</span>
+<p class="pregunta" id="t-q7">Para saber cuánta pintura se necesita para cubrir una pared, ¿qué se debe calcular?</p>
+<div aria-labelledby="t-q7" class="opciones" data-q="7" role="group">
+<button class="opcion" data-c="no" type="button">El perímetro de la pared.</button>
+<button class="opcion" data-c="si" type="button">El área de la pared.</button>
+<button class="opcion" data-c="no" type="button">El número de lados.</button>
+<button class="opcion" data-c="no" type="button">La altura solamente.</button>
+</div>
+</div>
+<div class="quiz-bloque">
+<span class="qnum">Pregunta 8</span>
+<p class="pregunta" id="t-q8">Una sala mide 7 m de base y 5 m de altura. ¿Cuántos metros cuadrados de alfombra se necesitan para cubrir todo el piso?</p>
+<div aria-labelledby="t-q8" class="opciones" data-q="8" role="group">
+<button class="opcion" data-c="no" type="button">24 m²</button>
+<button class="opcion" data-c="si" type="button">35 m²</button>
+<button class="opcion" data-c="no" type="button">12 m²</button>
+<button class="opcion" data-c="no" type="button">17 m²</button>
+</div>
+</div>
+</div>
+<div style="text-align: center; margin-top: 18px">
+<button class="btn" id="btn-calificar" type="button">Ver mi resultado</button>
+<button class="btn btn-sec" id="btn-reintentar" style="display: none" type="button">Intentar de nuevo</button>
+</div>
+<div aria-live="polite" class="marcador" id="marcador" role="status">
+<div aria-hidden="true" class="barra-prog"><span id="barra"></span></div>
+<p class="puntaje" id="puntaje"></p>
+<p class="mensaje" id="mensaje"></p>
+</div>
+</section>
+<!-- RÚBRICA -->
+<section>
+<h2>
+<span aria-hidden="true" class="num-seccion">8</span>
+          Rúbrica de evaluación
+        </h2>
+<p>Rúbrica analítica de área. Cada criterio se evalúa en cuatro niveles.</p>
+<div aria-label="Rúbrica de evaluación: criterios y sus niveles de logro (tabla desplazable horizontalmente)" class="tabla-scroll" role="region" tabindex="0"><table class="tabla-rubrica"><caption class="cap-oculto">Rúbrica de evaluación: criterios y sus niveles de logro</caption>
+<thead>
+<tr>
+<th scope="col">Criterio</th>
+<th class="nivel-cab" scope="col">Logrado (4)</th>
+<th class="nivel-cab" scope="col">Satisfactorio (3)</th>
+<th class="nivel-cab" scope="col">En proceso (2)</th>
+<th class="nivel-cab" scope="col">Por reforzar (1)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th scope="row">Identifica base y altura</th>
+<td>Identifica base y altura con seguridad en todas las figuras.</td>
+<td>Identifica base y altura correctamente casi siempre.</td>
+<td>Confunde la altura con un lado inclinado.</td>
+<td>No identifica base y altura.</td>
+</tr>
+<tr>
+<th scope="row">Aplica la fórmula</th>
+<td>Aplica la fórmula de rectángulo y triángulo sin errores.</td>
+<td>Aplica la fórmula correcta casi siempre.</td>
+<td>Olvida el ½ en el triángulo.</td>
+<td>No aplica las fórmulas de área.</td>
+</tr>
+<tr>
+<th scope="row">Expresa en unidades cuadradas</th>
+<td>Siempre da el resultado en unidades cuadradas (m², cm²).</td>
+<td>Incluye la unidad cuadrada casi siempre.</td>
+<td>Da el número sin el "cuadrado".</td>
+<td>El resultado es incorrecto.</td>
+</tr>
+<tr>
+<th scope="row">Distingue perímetro y área</th>
+<td>Decide siempre cuál usar según el contexto y lo explica.</td>
+<td>Distingue perímetro y área correctamente casi siempre.</td>
+<td>Duda con frecuencia entre los dos.</td>
+<td>Confunde perímetro y área.</td>
+</tr>
+</tbody>
+</table></div><p class="aviso-desliza"><span aria-hidden="true">↔</span> Deslice la tabla horizontalmente para ver todas las columnas.</p>
+</section>
+<!-- CIERRE -->
+<div class="cierre">
+<h2>
+<span aria-hidden="true" class="num-seccion">➡️</span>
+          Lo que viene en el próximo tema
+        </h2>
+<p>
+          Con esta lección cierra el
+          <strong>Tema 7 · Geometría</strong>
+          . Ya sabe clasificar figuras, calcular su perímetro y su área, y distinguir cuándo usar cada uno.
+        </p>
+<p>
+          En el
+          <strong>Tema 8 · Tablas, gráficas y proyecto final</strong>
+          dará el último paso del Nivel 1: aprenderá a
+          <strong>leer y entender datos</strong>
+          . La
+          <strong>Lección 8.1 · Leer e interpretar tablas de datos</strong>
+          le enseñará a sacar información de las tablas que aparecen a diario — precios, horarios, resultados— y a describir con palabras lo que muestran.
+        </p>
+<p class="flecha-sig">➡️  Próxima: Tema 8 · Lección 8.1 · Leer e interpretar tablas de datos</p>
+</div>
+</div>
+<footer>
+      Matemáticas · Nivel 1 · Lección 7.3 — Spanish ASE Math · AE 0170-0321
+      <br/>
+      City Colleges of Chicago · Truman College · Prof. José M. Fernández
+    </footer>
+<script>
+      // ── PRÁCTICA INTERACTIVA ──
+      var respuestasPractica = {
+        p1: 'A = base × altura = 9 × 6 = 54 cm². Recuerde expresar el área en unidades cuadradas.',
+        p2: 'A = lado × lado = 7 × 7 = 49 m². El cuadrado es un rectángulo con la base y la altura iguales.',
+        p3: 'A = ½ × base × altura. Primero 8 × 5 = 40; luego la mitad: 40 ÷ 2 = 20 m².',
+        p4: 'A = ½ × base × altura. Primero 12 × 7 = 84; luego la mitad: 84 ÷ 2 = 42 cm².',
+        p5: 'Se calcula el ÁREA. La alfombra cubre el piso por dentro (lo rellena), y eso es área.',
+        p6: 'Es área: A = base × altura = 6 × 4 = 24 m² de piso de madera.'
+      };
+
+      document.querySelectorAll('.opciones[data-quiz]').forEach(function (grupo) {
+        var id = grupo.getAttribute('data-quiz');
+        grupo.querySelectorAll('.opcion').forEach(function (op) {
+          op.addEventListener('click', function () {
+            var acerto = op.getAttribute('data-correcta') === 'si';
+            grupo.querySelectorAll('.opcion').forEach(function (o) {
+              o.disabled = true;
+              if (o.getAttribute('data-correcta') === 'si') {
+                o.classList.add('correcta');
+                o.insertAdjacentHTML('afterbegin', '<span class="marca">\u2713 Correcta:</span> ');
+              }
+            });
+            if (!acerto) {
+              op.classList.add('incorrecta');
+              op.insertAdjacentHTML('afterbegin', '<span class="marca">\u2717 Su respuesta:</span> ');
+            }
+            var r = document.getElementById('r-' + id);
+            r.className = 'respuesta-int ' + (acerto ? 'bien' : 'mal');
+            r.textContent = (acerto ? 'Correcto. ' : 'Revise: ') + respuestasPractica[id];
+          });
+        });
+      });
+
+      // ── QUIZ FINAL ──
+      var totalPreguntas = 8;
+      var seleccion = {};
+
+      document.querySelectorAll('#quiz .opciones').forEach(function (grupo) {
+        var q = grupo.getAttribute('data-q');
+        grupo.querySelectorAll('.opcion').forEach(function (op) {
+          op.setAttribute('aria-pressed', 'false');
+          op.addEventListener('click', function () {
+            grupo.querySelectorAll('.opcion').forEach(function (o) {
+              o.classList.remove('elegida');
+              o.setAttribute('aria-pressed', 'false');
+            });
+            op.classList.add('elegida');
+            op.setAttribute('aria-pressed', 'true');
+            seleccion[q] = op;
+          });
+        });
+      });
+
+      document.getElementById('btn-calificar').addEventListener('click', function () {
+        var correctas = 0;
+        document.querySelectorAll('#quiz .opciones').forEach(function (grupo) {
+          var q = grupo.getAttribute('data-q');
+          grupo.querySelectorAll('.opcion').forEach(function (o) {
+            o.disabled = true;
+            if (o.getAttribute('data-c') === 'si') {
+              o.classList.add('correcta');
+              o.insertAdjacentHTML('afterbegin', '<span class="marca">\u2713 Correcta:</span> ');
+            }
+          });
+          var elegida = seleccion[q];
+          if (elegida) {
+            if (elegida.getAttribute('data-c') === 'si') {
+              correctas++;
+            } else {
+              elegida.classList.add('incorrecta');
+              elegida.insertAdjacentHTML('afterbegin', '<span class="marca">\u2717 Su respuesta:</span> ');
+            }
+          }
+        });
+
+        var marc = document.getElementById('marcador');
+        var pct = Math.round((correctas / totalPreguntas) * 100);
+        document.getElementById('puntaje').textContent = correctas + ' de ' + totalPreguntas + ' correctas';
+
+        var msg, color;
+        if (pct >= 88) {
+          msg = 'Excelente. Cerró el Tema 7 dominando el área y el perímetro. Está listo para el Tema 8.';
+          color = '#e7f4ec';
+        } else if (pct >= 63) {
+          msg = 'Buen trabajo. Repase las preguntas marcadas como incorrectas y vuelva a intentarlo.';
+          color = '#fdf3df';
+        } else {
+          msg = 'Repasemos juntos. Vuelva a leer las secciones 2, 3 y 4, y reintente el quiz.';
+          color = '#fdecea';
+        }
+
+        marc.style.background = color;
+        document.getElementById('mensaje').textContent = msg;
+        marc.classList.add('visible');
+        document.getElementById('barra').style.width = pct + '%';
+        document.getElementById('btn-calificar').style.display = 'none';
+
+        var reintentar = document.getElementById('btn-reintentar');
+        reintentar.style.display = 'inline-block';
+        reintentar.focus();
+      });
+
+      document.getElementById('btn-reintentar').addEventListener('click', function () {
+        document.querySelectorAll('#quiz .opcion').forEach(function (o) {
+          o.disabled = false;
+          o.classList.remove('correcta', 'incorrecta', 'elegida');
+          o.setAttribute('aria-pressed', 'false');
+          var marca = o.querySelector('.marca');
+          if (marca) {
+            marca.remove();
+          }
+        });
+        for (var k in seleccion) {
+          delete seleccion[k];
+        }
+        document.getElementById('marcador').classList.remove('visible');
+        document.getElementById('puntaje').textContent = '';
+        document.getElementById('mensaje').textContent = '';
+        document.getElementById('btn-calificar').style.display = 'inline-block';
+        document.getElementById('btn-reintentar').style.display = 'none';
+        var primera = document.querySelector('#quiz .opcion');
+        if (primera) {
+          primera.focus();
+        }
+      });
+
+      // ── TABLAS RESPONSIVAS ──
+      // Los contenedores y avisos ya están en el marcado, para que los
+      // revisores que no ejecutan JavaScript los detecten.
+      (function () {
+        var TEXTO_AVISO = '\u2194 Deslice la tabla horizontalmente para ver todas las columnas.';
+        var pares = [];
+
+        document.querySelectorAll('table').forEach(function (t) {
+          var caja = t.parentNode;
+          if (!caja.classList.contains('tabla-scroll')) {
+            var cap = t.querySelector('caption');
+            var etiqueta = (cap ? cap.textContent.trim() : 'Tabla de datos') + ' (tabla desplazable horizontalmente)';
+            var nueva = document.createElement('div');
+            nueva.className = 'tabla-scroll';
+            nueva.setAttribute('role', 'region');
+            nueva.setAttribute('tabindex', '0');
+            nueva.setAttribute('aria-label', etiqueta);
+            t.parentNode.insertBefore(nueva, t);
+            nueva.appendChild(t);
+            caja = nueva;
+          }
+          var aviso = caja.nextElementSibling;
+          if (!aviso || !aviso.classList.contains('aviso-desliza')) {
+            aviso = document.createElement('p');
+            aviso.className = 'aviso-desliza';
+            aviso.textContent = TEXTO_AVISO;
+            caja.parentNode.insertBefore(aviso, caja.nextSibling);
+          }
+          pares.push({ caja: caja, aviso: aviso });
+        });
+
+        function actualizar() {
+          pares.forEach(function (p) {
+            p.aviso.style.display = p.caja.scrollWidth > p.caja.clientWidth + 2 ? 'block' : 'none';
+          });
+        }
+        actualizar();
+
+        var tm;
+        window.addEventListener('resize', function () {
+          clearTimeout(tm);
+          tm = setTimeout(actualizar, 150);
+        });
+      })();
+    </script>
+</body>
+</html>

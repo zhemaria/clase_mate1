@@ -1,0 +1,1460 @@
+<!DOCTYPE html>
+
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Lección 7.1 · Clasificación de figuras 2D — Matemáticas Nivel 1</title>
+<style>
+      :root {
+        --azul: #37474f;
+        --azul-osc: #263238;
+        --azul-cl: #eceff1;
+        --tinta: #1a2330;
+        --gris: #5b6675;
+        --linea: #dde3ea;
+        --crema: #f6f4ee;
+        --papel: #ffffff;
+        --verde: #276b44;
+        --verde-cl: #e7f4ec;
+        --ambar: #7d4e00;
+        --ambar-cl: #fdf3df;
+        --rojo: #b5342a;
+        --rojo-cl: #fdecea;
+        --acento: #006974;
+        --sombra: 0 2px 10px rgba(38, 50, 56, 0.12);
+      }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        font-family: 'Segoe UI', 'Helvetica Neue', system-ui, sans-serif;
+        background: var(--crema);
+        color: var(--tinta);
+        line-height: 1.65;
+        font-size: 17px;
+      }
+      .envoltura {
+        max-width: 880px;
+        margin: 0 auto;
+        padding: 0 20px 80px;
+      }
+
+      header.principal {
+        background: linear-gradient(135deg, #263238 0%, #37474f 55%, #455a64 100%);
+        color: #fff;
+        padding: 46px 38px 40px;
+        border-radius: 0 0 22px 22px;
+        box-shadow: 0 6px 22px rgba(38, 50, 56, 0.3);
+      }
+      .envoltura-header {
+        max-width: 880px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+      .ruta {
+        font-size: 13px;
+        letter-spacing: 0.6px;
+        text-transform: uppercase;
+        opacity: 0.85;
+        margin-bottom: 14px;
+      }
+      header.principal h1 {
+        font-size: 30px;
+        font-weight: 700;
+        line-height: 1.25;
+        margin-bottom: 8px;
+      }
+      header.principal .lema {
+        font-size: 16px;
+        opacity: 0.93;
+        font-weight: 400;
+        max-width: 620px;
+      }
+      .chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 20px;
+      }
+      .chip {
+        background: rgba(255, 255, 255, 0.16);
+        border: 1px solid rgba(255, 255, 255, 0.28);
+        padding: 6px 14px;
+        border-radius: 30px;
+        font-size: 13px;
+        font-weight: 600;
+      }
+
+      section {
+        background: var(--papel);
+        margin-top: 22px;
+        padding: 30px 34px;
+        border-radius: 14px;
+        box-shadow: var(--sombra);
+      }
+      .num-seccion {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 34px;
+        height: 34px;
+        background: var(--acento);
+        color: #fff;
+        border-radius: 9px;
+        font-weight: 700;
+        font-size: 17px;
+        margin-right: 12px;
+        flex-shrink: 0;
+      }
+      h2 {
+        display: flex;
+        align-items: center;
+        font-size: 23px;
+        color: var(--azul-osc);
+        margin-bottom: 16px;
+        font-weight: 700;
+      }
+      h3 {
+        font-size: 18px;
+        color: var(--azul-osc);
+        margin: 22px 0 10px;
+        font-weight: 700;
+      }
+      p {
+        margin: 11px 0;
+      }
+      ul,
+      ol {
+        margin: 11px 0 11px 26px;
+      }
+      li {
+        margin: 6px 0;
+      }
+      strong {
+        color: var(--azul-osc);
+      }
+
+      .caja {
+        border-radius: 11px;
+        padding: 18px 22px;
+        margin: 18px 0;
+        border-left: 5px solid;
+      }
+      .caja-objetivo {
+        background: var(--azul-cl);
+        border-color: var(--acento);
+      }
+      .caja-objetivo h2 {
+        margin-bottom: 10px;
+      }
+      .caja-tip {
+        background: var(--verde-cl);
+        border-color: var(--verde);
+      }
+      .caja-tip strong {
+        color: var(--verde);
+      }
+      .caja-ojo {
+        background: var(--ambar-cl);
+        border-color: var(--ambar);
+      }
+      .caja-ojo strong {
+        color: var(--ambar);
+      }
+      .caja-recurso {
+        background: #eef2f7;
+        border-color: var(--gris);
+      }
+
+      .etiqueta {
+        display: inline-block;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+        padding: 3px 10px;
+        border-radius: 5px;
+        margin-bottom: 6px;
+      }
+      .et-verde {
+        background: var(--verde);
+        color: #fff;
+      }
+      .et-ambar {
+        background: var(--ambar);
+        color: #fff;
+      }
+      .et-azul {
+        background: var(--acento);
+        color: #fff;
+      }
+
+      .modalidades {
+        display: flex;
+        gap: 14px;
+        margin-top: 14px;
+        flex-wrap: wrap;
+      }
+      .modo {
+        flex: 1;
+        min-width: 240px;
+        border-radius: 9px;
+        padding: 13px 16px;
+        background: #fff;
+        border: 1px solid var(--linea);
+      }
+      .modo-pres {
+        border-top: 4px solid var(--acento);
+      }
+      .modo-line {
+        border-top: 4px solid var(--verde);
+      }
+      .modo .modo-tit {
+        display: block;
+        font-weight: 700;
+        font-size: 14px;
+        margin-bottom: 5px;
+      }
+      .modo-pres .modo-tit {
+        color: var(--azul-osc);
+      }
+      .modo-line .modo-tit {
+        color: var(--verde);
+      }
+      .modo p {
+        margin: 4px 0 0;
+        font-size: 15px;
+      }
+
+      /* ── GALERÍA DE FIGURAS ── */
+      .galeria {
+        display: flex;
+        gap: 16px;
+        flex-wrap: wrap;
+        margin: 16px 0;
+      }
+      .fig-card {
+        flex: 1;
+        min-width: 140px;
+        background: var(--azul-cl);
+        border-radius: 10px;
+        padding: 14px;
+        text-align: center;
+        border-bottom: 4px solid var(--acento);
+      }
+      .fig-card svg {
+        display: block;
+        margin: 0 auto 8px;
+      }
+      .fig-card .fnombre {
+        font-weight: 700;
+        color: var(--azul-osc);
+        font-size: 15px;
+      }
+      .fig-card .fdesc {
+        font-size: 13px;
+        color: var(--gris);
+        margin-top: 3px;
+      }
+
+      /* ── ÁNGULOS ── */
+      .angulos {
+        display: flex;
+        gap: 16px;
+        flex-wrap: wrap;
+        margin: 16px 0;
+      }
+      .ang-card {
+        flex: 1;
+        min-width: 150px;
+        background: #fff;
+        border: 2px solid var(--linea);
+        border-radius: 10px;
+        padding: 13px;
+        text-align: center;
+      }
+      .ang-card svg {
+        display: block;
+        margin: 0 auto 6px;
+      }
+      .ang-card .anombre {
+        font-weight: 700;
+        font-size: 14px;
+        color: var(--azul-osc);
+      }
+      .ang-card .adesc {
+        font-size: 13px;
+        color: var(--gris);
+      }
+
+      .ejemplo {
+        background: var(--crema);
+        border: 1px dashed var(--acento);
+        border-radius: 11px;
+        padding: 18px 22px;
+        margin: 18px 0;
+      }
+      .ejemplo .titulo-ej {
+        font-weight: 700;
+        color: var(--azul-osc);
+        margin-bottom: 8px;
+        font-size: 15px;
+      }
+      .paso {
+        margin: 8px 0 8px 4px;
+        padding-left: 32px;
+        position: relative;
+      }
+      .paso .n {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 24px;
+        height: 24px;
+        background: var(--acento);
+        color: #fff;
+        border-radius: 50%;
+        font-size: 13px;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      /* ── TABLA TRIÁNGULOS / CUADRILÁTEROS ── */
+      .tabla-fig {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 14px 0;
+        font-size: 15px;
+      }
+      .tabla-fig th,
+      .tabla-fig td {
+        border: 1px solid var(--linea);
+        padding: 10px 13px;
+        text-align: left;
+        vertical-align: top;
+      }
+      .tabla-fig th {
+        background: var(--azul-osc);
+        color: #fff;
+        font-size: 14px;
+      }
+      .tabla-fig td:first-child {
+        font-weight: 700;
+        color: var(--azul-osc);
+        background: var(--azul-cl);
+        white-space: nowrap;
+      }
+
+      .practica {
+        border: 2px solid var(--azul-cl);
+        border-radius: 12px;
+        padding: 20px 22px;
+        margin: 20px 0;
+        background: #fbfcfc;
+      }
+      .practica .cabe {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 6px;
+      }
+      .practica .cabe .ico {
+        font-size: 22px;
+      }
+      .practica .cabe h3 {
+        font-size: 16px;
+        color: var(--azul-osc);
+        margin: 0;
+      }
+      .pregunta-int {
+        font-size: 17px;
+        font-weight: 600;
+        margin: 14px 0 12px;
+      }
+      .opciones {
+        display: flex;
+        flex-direction: column;
+        gap: 9px;
+      }
+      .opcion {
+        border: 2px solid var(--linea);
+        border-radius: 9px;
+        padding: 11px 16px;
+        cursor: pointer;
+        background: #fff;
+        transition: 0.16s;
+        font-size: 16px;
+        text-align: left;
+        font-family: inherit;
+        color: var(--tinta);
+      }
+      .opcion:hover {
+        border-color: var(--acento);
+        background: var(--azul-cl);
+      }
+      .opcion.correcta {
+        border-color: var(--verde);
+        background: var(--verde-cl);
+        font-weight: 600;
+      }
+      .opcion.incorrecta {
+        border-color: var(--rojo);
+        background: var(--rojo-cl);
+      }
+      .opcion:disabled {
+        cursor: default;
+      }
+      .respuesta-int {
+        margin-top: 12px;
+        padding: 11px 15px;
+        border-radius: 8px;
+        font-size: 15px;
+        display: none;
+      }
+      .respuesta-int.bien {
+        background: var(--verde-cl);
+        color: var(--verde);
+        display: block;
+      }
+      .respuesta-int.mal {
+        background: var(--rojo-cl);
+        color: var(--rojo);
+        display: block;
+      }
+
+      .btn {
+        font-family: inherit;
+        font-size: 15px;
+        font-weight: 600;
+        padding: 9px 20px;
+        background: var(--acento);
+        color: #fff;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: 0.16s;
+      }
+      .btn:hover {
+        background: #006064;
+      }
+      .btn-sec {
+        background: #fff;
+        color: var(--acento);
+        border: 2px solid var(--acento);
+      }
+      .btn-sec:hover {
+        background: var(--azul-cl);
+      }
+
+      .quiz-bloque {
+        margin: 18px 0;
+        padding: 18px 20px;
+        border-radius: 11px;
+        background: var(--crema);
+        border: 1px solid var(--linea);
+      }
+      .quiz-bloque .qnum {
+        display: inline-block;
+        background: var(--azul-osc);
+        color: #fff;
+        font-size: 13px;
+        font-weight: 700;
+        padding: 3px 11px;
+        border-radius: 20px;
+        margin-bottom: 8px;
+      }
+      .quiz-bloque .pregunta {
+        font-weight: 600;
+        font-size: 16px;
+        margin-bottom: 12px;
+      }
+      .quiz-bloque svg {
+        display: block;
+        margin: 8px 0;
+      }
+      .marcador {
+        text-align: center;
+        padding: 26px;
+        border-radius: 13px;
+        margin-top: 20px;
+        display: none;
+      }
+      .marcador.visible {
+        display: block;
+      }
+      .marcador .puntaje {
+        font-size: 46px;
+        font-weight: 800;
+        margin: 6px 0;
+      }
+      .marcador .mensaje {
+        font-size: 17px;
+      }
+      .barra-prog {
+        height: 10px;
+        background: var(--linea);
+        border-radius: 6px;
+        overflow: hidden;
+        margin: 14px 0;
+      }
+      .barra-prog span {
+        display: block;
+        height: 100%;
+        background: var(--verde);
+        width: 0;
+        transition: width 0.5s;
+      }
+
+      .tabla-rubrica {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 14px 0;
+        font-size: 14px;
+      }
+      .tabla-rubrica th,
+      .tabla-rubrica td {
+        border: 1px solid var(--linea);
+        padding: 10px 12px;
+        text-align: left;
+        vertical-align: top;
+      }
+      .tabla-rubrica thead th {
+        background: var(--azul-osc);
+        color: #fff;
+        font-size: 13px;
+      }
+      .tabla-rubrica tbody th {
+        font-weight: 600;
+        color: var(--azul-osc);
+        background: var(--azul-cl);
+        font-size: 14px;
+        text-align: left;
+      }
+      .nivel-cab {
+        background: #2f3d46;
+        color: #fff;
+        text-align: center;
+      }
+
+      .cierre {
+        background: linear-gradient(135deg, #263238, #455a64);
+        color: #fff;
+        border-radius: 14px;
+        padding: 28px 32px;
+        margin-top: 24px;
+      }
+      .cierre h2 {
+        color: #fff;
+      }
+      .cierre strong {
+        color: #eafde6;
+        font-weight: 700;
+      }
+      .cierre .num-seccion {
+        background: rgba(255, 255, 255, 0.22);
+      }
+      .flecha-sig {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: rgba(255, 255, 255, 0.16);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        padding: 10px 18px;
+        border-radius: 9px;
+        margin-top: 12px;
+        font-weight: 600;
+        font-size: 15px;
+      }
+
+      footer {
+        text-align: center;
+        padding: 30px 20px;
+        color: var(--gris);
+        font-size: 13px;
+      }
+
+      @media (max-width: 560px) {
+        header.principal {
+          padding: 34px 22px;
+        }
+        header.principal h1 {
+          font-size: 24px;
+        }
+        section {
+          padding: 24px 20px;
+        }
+      }
+
+      /* ── FOCO VISIBLE (WCAG 2.4.7) ── */
+      a:focus-visible,
+      button:focus-visible,
+      [tabindex]:focus-visible {
+        outline: 3px solid var(--azul-osc);
+        outline-offset: 2px;
+      }
+
+      /* ── MOVIMIENTO REDUCIDO ── */
+      @media (prefers-reduced-motion: reduce) {
+        * {
+          transition: none !important;
+        }
+        html {
+          scroll-behavior: auto;
+        }
+      }
+
+      /* ── MARCAS DE RESPUESTA (no depender del color) ── */
+      .marca {
+        font-weight: 700;
+        margin-right: 6px;
+      }
+      .opcion.elegida {
+        border-color: var(--azul);
+        background: var(--azul-cl);
+      }
+      .opcion:disabled {
+        color: var(--tinta);
+        opacity: 1;
+      }
+
+      /* ── TABLAS RESPONSIVAS (DUA) ── */
+      .tabla-scroll {
+        overflow-x: auto;
+        overflow-y: hidden;
+        -webkit-overflow-scrolling: touch;
+        max-width: 100%;
+        margin: 18px 0 0;
+        border: 1px solid var(--linea);
+        border-radius: 8px;
+        background: var(--papel);
+      }
+      .tabla-scroll:focus,
+      .tabla-scroll:focus-visible {
+        outline: 3px solid var(--azul);
+        outline-offset: 2px;
+      }
+      .tabla-scroll > table {
+        margin: 0;
+        min-width: 100%;
+      }
+      .aviso-desliza {
+        margin: 8px 0 18px;
+        padding: 8px 12px;
+        font-size: 14px;
+        font-weight: 600;
+        color: #5c3900;
+        background: #fdf3df;
+        border-left: 4px solid #5c3900;
+        border-radius: 5px;
+      }
+      .cap-oculto {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0 0 0 0);
+        white-space: nowrap;
+        border: 0;
+      }
+      @media print {
+        .tabla-scroll {
+          overflow: visible;
+          border: 0;
+        }
+        .aviso-desliza {
+          display: none;
+        }
+      }
+    </style>
+</head>
+<body>
+<header class="principal">
+<div class="envoltura-header">
+<p class="ruta">Matemáticas · Nivel 1 · Tema 7 — Geometría</p>
+<h1>Lección 7.1 · Clasificación de figuras 2D: atributos y vocabulario</h1>
+<p class="lema">Reconocer y nombrar las figuras planas por sus lados y sus ángulos: el vocabulario de la geometría.</p>
+<div class="chips">
+<span class="chip"><span aria-hidden="true">⏱️</span> 4 horas (2 sinc. + 2 asinc.)</span>
+<span class="chip"><span aria-hidden="true">📐</span> Polígonos y ángulos</span>
+<span class="chip"><span aria-hidden="true">📘</span> MyOpenMath</span>
+</div>
+</div>
+</header>
+<div class="envoltura">
+<!-- OBJETIVOS -->
+<section>
+<div class="caja caja-objetivo">
+<h2>
+<span aria-hidden="true" class="num-seccion">🎯</span>
+            Objetivos de la clase
+          </h2>
+<p>Al terminar esta lección, usted podrá:</p>
+<ul>
+<li>
+<strong>Usar</strong>
+              correctamente los términos lado, vértice y ángulo (recto, agudo, obtuso).
+            </li>
+<li>
+<strong>Identificar y clasificar</strong>
+              polígonos por su número de lados.
+            </li>
+<li>
+<strong>Clasificar triángulos</strong>
+              según sus lados (equilátero, isósceles, escaleno).
+            </li>
+<li>
+<strong>Clasificar cuadriláteros</strong>
+              (cuadrado, rectángulo, rombo, trapecio, paralelogramo).
+            </li>
+</ul>
+</div>
+</section>
+<!-- LA GEOMETRÍA EN LA VIDA -->
+<section>
+<h2>
+<span aria-hidden="true" class="num-seccion">1</span>
+          La geometría está en todas partes
+        </h2>
+<p>
+          En el
+          <strong>Tema 6</strong>
+          aprendió a medir longitudes, pesos y tiempo. El
+          <strong>Tema 7</strong>
+          da el paso natural: estudiar las
+          <strong>figuras</strong>
+          .
+        </p>
+<p>
+          Las figuras geométricas están en todas partes — la pantalla de un teléfono es un rectángulo, una señal de alto es un octágono, una rebanada de pizza es casi un triángulo. Para trabajar con
+          ellas, primero hay que aprender a
+          <strong>nombrarlas y describirlas</strong>
+          con precisión. Eso es lo de hoy: el
+          <strong>vocabulario</strong>
+          de la geometría.
+        </p>
+<div class="caja caja-tip">
+<span class="etiqueta et-verde">Tres palabras para empezar</span>
+<p>
+            Un
+            <strong>lado</strong>
+            es cada segmento recto que forma la figura. Un
+            <strong>vértice</strong>
+            es la esquina donde se juntan dos lados. Un
+            <strong>ángulo</strong>
+            es la abertura que se forma en cada vértice.
+          </p>
+</div>
+</section>
+<!-- ÁNGULOS -->
+<section>
+<h2>
+<span aria-hidden="true" class="num-seccion">2</span>
+          Los tipos de ángulo
+        </h2>
+<p>Los ángulos se clasifican por su abertura. Tres tipos son esenciales:</p>
+<div class="angulos">
+<div class="ang-card">
+<svg aria-hidden="true" height="70" viewbox="0 0 80 70" width="80" xmlns="http://www.w3.org/2000/svg">
+<path d="M 15 55 L 15 15 M 15 55 L 60 55" fill="none" stroke="#37474f" stroke-width="4"></path>
+<rect fill="none" height="12" stroke="#006974" stroke-width="2.5" width="12" x="15" y="43"></rect>
+</svg>
+<div class="anombre">Ángulo recto</div>
+<div class="adesc">Mide 90°, como la esquina de una hoja.</div>
+</div>
+<div class="ang-card">
+<svg aria-hidden="true" height="70" viewbox="0 0 80 70" width="80" xmlns="http://www.w3.org/2000/svg">
+<path d="M 15 55 L 50 18 M 15 55 L 60 55" fill="none" stroke="#37474f" stroke-width="4"></path>
+<path d="M 32 55 A 18 18 0 0 0 27 42" fill="none" stroke="#006974" stroke-width="2.5"></path>
+</svg>
+<div class="anombre">Ángulo agudo</div>
+<div class="adesc">Menor que 90°, más cerrado.</div>
+</div>
+<div class="ang-card">
+<svg aria-hidden="true" height="70" viewbox="0 0 80 70" width="80" xmlns="http://www.w3.org/2000/svg">
+<path d="M 25 55 L 8 18 M 25 55 L 70 55" fill="none" stroke="#37474f" stroke-width="4"></path>
+<path d="M 45 55 A 20 20 0 0 0 18 39" fill="none" stroke="#006974" stroke-width="2.5"></path>
+</svg>
+<div class="anombre">Ángulo obtuso</div>
+<div class="adesc">Mayor que 90°, más abierto.</div>
+</div>
+</div>
+<div class="caja caja-tip">
+<span class="etiqueta et-verde">El ángulo recto es la referencia</span>
+<p>
+            El
+            <strong>ángulo recto</strong>
+            (90°) es la medida de referencia. Si un ángulo es más cerrado que la esquina de una hoja, es
+            <strong>agudo</strong>
+            ; si es más abierto, es
+            <strong>obtuso</strong>
+            .
+          </p>
+</div>
+<div class="practica">
+<div class="cabe">
+<span aria-hidden="true" class="ico">✏️</span>
+<h3>Práctica 1 — Tipos de ángulo</h3>
+</div>
+<p class="pregunta-int" id="t-p1">Un ángulo mide 45°. ¿Qué tipo de ángulo es?</p>
+<div aria-labelledby="t-p1" class="opciones" data-quiz="p1" role="group">
+<button class="opcion" data-correcta="si" type="button">Agudo (menor que 90°)</button>
+<button class="opcion" data-correcta="no" type="button">Recto (90°)</button>
+<button class="opcion" data-correcta="no" type="button">Obtuso (mayor que 90°)</button>
+</div>
+<div aria-live="polite" class="respuesta-int" id="r-p1" role="status"></div>
+</div>
+</section>
+<!-- POLÍGONOS -->
+<section>
+<h2>
+<span aria-hidden="true" class="num-seccion">3</span>
+          Los polígonos: clasificar por número de lados
+        </h2>
+<p>
+          Un
+          <strong>polígono</strong>
+          es una figura plana cerrada formada por lados rectos. La primera forma de clasificarlos es por su
+          <strong>número de lados</strong>
+          :
+        </p>
+<div class="galeria">
+<div class="fig-card">
+<svg aria-hidden="true" height="60" viewbox="0 0 60 60" width="60" xmlns="http://www.w3.org/2000/svg">
+<polygon fill="#006974" points="30,8 52,50 8,50" stroke="#263238" stroke-width="2.5"></polygon>
+</svg>
+<div class="fnombre">Triángulo</div>
+<div class="fdesc">3 lados</div>
+</div>
+<div class="fig-card">
+<svg aria-hidden="true" height="60" viewbox="0 0 60 60" width="60" xmlns="http://www.w3.org/2000/svg">
+<rect fill="#006974" height="36" stroke="#263238" stroke-width="2.5" width="40" x="10" y="12"></rect>
+</svg>
+<div class="fnombre">Cuadrilátero</div>
+<div class="fdesc">4 lados</div>
+</div>
+<div class="fig-card">
+<svg aria-hidden="true" height="60" viewbox="0 0 60 60" width="60" xmlns="http://www.w3.org/2000/svg">
+<polygon fill="#006974" points="30,7 53,24 44,51 16,51 7,24" stroke="#263238" stroke-width="2.5"></polygon>
+</svg>
+<div class="fnombre">Pentágono</div>
+<div class="fdesc">5 lados</div>
+</div>
+<div class="fig-card">
+<svg aria-hidden="true" height="60" viewbox="0 0 60 60" width="60" xmlns="http://www.w3.org/2000/svg">
+<polygon fill="#006974" points="30,6 51,18 51,42 30,54 9,42 9,18" stroke="#263238" stroke-width="2.5"></polygon>
+</svg>
+<div class="fnombre">Hexágono</div>
+<div class="fdesc">6 lados</div>
+</div>
+</div>
+<div class="caja caja-ojo">
+<span class="etiqueta et-ambar">¡Ojo!</span>
+<p>
+            Un polígono debe ser una figura
+            <strong>cerrada</strong>
+            y de
+            <strong>lados rectos</strong>
+            . Un círculo no es un polígono, porque no tiene lados rectos ni vértices.
+          </p>
+</div>
+<div class="practica">
+<div class="cabe">
+<span aria-hidden="true" class="ico">✏️</span>
+<h3>Práctica 2 — Clasificar por lados</h3>
+</div>
+<p class="pregunta-int" id="t-p2">¿Cómo se llama un polígono de 5 lados?</p>
+<div aria-labelledby="t-p2" class="opciones" data-quiz="p2" role="group">
+<button class="opcion" data-correcta="no" type="button">Triángulo</button>
+<button class="opcion" data-correcta="no" type="button">Hexágono</button>
+<button class="opcion" data-correcta="si" type="button">Pentágono</button>
+<button class="opcion" data-correcta="no" type="button">Cuadrilátero</button>
+</div>
+<div aria-live="polite" class="respuesta-int" id="r-p2" role="status"></div>
+</div>
+</section>
+<!-- TRIÁNGULOS -->
+<section>
+<h2>
+<span aria-hidden="true" class="num-seccion">4</span>
+          Clasificar triángulos por sus lados
+        </h2>
+<p>
+          Los
+          <strong>triángulos</strong>
+          (3 lados) se pueden clasificar según cuántos lados tienen igual longitud:
+        </p>
+<div class="galeria">
+<div class="fig-card">
+<svg aria-hidden="true" height="56" viewbox="0 0 64 56" width="64" xmlns="http://www.w3.org/2000/svg">
+<polygon fill="#006974" points="32,6 58,50 6,50" stroke="#263238" stroke-width="2.5"></polygon>
+</svg>
+<div class="fnombre">Equilátero</div>
+<div class="fdesc">los 3 lados iguales</div>
+</div>
+<div class="fig-card">
+<svg aria-hidden="true" height="56" viewbox="0 0 64 56" width="64" xmlns="http://www.w3.org/2000/svg">
+<polygon fill="#006974" points="32,6 52,50 12,50" stroke="#263238" stroke-width="2.5"></polygon>
+</svg>
+<div class="fnombre">Isósceles</div>
+<div class="fdesc">2 lados iguales</div>
+</div>
+<div class="fig-card">
+<svg aria-hidden="true" height="56" viewbox="0 0 64 56" width="64" xmlns="http://www.w3.org/2000/svg">
+<polygon fill="#006974" points="14,8 58,50 6,50" stroke="#263238" stroke-width="2.5"></polygon>
+</svg>
+<div class="fnombre">Escaleno</div>
+<div class="fdesc">los 3 lados distintos</div>
+</div>
+</div>
+<div class="practica">
+<div class="cabe">
+<span aria-hidden="true" class="ico">✏️</span>
+<h3>Práctica 3 — Clasificar triángulos</h3>
+</div>
+<p class="pregunta-int" id="t-p3">Un triángulo tiene lados que miden 5 cm, 5 cm y 8 cm. ¿Qué tipo de triángulo es?</p>
+<div aria-labelledby="t-p3" class="opciones" data-quiz="p3" role="group">
+<button class="opcion" data-correcta="no" type="button">Equilátero</button>
+<button class="opcion" data-correcta="si" type="button">Isósceles</button>
+<button class="opcion" data-correcta="no" type="button">Escaleno</button>
+</div>
+<div aria-live="polite" class="respuesta-int" id="r-p3" role="status"></div>
+</div>
+</section>
+<!-- CUADRILÁTEROS -->
+<section>
+<h2>
+<span aria-hidden="true" class="num-seccion">5</span>
+          Clasificar cuadriláteros
+        </h2>
+<p>
+          Los
+          <strong>cuadriláteros</strong>
+          (4 lados) tienen varios tipos, según sus lados y sus ángulos:
+        </p>
+<div aria-label="Tabla de datos de la lección (tabla desplazable horizontalmente)" class="tabla-scroll" role="region" tabindex="0"><table class="tabla-fig"><caption class="cap-oculto">Tabla de datos de la lección</caption>
+<thead>
+<tr>
+<th scope="col">Cuadrilátero</th>
+<th scope="col">Cómo es</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th scope="row">Cuadrado</th>
+<td>4 lados iguales y 4 ángulos rectos.</td>
+</tr>
+<tr>
+<th scope="row">Rectángulo</th>
+<td>4 ángulos rectos; los lados opuestos son iguales (pero no los cuatro).</td>
+</tr>
+<tr>
+<th scope="row">Rombo</th>
+<td>4 lados iguales, pero los ángulos no son rectos.</td>
+</tr>
+<tr>
+<th scope="row">Paralelogramo</th>
+<td>Los lados opuestos son paralelos e iguales; los ángulos no son rectos.</td>
+</tr>
+<tr>
+<th scope="row">Trapecio</th>
+<td>Tiene solo un par de lados paralelos.</td>
+</tr>
+</tbody>
+</table></div><p class="aviso-desliza"><span aria-hidden="true">↔</span> Deslice la tabla horizontalmente para ver todas las columnas.</p>
+<div class="ejemplo">
+<p class="titulo-ej">Árbol de decisión: ¿qué cuadrilátero es?</p>
+<p class="paso">
+<span aria-hidden="true" class="n">1</span>
+            ¿Tiene 4 ángulos rectos? Si
+            <strong>sí</strong>
+            → es cuadrado o rectángulo. Si
+            <strong>no</strong>
+            → es rombo, paralelogramo o trapecio.
+          </p>
+<p class="paso">
+<span aria-hidden="true" class="n">2</span>
+            Con 4 ángulos rectos: ¿los 4 lados son iguales? Si
+            <strong>sí</strong>
+            →
+            <strong>cuadrado</strong>
+            ; si
+            <strong>no</strong>
+            →
+            <strong>rectángulo</strong>
+            .
+          </p>
+<p class="paso">
+<span aria-hidden="true" class="n">3</span>
+            Sin ángulos rectos: ¿cuántos pares de lados paralelos?
+            <strong>Dos pares</strong>
+            → rombo o paralelogramo;
+            <strong>un solo par</strong>
+            →
+            <strong>trapecio</strong>
+            .
+          </p>
+</div>
+<div class="caja caja-ojo">
+<span class="etiqueta et-ambar">Dato curioso</span>
+<p>
+            Un
+            <strong>cuadrado</strong>
+            es un caso especial de rectángulo (tiene 4 ángulos rectos) y también de rombo (tiene 4 lados iguales). El cuadrado cumple las dos condiciones a la vez.
+          </p>
+</div>
+<div class="practica">
+<div class="cabe">
+<span aria-hidden="true" class="ico">✏️</span>
+<h3>Práctica 4 — Clasificar cuadriláteros</h3>
+</div>
+<p class="pregunta-int" id="t-p4">Una figura tiene 4 ángulos rectos, pero solo los lados opuestos son iguales. ¿Qué figura es?</p>
+<div aria-labelledby="t-p4" class="opciones" data-quiz="p4" role="group">
+<button class="opcion" data-correcta="no" type="button">Cuadrado</button>
+<button class="opcion" data-correcta="si" type="button">Rectángulo</button>
+<button class="opcion" data-correcta="no" type="button">Trapecio</button>
+<button class="opcion" data-correcta="no" type="button">Rombo</button>
+</div>
+<div aria-live="polite" class="respuesta-int" id="r-p4" role="status"></div>
+</div>
+</section>
+<!-- PRÁCTICA GUIADA -->
+<section>
+<h2>
+<span aria-hidden="true" class="num-seccion">6</span>
+          Práctica guiada en clase
+        </h2>
+<p>
+          Estas actividades se hacen
+          <strong>en la sesión sincrónica</strong>
+          . Cada actividad incluye una variante para la
+          <strong>clase presencial</strong>
+          y otra para la
+          <strong>clase en línea</strong>
+          ; el objetivo de aprendizaje es el mismo en ambas.
+        </p>
+<div class="caja caja-recurso">
+<span class="etiqueta et-azul">Actividad A · "El museo de figuras"</span>
+<p>Cada estudiante crea un "cartel de museo" para una figura asignada, con su nombre, número de lados, tipo de ángulos y un ejemplo de la vida real.</p>
+<div class="modalidades">
+<div class="modo modo-pres">
+<span class="modo-tit">🏫 Presencial</span>
+<p>
+                Reparta una figura a cada estudiante (en tarjeta laminada o tangram). Cada uno hace su cartel en una hoja y lo pega en la pared. El grupo recorre el "museo" comentando cada figura.
+              </p>
+</div>
+<div class="modo modo-line">
+<span class="modo-tit">💻 En línea</span>
+<p>Asigne una figura a cada estudiante por chat. Cada uno prepara una diapositiva con su "cartel" (nombre, lados, ángulos, ejemplo real) y la presenta brevemente al grupo.</p>
+</div>
+</div>
+</div>
+<div class="caja caja-recurso">
+<span class="etiqueta et-azul">Actividad B · "Árbol de decisión"</span>
+<p>Los estudiantes clasifican figuras siguiendo un árbol de preguntas (¿tiene 3 lados? ¿todos iguales?...).</p>
+<div class="modalidades">
+<div class="modo modo-pres">
+<span class="modo-tit">🏫 Presencial</span>
+<p>Dibuje el árbol de decisión en la pizarra. Los estudiantes reciben figuras y, una por una, recorren el árbol en voz alta hasta clasificarlas. El grupo verifica cada respuesta.</p>
+</div>
+<div class="modo modo-line">
+<span class="modo-tit">💻 En línea</span>
+<p>Comparta el árbol de decisión en una diapositiva. Muestre figuras una a una; los estudiantes responden las preguntas del árbol por el chat hasta llegar a la clasificación.</p>
+</div>
+</div>
+</div>
+<div class="caja caja-recurso">
+<span class="etiqueta et-azul">Actividad C · "Geometría a mi alrededor"</span>
+<p>Los estudiantes buscan figuras geométricas reales en su entorno y las clasifican.</p>
+<div class="modalidades">
+<div class="modo modo-pres">
+<span class="modo-tit">🏫 Presencial</span>
+<p>El grupo recorre el salón buscando figuras: ventanas (rectángulos), señales, baldosas. Cada estudiante anota tres y las clasifica con el vocabulario aprendido.</p>
+</div>
+<div class="modo modo-line">
+<span class="modo-tit">💻 En línea</span>
+<p>Cada estudiante busca tres figuras en su propia casa, las fotografía o describe, y publica en el chat su clasificación (nombre, número de lados, tipo de ángulos).</p>
+</div>
+</div>
+</div>
+</section>
+<!-- TAREA ASINCRÓNICA -->
+<section>
+<h2>
+<span aria-hidden="true" class="num-seccion">7</span>
+          Tarea asincrónica
+        </h2>
+<p>
+          Estas actividades se realizan
+          <strong>por su cuenta</strong>
+          , dentro de las 2 horas asincrónicas de la lección.
+        </p>
+<ul>
+<li>
+<strong>MyOpenMath:</strong>
+            complete las
+            <strong>10 preguntas</strong>
+            de clasificación de figuras. Cada una da retroalimentación inmediata.
+          </li>
+<li>
+<strong>Brightspace:</strong>
+            realice el quiz de la lección (abajo puede practicarlo antes).
+          </li>
+<li>
+<strong>Actividad personal:</strong>
+            recorra su casa y encuentre un ejemplo real de cada figura: un triángulo, un rectángulo y un cuadrado. Anote dónde los vio.
+          </li>
+</ul>
+</section>
+<!-- QUIZ -->
+<section>
+<h2>
+<span aria-hidden="true" class="num-seccion">8</span>
+          Quiz de práctica
+        </h2>
+<p>
+          Responda las
+          <strong>8 preguntas</strong>
+          . Al final verá su puntaje y podrá repasar lo que falló. Puede repetir el quiz las veces que quiera.
+        </p>
+<div id="quiz">
+<div class="quiz-bloque">
+<span class="qnum">Pregunta 1</span>
+<p class="pregunta" id="t-q1">La esquina donde se juntan dos lados de una figura se llama:</p>
+<div aria-labelledby="t-q1" class="opciones" data-q="1" role="group">
+<button class="opcion" data-c="no" type="button">Lado</button>
+<button class="opcion" data-c="si" type="button">Vértice</button>
+<button class="opcion" data-c="no" type="button">Polígono</button>
+<button class="opcion" data-c="no" type="button">Círculo</button>
+</div>
+</div>
+<div class="quiz-bloque">
+<span class="qnum">Pregunta 2</span>
+<p class="pregunta" id="t-q2">Un ángulo recto mide exactamente:</p>
+<div aria-labelledby="t-q2" class="opciones" data-q="2" role="group">
+<button class="opcion" data-c="no" type="button">45°</button>
+<button class="opcion" data-c="si" type="button">90°</button>
+<button class="opcion" data-c="no" type="button">120°</button>
+<button class="opcion" data-c="no" type="button">180°</button>
+</div>
+</div>
+<div class="quiz-bloque">
+<span class="qnum">Pregunta 3</span>
+<p class="pregunta" id="t-q3">Un ángulo que mide 130° es un ángulo:</p>
+<div aria-labelledby="t-q3" class="opciones" data-q="3" role="group">
+<button class="opcion" data-c="no" type="button">Agudo</button>
+<button class="opcion" data-c="no" type="button">Recto</button>
+<button class="opcion" data-c="si" type="button">Obtuso</button>
+</div>
+</div>
+<div class="quiz-bloque">
+<span class="qnum">Pregunta 4</span>
+<p class="pregunta" id="t-q4">¿Cómo se llama un polígono de 6 lados?</p>
+<div aria-labelledby="t-q4" class="opciones" data-q="4" role="group">
+<button class="opcion" data-c="no" type="button">Pentágono</button>
+<button class="opcion" data-c="si" type="button">Hexágono</button>
+<button class="opcion" data-c="no" type="button">Triángulo</button>
+<button class="opcion" data-c="no" type="button">Cuadrilátero</button>
+</div>
+</div>
+<div class="quiz-bloque">
+<span class="qnum">Pregunta 5</span>
+<p class="pregunta" id="t-q5">Un triángulo con sus tres lados iguales se llama:</p>
+<div aria-labelledby="t-q5" class="opciones" data-q="5" role="group">
+<button class="opcion" data-c="si" type="button">Equilátero</button>
+<button class="opcion" data-c="no" type="button">Isósceles</button>
+<button class="opcion" data-c="no" type="button">Escaleno</button>
+<button class="opcion" data-c="no" type="button">Rectángulo</button>
+</div>
+</div>
+<div class="quiz-bloque">
+<span class="qnum">Pregunta 6</span>
+<p class="pregunta" id="t-q6">Un triángulo tiene lados de 4 cm, 7 cm y 9 cm. ¿Qué tipo es?</p>
+<div aria-labelledby="t-q6" class="opciones" data-q="6" role="group">
+<button class="opcion" data-c="no" type="button">Equilátero</button>
+<button class="opcion" data-c="no" type="button">Isósceles</button>
+<button class="opcion" data-c="si" type="button">Escaleno</button>
+</div>
+</div>
+<div class="quiz-bloque">
+<span class="qnum">Pregunta 7</span>
+<p class="pregunta" id="t-q7">Una figura tiene 4 lados iguales y 4 ángulos rectos. ¿Qué figura es?</p>
+<div aria-labelledby="t-q7" class="opciones" data-q="7" role="group">
+<button class="opcion" data-c="si" type="button">Cuadrado</button>
+<button class="opcion" data-c="no" type="button">Trapecio</button>
+<button class="opcion" data-c="no" type="button">Triángulo</button>
+<button class="opcion" data-c="no" type="button">Pentágono</button>
+</div>
+</div>
+<div class="quiz-bloque">
+<span class="qnum">Pregunta 8</span>
+<p class="pregunta" id="t-q8">¿Por qué un círculo NO es un polígono?</p>
+<div aria-labelledby="t-q8" class="opciones" data-q="8" role="group">
+<button class="opcion" data-c="si" type="button">Porque no tiene lados rectos ni vértices.</button>
+<button class="opcion" data-c="no" type="button">Porque es demasiado grande.</button>
+<button class="opcion" data-c="no" type="button">Porque tiene más de 6 lados.</button>
+<button class="opcion" data-c="no" type="button">Porque no se puede dibujar.</button>
+</div>
+</div>
+</div>
+<div style="text-align: center; margin-top: 18px">
+<button class="btn" id="btn-calificar" type="button">Ver mi resultado</button>
+<button class="btn btn-sec" id="btn-reintentar" style="display: none" type="button">Intentar de nuevo</button>
+</div>
+<div aria-live="polite" class="marcador" id="marcador" role="status">
+<div aria-hidden="true" class="barra-prog"><span id="barra"></span></div>
+<p class="puntaje" id="puntaje"></p>
+<p class="mensaje" id="mensaje"></p>
+</div>
+</section>
+<!-- RÚBRICA -->
+<section>
+<h2>
+<span aria-hidden="true" class="num-seccion">9</span>
+          Rúbrica de evaluación
+        </h2>
+<p>Rúbrica de vocabulario geométrico. Cada criterio se evalúa en cuatro niveles.</p>
+<div aria-label="Rúbrica de evaluación: criterios y sus niveles de logro (tabla desplazable horizontalmente)" class="tabla-scroll" role="region" tabindex="0"><table class="tabla-rubrica"><caption class="cap-oculto">Rúbrica de evaluación: criterios y sus niveles de logro</caption>
+<thead>
+<tr>
+<th scope="col">Criterio</th>
+<th class="nivel-cab" scope="col">Logrado (4)</th>
+<th class="nivel-cab" scope="col">Satisfactorio (3)</th>
+<th class="nivel-cab" scope="col">En proceso (2)</th>
+<th class="nivel-cab" scope="col">Por reforzar (1)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th scope="row">Usa el vocabulario geométrico</th>
+<td>Usa con precisión lado, vértice y los tres tipos de ángulo.</td>
+<td>Usa la mayoría de los términos correctamente.</td>
+<td>Confunde algunos términos entre sí.</td>
+<td>No maneja el vocabulario básico.</td>
+</tr>
+<tr>
+<th scope="row">Clasifica polígonos por lados</th>
+<td>Nombra correctamente polígonos de 3 a 6 lados.</td>
+<td>Identifica la mayoría de los polígonos.</td>
+<td>Identifica solo triángulos y cuadriláteros.</td>
+<td>No clasifica polígonos por sus lados.</td>
+</tr>
+<tr>
+<th scope="row">Clasifica triángulos</th>
+<td>Distingue equilátero, isósceles y escaleno por sus lados.</td>
+<td>Clasifica triángulos correctamente casi siempre.</td>
+<td>Confunde isósceles y escaleno.</td>
+<td>No clasifica los triángulos.</td>
+</tr>
+<tr>
+<th scope="row">Clasifica cuadriláteros</th>
+<td>Distingue los cinco cuadriláteros con precisión.</td>
+<td>Identifica cuadrado, rectángulo y trapecio.</td>
+<td>Confunde rombo y paralelogramo.</td>
+<td>No clasifica los cuadriláteros.</td>
+</tr>
+</tbody>
+</table></div><p class="aviso-desliza"><span aria-hidden="true">↔</span> Deslice la tabla horizontalmente para ver todas las columnas.</p>
+</section>
+<!-- CIERRE -->
+<div class="cierre">
+<h2>
+<span aria-hidden="true" class="num-seccion">➡️</span>
+          Lo que viene en la próxima lección
+        </h2>
+<p>Ya sabe nombrar y clasificar las figuras planas por sus lados y sus ángulos. Tiene el vocabulario de la geometría.</p>
+<p>
+          En la
+          <strong>Lección 7.2 · Perímetro de polígonos</strong>
+          empezará a
+          <strong>medir</strong>
+          esas figuras. Aprenderá a calcular el
+          <strong>perímetro</strong>
+          —la distancia alrededor de una figura— para resolver problemas reales como cercar un terreno o enmarcar un cuadro.
+        </p>
+<p class="flecha-sig">➡️  Próxima: Lección 7.2 · Perímetro de polígonos</p>
+</div>
+</div>
+<footer>
+      Matemáticas · Nivel 1 · Lección 7.1 — Spanish ASE Math · AE 0170-0321
+      <br/>
+      City Colleges of Chicago · Truman College · Prof. José M. Fernández
+    </footer>
+<script>
+      // ── PRÁCTICA INTERACTIVA ──
+      var respuestasPractica = {
+        p1: 'Un ángulo de 45° es AGUDO, porque es menor que 90° (más cerrado que la esquina de una hoja).',
+        p2: 'Es ISÓSCELES: tiene exactamente 2 lados iguales (los dos de 5 cm). El tercer lado, de 8 cm, es distinto.',
+        p3: 'Un triángulo con los tres lados distintos (4, 7 y 9 cm) es ESCALENO.',
+        p4: 'Es un RECTÁNGULO: tiene 4 ángulos rectos, pero solo los lados opuestos son iguales (no los cuatro). Si los cuatro fueran iguales, sería un cuadrado.'
+      };
+
+      document.querySelectorAll('.opciones[data-quiz]').forEach(function (grupo) {
+        var id = grupo.getAttribute('data-quiz');
+        grupo.querySelectorAll('.opcion').forEach(function (op) {
+          op.addEventListener('click', function () {
+            var acerto = op.getAttribute('data-correcta') === 'si';
+            grupo.querySelectorAll('.opcion').forEach(function (o) {
+              o.disabled = true;
+              if (o.getAttribute('data-correcta') === 'si') {
+                o.classList.add('correcta');
+                o.insertAdjacentHTML('afterbegin', '<span class="marca">\u2713 Correcta:</span> ');
+              }
+            });
+            if (!acerto) {
+              op.classList.add('incorrecta');
+              op.insertAdjacentHTML('afterbegin', '<span class="marca">\u2717 Su respuesta:</span> ');
+            }
+            var r = document.getElementById('r-' + id);
+            r.className = 'respuesta-int ' + (acerto ? 'bien' : 'mal');
+            r.textContent = (acerto ? 'Correcto. ' : 'Revise: ') + respuestasPractica[id];
+          });
+        });
+      });
+
+      // ── QUIZ FINAL ──
+      var totalPreguntas = 8;
+      var seleccion = {};
+
+      document.querySelectorAll('#quiz .opciones').forEach(function (grupo) {
+        var q = grupo.getAttribute('data-q');
+        grupo.querySelectorAll('.opcion').forEach(function (op) {
+          op.setAttribute('aria-pressed', 'false');
+          op.addEventListener('click', function () {
+            grupo.querySelectorAll('.opcion').forEach(function (o) {
+              o.classList.remove('elegida');
+              o.setAttribute('aria-pressed', 'false');
+            });
+            op.classList.add('elegida');
+            op.setAttribute('aria-pressed', 'true');
+            seleccion[q] = op;
+          });
+        });
+      });
+
+      document.getElementById('btn-calificar').addEventListener('click', function () {
+        var correctas = 0;
+        document.querySelectorAll('#quiz .opciones').forEach(function (grupo) {
+          var q = grupo.getAttribute('data-q');
+          grupo.querySelectorAll('.opcion').forEach(function (o) {
+            o.disabled = true;
+            if (o.getAttribute('data-c') === 'si') {
+              o.classList.add('correcta');
+              o.insertAdjacentHTML('afterbegin', '<span class="marca">\u2713 Correcta:</span> ');
+            }
+          });
+          var elegida = seleccion[q];
+          if (elegida) {
+            if (elegida.getAttribute('data-c') === 'si') {
+              correctas++;
+            } else {
+              elegida.classList.add('incorrecta');
+              elegida.insertAdjacentHTML('afterbegin', '<span class="marca">\u2717 Su respuesta:</span> ');
+            }
+          }
+        });
+
+        var marc = document.getElementById('marcador');
+        var pct = Math.round((correctas / totalPreguntas) * 100);
+        document.getElementById('puntaje').textContent = correctas + ' de ' + totalPreguntas + ' correctas';
+
+        var msg, color;
+        if (pct >= 88) {
+          msg = 'Excelente. Domina el vocabulario y la clasificación de figuras. Está listo para la Lección 7.2.';
+          color = '#e7f4ec';
+        } else if (pct >= 63) {
+          msg = 'Buen trabajo. Repase las preguntas marcadas como incorrectas y vuelva a intentarlo.';
+          color = '#fdf3df';
+        } else {
+          msg = 'Repasemos juntos. Vuelva a leer las secciones 2, 4 y 5, y reintente el quiz.';
+          color = '#fdecea';
+        }
+
+        marc.style.background = color;
+        document.getElementById('mensaje').textContent = msg;
+        marc.classList.add('visible');
+        document.getElementById('barra').style.width = pct + '%';
+        document.getElementById('btn-calificar').style.display = 'none';
+
+        var reintentar = document.getElementById('btn-reintentar');
+        reintentar.style.display = 'inline-block';
+        reintentar.focus();
+      });
+
+      document.getElementById('btn-reintentar').addEventListener('click', function () {
+        document.querySelectorAll('#quiz .opcion').forEach(function (o) {
+          o.disabled = false;
+          o.classList.remove('correcta', 'incorrecta', 'elegida');
+          o.setAttribute('aria-pressed', 'false');
+          var marca = o.querySelector('.marca');
+          if (marca) {
+            marca.remove();
+          }
+        });
+        for (var k in seleccion) {
+          delete seleccion[k];
+        }
+        document.getElementById('marcador').classList.remove('visible');
+        document.getElementById('puntaje').textContent = '';
+        document.getElementById('mensaje').textContent = '';
+        document.getElementById('btn-calificar').style.display = 'inline-block';
+        document.getElementById('btn-reintentar').style.display = 'none';
+        var primera = document.querySelector('#quiz .opcion');
+        if (primera) {
+          primera.focus();
+        }
+      });
+
+      // ── TABLAS RESPONSIVAS ──
+      // Los contenedores y avisos ya están en el marcado, para que los
+      // revisores que no ejecutan JavaScript los detecten.
+      (function () {
+        var TEXTO_AVISO = '\u2194 Deslice la tabla horizontalmente para ver todas las columnas.';
+        var pares = [];
+
+        document.querySelectorAll('table').forEach(function (t) {
+          var caja = t.parentNode;
+          if (!caja.classList.contains('tabla-scroll')) {
+            var cap = t.querySelector('caption');
+            var etiqueta = (cap ? cap.textContent.trim() : 'Tabla de datos') + ' (tabla desplazable horizontalmente)';
+            var nueva = document.createElement('div');
+            nueva.className = 'tabla-scroll';
+            nueva.setAttribute('role', 'region');
+            nueva.setAttribute('tabindex', '0');
+            nueva.setAttribute('aria-label', etiqueta);
+            t.parentNode.insertBefore(nueva, t);
+            nueva.appendChild(t);
+            caja = nueva;
+          }
+          var aviso = caja.nextElementSibling;
+          if (!aviso || !aviso.classList.contains('aviso-desliza')) {
+            aviso = document.createElement('p');
+            aviso.className = 'aviso-desliza';
+            aviso.textContent = TEXTO_AVISO;
+            caja.parentNode.insertBefore(aviso, caja.nextSibling);
+          }
+          pares.push({ caja: caja, aviso: aviso });
+        });
+
+        function actualizar() {
+          pares.forEach(function (p) {
+            p.aviso.style.display = p.caja.scrollWidth > p.caja.clientWidth + 2 ? 'block' : 'none';
+          });
+        }
+        actualizar();
+
+        var tm;
+        window.addEventListener('resize', function () {
+          clearTimeout(tm);
+          tm = setTimeout(actualizar, 150);
+        });
+      })();
+    </script>
+</body>
+</html>

@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Lección 8.2 · Gráficas de barras y de líneas</title>
+<style>
+  :root{
+    --azul:#1b5e20; --azul-osc:#0d3b11; --azul-cl:#e8f5e9;
+    --tinta:#1a2330; --gris:#5b6675; --linea:#dde3ea;
+    --crema:#f6f4ee; --papel:#ffffff;
+    --verde:#286b44; --verde-cl:#e7f4ec;
+    --ambar:#5c3900; --ambar-cl:#fdf3df;
+    --rojo:#b5342a; --rojo-cl:#fdecea;
+    --sombra:0 2px 10px rgba(13,59,17,.12);
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    font-family:'Segoe UI','Helvetica Neue',system-ui,sans-serif;
+    background:var(--crema); color:var(--tinta);
+    line-height:1.65; font-size:17px;
+  }
+  .envoltura{max-width:880px;margin:0 auto;padding:0 20px 80px;}
+
+  header.principal{
+    background:linear-gradient(135deg,#0d3b11 0%,#1b5e20 55%,#2e7d32 100%);
+    color:#fff;padding:46px 38px 40px;border-radius:0 0 22px 22px;
+    box-shadow:0 6px 22px rgba(13,59,17,.30);
+  }
+  .envoltura-header{max-width:880px;margin:0 auto;padding:0 20px;}
+  .ruta{font-size:13px;letter-spacing:.6px;text-transform:uppercase;opacity:.85;margin-bottom:14px;}
+  header.principal h1{font-size:30px;font-weight:700;line-height:1.25;margin-bottom:8px;}
+  header.principal .lema{font-size:16px;opacity:.93;font-weight:400;max-width:620px;}
+  .chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px;}
+  .chip{
+    background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.28);
+    padding:6px 14px;border-radius:30px;font-size:13px;font-weight:600;
+  }
+
+  section{
+    background:var(--papel);margin-top:22px;padding:30px 34px;
+    border-radius:14px;box-shadow:var(--sombra);
+  }
+  .num-seccion{
+    display:inline-flex;align-items:center;justify-content:center;
+    width:34px;height:34px;background:var(--azul);color:#fff;
+    border-radius:9px;font-weight:700;font-size:17px;margin-right:12px;flex-shrink:0;
+  }
+  h2{display:flex;align-items:center;font-size:23px;color:var(--azul-osc);margin-bottom:16px;font-weight:700;}
+  h3{font-size:18px;color:var(--azul-osc);margin:22px 0 10px;font-weight:700;}
+  p{margin:11px 0;}
+  ul,ol{margin:11px 0 11px 26px;}
+  li{margin:6px 0;}
+  strong{color:var(--azul-osc);}
+
+  .caja{border-radius:11px;padding:18px 22px;margin:18px 0;border-left:5px solid;}
+  .caja-objetivo{background:var(--azul-cl);border-color:var(--azul);}
+  .caja-objetivo h2{margin-bottom:10px;}
+  .caja-tip{background:var(--verde-cl);border-color:var(--verde);}
+  .caja-tip strong{color:var(--verde);}
+  .caja-ojo{background:var(--ambar-cl);border-color:var(--ambar);}
+  .caja-ojo strong{color:var(--ambar);}
+  .caja-recurso{background:#eef2f7;border-color:var(--gris);}
+
+  /* ── ENLACE INTERACTIVO ── */
+  .caja-tarea{
+    display:flex;align-items:center;gap:12px;flex-wrap:wrap;
+    background:var(--azul-cl);border:1px solid #cfe6d2;
+    border-left:5px solid var(--azul);border-radius:11px;
+    padding:13px 18px;margin:12px 0;
+  }
+  .caja-tarea .et-interactivo{
+    flex-shrink:0;background:var(--azul);color:#fff;
+    font-size:12px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;
+    padding:4px 11px;border-radius:5px;
+  }
+  .caja-tarea .enlace-interactivo{
+    font-weight:700;font-size:15.5px;color:var(--azul-osc);
+    text-decoration:none;border-bottom:2px solid var(--verde);
+    padding-bottom:1px;transition:.16s;
+  }
+  .caja-tarea .enlace-interactivo:hover{color:var(--verde);border-bottom-color:var(--azul);}
+  .caja-tarea .enlace-interactivo .flecha-ext{margin-left:5px;font-weight:400;}
+
+  .etiqueta{
+    display:inline-block;font-size:12px;font-weight:700;letter-spacing:.5px;
+    text-transform:uppercase;padding:3px 10px;border-radius:5px;margin-bottom:6px;
+  }
+  .et-verde{background:var(--verde);color:#fff;}
+  .et-ambar{background:var(--ambar);color:#fff;}
+  .et-azul{background:var(--azul);color:#fff;}
+
+  .modalidades{display:flex;gap:14px;margin-top:14px;flex-wrap:wrap;}
+  .modo{
+    flex:1;min-width:240px;border-radius:9px;padding:13px 16px;
+    background:#fff;border:1px solid var(--linea);
+  }
+  .modo-pres{border-top:4px solid var(--azul);}
+  .modo-line{border-top:4px solid var(--verde);}
+  .modo .modo-tit{display:block;font-weight:700;font-size:14px;margin-bottom:5px;}
+  .modo-pres .modo-tit{color:var(--azul-osc);}
+  .modo-line .modo-tit{color:var(--verde);}
+  .modo p{margin:4px 0 0;font-size:15px;}
+
+  /* ── GRÁFICAS ── */
+  .grafica-caja{
+    background:var(--crema);border:1px solid var(--linea);border-radius:11px;
+    padding:18px;margin:16px 0;text-align:center;
+  }
+  .grafica-caja svg{display:block;margin:0 auto;max-width:100%;height:auto;}
+  .grafica-caja .gtit{font-weight:700;color:var(--azul-osc);font-size:15px;margin-bottom:8px;}
+
+  /* ── 5 PASOS ── */
+  .pasos-leer{display:flex;gap:9px;flex-wrap:wrap;margin:16px 0;}
+  .pasos-leer .pl{
+    flex:1;min-width:130px;background:var(--azul-cl);border-radius:10px;
+    padding:12px 13px;border-bottom:4px solid var(--azul);
+  }
+  .pasos-leer .pl .pln{
+    display:inline-block;background:var(--azul);color:#fff;width:23px;height:23px;
+    border-radius:50%;text-align:center;line-height:23px;font-weight:700;font-size:12px;margin-bottom:5px;
+  }
+  .pasos-leer .pl strong{display:block;font-size:13.5px;margin-bottom:3px;}
+  .pasos-leer .pl span.txt{font-size:12.5px;color:var(--gris);}
+
+  /* ── TENDENCIAS ── */
+  .tendencias{display:flex;gap:12px;flex-wrap:wrap;margin:14px 0;}
+  .tend-card{
+    flex:1;min-width:160px;border-radius:10px;padding:13px;text-align:center;
+    background:#fff;border:2px solid var(--linea);
+  }
+  .tend-card svg{display:block;margin:0 auto 6px;}
+  .tend-card .tnom{font-weight:700;font-size:14px;color:var(--azul-osc);}
+  .tend-card .tdesc{font-size:12.5px;color:var(--gris);}
+
+  .ejemplo{
+    background:var(--crema);border:1px dashed var(--azul);
+    border-radius:11px;padding:18px 22px;margin:18px 0;
+  }
+  .ejemplo .titulo-ej{font-weight:700;color:var(--azul-osc);margin-bottom:8px;font-size:15px;}
+  .paso{margin:8px 0 8px 4px;padding-left:32px;position:relative;}
+  .paso .n{
+    position:absolute;left:0;top:0;width:24px;height:24px;background:var(--azul);
+    color:#fff;border-radius:50%;font-size:13px;font-weight:700;
+    display:flex;align-items:center;justify-content:center;
+  }
+
+  .practica{
+    border:2px solid var(--azul-cl);border-radius:12px;
+    padding:20px 22px;margin:20px 0;background:#fbfdfb;
+  }
+  .practica .cabe{display:flex;align-items:center;gap:10px;margin-bottom:6px;}
+  .practica .cabe .ico{font-size:22px;}
+  .practica .cabe h3{font-size:16px;color:var(--azul-osc);}
+  .pregunta-int{font-size:17px;font-weight:600;margin:14px 0 12px;}
+  .opciones{display:flex;flex-direction:column;gap:9px;}
+  .opcion{
+    border:2px solid var(--linea);border-radius:9px;padding:11px 16px;
+    cursor:pointer;background:#fff;transition:.16s;font-size:16px;
+    text-align:left;font-family:inherit;color:var(--tinta);
+  }
+  .opcion:hover{border-color:var(--azul);background:var(--azul-cl);}
+  .opcion.correcta{border-color:var(--verde);background:var(--verde-cl);font-weight:600;}
+  .opcion.incorrecta{border-color:var(--rojo);background:var(--rojo-cl);}
+  .opcion:disabled{cursor:default;}
+  .respuesta-int{margin-top:12px;padding:11px 15px;border-radius:8px;font-size:15px;display:none;}
+  .respuesta-int.bien{background:var(--verde-cl);color:var(--verde);display:block;}
+  .respuesta-int.mal{background:var(--rojo-cl);color:var(--rojo);display:block;}
+
+  .btn{
+    font-family:inherit;font-size:15px;font-weight:600;padding:9px 20px;
+    background:var(--azul);color:#fff;border:none;border-radius:8px;cursor:pointer;transition:.16s;
+  }
+  .btn:hover{background:var(--azul-osc);}
+  .btn-sec{background:#fff;color:var(--azul);border:2px solid var(--azul);}
+  .btn-sec:hover{background:var(--azul-cl);}
+
+  .quiz-bloque{margin:18px 0;padding:18px 20px;border-radius:11px;background:var(--crema);border:1px solid var(--linea);}
+  .quiz-bloque .qnum{
+    display:inline-block;background:var(--azul-osc);color:#fff;font-size:13px;
+    font-weight:700;padding:3px 11px;border-radius:20px;margin-bottom:8px;
+  }
+  .quiz-bloque .pregunta{font-weight:600;font-size:16px;margin-bottom:12px;}
+  .marcador{text-align:center;padding:26px;border-radius:13px;margin-top:20px;display:none;}
+  .marcador.visible{display:block;}
+  .marcador .puntaje{font-size:46px;font-weight:800;margin:6px 0;}
+  .marcador .mensaje{font-size:17px;}
+  .barra-prog{height:10px;background:var(--linea);border-radius:6px;overflow:hidden;margin:14px 0;}
+  .barra-prog span{display:block;height:100%;background:var(--verde);width:0;transition:width .5s;}
+
+  .tabla-rubrica{width:100%;border-collapse:collapse;margin:14px 0;font-size:14px;}
+  .tabla-rubrica th,.tabla-rubrica td{border:1px solid var(--linea);padding:10px 12px;text-align:left;vertical-align:top;}
+  .tabla-rubrica thead th{background:var(--azul-osc);color:#fff;font-size:13px;}
+  .tabla-rubrica tbody th{font-weight:600;color:var(--azul-osc);background:var(--azul-cl);font-size:14px;text-align:left;}
+  .nivel-cab{background:#2f3d46;color:#fff;text-align:center;}
+
+  .cierre{
+    background:linear-gradient(135deg,#0d3b11,#2e7d32);color:#fff;
+    border-radius:14px;padding:28px 32px;margin-top:24px;
+  }
+  .cierre h2{color:#fff;}
+  .cierre strong{color:#9BFF8F;font-weight:700;text-shadow:0 1px 2px rgba(0,0,0,.45);}
+  .cierre .num-seccion{background:rgba(255,255,255,.22);}
+  .flecha-sig{
+    display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.16);
+    border:1px solid rgba(255,255,255,.3);padding:10px 18px;border-radius:9px;
+    margin-top:12px;font-weight:600;font-size:15px;
+  }
+
+  footer{text-align:center;padding:30px 20px;color:var(--gris);font-size:13px;}
+
+  @media(max-width:560px){
+    header.principal{padding:34px 22px;}
+    header.principal h1{font-size:24px;}
+    section{padding:24px 20px;}
+  }
+
+      /* ── FOCO VISIBLE (WCAG 2.4.7) ── */
+      a:focus-visible,
+      button:focus-visible,
+      [tabindex]:focus-visible {
+        outline: 3px solid var(--azul-osc);
+        outline-offset: 2px;
+      }
+
+      /* ── MOVIMIENTO REDUCIDO ── */
+      @media (prefers-reduced-motion: reduce) {
+        * {
+          transition: none !important;
+        }
+        html {
+          scroll-behavior: auto;
+        }
+      }
+
+      /* ── MARCAS DE RESPUESTA (no depender del color) ── */
+      .marca {
+        font-weight: 700;
+        margin-right: 6px;
+      }
+      .opcion.elegida {
+        border-color: var(--azul);
+        background: var(--azul-cl);
+      }
+      .opcion:disabled {
+        color: var(--tinta);
+        opacity: 1;
+      }
+
+      /* ── TABLAS RESPONSIVAS (DUA) ── */
+      .tabla-scroll {
+        overflow-x: auto;
+        overflow-y: hidden;
+        -webkit-overflow-scrolling: touch;
+        max-width: 100%;
+        margin: 18px 0 0;
+        border: 1px solid var(--linea);
+        border-radius: 8px;
+        background: var(--papel);
+      }
+      .tabla-scroll:focus,
+      .tabla-scroll:focus-visible {
+        outline: 3px solid var(--azul);
+        outline-offset: 2px;
+      }
+      .tabla-scroll > table {
+        margin: 0;
+        min-width: 100%;
+      }
+      .aviso-desliza {
+        margin: 8px 0 18px;
+        padding: 8px 12px;
+        font-size: 14px;
+        font-weight: 600;
+        color: #5c3900;
+        background: #fdf3df;
+        border-left: 4px solid #5c3900;
+        border-radius: 5px;
+      }
+      .cap-oculto {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0 0 0 0);
+        white-space: nowrap;
+        border: 0;
+      }
+      @media print {
+        .tabla-scroll {
+          overflow: visible;
+          border: 0;
+        }
+        .aviso-desliza {
+          display: none;
+        }
+      }
+    </style>
+</head><body><header class="principal">
+<div class="envoltura-header">
+<p class="ruta">Matemáticas · Nivel 1 · Tema 8 — Tablas, gráficas y proyecto final</p>
+<h1>Lección 8.2 · Gráficas de barras y de líneas</h1>
+<p class="lema">Los datos en dibujos: leer gráficas, identificar tendencias y construir la propia.</p>
+<div class="chips"><span class="chip"><span aria-hidden="true">⏱️</span> 4 horas (2 sinc. + 2 asinc.)</span> <span class="chip"><span aria-hidden="true">📊</span> Barras y líneas</span> <span class="chip"><span aria-hidden="true">📘</span> MyOpenMath</span></div>
+</div>
+</header>
+<div class="envoltura"><!-- OBJETIVOS -->
+<section>
+<div class="caja caja-objetivo">
+<h2><span aria-hidden="true" class="num-seccion">🎯</span>Objetivos de la clase</h2>
+<p>Al terminar esta lección, usted podrá:</p>
+<ul>
+<li><strong>Identificar</strong> el título, los ejes y la escala de una gráfica.</li>
+<li><strong>Leer</strong> valores específicos en gráficas de barras y de líneas.</li>
+<li><strong>Identificar tendencias</strong>: creciente, decreciente o estable.</li>
+<li><strong>Construir</strong> una gráfica de barras sencilla a partir de datos dados.</li>
+</ul>
+</div>
+</section>
+<!-- DE LA TABLA A LA GRÁFICA -->
+<section>
+<h2><span aria-hidden="true" class="num-seccion">1</span>De la tabla a la gráfica</h2>
+<p>En la <strong>Lección 8.1</strong> aprendió a leer los datos en una <strong>tabla</strong>, donde la información aparece como números. Hoy verá otra forma de presentar esos mismos datos: la <strong>gráfica</strong>, donde la información se vuelve un <strong>dibujo</strong>.</p>
+<p>Una gráfica tiene una gran ventaja: <strong>de un solo vistazo</strong> se ve cuál valor es mayor, cuál es menor y cómo cambian las cosas. Lo que en una tabla hay que leer número por número, en una gráfica se ve enseguida.</p>
+<div class="caja caja-tip"><span class="etiqueta et-verde">Dos gráficas muy comunes</span>
+<p>La <strong>gráfica de barras</strong> usa barras de distinta altura para comparar cantidades. La <strong>gráfica de líneas</strong> usa una línea que sube y baja para mostrar cómo cambia algo con el tiempo.</p>
+</div>
+</section>
+<!-- LEER UNA GRÁFICA -->
+<section>
+<h2><span aria-hidden="true" class="num-seccion">2</span>Leer una gráfica en 5 pasos</h2>
+<p>Toda gráfica se lee igual. Siga estos cinco pasos antes de responder cualquier pregunta:</p>
+<div class="pasos-leer">
+<p class="pl"><span class="pln">1</span> <strong>El título</strong> <span class="txt">¿De qué trata la gráfica?</span></p>
+<p class="pl"><span class="pln">2</span> <strong>Los ejes</strong> <span class="txt">¿Qué mide el eje de abajo y el de al lado?</span></p>
+<p class="pl"><span class="pln">3</span> <strong>La escala</strong> <span class="txt">¿De cuánto en cuánto van los números?</span></p>
+<p class="pl"><span class="pln">4</span> <strong>Los valores</strong> <span class="txt">Leo la altura de cada barra o punto.</span></p>
+<p class="pl"><span class="pln">5</span> <strong>La tendencia</strong> <span class="txt">¿Sube, baja o se mantiene?</span></p>
+</div>
+<div class="caja caja-ojo"><span class="etiqueta et-ambar">¡Ojo con la escala!</span>
+<p>Los <strong>ejes</strong> son las dos líneas: una abajo (horizontal) y una al lado (vertical). La <strong>escala</strong> dice de cuánto en cuánto van los números — pueden ir de 1 en 1, de 5 en 5, de 10 en 10. Si no mira la escala, puede leer mal todos los valores.</p>
+</div>
+</section>
+<!-- GRÁFICA DE BARRAS -->
+<section>
+<h2><span aria-hidden="true" class="num-seccion">3</span>La gráfica de barras</h2>
+<p>La <strong>gráfica de barras</strong> sirve para <strong>comparar cantidades</strong>. Cada barra representa algo, y su <strong>altura</strong> indica el valor: mientras más alta la barra, más grande el valor.</p>
+<div class="grafica-caja">
+<p class="gtit">Ventas de una tienda por día (en dólares)</p>
+<svg aria-label="Gráfica de barras, ventas de una tienda por día en dólares: lunes 200, martes 300, miércoles 150, jueves 350. La barra más alta es la del jueves y la más baja la del miércoles." height="240" role="img" viewbox="0 0 400 240" width="400" xmlns="http://www.w3.org/2000/svg"> <line stroke="#263238" stroke-width="2.5" x1="55" x2="55" y1="20" y2="195"></line> <line stroke="#263238" stroke-width="2.5" x1="55" x2="375" y1="195" y2="195"></line> <g fill="#5b6675" font-size="11" text-anchor="end">
+<text x="48" y="199">
+         0 
+       </text>
+<text x="48" y="159">
+         100 
+       </text>
+<text x="48" y="119">
+         200 
+       </text>
+<text x="48" y="79">
+         300 
+       </text>
+<text x="48" y="39">
+         400 
+       </text>
+</g> <g stroke="#dde3ea" stroke-width="1">
+<line x1="55" x2="375" y1="155" y2="155"></line>
+<line x1="55" x2="375" y1="115" y2="115"></line>
+<line x1="55" x2="375" y1="75" y2="75"></line>
+<line x1="55" x2="375" y1="35" y2="35"></line>
+</g> <rect fill="#2e7d32" height="80" width="48" x="78" y="115"></rect> <rect fill="#2e7d32" height="120" width="48" x="156" y="75"></rect> <rect fill="#2e7d32" height="60" width="48" x="234" y="135"></rect> <rect fill="#2e7d32" height="140" width="48" x="312" y="55"></rect> <g fill="#1b5e20" font-size="11" font-weight="700" text-anchor="middle">
+<text x="102" y="108">
+         $200 
+       </text>
+<text x="180" y="68">
+         $300 
+       </text>
+<text x="258" y="128">
+         $150 
+       </text>
+<text x="336" y="48">
+         $350 
+       </text>
+</g> <g fill="#263238" font-size="12" font-weight="600" text-anchor="middle">
+<text x="102" y="212">
+         Lunes 
+       </text>
+<text x="180" y="212">
+         Martes 
+       </text>
+<text x="258" y="212">
+         Miércoles 
+       </text>
+<text x="336" y="212">
+         Jueves 
+       </text>
+</g> <text fill="#5b6675" font-size="12" text-anchor="middle" x="215" y="233">
+        Día de la semana 
+      </text>
+</svg></div>
+<div class="ejemplo">
+<p class="titulo-ej">Leer la gráfica de barras</p>
+<p class="paso"><span aria-hidden="true" class="n">1</span><strong>Título:</strong> ventas de una tienda por día, en dólares.</p>
+<p class="paso"><span aria-hidden="true" class="n">2</span><strong>Ejes:</strong> abajo, los días; al lado, los dólares de venta.</p>
+<p class="paso"><span aria-hidden="true" class="n">3</span><strong>Escala:</strong> el eje vertical va de 100 en 100.</p>
+<p class="paso"><span aria-hidden="true" class="n">✓</span><strong>Valores:</strong> la barra más alta es la del jueves ($350) — ese fue el mejor día de ventas.</p>
+</div>
+<div class="practica">
+<div class="cabe"><span aria-hidden="true" class="ico">✏️</span>
+<h3>Práctica 1 — Leer la gráfica de barras</h3>
+</div>
+<p class="pregunta-int" id="t-p1">Según la gráfica de ventas, ¿cuánto se vendió el martes?</p>
+<div aria-labelledby="t-p1" class="opciones" data-quiz="p1" role="group"><button class="opcion" data-correcta="no" type="button">$200</button> <button class="opcion" data-correcta="si" type="button">$300</button> <button class="opcion" data-correcta="no" type="button">$150</button> <button class="opcion" data-correcta="no" type="button">$350</button></div>
+<div aria-live="polite" class="respuesta-int" id="r-p1" role="status"></div>
+</div>
+<div class="practica">
+<div class="cabe"><span aria-hidden="true" class="ico">✏️</span>
+<h3>Práctica 2 — Comparar barras</h3>
+</div>
+<p class="pregunta-int" id="t-p2">¿Qué día tuvo las ventas más bajas?</p>
+<div aria-labelledby="t-p2" class="opciones" data-quiz="p2" role="group"><button class="opcion" data-correcta="no" type="button">Lunes</button> <button class="opcion" data-correcta="no" type="button">Martes</button> <button class="opcion" data-correcta="si" type="button">Miércoles</button> <button class="opcion" data-correcta="no" type="button">Jueves</button></div>
+<div aria-live="polite" class="respuesta-int" id="r-p2" role="status"></div>
+</div>
+</section>
+<!-- GRÁFICA DE LÍNEAS -->
+<section>
+<h2><span aria-hidden="true" class="num-seccion">4</span>La gráfica de líneas y las tendencias</h2>
+<p>La <strong>gráfica de líneas</strong> sirve para mostrar <strong>cómo cambia algo con el tiempo</strong>. Une puntos con una línea: cuando la línea sube, el valor aumenta; cuando baja, disminuye.</p>
+<div class="grafica-caja">
+<p class="gtit">Temperatura de una ciudad durante la semana (°F)</p>
+<svg aria-label="Gráfica de líneas, temperatura de una ciudad durante la semana en grados Fahrenheit: lunes 40, martes 50, miércoles 55, jueves 65, viernes 70. La línea sube de principio a fin." height="240" role="img" viewbox="0 0 400 240" width="400" xmlns="http://www.w3.org/2000/svg"> <line stroke="#263238" stroke-width="2.5" x1="55" x2="55" y1="20" y2="195"></line> <line stroke="#263238" stroke-width="2.5" x1="55" x2="375" y1="195" y2="195"></line> <g fill="#5b6675" font-size="11" text-anchor="end">
+<text x="48" y="199">
+         0 
+       </text>
+<text x="48" y="159">
+         20 
+       </text>
+<text x="48" y="119">
+         40 
+       </text>
+<text x="48" y="79">
+         60 
+       </text>
+<text x="48" y="39">
+         80 
+       </text>
+</g> <g stroke="#dde3ea" stroke-width="1">
+<line x1="55" x2="375" y1="155" y2="155"></line>
+<line x1="55" x2="375" y1="115" y2="115"></line>
+<line x1="55" x2="375" y1="75" y2="75"></line>
+<line x1="55" x2="375" y1="35" y2="35"></line>
+</g> <polyline fill="none" points="95,115 155,95 215,85 275,65 335,55" stroke="#2e7d32" stroke-width="3"></polyline> <g fill="#1b5e20">
+<circle cx="95" cy="115" r="5"></circle>
+<circle cx="155" cy="95" r="5"></circle>
+<circle cx="215" cy="85" r="5"></circle>
+<circle cx="275" cy="65" r="5"></circle>
+<circle cx="335" cy="55" r="5"></circle>
+</g> <g fill="#1b5e20" font-size="11" font-weight="700" text-anchor="middle">
+<text x="95" y="106">
+         40 
+       </text>
+<text x="155" y="86">
+         50 
+       </text>
+<text x="215" y="76">
+         55 
+       </text>
+<text x="275" y="56">
+         65 
+       </text>
+<text x="335" y="46">
+         70 
+       </text>
+</g> <g fill="#263238" font-size="12" font-weight="600" text-anchor="middle">
+<text x="95" y="212">
+         Lun 
+       </text>
+<text x="155" y="212">
+         Mar 
+       </text>
+<text x="215" y="212">
+         Mié 
+       </text>
+<text x="275" y="212">
+         Jue 
+       </text>
+<text x="335" y="212">
+         Vie 
+       </text>
+</g> <text fill="#5b6675" font-size="12" text-anchor="middle" x="215" y="233">
+        Día de la semana 
+      </text>
+</svg></div>
+<h3>Las tres tendencias</h3>
+<p>La <strong>tendencia</strong> es la dirección general de la línea. Hay tres:</p>
+<div class="tendencias">
+<div class="tend-card"><svg aria-hidden="true" height="44" viewbox="0 0 70 44" width="70" xmlns="http://www.w3.org/2000/svg"> <polyline fill="none" points="8,36 26,28 44,18 62,8" stroke="#2e7d4f" stroke-width="3"></polyline>
+</svg>
+<p class="tnom">Creciente</p>
+<p class="tdesc">La línea sube: el valor aumenta.</p>
+</div>
+<div class="tend-card"><svg aria-hidden="true" height="44" viewbox="0 0 70 44" width="70" xmlns="http://www.w3.org/2000/svg"> <polyline fill="none" points="8,8 26,18 44,28 62,36" stroke="#c0392b" stroke-width="3"></polyline>
+</svg>
+<p class="tnom">Decreciente</p>
+<p class="tdesc">La línea baja: el valor disminuye.</p>
+</div>
+<div class="tend-card"><svg aria-hidden="true" height="44" viewbox="0 0 70 44" width="70" xmlns="http://www.w3.org/2000/svg"> <polyline fill="none" points="8,22 26,22 44,22 62,22" stroke="#b06f00" stroke-width="3"></polyline>
+</svg>
+<p class="tnom">Estable</p>
+<p class="tdesc">La línea no cambia: el valor se mantiene.</p>
+</div>
+</div>
+<div class="caja caja-tip"><span class="etiqueta et-verde">La tendencia de la gráfica de arriba</span>
+<p>En la gráfica de temperatura, la línea sube de lunes a viernes (40 → 50 → 55 → 65 → 70). La tendencia es <strong>creciente</strong>: la temperatura fue aumentando toda la semana.</p>
+</div>
+<div class="practica">
+<div class="cabe"><span aria-hidden="true" class="ico">✏️</span>
+<h3>Práctica 3 — Leer la gráfica de líneas</h3>
+</div>
+<p class="pregunta-int" id="t-p3">Según la gráfica de temperatura, ¿qué temperatura hubo el jueves?</p>
+<div aria-labelledby="t-p3" class="opciones" data-quiz="p3" role="group"><button class="opcion" data-correcta="no" type="button">55 °F</button> <button class="opcion" data-correcta="si" type="button">65 °F</button> <button class="opcion" data-correcta="no" type="button">70 °F</button> <button class="opcion" data-correcta="no" type="button">50 °F</button></div>
+<div aria-live="polite" class="respuesta-int" id="r-p3" role="status"></div>
+</div>
+<div class="practica">
+<div class="cabe"><span aria-hidden="true" class="ico">✏️</span>
+<h3>Práctica 4 — Identificar la tendencia</h3>
+</div>
+<p class="pregunta-int" id="t-p4">Si una gráfica de líneas muestra los ahorros de una persona bajando mes a mes, la tendencia es:</p>
+<div aria-labelledby="t-p4" class="opciones" data-quiz="p4" role="group"><button class="opcion" data-correcta="no" type="button">Creciente</button> <button class="opcion" data-correcta="si" type="button">Decreciente</button> <button class="opcion" data-correcta="no" type="button">Estable</button></div>
+<div aria-live="polite" class="respuesta-int" id="r-p4" role="status"></div>
+</div>
+</section>
+<!-- CONSTRUIR UNA GRÁFICA -->
+<section>
+<h2><span aria-hidden="true" class="num-seccion">5</span>Construir una gráfica de barras</h2>
+<p>Leer gráficas es importante, pero también lo es saber <strong>hacer una</strong>. Para construir una gráfica de barras a partir de una tabla, siga estos pasos:</p>
+<div class="ejemplo">
+<p class="titulo-ej">Construir una gráfica de barras paso a paso</p>
+<p class="paso"><span aria-hidden="true" class="n">1</span>Escribo un <strong>título</strong> que diga de qué trata la gráfica.</p>
+<p class="paso"><span aria-hidden="true" class="n">2</span>Dibujo los dos <strong>ejes</strong> y escribo qué mide cada uno.</p>
+<p class="paso"><span aria-hidden="true" class="n">3</span>Elijo una <strong>escala</strong> cómoda para el eje vertical (de 1 en 1, de 5 en 5, de 10 en 10), según los datos.</p>
+<p class="paso"><span aria-hidden="true" class="n">4</span>Dibujo una <strong>barra</strong> por cada dato, con la altura que le corresponde.</p>
+<p class="paso"><span aria-hidden="true" class="n">✓</span>Reviso que cada barra esté <strong>etiquetada</strong> y a la altura correcta.</p>
+</div>
+<div class="caja caja-ojo"><span class="etiqueta et-ambar">Las barras deben ser parejas</span>
+<p>Todas las barras de una gráfica deben tener el <strong>mismo ancho</strong> y arrancar desde la misma línea (el cero). Lo único que cambia entre ellas es la <strong>altura</strong>, porque es la altura la que representa el valor.</p>
+</div>
+<div class="practica">
+<div class="cabe"><span aria-hidden="true" class="ico">✏️</span>
+<h3>Práctica 5 — Construir una gráfica</h3>
+</div>
+<p class="pregunta-int" id="t-p5">Al construir una gráfica de barras, ¿qué representa la altura de cada barra?</p>
+<div aria-labelledby="t-p5" class="opciones" data-quiz="p5" role="group"><button class="opcion" data-correcta="no" type="button">El ancho del papel</button> <button class="opcion" data-correcta="si" type="button">El valor del dato</button> <button class="opcion" data-correcta="no" type="button">El número de barras</button> <button class="opcion" data-correcta="no" type="button">El título de la gráfica</button></div>
+<div aria-live="polite" class="respuesta-int" id="r-p5" role="status"></div>
+</div>
+<div class="caja-tarea"><span class="et-interactivo">Interactivo</span> <a class="enlace-interactivo" href="https://zhemaria.github.io/graficos/barras/" rel="noopener" target="_blank">Construye un gráfico de barras<span aria-hidden="true" class="flecha-ext">↗</span></a></div>
+<div class="caja-tarea"><span class="et-interactivo">Interactivo</span> <a class="enlace-interactivo" href="https://zhemaria.github.io/graficos/lineas/" rel="noopener" target="_blank">Construye un gráfico de líneas<span aria-hidden="true" class="flecha-ext">↗</span></a></div>
+</section>
+<!-- PRÁCTICA GUIADA -->
+<section>
+<h2><span aria-hidden="true" class="num-seccion">6</span>Práctica guiada en clase</h2>
+<p>Estas actividades se hacen <strong>en la sesión sincrónica</strong>. Cada actividad incluye una variante para la <strong>clase presencial</strong> y otra para la <strong>clase en línea</strong>; el objetivo de aprendizaje es el mismo en ambas.</p>
+<div class="caja caja-recurso"><span class="etiqueta et-azul">Actividad A · "Mi gráfica del mes"</span>
+<p>Cada estudiante usa datos que recopiló durante dos semanas (un dato diario) para crear su propia gráfica de líneas.</p>
+<div class="modalidades">
+<div class="modo modo-pres"><span class="modo-tit">🏫 Presencial</span>
+<p>Cada estudiante trae su tabla de un dato diario recopilado durante dos semanas (temperatura, gasto diario, minutos de estudio). En papel cuadriculado, construye su gráfica de líneas y la comparte con el grupo.</p>
+</div>
+<div class="modo modo-line"><span class="modo-tit">💻 En línea</span>
+<p>Cada estudiante construye su gráfica de líneas con sus datos de dos semanas, le toma una foto o la dibuja, y la comparte en el foro. El grupo comenta las tendencias que observa.</p>
+</div>
+</div>
+</div>
+<div class="caja caja-recurso"><span class="etiqueta et-azul">Actividad B · "La gráfica del empleo"</span>
+<p>Los estudiantes interpretan una gráfica de barras real sobre el nivel de empleo en Chicago en los últimos meses.</p>
+<div class="modalidades">
+<div class="modo modo-pres"><span class="modo-tit">🏫 Presencial</span>
+<p>Reparta la gráfica de barras del empleo en Chicago. En parejas, los estudiantes responden: ¿qué mes tuvo más empleo? ¿cuál tuvo menos? ¿la tendencia general sube o baja?</p>
+</div>
+<div class="modo modo-line"><span class="modo-tit">💻 En línea</span>
+<p>Comparta la <a href="https://www.chicagofed.org/research/data/chicago-fed-labor-market-indicators/latest-release" rel="noopener" target="_blank">gráfica de empleo</a> en una diapositiva. Los estudiantes responden las preguntas de interpretación en el chat y el grupo discute la tendencia general.</p>
+</div>
+</div>
+</div>
+<div class="caja caja-recurso"><span class="etiqueta et-azul">Actividad C · "De la tabla a la gráfica"</span>
+<p>A partir de una tabla de datos, los estudiantes construyen la gráfica de barras correspondiente.</p>
+<div class="modalidades">
+<div class="modo modo-pres"><span class="modo-tit">🏫 Presencial</span>
+<p>Reparta una tabla sencilla. Cada estudiante construye en papel cuadriculado la gráfica de barras: título, ejes, escala y barras etiquetadas. Verifican en parejas.</p>
+</div>
+<div class="modo modo-line"><span class="modo-tit">💻 En línea</span>
+<p>Comparta la <a href="https://www.ccc.edu/wp-content/uploads/CCCFY24StatisticalDigest_As-of-April_29_2025.pdf" rel="noopener" target="_blank">tabla </a>en una diapositiva. Los estudiantes dibujan la gráfica en papel, la muestran a la cámara o la fotografían, y el grupo revisa que tenga título, ejes y escala correctos.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- TAREA ASINCRÓNICA -->
+<section>
+<h2><span aria-hidden="true" class="num-seccion">7</span>Tarea asincrónica</h2>
+<p>Estas actividades se realizan <strong>por su cuenta</strong>, dentro de las 2 horas asincrónicas de la lección.</p>
+<ul>
+<li><strong>MyOpenMath:</strong> complete las <strong>10 preguntas</strong> de interpretación de gráficas de barras y de líneas. Cada una da retroalimentación inmediata.</li>
+<li><strong>Brightspace:</strong> realice el quiz de la lección (abajo puede practicarlo antes).</li>
+<li><strong>Preparación del proyecto final:</strong> empiece a recopilar los datos personales que usará en el proyecto de la Lección 8.3 (por ejemplo, sus horas de sueño o sus gastos durante cinco días).</li>
+</ul>
+</section>
+<!-- QUIZ -->
+<section>
+<h2><span aria-hidden="true" class="num-seccion">8</span>Quiz de práctica</h2>
+<p>Responda las <strong>8 preguntas</strong>. Use las dos gráficas de esta lección como referencia. Al final verá su puntaje y podrá repasar lo que falló.</p>
+<div id="quiz">
+<div class="quiz-bloque"><span class="qnum">Pregunta 1</span>
+<p class="pregunta" id="t-q1">¿Para qué sirve principalmente una gráfica de barras?</p>
+<div aria-labelledby="t-q1" class="opciones" data-q="1" role="group"><button class="opcion" data-c="si" type="button">Para comparar cantidades.</button> <button class="opcion" data-c="no" type="button">Para escribir oraciones.</button> <button class="opcion" data-c="no" type="button">Para dibujar figuras geométricas.</button> <button class="opcion" data-c="no" type="button">Para medir ángulos.</button></div>
+</div>
+<div class="quiz-bloque"><span class="qnum">Pregunta 2</span>
+<p class="pregunta" id="t-q2">En la gráfica de barras de ventas, ¿cuánto se vendió el lunes?</p>
+<div aria-labelledby="t-q2" class="opciones" data-q="2" role="group"><button class="opcion" data-c="si" type="button">$200</button> <button class="opcion" data-c="no" type="button">$300</button> <button class="opcion" data-c="no" type="button">$350</button> <button class="opcion" data-c="no" type="button">$150</button></div>
+</div>
+<div class="quiz-bloque"><span class="qnum">Pregunta 3</span>
+<p class="pregunta" id="t-q3">En la gráfica de barras de ventas, ¿qué día se vendió más?</p>
+<div aria-labelledby="t-q3" class="opciones" data-q="3" role="group"><button class="opcion" data-c="no" type="button">Lunes</button> <button class="opcion" data-c="no" type="button">Miércoles</button> <button class="opcion" data-c="si" type="button">Jueves</button> <button class="opcion" data-c="no" type="button">Martes</button></div>
+</div>
+<div class="quiz-bloque"><span class="qnum">Pregunta 4</span>
+<p class="pregunta" id="t-q4">¿Para qué sirve principalmente una gráfica de líneas?</p>
+<div aria-labelledby="t-q4" class="opciones" data-q="4" role="group"><button class="opcion" data-c="si" type="button">Para mostrar cómo cambia algo con el tiempo.</button> <button class="opcion" data-c="no" type="button">Para clasificar figuras.</button> <button class="opcion" data-c="no" type="button">Para convertir fracciones.</button> <button class="opcion" data-c="no" type="button">Para medir el perímetro.</button></div>
+</div>
+<div class="quiz-bloque"><span class="qnum">Pregunta 5</span>
+<p class="pregunta" id="t-q5">En la gráfica de líneas de temperatura, ¿qué temperatura hubo el viernes?</p>
+<div aria-labelledby="t-q5" class="opciones" data-q="5" role="group"><button class="opcion" data-c="si" type="button">70 °F</button> <button class="opcion" data-c="no" type="button">65 °F</button> <button class="opcion" data-c="no" type="button">55 °F</button> <button class="opcion" data-c="no" type="button">40 °F</button></div>
+</div>
+<div class="quiz-bloque"><span class="qnum">Pregunta 6</span>
+<p class="pregunta" id="t-q6">En la gráfica de temperatura, la línea sube de lunes a viernes. La tendencia es:</p>
+<div aria-labelledby="t-q6" class="opciones" data-q="6" role="group"><button class="opcion" data-c="si" type="button">Creciente</button> <button class="opcion" data-c="no" type="button">Decreciente</button> <button class="opcion" data-c="no" type="button">Estable</button></div>
+</div>
+<div class="quiz-bloque"><span class="qnum">Pregunta 7</span>
+<p class="pregunta" id="t-q7">Antes de leer los valores de una gráfica, es importante revisar:</p>
+<div aria-labelledby="t-q7" class="opciones" data-q="7" role="group"><button class="opcion" data-c="si" type="button">El título, los ejes y la escala.</button> <button class="opcion" data-c="no" type="button">El color del papel.</button> <button class="opcion" data-c="no" type="button">El número de la página.</button> <button class="opcion" data-c="no" type="button">Nada, se leen directamente.</button></div>
+</div>
+<div class="quiz-bloque"><span class="qnum">Pregunta 8</span>
+<p class="pregunta" id="t-q8">En una gráfica de barras, ¿qué deben tener en común todas las barras?</p>
+<div aria-labelledby="t-q8" class="opciones" data-q="8" role="group"><button class="opcion" data-c="si" type="button">El mismo ancho y arrancar desde el cero.</button> <button class="opcion" data-c="no" type="button">La misma altura.</button> <button class="opcion" data-c="no" type="button">El mismo color que el título.</button> <button class="opcion" data-c="no" type="button">Estar todas vacías.</button></div>
+</div>
+</div>
+<div style="text-align: center; margin-top: 18px;"><button class="btn" id="btn-calificar" type="button">Ver mi resultado</button> <button class="btn btn-sec" id="btn-reintentar" style="display: none;" type="button">Intentar de nuevo</button></div>
+<div aria-live="polite" class="marcador" id="marcador" role="status">
+<div aria-hidden="true" class="barra-prog"><span id="barra"></span></div>
+<p class="puntaje" id="puntaje"></p>
+<p class="mensaje" id="mensaje"></p>
+</div>
+</section>
+<!-- RÚBRICA -->
+<section>
+<h2><span aria-hidden="true" class="num-seccion">9</span>Rúbrica de evaluación</h2>
+<p>Rúbrica de lectura y creación de gráficas. Cada criterio se evalúa en cuatro niveles.</p>
+<div aria-label="Rúbrica de evaluación: criterios y sus niveles de logro (tabla desplazable horizontalmente)" class="tabla-scroll" role="region" tabindex="0"><table class="tabla-rubrica"><caption class="cap-oculto">Rúbrica de evaluación: criterios y sus niveles de logro</caption>
+<thead>
+<tr>
+<th scope="col">Criterio</th>
+<th class="nivel-cab" scope="col">Logrado (4)</th>
+<th class="nivel-cab" scope="col">Satisfactorio (3)</th>
+<th class="nivel-cab" scope="col">En proceso (2)</th>
+<th class="nivel-cab" scope="col">Por reforzar (1)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th scope="row">Identifica título, ejes y escala</th>
+<td>Identifica los tres elementos con seguridad.</td>
+<td>Identifica título y ejes correctamente.</td>
+<td>Olvida revisar la escala.</td>
+<td>No identifica las partes de la gráfica.</td>
+</tr>
+<tr>
+<th scope="row">Lee valores específicos</th>
+<td>Lee valores de barras y de líneas sin errores.</td>
+<td>Lee los valores correctamente casi siempre.</td>
+<td>Lee mal por no usar la escala.</td>
+<td>No logra leer los valores.</td>
+</tr>
+<tr>
+<th scope="row">Identifica la tendencia</th>
+<td>Distingue tendencia creciente, decreciente y estable.</td>
+<td>Identifica la tendencia general correctamente.</td>
+<td>Confunde creciente con decreciente.</td>
+<td>No identifica la tendencia.</td>
+</tr>
+<tr>
+<th scope="row">Construye una gráfica de barras</th>
+<td>Construye la gráfica con título, ejes, escala y barras correctas.</td>
+<td>Construye la gráfica con algún detalle por mejorar.</td>
+<td>Construye barras sin etiquetar o sin escala.</td>
+<td>No logra construir la gráfica.</td>
+</tr>
+</tbody>
+</table></div><p class="aviso-desliza"><span aria-hidden="true">↔</span> Deslice la tabla horizontalmente para ver todas las columnas.</p>
+</section>
+<!-- CIERRE -->
+<div class="cierre">
+<h2><span aria-hidden="true" class="num-seccion">➡️</span>Lo que viene en la próxima lección</h2>
+<p>Ya sabe leer gráficas de barras y de líneas, identificar tendencias y construir su propia gráfica. Con la Lección 8.1 y esta, domina la lectura de datos.</p>
+<p>La <strong>Lección 8.3 · Proyecto final integrador</strong> es la última del Nivel 1. Reunirá todo lo aprendido en un proyecto personal —"Mi gráfica de la vida"— y se preparará para el examen GED con preguntas que combinan los ocho temas del nivel. ¡Está a un paso de completar el Nivel 1!</p>
+<p class="flecha-sig">➡️  Próxima: Lección 8.3 · Proyecto final integrador + introducción al GED</p>
+</div>
+<footer>Matemáticas · Nivel 1 · Lección 8.2 — Spanish ASE Math · AE 0170-0321 <br/>City Colleges of Chicago · Truman College · Prof. José M. Fernández</footer>
+<script>
+      // ── PRÁCTICA INTERACTIVA ──
+      var respuestasPractica = {
+      p1:"El martes se vendió $300. Busque la barra del martes y lea su altura en la escala.",
+      p2:"El miércoles tuvo las ventas más bajas: $150. Es la barra más corta de la gráfica.",
+      p3:"El jueves la temperatura fue 65 °F. Busque el punto sobre 'Jue' y lea su altura.",
+      p4:"Si los ahorros bajan mes a mes, la línea baja: la tendencia es decreciente."
+      };
+
+      document.querySelectorAll('.opciones[data-quiz]').forEach(function (grupo) {
+        var id = grupo.getAttribute('data-quiz');
+        grupo.querySelectorAll('.opcion').forEach(function (op) {
+          op.addEventListener('click', function () {
+            var acerto = op.getAttribute('data-correcta') === 'si';
+            grupo.querySelectorAll('.opcion').forEach(function (o) {
+              o.disabled = true;
+              if (o.getAttribute('data-correcta') === 'si') {
+                o.classList.add('correcta');
+                o.insertAdjacentHTML('afterbegin', '<span class="marca">\u2713 Correcta:</span> ');
+              }
+            });
+            if (!acerto) {
+              op.classList.add('incorrecta');
+              op.insertAdjacentHTML('afterbegin', '<span class="marca">\u2717 Su respuesta:</span> ');
+            }
+            var r = document.getElementById('r-' + id);
+            r.className = 'respuesta-int ' + (acerto ? 'bien' : 'mal');
+            r.textContent = (acerto ? 'Correcto. ' : 'Revise: ') + respuestasPractica[id];
+          });
+        });
+      });
+
+      // ── QUIZ FINAL ──
+      var totalPreguntas = 8;
+      var seleccion = {};
+
+      document.querySelectorAll('#quiz .opciones').forEach(function (grupo) {
+        var q = grupo.getAttribute('data-q');
+        grupo.querySelectorAll('.opcion').forEach(function (op) {
+          op.setAttribute('aria-pressed', 'false');
+          op.addEventListener('click', function () {
+            grupo.querySelectorAll('.opcion').forEach(function (o) {
+              o.classList.remove('elegida');
+              o.setAttribute('aria-pressed', 'false');
+            });
+            op.classList.add('elegida');
+            op.setAttribute('aria-pressed', 'true');
+            seleccion[q] = op;
+          });
+        });
+      });
+
+      document.getElementById('btn-calificar').addEventListener('click', function () {
+        var correctas = 0;
+        document.querySelectorAll('#quiz .opciones').forEach(function (grupo) {
+          var q = grupo.getAttribute('data-q');
+          grupo.querySelectorAll('.opcion').forEach(function (o) {
+            o.disabled = true;
+            if (o.getAttribute('data-c') === 'si') {
+              o.classList.add('correcta');
+              o.insertAdjacentHTML('afterbegin', '<span class="marca">\u2713 Correcta:</span> ');
+            }
+          });
+          var elegida = seleccion[q];
+          if (elegida) {
+            if (elegida.getAttribute('data-c') === 'si') {
+              correctas++;
+            } else {
+              elegida.classList.add('incorrecta');
+              elegida.insertAdjacentHTML('afterbegin', '<span class="marca">\u2717 Su respuesta:</span> ');
+            }
+          }
+        });
+
+        var marc = document.getElementById('marcador');
+        var pct = Math.round((correctas / totalPreguntas) * 100);
+        document.getElementById('puntaje').textContent = correctas + ' de ' + totalPreguntas + ' correctas';
+
+        var msg, color;
+        if (pct >= 88) {
+          msg = 'Excelente. Domina la lectura y construcción de gráficas. Está listo para el proyecto final.';
+          color = '#e7f4ec';
+        } else if (pct >= 63) {
+          msg = 'Buen trabajo. Repase las preguntas marcadas como incorrectas y vuelva a intentarlo.';
+          color = '#fdf3df';
+        } else {
+          msg = 'Repasemos juntos. Vuelva a leer las secciones 2, 3 y 4, y reintente el quiz.';
+          color = '#fdecea';
+        }
+
+        marc.style.background = color;
+        document.getElementById('mensaje').textContent = msg;
+        marc.classList.add('visible');
+        document.getElementById('barra').style.width = pct + '%';
+        document.getElementById('btn-calificar').style.display = 'none';
+
+        var reintentar = document.getElementById('btn-reintentar');
+        reintentar.style.display = 'inline-block';
+        reintentar.focus();
+      });
+
+      document.getElementById('btn-reintentar').addEventListener('click', function () {
+        document.querySelectorAll('#quiz .opcion').forEach(function (o) {
+          o.disabled = false;
+          o.classList.remove('correcta', 'incorrecta', 'elegida');
+          o.setAttribute('aria-pressed', 'false');
+          var marca = o.querySelector('.marca');
+          if (marca) {
+            marca.remove();
+          }
+        });
+        for (var k in seleccion) {
+          delete seleccion[k];
+        }
+        document.getElementById('marcador').classList.remove('visible');
+        document.getElementById('puntaje').textContent = '';
+        document.getElementById('mensaje').textContent = '';
+        document.getElementById('btn-calificar').style.display = 'inline-block';
+        document.getElementById('btn-reintentar').style.display = 'none';
+        var primera = document.querySelector('#quiz .opcion');
+        if (primera) {
+          primera.focus();
+        }
+      });
+
+      // ── TABLAS RESPONSIVAS ──
+      // Los contenedores y avisos ya están en el marcado, para que los
+      // revisores que no ejecutan JavaScript los detecten.
+      (function () {
+        var TEXTO_AVISO = '\u2194 Deslice la tabla horizontalmente para ver todas las columnas.';
+        var pares = [];
+
+        document.querySelectorAll('table').forEach(function (t) {
+          var caja = t.parentNode;
+          if (!caja.classList.contains('tabla-scroll')) {
+            var cap = t.querySelector('caption');
+            var etiqueta = (cap ? cap.textContent.trim() : 'Tabla de datos') + ' (tabla desplazable horizontalmente)';
+            var nueva = document.createElement('div');
+            nueva.className = 'tabla-scroll';
+            nueva.setAttribute('role', 'region');
+            nueva.setAttribute('tabindex', '0');
+            nueva.setAttribute('aria-label', etiqueta);
+            t.parentNode.insertBefore(nueva, t);
+            nueva.appendChild(t);
+            caja = nueva;
+          }
+          var aviso = caja.nextElementSibling;
+          if (!aviso || !aviso.classList.contains('aviso-desliza')) {
+            aviso = document.createElement('p');
+            aviso.className = 'aviso-desliza';
+            aviso.textContent = TEXTO_AVISO;
+            caja.parentNode.insertBefore(aviso, caja.nextSibling);
+          }
+          pares.push({ caja: caja, aviso: aviso });
+        });
+
+        function actualizar() {
+          pares.forEach(function (p) {
+            p.aviso.style.display = p.caja.scrollWidth > p.caja.clientWidth + 2 ? 'block' : 'none';
+          });
+        }
+        actualizar();
+
+        var tm;
+        window.addEventListener('resize', function () {
+          clearTimeout(tm);
+          tm = setTimeout(actualizar, 150);
+        });
+      })();
+    </script>
+</div>
+</body></html>

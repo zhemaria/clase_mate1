@@ -1,0 +1,1713 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lección 4.1 · Fracciones equivalentes, simplificar y comparar — Matemáticas Nivel 1</title>
+    <style>
+      :root {
+        --azul: #6a1b9a;
+        --azul-osc: #4a148c;
+        --azul-cl: #f3e5f5;
+        --tinta: #1a2330;
+        --gris: #5b6675;
+        --linea: #dde3ea;
+        --crema: #f6f4ee;
+        --papel: #ffffff;
+        --verde: #276b44;
+        --verde-cl: #e7f4ec;
+        --ambar: #5c3900;
+        --ambar-cl: #fdf3df;
+        --rojo: #c0392b;
+        --rojo-cl: #fdecea;
+        --sombra: 0 2px 10px rgba(74, 20, 140, 0.1);
+      }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        font-family: 'Segoe UI', 'Helvetica Neue', system-ui, sans-serif;
+        background: var(--crema);
+        color: var(--tinta);
+        line-height: 1.65;
+        font-size: 17px;
+      }
+      .envoltura {
+        max-width: 880px;
+        margin: 0 auto;
+        padding: 0 20px 80px;
+      }
+
+      header.principal {
+        background: linear-gradient(135deg, #4a148c 0%, #6a1b9a 55%, #8e24aa 100%);
+        color: #fff;
+        padding: 46px 38px 40px;
+        border-radius: 0 0 22px 22px;
+        box-shadow: 0 6px 22px rgba(74, 20, 140, 0.3);
+      }
+      .envoltura-header {
+        max-width: 880px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+      .ruta {
+        font-size: 13px;
+        letter-spacing: 0.6px;
+        text-transform: uppercase;
+        opacity: 0.85;
+        margin-bottom: 14px;
+      }
+      header.principal h1 {
+        font-size: 30px;
+        font-weight: 700;
+        line-height: 1.25;
+        margin-bottom: 8px;
+      }
+      header.principal .lema {
+        font-size: 16px;
+        opacity: 0.93;
+        font-weight: 400;
+        max-width: 620px;
+      }
+      .chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 20px;
+      }
+      .chip {
+        background: rgba(255, 255, 255, 0.16);
+        border: 1px solid rgba(255, 255, 255, 0.28);
+        padding: 6px 14px;
+        border-radius: 30px;
+        font-size: 13px;
+        font-weight: 600;
+      }
+
+      section {
+        background: var(--papel);
+        margin-top: 22px;
+        padding: 30px 34px;
+        border-radius: 14px;
+        box-shadow: var(--sombra);
+      }
+      .num-seccion {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 34px;
+        height: 34px;
+        background: var(--azul);
+        color: #fff;
+        border-radius: 9px;
+        font-weight: 700;
+        font-size: 17px;
+        margin-right: 12px;
+        flex-shrink: 0;
+      }
+      h2 {
+        display: flex;
+        align-items: center;
+        font-size: 23px;
+        color: var(--azul-osc);
+        margin-bottom: 16px;
+        font-weight: 700;
+      }
+      h3 {
+        font-size: 18px;
+        color: var(--azul-osc);
+        margin: 22px 0 10px;
+        font-weight: 700;
+      }
+      p {
+        margin: 11px 0;
+      }
+      ul,
+      ol {
+        margin: 11px 0 11px 26px;
+      }
+      li {
+        margin: 6px 0;
+      }
+      strong {
+        color: var(--azul-osc);
+      }
+
+      .caja {
+        border-radius: 11px;
+        padding: 18px 22px;
+        margin: 18px 0;
+        border-left: 5px solid;
+      }
+      .caja-objetivo {
+        background: var(--azul-cl);
+        border-color: var(--azul);
+      }
+      .caja-objetivo h2 {
+        margin-bottom: 10px;
+      }
+      .caja-tip {
+        background: var(--verde-cl);
+        border-color: var(--verde);
+      }
+      .caja-tip strong {
+        color: var(--verde);
+      }
+      .caja-ojo {
+        background: var(--ambar-cl);
+        border-color: var(--ambar);
+      }
+      .caja-ojo strong {
+        color: var(--ambar);
+      }
+      .caja-recurso {
+        background: #eef2f7;
+        border-color: var(--gris);
+      }
+
+      .etiqueta {
+        display: inline-block;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+        padding: 3px 10px;
+        border-radius: 5px;
+        margin-bottom: 6px;
+      }
+      .et-verde {
+        background: var(--verde);
+        color: #fff;
+      }
+      .et-ambar {
+        background: var(--ambar);
+        color: #fff;
+      }
+      .et-azul {
+        background: var(--azul);
+        color: #fff;
+      }
+
+      .modalidades {
+        display: flex;
+        gap: 14px;
+        margin-top: 14px;
+        flex-wrap: wrap;
+      }
+      .modo {
+        flex: 1;
+        min-width: 240px;
+        border-radius: 9px;
+        padding: 13px 16px;
+        background: #fff;
+        border: 1px solid var(--linea);
+      }
+      .modo-pres {
+        border-top: 4px solid var(--azul);
+      }
+      .modo-line {
+        border-top: 4px solid var(--verde);
+      }
+      .modo .modo-tit {
+        display: block;
+        font-weight: 700;
+        font-size: 14px;
+        margin-bottom: 5px;
+      }
+      .modo-pres .modo-tit {
+        color: var(--azul-osc);
+      }
+      .modo-line .modo-tit {
+        color: var(--verde);
+      }
+      .modo p {
+        margin: 4px 0 0;
+        font-size: 15px;
+      }
+
+      /* fracción */
+      .fraccion {
+        display: inline-flex;
+        flex-direction: column;
+        align-items: center;
+        vertical-align: middle;
+        margin: 0 5px;
+        font-weight: 700;
+      }
+      .fraccion .num {
+        border-bottom: 2.5px solid currentColor;
+        padding: 0 7px;
+        line-height: 1.25;
+      }
+      .fraccion .den {
+        padding: 0 7px;
+        line-height: 1.25;
+      }
+      .fr-grande {
+        font-size: 22px;
+      }
+
+      /* ── BARRAS DE FRACCIÓN ── */
+      .barras {
+        margin: 16px 0;
+      }
+      .barra-fr {
+        display: flex;
+        height: 38px;
+        margin: 7px 0;
+        border: 2px solid var(--azul-osc);
+        border-radius: 6px;
+        overflow: hidden;
+        max-width: 520px;
+      }
+      .barra-fr .parte {
+        border-right: 1px solid #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 12px;
+        font-weight: 700;
+      }
+      .barra-fr .parte:last-child {
+        border-right: none;
+      }
+      .barra-fr .lleno {
+        background: #8e24aa;
+        color: #fff;
+      }
+      .barra-fr .vacio {
+        background: #f3e5f5;
+        color: #8e24aa;
+      }
+      .barra-etq {
+        font-size: 13px;
+        color: var(--gris);
+        margin-left: 4px;
+      }
+
+      .ejemplo {
+        background: var(--crema);
+        border: 1px dashed var(--azul);
+        border-radius: 11px;
+        padding: 18px 22px;
+        margin: 18px 0;
+      }
+      .ejemplo .titulo-ej {
+        font-weight: 700;
+        color: var(--azul-osc);
+        margin-bottom: 8px;
+        font-size: 15px;
+      }
+      .paso {
+        margin: 8px 0 8px 4px;
+        padding-left: 32px;
+        position: relative;
+      }
+      .paso .n {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 24px;
+        height: 24px;
+        background: var(--azul);
+        color: #fff;
+        border-radius: 50%;
+        font-size: 13px;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .practica {
+        border: 2px solid var(--azul-cl);
+        border-radius: 12px;
+        padding: 20px 22px;
+        margin: 20px 0;
+        background: #fdfbfe;
+      }
+      .practica .cabe {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 6px;
+      }
+      .practica .cabe .ico {
+        font-size: 22px;
+      }
+      .practica .cabe h4 {
+        font-size: 16px;
+        color: var(--azul-osc);
+      }
+      .pregunta-int {
+        font-size: 17px;
+        font-weight: 600;
+        margin: 14px 0 12px;
+      }
+      .opciones {
+        display: flex;
+        flex-direction: column;
+        gap: 9px;
+      }
+      .opcion {
+        border: 2px solid var(--linea);
+        border-radius: 9px;
+        padding: 11px 16px;
+        cursor: pointer;
+        background: #fff;
+        transition: 0.16s;
+        font-size: 16px;
+        text-align: left;
+        font-family: inherit;
+        color: var(--tinta);
+      }
+      .opcion:hover {
+        border-color: var(--azul);
+        background: var(--azul-cl);
+      }
+      .opcion.correcta {
+        border-color: var(--verde);
+        background: var(--verde-cl);
+        font-weight: 600;
+      }
+      .opcion.incorrecta {
+        border-color: var(--rojo);
+        background: var(--rojo-cl);
+      }
+      .opcion:disabled {
+        cursor: default;
+      }
+      .respuesta-int {
+        margin-top: 12px;
+        padding: 11px 15px;
+        border-radius: 8px;
+        font-size: 15px;
+        display: none;
+      }
+      .respuesta-int.bien {
+        background: var(--verde-cl);
+        color: var(--verde);
+        display: block;
+      }
+      .respuesta-int.mal {
+        background: var(--rojo-cl);
+        color: var(--rojo);
+        display: block;
+      }
+
+      .btn {
+        font-family: inherit;
+        font-size: 15px;
+        font-weight: 600;
+        padding: 9px 20px;
+        background: var(--azul);
+        color: #fff;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: 0.16s;
+      }
+      .btn:hover {
+        background: var(--azul-osc);
+      }
+      .btn-sec {
+        background: #fff;
+        color: var(--azul);
+        border: 2px solid var(--azul);
+      }
+      .btn-sec:hover {
+        background: var(--azul-cl);
+      }
+
+      .quiz-bloque {
+        margin: 18px 0;
+        padding: 18px 20px;
+        border-radius: 11px;
+        background: var(--crema);
+        border: 1px solid var(--linea);
+      }
+      .quiz-bloque .qnum {
+        display: inline-block;
+        background: var(--azul-osc);
+        color: #fff;
+        font-size: 13px;
+        font-weight: 700;
+        padding: 3px 11px;
+        border-radius: 20px;
+        margin-bottom: 8px;
+      }
+      .quiz-bloque .pregunta {
+        font-weight: 600;
+        font-size: 16px;
+        margin-bottom: 12px;
+      }
+      .marcador {
+        text-align: center;
+        padding: 26px;
+        border-radius: 13px;
+        margin-top: 20px;
+        display: none;
+      }
+      .marcador.visible {
+        display: block;
+      }
+      .marcador .puntaje {
+        font-size: 46px;
+        font-weight: 800;
+        margin: 6px 0;
+      }
+      .marcador .mensaje {
+        font-size: 17px;
+      }
+      .barra-prog {
+        height: 10px;
+        background: var(--linea);
+        border-radius: 6px;
+        overflow: hidden;
+        margin: 14px 0;
+      }
+      .barra-prog span {
+        display: block;
+        height: 100%;
+        background: var(--verde);
+        width: 0;
+        transition: width 0.5s;
+      }
+
+      .tabla-rubrica {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 14px 0;
+        font-size: 14px;
+      }
+      .tabla-rubrica th,
+      .tabla-rubrica td {
+        border: 1px solid var(--linea);
+        padding: 10px 12px;
+        text-align: left;
+        vertical-align: top;
+      }
+      .tabla-rubrica th {
+        background: var(--azul-osc);
+        color: #fff;
+        font-size: 13px;
+      }
+      .tabla-rubrica td:first-child {
+        font-weight: 600;
+        color: var(--azul-osc);
+        background: var(--azul-cl);
+      }
+      .nivel-cab {
+        background: #37474f !important;
+        text-align: center;
+      }
+
+      .cierre {
+        background: linear-gradient(135deg, #4a148c, #8e24aa);
+        color: #fff;
+        border-radius: 14px;
+        padding: 28px 32px;
+        margin-top: 24px;
+      }
+      .cierre h2 {
+        color: #fff;
+      }
+      .cierre strong {
+        color: #9bff8f;
+        font-weight: 700;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.45);
+      }
+      .cierre .num-seccion {
+        background: rgba(255, 255, 255, 0.22);
+      }
+      .flecha-sig {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: rgba(255, 255, 255, 0.16);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        padding: 10px 18px;
+        border-radius: 9px;
+        margin-top: 12px;
+        font-weight: 600;
+        font-size: 15px;
+      }
+
+      footer {
+        text-align: center;
+        padding: 30px 20px;
+        color: var(--gris);
+        font-size: 13px;
+      }
+      /* ── CONTENEDOR DE ENLACES A INTERACTIVOS ── */
+      .interactivos {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 16px;
+        margin: 20px 0;
+      }
+      .interactivos .titulo-grupo {
+        grid-column: 1/-1;
+        font-size: 14px;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+        color: var(--azul-osc);
+        display: flex;
+        align-items: center;
+        gap: 9px;
+        margin-bottom: 2px;
+      }
+      .interactivos .titulo-grupo::before {
+        content: '';
+        width: 26px;
+        height: 3px;
+        background: var(--azul);
+        border-radius: 3px;
+      }
+
+      .enlace-int {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        text-decoration: none;
+        color: var(--tinta);
+        background: var(--papel);
+        border: 1px solid var(--linea);
+        border-left: 5px solid var(--azul);
+        border-radius: 11px;
+        padding: 15px 18px;
+        box-shadow: var(--sombra);
+        transition:
+          transform 0.18s,
+          box-shadow 0.18s,
+          border-color 0.18s;
+      }
+      .enlace-int:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 7px 20px rgba(26, 35, 126, 0.18);
+      }
+      .enlace-int .ico-int {
+        flex-shrink: 0;
+        width: 50px;
+        height: 50px;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 28px;
+        background: var(--azul-cl);
+      }
+      .enlace-int .txt-int {
+        display: flex;
+        flex-direction: column;
+        min-width: 0;
+      }
+      .enlace-int .titulo-int {
+        font-weight: 700;
+        color: var(--azul-osc);
+        font-size: 16px;
+        line-height: 1.3;
+      }
+      .enlace-int .desc-int {
+        font-size: 13px;
+        color: var(--gris);
+        margin-top: 3px;
+        line-height: 1.4;
+      }
+      .enlace-int .flecha-int {
+        margin-left: auto;
+        flex-shrink: 0;
+        font-size: 20px;
+        color: var(--azul);
+        transition: transform 0.18s;
+      }
+      .enlace-int:hover .flecha-int {
+        transform: translateX(4px);
+      }
+
+      /* Variantes de color por tipo de interactivo */
+      .enlace-int.int-verde {
+        border-left-color: var(--verde);
+      }
+      .enlace-int.int-verde .ico-int {
+        background: var(--verde-cl);
+      }
+      .enlace-int.int-verde .titulo-int {
+        color: var(--verde);
+      }
+      .enlace-int.int-verde .flecha-int {
+        color: var(--verde);
+      }
+
+      .enlace-int.int-ambar {
+        border-left-color: var(--ambar);
+      }
+      .enlace-int.int-ambar .ico-int {
+        background: var(--ambar-cl);
+      }
+      .enlace-int.int-ambar .titulo-int {
+        color: var(--ambar);
+      }
+      .enlace-int.int-ambar .flecha-int {
+        color: var(--ambar);
+      }
+
+      .enlace-int.int-rojo {
+        border-left-color: var(--rojo);
+      }
+      .enlace-int.int-rojo .ico-int {
+        background: var(--rojo-cl);
+      }
+      .enlace-int.int-rojo .titulo-int {
+        color: var(--rojo);
+      }
+      .enlace-int.int-rojo .flecha-int {
+        color: var(--rojo);
+      }
+
+      @media (max-width: 560px) {
+        .interactivos {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      /* Un solo enlace: que ocupe todo el ancho de la sección */
+      .interactivos:has(.enlace-int:only-of-type) {
+        grid-template-columns: 1fr;
+      }
+
+      @media (max-width: 560px) {
+        header.principal {
+          padding: 34px 22px;
+        }
+        header.principal h1 {
+          font-size: 24px;
+        }
+        section {
+          padding: 24px 20px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="principal">
+      <div class="envoltura-header">
+        <div class="ruta">Matemáticas · Nivel 1 · Tema 4 — Fracciones</div>
+        <h1>Lección 4.1 · Fracciones equivalentes, simplificar y comparar</h1>
+        <p class="lema">Una misma cantidad se puede escribir de muchas formas. Aprenda a reconocerlas, simplificarlas y compararlas.</p>
+        <div class="chips">
+          <span class="chip">⏱️ 4 horas (2 sinc. + 2 asinc.)</span>
+          <span class="chip">🍕 Modelo visual de barras</span>
+          <span class="chip">📘 MyOpenMath</span>
+        </div>
+      </div>
+    </header>
+
+    <div class="envoltura">
+      <!-- OBJETIVOS -->
+      <section>
+        <div class="caja caja-objetivo">
+          <h2>
+            <span class="num-seccion">🎯</span>
+            Objetivos de la clase
+          </h2>
+          <p>Al terminar esta lección, usted podrá:</p>
+          <ul>
+            <li>
+              <strong>Identificar</strong>
+              las partes de una fracción: numerador y denominador.
+            </li>
+            <li>
+              <strong>Reconocer y crear</strong>
+              fracciones equivalentes (que valen lo mismo).
+            </li>
+            <li>
+              <strong>Simplificar</strong>
+              una fracción hasta su forma más reducida.
+            </li>
+            <li>
+              <strong>Comparar</strong>
+              dos fracciones para decidir cuál es mayor.
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- QUÉ ES UNA FRACCIÓN -->
+      <section>
+        <h2>
+          <span class="num-seccion">1</span>
+          ¿Qué es una fracción?
+        </h2>
+        <p>
+          En el
+          <strong>Tema 3</strong>
+          aprendió que un decimal es una parte de un entero. Una
+          <strong>fracción</strong>
+          es otra forma de escribir esas partes — y muchas veces es la más natural: "media hora", "un cuarto de libra", "tres cuartos de tanque".
+        </p>
+        <p>Una fracción tiene dos números separados por una barra:</p>
+        <ul>
+          <li>
+            El
+            <strong>numerador</strong>
+            (arriba): cuántas partes
+            <em>tenemos</em>
+            .
+          </li>
+          <li>
+            El
+            <strong>denominador</strong>
+            (abajo): en cuántas partes iguales se
+            <em>dividió</em>
+            el entero.
+          </li>
+        </ul>
+        <p>
+          Por ejemplo,
+          <span class="fraccion fr-grande">
+            <span class="num">3</span>
+            <span class="den">4</span>
+          </span>
+          significa: el entero se dividió en
+          <strong>4</strong>
+          partes iguales y tomamos
+          <strong>3</strong>
+          de ellas.
+        </p>
+
+        <div class="barras">
+          <div class="barra-fr">
+            <div class="parte lleno" style="width: 25%">1</div>
+            <div class="parte lleno" style="width: 25%">1</div>
+            <div class="parte lleno" style="width: 25%">1</div>
+            <div class="parte vacio" style="width: 25%">0</div>
+          </div>
+          <span class="barra-etq">
+            Tres cuartos: 3 partes llenas de 4 &nbsp;=&nbsp;
+            <span class="fraccion">
+              <span class="num">3</span>
+              <span class="den">4</span>
+            </span>
+          </span>
+        </div>
+
+        <div class="caja caja-tip">
+          <span class="etiqueta et-verde">Conexión con el Tema 3</span>
+          <p>
+            Recuerde de la Lección 3.3: la barra de fracción significa "dividido entre".
+            <span class="fraccion">
+              <span class="num">3</span>
+              <span class="den">4</span>
+            </span>
+            es lo mismo que 3 ÷ 4 = 0.75. Fracción y decimal son dos idiomas para la misma idea.
+          </p>
+        </div>
+      </section>
+
+      <!-- FRACCIONES EQUIVALENTES -->
+      <section>
+        <h2>
+          <span class="num-seccion">2</span>
+          Fracciones equivalentes
+        </h2>
+        <p>
+          Dos fracciones son
+          <strong>equivalentes</strong>
+          cuando representan
+          <strong>la misma cantidad</strong>
+          , aunque se escriban con números distintos. Mire estas dos barras:
+        </p>
+
+        <div class="barras">
+          <div class="barra-fr">
+            <div class="parte lleno" style="width: 50%">lleno</div>
+            <div class="parte vacio" style="width: 50%">vacío</div>
+          </div>
+          <span class="barra-etq">
+            <span class="fraccion">
+              <span class="num">1</span>
+              <span class="den">2</span>
+            </span>
+            &nbsp;— la mitad
+          </span>
+          <div class="barra-fr">
+            <div class="parte lleno" style="width: 25%"></div>
+            <div class="parte lleno" style="width: 25%"></div>
+            <div class="parte vacio" style="width: 25%"></div>
+            <div class="parte vacio" style="width: 25%"></div>
+          </div>
+          <span class="barra-etq">
+            <span class="fraccion">
+              <span class="num">2</span>
+              <span class="den">4</span>
+            </span>
+            &nbsp;— también la mitad
+          </span>
+        </div>
+
+        <p>
+          La parte llena es
+          <strong>idéntica</strong>
+          :
+          <span class="fraccion">
+            <span class="num">1</span>
+            <span class="den">2</span>
+          </span>
+          y
+          <span class="fraccion">
+            <span class="num">2</span>
+            <span class="den">4</span>
+          </span>
+          son fracciones equivalentes.
+        </p>
+
+        <h3>Cómo crear fracciones equivalentes</h3>
+        <div class="caja caja-tip">
+          <span class="etiqueta et-verde">La regla de oro</span>
+          <p>
+            Si
+            <strong>multiplica</strong>
+            (o
+            <strong>divide</strong>
+            ) el numerador y el denominador por
+            <strong>el mismo número</strong>
+            , obtiene una fracción equivalente. Lo que se le hace a uno, se le hace al otro.
+          </p>
+        </div>
+        <div class="ejemplo">
+          <div class="titulo-ej">Crear fracciones equivalentes a 2/3</div>
+          <div class="paso">
+            <span class="n">1</span>
+            Multiplico arriba y abajo por 2:
+            <span class="fraccion">
+              <span class="num">2×2</span>
+              <span class="den">3×2</span>
+            </span>
+            =
+            <span class="fraccion">
+              <span class="num">4</span>
+              <span class="den">6</span>
+            </span>
+            .
+          </div>
+          <div class="paso">
+            <span class="n">2</span>
+            Multiplico arriba y abajo por 3:
+            <span class="fraccion">
+              <span class="num">2×3</span>
+              <span class="den">3×3</span>
+            </span>
+            =
+            <span class="fraccion">
+              <span class="num">6</span>
+              <span class="den">9</span>
+            </span>
+            .
+          </div>
+          <div class="paso">
+            <span class="n">✓</span>
+            Así,
+            <span class="fraccion">
+              <span class="num">2</span>
+              <span class="den">3</span>
+            </span>
+            =
+            <span class="fraccion">
+              <span class="num">4</span>
+              <span class="den">6</span>
+            </span>
+            =
+            <span class="fraccion">
+              <span class="num">6</span>
+              <span class="den">9</span>
+            </span>
+            — todas valen lo mismo.
+          </div>
+        </div>
+
+        <div class="practica">
+          <div class="cabe">
+            <span class="ico">✏️</span>
+            <h4>Práctica 1 — Fracciones equivalentes</h4>
+          </div>
+          <p class="pregunta-int">
+            ¿Cuál de estas fracciones es equivalente a
+            <span class="fraccion">
+              <span class="num">1</span>
+              <span class="den">3</span>
+            </span>
+            ?
+          </p>
+          <div class="opciones" data-quiz="p1">
+            <button class="opcion" data-correcta="no">
+              <span class="fraccion">
+                <span class="num">2</span>
+                <span class="den">3</span>
+              </span>
+            </button>
+            <button class="opcion" data-correcta="si">
+              <span class="fraccion">
+                <span class="num">3</span>
+                <span class="den">9</span>
+              </span>
+            </button>
+            <button class="opcion" data-correcta="no">
+              <span class="fraccion">
+                <span class="num">1</span>
+                <span class="den">6</span>
+              </span>
+            </button>
+            <button class="opcion" data-correcta="no">
+              <span class="fraccion">
+                <span class="num">3</span>
+                <span class="den">6</span>
+              </span>
+            </button>
+          </div>
+          <div class="respuesta-int" id="r-p1"></div>
+        </div>
+      </section>
+
+      <!-- SIMPLIFICAR -->
+      <section>
+        <h2>
+          <span class="num-seccion">3</span>
+          Simplificar una fracción
+        </h2>
+        <p>
+          <strong>Simplificar</strong>
+          (o reducir) una fracción es escribirla con los números más pequeños posibles, sin cambiar su valor. Se hace
+          <strong>dividiendo</strong>
+          el numerador y el denominador entre el mismo número.
+        </p>
+        <p>
+          Una fracción está en su
+          <strong>forma más simple</strong>
+          cuando ya no hay ningún número (mayor que 1) que divida exactamente a los dos.
+        </p>
+
+        <div class="ejemplo">
+          <div class="titulo-ej">Simplificar 8/12</div>
+          <div class="paso">
+            <span class="n">1</span>
+            Busco un número que divida a 8 y a 12. El 4 sirve: 8 ÷ 4 = 2, y 12 ÷ 4 = 3.
+          </div>
+          <div class="paso">
+            <span class="n">2</span>
+            Obtengo
+            <span class="fraccion">
+              <span class="num">2</span>
+              <span class="den">3</span>
+            </span>
+            .
+          </div>
+          <div class="paso">
+            <span class="n">3</span>
+            ¿Se puede seguir? 2 y 3 no tienen ningún divisor común mayor que 1. Ya está simple.
+          </div>
+          <div class="paso">
+            <span class="n">✓</span>
+            Resultado:
+            <span class="fraccion">
+              <span class="num">8</span>
+              <span class="den">12</span>
+            </span>
+            =
+            <span class="fraccion">
+              <span class="num">2</span>
+              <span class="den">3</span>
+            </span>
+            .
+          </div>
+        </div>
+        <div class="caja caja-ojo">
+          <span class="etiqueta et-ambar">Consejo</span>
+          <p>
+            Si no encuentra el número más grande de una vez, no importa: divida entre uno pequeño (como 2) y repita.
+            <span class="fraccion">
+              <span class="num">8</span>
+              <span class="den">12</span>
+            </span>
+            → entre 2 →
+            <span class="fraccion">
+              <span class="num">4</span>
+              <span class="den">6</span>
+            </span>
+            → entre 2 →
+            <span class="fraccion">
+              <span class="num">2</span>
+              <span class="den">3</span>
+            </span>
+            . Llega al mismo resultado en más pasos.
+          </p>
+        </div>
+
+        <div class="practica">
+          <div class="cabe">
+            <span class="ico">✏️</span>
+            <h4>Práctica 2 — Simplificar</h4>
+          </div>
+          <p class="pregunta-int">
+            ¿Cuál es la forma más simple de
+            <span class="fraccion">
+              <span class="num">6</span>
+              <span class="den">10</span>
+            </span>
+            ?
+          </p>
+          <div class="opciones" data-quiz="p2">
+            <button class="opcion" data-correcta="no">
+              <span class="fraccion">
+                <span class="num">3</span>
+                <span class="den">10</span>
+              </span>
+            </button>
+            <button class="opcion" data-correcta="si">
+              <span class="fraccion">
+                <span class="num">3</span>
+                <span class="den">5</span>
+              </span>
+            </button>
+            <button class="opcion" data-correcta="no">
+              <span class="fraccion">
+                <span class="num">6</span>
+                <span class="den">5</span>
+              </span>
+            </button>
+            <button class="opcion" data-correcta="no">
+              <span class="fraccion">
+                <span class="num">2</span>
+                <span class="den">5</span>
+              </span>
+            </button>
+          </div>
+          <div class="respuesta-int" id="r-p2"></div>
+        </div>
+        <div class="interactivos">
+          <span class="titulo-grupo">Practica en línea</span>
+
+          <a class="enlace-int" href="https://zhemaria.github.io/interactivos/frac_equivalente/" target="_blank" rel="noopener">
+            <span class="ico-int" aria-hidden="true">🧮</span>
+            <span class="txt-int">
+              <span class="titulo-int">Ampliar y simplificar fracciones</span>
+              <span class="desc-int">Practica la creación de fracciones equivalentes</span>
+            </span>
+            <span class="flecha-int" aria-hidden="true">→</span>
+          </a>
+        </div>
+      </section>
+
+      <!-- COMPARAR -->
+      <section>
+        <h2>
+          <span class="num-seccion">4</span>
+          Comparar fracciones
+        </h2>
+        <p>Para decidir cuál de dos fracciones es mayor, hay dos casos:</p>
+
+        <h3>Caso 1: mismo denominador</h3>
+        <p>
+          Si las dos fracciones tienen el
+          <strong>mismo denominador</strong>
+          , es fácil:
+          <strong>la mayor es la que tiene el numerador más grande</strong>
+          . Las partes son del mismo tamaño, así que gana quien tenga más partes.
+        </p>
+        <div class="ejemplo">
+          <div class="titulo-ej">Comparar 3/8 y 5/8</div>
+          <div class="paso">
+            <span class="n">1</span>
+            Mismo denominador (8): las partes son iguales.
+          </div>
+          <div class="paso">
+            <span class="n">✓</span>
+            5 partes es más que 3 partes:
+            <span class="fraccion">
+              <span class="num">5</span>
+              <span class="den">8</span>
+            </span>
+            &gt;
+            <span class="fraccion">
+              <span class="num">3</span>
+              <span class="den">8</span>
+            </span>
+            .
+          </div>
+        </div>
+
+        <h3>Caso 2: distinto denominador</h3>
+        <p>
+          Si los denominadores son
+          <strong>distintos</strong>
+          , primero hay que igualarlos: se buscan
+          <strong>fracciones equivalentes con el mismo denominador</strong>
+          . Luego se comparan los numeradores.
+        </p>
+        <div class="ejemplo">
+          <div class="titulo-ej">Comparar 2/3 y 3/4</div>
+          <div class="paso">
+            <span class="n">1</span>
+            Busco un denominador común. El 12 funciona para 3 y para 4.
+          </div>
+          <div class="paso">
+            <span class="n">2</span>
+            Convierto:
+            <span class="fraccion">
+              <span class="num">2</span>
+              <span class="den">3</span>
+            </span>
+            =
+            <span class="fraccion">
+              <span class="num">8</span>
+              <span class="den">12</span>
+            </span>
+            &nbsp;(×4) &nbsp;·&nbsp;
+            <span class="fraccion">
+              <span class="num">3</span>
+              <span class="den">4</span>
+            </span>
+            =
+            <span class="fraccion">
+              <span class="num">9</span>
+              <span class="den">12</span>
+            </span>
+            &nbsp;(×3).
+          </div>
+          <div class="paso">
+            <span class="n">3</span>
+            Ahora comparo los numeradores: 9 es más que 8.
+          </div>
+          <div class="paso">
+            <span class="n">✓</span>
+            Por lo tanto:
+            <span class="fraccion">
+              <span class="num">3</span>
+              <span class="den">4</span>
+            </span>
+            &gt;
+            <span class="fraccion">
+              <span class="num">2</span>
+              <span class="den">3</span>
+            </span>
+            .
+          </div>
+        </div>
+        <div class="caja caja-ojo">
+          <span class="etiqueta et-ambar">¡Ojo!</span>
+          <p>
+            Un denominador
+            <strong>más grande</strong>
+            no significa una fracción más grande.
+            <span class="fraccion">
+              <span class="num">1</span>
+              <span class="den">8</span>
+            </span>
+            es
+            <em>menor</em>
+            que
+            <span class="fraccion">
+              <span class="num">1</span>
+              <span class="den">2</span>
+            </span>
+            : mientras en más partes se divide el entero, más pequeña es cada parte.
+          </p>
+        </div>
+
+        <div class="practica">
+          <div class="cabe">
+            <span class="ico">✏️</span>
+            <h4>Práctica 3 — Comparar (mismo denominador)</h4>
+          </div>
+          <p class="pregunta-int">
+            ¿Qué fracción es mayor:
+            <span class="fraccion">
+              <span class="num">7</span>
+              <span class="den">10</span>
+            </span>
+            o
+            <span class="fraccion">
+              <span class="num">4</span>
+              <span class="den">10</span>
+            </span>
+            ?
+          </p>
+          <div class="opciones" data-quiz="p3">
+            <button class="opcion" data-correcta="si">
+              <span class="fraccion">
+                <span class="num">7</span>
+                <span class="den">10</span>
+              </span>
+              es mayor
+            </button>
+            <button class="opcion" data-correcta="no">
+              <span class="fraccion">
+                <span class="num">4</span>
+                <span class="den">10</span>
+              </span>
+              es mayor
+            </button>
+            <button class="opcion" data-correcta="no">Son iguales</button>
+          </div>
+          <div class="respuesta-int" id="r-p3"></div>
+        </div>
+
+        <div class="practica">
+          <div class="cabe">
+            <span class="ico">✏️</span>
+            <h4>Práctica 4 — Comparar (distinto denominador)</h4>
+          </div>
+          <p class="pregunta-int">
+            ¿Qué fracción es mayor:
+            <span class="fraccion">
+              <span class="num">1</span>
+              <span class="den">2</span>
+            </span>
+            o
+            <span class="fraccion">
+              <span class="num">2</span>
+              <span class="den">5</span>
+            </span>
+            ?
+          </p>
+          <div class="opciones" data-quiz="p4">
+            <button class="opcion" data-correcta="si">
+              <span class="fraccion">
+                <span class="num">1</span>
+                <span class="den">2</span>
+              </span>
+              es mayor
+            </button>
+            <button class="opcion" data-correcta="no">
+              <span class="fraccion">
+                <span class="num">2</span>
+                <span class="den">5</span>
+              </span>
+              es mayor
+            </button>
+            <button class="opcion" data-correcta="no">Son iguales</button>
+          </div>
+          <div class="respuesta-int" id="r-p4"></div>
+        </div>
+      </section>
+
+      <!-- PRÁCTICA GUIADA -->
+      <section>
+        <h2>
+          <span class="num-seccion">5</span>
+          Práctica guiada en clase
+        </h2>
+        <p>
+          Estas actividades se hacen
+          <strong>en la sesión sincrónica</strong>
+          . Cada actividad incluye una variante para la
+          <strong>clase presencial</strong>
+          y otra para la
+          <strong>clase en línea</strong>
+          ; el objetivo de aprendizaje es el mismo en ambas.
+        </p>
+
+        <div class="caja caja-recurso">
+          <span class="etiqueta et-azul">Actividad A · "Tiras de fracción"</span>
+          <p>Los estudiantes usan tiras divididas en partes iguales para descubrir, viéndolo, qué fracciones son equivalentes.</p>
+          <div class="modalidades">
+            <div class="modo modo-pres">
+              <span class="modo-tit">🏫 Presencial</span>
+              <p>
+                Entregue tiras de papel del mismo largo, unas divididas en mitades, otras en cuartos, otras en octavos. Los estudiantes las superponen para ver que 1/2 = 2/4 = 4/8 y registran lo que
+                descubren.
+              </p>
+            </div>
+            <div class="modo modo-line">
+              <span class="modo-tit">💻 En línea</span>
+              <p>
+                Use un manipulativo digital de tiras de fracción (por ejemplo, el de Didax o Toy Theater) en pantalla compartida. Los estudiantes superponen las tiras y escriben en el chat las
+                equivalencias que encuentran.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="caja caja-recurso">
+          <span class="etiqueta et-azul">Actividad B · "Reducir a lo más simple"</span>
+          <p>Los estudiantes simplifican un conjunto de fracciones y verifican entre compañeros que llegaron a la forma más reducida.</p>
+          <div class="modalidades">
+            <div class="modo modo-pres">
+              <span class="modo-tit">🏫 Presencial</span>
+              <p>Reparta tarjetas con fracciones sin simplificar. Cada estudiante simplifica las suyas en el cuaderno y luego, en parejas, verifican mutuamente que ninguna se puede reducir más.</p>
+            </div>
+            <div class="modo modo-line">
+              <span class="modo-tit">💻 En línea</span>
+              <p>Muestre las fracciones en una diapositiva. Los estudiantes simplifican en papel y publican el resultado en el chat. El grupo revisa juntos si alguna se puede reducir aún más.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="caja caja-recurso">
+          <span class="etiqueta et-azul">Actividad C · "Ordenar la recta de fracciones"</span>
+          <p>Los estudiantes comparan y ordenan varias fracciones, ubicándolas de menor a mayor.</p>
+          <div class="modalidades">
+            <div class="modo modo-pres">
+              <span class="modo-tit">🏫 Presencial</span>
+              <p>
+                Cada grupo recibe cinco tarjetas con fracciones y las coloca en orden, de menor a mayor, sobre una recta numérica dibujada en el pizarrón. Explican al grupo cómo decidieron el orden.
+              </p>
+            </div>
+            <div class="modo modo-line">
+              <span class="modo-tit">💻 En línea</span>
+              <p>
+                Use una pizarra colaborativa con tarjetas de fracciones que los estudiantes arrastran para ordenar sobre una recta digital. Como alternativa, cada grupo escribe el orden en el chat y
+                lo justifica.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAREA ASINCRÓNICA -->
+      <section>
+        <h2>
+          <span class="num-seccion">6</span>
+          Tarea asincrónica
+        </h2>
+        <p>
+          Estas actividades se realizan
+          <strong>por su cuenta</strong>
+          , dentro de las 2 horas asincrónicas de la lección.
+        </p>
+        <ul>
+          <li>
+            <strong>MyOpenMath:</strong>
+            complete los
+            <strong>10 ejercicios</strong>
+            de fracciones equivalentes, simplificar y comparar. Cada uno da retroalimentación inmediata.
+          </li>
+          <li>
+            <strong>Brightspace:</strong>
+            realice el quiz de la lección (abajo puede practicarlo antes).
+          </li>
+          <li>
+            <strong>Actividad personal:</strong>
+            en su cocina, observe las medidas de tazas y cucharas. Identifique fracciones equivalentes (¿cuántos ¼ de taza llenan ½ taza?) y escríbalo.
+          </li>
+        </ul>
+      </section>
+
+      <!-- QUIZ -->
+      <section>
+        <h2>
+          <span class="num-seccion">7</span>
+          Quiz de práctica
+        </h2>
+        <p>
+          Responda las
+          <strong>8 preguntas</strong>
+          . Al final verá su puntaje y podrá repasar lo que falló. Puede repetir el quiz las veces que quiera.
+        </p>
+
+        <form id="quiz">
+          <div class="quiz-bloque">
+            <span class="qnum">Pregunta 1</span>
+            <p class="pregunta">
+              En la fracción
+              <strong>5/8</strong>
+              , ¿cuál número es el
+              <strong>denominador</strong>
+              ?
+            </p>
+            <div class="opciones" data-q="1">
+              <button type="button" class="opcion" data-c="no">5</button>
+              <button type="button" class="opcion" data-c="si">8</button>
+              <button type="button" class="opcion" data-c="no">13</button>
+              <button type="button" class="opcion" data-c="no">3</button>
+            </div>
+          </div>
+
+          <div class="quiz-bloque">
+            <span class="qnum">Pregunta 2</span>
+            <p class="pregunta">
+              ¿Cuál fracción es equivalente a
+              <strong>1/2</strong>
+              ?
+            </p>
+            <div class="opciones" data-q="2">
+              <button type="button" class="opcion" data-c="no">2/3</button>
+              <button type="button" class="opcion" data-c="si">5/10</button>
+              <button type="button" class="opcion" data-c="no">1/4</button>
+              <button type="button" class="opcion" data-c="no">3/8</button>
+            </div>
+          </div>
+
+          <div class="quiz-bloque">
+            <span class="qnum">Pregunta 3</span>
+            <p class="pregunta">Para obtener una fracción equivalente, se debe:</p>
+            <div class="opciones" data-q="3">
+              <button type="button" class="opcion" data-c="no">Sumar el mismo número arriba y abajo.</button>
+              <button type="button" class="opcion" data-c="si">Multiplicar o dividir arriba y abajo por el mismo número.</button>
+              <button type="button" class="opcion" data-c="no">Cambiar solo el numerador.</button>
+              <button type="button" class="opcion" data-c="no">Restar el mismo número arriba y abajo.</button>
+            </div>
+          </div>
+
+          <div class="quiz-bloque">
+            <span class="qnum">Pregunta 4</span>
+            <p class="pregunta">
+              ¿Cuál es la forma más simple de
+              <strong>4/8</strong>
+              ?
+            </p>
+            <div class="opciones" data-q="4">
+              <button type="button" class="opcion" data-c="si">1/2</button>
+              <button type="button" class="opcion" data-c="no">2/8</button>
+              <button type="button" class="opcion" data-c="no">2/3</button>
+              <button type="button" class="opcion" data-c="no">4/4</button>
+            </div>
+          </div>
+
+          <div class="quiz-bloque">
+            <span class="qnum">Pregunta 5</span>
+            <p class="pregunta">
+              ¿Cuál es la forma más simple de
+              <strong>9/12</strong>
+              ?
+            </p>
+            <div class="opciones" data-q="5">
+              <button type="button" class="opcion" data-c="no">9/12</button>
+              <button type="button" class="opcion" data-c="si">3/4</button>
+              <button type="button" class="opcion" data-c="no">3/12</button>
+              <button type="button" class="opcion" data-c="no">1/3</button>
+            </div>
+          </div>
+
+          <div class="quiz-bloque">
+            <span class="qnum">Pregunta 6</span>
+            <p class="pregunta">
+              ¿Qué fracción es mayor:
+              <strong>5/9</strong>
+              o
+              <strong>2/9</strong>
+              ?
+            </p>
+            <div class="opciones" data-q="6">
+              <button type="button" class="opcion" data-c="si">5/9</button>
+              <button type="button" class="opcion" data-c="no">2/9</button>
+              <button type="button" class="opcion" data-c="no">Son iguales</button>
+            </div>
+          </div>
+
+          <div class="quiz-bloque">
+            <span class="qnum">Pregunta 7</span>
+            <p class="pregunta">
+              ¿Qué fracción es
+              <strong>menor</strong>
+              :
+              <strong>1/4</strong>
+              o
+              <strong>1/6</strong>
+              ?
+            </p>
+            <div class="opciones" data-q="7">
+              <button type="button" class="opcion" data-c="no">1/4</button>
+              <button type="button" class="opcion" data-c="si">1/6</button>
+              <button type="button" class="opcion" data-c="no">Son iguales</button>
+            </div>
+          </div>
+
+          <div class="quiz-bloque">
+            <span class="qnum">Pregunta 8</span>
+            <p class="pregunta">Dos pizzas iguales: de una se comió 3/4 y de la otra 5/8. ¿De cuál se comió más?</p>
+            <div class="opciones" data-q="8">
+              <button type="button" class="opcion" data-c="si">De la que se comió 3/4</button>
+              <button type="button" class="opcion" data-c="no">De la que se comió 5/8</button>
+              <button type="button" class="opcion" data-c="no">Se comió lo mismo de las dos</button>
+            </div>
+          </div>
+        </form>
+
+        <div style="text-align: center; margin-top: 18px">
+          <button class="btn" id="btn-calificar">Ver mi resultado</button>
+          <button class="btn btn-sec" id="btn-reintentar" style="display: none">Intentar de nuevo</button>
+        </div>
+
+        <div class="marcador" id="marcador">
+          <div class="barra-prog"><span id="barra"></span></div>
+          <div class="puntaje" id="puntaje"></div>
+          <div class="mensaje" id="mensaje"></div>
+        </div>
+      </section>
+
+      <!-- RÚBRICA -->
+      <section>
+        <h2>
+          <span class="num-seccion">8</span>
+          Rúbrica de evaluación
+        </h2>
+        <p>Rúbrica de comprensión de fracciones. Cada criterio se evalúa en cuatro niveles.</p>
+        <table class="tabla-rubrica">
+          <thead>
+            <tr>
+              <th>Criterio</th>
+              <th class="nivel-cab">Logrado (4)</th>
+              <th class="nivel-cab">Satisfactorio (3)</th>
+              <th class="nivel-cab">En proceso (2)</th>
+              <th class="nivel-cab">Por reforzar (1)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Identifica numerador y denominador</td>
+              <td>Identifica y explica el papel de cada parte.</td>
+              <td>Identifica numerador y denominador correctamente.</td>
+              <td>Los identifica pero confunde sus papeles.</td>
+              <td>No distingue las partes de la fracción.</td>
+            </tr>
+            <tr>
+              <td>Crea fracciones equivalentes</td>
+              <td>Multiplica o divide arriba y abajo sin errores.</td>
+              <td>Crea equivalentes correctamente casi siempre.</td>
+              <td>Cambia solo un término de la fracción.</td>
+              <td>No logra crear fracciones equivalentes.</td>
+            </tr>
+            <tr>
+              <td>Simplifica fracciones</td>
+              <td>Llega siempre a la forma más simple.</td>
+              <td>Simplifica, a veces en varios pasos.</td>
+              <td>Reduce parcialmente pero no del todo.</td>
+              <td>No simplifica la fracción.</td>
+            </tr>
+            <tr>
+              <td>Compara dos fracciones</td>
+              <td>Compara con igual y distinto denominador y lo justifica.</td>
+              <td>Compara bien con el mismo denominador.</td>
+              <td>Se guía por el tamaño de los números sin igualar.</td>
+              <td>No logra comparar fracciones.</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- CIERRE -->
+      <div class="cierre">
+        <h2>
+          <span class="num-seccion">➡️</span>
+          Lo que viene en la próxima lección
+        </h2>
+        <p>
+          Ya entiende qué es una fracción, sabe crear equivalentes, simplificar y comparar. Esa base es justo lo que necesita para
+          <strong>operar</strong>
+          con fracciones.
+        </p>
+        <p>
+          En la
+          <strong>Lección 4.2 · Suma y resta de fracciones</strong>
+          aprenderá a sumar y restar fracciones — y verá por qué primero hay que tener el
+          <strong>mismo denominador</strong>
+          . Las fracciones equivalentes que practicó hoy serán la herramienta principal para lograrlo.
+        </p>
+        <div class="flecha-sig">➡️ &nbsp;Próxima: Lección 4.2 · Suma y resta de fracciones</div>
+      </div>
+    </div>
+
+    <footer>
+      Matemáticas · Nivel 1 · Lección 4.1 — Spanish ASE Math · AE 0170-0321
+      <br />
+      City Colleges of Chicago · Truman College · Prof. José M. Fernández
+    </footer>
+
+    <script>
+      const respuestasPractica = {
+        p1: '3/9 es equivalente a 1/3. Si multiplica arriba y abajo de 1/3 por 3, obtiene 3/9. (También: 3/9 simplificado entre 3 da 1/3.)',
+        p2: '6/10 se simplifica entre 2: 6÷2 = 3 y 10÷2 = 5. La forma más simple es 3/5.',
+        p3: '7/10 es mayor. Como el denominador es el mismo (10), gana la fracción con el numerador más grande: 7 es más que 4.',
+        p4: '1/2 es mayor. Iguale denominadores a 10: 1/2 = 5/10 y 2/5 = 4/10. Como 5 es más que 4, 1/2 es mayor.'
+      };
+      document.querySelectorAll('.opciones[data-quiz]').forEach(function (grupo) {
+        const id = grupo.getAttribute('data-quiz');
+        grupo.querySelectorAll('.opcion').forEach(function (op) {
+          op.addEventListener('click', function () {
+            const acerto = op.getAttribute('data-correcta') === 'si';
+            grupo.querySelectorAll('.opcion').forEach(function (o) {
+              o.disabled = true;
+              if (o.getAttribute('data-correcta') === 'si') o.classList.add('correcta');
+            });
+            if (!acerto) op.classList.add('incorrecta');
+            const r = document.getElementById('r-' + id);
+            r.className = 'respuesta-int ' + (acerto ? 'bien' : 'mal');
+            r.textContent = (acerto ? '✓ ¡Muy bien! ' : '✗ Revise: ') + respuestasPractica[id];
+          });
+        });
+      });
+
+      const totalPreguntas = 8;
+      const seleccion = {};
+      document.querySelectorAll('#quiz .opciones').forEach(function (grupo) {
+        const q = grupo.getAttribute('data-q');
+        grupo.querySelectorAll('.opcion').forEach(function (op) {
+          op.addEventListener('click', function () {
+            grupo.querySelectorAll('.opcion').forEach(function (o) {
+              o.style.borderColor = '';
+              o.style.background = '';
+            });
+            op.style.borderColor = '#6a1b9a';
+            op.style.background = '#f3e5f5';
+            seleccion[q] = op;
+          });
+        });
+      });
+
+      document.getElementById('btn-calificar').addEventListener('click', function () {
+        let correctas = 0;
+        document.querySelectorAll('#quiz .opciones').forEach(function (grupo) {
+          const q = grupo.getAttribute('data-q');
+          grupo.querySelectorAll('.opcion').forEach(function (o) {
+            o.disabled = true;
+            if (o.getAttribute('data-c') === 'si') o.classList.add('correcta');
+          });
+          const elegida = seleccion[q];
+          if (elegida) {
+            if (elegida.getAttribute('data-c') === 'si') correctas++;
+            else elegida.classList.add('incorrecta');
+          }
+        });
+        const marc = document.getElementById('marcador');
+        const pct = Math.round((correctas / totalPreguntas) * 100);
+        document.getElementById('puntaje').textContent = correctas + ' / ' + totalPreguntas;
+        let msg, color;
+        if (pct >= 88) {
+          msg = '¡Excelente! Domina las fracciones equivalentes y la comparación. Está listo para la Lección 4.2.';
+          color = '#e7f4ec';
+        } else if (pct >= 63) {
+          msg = '¡Buen trabajo! Repase las preguntas en rojo y vuelva a intentarlo.';
+          color = '#fdf3df';
+        } else {
+          msg = 'Repasemos juntos. Vuelva a leer las secciones 2, 3 y 4, y reintente el quiz.';
+          color = '#fdecea';
+        }
+        marc.style.background = color;
+        document.getElementById('mensaje').textContent = msg;
+        marc.classList.add('visible');
+        document.getElementById('barra').style.width = pct + '%';
+        document.getElementById('btn-calificar').style.display = 'none';
+        document.getElementById('btn-reintentar').style.display = 'inline-block';
+        marc.scrollIntoView({behavior: 'smooth', block: 'center'});
+      });
+
+      document.getElementById('btn-reintentar').addEventListener('click', function () {
+        document.querySelectorAll('#quiz .opcion').forEach(function (o) {
+          o.disabled = false;
+          o.classList.remove('correcta', 'incorrecta');
+          o.style.borderColor = '';
+          o.style.background = '';
+        });
+        for (const k in seleccion) delete seleccion[k];
+        document.getElementById('marcador').classList.remove('visible');
+        document.getElementById('btn-calificar').style.display = 'inline-block';
+        document.getElementById('btn-reintentar').style.display = 'none';
+        document.getElementById('quiz').scrollIntoView({behavior: 'smooth', block: 'start'});
+      });
+    </script>
+  </body>
+</html>

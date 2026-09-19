@@ -1,0 +1,736 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Lección 4.4 · Operaciones con números mixtos — Matemáticas Nivel 1</title>
+<style>
+  :root{
+    --azul:#6a1b9a; --azul-osc:#4a148c; --azul-cl:#f3e5f5;
+    --tinta:#1a2330; --gris:#5b6675; --linea:#dde3ea;
+    --crema:#f6f4ee; --papel:#ffffff;
+    --verde:#2e7d4f; --verde-cl:#e7f4ec;
+    --ambar:#b06f00; --ambar-cl:#fdf3df;
+    --rojo:#c0392b; --rojo-cl:#fdecea;
+    --sombra:0 2px 10px rgba(74,20,140,.10);
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    font-family:'Segoe UI','Helvetica Neue',system-ui,sans-serif;
+    background:var(--crema); color:var(--tinta);
+    line-height:1.65; font-size:17px;
+  }
+  .envoltura{max-width:880px;margin:0 auto;padding:0 20px 80px;}
+
+  .sr-only{
+    position:absolute;width:1px;height:1px;padding:0;margin:-1px;
+    overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;
+  }
+
+  header.principal{
+    background:linear-gradient(135deg,#4a148c 0%,#6a1b9a 55%,#8e24aa 100%);
+    color:#fff;padding:46px 38px 40px;border-radius:0 0 22px 22px;
+    box-shadow:0 6px 22px rgba(74,20,140,.30);
+  }
+  .envoltura-header{max-width:880px;margin:0 auto;padding:0 20px;}
+  .ruta{font-size:13px;letter-spacing:.6px;text-transform:uppercase;opacity:.85;margin-bottom:14px;}
+  header.principal h1{font-size:30px;font-weight:700;line-height:1.25;margin-bottom:8px;}
+  header.principal .lema{font-size:16px;opacity:.93;font-weight:400;max-width:620px;}
+  .chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px;}
+  .chip{
+    background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.28);
+    padding:6px 14px;border-radius:30px;font-size:13px;font-weight:600;
+  }
+
+  section{
+    background:var(--papel);margin-top:22px;padding:30px 34px;
+    border-radius:14px;box-shadow:var(--sombra);
+  }
+  .num-seccion{
+    display:inline-flex;align-items:center;justify-content:center;
+    width:34px;height:34px;background:var(--azul);color:#fff;
+    border-radius:9px;font-weight:700;font-size:17px;margin-right:12px;flex-shrink:0;
+  }
+  h2{display:flex;align-items:center;font-size:23px;color:var(--azul-osc);margin-bottom:16px;font-weight:700;}
+  h3{font-size:18px;color:var(--azul-osc);margin:22px 0 10px;font-weight:700;}
+  p{margin:11px 0;}
+  ul,ol{margin:11px 0 11px 26px;}
+  li{margin:6px 0;}
+  strong{color:var(--azul-osc);}
+
+  .caja{border-radius:11px;padding:18px 22px;margin:18px 0;border-left:5px solid;}
+  .caja-objetivo{background:var(--azul-cl);border-color:var(--azul);}
+  .caja-objetivo h2{margin-bottom:10px;}
+  .caja-tip{background:var(--verde-cl);border-color:var(--verde);}
+  .caja-tip strong{color:var(--verde);}
+  .caja-ojo{background:var(--ambar-cl);border-color:var(--ambar);}
+  .caja-ojo strong{color:var(--ambar);}
+  .caja-recurso{background:#eef2f7;border-color:var(--gris);}
+
+  .etiqueta{
+    display:inline-block;font-size:12px;font-weight:700;letter-spacing:.5px;
+    text-transform:uppercase;padding:3px 10px;border-radius:5px;margin-bottom:6px;
+  }
+  .et-verde{background:var(--verde);color:#fff;}
+  .et-ambar{background:var(--ambar);color:#fff;}
+  .et-azul{background:var(--azul);color:#fff;}
+
+  .modalidades{display:flex;gap:14px;margin-top:14px;flex-wrap:wrap;}
+  .modo{
+    flex:1;min-width:240px;border-radius:9px;padding:13px 16px;
+    background:#fff;border:1px solid var(--linea);
+  }
+  .modo-pres{border-top:4px solid var(--azul);}
+  .modo-line{border-top:4px solid var(--verde);}
+  .modo .modo-tit{display:block;font-weight:700;font-size:14px;margin-bottom:5px;}
+  .modo-pres .modo-tit{color:var(--azul-osc);}
+  .modo-line .modo-tit{color:var(--verde);}
+  .modo p{margin:4px 0 0;font-size:15px;}
+
+  /* fracción */
+  .fraccion{
+    display:inline-flex;flex-direction:column;align-items:center;
+    vertical-align:middle;margin:0 5px;font-weight:700;
+  }
+  .fraccion .num{border-bottom:2.5px solid currentColor;padding:0 7px;line-height:1.25;}
+  .fraccion .den{padding:0 7px;line-height:1.25;}
+  .fr-grande{font-size:22px;}
+
+  /* número mixto: entero pegado a su fracción */
+  .mixto{display:inline-flex;align-items:center;vertical-align:middle;font-weight:700;}
+  .mixto .entero{margin-right:1px;}
+  .mixto .fraccion{margin:0 0 0 2px;}
+
+  /* ── DESTACADO REGLA ── */
+  .regla-clave{
+    background:var(--azul-cl);border:2px solid var(--azul);border-radius:12px;
+    padding:18px 24px;margin:18px 0;text-align:center;font-size:18px;
+  }
+  .regla-clave strong{color:var(--azul-osc);font-size:19px;}
+  .volteo{
+    display:inline-block;background:#8e24aa;color:#fff;border-radius:8px;
+    padding:6px 14px;font-weight:700;margin:6px 0;
+  }
+
+  .ejemplo{
+    background:var(--crema);border:1px dashed var(--azul);
+    border-radius:11px;padding:18px 22px;margin:18px 0;
+  }
+  .ejemplo .titulo-ej{font-weight:700;color:var(--azul-osc);margin-bottom:8px;font-size:15px;}
+  .paso{margin:8px 0 8px 4px;padding-left:32px;position:relative;}
+  .paso .n{
+    position:absolute;left:0;top:0;width:24px;height:24px;background:var(--azul);
+    color:#fff;border-radius:50%;font-size:13px;font-weight:700;
+    display:flex;align-items:center;justify-content:center;
+  }
+
+  .practica{
+    border:2px solid var(--azul-cl);border-radius:12px;
+    padding:20px 22px;margin:20px 0;background:#fdfbfe;
+  }
+  .practica .cabe{display:flex;align-items:center;gap:10px;margin-bottom:6px;}
+  .practica .cabe .ico{font-size:22px;}
+  .practica .cabe h4{font-size:16px;color:var(--azul-osc);}
+  .pregunta-int{font-size:17px;font-weight:600;margin:14px 0 12px;}
+  .opciones{display:flex;flex-direction:column;gap:9px;}
+  .opcion{
+    border:2px solid var(--linea);border-radius:9px;padding:11px 16px;
+    cursor:pointer;background:#fff;transition:.16s;font-size:16px;
+    text-align:left;font-family:inherit;color:var(--tinta);
+  }
+  .opcion:hover{border-color:var(--azul);background:var(--azul-cl);}
+  .opcion.correcta{border-color:var(--verde);background:var(--verde-cl);font-weight:600;}
+  .opcion.incorrecta{border-color:var(--rojo);background:var(--rojo-cl);}
+  .opcion:disabled{cursor:default;}
+  .respuesta-int{margin-top:12px;padding:11px 15px;border-radius:8px;font-size:15px;display:none;}
+  .respuesta-int.bien{background:var(--verde-cl);color:var(--verde);display:block;}
+  .respuesta-int.mal{background:var(--rojo-cl);color:var(--rojo);display:block;}
+
+  .btn{
+    font-family:inherit;font-size:15px;font-weight:600;padding:9px 20px;
+    background:var(--azul);color:#fff;border:none;border-radius:8px;cursor:pointer;transition:.16s;
+  }
+  .btn:hover{background:var(--azul-osc);}
+  .btn-sec{background:#fff;color:var(--azul);border:2px solid var(--azul);}
+  .btn-sec:hover{background:var(--azul-cl);}
+
+  .quiz-bloque{margin:18px 0;padding:18px 20px;border-radius:11px;background:var(--crema);border:1px solid var(--linea);}
+  .quiz-bloque .qnum{
+    display:inline-block;background:var(--azul-osc);color:#fff;font-size:13px;
+    font-weight:700;padding:3px 11px;border-radius:20px;margin-bottom:8px;
+  }
+  .quiz-bloque .pregunta{font-weight:600;font-size:16px;margin-bottom:12px;}
+  .marcador{text-align:center;padding:26px;border-radius:13px;margin-top:20px;display:none;}
+  .marcador.visible{display:block;}
+  .marcador .puntaje{font-size:46px;font-weight:800;margin:6px 0;}
+  .marcador .mensaje{font-size:17px;}
+  .barra-prog{height:10px;background:var(--linea);border-radius:6px;overflow:hidden;margin:14px 0;}
+  .barra-prog span{display:block;height:100%;background:var(--verde);width:0;transition:width .5s;}
+
+  .tabla-rubrica{width:100%;border-collapse:collapse;margin:14px 0;font-size:14px;}
+  .tabla-rubrica th,.tabla-rubrica td{border:1px solid var(--linea);padding:10px 12px;text-align:left;vertical-align:top;}
+  .tabla-rubrica th{background:var(--azul-osc);color:#fff;font-size:13px;}
+  .tabla-rubrica td:first-child{font-weight:600;color:var(--azul-osc);background:var(--azul-cl);}
+  .nivel-cab{background:#37474f !important;text-align:center;}
+
+  .cierre{
+    background:linear-gradient(135deg,#4a148c,#8e24aa);color:#fff;
+    border-radius:14px;padding:28px 32px;margin-top:24px;
+  }
+  .cierre h2{color:#fff;}
+  .cierre strong{color:#9BFF8F;font-weight:700;text-shadow:0 1px 2px rgba(0,0,0,.45);}
+  .cierre .num-seccion{background:rgba(255,255,255,.22);}
+  .flecha-sig{
+    display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.16);
+    border:1px solid rgba(255,255,255,.3);padding:10px 18px;border-radius:9px;
+    margin-top:12px;font-weight:600;font-size:15px;
+  }
+  .hito{
+    background:rgba(255,255,255,.12);border-radius:10px;padding:14px 18px;
+    margin-top:14px;font-size:15px;
+  }
+
+  footer{text-align:center;padding:30px 20px;color:var(--gris);font-size:13px;}
+
+  @media(max-width:560px){
+    header.principal{padding:34px 22px;}
+    header.principal h1{font-size:24px;}
+    section{padding:24px 20px;}
+  }
+</style>
+</head>
+<body>
+
+<header class="principal">
+  <div class="envoltura-header">
+    <div class="ruta">Matemáticas · Nivel 1 · Tema 4 — Fracciones</div>
+    <h1>Lección 4.4 · Operaciones con números mixtos</h1>
+    <p class="lema">Los números mixtos parecen difíciles, pero tienen un truco infalible: conviértalos en fracciones impropias y use todo lo que ya aprendió en este tema.</p>
+    <div class="chips">
+      <span class="chip"><span aria-hidden="true">⏱️</span> 4 horas (2 sinc. + 2 asinc.)</span>
+      <span class="chip"><span aria-hidden="true">🔢</span> Sumar, restar, multiplicar y dividir</span>
+      <span class="chip"><span aria-hidden="true">📘</span> MyOpenMath · Steck-Vaughn</span>
+    </div>
+  </div>
+</header>
+
+<div class="envoltura">
+
+  <!-- OBJETIVOS -->
+  <section>
+    <div class="caja caja-objetivo">
+      <h2><span class="num-seccion" aria-hidden="true">🎯</span>Objetivos de la clase</h2>
+      <p>Al terminar esta lección, usted podrá:</p>
+      <ul>
+        <li><strong>Convertir</strong> números mixtos a fracciones impropias y viceversa con seguridad.</li>
+        <li><strong>Multiplicar y dividir</strong> números mixtos convirtiéndolos primero a impropias.</li>
+        <li><strong>Sumar y restar</strong> números mixtos, incluyendo los casos que obligan a "pedir prestado".</li>
+        <li><strong>Resolver y simplificar</strong> problemas de contexto real con números mixtos.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- CONEXIÓN -->
+  <section>
+    <h2><span class="num-seccion">1</span>Un viejo conocido</h2>
+    <p>Usted ya se ha cruzado con los números mixtos varias veces en este tema. En la <strong>Lección 4.1</strong> aprendió a convertirlos en fracciones impropias; en las Lecciones 4.2 y 4.3 aparecieron dentro de las operaciones. Hoy les damos por fin su propia lección.</p>
+    <p>Un <strong>número mixto</strong> es un número entero acompañado de una fracción: por ejemplo, <span class="mixto"><span class="entero">2</span><span class="fraccion"><span class="num">1</span><span class="den">2</span></span></span> significa "dos enteros y medio". Lo usamos todos los días: <em>una receta lleva <span class="mixto"><span class="entero">1</span><span class="fraccion"><span class="num">3</span><span class="den">4</span></span></span> tazas de harina</em>; <em>la tabla mide <span class="mixto"><span class="entero">5</span><span class="fraccion"><span class="num">1</span><span class="den">2</span></span></span> pies</em>.</p>
+    <div class="caja caja-tip">
+      <span class="etiqueta et-verde">La idea clave de toda la lección</span>
+      <p>No hay reglas nuevas que memorizar. El secreto de operar con números mixtos es uno solo: <strong>conviértalos en fracciones impropias</strong> y después use exactamente lo que ya sabe hacer con fracciones. Al final, vuelva a expresar el resultado como número mixto.</p>
+    </div>
+  </section>
+
+  <!-- REPASO CONVERSIÓN -->
+  <section>
+    <h2><span class="num-seccion">2</span>Repaso rápido: convertir entre mixto e impropio</h2>
+    <p>Como toda la lección descansa en esta destreza, repasémosla con calma antes de seguir.</p>
+
+    <h3>De número mixto a fracción impropia</h3>
+    <div class="regla-clave">
+      <strong>entero × denominador + numerador</strong> &nbsp;arriba.&nbsp; El denominador <strong>no cambia</strong>.
+    </div>
+    <div class="ejemplo">
+      <div class="titulo-ej">Convertir <span class="mixto"><span class="entero">3</span><span class="fraccion"><span class="num">1</span><span class="den">4</span></span></span> a fracción impropia</div>
+      <div class="paso"><span class="n">1</span>Multiplico el entero por el denominador: 3 × 4 = 12.</div>
+      <div class="paso"><span class="n">2</span>Le sumo el numerador: 12 + 1 = 13. Ese es el nuevo numerador.</div>
+      <div class="paso"><span class="n">3</span>El denominador se queda igual: 4.</div>
+      <div class="paso"><span class="n">✓</span>Resultado: <span class="mixto"><span class="entero">3</span><span class="fraccion"><span class="num">1</span><span class="den">4</span></span></span> = <span class="fraccion"><span class="num">13</span><span class="den">4</span></span>.</div>
+    </div>
+
+    <h3>De fracción impropia a número mixto</h3>
+    <div class="regla-clave">
+      <strong>numerador ÷ denominador</strong>. El cociente es el entero; el residuo es el numerador; el denominador <strong>no cambia</strong>.
+    </div>
+    <div class="ejemplo">
+      <div class="titulo-ej">Convertir <span class="fraccion"><span class="num">17</span><span class="den">5</span></span> a número mixto</div>
+      <div class="paso"><span class="n">1</span>Divido: 17 ÷ 5 = 3, y sobran 2.</div>
+      <div class="paso"><span class="n">2</span>El cociente (3) es el entero; el residuo (2) es el numerador.</div>
+      <div class="paso"><span class="n">3</span>El denominador se queda igual: 5.</div>
+      <div class="paso"><span class="n">✓</span>Resultado: <span class="fraccion"><span class="num">17</span><span class="den">5</span></span> = <span class="mixto"><span class="entero">3</span><span class="fraccion"><span class="num">2</span><span class="den">5</span></span></span>.</div>
+    </div>
+
+    <div class="practica">
+      <div class="cabe"><span class="ico" aria-hidden="true">✏️</span><h4>Práctica 1 — Convertir a impropia</h4></div>
+      <p class="pregunta-int">Convierta <span class="mixto"><span class="entero">2</span><span class="fraccion"><span class="num">1</span><span class="den">3</span></span></span> a fracción impropia.</p>
+      <div class="opciones" data-quiz="p1">
+        <button class="opcion" data-correcta="si"><span class="fraccion"><span class="num">7</span><span class="den">3</span></span></button>
+        <button class="opcion" data-correcta="no"><span class="fraccion"><span class="num">6</span><span class="den">3</span></span></button>
+        <button class="opcion" data-correcta="no"><span class="fraccion"><span class="num">5</span><span class="den">3</span></span></button>
+        <button class="opcion" data-correcta="no"><span class="fraccion"><span class="num">2</span><span class="den">3</span></span></button>
+      </div>
+      <div class="respuesta-int" id="r-p1"></div>
+    </div>
+  </section>
+
+  <!-- MULTIPLICAR Y DIVIDIR -->
+  <section>
+    <h2><span class="num-seccion">3</span>Multiplicar y dividir números mixtos</h2>
+    <p>Aquí la regla es tajante y sin excepciones: <strong>nunca</strong> se multiplican ni se dividen los enteros por un lado y las fracciones por otro. Primero se convierte todo a impropias.</p>
+
+    <div class="regla-clave">
+      Para multiplicar o dividir números mixtos:<br>
+      <strong>1) convierta a impropias</strong> &nbsp;·&nbsp; <strong>2) opere como en la Lección 4.3</strong> &nbsp;·&nbsp; <strong>3) vuelva a número mixto y simplifique</strong>.
+    </div>
+
+    <h3>Ejemplo resuelto (multiplicar): <span class="mixto"><span class="entero">2</span><span class="fraccion"><span class="num">1</span><span class="den">2</span></span></span> × <span class="mixto"><span class="entero">1</span><span class="fraccion"><span class="num">1</span><span class="den">3</span></span></span></h3>
+    <div class="ejemplo">
+      <div class="titulo-ej">Convierto, multiplico en línea recta y regreso a mixto</div>
+      <div class="paso"><span class="n">1</span><strong>Convierto:</strong> <span class="mixto"><span class="entero">2</span><span class="fraccion"><span class="num">1</span><span class="den">2</span></span></span> = <span class="fraccion"><span class="num">5</span><span class="den">2</span></span> &nbsp;y&nbsp; <span class="mixto"><span class="entero">1</span><span class="fraccion"><span class="num">1</span><span class="den">3</span></span></span> = <span class="fraccion"><span class="num">4</span><span class="den">3</span></span>.</div>
+      <div class="paso"><span class="n">2</span><strong>Multiplico:</strong> numeradores 5 × 4 = 20; denominadores 2 × 3 = 6. Da <span class="fraccion"><span class="num">20</span><span class="den">6</span></span>.</div>
+      <div class="paso"><span class="n">3</span><strong>Simplifico:</strong> <span class="fraccion"><span class="num">20</span><span class="den">6</span></span> entre 2 = <span class="fraccion"><span class="num">10</span><span class="den">3</span></span>.</div>
+      <div class="paso"><span class="n">4</span><strong>Regreso a mixto:</strong> 10 ÷ 3 = 3, sobra 1.</div>
+      <div class="paso"><span class="n">✓</span>Resultado: <span class="mixto"><span class="entero">2</span><span class="fraccion"><span class="num">1</span><span class="den">2</span></span></span> × <span class="mixto"><span class="entero">1</span><span class="fraccion"><span class="num">1</span><span class="den">3</span></span></span> = <span class="mixto"><span class="entero">3</span><span class="fraccion"><span class="num">1</span><span class="den">3</span></span></span>.</div>
+    </div>
+    <div class="caja caja-ojo">
+      <span class="etiqueta et-ambar">¡Ojo! El error más común</span>
+      <p>Es tentador multiplicar "2 × 1" y "<span class="fraccion"><span class="num">1</span><span class="den">2</span></span> × <span class="fraccion"><span class="num">1</span><span class="den">3</span></span>" por separado. <strong>Eso da una respuesta incorrecta.</strong> Convierta siempre a impropias <em>antes</em> de multiplicar o dividir.</p>
+    </div>
+
+    <h3>Ejemplo resuelto (dividir): <span class="mixto"><span class="entero">3</span><span class="fraccion"><span class="num">3</span><span class="den">4</span></span></span> ÷ <span class="mixto"><span class="entero">1</span><span class="fraccion"><span class="num">1</span><span class="den">2</span></span></span></h3>
+    <div class="ejemplo">
+      <div class="titulo-ej">Convierto, luego "dejo, volteo y multiplico"</div>
+      <div class="paso"><span class="n">1</span><strong>Convierto:</strong> <span class="mixto"><span class="entero">3</span><span class="fraccion"><span class="num">3</span><span class="den">4</span></span></span> = <span class="fraccion"><span class="num">15</span><span class="den">4</span></span> &nbsp;y&nbsp; <span class="mixto"><span class="entero">1</span><span class="fraccion"><span class="num">1</span><span class="den">2</span></span></span> = <span class="fraccion"><span class="num">3</span><span class="den">2</span></span>.</div>
+      <div class="paso"><span class="n">2</span><strong>Dejo, volteo, multiplico:</strong> <span class="fraccion"><span class="num">15</span><span class="den">4</span></span> × <span class="fraccion"><span class="num">2</span><span class="den">3</span></span> = <span class="fraccion"><span class="num">30</span><span class="den">12</span></span>.</div>
+      <div class="paso"><span class="n">3</span><strong>Simplifico:</strong> <span class="fraccion"><span class="num">30</span><span class="den">12</span></span> entre 6 = <span class="fraccion"><span class="num">5</span><span class="den">2</span></span>.</div>
+      <div class="paso"><span class="n">✓</span><strong>Regreso a mixto:</strong> 5 ÷ 2 = 2, sobra 1 → <span class="mixto"><span class="entero">2</span><span class="fraccion"><span class="num">1</span><span class="den">2</span></span></span>.</div>
+    </div>
+
+    <div class="practica">
+      <div class="cabe"><span class="ico" aria-hidden="true">✏️</span><h4>Práctica 2 — Multiplicar números mixtos</h4></div>
+      <p class="pregunta-int">¿Cuánto es <span class="mixto"><span class="entero">1</span><span class="fraccion"><span class="num">1</span><span class="den">2</span></span></span> × 2?</p>
+      <div class="opciones" data-quiz="p2">
+        <button class="opcion" data-correcta="no"><span class="mixto"><span class="entero">2</span><span class="fraccion"><span class="num">1</span><span class="den">2</span></span></span></button>
+        <button class="opcion" data-correcta="si">3</button>
+        <button class="opcion" data-correcta="no"><span class="mixto"><span class="entero">3</span><span class="fraccion"><span class="num">1</span><span class="den">2</span></span></span></button>
+        <button class="opcion" data-correcta="no">4</button>
+      </div>
+      <div class="respuesta-int" id="r-p2"></div>
+    </div>
+
+    <div class="practica">
+      <div class="cabe"><span class="ico" aria-hidden="true">✏️</span><h4>Práctica 3 — Dividir números mixtos</h4></div>
+      <p class="pregunta-int">¿Cuánto es <span class="mixto"><span class="entero">2</span><span class="fraccion"><span class="num">1</span><span class="den">2</span></span></span> ÷ <span class="mixto"><span class="entero">1</span><span class="fraccion"><span class="num">1</span><span class="den">4</span></span></span>?</p>
+      <div class="opciones" data-quiz="p3">
+        <button class="opcion" data-correcta="no"><span class="mixto"><span class="entero">1</span><span class="fraccion"><span class="num">1</span><span class="den">4</span></span></span></button>
+        <button class="opcion" data-correcta="si">2</button>
+        <button class="opcion" data-correcta="no"><span class="mixto"><span class="entero">3</span><span class="fraccion"><span class="num">1</span><span class="den">8</span></span></span></button>
+        <button class="opcion" data-correcta="no"><span class="fraccion"><span class="num">1</span><span class="den">2</span></span></button>
+      </div>
+      <div class="respuesta-int" id="r-p3"></div>
+    </div>
+  </section>
+
+  <!-- SUMAR Y RESTAR -->
+  <section>
+    <h2><span class="num-seccion">4</span>Sumar y restar números mixtos</h2>
+    <p>Para sumar y restar usamos exactamente la misma estrategia: convertir a impropias, buscar denominador común (como en la Lección 4.2), operar y regresar a mixto. Este único método sirve para todos los casos y evita confusiones.</p>
+
+    <div class="regla-clave">
+      Para sumar o restar números mixtos:<br>
+      <strong>convierta a impropias</strong> &nbsp;·&nbsp; <strong>busque denominador común</strong> &nbsp;·&nbsp; <strong>sume o reste los numeradores</strong> &nbsp;·&nbsp; <strong>regrese a mixto</strong>.
+    </div>
+
+    <h3>Ejemplo resuelto (sumar): <span class="mixto"><span class="entero">1</span><span class="fraccion"><span class="num">3</span><span class="den">4</span></span></span> + <span class="mixto"><span class="entero">2</span><span class="fraccion"><span class="num">1</span><span class="den">2</span></span></span></h3>
+    <div class="ejemplo">
+      <div class="titulo-ej">Convierto, igualo denominadores y sumo</div>
+      <div class="paso"><span class="n">1</span><strong>Convierto:</strong> <span class="mixto"><span class="entero">1</span><span class="fraccion"><span class="num">3</span><span class="den">4</span></span></span> = <span class="fraccion"><span class="num">7</span><span class="den">4</span></span> &nbsp;y&nbsp; <span class="mixto"><span class="entero">2</span><span class="fraccion"><span class="num">1</span><span class="den">2</span></span></span> = <span class="fraccion"><span class="num">5</span><span class="den">2</span></span>.</div>
+      <div class="paso"><span class="n">2</span><strong>Denominador común (4):</strong> <span class="fraccion"><span class="num">5</span><span class="den">2</span></span> = <span class="fraccion"><span class="num">10</span><span class="den">4</span></span>.</div>
+      <div class="paso"><span class="n">3</span><strong>Sumo numeradores:</strong> <span class="fraccion"><span class="num">7</span><span class="den">4</span></span> + <span class="fraccion"><span class="num">10</span><span class="den">4</span></span> = <span class="fraccion"><span class="num">17</span><span class="den">4</span></span>.</div>
+      <div class="paso"><span class="n">✓</span><strong>Regreso a mixto:</strong> 17 ÷ 4 = 4, sobra 1 → <span class="mixto"><span class="entero">4</span><span class="fraccion"><span class="num">1</span><span class="den">4</span></span></span>.</div>
+    </div>
+
+    <h3>Ejemplo resuelto (restar con "préstamo"): 4 − <span class="mixto"><span class="entero">1</span><span class="fraccion"><span class="num">2</span><span class="den">3</span></span></span></h3>
+    <p>Restar un número mixto de un entero suele asustar porque "no hay fracción de donde quitar". Con el método de impropias, ese problema <strong>desaparece solo</strong>.</p>
+    <div class="ejemplo">
+      <div class="titulo-ej">El método de impropias resuelve el "préstamo" automáticamente</div>
+      <div class="paso"><span class="n">1</span><strong>Escribo el entero como fracción:</strong> 4 = <span class="fraccion"><span class="num">4</span><span class="den">1</span></span> = <span class="fraccion"><span class="num">12</span><span class="den">3</span></span> (denominador común 3).</div>
+      <div class="paso"><span class="n">2</span><strong>Convierto el mixto:</strong> <span class="mixto"><span class="entero">1</span><span class="fraccion"><span class="num">2</span><span class="den">3</span></span></span> = <span class="fraccion"><span class="num">5</span><span class="den">3</span></span>.</div>
+      <div class="paso"><span class="n">3</span><strong>Resto numeradores:</strong> <span class="fraccion"><span class="num">12</span><span class="den">3</span></span> − <span class="fraccion"><span class="num">5</span><span class="den">3</span></span> = <span class="fraccion"><span class="num">7</span><span class="den">3</span></span>.</div>
+      <div class="paso"><span class="n">✓</span><strong>Regreso a mixto:</strong> 7 ÷ 3 = 2, sobra 1 → <span class="mixto"><span class="entero">2</span><span class="fraccion"><span class="num">1</span><span class="den">3</span></span></span>.</div>
+    </div>
+    <div class="caja caja-tip">
+      <span class="etiqueta et-verde">¿Por qué un solo método?</span>
+      <p>Existe otra forma de sumar mixtos —juntar los enteros por un lado y las fracciones por otro— pero obliga a "pedir prestado" cuando la resta de fracciones no alcanza. Convertir a impropias <strong>siempre funciona igual</strong>, sin trucos especiales. Aprenda este bien y resolverá los cuatro tipos de operación con la misma receta.</p>
+    </div>
+
+    <div class="practica">
+      <div class="cabe"><span class="ico" aria-hidden="true">✏️</span><h4>Práctica 4 — Sumar números mixtos</h4></div>
+      <p class="pregunta-int">¿Cuánto es <span class="mixto"><span class="entero">1</span><span class="fraccion"><span class="num">3</span><span class="den">4</span></span></span> + <span class="mixto"><span class="entero">2</span><span class="fraccion"><span class="num">1</span><span class="den">2</span></span></span>?</p>
+      <div class="opciones" data-quiz="p4">
+        <button class="opcion" data-correcta="no"><span class="mixto"><span class="entero">3</span><span class="fraccion"><span class="num">1</span><span class="den">4</span></span></span></button>
+        <button class="opcion" data-correcta="si"><span class="mixto"><span class="entero">4</span><span class="fraccion"><span class="num">1</span><span class="den">4</span></span></span></button>
+        <button class="opcion" data-correcta="no"><span class="mixto"><span class="entero">3</span><span class="fraccion"><span class="num">3</span><span class="den">4</span></span></span></button>
+        <button class="opcion" data-correcta="no"><span class="mixto"><span class="entero">4</span><span class="fraccion"><span class="num">1</span><span class="den">2</span></span></span></button>
+      </div>
+      <div class="respuesta-int" id="r-p4"></div>
+    </div>
+  </section>
+
+  <!-- CONTEXTO -->
+  <section>
+    <h2><span class="num-seccion">5</span>Números mixtos en problemas de la vida real</h2>
+    <p>Use siempre el <strong>método de los 4 pasos</strong>: subrayo los datos, decido la operación, resuelvo y compruebo si el resultado tiene sentido. Los números mixtos aparecen sobre todo en cocina, carpintería y medidas.</p>
+    <div class="ejemplo">
+      <div class="titulo-ej">📋 "Un carpintero tiene una tabla de 8 pies y corta <span class="mixto"><span class="entero">3</span><span class="fraccion"><span class="num">1</span><span class="den">2</span></span></span> pies. ¿Cuánta tabla le queda?"</div>
+      <div class="paso"><span class="n">1</span><strong>Subrayo:</strong> tabla de 8 pies; corta <span class="mixto"><span class="entero">3</span><span class="fraccion"><span class="num">1</span><span class="den">2</span></span></span> pies; pregunta cuánto <em>queda</em>.</div>
+      <div class="paso"><span class="n">2</span><strong>Decido:</strong> "queda" indica restar. Es 8 − <span class="mixto"><span class="entero">3</span><span class="fraccion"><span class="num">1</span><span class="den">2</span></span></span>.</div>
+      <div class="paso"><span class="n">3</span><strong>Resuelvo:</strong> 8 = <span class="fraccion"><span class="num">16</span><span class="den">2</span></span>; &nbsp;<span class="mixto"><span class="entero">3</span><span class="fraccion"><span class="num">1</span><span class="den">2</span></span></span> = <span class="fraccion"><span class="num">7</span><span class="den">2</span></span>. &nbsp;<span class="fraccion"><span class="num">16</span><span class="den">2</span></span> − <span class="fraccion"><span class="num">7</span><span class="den">2</span></span> = <span class="fraccion"><span class="num">9</span><span class="den">2</span></span> = <span class="mixto"><span class="entero">4</span><span class="fraccion"><span class="num">1</span><span class="den">2</span></span></span>.</div>
+      <div class="paso"><span class="n">✓</span><strong>¿Tiene sentido?</strong> Le quedan <span class="mixto"><span class="entero">4</span><span class="fraccion"><span class="num">1</span><span class="den">2</span></span></span> pies, menos que los 8 originales — lógico, porque cortó un pedazo.</div>
+    </div>
+
+    <div class="practica">
+      <div class="cabe"><span class="ico" aria-hidden="true">✏️</span><h4>Práctica 5 — Problema de contexto</h4></div>
+      <p class="pregunta-int">Una tabla mide <span class="mixto"><span class="entero">5</span><span class="fraccion"><span class="num">1</span><span class="den">2</span></span></span> pies. Si se cortan <span class="mixto"><span class="entero">1</span><span class="fraccion"><span class="num">3</span><span class="den">4</span></span></span> pies, ¿cuánto queda?</p>
+      <div class="opciones" data-quiz="p5">
+        <button class="opcion" data-correcta="no"><span class="mixto"><span class="entero">4</span><span class="fraccion"><span class="num">1</span><span class="den">4</span></span></span> pies</button>
+        <button class="opcion" data-correcta="si"><span class="mixto"><span class="entero">3</span><span class="fraccion"><span class="num">3</span><span class="den">4</span></span></span> pies</button>
+        <button class="opcion" data-correcta="no"><span class="mixto"><span class="entero">3</span><span class="fraccion"><span class="num">1</span><span class="den">4</span></span></span> pies</button>
+        <button class="opcion" data-correcta="no"><span class="mixto"><span class="entero">4</span><span class="fraccion"><span class="num">3</span><span class="den">4</span></span></span> pies</button>
+      </div>
+      <div class="respuesta-int" id="r-p5"></div>
+    </div>
+  </section>
+
+  <!-- PRÁCTICA GUIADA -->
+  <section>
+    <h2><span class="num-seccion">6</span>Práctica guiada en clase</h2>
+    <p>Estas actividades se hacen <strong>en la sesión sincrónica</strong>. Cada actividad incluye una variante para la <strong>clase presencial</strong> y otra para la <strong>clase en línea</strong>; el objetivo de aprendizaje es el mismo en ambas.</p>
+
+    <div class="caja caja-recurso">
+      <span class="etiqueta et-azul">Actividad A · "La cadena de conversión"</span>
+      <p>Los estudiantes automatizan el paso que sostiene toda la lección: convertir mixto ↔ impropio sin titubear.</p>
+      <div class="modalidades">
+        <div class="modo modo-pres">
+          <span class="modo-tit"><span aria-hidden="true">🏫</span> Presencial</span>
+          <p>En la pizarra, el profesor escribe un número mixto; un estudiante lo convierte a impropia y escribe otro impropio al lado; el siguiente lo convierte a mixto, y así en cadena. Toda la clase verifica cada eslabón.</p>
+        </div>
+        <div class="modo modo-line">
+          <span class="modo-tit"><span aria-hidden="true">💻</span> En línea</span>
+          <p>El profesor muestra una lista de conversiones en pantalla compartida. Los estudiantes responden por turnos en el chat y la clase confirma cada una con el pulgar arriba.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="caja caja-recurso">
+      <span class="etiqueta et-azul">Actividad B · "Misma receta para los cuatro"</span>
+      <p>Los estudiantes comprueban que la receta "convierto, opero, regreso a mixto" funciona igual para sumar, restar, multiplicar y dividir.</p>
+      <div class="modalidades">
+        <div class="modo modo-pres">
+          <span class="modo-tit"><span aria-hidden="true">🏫</span> Presencial</span>
+          <p>Cada pareja recibe una tarjeta con las cuatro operaciones aplicadas a los mismos dos números mixtos. Resuelven las cuatro nombrando en voz alta el paso de conversión. Comparan resultados en grupo grande.</p>
+        </div>
+        <div class="modo modo-line">
+          <span class="modo-tit"><span aria-hidden="true">💻</span> En línea</span>
+          <p>En salas pequeñas (breakout rooms), cada sala resuelve una de las cuatro operaciones y luego explica al grupo grande cómo convirtió a impropias antes de operar.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="caja caja-recurso">
+      <span class="etiqueta et-azul">Actividad C · "El taller y la cocina"</span>
+      <p>Problemas de contexto real con números mixtos: medir y cortar maderas (restar) y ajustar recetas (multiplicar).</p>
+      <div class="modalidades">
+        <div class="modo modo-pres">
+          <span class="modo-tit"><span aria-hidden="true">🏫</span> Presencial</span>
+          <p>Reparta tarjetas con dos tipos de problema: "cortar la tabla" (restar) y "doblar la receta" (multiplicar). En parejas, los estudiantes resuelven y explican qué operación eligieron y por qué.</p>
+        </div>
+        <div class="modo modo-line">
+          <span class="modo-tit"><span aria-hidden="true">💻</span> En línea</span>
+          <p>Muestre los problemas en diapositivas. Los estudiantes resuelven en papel y muestran su procedimiento a la cámara, señalando el paso de conversión a impropias.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TAREA ASINCRÓNICA -->
+  <section>
+    <h2><span class="num-seccion">7</span>Tarea asincrónica</h2>
+    <p>Estas actividades se realizan <strong>por su cuenta</strong>, dentro de las 2 horas asincrónicas de la lección.</p>
+    <ul>
+      <li><strong>MyOpenMath:</strong> complete los <strong>10 problemas</strong> de operaciones con números mixtos (suma, resta, multiplicación y división). Cada uno da retroalimentación inmediata.</li>
+      <li><strong>Brightspace:</strong> realice el quiz de la lección (abajo puede practicarlo antes).</li>
+      <li><strong>Actividad personal:</strong> tome una receta de cocina con cantidades en números mixtos. Calcule cuánto necesitaría de cada ingrediente si hiciera el doble de la receta.</li>
+    </ul>
+  </section>
+
+  <!-- QUIZ -->
+  <section>
+    <h2><span class="num-seccion">8</span>Quiz de práctica</h2>
+    <p>Responda las <strong>8 preguntas</strong>. Al final verá su puntaje y podrá repasar lo que falló. Puede repetir el quiz las veces que quiera.</p>
+
+    <form id="quiz">
+      <div class="quiz-bloque">
+        <span class="qnum">Pregunta 1</span>
+        <p class="pregunta">Para multiplicar o dividir números mixtos, lo primero que se hace es:</p>
+        <div class="opciones" data-q="1">
+          <button type="button" class="opcion" data-c="si">Convertir cada número mixto en fracción impropia.</button>
+          <button type="button" class="opcion" data-c="no">Multiplicar los enteros entre sí y las fracciones entre sí.</button>
+          <button type="button" class="opcion" data-c="no">Buscar primero un denominador común.</button>
+          <button type="button" class="opcion" data-c="no">Voltear los dos números mixtos.</button>
+        </div>
+      </div>
+
+      <div class="quiz-bloque">
+        <span class="qnum">Pregunta 2</span>
+        <p class="pregunta">Convierta <strong>3 ⅖</strong> a fracción impropia.</p>
+        <div class="opciones" data-q="2">
+          <button type="button" class="opcion" data-c="si">17/5</button>
+          <button type="button" class="opcion" data-c="no">15/5</button>
+          <button type="button" class="opcion" data-c="no">11/5</button>
+          <button type="button" class="opcion" data-c="no">8/5</button>
+        </div>
+      </div>
+
+      <div class="quiz-bloque">
+        <span class="qnum">Pregunta 3</span>
+        <p class="pregunta">¿Cuánto es <strong>2 ⅓ × 1 ½</strong>?</p>
+        <div class="opciones" data-q="3">
+          <button type="button" class="opcion" data-c="si">3 ½</button>
+          <button type="button" class="opcion" data-c="no">2 ⅓</button>
+          <button type="button" class="opcion" data-c="no">3 ⅙</button>
+          <button type="button" class="opcion" data-c="no">4</button>
+        </div>
+      </div>
+
+      <div class="quiz-bloque">
+        <span class="qnum">Pregunta 4</span>
+        <p class="pregunta">¿Cuánto es <strong>4 ½ ÷ 1 ½</strong>?</p>
+        <div class="opciones" data-q="4">
+          <button type="button" class="opcion" data-c="si">3</button>
+          <button type="button" class="opcion" data-c="no">6</button>
+          <button type="button" class="opcion" data-c="no">2 ¼</button>
+          <button type="button" class="opcion" data-c="no">3 ½</button>
+        </div>
+      </div>
+
+      <div class="quiz-bloque">
+        <span class="qnum">Pregunta 5</span>
+        <p class="pregunta">¿Cuánto es <strong>2 ¼ + 1 ½</strong>?</p>
+        <div class="opciones" data-q="5">
+          <button type="button" class="opcion" data-c="si">3 ¾</button>
+          <button type="button" class="opcion" data-c="no">3 ¼</button>
+          <button type="button" class="opcion" data-c="no">4 ¼</button>
+          <button type="button" class="opcion" data-c="no">3 ½</button>
+        </div>
+      </div>
+
+      <div class="quiz-bloque">
+        <span class="qnum">Pregunta 6</span>
+        <p class="pregunta">¿Cuánto es <strong>5 − 2 ⅗</strong>?</p>
+        <div class="opciones" data-q="6">
+          <button type="button" class="opcion" data-c="si">2 ⅖</button>
+          <button type="button" class="opcion" data-c="no">3 ⅗</button>
+          <button type="button" class="opcion" data-c="no">2 ⅗</button>
+          <button type="button" class="opcion" data-c="no">3 ⅖</button>
+        </div>
+      </div>
+
+      <div class="quiz-bloque">
+        <span class="qnum">Pregunta 7</span>
+        <p class="pregunta">Una receta usa <strong>1 ½ tazas</strong> de azúcar. Para hacer el doble de la receta, ¿cuánta azúcar necesita?</p>
+        <div class="opciones" data-q="7">
+          <button type="button" class="opcion" data-c="si">3 tazas</button>
+          <button type="button" class="opcion" data-c="no">2 ½ tazas</button>
+          <button type="button" class="opcion" data-c="no">3 ½ tazas</button>
+          <button type="button" class="opcion" data-c="no">1 ¾ tazas</button>
+        </div>
+      </div>
+
+      <div class="quiz-bloque">
+        <span class="qnum">Pregunta 8</span>
+        <p class="pregunta">Una jarra tiene <strong>3 ¼ litros</strong> de agua y se usan <strong>1 ¾ litros</strong>. ¿Cuánta agua queda?</p>
+        <div class="opciones" data-q="8">
+          <button type="button" class="opcion" data-c="si">1 ½ litros</button>
+          <button type="button" class="opcion" data-c="no">2 litros</button>
+          <button type="button" class="opcion" data-c="no">1 ¼ litros</button>
+          <button type="button" class="opcion" data-c="no">2 ½ litros</button>
+        </div>
+      </div>
+    </form>
+
+    <div style="text-align:center;margin-top:18px;">
+      <button class="btn" id="btn-calificar">Ver mi resultado</button>
+      <button class="btn btn-sec" id="btn-reintentar" style="display:none;">Intentar de nuevo</button>
+    </div>
+
+    <div class="marcador" id="marcador">
+      <div class="barra-prog"><span id="barra"></span></div>
+      <div class="puntaje" id="puntaje"></div>
+      <div class="mensaje" id="mensaje"></div>
+    </div>
+  </section>
+
+  <!-- RÚBRICA -->
+  <section>
+    <h2><span class="num-seccion">9</span>Rúbrica de evaluación</h2>
+    <p>Rúbrica analítica de proceso. Cada criterio se evalúa en cuatro niveles.</p>
+    <table class="tabla-rubrica">
+      <caption class="sr-only">Rúbrica analítica de operaciones con números mixtos, con cuatro criterios evaluados en cuatro niveles de logro.</caption>
+      <thead>
+        <tr>
+          <th scope="col">Criterio</th>
+          <th scope="col" class="nivel-cab">Logrado (4)</th>
+          <th scope="col" class="nivel-cab">Satisfactorio (3)</th>
+          <th scope="col" class="nivel-cab">En proceso (2)</th>
+          <th scope="col" class="nivel-cab">Por reforzar (1)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Convierte mixto ↔ impropio</td>
+          <td>Convierte en ambos sentidos sin errores y con rapidez.</td>
+          <td>Convierte correctamente casi siempre.</td>
+          <td>Olvida sumar el numerador o cambia el denominador.</td>
+          <td>No domina la conversión.</td>
+        </tr>
+        <tr>
+          <td>Multiplica y divide mixtos</td>
+          <td>Convierte a impropias antes de operar y simplifica.</td>
+          <td>Opera correctamente con un descuido aislado.</td>
+          <td>Intenta operar enteros y fracciones por separado.</td>
+          <td>No logra multiplicar ni dividir mixtos.</td>
+        </tr>
+        <tr>
+          <td>Suma y resta mixtos</td>
+          <td>Iguala denominadores y resuelve, incluso con "préstamo".</td>
+          <td>Suma y resta bien en casos sencillos.</td>
+          <td>Se traba cuando hay que "pedir prestado".</td>
+          <td>No suma ni resta mixtos.</td>
+        </tr>
+        <tr>
+          <td>Resuelve problemas y simplifica</td>
+          <td>Elige la operación correcta, resuelve y simplifica con unidades.</td>
+          <td>Resuelve bien con unidades.</td>
+          <td>Plantea bien pero no simplifica o no regresa a mixto.</td>
+          <td>No interpreta el problema.</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- CIERRE -->
+  <div class="cierre">
+    <h2><span class="num-seccion" aria-hidden="true">🏁</span>Cierre del Tema 4 y de la primera mitad del Nivel 1</h2>
+    <p>Con esta lección cierra el <strong>Tema 4 · Fracciones</strong>. Ya domina las fracciones por completo: equivalencias, simplificación, las cuatro operaciones y ahora también los <strong>números mixtos</strong>.</p>
+    <div class="hito">
+      <span aria-hidden="true">🎯</span> <strong>Un hito importante:</strong> con los Temas 1 al 4 completos, usted ya maneja las cuatro operaciones con números enteros, decimales, fracciones y números mixtos — toda la <strong>aritmética básica</strong>. Esa es la base sobre la que se construye el resto del curso.
+    </div>
+    <p style="margin-top:14px;">En el <strong>Tema 5 · Patrones y pensamiento algebraico</strong> dará un paso nuevo y emocionante: pasará de los números a las <strong>ideas</strong>. La <strong>Lección 5.1 · Patrones numéricos y de figuras</strong> le enseñará a descubrir la regla escondida detrás de una secuencia — el primer paso hacia el álgebra.</p>
+    <div class="flecha-sig"><span aria-hidden="true">➡️</span> &nbsp;Próxima: Tema 5 · Lección 5.1 · Patrones numéricos y de figuras</div>
+  </div>
+
+</div>
+
+<footer>
+  Matemáticas · Nivel 1 · Lección 4.4 — Spanish ASE Math · AE 0170-0321<br>
+  City Colleges of Chicago · Truman College · Prof. José M. Fernández
+</footer>
+
+<script>
+  const respuestasPractica = {
+    p1:"2⅓ = 7/3. Multiplique entero por denominador y sume el numerador: 2 × 3 + 1 = 7. El denominador (3) no cambia.",
+    p2:"1½ × 2 = 3. Convierta 1½ a impropia (3/2) y escriba 2 como 2/1. Multiplique: 3/2 × 2/1 = 6/2 = 3.",
+    p3:"2½ ÷ 1¼ = 2. Convierta a impropias (5/2 y 5/4). Deje 5/2, voltee 5/4 a 4/5, multiplique: 5/2 × 4/5 = 20/10 = 2.",
+    p4:"1¾ + 2½ = 4¼. Convierta a impropias (7/4 y 5/2). Con denominador común 4: 7/4 + 10/4 = 17/4 = 4¼.",
+    p5:"5½ − 1¾ = 3¾. Convierta a impropias (11/2 y 7/4). Con denominador común 4: 22/4 − 7/4 = 15/4 = 3¾. Quedan 3¾ pies."
+  };
+  document.querySelectorAll('.opciones[data-quiz]').forEach(function(grupo){
+    const id = grupo.getAttribute('data-quiz');
+    grupo.querySelectorAll('.opcion').forEach(function(op){
+      op.addEventListener('click', function(){
+        const acerto = op.getAttribute('data-correcta') === 'si';
+        grupo.querySelectorAll('.opcion').forEach(function(o){
+          o.disabled = true;
+          if(o.getAttribute('data-correcta') === 'si') o.classList.add('correcta');
+        });
+        if(!acerto) op.classList.add('incorrecta');
+        const r = document.getElementById('r-'+id);
+        r.className = 'respuesta-int ' + (acerto ? 'bien' : 'mal');
+        r.textContent = (acerto ? '✓ ¡Muy bien! ' : '✗ Revise: ') + respuestasPractica[id];
+      });
+    });
+  });
+
+  const totalPreguntas = 8;
+  const seleccion = {};
+  document.querySelectorAll('#quiz .opciones').forEach(function(grupo){
+    const q = grupo.getAttribute('data-q');
+    grupo.querySelectorAll('.opcion').forEach(function(op){
+      op.addEventListener('click', function(){
+        grupo.querySelectorAll('.opcion').forEach(function(o){
+          o.style.borderColor = ''; o.style.background = '';
+        });
+        op.style.borderColor = '#6a1b9a';
+        op.style.background = '#f3e5f5';
+        seleccion[q] = op;
+      });
+    });
+  });
+
+  document.getElementById('btn-calificar').addEventListener('click', function(){
+    let correctas = 0;
+    document.querySelectorAll('#quiz .opciones').forEach(function(grupo){
+      const q = grupo.getAttribute('data-q');
+      grupo.querySelectorAll('.opcion').forEach(function(o){
+        o.disabled = true;
+        if(o.getAttribute('data-c') === 'si') o.classList.add('correcta');
+      });
+      const elegida = seleccion[q];
+      if(elegida){
+        if(elegida.getAttribute('data-c') === 'si') correctas++;
+        else elegida.classList.add('incorrecta');
+      }
+    });
+    const marc = document.getElementById('marcador');
+    const pct = Math.round(correctas/totalPreguntas*100);
+    document.getElementById('puntaje').textContent = correctas + ' / ' + totalPreguntas;
+    let msg, color;
+    if(pct >= 88){ msg='¡Excelente! Cerró el Tema 4 con dominio de las fracciones y los números mixtos. Está listo para el Tema 5.'; color='#e7f4ec'; }
+    else if(pct >= 63){ msg='¡Buen trabajo! Repase las preguntas en rojo y vuelva a intentarlo.'; color='#fdf3df'; }
+    else { msg='Repasemos juntos. Vuelva a leer las secciones 2, 3 y 4, y reintente el quiz.'; color='#fdecea'; }
+    marc.style.background = color;
+    document.getElementById('mensaje').textContent = msg;
+    marc.classList.add('visible');
+    document.getElementById('barra').style.width = pct + '%';
+    document.getElementById('btn-calificar').style.display = 'none';
+    document.getElementById('btn-reintentar').style.display = 'inline-block';
+    marc.scrollIntoView({behavior:'smooth', block:'center'});
+  });
+
+  document.getElementById('btn-reintentar').addEventListener('click', function(){
+    document.querySelectorAll('#quiz .opcion').forEach(function(o){
+      o.disabled = false;
+      o.classList.remove('correcta','incorrecta');
+      o.style.borderColor = ''; o.style.background = '';
+    });
+    for(const k in seleccion) delete seleccion[k];
+    document.getElementById('marcador').classList.remove('visible');
+    document.getElementById('btn-calificar').style.display = 'inline-block';
+    document.getElementById('btn-reintentar').style.display = 'none';
+    document.getElementById('quiz').scrollIntoView({behavior:'smooth', block:'start'});
+  });
+</script>
+
+</body>
+</html>

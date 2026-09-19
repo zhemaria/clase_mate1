@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+
+<!--
+  Proyecto final integrador "Mi gráfica de la vida" — Spanish ASE Math, Nivel 1 (Tema 8, lección 8.3)
+  © José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago.
+  Licencia: CC BY-NC-SA 4.0  (https://creativecommons.org/licenses/by-nc-sa/4.0/)
+  Plantilla rellenable: el estudiante escribe en ella, se guarda sola y se exporta como PDF.
+-->
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago" name="author"/>
+<meta content="CC BY-NC-SA 4.0" name="license"/>
+<link href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="license"/>
+<title>Proyecto final "Mi gráfica de la vida" — Matemáticas, Nivel 1</title>
+<style>
+    :root{
+      --tema:      #1b5e20;   /* verde Nivel 1 */
+      --tema-osc:  #0d3b11;
+      --tema-cl:   #e8f5e9;
+      --bg:        #f5f7fa;
+      --texto:     #1a2330;
+      --muted:     #555;            /* pasa 4.5:1 (Ally) */
+      --borde:     #cfd8dc;
+      --ok:        #1b5e20;
+      --ambar:     #5C3900;         /* marrón seguro sobre claro */
+    }
+    *{ box-sizing:border-box; }
+    body{
+      font-family:'Segoe UI', system-ui, sans-serif;
+      margin:0; background:var(--bg); color:var(--texto);
+      line-height:1.55; font-size:16px;
+    }
+    .contenedor{ max-width:1000px; margin:0 auto; padding:24px; }
+
+    /* ─── Encabezado ─── */
+    header.principal{
+      background:linear-gradient(135deg,#0d3b11 0%, #1b5e20 55%, #2e7d32 100%);
+      color:#fff; padding:32px 30px; border-radius:14px;
+      margin-bottom:22px; box-shadow:0 4px 14px rgba(13,59,17,.28);
+    }
+    header.principal h1{ margin:0 0 8px; font-size:25px; font-weight:700; }
+    header.principal .meta{ font-size:14px; opacity:.95; }
+
+    /* ─── Barra de acciones ─── */
+    .acciones{
+      display:flex; flex-wrap:wrap; gap:10px; align-items:center;
+      background:#fff; padding:14px 18px; border-radius:10px;
+      margin-bottom:22px; box-shadow:0 1px 4px rgba(0,0,0,.06);
+    }
+    .acciones .nota{ font-size:13px; color:var(--muted); flex:1 1 240px; }
+    button{ font-family:inherit; font-size:14px; font-weight:600; border:none; border-radius:8px; padding:10px 16px; cursor:pointer; }
+    .btn-pdf{ background:var(--tema); color:#fff; }
+    .btn-pdf:hover{ background:var(--tema-osc); }
+    .btn-sec{ background:#eceff1; color:#263238; }
+    .btn-sec:hover{ background:#cfd8dc; }
+    .btn-borrar{ background:#fbe9e7; color:#5C3900; }
+    .btn-borrar:hover{ background:#ffccbc; }
+
+    /* ─── Instrucciones ─── */
+    .intro{
+      background:#fff; padding:18px 22px; border-radius:10px;
+      border-left:5px solid var(--tema); margin-bottom:22px;
+      box-shadow:0 1px 4px rgba(0,0,0,.05);
+    }
+    .intro h2{ margin:0 0 8px; color:var(--tema); font-size:19px; }
+    .intro p{ margin:6px 0; font-size:14.5px; }
+    .intro ul{ margin:6px 0 0 22px; font-size:14.5px; }
+    .intro li{ margin:3px 0; }
+
+    /* ─── Secciones ─── */
+    section.seccion{
+      background:#fff; border-radius:12px; margin-bottom:20px;
+      box-shadow:0 2px 8px rgba(0,0,0,.07); overflow:hidden;
+      border-top:6px solid var(--tema);
+    }
+    .seccion-cab{ padding:16px 22px 6px; }
+    .seccion-cab h2{ margin:0; font-size:20px; color:var(--tema-osc); display:flex; align-items:baseline; gap:10px; }
+    .seccion-cab .num{
+      display:inline-flex; align-items:center; justify-content:center;
+      min-width:30px; height:30px; border-radius:50%;
+      background:var(--tema); color:#fff; font-size:15px; font-weight:700; flex-shrink:0;
+    }
+    .seccion-cab .guia{ font-size:13px; color:var(--muted); margin:6px 0 0; }
+    .seccion-cuerpo{ padding:8px 22px 20px; }
+
+    /* ─── Identificación ─── */
+    .ident{ display:flex; flex-wrap:wrap; gap:18px; }
+    .ident .campo{ flex:1 1 200px; }
+    label.etq{ display:block; font-size:13px; font-weight:600; color:#263238; margin-bottom:4px; }
+    input.linea{
+      width:100%; font-family:inherit; font-size:15px; color:var(--texto);
+      border:none; border-bottom:2px solid var(--borde); background:transparent; padding:6px 2px;
+    }
+    input.linea:focus{ outline:none; border-bottom-color:var(--tema); }
+
+    /* ─── Tabla de datos ─── */
+    table.datos{ width:100%; border-collapse:collapse; margin-top:6px; font-size:14px; }
+    table.datos caption{ text-align:left; font-size:13px; color:var(--muted); margin-bottom:6px; }
+    table.datos th, table.datos td{ padding:8px 10px; border-bottom:1px solid #e0e0e0; text-align:left; vertical-align:middle; }
+    table.datos th{ background:#37474f; color:#fff; font-size:13px; font-weight:600; }
+    table.datos th.r, table.datos td.r{ text-align:right; }
+    table.datos input{
+      width:100%; font-family:inherit; font-size:14px; color:var(--texto);
+      border:1px solid var(--borde); border-radius:6px; padding:6px 8px; background:#fff;
+    }
+    table.datos input.valor{ text-align:right; }
+    table.datos input:focus{ outline:none; border-color:var(--tema); }
+    table.datos tfoot td{ font-weight:700; background:#f1f8f4; }
+    .fila-btns{ margin-top:10px; display:flex; gap:8px; }
+    .swatch{ display:inline-block; width:12px; height:12px; border-radius:3px; vertical-align:middle; }
+    .quitar{ background:#fbe9e7; color:#5C3900; border:none; border-radius:6px; padding:4px 9px; font-size:13px; font-weight:700; cursor:pointer; }
+    /* Solo para lectores de pantalla (Ally): da contenido al encabezado sin mostrarlo. */
+    /* ─── Foco visible (WCAG 2.4.7) ─── */
+    a:focus-visible, button:focus-visible, input:focus-visible,
+    textarea:focus-visible, select:focus-visible, [contenteditable]:focus-visible{
+      outline:3px solid var(--tema-osc); outline-offset:2px;
+    }
+    .escribe:focus{ outline:3px solid var(--tema-osc); outline-offset:2px; }
+
+    @media (prefers-reduced-motion: reduce){
+      *{ transition:none !important; animation:none !important; }
+      html{ scroll-behavior:auto; }
+    }
+
+    .vh{ position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
+
+    /* ─── Etiquetas de la gráfica ─── */
+    .rotulos{ display:flex; flex-wrap:wrap; gap:16px; margin-bottom:10px; }
+    .rotulos .campo{ flex:1 1 220px; }
+
+    /* ─── Resultados automáticos ─── */
+    .ayuda{
+      background:var(--tema-cl); border-left:4px solid var(--tema);
+      border-radius:0 8px 8px 0; padding:12px 14px; margin-top:12px; font-size:14px;
+    }
+    .ayuda h3{ margin:0 0 8px; font-size:15px; color:var(--tema-osc); }
+    .ayuda .res{ font-weight:700; color:var(--tema-osc); }
+    .stats-grid{ display:flex; flex-wrap:wrap; gap:10px 22px; }
+    .stat{ flex:1 1 120px; }
+
+    /* ─── Gráfica ─── */
+    figure.grafico{ margin:0; text-align:center; }
+    .grafico-svg{ width:100%; max-width:640px; margin:0 auto; }
+    figcaption{ font-size:13px; color:var(--muted); margin-top:6px; }
+
+    /* ─── Áreas de escritura ─── */
+    .escribe{
+      min-height:110px; border:1px solid var(--borde); border-radius:8px;
+      padding:10px 12px; font-size:15px; line-height:1.6; background:#fdfdfd;
+    }
+    .escribe:focus{ border-color:var(--tema); background:#fff; }
+    .escribe:empty::before{ content:attr(data-placeholder); color:#6b6b6b; font-style:italic; }
+    .sub-campo{ margin:14px 0; }
+    .sub-campo > .etq{ margin-bottom:6px; }
+    .contador{ font-size:13px; color:var(--muted); margin-top:6px; }
+    .contador.ok{ color:var(--ok); font-weight:600; }
+
+    /* ─── Entrega ─── */
+    .entrega{ display:flex; flex-direction:column; gap:10px; }
+    .opcion-e{ display:flex; gap:10px; align-items:flex-start; cursor:pointer;
+      padding:10px 12px; border:1px solid var(--borde); border-radius:8px; background:#fafafa; }
+    .opcion-e input{ margin-top:3px; width:18px; height:18px; accent-color:var(--tema); }
+    .opcion-e .txt{ font-size:14px; }
+    .opcion-e .txt strong{ color:#263238; }
+
+    /* ─── Rúbrica ─── */
+    table.rubrica{ width:100%; border-collapse:collapse; font-size:13px; margin-top:6px; }
+    table.rubrica caption{ text-align:left; font-size:13px; color:var(--muted); margin-bottom:6px; }
+    table.rubrica th, table.rubrica td{ border:1px solid #d6dde0; padding:8px 10px; vertical-align:top; text-align:left; }
+    table.rubrica th{ background:#37474f; color:#fff; font-size:12px; }
+    table.rubrica td:first-child{ font-weight:600; color:#263238; width:30%; }
+
+    footer{ text-align:center; padding:22px; color:var(--muted); font-size:12.5px; margin-top:14px; border-top:1px solid #ddd; }
+    footer a{ color:var(--tema-osc); }
+
+    /* ─── Impresión / PDF ─── */
+    @media print{
+      :root{ --bg:#fff; }
+      body{ background:#fff; font-size:12pt; }
+      .contenedor{ max-width:none; padding:0; }
+      .acciones, .fila-btns, .quitar, .btn-borrar, .no-imprimir{ display:none !important; }
+      header.principal{ box-shadow:none; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+      section.seccion, .intro{ box-shadow:none; border:1px solid #ccc; page-break-inside:avoid; }
+      table.datos th, table.rubrica th, header.principal,
+      .seccion-cab .num, .ayuda, .grafico-svg, .swatch{
+        -webkit-print-color-adjust:exact; print-color-adjust:exact;
+      }
+      input.linea{ border-bottom:1px solid #999; }
+      .escribe{ border:1px solid #bbb; background:#fff; }
+      a[href]::after{ content:""; }
+    }
+  </style>
+</head>
+<body>
+<div class="contenedor">
+<header class="principal">
+<h1>Proyecto final integrador · "Mi gráfica de la vida"</h1>
+<div class="meta">
+      Spanish ASE Math: Level 1 · City Colleges of Chicago · Harry S. Truman College<br/>
+      Plantilla de trabajo del estudiante · Tema 8, lección 8.3
+    </div>
+</header>
+<!-- Barra de acciones (no se imprime) -->
+<div class="acciones no-imprimir">
+<button class="btn-pdf" onclick="exportarPDF()" type="button">⬇️ Exportar como PDF</button>
+<button class="btn-sec" onclick="agregarFila()" type="button">＋ Agregar día / dato</button>
+<button class="btn-borrar" onclick="borrarTodo()" type="button">🗑️ Borrar todo</button>
+<span class="nota">Su trabajo se guarda automáticamente en este navegador. Para entregar, pulse
+      «Exportar como PDF» y elija «Guardar como PDF» en el destino de impresión.</span>
+</div>
+<!-- Instrucciones -->
+<section class="intro">
+<h2>Instrucciones del proyecto</h2>
+<p>Este proyecto reúne todo lo que aprendió en el Nivel 1 en algo personal y propio. Elija
+      <strong>un dato medible de su vida</strong> y regístrelo durante cinco días: por ejemplo, las horas de sueño
+      cada noche, los gastos de cada día, los minutos de estudio o los vasos de agua que toma.</p>
+<p>Complete las cinco secciones. La plantilla calcula sola el <strong>total</strong>, el <strong>promedio</strong>,
+      el <strong>máximo</strong>, el <strong>mínimo</strong> y la <strong>diferencia</strong>, y dibuja la
+      <strong>gráfica de barras</strong>; pero usted debe mostrar su procedimiento por escrito.</p>
+</section>
+<!-- Sección 0: identificación -->
+<section class="seccion">
+<div class="seccion-cab">
+<h2><span aria-hidden="true" class="num">0</span> Datos del estudiante</h2>
+</div>
+<div class="seccion-cuerpo">
+<div class="ident">
+<div class="campo">
+<label class="etq" for="f_nombre">Nombre del estudiante</label>
+<input autocomplete="off" class="linea" id="f_nombre" type="text"/>
+</div>
+<div class="campo">
+<label class="etq" for="f_fecha">Fecha de entrega</label>
+<input autocomplete="off" class="linea" id="f_fecha" placeholder="dd/mm/aaaa" type="text"/>
+</div>
+<div class="campo">
+<label class="etq" for="f_dato">Dato que eligió medir</label>
+<input autocomplete="off" class="linea" id="f_dato" placeholder="Ej.: horas de sueño por noche" type="text"/>
+</div>
+</div>
+</div>
+</section>
+<!-- Sección 1: tabla -->
+<section class="seccion">
+<div class="seccion-cab">
+<h2><span aria-hidden="true" class="num">1</span> Tabla de datos (5 días)</h2>
+<p class="guia">Escriba el nombre de cada día (o etiqueta) y el valor que registró. Cómo aprendió en la
+        Lección 8.1. La fila «Total» se calcula sola.</p>
+</div>
+<div class="seccion-cuerpo">
+<table class="datos" id="tabla-datos">
+<caption>Valor registrado en cada uno de los cinco días del proyecto.</caption>
+<thead>
+<tr>
+<th scope="col" style="width:42px;">Color</th>
+<th scope="col">Día o etiqueta</th>
+<th class="r" scope="col" style="width:160px;">Valor</th>
+<th class="no-imprimir" scope="col" style="width:40px;"><span class="vh">Acciones</span></th>
+</tr>
+</thead>
+<tbody id="cuerpo-datos"><!-- filas generadas por JS --></tbody>
+<tfoot>
+<tr>
+<td><span class="vh">Sin dato</span></td>
+<td>Total</td>
+<td class="r" id="td-total">0</td>
+<td class="no-imprimir"><span class="vh">Sin dato</span></td>
+</tr>
+</tfoot>
+</table>
+<div class="fila-btns no-imprimir">
+<button class="btn-sec" onclick="agregarFila()" type="button">＋ Agregar día / dato</button>
+</div>
+</div>
+</section>
+<!-- Sección 2: gráfica de barras -->
+<section class="seccion">
+<div class="seccion-cab">
+<h2><span aria-hidden="true" class="num">2</span> Gráfica de barras</h2>
+<p class="guia">La gráfica se construye sola con los datos de la Sección 1. Escriba un <strong>título</strong> y
+        las <strong>etiquetas de los ejes</strong>, como practicó en la Lección 8.2.</p>
+</div>
+<div class="seccion-cuerpo">
+<div class="rotulos">
+<div class="campo">
+<label class="etq" for="g_titulo">Título de la gráfica</label>
+<input autocomplete="off" class="linea" id="g_titulo" placeholder="Ej.: Mis horas de sueño en cinco días" type="text"/>
+</div>
+<div class="campo">
+<label class="etq" for="g_ejex">Etiqueta del eje horizontal (X)</label>
+<input autocomplete="off" class="linea" id="g_ejex" placeholder="Ej.: Día" type="text"/>
+</div>
+<div class="campo">
+<label class="etq" for="g_ejey">Etiqueta del eje vertical (Y)</label>
+<input autocomplete="off" class="linea" id="g_ejey" placeholder="Ej.: Horas" type="text"/>
+</div>
+</div>
+<figure class="grafico">
+<div aria-label="Gráfica de barras de los datos del proyecto" class="grafico-svg" id="svg-host" role="img"></div>
+<figcaption>Gráfica de barras generada a partir de sus datos.</figcaption>
+</figure>
+</div>
+</section>
+<!-- Sección 3: cálculos -->
+<section class="seccion">
+<div class="seccion-cab">
+<h2><span aria-hidden="true" class="num">3</span> Cálculos básicos</h2>
+<p class="guia">Calcule el <strong>total</strong>, el <strong>promedio</strong> y la <strong>diferencia</strong>
+        entre el valor más alto y el más bajo. Muestre el procedimiento, no solo el resultado.</p>
+</div>
+<div class="seccion-cuerpo">
+<div class="sub-campo">
+<span class="etq">Procedimiento y resultados (escriba aquí)</span>
+<div aria-label="Procedimiento de los cálculos básicos" aria-multiline="true" class="escribe" contenteditable="true" data-placeholder="Ejemplo: Total = 7 + 6 + 8 + 5 + 9 = 35. Promedio = 35 ÷ 5 = 7. Diferencia = 9 − 5 = 4." id="f_calculos" role="textbox"></div>
+</div>
+<div class="ayuda no-imprimir">
+<h3>Comprobación automática (a partir de la tabla de la Sección 1)</h3>
+<div aria-live="polite" class="stats-grid" role="status">
+<div class="stat">Total: <span class="res" id="c-total">—</span></div>
+<div class="stat">Promedio: <span class="res" id="c-promedio">—</span></div>
+<div class="stat">Máximo: <span class="res" id="c-max">—</span></div>
+<div class="stat">Mínimo: <span class="res" id="c-min">—</span></div>
+<div class="stat">Diferencia: <span class="res" id="c-dif">—</span></div>
+</div>
+<p style="font-size:13px; color:var(--muted); margin:8px 0 0;">Use estos valores solo para verificar su propio cálculo.</p>
+</div>
+</div>
+</section>
+<!-- Sección 4: párrafo -->
+<section class="seccion">
+<div class="seccion-cab">
+<h2><span aria-hidden="true" class="num">4</span> Párrafo descriptivo</h2>
+<p class="guia">Describa su gráfica con al menos <strong>tres datos</strong>: el día de mayor valor, el de menor
+        y la tendencia general. Escriba en oraciones completas (mínimo tres).</p>
+</div>
+<div class="seccion-cuerpo">
+<div aria-label="Párrafo descriptivo de la gráfica" aria-multiline="true" class="escribe" contenteditable="true" data-placeholder="Escriba aquí su párrafo en oraciones completas…" id="f_parrafo" role="textbox" style="min-height:140px;"></div>
+<p class="contador no-imprimir" id="contador-oraciones">Oraciones detectadas: 0</p>
+</div>
+</section>
+<!-- Sección 5: entrega -->
+<section class="seccion">
+<div class="seccion-cab">
+<h2><span aria-hidden="true" class="num">5</span> Formato de entrega elegido</h2>
+<p class="guia">Marque el formato en el que presentará este proyecto.</p>
+</div>
+<div class="seccion-cuerpo">
+<div class="entrega">
+<label class="opcion-e">
+<input id="e1" type="checkbox"/>
+<span class="txt"><strong>Presentación oral</strong> de 3 a 4 minutos durante la sesión sincrónica final.</span>
+</label>
+<label class="opcion-e">
+<input id="e2" type="checkbox"/>
+<span class="txt"><strong>Foro de Brightspace</strong>, con la tabla, la gráfica y el párrafo.</span>
+</label>
+<label class="opcion-e">
+<input id="e3" type="checkbox"/>
+<span class="txt"><strong>Documento entregado</strong> (este PDF) por el buzón de tareas del curso.</span>
+</label>
+</div>
+</div>
+</section>
+<!-- Rúbrica -->
+<section class="seccion">
+<div class="seccion-cab">
+<h2><span aria-hidden="true" class="num">📊</span> Rúbrica del proyecto</h2>
+<p class="guia">Así se evaluará su trabajo (5 criterios). Consérvela como referencia mientras completa el proyecto.</p>
+</div>
+<div class="seccion-cuerpo">
+<table class="rubrica">
+<caption>Criterios de evaluación del proyecto final integrador del Nivel 1.</caption>
+<thead>
+<tr>
+<th scope="col">Criterio</th>
+<th scope="col">Qué se espera</th>
+</tr>
+</thead>
+<tbody>
+<tr><td>1. Tabla de datos</td><td>Presenta una tabla completa con cinco datos, correcta y bien organizada.</td></tr>
+<tr><td>2. Gráfica de barras</td><td>La gráfica tiene título, ejes y escala, con cada barra correctamente etiquetada.</td></tr>
+<tr><td>3. Párrafo descriptivo</td><td>Describe la gráfica con al menos tres datos (mayor, menor y tendencia) en lenguaje claro.</td></tr>
+<tr><td>4. Cálculos</td><td>Calcula correctamente el total, el promedio y la diferencia entre el máximo y el mínimo.</td></tr>
+<tr><td>5. Presentación</td><td>Presenta el proyecto de forma clara, audible y bien organizada.</td></tr>
+</tbody>
+</table>
+</div>
+</section>
+<footer>
+    Proyecto final integrador "Mi gráfica de la vida" — Spanish ASE Math, Nivel 1 · Harry S. Truman College, City Colleges of Chicago.<br/>
+    © José M. Fernández, ABE/ASE Math Master Teacher. Licencia
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="license">CC BY-NC-SA 4.0</a>.
+  </footer>
+</div>
+<script>
+/* ════════════════════════════════════════════════════════════════
+   PROYECTO FINAL "MI GRÁFICA DE LA VIDA" — NIVEL 1
+   (A) tabla de datos · (B) cálculos · (C) gráfica de barras SVG
+   (D) párrafo · (E) guardado · (F) exportar.
+   ════════════════════════════════════════════════════════════════ */
+
+var PALETA = ['#1b5e20','#2e7d32','#388e3c','#43a047','#66bb6a',
+              '#33691e','#558b2f','#7cb342','#9ccc65','#aed581'];
+var FILAS_INICIALES = 5;
+var ETIQUETAS_DEF = ['Lunes','Martes','Miércoles','Jueves','Viernes'];
+
+/* ── (A) Tabla de datos ── */
+function crearFila(nombre, valor){
+  nombre = nombre || '';
+  valor  = (valor === undefined) ? '' : valor;
+  var tr = document.createElement('tr');
+  tr.innerHTML =
+    '<td><span class="swatch" aria-hidden="true"></span></td>' +
+    '<td><input type="text" class="categoria" value="' + escaparAttr(nombre) + '" ' +
+        'aria-label="Día o etiqueta" oninput="recalcular()"></td>' +
+    '<td class="r"><input type="number" class="valor" min="0" step="any" ' +
+        'value="' + escaparAttr(valor) + '" aria-label="Valor registrado" oninput="recalcular()"></td>' +
+    '<td class="no-imprimir"><button type="button" class="quitar" ' +
+        'onclick="quitarFila(this)" aria-label="Quitar esta fila">✕</button></td>';
+  return tr;
+}
+
+function agregarFila(){
+  document.getElementById('cuerpo-datos').appendChild(crearFila());
+  recalcular(); guardar();
+}
+
+function quitarFila(btn){
+  var cuerpo = document.getElementById('cuerpo-datos');
+  if(cuerpo.rows.length <= 1){ return; }
+  btn.closest('tr').remove();
+  recalcular(); guardar();
+}
+
+function leerDatos(){
+  var datos = [];
+  document.querySelectorAll('#cuerpo-datos tr').forEach(function(tr){
+    var nombre = tr.querySelector('.categoria').value.trim();
+    var v = parseFloat(tr.querySelector('.valor').value);
+    datos.push({ nombre:nombre, valor:(isNaN(v) ? null : v), tr:tr });
+  });
+  return datos;
+}
+
+/* ── (B) Recalcular total, promedio, máx, mín, diferencia ── */
+function recalcular(){
+  var datos = leerDatos();
+
+  datos.forEach(function(d, i){
+    d.color = PALETA[i % PALETA.length];
+    d.tr.querySelector('.swatch').style.background = d.color;
+  });
+
+  var valores = datos.map(function(d){ return d.valor; })
+                     .filter(function(v){ return v !== null; });
+
+  var total = valores.reduce(function(a,b){ return a+b; }, 0);
+  document.getElementById('td-total').textContent = valores.length ? redondear(total, 2) : '0';
+
+  var total_t='—', prom='—', max='—', min='—', dif='—';
+  if(valores.length){
+    total_t = redondear(total, 2);
+    prom    = redondear(total / valores.length, 2);
+    max     = redondear(Math.max.apply(null, valores), 2);
+    min     = redondear(Math.min.apply(null, valores), 2);
+    dif     = redondear(max - min, 2);
+  }
+  document.getElementById('c-total').textContent    = total_t;
+  document.getElementById('c-promedio').textContent = prom;
+  document.getElementById('c-max').textContent      = max;
+  document.getElementById('c-min').textContent      = min;
+  document.getElementById('c-dif').textContent      = dif;
+
+  dibujarGrafico(datos);
+}
+
+/* ── (C) Gráfica de barras en SVG ── */
+function dibujarGrafico(datos){
+  var host = document.getElementById('svg-host');
+  var activos = datos.filter(function(d){ return d.valor !== null; });
+
+  var titulo = (document.getElementById('g_titulo').value || '').trim();
+  var ejeX   = (document.getElementById('g_ejex').value   || '').trim() || 'Categoría';
+  var ejeY   = (document.getElementById('g_ejey').value   || '').trim() || 'Valor';
+
+  var W = 640, H = 380;
+  var mIzq = 56, mDer = 18, mSup = titulo ? 46 : 26, mInf = 78;
+  var areaW = W - mIzq - mDer;
+  var areaH = H - mSup - mInf;
+  var x0 = mIzq, y0 = mSup + areaH;     /* origen (abajo-izquierda) */
+
+  /* Descripción hablada: el estudiante con lector de pantalla debe poder
+     leer su propia gráfica, no solo saber que existe. */
+  if(activos.length === 0){
+    host.setAttribute('aria-label', 'Gráfica de barras vacía. Introduzca valores para verla.');
+  } else {
+    var partes = activos.map(function(d){
+      return (d.nombre || 'sin nombre') + ': ' + d.valor;
+    });
+    host.setAttribute('aria-label',
+      'Gráfica de barras. ' + (titulo ? titulo + '. ' : '') +
+      ejeX + ' frente a ' + ejeY + '. ' + partes.join('; ') + '.');
+  }
+
+  var svg = '<svg viewBox="0 0 ' + W + ' ' + H + '" width="100%" ' +
+            'xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI,sans-serif">';
+  svg += '<title>' + escaparTexto(titulo || 'Gráfica de barras del proyecto') + '</title>';
+
+  if(activos.length === 0){
+    svg += '<text x="' + (W/2) + '" y="' + (H/2) + '" text-anchor="middle" fill="#777" ' +
+           'font-size="15">Introduzca valores para ver la gráfica</text></svg>';
+    host.innerHTML = svg;
+    return;
+  }
+
+  /* Escala: tope “bonito” por encima del máximo. */
+  var maxVal = Math.max.apply(null, activos.map(function(d){ return d.valor; }));
+  if(maxVal <= 0){ maxVal = 1; }
+  var tope = escalaTope(maxVal);
+  var divisiones = 5;
+
+  /* Título */
+  if(titulo){
+    svg += '<text x="' + (W/2) + '" y="26" text-anchor="middle" fill="#0d3b11" ' +
+           'font-size="16" font-weight="700">' + escaparTexto(titulo) + '</text>';
+  }
+
+  /* Líneas de cuadrícula + marcas del eje Y */
+  for(var k = 0; k <= divisiones; k++){
+    var val = tope * k / divisiones;
+    var y = y0 - (areaH * k / divisiones);
+    svg += '<line x1="' + x0 + '" y1="' + redondear(y,1) + '" x2="' + (x0+areaW) + '" y2="' + redondear(y,1) +
+           '" stroke="#e0e0e0" stroke-width="1"></line>';
+    svg += '<text x="' + (x0-8) + '" y="' + redondear(y+4,1) + '" text-anchor="end" fill="#555" ' +
+           'font-size="11">' + redondear(val, (tope < 10 ? 1 : 0)) + '</text>';
+  }
+
+  /* Ejes */
+  svg += '<line x1="' + x0 + '" y1="' + mSup + '" x2="' + x0 + '" y2="' + y0 +
+         '" stroke="#37474f" stroke-width="2"></line>';
+  svg += '<line x1="' + x0 + '" y1="' + y0 + '" x2="' + (x0+areaW) + '" y2="' + y0 +
+         '" stroke="#37474f" stroke-width="2"></line>';
+
+  /* Barras */
+  var n = activos.length;
+  var paso = areaW / n;
+  var anchoBarra = Math.min(paso * 0.62, 72);
+  activos.forEach(function(d, i){
+    var cx = x0 + paso * (i + 0.5);
+    var h = (d.valor / tope) * areaH;
+    var bx = cx - anchoBarra / 2;
+    var by = y0 - h;
+    svg += '<rect x="' + redondear(bx,1) + '" y="' + redondear(by,1) + '" width="' + redondear(anchoBarra,1) +
+           '" height="' + redondear(h,1) + '" fill="' + d.color + '" rx="3"></rect>';
+    /* Valor encima de la barra */
+    svg += '<text x="' + redondear(cx,1) + '" y="' + redondear(by-6,1) + '" text-anchor="middle" ' +
+           'fill="#0d3b11" font-size="12" font-weight="700">' + redondear(d.valor,2) + '</text>';
+    /* Etiqueta del eje X */
+    svg += '<text x="' + redondear(cx,1) + '" y="' + (y0+18) + '" text-anchor="middle" fill="#263238" ' +
+           'font-size="12">' + escaparTexto(d.nombre || ('Día ' + (i+1))) + '</text>';
+  });
+
+  /* Rótulos de los ejes */
+  svg += '<text x="' + (x0 + areaW/2) + '" y="' + (H-30) + '" text-anchor="middle" fill="#0d3b11" ' +
+         'font-size="13" font-weight="600">' + escaparTexto(ejeX) + '</text>';
+  svg += '<text x="16" y="' + (mSup + areaH/2) + '" text-anchor="middle" fill="#0d3b11" ' +
+         'font-size="13" font-weight="600" transform="rotate(-90 16 ' + (mSup + areaH/2) + ')">' +
+         escaparTexto(ejeY) + '</text>';
+
+  svg += '</svg>';
+  host.innerHTML = svg;
+}
+
+/* Tope “bonito” para la escala (1-2-5 × 10^n). */
+function escalaTope(maxVal){
+  var bruto = maxVal / 5;
+  var exp = Math.floor(Math.log(bruto) / Math.LN10);
+  var base = Math.pow(10, exp);
+  var frac = bruto / base;
+  var paso = (frac <= 1) ? 1 : (frac <= 2 ? 2 : (frac <= 5 ? 5 : 10));
+  var tick = paso * base;
+  return Math.ceil(maxVal / tick) * tick;
+}
+
+/* ── (D) Contador de oraciones del párrafo ── */
+function contarOraciones(){
+  var txt = document.getElementById('f_parrafo').innerText || '';
+  var trozos = txt.split(/[.!?]+/).filter(function(s){ return s.trim().length > 3; });
+  var n = trozos.length;
+  var el = document.getElementById('contador-oraciones');
+  el.textContent = 'Oraciones detectadas: ' + n + (n >= 3 ? '  ✓ (mínimo cumplido)' : '  (mínimo: 3)');
+  el.className = 'contador no-imprimir' + (n >= 3 ? ' ok' : '');
+}
+
+/* ── (E) Guardado automático (localStorage) ── */
+var CLAVE = 'proyecto_final_nivel1_v1';
+
+function recolectarEstado(){
+  var estado = { campos:{}, contenteditable:{}, checks:{}, filas:[] };
+  ['f_nombre','f_fecha','f_dato','g_titulo','g_ejex','g_ejey'].forEach(function(id){
+    estado.campos[id] = (document.getElementById(id)||{}).value || '';
+  });
+  ['f_calculos','f_parrafo'].forEach(function(id){
+    estado.contenteditable[id] = (document.getElementById(id)||{}).innerHTML || '';
+  });
+  ['e1','e2','e3'].forEach(function(id){
+    estado.checks[id] = (document.getElementById(id)||{}).checked || false;
+  });
+  document.querySelectorAll('#cuerpo-datos tr').forEach(function(tr){
+    estado.filas.push({
+      nombre: tr.querySelector('.categoria').value,
+      valor:  tr.querySelector('.valor').value
+    });
+  });
+  return estado;
+}
+
+function guardar(){
+  try{ localStorage.setItem(CLAVE, JSON.stringify(recolectarEstado())); }catch(e){}
+}
+
+function restaurar(){
+  var bruto = null;
+  try{ bruto = localStorage.getItem(CLAVE); }catch(e){ bruto = null; }
+  var cuerpo = document.getElementById('cuerpo-datos');
+
+  if(!bruto){
+    for(var i=0; i<FILAS_INICIALES; i++){ cuerpo.appendChild(crearFila(ETIQUETAS_DEF[i] || '', '')); }
+    return;
+  }
+  try{
+    var e = JSON.parse(bruto);
+    Object.keys(e.campos||{}).forEach(function(id){
+      var el = document.getElementById(id); if(el){ el.value = e.campos[id]; }
+    });
+    Object.keys(e.contenteditable||{}).forEach(function(id){
+      var el = document.getElementById(id); if(el){ el.innerHTML = e.contenteditable[id]; }
+    });
+    Object.keys(e.checks||{}).forEach(function(id){
+      var el = document.getElementById(id); if(el){ el.checked = e.checks[id]; }
+    });
+    var filas = e.filas && e.filas.length ? e.filas : null;
+    if(filas){
+      filas.forEach(function(f){ cuerpo.appendChild(crearFila(f.nombre, f.valor)); });
+    } else {
+      for(var j=0; j<FILAS_INICIALES; j++){ cuerpo.appendChild(crearFila(ETIQUETAS_DEF[j] || '', '')); }
+    }
+  } catch(err){
+    for(var k=0; k<FILAS_INICIALES; k++){ cuerpo.appendChild(crearFila(ETIQUETAS_DEF[k] || '', '')); }
+  }
+}
+
+function borrarTodo(){
+  if(!confirm('¿Borrar todo el contenido de la plantilla? Esta acción no se puede deshacer.')){ return; }
+  try{ localStorage.removeItem(CLAVE); }catch(e){}
+  location.reload();
+}
+
+/* ── (F) Exportar como PDF ── */
+function exportarPDF(){ guardar(); window.print(); }
+
+/* ── Utilidades ── */
+function redondear(x, d){
+  var f = Math.pow(10, d);
+  var v = Math.round((x + Number.EPSILON) * f) / f;
+  return (Object.is(v, -0) ? 0 : v);
+}
+function escaparAttr(s){
+  return String(s).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+function escaparTexto(s){
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+
+/* ── Arranque ── */
+window.addEventListener('DOMContentLoaded', function(){
+  restaurar();
+  recalcular();
+  contarOraciones();
+
+  ['f_nombre','f_fecha','f_dato'].forEach(function(id){
+    document.getElementById(id).addEventListener('input', guardar);
+  });
+  ['g_titulo','g_ejex','g_ejey'].forEach(function(id){
+    document.getElementById(id).addEventListener('input', function(){ recalcular(); guardar(); });
+  });
+  document.getElementById('f_calculos').addEventListener('input', guardar);
+  document.getElementById('f_parrafo').addEventListener('input', function(){ contarOraciones(); guardar(); });
+  ['e1','e2','e3'].forEach(function(id){
+    document.getElementById(id).addEventListener('change', guardar);
+  });
+});
+</script>
+</body>
+</html>

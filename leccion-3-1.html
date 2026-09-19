@@ -1,0 +1,1608 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lección 3.1 · Decimales: leer, escribir, comparar y redondear — Matemáticas Nivel 1</title>
+    <style>
+      :root {
+        --azul: #283593;
+        --azul-osc: #1a237e;
+        --azul-cl: #e8eaf6;
+        --tinta: #1a2330;
+        --gris: #5b6675;
+        --linea: #dde3ea;
+        --crema: #f6f4ee;
+        --papel: #ffffff;
+        --verde: #276b44;
+        --verde-cl: #e7f4ec;
+        --ambar: #5c3900;
+        --ambar-cl: #fdf3df;
+        --rojo: #c0392b;
+        --rojo-cl: #fdecea;
+        --sombra: 0 2px 10px rgba(26, 35, 126, 0.1);
+      }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        font-family: 'Segoe UI', 'Helvetica Neue', system-ui, sans-serif;
+        background: var(--crema);
+        color: var(--tinta);
+        line-height: 1.65;
+        font-size: 17px;
+      }
+      .envoltura {
+        max-width: 880px;
+        margin: 0 auto;
+        padding: 0 20px 80px;
+      }
+
+      header.principal {
+        background: linear-gradient(135deg, #1a237e 0%, #283593 55%, #3949ab 100%);
+        color: #fff;
+        padding: 46px 38px 40px;
+        border-radius: 0 0 22px 22px;
+        box-shadow: 0 6px 22px rgba(26, 35, 126, 0.3);
+      }
+      .envoltura-header {
+        max-width: 880px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+      .ruta {
+        font-size: 13px;
+        letter-spacing: 0.6px;
+        text-transform: uppercase;
+        opacity: 0.85;
+        margin-bottom: 14px;
+      }
+      header.principal h1 {
+        font-size: 30px;
+        font-weight: 700;
+        line-height: 1.25;
+        margin-bottom: 8px;
+      }
+      header.principal .lema {
+        font-size: 16px;
+        opacity: 0.93;
+        font-weight: 400;
+        max-width: 620px;
+      }
+      .chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 20px;
+      }
+      .chip {
+        background: rgba(255, 255, 255, 0.16);
+        border: 1px solid rgba(255, 255, 255, 0.28);
+        padding: 6px 14px;
+        border-radius: 30px;
+        font-size: 13px;
+        font-weight: 600;
+      }
+
+      section {
+        background: var(--papel);
+        margin-top: 22px;
+        padding: 30px 34px;
+        border-radius: 14px;
+        box-shadow: var(--sombra);
+      }
+      .num-seccion {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 34px;
+        height: 34px;
+        background: var(--azul);
+        color: #fff;
+        border-radius: 9px;
+        font-weight: 700;
+        font-size: 17px;
+        margin-right: 12px;
+        flex-shrink: 0;
+      }
+      h2 {
+        display: flex;
+        align-items: center;
+        font-size: 23px;
+        color: var(--azul-osc);
+        margin-bottom: 16px;
+        font-weight: 700;
+      }
+      h3 {
+        font-size: 18px;
+        color: var(--azul-osc);
+        margin: 22px 0 10px;
+        font-weight: 700;
+      }
+      p {
+        margin: 11px 0;
+      }
+      ul,
+      ol {
+        margin: 11px 0 11px 26px;
+      }
+      li {
+        margin: 6px 0;
+      }
+      strong {
+        color: var(--azul-osc);
+      }
+
+      .caja {
+        border-radius: 11px;
+        padding: 18px 22px;
+        margin: 18px 0;
+        border-left: 5px solid;
+      }
+      .caja-objetivo {
+        background: var(--azul-cl);
+        border-color: var(--azul);
+      }
+      .caja-objetivo h2 {
+        margin-bottom: 10px;
+      }
+      .caja-tip {
+        background: var(--verde-cl);
+        border-color: var(--verde);
+      }
+      .caja-tip strong {
+        color: var(--verde);
+      }
+      .caja-ojo {
+        background: var(--ambar-cl);
+        border-color: var(--ambar);
+      }
+      .caja-ojo strong {
+        color: var(--ambar);
+      }
+      .caja-recurso {
+        background: #eef2f7;
+        border-color: var(--gris);
+      }
+
+      .etiqueta {
+        display: inline-block;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+        padding: 3px 10px;
+        border-radius: 5px;
+        margin-bottom: 6px;
+      }
+      .et-verde {
+        background: var(--verde);
+        color: #fff;
+      }
+      .et-ambar {
+        background: var(--ambar);
+        color: #fff;
+      }
+      .et-azul {
+        background: var(--azul);
+        color: #fff;
+      }
+
+      .modalidades {
+        display: flex;
+        gap: 14px;
+        margin-top: 14px;
+        flex-wrap: wrap;
+      }
+      .modo {
+        flex: 1;
+        min-width: 240px;
+        border-radius: 9px;
+        padding: 13px 16px;
+        background: #fff;
+        border: 1px solid var(--linea);
+      }
+      .modo-pres {
+        border-top: 4px solid var(--azul);
+      }
+      .modo-line {
+        border-top: 4px solid var(--verde);
+      }
+      .modo .modo-tit {
+        display: block;
+        font-weight: 700;
+        font-size: 14px;
+        margin-bottom: 5px;
+      }
+      .modo-pres .modo-tit {
+        color: var(--azul-osc);
+      }
+      .modo-line .modo-tit {
+        color: var(--verde);
+      }
+      .modo p {
+        margin: 4px 0 0;
+        font-size: 15px;
+      }
+
+      /* ── TABLA VALOR POSICIONAL DECIMAL ── */
+      .tabla-vp {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 18px 0;
+        font-size: 15px;
+      }
+      .tabla-vp th,
+      .tabla-vp td {
+        border: 1px solid var(--linea);
+        padding: 9px 6px;
+        text-align: center;
+      }
+      .tabla-vp th {
+        background: var(--azul-osc);
+        color: #fff;
+        font-size: 12px;
+        line-height: 1.3;
+      }
+      .tabla-vp td {
+        font-size: 24px;
+        font-weight: 700;
+        font-variant-numeric: tabular-nums;
+      }
+      .tabla-vp .entero {
+        background: var(--azul-cl);
+      }
+      .tabla-vp .punto-col {
+        background: #37474f;
+        color: #fff;
+        font-size: 24px;
+        width: 30px;
+      }
+      .tabla-vp .decimal {
+        background: var(--verde-cl);
+      }
+      .pie-grupo {
+        font-size: 11px;
+        color: var(--gris);
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      /* ── RECTA NUMÉRICA ── */
+      .recta {
+        position: relative;
+        height: 64px;
+        margin: 24px 6px 30px;
+        border-top: 3px solid var(--tinta);
+      }
+      .recta .marca {
+        position: absolute;
+        top: -3px;
+        width: 2px;
+        height: 12px;
+        background: var(--tinta);
+      }
+      .recta .etq {
+        position: absolute;
+        top: 14px;
+        transform: translateX(-50%);
+        font-size: 12px;
+        color: var(--gris);
+        font-variant-numeric: tabular-nums;
+      }
+      .recta .punto-val {
+        position: absolute;
+        top: -12px;
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+        background: var(--azul);
+        transform: translateX(-50%);
+        border: 3px solid #fff;
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+      }
+      .recta .punto-etq {
+        position: absolute;
+        top: -40px;
+        transform: translateX(-50%);
+        font-size: 13px;
+        font-weight: 700;
+        color: var(--azul);
+        white-space: nowrap;
+      }
+
+      .ejemplo {
+        background: var(--crema);
+        border: 1px dashed var(--azul);
+        border-radius: 11px;
+        padding: 18px 22px;
+        margin: 18px 0;
+      }
+      .ejemplo .titulo-ej {
+        font-weight: 700;
+        color: var(--azul-osc);
+        margin-bottom: 8px;
+        font-size: 15px;
+      }
+      .paso {
+        margin: 8px 0 8px 4px;
+        padding-left: 32px;
+        position: relative;
+      }
+      .paso .n {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 24px;
+        height: 24px;
+        background: var(--azul);
+        color: #fff;
+        border-radius: 50%;
+        font-size: 13px;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .practica {
+        border: 2px solid var(--azul-cl);
+        border-radius: 12px;
+        padding: 20px 22px;
+        margin: 20px 0;
+        background: #fbfbfd;
+      }
+      .practica .cabe {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 6px;
+      }
+      .practica .cabe .ico {
+        font-size: 22px;
+      }
+      .practica .cabe h4 {
+        font-size: 16px;
+        color: var(--azul-osc);
+      }
+      .pregunta-int {
+        font-size: 17px;
+        font-weight: 600;
+        margin: 14px 0 12px;
+      }
+      .opciones {
+        display: flex;
+        flex-direction: column;
+        gap: 9px;
+      }
+      .opcion {
+        border: 2px solid var(--linea);
+        border-radius: 9px;
+        padding: 11px 16px;
+        cursor: pointer;
+        background: #fff;
+        transition: 0.16s;
+        font-size: 16px;
+        text-align: left;
+        font-family: inherit;
+        color: var(--tinta);
+      }
+      .opcion:hover {
+        border-color: var(--azul);
+        background: var(--azul-cl);
+      }
+      .opcion.correcta {
+        border-color: var(--verde);
+        background: var(--verde-cl);
+        font-weight: 600;
+      }
+      .opcion.incorrecta {
+        border-color: var(--rojo);
+        background: var(--rojo-cl);
+      }
+      .opcion:disabled {
+        cursor: default;
+      }
+      .respuesta-int {
+        margin-top: 12px;
+        padding: 11px 15px;
+        border-radius: 8px;
+        font-size: 15px;
+        display: none;
+      }
+      .respuesta-int.bien {
+        background: var(--verde-cl);
+        color: var(--verde);
+        display: block;
+      }
+      .respuesta-int.mal {
+        background: var(--rojo-cl);
+        color: var(--rojo);
+        display: block;
+      }
+
+      .btn {
+        font-family: inherit;
+        font-size: 15px;
+        font-weight: 600;
+        padding: 9px 20px;
+        background: var(--azul);
+        color: #fff;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: 0.16s;
+      }
+      .btn:hover {
+        background: var(--azul-osc);
+      }
+      .btn-sec {
+        background: #fff;
+        color: var(--azul);
+        border: 2px solid var(--azul);
+      }
+      .btn-sec:hover {
+        background: var(--azul-cl);
+      }
+
+      .quiz-bloque {
+        margin: 18px 0;
+        padding: 18px 20px;
+        border-radius: 11px;
+        background: var(--crema);
+        border: 1px solid var(--linea);
+      }
+      .quiz-bloque .qnum {
+        display: inline-block;
+        background: var(--azul-osc);
+        color: #fff;
+        font-size: 13px;
+        font-weight: 700;
+        padding: 3px 11px;
+        border-radius: 20px;
+        margin-bottom: 8px;
+      }
+      .quiz-bloque .pregunta {
+        font-weight: 600;
+        font-size: 16px;
+        margin-bottom: 12px;
+      }
+      .marcador {
+        text-align: center;
+        padding: 26px;
+        border-radius: 13px;
+        margin-top: 20px;
+        display: none;
+      }
+      .marcador.visible {
+        display: block;
+      }
+      .marcador .puntaje {
+        font-size: 46px;
+        font-weight: 800;
+        margin: 6px 0;
+      }
+      .marcador .mensaje {
+        font-size: 17px;
+      }
+      .barra-prog {
+        height: 10px;
+        background: var(--linea);
+        border-radius: 6px;
+        overflow: hidden;
+        margin: 14px 0;
+      }
+      .barra-prog span {
+        display: block;
+        height: 100%;
+        background: var(--verde);
+        width: 0;
+        transition: width 0.5s;
+      }
+
+      .tabla-rubrica {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 14px 0;
+        font-size: 14px;
+      }
+      .tabla-rubrica th,
+      .tabla-rubrica td {
+        border: 1px solid var(--linea);
+        padding: 10px 12px;
+        text-align: left;
+        vertical-align: top;
+      }
+      .tabla-rubrica th {
+        background: var(--azul-osc);
+        color: #fff;
+        font-size: 13px;
+      }
+      .tabla-rubrica td:first-child {
+        font-weight: 600;
+        color: var(--azul-osc);
+        background: var(--azul-cl);
+      }
+      .nivel-cab {
+        background: #37474f !important;
+        text-align: center;
+      }
+
+      .cierre {
+        background: linear-gradient(135deg, #1a237e, #3949ab);
+        color: #fff;
+        border-radius: 14px;
+        padding: 28px 32px;
+        margin-top: 24px;
+      }
+      .cierre h2 {
+        color: #fff;
+      }
+      .cierre strong {
+        color: #9bff8f;
+        font-weight: 700;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.45);
+      }
+      .cierre .num-seccion {
+        background: rgba(255, 255, 255, 0.22);
+      }
+      .flecha-sig {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: rgba(255, 255, 255, 0.16);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        padding: 10px 18px;
+        border-radius: 9px;
+        margin-top: 12px;
+        font-weight: 600;
+        font-size: 15px;
+      }
+
+      footer {
+        text-align: center;
+        padding: 30px 20px;
+        color: var(--gris);
+        font-size: 13px;
+      }
+
+      @media (max-width: 560px) {
+        header.principal {
+          padding: 34px 22px;
+        }
+        header.principal h1 {
+          font-size: 24px;
+        }
+        section {
+          padding: 24px 20px;
+        }
+        .tabla-vp td {
+          font-size: 19px;
+        }
+        .tabla-vp th {
+          font-size: 10px;
+        }
+      }
+      /* ── CONTENEDOR DE ENLACES A INTERACTIVOS ── */
+      .interactivos {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 16px;
+        margin: 20px 0;
+      }
+      .interactivos .titulo-grupo {
+        grid-column: 1/-1;
+        font-size: 14px;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+        color: var(--azul-osc);
+        display: flex;
+        align-items: center;
+        gap: 9px;
+        margin-bottom: 2px;
+      }
+      .interactivos .titulo-grupo::before {
+        content: '';
+        width: 26px;
+        height: 3px;
+        background: var(--azul);
+        border-radius: 3px;
+      }
+
+      .enlace-int {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        text-decoration: none;
+        color: var(--tinta);
+        background: var(--papel);
+        border: 1px solid var(--linea);
+        border-left: 5px solid var(--azul);
+        border-radius: 11px;
+        padding: 15px 18px;
+        box-shadow: var(--sombra);
+        transition:
+          transform 0.18s,
+          box-shadow 0.18s,
+          border-color 0.18s;
+      }
+      .enlace-int:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 7px 20px rgba(26, 35, 126, 0.18);
+      }
+      .enlace-int .ico-int {
+        flex-shrink: 0;
+        width: 50px;
+        height: 50px;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 28px;
+        background: var(--azul-cl);
+      }
+      .enlace-int .txt-int {
+        display: flex;
+        flex-direction: column;
+        min-width: 0;
+      }
+      .enlace-int .titulo-int {
+        font-weight: 700;
+        color: var(--azul-osc);
+        font-size: 16px;
+        line-height: 1.3;
+      }
+      .enlace-int .desc-int {
+        font-size: 13px;
+        color: var(--gris);
+        margin-top: 3px;
+        line-height: 1.4;
+      }
+      .enlace-int .flecha-int {
+        margin-left: auto;
+        flex-shrink: 0;
+        font-size: 20px;
+        color: var(--azul);
+        transition: transform 0.18s;
+      }
+      .enlace-int:hover .flecha-int {
+        transform: translateX(4px);
+      }
+
+      /* Variantes de color por tipo de interactivo */
+      .enlace-int.int-verde {
+        border-left-color: var(--verde);
+      }
+      .enlace-int.int-verde .ico-int {
+        background: var(--verde-cl);
+      }
+      .enlace-int.int-verde .titulo-int {
+        color: var(--verde);
+      }
+      .enlace-int.int-verde .flecha-int {
+        color: var(--verde);
+      }
+
+      .enlace-int.int-ambar {
+        border-left-color: var(--ambar);
+      }
+      .enlace-int.int-ambar .ico-int {
+        background: var(--ambar-cl);
+      }
+      .enlace-int.int-ambar .titulo-int {
+        color: var(--ambar);
+      }
+      .enlace-int.int-ambar .flecha-int {
+        color: var(--ambar);
+      }
+
+      .enlace-int.int-rojo {
+        border-left-color: var(--rojo);
+      }
+      .enlace-int.int-rojo .ico-int {
+        background: var(--rojo-cl);
+      }
+      .enlace-int.int-rojo .titulo-int {
+        color: var(--rojo);
+      }
+      .enlace-int.int-rojo .flecha-int {
+        color: var(--rojo);
+      }
+
+      @media (max-width: 560px) {
+        .interactivos {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      /* Un solo enlace: que ocupe todo el ancho de la sección */
+      .interactivos:has(.enlace-int:only-of-type) {
+        grid-template-columns: 1fr;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="principal">
+      <div class="envoltura-header">
+        <div class="ruta">Matemáticas · Nivel 1 · Tema 3 — Decimales</div>
+        <h1>Lección 3.1 · Decimales: leer, escribir, comparar y redondear</h1>
+        <p class="lema">Los números del dinero y los precios. La tabla de valor posicional se extiende hacia la derecha del punto.</p>
+        <div class="chips">
+          <span class="chip">⏱️ 4 horas (2 sinc. + 2 asinc.)</span>
+          <span class="chip">💲 Conexión con el dinero</span>
+          <span class="chip">📘 MyOpenMath</span>
+        </div>
+      </div>
+    </header>
+
+    <div class="envoltura">
+      <!-- OBJETIVOS -->
+      <section>
+        <div class="caja caja-objetivo">
+          <h2>
+            <span class="num-seccion">🎯</span>
+            Objetivos de la clase
+          </h2>
+          <p>Al terminar esta lección, usted podrá:</p>
+          <ul>
+            <li>
+              <strong>Leer y escribir</strong>
+              decimales hasta las milésimas, con cifras y con palabras.
+            </li>
+            <li>
+              <strong>Identificar</strong>
+              el valor posicional de un dígito a la derecha del punto decimal.
+            </li>
+            <li>
+              <strong>Comparar y ordenar</strong>
+              decimales usando los símbolos &gt;, &lt; e =.
+            </li>
+            <li>
+              <strong>Redondear</strong>
+              un decimal a la décima o a la centésima más cercana.
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- POR QUÉ -->
+      <section>
+        <h2>
+          <span class="num-seccion">1</span>
+          Los decimales ya están en su vida
+        </h2>
+        <p>
+          Usted ya usa decimales todos los días, aunque no los llame así. Cuando un producto cuesta
+          <strong>$3.99</strong>
+          , cuando la gasolina marca
+          <strong>$2.75</strong>
+          el galón, cuando una receta pide
+          <strong>1.5 libras</strong>
+          de algo — todos esos son números decimales.
+        </p>
+        <p>
+          Un
+          <strong>decimal</strong>
+          es simplemente una forma de escribir
+          <strong>partes de un entero</strong>
+          . El
+          <strong>punto decimal</strong>
+          separa lo que es entero (a la izquierda) de lo que es una parte (a la derecha). En
+          <strong>$3.99</strong>
+          , el
+          <strong>3</strong>
+          son 3 dólares completos y el
+          <strong>.99</strong>
+          son 99 centavos: una parte de un dólar.
+        </p>
+        <div class="caja caja-tip">
+          <span class="etiqueta et-verde">Conexión con el Tema 1</span>
+          <p>
+            En la Lección 1.1 aprendió la tabla de valor posicional: unidades, decenas, centenas... Los decimales son
+            <strong>esa misma tabla extendida hacia la derecha</strong>
+            . Cada lugar a la derecha del punto vale 10 veces
+            <em>menos</em>
+            que el anterior.
+          </p>
+        </div>
+      </section>
+
+      <!-- TABLA VALOR POSICIONAL -->
+      <section>
+        <h2>
+          <span class="num-seccion">2</span>
+          El valor posicional después del punto
+        </h2>
+        <p>
+          A la derecha del punto decimal, los lugares se llaman
+          <strong>décimas</strong>
+          ,
+          <strong>centésimas</strong>
+          y
+          <strong>milésimas</strong>
+          . Veamos el número
+          <strong>4.625</strong>
+          en la tabla:
+        </p>
+
+        <table class="tabla-vp">
+          <thead>
+            <tr>
+              <th>Unidades</th>
+              <th>punto</th>
+              <th>Décimas</th>
+              <th>Centésimas</th>
+              <th>Milésimas</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="entero">4</td>
+              <td class="punto-col">.</td>
+              <td class="decimal">6</td>
+              <td class="decimal">2</td>
+              <td class="decimal">5</td>
+            </tr>
+            <tr>
+              <td class="pie-grupo">parte entera</td>
+              <td class="pie-grupo">—</td>
+              <td class="pie-grupo" colspan="3">parte decimal</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>Cómo leer un decimal</h3>
+        <div class="ejemplo">
+          <div class="titulo-ej">📖 Cómo leer 4.625</div>
+          <div class="paso">
+            <span class="n">1</span>
+            Leo la parte entera:
+            <strong>"cuatro"</strong>
+            .
+          </div>
+          <div class="paso">
+            <span class="n">2</span>
+            El punto se lee
+            <strong>"con"</strong>
+            (o "punto").
+          </div>
+          <div class="paso">
+            <span class="n">3</span>
+            Leo la parte decimal como un número entero —
+            <strong>625</strong>
+            — y digo el nombre del último lugar: el 5 está en las milésimas.
+          </div>
+          <div class="paso">
+            <span class="n">✓</span>
+            Se lee:
+            <strong>"cuatro con seiscientas veinticinco milésimas"</strong>
+            .
+          </div>
+        </div>
+
+        <div class="caja caja-ojo">
+          <span class="etiqueta et-ambar">¡Ojo! El nombre lo da el último lugar</span>
+          <p>
+            <strong>0.7</strong>
+            son "siete
+            <em>décimas</em>
+            " ·
+            <strong>0.07</strong>
+            son "siete
+            <em>centésimas</em>
+            " ·
+            <strong>0.007</strong>
+            son "siete
+            <em>milésimas</em>
+            ". El mismo dígito 7, pero el lugar cambia su valor — igual que en los enteros.
+          </p>
+        </div>
+
+        <div class="practica">
+          <div class="cabe">
+            <span class="ico">✏️</span>
+            <h4>Práctica 1 — Valor posicional decimal</h4>
+          </div>
+          <p class="pregunta-int">
+            En el número
+            <strong>
+              8.
+              <u>3</u>
+              5
+            </strong>
+            , ¿en qué lugar está el dígito subrayado, el
+            <strong>3</strong>
+            ?
+          </p>
+          <div class="opciones" data-quiz="p1">
+            <button class="opcion" data-correcta="no">En las unidades</button>
+            <button class="opcion" data-correcta="si">En las décimas</button>
+            <button class="opcion" data-correcta="no">En las centésimas</button>
+            <button class="opcion" data-correcta="no">En las milésimas</button>
+          </div>
+          <div class="respuesta-int" id="r-p1"></div>
+        </div>
+      </section>
+
+      <!-- COMPARAR Y ORDENAR -->
+      <section>
+        <h2>
+          <span class="num-seccion">3</span>
+          Comparar y ordenar decimales
+        </h2>
+        <p>
+          Comparar decimales se parece a comparar enteros, pero con una regla importante: se compara
+          <strong>lugar por lugar, de izquierda a derecha</strong>
+          , empezando por la parte entera.
+        </p>
+
+        <h3>El truco de los ceros a la derecha</h3>
+        <p>
+          Para comparar decimales con distinta cantidad de cifras, puede
+          <strong>agregar ceros a la derecha</strong>
+          sin cambiar el valor.
+          <strong>0.5</strong>
+          es lo mismo que
+          <strong>0.50</strong>
+          y que
+          <strong>0.500</strong>
+          . Así todos los números tienen la misma "longitud" y se comparan fácil.
+        </p>
+        <div class="ejemplo">
+          <div class="titulo-ej">Comparar 0.6 y 0.58</div>
+          <div class="paso">
+            <span class="n">1</span>
+            Igualo la longitud: 0.6 lo escribo como
+            <strong>0.60</strong>
+            .
+          </div>
+          <div class="paso">
+            <span class="n">2</span>
+            Ahora comparo 0.60 con 0.58, lugar por lugar. Décimas: 6 contra 5.
+          </div>
+          <div class="paso">
+            <span class="n">3</span>
+            6 es mayor que 5. ¡Aquí se decide!
+          </div>
+          <div class="paso">
+            <span class="n">✓</span>
+            Por lo tanto:
+            <strong>0.6 &gt; 0.58</strong>
+            .
+          </div>
+        </div>
+        <div class="caja caja-ojo">
+          <span class="etiqueta et-ambar">¡Ojo! El error más común</span>
+          <p>
+            Mucha gente piensa que 0.58 es mayor que 0.6 "porque tiene más dígitos".
+            <strong>Falso.</strong>
+            Más dígitos no significa más valor en los decimales. Por eso conviene igualar la longitud con ceros antes de comparar.
+          </p>
+        </div>
+
+        <h3>Los decimales en la recta numérica</h3>
+        <p>Ordenar decimales es ubicarlos en la recta. Entre 0 y 1 caben infinitos decimales:</p>
+        <div class="recta">
+          <div class="marca" style="left: 0%"></div>
+          <div class="etq" style="left: 0%">0</div>
+          <div class="marca" style="left: 25%"></div>
+          <div class="etq" style="left: 25%">0.25</div>
+          <div class="marca" style="left: 50%"></div>
+          <div class="etq" style="left: 50%">0.5</div>
+          <div class="marca" style="left: 75%"></div>
+          <div class="etq" style="left: 75%">0.75</div>
+          <div class="marca" style="left: 100%"></div>
+          <div class="etq" style="left: 100%">1</div>
+          <div class="punto-val" style="left: 30%"></div>
+          <div class="punto-etq" style="left: 30%">0.3</div>
+          <div class="punto-val" style="left: 80%"></div>
+          <div class="punto-etq" style="left: 80%">0.8</div>
+        </div>
+        <div class="interactivos">
+          <span class="titulo-grupo">Practica en línea</span>
+
+          <a class="enlace-int" href="https://zhemaria.github.io/interactivos/recta_decimales/" target="_blank" rel="noopener">
+            <span class="ico-int" aria-hidden="true">🧮</span>
+            <span class="txt-int">
+              <span class="titulo-int">Recta numérica decimal</span>
+              <span class="desc-int">Ubica decimales arrastrando el punto</span>
+            </span>
+            <span class="flecha-int" aria-hidden="true">→</span>
+          </a>
+        </div>
+
+        <div class="practica">
+          <div class="cabe">
+            <span class="ico">✏️</span>
+            <h4>Práctica 2 — Comparar decimales</h4>
+          </div>
+          <p class="pregunta-int">
+            ¿Qué símbolo va entre
+            <strong>2.07</strong>
+            y
+            <strong>2.7</strong>
+            ?
+          </p>
+          <div class="opciones" data-quiz="p2">
+            <button class="opcion" data-correcta="no">2.07 &gt; 2.7</button>
+            <button class="opcion" data-correcta="si">2.07 &lt; 2.7</button>
+            <button class="opcion" data-correcta="no">2.07 = 2.7</button>
+          </div>
+          <div class="respuesta-int" id="r-p2"></div>
+        </div>
+
+        <div class="practica">
+          <div class="cabe">
+            <span class="ico">✏️</span>
+            <h4>Práctica 3 — Ordenar precios</h4>
+          </div>
+          <p class="pregunta-int">
+            Cuatro productos cuestan: $1.50, $1.05, $1.55 y $1.15. ¿Cuál es el
+            <strong>más barato</strong>
+            ?
+          </p>
+          <div class="opciones" data-quiz="p3">
+            <button class="opcion" data-correcta="no">$1.50</button>
+            <button class="opcion" data-correcta="si">$1.05</button>
+            <button class="opcion" data-correcta="no">$1.55</button>
+            <button class="opcion" data-correcta="no">$1.15</button>
+          </div>
+          <div class="respuesta-int" id="r-p3"></div>
+        </div>
+      </section>
+
+      <!-- REDONDEAR -->
+      <section>
+        <h2>
+          <span class="num-seccion">4</span>
+          Redondear decimales
+        </h2>
+        <p>
+          Redondear decimales usa
+          <strong>la misma regla del vecino de la derecha</strong>
+          que aprendió en la Lección 1.1. La diferencia es que ahora trabajamos a la derecha del punto.
+        </p>
+        <ul>
+          <li>
+            Miro el dígito
+            <strong>a la derecha</strong>
+            de la posición que me piden.
+          </li>
+          <li>
+            Si es
+            <strong>0, 1, 2, 3 o 4</strong>
+            → el dígito se queda igual.
+          </li>
+          <li>
+            Si es
+            <strong>5, 6, 7, 8 o 9</strong>
+            → el dígito sube uno.
+          </li>
+          <li>
+            Los dígitos a la derecha de la posición pedida
+            <strong>se eliminan</strong>
+            (no se vuelven cero como en los enteros: simplemente desaparecen).
+          </li>
+        </ul>
+
+        <div class="ejemplo">
+          <div class="titulo-ej">Redondear 5.348 a la décima más cercana</div>
+          <div class="paso">
+            <span class="n">1</span>
+            La posición pedida es la
+            <strong>décima</strong>
+            : el dígito 3.
+          </div>
+          <div class="paso">
+            <span class="n">2</span>
+            Miro su vecino de la derecha (las centésimas): es
+            <strong>4</strong>
+            .
+          </div>
+          <div class="paso">
+            <span class="n">3</span>
+            4 es menor que 5 → la décima se queda en 3, y elimino lo que sigue.
+          </div>
+          <div class="paso">
+            <span class="n">✓</span>
+            Resultado:
+            <strong>5.3</strong>
+            .
+          </div>
+        </div>
+        <div class="ejemplo">
+          <div class="titulo-ej">Redondear 5.348 a la centésima más cercana</div>
+          <div class="paso">
+            <span class="n">1</span>
+            La posición pedida es la
+            <strong>centésima</strong>
+            : el dígito 4.
+          </div>
+          <div class="paso">
+            <span class="n">2</span>
+            Miro su vecino de la derecha (las milésimas): es
+            <strong>8</strong>
+            .
+          </div>
+          <div class="paso">
+            <span class="n">3</span>
+            8 es 5 o más → la centésima sube de 4 a 5.
+          </div>
+          <div class="paso">
+            <span class="n">✓</span>
+            Resultado:
+            <strong>5.35</strong>
+            .
+          </div>
+        </div>
+
+        <div class="caja caja-tip">
+          <span class="etiqueta et-verde">En la vida real: redondear al centavo</span>
+          <p>
+            Redondear a la centésima es redondear "al centavo". Es lo que hace la caja registradora cuando un cálculo da $4.617: lo cobra como
+            <strong>$4.62</strong>
+            .
+          </p>
+        </div>
+
+        <div class="practica">
+          <div class="cabe">
+            <span class="ico">✏️</span>
+            <h4>Práctica 4 — Redondear</h4>
+          </div>
+          <p class="pregunta-int">
+            Redondee
+            <strong>9.276</strong>
+            a la
+            <strong>décima</strong>
+            más cercana.
+          </p>
+          <div class="opciones" data-quiz="p4">
+            <button class="opcion" data-correcta="no">9.2</button>
+            <button class="opcion" data-correcta="si">9.3</button>
+            <button class="opcion" data-correcta="no">9.28</button>
+            <button class="opcion" data-correcta="no">10</button>
+          </div>
+          <div class="respuesta-int" id="r-p4"></div>
+        </div>
+      </section>
+
+      <!-- PRÁCTICA GUIADA -->
+      <section>
+        <h2>
+          <span class="num-seccion">5</span>
+          Práctica guiada en clase
+        </h2>
+        <p>
+          Estas actividades se hacen
+          <strong>en la sesión sincrónica</strong>
+          . Cada actividad incluye una variante para la
+          <strong>clase presencial</strong>
+          y otra para la
+          <strong>clase en línea</strong>
+          ; el objetivo de aprendizaje es el mismo en ambas.
+        </p>
+
+        <div class="caja caja-recurso">
+          <span class="etiqueta et-azul">Actividad A · "El dinero y el decimal"</span>
+          <p>Los estudiantes conectan los decimales con cantidades de dinero reales antes de pasar a la notación abstracta.</p>
+          <div class="modalidades">
+            <div class="modo modo-pres">
+              <span class="modo-tit">🏫 Presencial</span>
+              <p>
+                Lleve billetes y monedas de juguete. Cada estudiante representa cantidades como $3.45 con el dinero y luego las escribe en la tabla de valor posicional. Conversan: ¿qué moneda es una
+                décima de dólar? ¿y una centésima?
+              </p>
+            </div>
+            <div class="modo modo-line">
+              <span class="modo-tit">💻 En línea</span>
+              <p>Comparte imágenes de billetes y monedas en una diapositiva. Los estudiantes escriben en el chat cómo formarían una cantidad dada y a qué lugar decimal corresponde cada moneda.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="caja caja-recurso">
+          <span class="etiqueta et-azul">Actividad B · "Pon el precio correcto"</span>
+          <p>Los estudiantes ordenan de menor a mayor un conjunto de precios decimales y los ubican en una recta numérica.</p>
+          <div class="modalidades">
+            <div class="modo modo-pres">
+              <span class="modo-tit">🏫 Presencial</span>
+              <p>
+                Reparta tarjetas con precios. Cada grupo las ordena físicamente de menor a mayor sobre la mesa y luego coloca cada tarjeta en su lugar en una recta numérica dibujada en el pizarrón.
+              </p>
+            </div>
+            <div class="modo modo-line">
+              <span class="modo-tit">💻 En línea</span>
+              <p>
+                Use una pizarra colaborativa con tarjetas de precios que los estudiantes arrastran para ordenar sobre una recta numérica digital. Como alternativa, cada grupo escribe el orden en el
+                chat y lo justifica.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="caja caja-recurso">
+          <span class="etiqueta et-azul">Actividad C · "Redondeo en la caja registradora"</span>
+          <p>Los estudiantes practican el redondeo de cantidades de dinero a la centésima (al centavo) y a la unidad (al dólar).</p>
+          <div class="modalidades">
+            <div class="modo modo-pres">
+              <span class="modo-tit">🏫 Presencial</span>
+              <p>
+                Entregue recibos reales o simulados con cantidades de varios decimales. Cada estudiante redondea cada cantidad al centavo y al dólar en su cuaderno; comparan resultados en parejas.
+              </p>
+            </div>
+            <div class="modo modo-line">
+              <span class="modo-tit">💻 En línea</span>
+              <p>
+                Comparta imágenes de recibos en pantalla. Los estudiantes redondean las cantidades y publican sus respuestas en el chat. Cierre con una encuesta (poll) sobre un caso límite (un dígito
+                5).
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAREA ASINCRÓNICA -->
+      <section>
+        <h2>
+          <span class="num-seccion">6</span>
+          Tarea asincrónica
+        </h2>
+        <p>
+          Estas actividades se realizan
+          <strong>por su cuenta</strong>
+          , dentro de las 2 horas asincrónicas de la lección.
+        </p>
+        <ul>
+          <li>
+            <strong>MyOpenMath:</strong>
+            complete los
+            <strong>10 ejercicios</strong>
+            de comparar, ordenar y redondear decimales. Cada uno da retroalimentación inmediata.
+          </li>
+          <li>
+            <strong>Brightspace:</strong>
+            realice el quiz de la lección (abajo puede practicarlo antes).
+          </li>
+          <li>
+            <strong>Actividad personal:</strong>
+            revise tres precios reales de una tienda o un recibo. Escríbalos con palabras, ordénelos de menor a mayor y redondee cada uno al dólar más cercano.
+          </li>
+        </ul>
+      </section>
+
+      <!-- QUIZ -->
+      <section>
+        <h2>
+          <span class="num-seccion">7</span>
+          Quiz de práctica
+        </h2>
+        <p>
+          Responda las
+          <strong>8 preguntas</strong>
+          . Al final verá su puntaje y podrá repasar lo que falló. Puede repetir el quiz las veces que quiera.
+        </p>
+
+        <form id="quiz">
+          <div class="quiz-bloque">
+            <span class="qnum">Pregunta 1</span>
+            <p class="pregunta">
+              En el número
+              <strong>
+                6.
+                <u>4</u>
+                9
+              </strong>
+              , ¿qué lugar ocupa el dígito subrayado, el
+              <strong>4</strong>
+              ?
+            </p>
+            <div class="opciones" data-q="1">
+              <button type="button" class="opcion" data-c="si">Décimas</button>
+              <button type="button" class="opcion" data-c="no">Centésimas</button>
+              <button type="button" class="opcion" data-c="no">Milésimas</button>
+              <button type="button" class="opcion" data-c="no">Unidades</button>
+            </div>
+          </div>
+
+          <div class="quiz-bloque">
+            <span class="qnum">Pregunta 2</span>
+            <p class="pregunta">¿Cómo se escribe con cifras "tres con ocho centésimas"?</p>
+            <div class="opciones" data-q="2">
+              <button type="button" class="opcion" data-c="no">3.8</button>
+              <button type="button" class="opcion" data-c="si">3.08</button>
+              <button type="button" class="opcion" data-c="no">3.008</button>
+              <button type="button" class="opcion" data-c="no">3.80</button>
+            </div>
+          </div>
+
+          <div class="quiz-bloque">
+            <span class="qnum">Pregunta 3</span>
+            <p class="pregunta">
+              ¿Cuál de estos números es
+              <strong>igual</strong>
+              a
+              <strong>0.4</strong>
+              ?
+            </p>
+            <div class="opciones" data-q="3">
+              <button type="button" class="opcion" data-c="no">0.04</button>
+              <button type="button" class="opcion" data-c="si">0.40</button>
+              <button type="button" class="opcion" data-c="no">4.0</button>
+              <button type="button" class="opcion" data-c="no">0.004</button>
+            </div>
+          </div>
+
+          <div class="quiz-bloque">
+            <span class="qnum">Pregunta 4</span>
+            <p class="pregunta">
+              ¿Qué símbolo hace verdadera la comparación:
+              <strong>0.9 ___ 0.85</strong>
+              ?
+            </p>
+            <div class="opciones" data-q="4">
+              <button type="button" class="opcion" data-c="si">&gt;&nbsp;&nbsp;(mayor que)</button>
+              <button type="button" class="opcion" data-c="no">&lt;&nbsp;&nbsp;(menor que)</button>
+              <button type="button" class="opcion" data-c="no">=&nbsp;&nbsp;(igual a)</button>
+            </div>
+          </div>
+
+          <div class="quiz-bloque">
+            <span class="qnum">Pregunta 5</span>
+            <p class="pregunta">
+              ¿Cuál de estos decimales es el
+              <strong>mayor</strong>
+              ?
+            </p>
+            <div class="opciones" data-q="5">
+              <button type="button" class="opcion" data-c="no">0.7</button>
+              <button type="button" class="opcion" data-c="no">0.68</button>
+              <button type="button" class="opcion" data-c="si">0.72</button>
+              <button type="button" class="opcion" data-c="no">0.709</button>
+            </div>
+          </div>
+
+          <div class="quiz-bloque">
+            <span class="qnum">Pregunta 6</span>
+            <p class="pregunta">
+              Redondee
+              <strong>3.471</strong>
+              a la
+              <strong>décima</strong>
+              más cercana.
+            </p>
+            <div class="opciones" data-q="6">
+              <button type="button" class="opcion" data-c="si">3.5</button>
+              <button type="button" class="opcion" data-c="no">3.4</button>
+              <button type="button" class="opcion" data-c="no">3.47</button>
+              <button type="button" class="opcion" data-c="no">4.0</button>
+            </div>
+          </div>
+
+          <div class="quiz-bloque">
+            <span class="qnum">Pregunta 7</span>
+            <p class="pregunta">
+              Redondee
+              <strong>$12.834</strong>
+              a la
+              <strong>centésima</strong>
+              más cercana (al centavo).
+            </p>
+            <div class="opciones" data-q="7">
+              <button type="button" class="opcion" data-c="si">$12.83</button>
+              <button type="button" class="opcion" data-c="no">$12.84</button>
+              <button type="button" class="opcion" data-c="no">$12.80</button>
+              <button type="button" class="opcion" data-c="no">$13.00</button>
+            </div>
+          </div>
+
+          <div class="quiz-bloque">
+            <span class="qnum">Pregunta 8</span>
+            <p class="pregunta">
+              Tres corredores marcaron estos tiempos: 10.5 s, 10.45 s y 10.6 s. ¿Quién fue el
+              <strong>más rápido</strong>
+              (el menor tiempo)?
+            </p>
+            <div class="opciones" data-q="8">
+              <button type="button" class="opcion" data-c="no">El de 10.5 s</button>
+              <button type="button" class="opcion" data-c="si">El de 10.45 s</button>
+              <button type="button" class="opcion" data-c="no">El de 10.6 s</button>
+              <button type="button" class="opcion" data-c="no">Todos iguales</button>
+            </div>
+          </div>
+        </form>
+
+        <div style="text-align: center; margin-top: 18px">
+          <button class="btn" id="btn-calificar">Ver mi resultado</button>
+          <button class="btn btn-sec" id="btn-reintentar" style="display: none">Intentar de nuevo</button>
+        </div>
+
+        <div class="marcador" id="marcador">
+          <div class="barra-prog"><span id="barra"></span></div>
+          <div class="puntaje" id="puntaje"></div>
+          <div class="mensaje" id="mensaje"></div>
+        </div>
+      </section>
+
+      <!-- RÚBRICA -->
+      <section>
+        <h2>
+          <span class="num-seccion">8</span>
+          Rúbrica de evaluación
+        </h2>
+        <p>
+          Lista de cotejo de decimales. Cada criterio se evalúa como
+          <strong>Logrado</strong>
+          ,
+          <strong>En proceso</strong>
+          o
+          <strong>Por reforzar</strong>
+          .
+        </p>
+        <table class="tabla-rubrica">
+          <thead>
+            <tr>
+              <th>Criterio</th>
+              <th class="nivel-cab">Logrado</th>
+              <th class="nivel-cab">En proceso</th>
+              <th class="nivel-cab">Por reforzar</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Lee un decimal de tres lugares</td>
+              <td>Lee correctamente décimas, centésimas y milésimas.</td>
+              <td>Lee bien las décimas; duda con milésimas.</td>
+              <td>No nombra los lugares decimales.</td>
+            </tr>
+            <tr>
+              <td>Identifica el valor de un dígito decimal</td>
+              <td>Identifica con precisión el lugar de cualquier dígito.</td>
+              <td>Acierta con décimas y centésimas.</td>
+              <td>Confunde el lugar del dígito.</td>
+            </tr>
+            <tr>
+              <td>Compara dos decimales</td>
+              <td>Usa &gt;, &lt;, = correctamente, igualando longitudes con ceros.</td>
+              <td>Compara bien pero a veces se guía por la cantidad de dígitos.</td>
+              <td>No logra decidir cuál decimal es mayor.</td>
+            </tr>
+            <tr>
+              <td>Redondea a la posición indicada</td>
+              <td>Redondea correctamente a la décima y a la centésima.</td>
+              <td>Aplica la regla con un descuido aislado.</td>
+              <td>No aplica la regla del vecino de la derecha.</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- CIERRE -->
+      <div class="cierre">
+        <h2>
+          <span class="num-seccion">➡️</span>
+          Lo que viene en la próxima lección
+        </h2>
+        <p>
+          Ya sabe leer, escribir, comparar y redondear decimales. Ahora vamos a
+          <strong>operar</strong>
+          con ellos. En la
+          <strong>Lección 3.2 · Suma, resta, multiplicación y división de decimales</strong>
+          aprenderá a alinear el punto decimal en la suma y la resta, y a colocar el punto en la multiplicación y la división.
+        </p>
+        <p>
+          Además, en la próxima lección estrenará una herramienta nueva: la calculadora
+          <strong>TI-30XS</strong>
+          , que usará para
+          <strong>verificar</strong>
+          sus resultados — nunca para reemplazar el proceso en papel. Recuerde desde ya un hábito importante:
+          <strong>limpiar la memoria de la calculadora antes de empezar a calcular</strong>
+          .
+        </p>
+        <div class="flecha-sig">➡️ &nbsp;Próxima: Lección 3.2 · Operaciones con decimales</div>
+      </div>
+    </div>
+
+    <footer>
+      Matemáticas · Nivel 1 · Lección 3.1 — Spanish ASE Math · AE 0170-0321
+      <br />
+      City Colleges of Chicago · Truman College · Prof. José M. Fernández
+    </footer>
+
+    <script>
+      const respuestasPractica = {
+        p1: 'En 8.35, el primer lugar a la derecha del punto es la DÉCIMA. Por eso el 3 está en las décimas.',
+        p2: '2.07 < 2.7. Iguale las longitudes: 2.07 contra 2.70. En las décimas, 0 es menor que 7, así que 2.07 es el menor.',
+        p3: 'El más barato es $1.05. Igualando longitudes: 1.50, 1.05, 1.55, 1.15. En las décimas, el 0 de 1.05 es el menor de todos.',
+        p4: '9.276 a la décima: el vecino de la derecha de la décima (2) es 7. Como 7 es 5 o más, la décima sube de 2 a 3: 9.3.'
+      };
+      document.querySelectorAll('.opciones[data-quiz]').forEach(function (grupo) {
+        const id = grupo.getAttribute('data-quiz');
+        grupo.querySelectorAll('.opcion').forEach(function (op) {
+          op.addEventListener('click', function () {
+            const acerto = op.getAttribute('data-correcta') === 'si';
+            grupo.querySelectorAll('.opcion').forEach(function (o) {
+              o.disabled = true;
+              if (o.getAttribute('data-correcta') === 'si') o.classList.add('correcta');
+            });
+            if (!acerto) op.classList.add('incorrecta');
+            const r = document.getElementById('r-' + id);
+            r.className = 'respuesta-int ' + (acerto ? 'bien' : 'mal');
+            r.textContent = (acerto ? '✓ ¡Muy bien! ' : '✗ Revise: ') + respuestasPractica[id];
+          });
+        });
+      });
+
+      const totalPreguntas = 8;
+      const seleccion = {};
+      document.querySelectorAll('#quiz .opciones').forEach(function (grupo) {
+        const q = grupo.getAttribute('data-q');
+        grupo.querySelectorAll('.opcion').forEach(function (op) {
+          op.addEventListener('click', function () {
+            grupo.querySelectorAll('.opcion').forEach(function (o) {
+              o.style.borderColor = '';
+              o.style.background = '';
+            });
+            op.style.borderColor = '#283593';
+            op.style.background = '#e8eaf6';
+            seleccion[q] = op;
+          });
+        });
+      });
+
+      document.getElementById('btn-calificar').addEventListener('click', function () {
+        let correctas = 0;
+        document.querySelectorAll('#quiz .opciones').forEach(function (grupo) {
+          const q = grupo.getAttribute('data-q');
+          grupo.querySelectorAll('.opcion').forEach(function (o) {
+            o.disabled = true;
+            if (o.getAttribute('data-c') === 'si') o.classList.add('correcta');
+          });
+          const elegida = seleccion[q];
+          if (elegida) {
+            if (elegida.getAttribute('data-c') === 'si') correctas++;
+            else elegida.classList.add('incorrecta');
+          }
+        });
+        const marc = document.getElementById('marcador');
+        const pct = Math.round((correctas / totalPreguntas) * 100);
+        document.getElementById('puntaje').textContent = correctas + ' / ' + totalPreguntas;
+        let msg, color;
+        if (pct >= 88) {
+          msg = '¡Excelente! Domina los decimales. Está listo para la Lección 3.2.';
+          color = '#e7f4ec';
+        } else if (pct >= 63) {
+          msg = '¡Buen trabajo! Repase las preguntas en rojo y vuelva a intentarlo.';
+          color = '#fdf3df';
+        } else {
+          msg = 'Repasemos juntos. Vuelva a leer las secciones 2, 3 y 4, y reintente el quiz.';
+          color = '#fdecea';
+        }
+        marc.style.background = color;
+        document.getElementById('mensaje').textContent = msg;
+        marc.classList.add('visible');
+        document.getElementById('barra').style.width = pct + '%';
+        document.getElementById('btn-calificar').style.display = 'none';
+        document.getElementById('btn-reintentar').style.display = 'inline-block';
+        marc.scrollIntoView({behavior: 'smooth', block: 'center'});
+      });
+
+      document.getElementById('btn-reintentar').addEventListener('click', function () {
+        document.querySelectorAll('#quiz .opcion').forEach(function (o) {
+          o.disabled = false;
+          o.classList.remove('correcta', 'incorrecta');
+          o.style.borderColor = '';
+          o.style.background = '';
+        });
+        for (const k in seleccion) delete seleccion[k];
+        document.getElementById('marcador').classList.remove('visible');
+        document.getElementById('btn-calificar').style.display = 'inline-block';
+        document.getElementById('btn-reintentar').style.display = 'none';
+        document.getElementById('quiz').scrollIntoView({behavior: 'smooth', block: 'start'});
+      });
+    </script>
+  </body>
+</html>

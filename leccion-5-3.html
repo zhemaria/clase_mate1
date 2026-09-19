@@ -1,0 +1,1417 @@
+<!DOCTYPE html>
+
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Lección 5.3 · Problemas verbales de un paso — Matemáticas Nivel 1</title>
+<style>
+      :root {
+        --azul: #bf4500;
+        --azul-osc: #8c2f08;
+        --azul-cl: #fff3e0;
+        --tinta: #1a2330;
+        --gris: #5b6675;
+        --linea: #dde3ea;
+        --crema: #f6f4ee;
+        --papel: #ffffff;
+        --verde: #276b44;
+        --verde-cl: #e7f4ec;
+        --ambar: #7d4e00;
+        --ambar-cl: #fdf3df;
+        --rojo: #b5342a;
+        --rojo-cl: #fdecea;
+        --sombra: 0 2px 10px rgba(191, 54, 12, 0.1);
+      }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        font-family: 'Segoe UI', 'Helvetica Neue', system-ui, sans-serif;
+        background: var(--crema);
+        color: var(--tinta);
+        line-height: 1.65;
+        font-size: 17px;
+      }
+      .envoltura {
+        max-width: 880px;
+        margin: 0 auto;
+        padding: 0 20px 80px;
+      }
+
+      header.principal {
+        background: linear-gradient(135deg, #7a2806 0%, #a13a00 55%, #b34d00 100%);
+        color: #fff;
+        padding: 46px 38px 40px;
+        border-radius: 0 0 22px 22px;
+        box-shadow: 0 6px 22px rgba(191, 54, 12, 0.3);
+      }
+      .envoltura-header {
+        max-width: 880px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+      .ruta {
+        font-size: 13px;
+        letter-spacing: 0.6px;
+        text-transform: uppercase;
+        opacity: 0.85;
+        margin-bottom: 14px;
+      }
+      header.principal h1 {
+        font-size: 30px;
+        font-weight: 700;
+        line-height: 1.25;
+        margin-bottom: 8px;
+      }
+      header.principal .lema {
+        font-size: 16px;
+        opacity: 0.93;
+        font-weight: 400;
+        max-width: 620px;
+      }
+      .chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 20px;
+      }
+      .chip {
+        background: rgba(255, 255, 255, 0.16);
+        border: 1px solid rgba(255, 255, 255, 0.28);
+        padding: 6px 14px;
+        border-radius: 30px;
+        font-size: 13px;
+        font-weight: 600;
+      }
+
+      section {
+        background: var(--papel);
+        margin-top: 22px;
+        padding: 30px 34px;
+        border-radius: 14px;
+        box-shadow: var(--sombra);
+      }
+      .num-seccion {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 34px;
+        height: 34px;
+        background: var(--azul);
+        color: #fff;
+        border-radius: 9px;
+        font-weight: 700;
+        font-size: 17px;
+        margin-right: 12px;
+        flex-shrink: 0;
+      }
+      h2 {
+        display: flex;
+        align-items: center;
+        font-size: 23px;
+        color: var(--azul-osc);
+        margin-bottom: 16px;
+        font-weight: 700;
+      }
+      h3 {
+        font-size: 18px;
+        color: var(--azul-osc);
+        margin: 22px 0 10px;
+        font-weight: 700;
+      }
+      p {
+        margin: 11px 0;
+      }
+      ul,
+      ol {
+        margin: 11px 0 11px 26px;
+      }
+      li {
+        margin: 6px 0;
+      }
+      strong {
+        color: var(--azul-osc);
+      }
+
+      .caja {
+        border-radius: 11px;
+        padding: 18px 22px;
+        margin: 18px 0;
+        border-left: 5px solid;
+      }
+      .caja-objetivo {
+        background: var(--azul-cl);
+        border-color: var(--azul);
+      }
+      .caja-objetivo h2 {
+        margin-bottom: 10px;
+      }
+      .caja-tip {
+        background: var(--verde-cl);
+        border-color: var(--verde);
+      }
+      .caja-tip strong {
+        color: var(--verde);
+      }
+      .caja-ojo {
+        background: var(--ambar-cl);
+        border-color: var(--ambar);
+      }
+      .caja-ojo strong {
+        color: var(--ambar);
+      }
+      .caja-recurso {
+        background: #eef2f7;
+        border-color: var(--gris);
+      }
+
+      .etiqueta {
+        display: inline-block;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+        padding: 3px 10px;
+        border-radius: 5px;
+        margin-bottom: 6px;
+      }
+      .et-verde {
+        background: var(--verde);
+        color: #fff;
+      }
+      .et-ambar {
+        background: var(--ambar);
+        color: #fff;
+      }
+      .et-azul {
+        background: var(--azul);
+        color: #fff;
+      }
+
+      .modalidades {
+        display: flex;
+        gap: 14px;
+        margin-top: 14px;
+        flex-wrap: wrap;
+      }
+      .modo {
+        flex: 1;
+        min-width: 240px;
+        border-radius: 9px;
+        padding: 13px 16px;
+        background: #fff;
+        border: 1px solid var(--linea);
+      }
+      .modo-pres {
+        border-top: 4px solid var(--azul);
+      }
+      .modo-line {
+        border-top: 4px solid var(--verde);
+      }
+      .modo .modo-tit {
+        display: block;
+        font-weight: 700;
+        font-size: 14px;
+        margin-bottom: 5px;
+      }
+      .modo-pres .modo-tit {
+        color: var(--azul-osc);
+      }
+      .modo-line .modo-tit {
+        color: var(--verde);
+      }
+      .modo p {
+        margin: 4px 0 0;
+        font-size: 15px;
+      }
+
+      /* ── MAPA DE PALABRAS CLAVE ── */
+      .mapa-clave {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+        margin: 16px 0;
+      }
+      .mapa-op {
+        flex: 1;
+        min-width: 200px;
+        border-radius: 10px;
+        padding: 14px 16px;
+        border: 2px solid;
+        background: #fff;
+      }
+      .mapa-op.suma {
+        border-color: #276b44;
+      }
+      .mapa-op.resta {
+        border-color: #1565c0;
+      }
+      .mapa-op.mult {
+        border-color: #bf4500;
+      }
+      .mapa-op.div {
+        border-color: #6a1b9a;
+      }
+      .mapa-op .op-tit {
+        font-weight: 700;
+        font-size: 15px;
+        margin-bottom: 6px;
+      }
+      .mapa-op.suma .op-tit {
+        color: #276b44;
+      }
+      .mapa-op.resta .op-tit {
+        color: #1565c0;
+      }
+      .mapa-op.mult .op-tit {
+        color: #bf4500;
+      }
+      .mapa-op.div .op-tit {
+        color: #6a1b9a;
+      }
+      .mapa-op .pals-lista {
+        font-size: 14px;
+        color: #4a5462;
+        margin: 0;
+        padding-left: 20px;
+        list-style: disc;
+      }
+      .mapa-op .pals-lista li {
+        margin: 3px 0;
+      }
+
+      /* ── 4 PASOS ── */
+      .pasos-tarjeta {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin: 16px 0;
+      }
+      .pasos-tarjeta .pt {
+        flex: 1;
+        min-width: 160px;
+        background: var(--azul-cl);
+        border-radius: 10px;
+        padding: 13px 15px;
+        border-bottom: 4px solid var(--azul);
+      }
+      .pasos-tarjeta .pt .ptn {
+        display: inline-block;
+        background: var(--azul);
+        color: #fff;
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        text-align: center;
+        line-height: 24px;
+        font-weight: 700;
+        font-size: 13px;
+        margin-bottom: 5px;
+      }
+      .pasos-tarjeta .pt strong {
+        display: block;
+        font-size: 14px;
+        margin-bottom: 3px;
+      }
+      .pasos-tarjeta .pt span.txt {
+        font-size: 13.5px;
+        color: var(--gris);
+      }
+
+      .ejemplo {
+        background: var(--crema);
+        border: 1px dashed var(--azul);
+        border-radius: 11px;
+        padding: 18px 22px;
+        margin: 18px 0;
+      }
+      .ejemplo .titulo-ej {
+        font-weight: 700;
+        color: var(--azul-osc);
+        margin-bottom: 8px;
+        font-size: 15px;
+      }
+      .paso {
+        margin: 8px 0 8px 4px;
+        padding-left: 32px;
+        position: relative;
+      }
+      .paso .n {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 24px;
+        height: 24px;
+        background: var(--azul);
+        color: #fff;
+        border-radius: 50%;
+        font-size: 13px;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .ec {
+        font-family: 'Consolas', monospace;
+        font-weight: 700;
+        color: var(--azul-osc);
+        background: #fff;
+        border: 1px solid var(--linea);
+        border-radius: 5px;
+        padding: 2px 8px;
+      }
+
+      .practica {
+        border: 2px solid var(--azul-cl);
+        border-radius: 12px;
+        padding: 20px 22px;
+        margin: 20px 0;
+        background: #fffdfa;
+      }
+      .practica .cabe {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 6px;
+      }
+      .practica .cabe .ico {
+        font-size: 22px;
+      }
+      .practica .cabe h3 {
+        font-size: 16px;
+        color: var(--azul-osc);
+        margin: 0;
+      }
+      .pregunta-int {
+        font-size: 17px;
+        font-weight: 600;
+        margin: 14px 0 12px;
+      }
+      .opciones {
+        display: flex;
+        flex-direction: column;
+        gap: 9px;
+      }
+      .opcion {
+        border: 2px solid var(--linea);
+        border-radius: 9px;
+        padding: 11px 16px;
+        cursor: pointer;
+        background: #fff;
+        transition: 0.16s;
+        font-size: 16px;
+        text-align: left;
+        font-family: inherit;
+        color: var(--tinta);
+      }
+      .opcion:hover {
+        border-color: var(--azul);
+        background: var(--azul-cl);
+      }
+      .opcion.correcta {
+        border-color: var(--verde);
+        background: var(--verde-cl);
+        font-weight: 600;
+      }
+      .opcion.incorrecta {
+        border-color: var(--rojo);
+        background: var(--rojo-cl);
+      }
+      .opcion:disabled {
+        cursor: default;
+      }
+      .respuesta-int {
+        margin-top: 12px;
+        padding: 11px 15px;
+        border-radius: 8px;
+        font-size: 15px;
+        display: none;
+      }
+      .respuesta-int.bien {
+        background: var(--verde-cl);
+        color: var(--verde);
+        display: block;
+      }
+      .respuesta-int.mal {
+        background: var(--rojo-cl);
+        color: var(--rojo);
+        display: block;
+      }
+
+      .btn {
+        font-family: inherit;
+        font-size: 15px;
+        font-weight: 600;
+        padding: 9px 20px;
+        background: var(--azul);
+        color: #fff;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: 0.16s;
+      }
+      .btn:hover {
+        background: var(--azul-osc);
+      }
+      .btn-sec {
+        background: #fff;
+        color: var(--azul-osc);
+        border: 2px solid var(--azul);
+      }
+      .btn-sec:hover {
+        background: var(--azul-cl);
+      }
+
+      .quiz-bloque {
+        margin: 18px 0;
+        padding: 18px 20px;
+        border-radius: 11px;
+        background: var(--crema);
+        border: 1px solid var(--linea);
+      }
+      .quiz-bloque .qnum {
+        display: inline-block;
+        background: var(--azul-osc);
+        color: #fff;
+        font-size: 13px;
+        font-weight: 700;
+        padding: 3px 11px;
+        border-radius: 20px;
+        margin-bottom: 8px;
+      }
+      .quiz-bloque .pregunta {
+        font-weight: 600;
+        font-size: 16px;
+        margin-bottom: 12px;
+      }
+      .marcador {
+        text-align: center;
+        padding: 26px;
+        border-radius: 13px;
+        margin-top: 20px;
+        display: none;
+      }
+      .marcador.visible {
+        display: block;
+      }
+      .marcador .puntaje {
+        font-size: 46px;
+        font-weight: 800;
+        margin: 6px 0;
+      }
+      .marcador .mensaje {
+        font-size: 17px;
+      }
+      .barra-prog {
+        height: 10px;
+        background: var(--linea);
+        border-radius: 6px;
+        overflow: hidden;
+        margin: 14px 0;
+      }
+      .barra-prog span {
+        display: block;
+        height: 100%;
+        background: var(--verde);
+        width: 0;
+        transition: width 0.5s;
+      }
+
+      .tabla-rubrica {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 14px 0;
+        font-size: 14px;
+      }
+      .tabla-rubrica th,
+      .tabla-rubrica td {
+        border: 1px solid var(--linea);
+        padding: 10px 12px;
+        text-align: left;
+        vertical-align: top;
+      }
+      .tabla-rubrica thead th {
+        background: var(--azul-osc);
+        color: #fff;
+        font-size: 13px;
+      }
+      .tabla-rubrica tbody th {
+        font-weight: 600;
+        color: var(--azul-osc);
+        background: var(--azul-cl);
+        font-size: 14px;
+        text-align: left;
+      }
+      .nivel-cab {
+        background: #2f3d46;
+        color: #fff;
+        text-align: center;
+      }
+
+      .cierre {
+        background: linear-gradient(135deg, #7a2806, #b34d00);
+        color: #fff;
+        border-radius: 14px;
+        padding: 28px 32px;
+        margin-top: 24px;
+      }
+      .cierre h2 {
+        color: #fff;
+      }
+      .cierre strong {
+        color: #eafde6;
+        font-weight: 700;
+      }
+      .cierre .num-seccion {
+        background: rgba(255, 255, 255, 0.22);
+      }
+      .flecha-sig {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: rgba(255, 255, 255, 0.16);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        padding: 10px 18px;
+        border-radius: 9px;
+        margin-top: 12px;
+        font-weight: 600;
+        font-size: 15px;
+      }
+
+      footer {
+        text-align: center;
+        padding: 30px 20px;
+        color: var(--gris);
+        font-size: 13px;
+      }
+
+      @media (max-width: 560px) {
+        header.principal {
+          padding: 34px 22px;
+        }
+        header.principal h1 {
+          font-size: 24px;
+        }
+        section {
+          padding: 24px 20px;
+        }
+      }
+
+      /* ── FOCO VISIBLE (WCAG 2.4.7) ── */
+      a:focus-visible,
+      button:focus-visible,
+      [tabindex]:focus-visible {
+        outline: 3px solid var(--azul-osc);
+        outline-offset: 2px;
+      }
+
+      /* ── MOVIMIENTO REDUCIDO ── */
+      @media (prefers-reduced-motion: reduce) {
+        * {
+          transition: none !important;
+        }
+        html {
+          scroll-behavior: auto;
+        }
+      }
+
+      /* ── MARCAS DE RESPUESTA (no depender del color) ── */
+      .marca {
+        font-weight: 700;
+        margin-right: 6px;
+      }
+      .opcion.elegida {
+        border-color: var(--azul);
+        background: var(--azul-cl);
+      }
+      .opcion:disabled {
+        color: var(--tinta);
+        opacity: 1;
+      }
+
+      /* ── TABLAS RESPONSIVAS (DUA) ── */
+      .tabla-scroll {
+        overflow-x: auto;
+        overflow-y: hidden;
+        -webkit-overflow-scrolling: touch;
+        max-width: 100%;
+        margin: 18px 0 0;
+        border: 1px solid var(--linea);
+        border-radius: 8px;
+        background: var(--papel);
+      }
+      .tabla-scroll:focus,
+      .tabla-scroll:focus-visible {
+        outline: 3px solid var(--azul);
+        outline-offset: 2px;
+      }
+      .tabla-scroll > table {
+        margin: 0;
+        min-width: 100%;
+      }
+      .aviso-desliza {
+        margin: 8px 0 18px;
+        padding: 8px 12px;
+        font-size: 14px;
+        font-weight: 600;
+        color: #5c3900;
+        background: #fdf3df;
+        border-left: 4px solid #5c3900;
+        border-radius: 5px;
+      }
+      .cap-oculto {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0 0 0 0);
+        white-space: nowrap;
+        border: 0;
+      }
+      @media print {
+        .tabla-scroll {
+          overflow: visible;
+          border: 0;
+        }
+        .aviso-desliza {
+          display: none;
+        }
+      }
+    </style>
+</head>
+<body>
+<header class="principal">
+<div class="envoltura-header">
+<p class="ruta">Matemáticas · Nivel 1 · Tema 5 — Patrones y pensamiento algebraico</p>
+<h1>Lección 5.3 · Problemas verbales de un paso con las cuatro operaciones</h1>
+<p class="lema">Unir todo el Nivel 1: leer un problema, elegir la operación, plantear la ecuación y resolverla.</p>
+<div class="chips">
+<span class="chip"><span aria-hidden="true">⏱️</span> 4 horas (2 sinc. + 2 asinc.)</span>
+<span class="chip"><span aria-hidden="true">🔑</span> Las 4 operaciones</span>
+<span class="chip"><span aria-hidden="true">📘</span> Steck-Vaughn</span>
+</div>
+</div>
+</header>
+<div class="envoltura">
+<!-- OBJETIVOS -->
+<section>
+<div class="caja caja-objetivo">
+<h2>
+<span aria-hidden="true" class="num-seccion">🎯</span>
+            Objetivos de la clase
+          </h2>
+<p>Al terminar esta lección, usted podrá:</p>
+<ul>
+<li>
+<strong>Identificar</strong>
+              la operación correcta en un problema verbal con cualquiera de las cuatro operaciones.
+            </li>
+<li>
+<strong>Plantear</strong>
+              el problema como una ecuación con una incógnita.
+            </li>
+<li>
+<strong>Resolver</strong>
+              la ecuación y encontrar el valor buscado.
+            </li>
+<li>
+<strong>Verificar</strong>
+              que la respuesta tiene sentido en el contexto.
+            </li>
+</ul>
+</div>
+</section>
+<!-- TODO JUNTO -->
+<section>
+<h2>
+<span aria-hidden="true" class="num-seccion">1</span>
+          El cierre del Tema 5: todo junto
+        </h2>
+<p>Esta lección reúne lo más importante del Nivel 1 hasta aquí. A lo largo del curso usted aprendió a:</p>
+<ul>
+<li>
+<strong>Operar</strong>
+            con las cuatro operaciones (Temas 1 y 2).
+          </li>
+<li>
+<strong>Reconocer</strong>
+            palabras clave en problemas verbales (Lecciones 1.3 y 2.3).
+          </li>
+<li>
+<strong>Usar el método de los 4 pasos</strong>
+            para resolver problemas (Lección 1.3).
+          </li>
+<li>
+<strong>Escribir ecuaciones con incógnita</strong>
+            y resolverlas (Lección 5.2).
+          </li>
+</ul>
+<p>
+          Hoy se juntan todas esas piezas. Tomará un problema escrito en palabras, elegirá la operación, lo escribirá como una
+          <strong>ecuación con incógnita</strong>
+          y lo resolverá.
+        </p>
+</section>
+<!-- MAPA DE PALABRAS CLAVE -->
+<section>
+<h2>
+<span aria-hidden="true" class="num-seccion">2</span>
+          Mapa completo de palabras clave
+        </h2>
+<p>Aquí está, en un solo lugar, el mapa de palabras clave de las cuatro operaciones. Es su herramienta de referencia para todo el nivel:</p>
+<div class="mapa-clave">
+<div class="mapa-op suma">
+<p class="op-tit"><span aria-hidden="true">➕</span> Suma</p>
+<ul class="pals-lista"><li>en total</li><li>juntos</li><li>más</li><li>aumentó</li><li>se agregó</li><li>ganó</li></ul>
+</div>
+<div class="mapa-op resta">
+<p class="op-tit"><span aria-hidden="true">➖</span> Resta</p>
+<ul class="pals-lista"><li>cuánto queda</li><li>sobra</li><li>diferencia</li><li>cuánto más</li><li>disminuyó</li><li>gastó</li></ul>
+</div>
+</div>
+<div class="mapa-clave">
+<div class="mapa-op mult">
+<p class="op-tit"><span aria-hidden="true">✖️</span> Multiplicación</p>
+<ul class="pals-lista"><li>por cada</li><li>cada uno</li><li>el doble</li><li>veces</li><li>a razón de</li><li>total de grupos iguales</li></ul>
+</div>
+<div class="mapa-op div">
+<p class="op-tit"><span aria-hidden="true">➗</span> División</p>
+<ul class="pals-lista"><li>repartir en partes iguales</li><li>por persona</li><li>cuántos grupos</li><li>la mitad de</li></ul>
+</div>
+</div>
+<div class="caja caja-ojo">
+<span class="etiqueta et-ambar">¡Ojo!</span>
+<p>
+            Las palabras clave guían, pero no deciden solas. Lo más seguro sigue siendo
+            <strong>imaginar la situación</strong>
+            : ¿se juntan cosas, se quita algo, se repiten grupos iguales, o se reparte un total?
+          </p>
+</div>
+</section>
+<!-- 4 PASOS CON ECUACIÓN -->
+<section>
+<h2>
+<span aria-hidden="true" class="num-seccion">3</span>
+          Los 4 pasos, ahora con ecuación
+        </h2>
+<p>
+          Use el método de los 4 pasos de siempre — pero en el paso 2, además de elegir la operación, va a
+          <strong>escribir una ecuación con incógnita</strong>
+          .
+        </p>
+<div class="pasos-tarjeta">
+<div class="pt">
+<span aria-hidden="true" class="ptn">1</span>
+<strong>Leo y subrayo</strong>
+<span class="txt">Los datos y lo que me preguntan. El dato desconocido es la incógnita.</span>
+</div>
+<div class="pt">
+<span aria-hidden="true" class="ptn">2</span>
+<strong>Planteo la ecuación</strong>
+<span class="txt">Elijo la operación y escribo la ecuación con x.</span>
+</div>
+<div class="pt">
+<span aria-hidden="true" class="ptn">3</span>
+<strong>Resuelvo</strong>
+<span class="txt">Despejo la x con la operación inversa.</span>
+</div>
+<div class="pt">
+<span aria-hidden="true" class="ptn">4</span>
+<strong>¿Tiene sentido?</strong>
+<span class="txt">Verifico la respuesta con su unidad y el contexto.</span>
+</div>
+</div>
+<h3>Ejemplo resuelto con ecuación</h3>
+<div class="ejemplo">
+<p class="titulo-ej">📋 "Una persona repartió cierta cantidad de dinero entre 6 hijos, en partes iguales. Cada hijo recibió $45. ¿Cuánto dinero repartió en total?"</p>
+<p class="paso">
+<span aria-hidden="true" class="n">1</span>
+<strong>Leo y subrayo:</strong>
+            6 hijos, cada uno recibió $45; la incógnita es el total repartido, lo llamo x.
+          </p>
+<p class="paso">
+<span aria-hidden="true" class="n">2</span>
+<strong>Planteo:</strong>
+            el total se repartió entre 6 dando 45 a cada uno. La ecuación es
+            <span class="ec">x ÷ 6 = 45</span>
+            .
+          </p>
+<p class="paso">
+<span aria-hidden="true" class="n">3</span>
+<strong>Resuelvo:</strong>
+            la operación inversa de dividir es multiplicar. x = 45 × 6 = 270.
+          </p>
+<p class="paso">
+<span aria-hidden="true" class="n">✓</span>
+<strong>¿Tiene sentido?</strong>
+            $270 repartidos entre 6 dan $45 a cada uno. ✓ Repartió
+            <strong>$270</strong>
+            .
+          </p>
+</div>
+<div class="practica">
+<div class="cabe">
+<span aria-hidden="true" class="ico">✏️</span>
+<h3>Práctica 1 — Elegir la operación</h3>
+</div>
+<p class="pregunta-int" id="t-p1">"Una caja tiene 8 filas de botellas con 9 botellas por fila. ¿Cuántas botellas hay en la caja?" ¿Qué operación se necesita?</p>
+<div aria-labelledby="t-p1" class="opciones" data-quiz="p1" role="group">
+<button class="opcion" data-correcta="no" type="button">Suma</button>
+<button class="opcion" data-correcta="si" type="button">Multiplicación</button>
+<button class="opcion" data-correcta="no" type="button">División</button>
+<button class="opcion" data-correcta="no" type="button">Resta</button>
+</div>
+<div aria-live="polite" class="respuesta-int" id="r-p1" role="status"></div>
+</div>
+<div class="practica">
+<div class="cabe">
+<span aria-hidden="true" class="ico">✏️</span>
+<h3>Práctica 2 — Plantear y resolver</h3>
+</div>
+<p class="pregunta-int" id="t-p2">"Después de gastar $80, a una persona le quedaron $150. ¿Cuánto dinero tenía? (use x = dinero que tenía)"</p>
+<div aria-labelledby="t-p2" class="opciones" data-quiz="p2" role="group">
+<button class="opcion" data-correcta="no" type="button">x = 70</button>
+<button class="opcion" data-correcta="si" type="button">x = 230</button>
+<button class="opcion" data-correcta="no" type="button">x = 80</button>
+<button class="opcion" data-correcta="no" type="button">x = 150</button>
+</div>
+<div aria-live="polite" class="respuesta-int" id="r-p2" role="status"></div>
+</div>
+</section>
+<!-- LOS CUATRO TIPOS -->
+<section>
+<h2>
+<span aria-hidden="true" class="num-seccion">4</span>
+          Un ejemplo de cada operación
+        </h2>
+<p>Para que vea cómo el mismo método sirve para las cuatro operaciones, aquí tiene un ejemplo de cada una:</p>
+<div class="ejemplo">
+<p class="titulo-ej">➕ Suma — "Un autobús tenía pasajeros, subieron 23 más y ahora hay 61. ¿Cuántos había?"</p>
+<p class="paso">
+<span aria-hidden="true" class="n">→</span>
+            Ecuación:
+            <span class="ec">x + 23 = 61</span>
+             ·  Resuelvo: x = 61 − 23 =
+            <strong>38 pasajeros</strong>
+            .
+          </p>
+</div>
+<div class="ejemplo">
+<p class="titulo-ej">➖ Resta — "A una cuenta de banco le quitaron $90 y quedaron $410. ¿Cuánto había?"</p>
+<p class="paso">
+<span aria-hidden="true" class="n">→</span>
+            Ecuación:
+            <span class="ec">x − 90 = 410</span>
+             ·  Resuelvo: x = 410 + 90 =
+            <strong>$500</strong>
+            .
+          </p>
+</div>
+<div class="ejemplo">
+<p class="titulo-ej">✖️ Multiplicación — "Cada caja pesa lo mismo. 7 cajas iguales pesan 84 libras. ¿Cuánto pesa una?"</p>
+<p class="paso">
+<span aria-hidden="true" class="n">→</span>
+            Ecuación:
+            <span class="ec">7x = 84</span>
+             ·  Resuelvo: x = 84 ÷ 7 =
+            <strong>12 libras</strong>
+            .
+          </p>
+</div>
+<div class="ejemplo">
+<p class="titulo-ej">➗ División — "Un dinero se repartió entre 5 personas; cada una recibió $36. ¿Cuánto se repartió?"</p>
+<p class="paso">
+<span aria-hidden="true" class="n">→</span>
+            Ecuación:
+            <span class="ec">x ÷ 5 = 36</span>
+             ·  Resuelvo: x = 36 × 5 =
+            <strong>$180</strong>
+            .
+          </p>
+</div>
+<div class="caja caja-tip">
+<span class="etiqueta et-verde">El patrón se repite</span>
+<p>
+            En los cuatro casos hizo lo mismo: plantear una ecuación con x y despejarla con la operación inversa.
+            <strong>Un solo método</strong>
+            resuelve los cuatro tipos de problema.
+          </p>
+</div>
+<div class="practica">
+<div class="cabe">
+<span aria-hidden="true" class="ico">✏️</span>
+<h3>Práctica 3 — Multiplicación en contexto</h3>
+</div>
+<p class="pregunta-int" id="t-p3">"7 cajas iguales pesan en total 91 kilos. ¿Cuánto pesa cada caja?"</p>
+<div aria-labelledby="t-p3" class="opciones" data-quiz="p3" role="group">
+<button class="opcion" data-correcta="no" type="button">98 kilos</button>
+<button class="opcion" data-correcta="si" type="button">13 kilos</button>
+<button class="opcion" data-correcta="no" type="button">84 kilos</button>
+<button class="opcion" data-correcta="no" type="button">637 kilos</button>
+</div>
+<div aria-live="polite" class="respuesta-int" id="r-p3" role="status"></div>
+</div>
+<div class="practica">
+<div class="cabe">
+<span aria-hidden="true" class="ico">✏️</span>
+<h3>Práctica 4 — División en contexto</h3>
+</div>
+<p class="pregunta-int" id="t-p4">"Un premio se repartió en partes iguales entre 4 personas. Cada una recibió $125. ¿De cuánto era el premio?"</p>
+<div aria-labelledby="t-p4" class="opciones" data-quiz="p4" role="group">
+<button class="opcion" data-correcta="no" type="button">$129</button>
+<button class="opcion" data-correcta="si" type="button">$500</button>
+<button class="opcion" data-correcta="no" type="button">$31</button>
+<button class="opcion" data-correcta="no" type="button">$250</button>
+</div>
+<div aria-live="polite" class="respuesta-int" id="r-p4" role="status"></div>
+</div>
+</section>
+<!-- PRÁCTICA GUIADA -->
+<section>
+<h2>
+<span aria-hidden="true" class="num-seccion">5</span>
+          Práctica guiada en clase
+        </h2>
+<p>
+          Estas actividades se hacen
+          <strong>en la sesión sincrónica</strong>
+          . Cada actividad incluye una variante para la
+          <strong>clase presencial</strong>
+          y otra para la
+          <strong>clase en línea</strong>
+          ; el objetivo de aprendizaje es el mismo en ambas.
+        </p>
+<div class="caja caja-recurso">
+<span class="etiqueta et-azul">Actividad A · "Torneo de resolución"</span>
+<p>En equipos, los estudiantes resuelven una tarjeta de problema de cada operación y explican qué operación usaron y por qué.</p>
+<div class="modalidades">
+<div class="modo modo-pres">
+<span class="modo-tit">🏫 Presencial</span>
+<p>Forme equipos de tres. Cada equipo recibe cuatro tarjetas (una por operación). Resuelven todas planteando la ecuación, y un vocero explica al grupo el razonamiento de cada una.</p>
+</div>
+<div class="modo modo-line">
+<span class="modo-tit">💻 En línea</span>
+<p>En salas pequeñas (breakout rooms) de tres, los equipos resuelven los cuatro problemas en un documento compartido. Al volver al grupo grande, cada equipo presenta una solución.</p>
+</div>
+</div>
+</div>
+<div class="caja caja-recurso">
+<span class="etiqueta et-azul">Actividad B · "De la palabra a la ecuación"</span>
+<p>Los estudiantes practican el paso clave: convertir un problema escrito en una ecuación con incógnita, sin resolverla todavía.</p>
+<div class="modalidades">
+<div class="modo modo-pres">
+<span class="modo-tit">🏫 Presencial</span>
+<p>El profesor lee problemas en voz alta. Tras cada uno, los estudiantes escriben solo la ecuación en su pizarra individual y la levantan. El grupo compara las ecuaciones propuestas.</p>
+</div>
+<div class="modo modo-line">
+<span class="modo-tit">💻 En línea</span>
+<p>El profesor presenta los problemas en diapositivas. Los estudiantes escriben solo la ecuación en el chat. El grupo revisa juntos las distintas ecuaciones propuestas.</p>
+</div>
+</div>
+</div>
+<div class="caja caja-recurso">
+<span class="etiqueta et-azul">Actividad C · Foro "El problema de mi semana"</span>
+<p>Cada estudiante inventa un problema verbal con datos de su vida real y resuelve el de un compañero.</p>
+<div class="modalidades">
+<div class="modo modo-pres">
+<span class="modo-tit">🏫 Presencial</span>
+<p>
+                Cada estudiante escribe en una tarjeta un problema de su vida real (trabajo, hogar, compras). Las tarjetas se intercambian; cada quien resuelve el problema recibido y lo devuelve para
+                verificar.
+              </p>
+</div>
+<div class="modo modo-line">
+<span class="modo-tit">💻 En línea</span>
+<p>Cada estudiante publica su problema en el foro de Brightspace y resuelve el de al menos un compañero respondiendo a su mensaje. El autor confirma si la solución es correcta.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- TAREA ASINCRÓNICA -->
+<section>
+<h2>
+<span aria-hidden="true" class="num-seccion">6</span>
+          Tarea asincrónica
+        </h2>
+<p>
+          Estas actividades se realizan
+          <strong>por su cuenta</strong>
+          , dentro de las 2 horas asincrónicas de la lección. Encontrará los enlaces a continuación de la lección.
+        </p>
+<ul>
+<li>
+<strong>MyOpenMath:</strong>
+            Realice los ejercicios de N1 MOM 5.3 · Problemas verbales de un paso con las cuatro operaciones
+          </li>
+<li>
+<strong>Brightspace:</strong>
+            realice el quiz de la lección Problemas verbales de un paso.
+          </li>
+<li>
+<strong>Foro de Brightspace:</strong>
+            publique un problema verbal con datos reales de su vida y resuelva el problema de un compañero, mostrando la ecuación que usó.
+          </li>
+<li>
+<strong>Actividad personal:</strong>
+            elija una situación de su semana con un dato desconocido. Escríbala como ecuación, resuélvala con la operación inversa y verifique.
+          </li>
+</ul>
+</section>
+<!-- QUIZ -->
+<section>
+<h2>
+<span aria-hidden="true" class="num-seccion">7</span>
+          Quiz de práctica
+        </h2>
+<p>
+          Responda las
+          <strong>8 preguntas</strong>
+          . Al final verá su puntaje y podrá repasar lo que falló. Puede repetir el quiz las veces que quiera.
+        </p>
+<div id="quiz">
+<div class="quiz-bloque">
+<span class="qnum">Pregunta 1</span>
+<p class="pregunta" id="t-q1">"Una tienda tenía cierto número de clientes; llegaron 34 más y ahora hay 90." ¿Qué operación se usa para hallar cuántos había?</p>
+<div aria-labelledby="t-q1" class="opciones" data-q="1" role="group">
+<button class="opcion" data-c="no" type="button">Multiplicación</button>
+<button class="opcion" data-c="si" type="button">Resta</button>
+<button class="opcion" data-c="no" type="button">División</button>
+</div>
+</div>
+<div class="quiz-bloque">
+<span class="qnum">Pregunta 2</span>
+<p class="pregunta" id="t-q2">"Cada bolsa trae 6 manzanas. Hay 9 bolsas. ¿Cuántas manzanas hay en total?"</p>
+<div aria-labelledby="t-q2" class="opciones" data-q="2" role="group">
+<button class="opcion" data-c="no" type="button">15 manzanas</button>
+<button class="opcion" data-c="si" type="button">54 manzanas</button>
+<button class="opcion" data-c="no" type="button">3 manzanas</button>
+<button class="opcion" data-c="no" type="button">45 manzanas</button>
+</div>
+</div>
+<div class="quiz-bloque">
+<span class="qnum">Pregunta 3</span>
+<p class="pregunta" id="t-q3">"Después de gastar $65, a una persona le quedaron $120. ¿Cuánto tenía?" ¿Qué ecuación representa el problema, con x = dinero que tenía?</p>
+<div aria-labelledby="t-q3" class="opciones" data-q="3" role="group">
+<button class="opcion" data-c="si" type="button">x − 65 = 120</button>
+<button class="opcion" data-c="no" type="button">x + 65 = 120</button>
+<button class="opcion" data-c="no" type="button">65x = 120</button>
+<button class="opcion" data-c="no" type="button">x ÷ 65 = 120</button>
+</div>
+</div>
+<div class="quiz-bloque">
+<span class="qnum">Pregunta 4</span>
+<p class="pregunta" id="t-q4">Resuelva el problema anterior: ¿cuánto dinero tenía la persona?</p>
+<div aria-labelledby="t-q4" class="opciones" data-q="4" role="group">
+<button class="opcion" data-c="no" type="button">$55</button>
+<button class="opcion" data-c="si" type="button">$185</button>
+<button class="opcion" data-c="no" type="button">$65</button>
+<button class="opcion" data-c="no" type="button">$120</button>
+</div>
+</div>
+<div class="quiz-bloque">
+<span class="qnum">Pregunta 5</span>
+<p class="pregunta" id="t-q5">"8 cajas iguales pesan en total 96 kilos. ¿Cuánto pesa una caja?"</p>
+<div aria-labelledby="t-q5" class="opciones" data-q="5" role="group">
+<button class="opcion" data-c="si" type="button">12 kilos</button>
+<button class="opcion" data-c="no" type="button">88 kilos</button>
+<button class="opcion" data-c="no" type="button">104 kilos</button>
+<button class="opcion" data-c="no" type="button">768 kilos</button>
+</div>
+</div>
+<div class="quiz-bloque">
+<span class="qnum">Pregunta 6</span>
+<p class="pregunta" id="t-q6">"Un dinero se repartió en partes iguales entre 9 personas; cada una recibió $40. ¿Cuánto se repartió?"</p>
+<div aria-labelledby="t-q6" class="opciones" data-q="6" role="group">
+<button class="opcion" data-c="no" type="button">$49</button>
+<button class="opcion" data-c="si" type="button">$360</button>
+<button class="opcion" data-c="no" type="button">$31</button>
+<button class="opcion" data-c="no" type="button">$4.44</button>
+</div>
+</div>
+<div class="quiz-bloque">
+<span class="qnum">Pregunta 7</span>
+<p class="pregunta" id="t-q7">
+              ¿Cuál es la operación inversa que se usa para resolver la ecuación
+              <strong>6x = 48</strong>
+              ?
+            </p>
+<div aria-labelledby="t-q7" class="opciones" data-q="7" role="group">
+<button class="opcion" data-c="no" type="button">Multiplicar por 6</button>
+<button class="opcion" data-c="si" type="button">Dividir entre 6</button>
+<button class="opcion" data-c="no" type="button">Sumar 6</button>
+<button class="opcion" data-c="no" type="button">Restar 6</button>
+</div>
+</div>
+<div class="quiz-bloque">
+<span class="qnum">Pregunta 8</span>
+<p class="pregunta" id="t-q8">"Una familia ahorró cierta cantidad cada mes durante 12 meses, y al final tenía $1 800 ahorrados (ahorró lo mismo cada mes). ¿Cuánto ahorró por mes?"</p>
+<div aria-labelledby="t-q8" class="opciones" data-q="8" role="group">
+<button class="opcion" data-c="no" type="button">$1 812</button>
+<button class="opcion" data-c="si" type="button">$150</button>
+<button class="opcion" data-c="no" type="button">$1 788</button>
+<button class="opcion" data-c="no" type="button">$21 600</button>
+</div>
+</div>
+</div>
+<div style="text-align: center; margin-top: 18px">
+<button class="btn" id="btn-calificar" type="button">Ver mi resultado</button>
+<button class="btn btn-sec" id="btn-reintentar" style="display: none" type="button">Intentar de nuevo</button>
+</div>
+<div aria-live="polite" class="marcador" id="marcador" role="status">
+<div aria-hidden="true" class="barra-prog"><span id="barra"></span></div>
+<p class="puntaje" id="puntaje"></p>
+<p class="mensaje" id="mensaje"></p>
+</div>
+</section>
+<!-- RÚBRICA -->
+<section>
+<h2>
+<span aria-hidden="true" class="num-seccion">8</span>
+          Rúbrica de evaluación
+        </h2>
+<p>Rúbrica integradora de resolución de problemas. Cada criterio se evalúa en cuatro niveles.</p>
+<div aria-label="Rúbrica de evaluación (tabla desplazable horizontalmente)" class="tabla-scroll" role="region" tabindex="0"><table class="tabla-rubrica"><caption class="cap-oculto">Rúbrica de evaluación: criterios y sus niveles de logro</caption>
+<thead>
+<tr>
+<th scope="col">Criterio</th>
+<th class="nivel-cab" scope="col">Logrado (4)</th>
+<th class="nivel-cab" scope="col">Satisfactorio (3)</th>
+<th class="nivel-cab" scope="col">En proceso (2)</th>
+<th class="nivel-cab" scope="col">Por reforzar (1)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th scope="row">Identifica la operación correcta</th>
+<td>Elige la operación correcta en las cuatro y lo justifica.</td>
+<td>Elige la operación correcta casi siempre.</td>
+<td>Acierta solo con suma y resta.</td>
+<td>Elige la operación equivocada.</td>
+</tr>
+<tr>
+<th scope="row">Plantea la ecuación</th>
+<td>Escribe la ecuación con la incógnita en el lugar correcto.</td>
+<td>Plantea la ecuación correctamente casi siempre.</td>
+<td>Plantea la ecuación con errores de orden.</td>
+<td>No logra plantear la ecuación.</td>
+</tr>
+<tr>
+<th scope="row">Resuelve la ecuación</th>
+<td>Despeja la incógnita sin errores en las cuatro operaciones.</td>
+<td>Resuelve bien con un descuido aislado.</td>
+<td>Comete errores al aplicar la operación inversa.</td>
+<td>No logra resolver la ecuación.</td>
+</tr>
+<tr>
+<th scope="row">Verifica e interpreta</th>
+<td>Verifica la respuesta y la expresa con unidades y sentido.</td>
+<td>Expresa la respuesta con unidades.</td>
+<td>Da el número sin unidad ni verificación.</td>
+<td>No interpreta el resultado.</td>
+</tr>
+</tbody>
+</table></div><p class="aviso-desliza"><span aria-hidden="true">↔</span> Deslice la tabla horizontalmente para ver todas las columnas.</p>
+</section>
+<!-- CIERRE -->
+<div class="cierre">
+<h2>
+<span aria-hidden="true" class="num-seccion">➡️</span>
+          Lo que viene en el próximo tema
+        </h2>
+<p>
+          Con esta lección cierra el
+          <strong>Tema 5 · Patrones y pensamiento algebraico</strong>
+          . Ya sabe resolver problemas verbales con las cuatro operaciones, planteándolos como ecuaciones con incógnita.
+        </p>
+<p>
+          En el
+          <strong>Tema 6 · Sistemas de medidas y el tiempo</strong>
+          aplicará las matemáticas a algo muy concreto del día a día: medir. La
+          <strong>Lección 6.1 · Sistema inglés: longitud, peso y capacidad</strong>
+          le enseñará las unidades que se usan en Estados Unidos —pulgadas, libras, galones— y a convertir entre ellas.
+        </p>
+<p class="flecha-sig">➡️  Próxima: Tema 6 · Lección 6.1 · Sistema inglés: longitud, peso y capacidad</p>
+</div>
+</div>
+<footer>
+      Matemáticas · Nivel 1 · Lección 5.3 — Spanish ASE Math · AE 0170-0321
+      <br/>
+      City Colleges of Chicago · Truman College · Prof. José M. Fernández
+    </footer>
+<script>
+      // ── PRÁCTICA INTERACTIVA ──
+      var respuestasPractica = {
+        p1: "Es una MULTIPLICACIÓN: 8 filas × 9 botellas = 72 botellas. Son grupos iguales que se juntan; 'por fila' es la pista.",
+        p2: 'x − 80 = 150. Gastó 80 y le quedaron 150. Resuelvo con la inversa: x = 150 + 80 = 230. Tenía $230.',
+        p3: '7 cajas iguales pesan 91 kilos: 7x = 91. Resuelvo con la inversa: x = 91 ÷ 7 = 13 kilos por caja.',
+        p4: 'Se repartió entre 4 dando 125 a cada uno: x ÷ 4 = 125. Resuelvo con la inversa: x = 125 × 4 = 500. El premio era de $500.'
+      };
+
+      document.querySelectorAll('.opciones[data-quiz]').forEach(function (grupo) {
+        var id = grupo.getAttribute('data-quiz');
+        grupo.querySelectorAll('.opcion').forEach(function (op) {
+          op.addEventListener('click', function () {
+            var acerto = op.getAttribute('data-correcta') === 'si';
+            grupo.querySelectorAll('.opcion').forEach(function (o) {
+              o.disabled = true;
+              if (o.getAttribute('data-correcta') === 'si') {
+                o.classList.add('correcta');
+                o.insertAdjacentHTML('afterbegin', '<span class="marca">\u2713 Correcta:</span> ');
+              }
+            });
+            if (!acerto) {
+              op.classList.add('incorrecta');
+              op.insertAdjacentHTML('afterbegin', '<span class="marca">\u2717 Su respuesta:</span> ');
+            }
+            var r = document.getElementById('r-' + id);
+            r.className = 'respuesta-int ' + (acerto ? 'bien' : 'mal');
+            r.textContent = (acerto ? 'Correcto. ' : 'Revise: ') + respuestasPractica[id];
+          });
+        });
+      });
+
+      // ── QUIZ FINAL ──
+      var totalPreguntas = 8;
+      var seleccion = {};
+
+      document.querySelectorAll('#quiz .opciones').forEach(function (grupo) {
+        var q = grupo.getAttribute('data-q');
+        grupo.querySelectorAll('.opcion').forEach(function (op) {
+          op.setAttribute('aria-pressed', 'false');
+          op.addEventListener('click', function () {
+            grupo.querySelectorAll('.opcion').forEach(function (o) {
+              o.classList.remove('elegida');
+              o.setAttribute('aria-pressed', 'false');
+            });
+            op.classList.add('elegida');
+            op.setAttribute('aria-pressed', 'true');
+            seleccion[q] = op;
+          });
+        });
+      });
+
+      document.getElementById('btn-calificar').addEventListener('click', function () {
+        var correctas = 0;
+        document.querySelectorAll('#quiz .opciones').forEach(function (grupo) {
+          var q = grupo.getAttribute('data-q');
+          grupo.querySelectorAll('.opcion').forEach(function (o) {
+            o.disabled = true;
+            if (o.getAttribute('data-c') === 'si') {
+              o.classList.add('correcta');
+              o.insertAdjacentHTML('afterbegin', '<span class="marca">\u2713 Correcta:</span> ');
+            }
+          });
+          var elegida = seleccion[q];
+          if (elegida) {
+            if (elegida.getAttribute('data-c') === 'si') {
+              correctas++;
+            } else {
+              elegida.classList.add('incorrecta');
+              elegida.insertAdjacentHTML('afterbegin', '<span class="marca">\u2717 Su respuesta:</span> ');
+            }
+          }
+        });
+
+        var marc = document.getElementById('marcador');
+        var pct = Math.round((correctas / totalPreguntas) * 100);
+        document.getElementById('puntaje').textContent = correctas + ' de ' + totalPreguntas + ' correctas';
+
+        var msg, color;
+        if (pct >= 88) {
+          msg = 'Excelente. Cerró el Tema 5 resolviendo problemas con ecuaciones. Está listo para el Tema 6.';
+          color = '#e7f4ec';
+        } else if (pct >= 63) {
+          msg = 'Buen trabajo. Repase las preguntas marcadas como incorrectas y vuelva a intentarlo.';
+          color = '#fdf3df';
+        } else {
+          msg = 'Repasemos juntos. Vuelva a leer las secciones 2, 3 y 4, y reintente el quiz.';
+          color = '#fdecea';
+        }
+
+        marc.style.background = color;
+        document.getElementById('mensaje').textContent = msg;
+        marc.classList.add('visible');
+        document.getElementById('barra').style.width = pct + '%';
+        document.getElementById('btn-calificar').style.display = 'none';
+
+        var reintentar = document.getElementById('btn-reintentar');
+        reintentar.style.display = 'inline-block';
+        reintentar.focus();
+      });
+
+      document.getElementById('btn-reintentar').addEventListener('click', function () {
+        document.querySelectorAll('#quiz .opcion').forEach(function (o) {
+          o.disabled = false;
+          o.classList.remove('correcta', 'incorrecta', 'elegida');
+          o.setAttribute('aria-pressed', 'false');
+          var marca = o.querySelector('.marca');
+          if (marca) {
+            marca.remove();
+          }
+        });
+        for (var k in seleccion) {
+          delete seleccion[k];
+        }
+        document.getElementById('marcador').classList.remove('visible');
+        document.getElementById('puntaje').textContent = '';
+        document.getElementById('mensaje').textContent = '';
+        document.getElementById('btn-calificar').style.display = 'inline-block';
+        document.getElementById('btn-reintentar').style.display = 'none';
+        var primera = document.querySelector('#quiz .opcion');
+        if (primera) {
+          primera.focus();
+        }
+      });
+
+      // ── TABLAS RESPONSIVAS ──
+      // Los contenedores y avisos ya están en el marcado, para que los
+      // revisores que no ejecutan JavaScript los detecten.
+      (function () {
+        var TEXTO_AVISO = '\u2194 Deslice la tabla horizontalmente para ver todas las columnas.';
+        var pares = [];
+
+        document.querySelectorAll('table').forEach(function (t) {
+          var caja = t.parentNode;
+          if (!caja.classList.contains('tabla-scroll')) {
+            var cap = t.querySelector('caption');
+            var etiqueta = (cap ? cap.textContent.trim() : 'Tabla de datos') + ' (tabla desplazable horizontalmente)';
+            var nueva = document.createElement('div');
+            nueva.className = 'tabla-scroll';
+            nueva.setAttribute('role', 'region');
+            nueva.setAttribute('tabindex', '0');
+            nueva.setAttribute('aria-label', etiqueta);
+            t.parentNode.insertBefore(nueva, t);
+            nueva.appendChild(t);
+            caja = nueva;
+          }
+          var aviso = caja.nextElementSibling;
+          if (!aviso || !aviso.classList.contains('aviso-desliza')) {
+            aviso = document.createElement('p');
+            aviso.className = 'aviso-desliza';
+            aviso.textContent = TEXTO_AVISO;
+            caja.parentNode.insertBefore(aviso, caja.nextSibling);
+          }
+          pares.push({ caja: caja, aviso: aviso });
+        });
+
+        function actualizar() {
+          pares.forEach(function (p) {
+            p.aviso.style.display = p.caja.scrollWidth > p.caja.clientWidth + 2 ? 'block' : 'none';
+          });
+        }
+        actualizar();
+
+        var tm;
+        window.addEventListener('resize', function () {
+          clearTimeout(tm);
+          tm = setTimeout(actualizar, 150);
+        });
+      })();
+    </script>
+</body>
+</html>

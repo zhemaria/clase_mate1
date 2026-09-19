@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Lección 8.1 · Leer e interpretar tablas de datos — Matemáticas Nivel 1</title>
+<style>
+  :root{
+    --azul:#1b5e20; --azul-osc:#0d3b11; --azul-cl:#e8f5e9;
+    --tinta:#1a2330; --gris:#5b6675; --linea:#dde3ea;
+    --crema:#f6f4ee; --papel:#ffffff;
+    --verde:#276b44; --verde-cl:#e7f4ec;
+    --ambar:#7d4e00; --ambar-cl:#fdf3df;
+    --rojo:#b5342a; --rojo-cl:#fdecea;
+    --sombra:0 2px 10px rgba(13,59,17,.12);
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    font-family:'Segoe UI','Helvetica Neue',system-ui,sans-serif;
+    background:var(--crema); color:var(--tinta);
+    line-height:1.65; font-size:17px;
+  }
+  .envoltura{max-width:880px;margin:0 auto;padding:0 20px 80px;}
+
+  header.principal{
+    background:linear-gradient(135deg,#0d3b11 0%,#1b5e20 55%,#2e7d32 100%);
+    color:#fff;padding:46px 38px 40px;border-radius:0 0 22px 22px;
+    box-shadow:0 6px 22px rgba(13,59,17,.30);
+  }
+  .envoltura-header{max-width:880px;margin:0 auto;padding:0 20px;}
+  .ruta{font-size:13px;letter-spacing:.6px;text-transform:uppercase;opacity:.85;margin-bottom:14px;}
+  header.principal h1{font-size:30px;font-weight:700;line-height:1.25;margin-bottom:8px;}
+  header.principal .lema{font-size:16px;opacity:.93;font-weight:400;max-width:620px;}
+  .chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px;}
+  .chip{
+    background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.28);
+    padding:6px 14px;border-radius:30px;font-size:13px;font-weight:600;
+  }
+
+  section{
+    background:var(--papel);margin-top:22px;padding:30px 34px;
+    border-radius:14px;box-shadow:var(--sombra);
+  }
+  .num-seccion{
+    display:inline-flex;align-items:center;justify-content:center;
+    width:34px;height:34px;background:var(--azul);color:#fff;
+    border-radius:9px;font-weight:700;font-size:17px;margin-right:12px;flex-shrink:0;
+  }
+  h2{display:flex;align-items:center;font-size:23px;color:var(--azul-osc);margin-bottom:16px;font-weight:700;}
+  h3{font-size:18px;color:var(--azul-osc);margin:22px 0 10px;font-weight:700;}
+  p{margin:11px 0;}
+  ul,ol{margin:11px 0 11px 26px;}
+  li{margin:6px 0;}
+  strong{color:var(--azul-osc);}
+
+  .caja{border-radius:11px;padding:18px 22px;margin:18px 0;border-left:5px solid;}
+  .caja-objetivo{background:var(--azul-cl);border-color:var(--azul);}
+  .caja-objetivo h2{margin-bottom:10px;}
+  .caja-tip{background:var(--verde-cl);border-color:var(--verde);}
+  .caja-tip strong{color:var(--verde);}
+  .caja-ojo{background:var(--ambar-cl);border-color:var(--ambar);}
+  .caja-ojo strong{color:var(--ambar);}
+  .caja-recurso{background:#eef2f7;border-color:var(--gris);}
+
+  .etiqueta{
+    display:inline-block;font-size:12px;font-weight:700;letter-spacing:.5px;
+    text-transform:uppercase;padding:3px 10px;border-radius:5px;margin-bottom:6px;
+  }
+  .et-verde{background:var(--verde);color:#fff;}
+  .et-ambar{background:var(--ambar);color:#fff;}
+  .et-azul{background:var(--azul);color:#fff;}
+
+  .modalidades{display:flex;gap:14px;margin-top:14px;flex-wrap:wrap;}
+  .modo{
+    flex:1;min-width:240px;border-radius:9px;padding:13px 16px;
+    background:#fff;border:1px solid var(--linea);
+  }
+  .modo-pres{border-top:4px solid var(--azul);}
+  .modo-line{border-top:4px solid var(--verde);}
+  .modo .modo-tit{display:block;font-weight:700;font-size:14px;margin-bottom:5px;}
+  .modo-pres .modo-tit{color:var(--azul-osc);}
+  .modo-line .modo-tit{color:var(--verde);}
+  .modo p{margin:4px 0 0;font-size:15px;}
+
+  /* ── TABLA DE DATOS ── */
+  .tabla-datos{width:100%;border-collapse:collapse;margin:14px 0;font-size:16px;}
+  .tabla-datos caption{
+    font-weight:700;color:var(--azul-osc);text-align:left;
+    padding:8px 0 6px;font-size:15px;
+  }
+  .tabla-datos th,.tabla-datos td{border:1px solid var(--linea);padding:10px 14px;text-align:center;}
+  .tabla-datos thead th{background:var(--azul-osc);color:#fff;font-size:14px;}
+  .tabla-datos tbody td:first-child{
+    background:var(--azul-cl);font-weight:700;color:var(--azul-osc);text-align:left;
+  }
+  .tabla-datos tbody tr:nth-child(even) td:not(:first-child){background:#f4f8f4;}
+  .tabla-datos td.resalta{background:#fff3cd !important;font-weight:700;}
+
+  /* ── PASOS PARA LEER ── */
+  .pasos-leer{display:flex;gap:10px;flex-wrap:wrap;margin:16px 0;}
+  .pasos-leer .pl{
+    flex:1;min-width:150px;background:var(--azul-cl);border-radius:10px;
+    padding:13px 15px;border-bottom:4px solid var(--azul);
+  }
+  .pasos-leer .pl .pln{
+    display:inline-block;background:var(--azul);color:#fff;width:24px;height:24px;
+    border-radius:50%;text-align:center;line-height:24px;font-weight:700;font-size:13px;margin-bottom:5px;
+  }
+  .pasos-leer .pl strong{display:block;font-size:14px;margin-bottom:3px;}
+  .pasos-leer .pl span.txt{font-size:13px;color:var(--gris);}
+
+  .ejemplo{
+    background:var(--crema);border:1px dashed var(--azul);
+    border-radius:11px;padding:18px 22px;margin:18px 0;
+  }
+  .ejemplo .titulo-ej{font-weight:700;color:var(--azul-osc);margin-bottom:8px;font-size:15px;}
+  .paso{margin:8px 0 8px 4px;padding-left:32px;position:relative;}
+  .paso .n{
+    position:absolute;left:0;top:0;width:24px;height:24px;background:var(--azul);
+    color:#fff;border-radius:50%;font-size:13px;font-weight:700;
+    display:flex;align-items:center;justify-content:center;
+  }
+
+  .practica{
+    border:2px solid var(--azul-cl);border-radius:12px;
+    padding:20px 22px;margin:20px 0;background:#fbfdfb;
+  }
+  .practica .cabe{display:flex;align-items:center;gap:10px;margin-bottom:6px;}
+  .practica .cabe .ico{font-size:22px;}
+  .practica .cabe h3{font-size:16px;color:var(--azul-osc);}
+  .pregunta-int{font-size:17px;font-weight:600;margin:14px 0 12px;}
+  .opciones{display:flex;flex-direction:column;gap:9px;}
+  .opcion{
+    border:2px solid var(--linea);border-radius:9px;padding:11px 16px;
+    cursor:pointer;background:#fff;transition:.16s;font-size:16px;
+    text-align:left;font-family:inherit;color:var(--tinta);
+  }
+  .opcion:hover{border-color:var(--azul);background:var(--azul-cl);}
+  .opcion.correcta{border-color:var(--verde);background:var(--verde-cl);font-weight:600;}
+  .opcion.incorrecta{border-color:var(--rojo);background:var(--rojo-cl);}
+  .opcion:disabled{cursor:default;}
+  .respuesta-int{margin-top:12px;padding:11px 15px;border-radius:8px;font-size:15px;display:none;}
+  .respuesta-int.bien{background:var(--verde-cl);color:var(--verde);display:block;}
+  .respuesta-int.mal{background:var(--rojo-cl);color:var(--rojo);display:block;}
+
+  .btn{
+    font-family:inherit;font-size:15px;font-weight:600;padding:9px 20px;
+    background:var(--azul);color:#fff;border:none;border-radius:8px;cursor:pointer;transition:.16s;
+  }
+  .btn:hover{background:var(--azul-osc);}
+  .btn-sec{background:#fff;color:var(--azul);border:2px solid var(--azul);}
+  .btn-sec:hover{background:var(--azul-cl);}
+
+  .quiz-bloque{margin:18px 0;padding:18px 20px;border-radius:11px;background:var(--crema);border:1px solid var(--linea);}
+  .quiz-bloque .qnum{
+    display:inline-block;background:var(--azul-osc);color:#fff;font-size:13px;
+    font-weight:700;padding:3px 11px;border-radius:20px;margin-bottom:8px;
+  }
+  .quiz-bloque .pregunta{font-weight:600;font-size:16px;margin-bottom:12px;}
+  .marcador{text-align:center;padding:26px;border-radius:13px;margin-top:20px;display:none;}
+  .marcador.visible{display:block;}
+  .marcador .puntaje{font-size:46px;font-weight:800;margin:6px 0;}
+  .marcador .mensaje{font-size:17px;}
+  .barra-prog{height:10px;background:var(--linea);border-radius:6px;overflow:hidden;margin:14px 0;}
+  .barra-prog span{display:block;height:100%;background:var(--verde);width:0;transition:width .5s;}
+
+  .tabla-rubrica{width:100%;border-collapse:collapse;margin:14px 0;font-size:14px;}
+  .tabla-rubrica th,.tabla-rubrica td{border:1px solid var(--linea);padding:10px 12px;text-align:left;vertical-align:top;}
+  .tabla-rubrica thead th{background:var(--azul-osc);color:#fff;font-size:13px;}
+  .tabla-rubrica tbody th{font-weight:600;color:var(--azul-osc);background:var(--azul-cl);font-size:14px;text-align:left;}
+  .nivel-cab{background:#2f3d46;color:#fff;text-align:center;}
+
+  .cierre{
+    background:linear-gradient(135deg,#0d3b11,#2e7d32);color:#fff;
+    border-radius:14px;padding:28px 32px;margin-top:24px;
+  }
+  .cierre h2{color:#fff;}
+  .cierre strong{color:#9BFF8F;font-weight:700;text-shadow:0 1px 2px rgba(0,0,0,.45);}
+  .cierre .num-seccion{background:rgba(255,255,255,.22);}
+  .flecha-sig{
+    display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.16);
+    border:1px solid rgba(255,255,255,.3);padding:10px 18px;border-radius:9px;
+    margin-top:12px;font-weight:600;font-size:15px;
+  }
+
+  footer{text-align:center;padding:30px 20px;color:var(--gris);font-size:13px;}
+
+  @media(max-width:560px){
+    header.principal{padding:34px 22px;}
+    header.principal h1{font-size:24px;}
+    section{padding:24px 20px;}
+    .tabla-datos{font-size:14px;}
+    .tabla-datos th,.tabla-datos td{padding:7px 8px;}
+  }
+
+      /* ── FOCO VISIBLE (WCAG 2.4.7) ── */
+      a:focus-visible,
+      button:focus-visible,
+      [tabindex]:focus-visible {
+        outline: 3px solid var(--azul-osc);
+        outline-offset: 2px;
+      }
+
+      /* ── MOVIMIENTO REDUCIDO ── */
+      @media (prefers-reduced-motion: reduce) {
+        * {
+          transition: none !important;
+        }
+        html {
+          scroll-behavior: auto;
+        }
+      }
+
+      /* ── MARCAS DE RESPUESTA (no depender del color) ── */
+      .marca {
+        font-weight: 700;
+        margin-right: 6px;
+      }
+      .opcion.elegida {
+        border-color: var(--azul);
+        background: var(--azul-cl);
+      }
+      .opcion:disabled {
+        color: var(--tinta);
+        opacity: 1;
+      }
+
+      /* ── TABLAS RESPONSIVAS (DUA) ── */
+      .tabla-scroll {
+        overflow-x: auto;
+        overflow-y: hidden;
+        -webkit-overflow-scrolling: touch;
+        max-width: 100%;
+        margin: 18px 0 0;
+        border: 1px solid var(--linea);
+        border-radius: 8px;
+        background: var(--papel);
+      }
+      .tabla-scroll:focus,
+      .tabla-scroll:focus-visible {
+        outline: 3px solid var(--azul);
+        outline-offset: 2px;
+      }
+      .tabla-scroll > table {
+        margin: 0;
+        min-width: 100%;
+      }
+      .aviso-desliza {
+        margin: 8px 0 18px;
+        padding: 8px 12px;
+        font-size: 14px;
+        font-weight: 600;
+        color: #5c3900;
+        background: #fdf3df;
+        border-left: 4px solid #5c3900;
+        border-radius: 5px;
+      }
+      .cap-oculto {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0 0 0 0);
+        white-space: nowrap;
+        border: 0;
+      }
+      @media print {
+        .tabla-scroll {
+          overflow: visible;
+          border: 0;
+        }
+        .aviso-desliza {
+          display: none;
+        }
+      }
+    </style>
+</head>
+<body>
+<header class="principal">
+<div class="envoltura-header">
+<p class="ruta">Matemáticas · Nivel 1 · Tema 8 — Tablas, gráficas y proyecto final</p>
+<h1>Lección 8.1 · Leer e interpretar tablas de datos</h1>
+<p class="lema">Sacar información de las tablas que aparecen a diario y describir con palabras lo que muestran.</p>
+<div class="chips">
+<span class="chip"><span aria-hidden="true">⏱️</span> 4 horas (2 sinc. + 2 asinc.)</span>
+<span class="chip"><span aria-hidden="true">📊</span> Tablas de datos</span>
+<span class="chip"><span aria-hidden="true">📘</span> Steck-Vaughn</span>
+</div>
+</div>
+</header>
+<div class="envoltura">
+<!-- OBJETIVOS -->
+<section>
+<div class="caja caja-objetivo">
+<h2><span aria-hidden="true" class="num-seccion">🎯</span>Objetivos de la clase</h2>
+<p>Al terminar esta lección, usted podrá:</p>
+<ul>
+<li><strong>Leer</strong> tablas de datos de varias columnas y entender qué muestran.</li>
+<li><strong>Localizar</strong> un dato específico cruzando fila y columna.</li>
+<li><strong>Comparar</strong> valores y calcular total, promedio, máximo y mínimo.</li>
+<li><strong>Describir</strong> con oraciones completas lo que muestran los datos.</li>
+</ul>
+</div>
+</section>
+<!-- LOS DATOS EN LA VIDA -->
+<section>
+<h2><span aria-hidden="true" class="num-seccion">1</span>El último tema: entender los datos</h2>
+<p>Ha llegado al <strong>Tema 8</strong>, el último del Nivel 1. Después de la aritmética, el álgebra inicial, las medidas y la geometría, este tema trata de algo presente en todas partes: los <strong>datos</strong>.</p>
+<p>Todos los días vemos información organizada en <strong>tablas</strong>: la lista de precios de una tienda, el horario de los autobuses, las notas de un boletín, la tabla nutricional de un producto. Saber leer una tabla es una destreza práctica — y aparece mucho en el examen GED.</p>
+<div class="caja caja-tip">
+<span class="etiqueta et-verde">¿Qué es una tabla?</span>
+<p>Una <strong>tabla</strong> organiza información en <strong>filas</strong> (horizontales) y <strong>columnas</strong> (verticales). Donde se cruzan una fila y una columna hay un <strong>dato</strong>. Los encabezados, arriba y a la izquierda, dicen qué significa cada dato.</p>
+</div>
+</section>
+<!-- CÓMO LEER UNA TABLA -->
+<section>
+<h2><span aria-hidden="true" class="num-seccion">2</span>Cómo leer una tabla: primero, mírela bien</h2>
+<p>Antes de responder cualquier pregunta, conviene <strong>leer la tabla</strong> y entender qué muestra. Siga estos cuatro pasos:</p>
+<ol class="pasos-leer">
+<li class="pl">
+<span class="pln">1</span>
+<strong>Lea el título</strong>
+<span class="txt">¿De qué trata la tabla en general?</span>
+</li>
+<li class="pl">
+<span class="pln">2</span>
+<strong>Lea los encabezados</strong>
+<span class="txt">¿Qué dice cada columna y cada fila?</span>
+</li>
+<li class="pl">
+<span class="pln">3</span>
+<strong>Mire las unidades</strong>
+<span class="txt">¿Son dólares, grados, cantidades?</span>
+</li>
+<li class="pl">
+<span class="pln">4</span>
+<strong>Recién entonces, lea la pregunta</strong>
+<span class="txt">Ahora sí, busque el dato que le piden.</span>
+</li>
+</ol>
+<h3>Una tabla de ejemplo</h3>
+<p>Esta tabla muestra los precios de cinco productos en una tienda:</p>
+<div aria-label='Precios en la tienda "El Ahorro" (tabla desplazable horizontalmente)' class="tabla-scroll" role="region" tabindex="0"><table class="tabla-datos">
+<caption>Precios en la tienda "El Ahorro"</caption>
+<thead>
+<tr><th scope="col">Producto</th><th scope="col">Precio</th></tr>
+</thead>
+<tbody>
+<tr><th scope="row">Arroz (bolsa)</th><td>$4</td></tr>
+<tr><th scope="row">Aceite (botella)</th><td>$7</td></tr>
+<tr><th scope="row">Leche (galón)</th><td>$3</td></tr>
+<tr><th scope="row">Pan</th><td>$2</td></tr>
+<tr><th scope="row">Huevos (docena)</th><td>$5</td></tr>
+</tbody>
+</table></div><p class="aviso-desliza"><span aria-hidden="true">↔</span> Deslice la tabla horizontalmente para ver todas las columnas.</p>
+<div class="ejemplo">
+<p class="titulo-ej">Localizar un dato: "¿Cuánto cuesta el aceite?"</p>
+<p class="paso"><span aria-hidden="true" class="n">1</span>Busco la fila del producto: "Aceite (botella)".</p>
+<p class="paso"><span aria-hidden="true" class="n">2</span>Me muevo por esa fila hasta la columna "Precio".</p>
+<p class="paso"><span aria-hidden="true" class="n">✓</span>Donde se cruzan está el dato: el aceite cuesta <strong>$7</strong>.</p>
+</div>
+<div class="practica">
+<div class="cabe"><span aria-hidden="true" class="ico">✏️</span><h3>Práctica 1 — Localizar un dato</h3></div>
+<p class="pregunta-int" id="t-p1">Según la tabla de "El Ahorro", ¿cuánto cuesta la leche?</p>
+<div aria-labelledby="t-p1" class="opciones" data-quiz="p1" role="group">
+<button class="opcion" data-correcta="no" type="button">$4</button>
+<button class="opcion" data-correcta="si" type="button">$3</button>
+<button class="opcion" data-correcta="no" type="button">$5</button>
+<button class="opcion" data-correcta="no" type="button">$7</button>
+</div>
+<div aria-live="polite" class="respuesta-int" id="r-p1" role="status"></div>
+</div>
+</section>
+<!-- COMPARAR Y CALCULAR -->
+<section>
+<h2><span aria-hidden="true" class="num-seccion">3</span>Comparar y calcular con los datos</h2>
+<p>Una tabla no sirve solo para localizar datos. También se pueden <strong>comparar</strong> valores y hacer <strong>cálculos</strong> con ellos. Usemos una tabla con más columnas:</p>
+<div aria-label="Temperatura máxima (°F) en tres ciudades (tabla desplazable horizontalmente)" class="tabla-scroll" role="region" tabindex="0"><table class="tabla-datos">
+<caption>Temperatura máxima (°F) en tres ciudades</caption>
+<thead>
+<tr><th scope="col">Ciudad</th><th scope="col">Lunes</th><th scope="col">Martes</th><th scope="col">Miércoles</th></tr>
+</thead>
+<tbody>
+<tr><th scope="row">Chicago</th><td>60</td><td>65</td><td>58</td></tr>
+<tr><th scope="row">Miami</th><td>85</td><td>88</td><td>84</td></tr>
+<tr><th scope="row">Denver</th><td>70</td><td>62</td><td>68</td></tr>
+</tbody>
+</table></div><p class="aviso-desliza"><span aria-hidden="true">↔</span> Deslice la tabla horizontalmente para ver todas las columnas.</p>
+<h3>Comparar dos valores</h3>
+<div class="ejemplo">
+<p class="titulo-ej">"El martes, ¿qué ciudad estuvo más caliente, Chicago o Denver?"</p>
+<p class="paso"><span aria-hidden="true" class="n">1</span>Busco la columna "Martes".</p>
+<p class="paso"><span aria-hidden="true" class="n">2</span>Leo el dato de Chicago (65) y el de Denver (62).</p>
+<p class="paso"><span aria-hidden="true" class="n">✓</span>65 es mayor que 62: <strong>Chicago</strong> estuvo más caliente el martes.</p>
+</div>
+<h3>Calcular el total y el promedio</h3>
+<p>Recuerde de la Lección 5.3: para hallar el <strong>promedio</strong> de varios números, se <strong>suman todos</strong> y se <strong>divide entre la cantidad</strong> de números.</p>
+<div class="ejemplo">
+<p class="titulo-ej">"¿Cuál fue la temperatura promedio de Chicago en los tres días?"</p>
+<p class="paso"><span aria-hidden="true" class="n">1</span>Tomo los tres datos de la fila Chicago: 60, 65 y 58.</p>
+<p class="paso"><span aria-hidden="true" class="n">2</span>Los sumo: 60 + 65 + 58 = 183.</p>
+<p class="paso"><span aria-hidden="true" class="n">3</span>Divido entre la cantidad de días (3): 183 ÷ 3 = 61.</p>
+<p class="paso"><span aria-hidden="true" class="n">✓</span>La temperatura promedio de Chicago fue <strong>61 °F</strong>.</p>
+</div>
+<h3>Máximo y mínimo</h3>
+<p>El <strong>máximo</strong> es el valor más grande; el <strong>mínimo</strong>, el más pequeño. Por ejemplo, en la fila de Miami (85, 88, 84) el máximo es 88 y el mínimo es 84.</p>
+<div class="practica">
+<div class="cabe"><span aria-hidden="true" class="ico">✏️</span><h3>Práctica 2 — Comparar valores</h3></div>
+<p class="pregunta-int" id="t-p2">Según la tabla de temperaturas, ¿qué día fue Miami más caliente: el lunes o el miércoles?</p>
+<div aria-labelledby="t-p2" class="opciones" data-quiz="p2" role="group">
+<button class="opcion" data-correcta="si" type="button">El lunes (85 °F)</button>
+<button class="opcion" data-correcta="no" type="button">El miércoles (84 °F)</button>
+<button class="opcion" data-correcta="no" type="button">Fue igual los dos días</button>
+</div>
+<div aria-live="polite" class="respuesta-int" id="r-p2" role="status"></div>
+</div>
+<div class="practica">
+<div class="cabe"><span aria-hidden="true" class="ico">✏️</span><h3>Práctica 3 — Calcular el promedio</h3></div>
+<p class="pregunta-int" id="t-p3">¿Cuál fue la temperatura promedio de Denver en los tres días (70, 62 y 68)?</p>
+<div aria-labelledby="t-p3" class="opciones" data-quiz="p3" role="group">
+<button class="opcion" data-correcta="no" type="button">68</button>
+<button class="opcion" data-correcta="si" type="button">66.67 (alrededor de 67)</button>
+<button class="opcion" data-correcta="no" type="button">200</button>
+<button class="opcion" data-correcta="no" type="button">62</button>
+</div>
+<div aria-live="polite" class="respuesta-int" id="r-p3" role="status"></div>
+</div>
+<div class="practica">
+<div class="cabe"><span aria-hidden="true" class="ico">✏️</span><h3>Práctica 4 — Máximo y mínimo</h3></div>
+<p class="pregunta-int" id="t-p4">En la tabla de temperaturas, ¿cuál fue la temperatura máxima de todas las que aparecen?</p>
+<div aria-labelledby="t-p4" class="opciones" data-quiz="p4" role="group">
+<button class="opcion" data-correcta="no" type="button">85 (Miami, lunes)</button>
+<button class="opcion" data-correcta="si" type="button">88 (Miami, martes)</button>
+<button class="opcion" data-correcta="no" type="button">70 (Denver, lunes)</button>
+<button class="opcion" data-correcta="no" type="button">65 (Chicago, martes)</button>
+</div>
+<div aria-live="polite" class="respuesta-int" id="r-p4" role="status"></div>
+</div>
+</section>
+<!-- DESCRIBIR CON PALABRAS -->
+<section>
+<h2><span aria-hidden="true" class="num-seccion">4</span>Describir los datos con palabras</h2>
+<p>El último paso, y uno muy valioso, es <strong>explicar con una oración completa</strong> lo que muestra un dato. No basta con decir un número: hay que decir <em>qué significa</em>.</p>
+<div class="caja caja-tip">
+<span class="etiqueta et-verde">De un número a una oración</span>
+<p>En vez de responder solo "88", una buena descripción es: <strong>"La temperatura más alta fue 88 °F, en Miami el martes."</strong> La oración incluye el dato, qué representa y a qué fila y columna pertenece.</p>
+</div>
+<div class="caja caja-ojo">
+<span class="etiqueta et-ambar">Frases útiles para describir datos</span>
+<p>"La tabla muestra que..." · "El valor más alto es... porque..." · "Comparando X con Y, se ve que..." · "En total..." · "En promedio...". Estas frases ayudan a expresar con claridad lo que dicen los datos.</p>
+</div>
+</section>
+<!-- PRÁCTICA GUIADA -->
+<section>
+<h2><span aria-hidden="true" class="num-seccion">5</span>Práctica guiada en clase</h2>
+<p>Estas actividades se hacen <strong>en la sesión sincrónica</strong>. Cada actividad incluye una variante para la <strong>clase presencial</strong> y otra para la <strong>clase en línea</strong>; el objetivo de aprendizaje es el mismo en ambas.</p>
+<div class="caja caja-recurso">
+<span class="etiqueta et-azul">Actividad A · "El reportero de datos"</span>
+<p>En parejas, un estudiante hace de reportero y formula preguntas sobre una tabla; el otro responde usando los datos.</p>
+<div class="modalidades">
+<div class="modo modo-pres">
+<span class="modo-tit">🏫 Presencial</span>
+<p>Reparta una tabla a cada pareja. Un estudiante hace 5 preguntas sobre la tabla (localizar, comparar, calcular) y el otro responde con los datos. Luego intercambian roles.</p>
+</div>
+<div class="modo modo-line">
+<span class="modo-tit">💻 En línea</span>
+<p>En salas pequeñas (breakout rooms) de dos, comparta la tabla. Un estudiante escribe sus 5 preguntas en el chat y el compañero responde. Después intercambian. El profesor recorre las salas.</p>
+</div>
+</div>
+</div>
+<div class="caja caja-recurso">
+<span class="etiqueta et-azul">Actividad B · "Promedio y rango"</span>
+<p>Los estudiantes practican calcular el promedio y el rango (máximo menos mínimo) de una columna de datos.</p>
+<div class="modalidades">
+<div class="modo modo-pres">
+<span class="modo-tit">🏫 Presencial</span>
+<p>Reparta tablas con una columna de datos numéricos. Cada estudiante calcula el promedio y el rango sin calculadora, y compara con un compañero.</p>
+</div>
+<div class="modo modo-line">
+<span class="modo-tit">💻 En línea</span>
+<p>Muestre las tablas en una diapositiva. Los estudiantes calculan el promedio y el rango en papel y publican sus resultados en el chat. El grupo revisa los procedimientos.</p>
+</div>
+</div>
+</div>
+<div class="caja caja-recurso">
+<span class="etiqueta et-azul">Actividad C · "Describir la tabla"</span>
+<p>Los estudiantes escriben oraciones completas que describen lo que muestra una tabla.</p>
+<div class="modalidades">
+<div class="modo modo-pres">
+<span class="modo-tit">🏫 Presencial</span>
+<p>Dada una tabla, cada estudiante escribe tres oraciones que describan datos distintos (un máximo, una comparación, un total). Se leen varias en voz alta y el grupo comenta.</p>
+</div>
+<div class="modo modo-line">
+<span class="modo-tit">💻 En línea</span>
+<p>Comparta la tabla en una diapositiva. Los estudiantes escriben sus tres oraciones descriptivas en el chat o en un documento compartido. El grupo comenta las mejores descripciones.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- TAREA ASINCRÓNICA -->
+<section>
+<h2><span aria-hidden="true" class="num-seccion">6</span>Tarea asincrónica</h2>
+<p>Estas actividades se realizan <strong>por su cuenta</strong>, dentro de las 2 horas asincrónicas de la lección.</p>
+<ul>
+<li><strong>Brightspace:</strong> resuelva las <strong>3 tablas</strong> con 10 preguntas de comprensión (localizar, comparar, calcular, describir).</li>
+<li><strong>Brightspace:</strong> realice el quiz de la lección (abajo puede practicarlo antes).</li>
+<li><strong>Actividad personal:</strong> busque una tabla en su vida diaria (un recibo, un horario, una tabla nutricional). Escriba tres oraciones describiendo lo que muestra.</li>
+</ul>
+</section>
+<!-- QUIZ -->
+<section>
+<h2><span aria-hidden="true" class="num-seccion">7</span>Quiz de práctica</h2>
+<p>Responda las <strong>8 preguntas</strong> sobre la siguiente tabla. Al final verá su puntaje y podrá repasar lo que falló.</p>
+<div aria-label="Notas de cuatro estudiantes en tres materias (de 0 a 100) (tabla desplazable horizontalmente)" class="tabla-scroll" role="region" tabindex="0"><table class="tabla-datos">
+<caption>Notas de cuatro estudiantes en tres materias (de 0 a 100)</caption>
+<thead>
+<tr><th scope="col">Estudiante</th><th scope="col">Matemáticas</th><th scope="col">Lenguaje</th><th scope="col">Ciencias</th></tr>
+</thead>
+<tbody>
+<tr><th scope="row">Ana</th><td>80</td><td>90</td><td>70</td></tr>
+<tr><th scope="row">Luis</th><td>75</td><td>60</td><td>85</td></tr>
+<tr><th scope="row">Rosa</th><td>95</td><td>88</td><td>90</td></tr>
+<tr><th scope="row">Carlos</th><td>60</td><td>72</td><td>65</td></tr>
+</tbody>
+</table></div><p class="aviso-desliza"><span aria-hidden="true">↔</span> Deslice la tabla horizontalmente para ver todas las columnas.</p>
+<div id="quiz">
+<div class="quiz-bloque">
+<span class="qnum">Pregunta 1</span>
+<p class="pregunta" id="t-q1">¿Qué nota obtuvo Luis en Ciencias?</p>
+<div aria-labelledby="t-q1" class="opciones" data-q="1" role="group">
+<button class="opcion" data-c="no" type="button">75</button>
+<button class="opcion" data-c="no" type="button">60</button>
+<button class="opcion" data-c="si" type="button">85</button>
+<button class="opcion" data-c="no" type="button">90</button>
+</div>
+</div>
+<div class="quiz-bloque">
+<span class="qnum">Pregunta 2</span>
+<p class="pregunta" id="t-q2">¿Qué nota obtuvo Rosa en Matemáticas?</p>
+<div aria-labelledby="t-q2" class="opciones" data-q="2" role="group">
+<button class="opcion" data-c="si" type="button">95</button>
+<button class="opcion" data-c="no" type="button">88</button>
+<button class="opcion" data-c="no" type="button">90</button>
+<button class="opcion" data-c="no" type="button">80</button>
+</div>
+</div>
+<div class="quiz-bloque">
+<span class="qnum">Pregunta 3</span>
+<p class="pregunta" id="t-q3">En Lenguaje, ¿quién obtuvo mejor nota: Ana o Carlos?</p>
+<div aria-labelledby="t-q3" class="opciones" data-q="3" role="group">
+<button class="opcion" data-c="si" type="button">Ana (90)</button>
+<button class="opcion" data-c="no" type="button">Carlos (72)</button>
+<button class="opcion" data-c="no" type="button">Obtuvieron la misma nota</button>
+</div>
+</div>
+<div class="quiz-bloque">
+<span class="qnum">Pregunta 4</span>
+<p class="pregunta" id="t-q4">¿Cuál fue la nota más alta de toda la tabla?</p>
+<div aria-labelledby="t-q4" class="opciones" data-q="4" role="group">
+<button class="opcion" data-c="no" type="button">90</button>
+<button class="opcion" data-c="si" type="button">95</button>
+<button class="opcion" data-c="no" type="button">88</button>
+<button class="opcion" data-c="no" type="button">85</button>
+</div>
+</div>
+<div class="quiz-bloque">
+<span class="qnum">Pregunta 5</span>
+<p class="pregunta" id="t-q5">¿Cuál fue la nota más baja de toda la tabla?</p>
+<div aria-labelledby="t-q5" class="opciones" data-q="5" role="group">
+<button class="opcion" data-c="si" type="button">60</button>
+<button class="opcion" data-c="no" type="button">65</button>
+<button class="opcion" data-c="no" type="button">70</button>
+<button class="opcion" data-c="no" type="button">72</button>
+</div>
+</div>
+<div class="quiz-bloque">
+<span class="qnum">Pregunta 6</span>
+<p class="pregunta" id="t-q6">¿Cuál es el total de las tres notas de Ana (80, 90 y 70)?</p>
+<div aria-labelledby="t-q6" class="opciones" data-q="6" role="group">
+<button class="opcion" data-c="si" type="button">240</button>
+<button class="opcion" data-c="no" type="button">230</button>
+<button class="opcion" data-c="no" type="button">250</button>
+<button class="opcion" data-c="no" type="button">160</button>
+</div>
+</div>
+<div class="quiz-bloque">
+<span class="qnum">Pregunta 7</span>
+<p class="pregunta" id="t-q7">¿Cuál fue el promedio de las tres notas de Ana (total 240)?</p>
+<div aria-labelledby="t-q7" class="opciones" data-q="7" role="group">
+<button class="opcion" data-c="si" type="button">80</button>
+<button class="opcion" data-c="no" type="button">90</button>
+<button class="opcion" data-c="no" type="button">120</button>
+<button class="opcion" data-c="no" type="button">70</button>
+</div>
+</div>
+<div class="quiz-bloque">
+<span class="qnum">Pregunta 8</span>
+<p class="pregunta" id="t-q8">¿Cuál de estas oraciones describe correctamente un dato de la tabla?</p>
+<div aria-labelledby="t-q8" class="opciones" data-q="8" role="group">
+<button class="opcion" data-c="si" type="button">"Rosa obtuvo la nota más alta en Matemáticas, con 95."</button>
+<button class="opcion" data-c="no" type="button">"Carlos obtuvo 95 en Ciencias."</button>
+<button class="opcion" data-c="no" type="button">"Todos los estudiantes obtuvieron la misma nota en Lenguaje."</button>
+<button class="opcion" data-c="no" type="button">"Luis obtuvo la nota más alta en Lenguaje."</button>
+</div>
+</div>
+</div>
+<div style="text-align:center;margin-top:18px;">
+<button class="btn" id="btn-calificar" type="button">Ver mi resultado</button>
+<button class="btn btn-sec" id="btn-reintentar" style="display:none;" type="button">Intentar de nuevo</button>
+</div>
+<div aria-live="polite" class="marcador" id="marcador" role="status">
+<div aria-hidden="true" class="barra-prog"><span id="barra"></span></div>
+<p class="puntaje" id="puntaje"></p>
+<p class="mensaje" id="mensaje"></p>
+</div>
+</section>
+<!-- RÚBRICA -->
+<section>
+<h2><span aria-hidden="true" class="num-seccion">8</span>Rúbrica de evaluación</h2>
+<p>Rúbrica de lectura de tablas. Cada criterio se evalúa en cuatro niveles.</p>
+<div aria-label="Rúbrica de evaluación: criterios y sus niveles de logro (tabla desplazable horizontalmente)" class="tabla-scroll" role="region" tabindex="0"><table class="tabla-rubrica"><caption class="cap-oculto">Rúbrica de evaluación: criterios y sus niveles de logro</caption>
+<thead>
+<tr>
+<th scope="col">Criterio</th>
+<th class="nivel-cab" scope="col">Logrado (4)</th>
+<th class="nivel-cab" scope="col">Satisfactorio (3)</th>
+<th class="nivel-cab" scope="col">En proceso (2)</th>
+<th class="nivel-cab" scope="col">Por reforzar (1)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th scope="row">Localiza datos específicos</th>
+<td>Cruza fila y columna sin errores en todas las tablas.</td>
+<td>Localiza datos correctamente casi siempre.</td>
+<td>Confunde filas con columnas a veces.</td>
+<td>No logra localizar datos en la tabla.</td>
+</tr>
+<tr>
+<th scope="row">Compara y calcula con los datos</th>
+<td>Compara, suma y promedia los datos sin errores.</td>
+<td>Compara y calcula correctamente casi siempre.</td>
+<td>Compara bien pero se equivoca al calcular.</td>
+<td>No logra comparar ni calcular.</td>
+</tr>
+<tr>
+<th scope="row">Identifica máximo y mínimo</th>
+<td>Identifica siempre el valor mayor y el menor.</td>
+<td>Identifica máximo y mínimo casi siempre.</td>
+<td>Confunde el máximo con el mínimo.</td>
+<td>No identifica los valores extremos.</td>
+</tr>
+<tr>
+<th scope="row">Describe los datos con palabras</th>
+<td>Describe con oraciones completas y lenguaje preciso.</td>
+<td>Describe los datos de forma comprensible.</td>
+<td>Da el número sin explicar qué significa.</td>
+<td>No logra describir los datos.</td>
+</tr>
+</tbody>
+</table></div><p class="aviso-desliza"><span aria-hidden="true">↔</span> Deslice la tabla horizontalmente para ver todas las columnas.</p>
+</section>
+<!-- CIERRE -->
+<div class="cierre">
+<h2><span aria-hidden="true" class="num-seccion">➡️</span>Lo que viene en la próxima lección</h2>
+<p>Ya sabe leer una tabla, localizar datos, compararlos, calcular promedios y describir lo que muestran. Tiene la base para trabajar con información organizada.</p>
+<p>En la <strong>Lección 8.2 · Gráficas de barras y de líneas</strong> verá otra forma de presentar los datos — ya no en números dentro de una tabla, sino en <strong>dibujos</strong>. Aprenderá a leer gráficas de barras y de líneas, a identificar tendencias y a construir su propia gráfica.</p>
+<p class="flecha-sig">➡️  Próxima: Lección 8.2 · Gráficas de barras y de líneas</p>
+</div>
+</div>
+<footer>
+  Matemáticas · Nivel 1 · Lección 8.1 — Spanish ASE Math · AE 0170-0321<br/>
+  City Colleges of Chicago · Truman College · Prof. José M. Fernández
+</footer>
+<script>
+      // ── PRÁCTICA INTERACTIVA ──
+      var respuestasPractica = {
+      p1:"La leche cuesta $3. Busque la fila 'Leche (galón)' y muévase a la columna 'Precio'.",
+      p2:"Miami estuvo más caliente el lunes: 85 °F el lunes frente a 84 °F el miércoles. 85 es mayor que 84.",
+      p3:"Promedio de Denver: 70 + 62 + 68 = 200; 200 ÷ 3 = 66.67, alrededor de 67 °F.",
+      p4:"La temperatura máxima es 88 °F, de Miami el martes. Es el valor más grande de toda la tabla."
+      };
+
+      document.querySelectorAll('.opciones[data-quiz]').forEach(function (grupo) {
+        var id = grupo.getAttribute('data-quiz');
+        grupo.querySelectorAll('.opcion').forEach(function (op) {
+          op.addEventListener('click', function () {
+            var acerto = op.getAttribute('data-correcta') === 'si';
+            grupo.querySelectorAll('.opcion').forEach(function (o) {
+              o.disabled = true;
+              if (o.getAttribute('data-correcta') === 'si') {
+                o.classList.add('correcta');
+                o.insertAdjacentHTML('afterbegin', '<span class="marca">\u2713 Correcta:</span> ');
+              }
+            });
+            if (!acerto) {
+              op.classList.add('incorrecta');
+              op.insertAdjacentHTML('afterbegin', '<span class="marca">\u2717 Su respuesta:</span> ');
+            }
+            var r = document.getElementById('r-' + id);
+            r.className = 'respuesta-int ' + (acerto ? 'bien' : 'mal');
+            r.textContent = (acerto ? 'Correcto. ' : 'Revise: ') + respuestasPractica[id];
+          });
+        });
+      });
+
+      // ── QUIZ FINAL ──
+      var totalPreguntas = 8;
+      var seleccion = {};
+
+      document.querySelectorAll('#quiz .opciones').forEach(function (grupo) {
+        var q = grupo.getAttribute('data-q');
+        grupo.querySelectorAll('.opcion').forEach(function (op) {
+          op.setAttribute('aria-pressed', 'false');
+          op.addEventListener('click', function () {
+            grupo.querySelectorAll('.opcion').forEach(function (o) {
+              o.classList.remove('elegida');
+              o.setAttribute('aria-pressed', 'false');
+            });
+            op.classList.add('elegida');
+            op.setAttribute('aria-pressed', 'true');
+            seleccion[q] = op;
+          });
+        });
+      });
+
+      document.getElementById('btn-calificar').addEventListener('click', function () {
+        var correctas = 0;
+        document.querySelectorAll('#quiz .opciones').forEach(function (grupo) {
+          var q = grupo.getAttribute('data-q');
+          grupo.querySelectorAll('.opcion').forEach(function (o) {
+            o.disabled = true;
+            if (o.getAttribute('data-c') === 'si') {
+              o.classList.add('correcta');
+              o.insertAdjacentHTML('afterbegin', '<span class="marca">\u2713 Correcta:</span> ');
+            }
+          });
+          var elegida = seleccion[q];
+          if (elegida) {
+            if (elegida.getAttribute('data-c') === 'si') {
+              correctas++;
+            } else {
+              elegida.classList.add('incorrecta');
+              elegida.insertAdjacentHTML('afterbegin', '<span class="marca">\u2717 Su respuesta:</span> ');
+            }
+          }
+        });
+
+        var marc = document.getElementById('marcador');
+        var pct = Math.round((correctas / totalPreguntas) * 100);
+        document.getElementById('puntaje').textContent = correctas + ' de ' + totalPreguntas + ' correctas';
+
+        var msg, color;
+        if (pct >= 88) {
+          msg = 'Excelente. Domina la lectura de tablas. Está listo para la Lección 8.2.';
+          color = '#e7f4ec';
+        } else if (pct >= 63) {
+          msg = 'Buen trabajo. Repase las preguntas marcadas como incorrectas y vuelva a intentarlo.';
+          color = '#fdf3df';
+        } else {
+          msg = 'Repasemos juntos. Vuelva a leer las secciones 2 y 3, y reintente el quiz.';
+          color = '#fdecea';
+        }
+
+        marc.style.background = color;
+        document.getElementById('mensaje').textContent = msg;
+        marc.classList.add('visible');
+        document.getElementById('barra').style.width = pct + '%';
+        document.getElementById('btn-calificar').style.display = 'none';
+
+        var reintentar = document.getElementById('btn-reintentar');
+        reintentar.style.display = 'inline-block';
+        reintentar.focus();
+      });
+
+      document.getElementById('btn-reintentar').addEventListener('click', function () {
+        document.querySelectorAll('#quiz .opcion').forEach(function (o) {
+          o.disabled = false;
+          o.classList.remove('correcta', 'incorrecta', 'elegida');
+          o.setAttribute('aria-pressed', 'false');
+          var marca = o.querySelector('.marca');
+          if (marca) {
+            marca.remove();
+          }
+        });
+        for (var k in seleccion) {
+          delete seleccion[k];
+        }
+        document.getElementById('marcador').classList.remove('visible');
+        document.getElementById('puntaje').textContent = '';
+        document.getElementById('mensaje').textContent = '';
+        document.getElementById('btn-calificar').style.display = 'inline-block';
+        document.getElementById('btn-reintentar').style.display = 'none';
+        var primera = document.querySelector('#quiz .opcion');
+        if (primera) {
+          primera.focus();
+        }
+      });
+
+      // ── TABLAS RESPONSIVAS ──
+      // Los contenedores y avisos ya están en el marcado, para que los
+      // revisores que no ejecutan JavaScript los detecten.
+      (function () {
+        var TEXTO_AVISO = '\u2194 Deslice la tabla horizontalmente para ver todas las columnas.';
+        var pares = [];
+
+        document.querySelectorAll('table').forEach(function (t) {
+          var caja = t.parentNode;
+          if (!caja.classList.contains('tabla-scroll')) {
+            var cap = t.querySelector('caption');
+            var etiqueta = (cap ? cap.textContent.trim() : 'Tabla de datos') + ' (tabla desplazable horizontalmente)';
+            var nueva = document.createElement('div');
+            nueva.className = 'tabla-scroll';
+            nueva.setAttribute('role', 'region');
+            nueva.setAttribute('tabindex', '0');
+            nueva.setAttribute('aria-label', etiqueta);
+            t.parentNode.insertBefore(nueva, t);
+            nueva.appendChild(t);
+            caja = nueva;
+          }
+          var aviso = caja.nextElementSibling;
+          if (!aviso || !aviso.classList.contains('aviso-desliza')) {
+            aviso = document.createElement('p');
+            aviso.className = 'aviso-desliza';
+            aviso.textContent = TEXTO_AVISO;
+            caja.parentNode.insertBefore(aviso, caja.nextSibling);
+          }
+          pares.push({ caja: caja, aviso: aviso });
+        });
+
+        function actualizar() {
+          pares.forEach(function (p) {
+            p.aviso.style.display = p.caja.scrollWidth > p.caja.clientWidth + 2 ? 'block' : 'none';
+          });
+        }
+        actualizar();
+
+        var tm;
+        window.addEventListener('resize', function () {
+          clearTimeout(tm);
+          tm = setTimeout(actualizar, 150);
+        });
+      })();
+    </script>
+</body>
+</html>

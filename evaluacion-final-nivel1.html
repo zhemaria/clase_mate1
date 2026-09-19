@@ -1,0 +1,510 @@
+<!doctype html>
+<!--
+  Evaluación final sumativa — Spanish ASE Math, Nivel 1 (Tema 8, lección 8.3)
+  © José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago.
+  Licencia: CC BY-NC-SA 4.0  (https://creativecommons.org/licenses/by-nc-sa/4.0/)
+  25 preguntas · 5 por hilo temático · temporizador de 60 minutos · exporta el resultado en TXT o PDF.
+-->
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="author" content="José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago" />
+  <meta name="license" content="CC BY-NC-SA 4.0" />
+  <link rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" />
+  <title>Evaluación final sumativa · Matemáticas, Nivel 1</title>
+  <style>
+    :root{
+      --tema:      #1b5e20;   /* verde Nivel 1 / Tema 8 */
+      --tema-osc:  #0d3b11;
+      --tema-cl:   #e8f5e9;
+      --bg:        #f5f7fa;
+      --texto:     #1a2330;
+      --muted:     #555;            /* pasa 4.5:1 (Ally) */
+      --borde:     #cfd8dc;
+      --ok:        #1b5e20;
+      --ok-bg:     #e7f4ec;
+      --mal:       #b71c1c;
+      --mal-bg:    #fdecea;
+      --ambar:     #5C3900;         /* marrón seguro sobre claro */
+    }
+    *{ box-sizing:border-box; }
+    body{
+      font-family:'Segoe UI', system-ui, sans-serif;
+      margin:0; background:var(--bg); color:var(--texto);
+      line-height:1.55; font-size:16px;
+    }
+    .contenedor{ max-width:920px; margin:0 auto; padding:24px; }
+
+    /* ─── Encabezado ─── */
+    header.principal{
+      background:linear-gradient(135deg,#0d3b11 0%, #1b5e20 55%, #2e7d32 100%);
+      color:#fff; padding:30px 30px; border-radius:14px;
+      margin-bottom:20px; box-shadow:0 4px 14px rgba(13,59,17,.28);
+    }
+    header.principal h1{ margin:0 0 8px; font-size:25px; font-weight:700; }
+    header.principal .meta{ font-size:14px; opacity:.95; }
+
+    /* ─── Datos del estudiante ─── */
+    .ident{
+      background:#fff; padding:16px 20px; border-radius:10px;
+      margin-bottom:16px; box-shadow:0 1px 4px rgba(0,0,0,.06);
+      display:flex; flex-wrap:wrap; gap:18px; align-items:flex-end;
+    }
+    .ident .campo{ flex:1 1 220px; }
+    .ident label{ display:block; font-size:13px; font-weight:600; color:#263238; margin-bottom:5px; }
+    .ident input{
+      width:100%; font-family:inherit; font-size:15px; color:var(--texto);
+      border:none; border-bottom:2px solid var(--borde); background:transparent; padding:6px 2px;
+    }
+    .ident input:focus{ outline:none; border-bottom-color:var(--tema); }
+
+    /* ─── Barra de control (temporizador + progreso) ─── */
+    .control{
+      position:sticky; top:0; z-index:20;
+      display:flex; flex-wrap:wrap; gap:12px; align-items:center; justify-content:space-between;
+      background:var(--tema-osc); color:#fff; padding:12px 18px; border-radius:10px;
+      margin-bottom:18px; box-shadow:0 2px 8px rgba(13,59,17,.25);
+    }
+    .control .reloj{ font-size:19px; font-weight:700; font-variant-numeric:tabular-nums; }
+    .control .reloj.alerta{ color:#ffd54f; }
+    .control .progreso{ font-size:14px; font-weight:600; }
+
+    /* ─── Instrucciones ─── */
+    .intro{
+      background:#fff; padding:16px 22px; border-radius:10px;
+      border-left:5px solid var(--tema); margin-bottom:18px;
+      box-shadow:0 1px 4px rgba(0,0,0,.05); font-size:14.5px;
+    }
+    .intro strong{ color:var(--tema-osc); }
+
+    /* ─── Quiz ─── */
+    #quiz{ display:flex; flex-direction:column; gap:14px; }
+    .pregunta{
+      background:#fff; border-radius:12px; padding:18px 22px;
+      box-shadow:0 2px 8px rgba(0,0,0,.06); border-left:5px solid var(--tema);
+    }
+    .pcab{ display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin-bottom:10px; }
+    .pnum{
+      display:inline-block; background:var(--tema-osc); color:#fff; font-size:13px;
+      font-weight:700; padding:3px 11px; border-radius:20px;
+    }
+    .ptema{
+      display:inline-block; background:#37474f; color:#fff; font-size:11.5px;
+      font-weight:700; padding:3px 10px; border-radius:20px;
+    }
+    .enun{ font-weight:600; font-size:16.5px; margin:0 0 12px; }
+    .opciones{ display:flex; flex-direction:column; gap:9px; }
+    .opcion{
+      display:block; width:100%; text-align:left; font-family:inherit; font-size:16px;
+      color:var(--texto); background:#fff; border:2px solid var(--borde); border-radius:9px;
+      padding:11px 16px; cursor:pointer; transition:.15s;
+    }
+    .opcion:hover{ border-color:var(--tema); background:var(--tema-cl); }
+    .opcion:focus-visible{ outline:3px solid #66bb6a; outline-offset:2px; }
+    .opcion.elegida{ border-color:var(--tema); background:var(--tema-cl); font-weight:600; }
+    .opcion.correcta{ border-color:var(--ok); background:var(--ok-bg); font-weight:600; }
+    .opcion.incorrecta{ border-color:var(--mal); background:var(--mal-bg); }
+    .opcion:disabled{ cursor:default; }
+
+    /* ─── Botones ─── */
+    .acciones{ display:flex; flex-wrap:wrap; gap:10px; margin-top:18px; }
+    button.btn{
+      font-family:inherit; font-size:15px; font-weight:600; border:none;
+      border-radius:9px; padding:11px 20px; cursor:pointer; transition:.15s;
+    }
+    .btn-prim{ background:var(--tema); color:#fff; }
+    .btn-prim:hover{ background:var(--tema-osc); }
+    .btn-sec{ background:#fff; color:var(--tema); border:2px solid var(--tema); }
+    .btn-sec:hover{ background:var(--tema-cl); }
+
+    /* ─── Resultado ─── */
+    #resultado{
+      display:none; margin-top:18px; padding:22px 24px; border-radius:12px; text-align:center;
+    }
+    #resultado.visible{ display:block; }
+    #resultado.aprob{ background:var(--ok-bg); border:2px solid var(--ok); }
+    #resultado.repro{ background:var(--mal-bg); border:2px solid var(--mal); }
+    #resultado .puntaje{ font-size:42px; font-weight:800; margin:4px 0; }
+    #resultado.aprob .puntaje{ color:var(--ok); }
+    #resultado.repro .puntaje{ color:var(--mal); }
+    #resultado .mensaje{ font-size:16px; color:var(--texto); }
+    .barra{ height:12px; background:#dde3ea; border-radius:7px; overflow:hidden; margin:14px auto; max-width:480px; }
+    .barra span{ display:block; height:100%; width:0; background:var(--tema); transition:width .6s; }
+    .desglose{
+      max-width:520px; margin:16px auto 0; text-align:left; font-size:14px;
+      background:#fff; border:1px solid var(--borde); border-radius:9px; padding:12px 16px;
+    }
+    .desglose h3{ margin:0 0 8px; font-size:15px; color:var(--tema-osc); }
+    .desglose table{ width:100%; border-collapse:collapse; }
+    .desglose th, .desglose td{ padding:5px 8px; border-bottom:1px solid #eee; text-align:left; }
+    .desglose th{ font-size:13px; color:var(--muted); }
+    .desglose td.r{ text-align:right; font-variant-numeric:tabular-nums; font-weight:700; }
+
+    footer{
+      text-align:center; padding:22px; color:var(--muted);
+      font-size:12.5px; margin-top:16px; border-top:1px solid #ddd;
+    }
+    footer a{ color:var(--tema-osc); }
+
+    /* ─── Impresión / PDF ─── */
+    @media print{
+      :root{ --bg:#fff; }
+      body{ background:#fff; font-size:12pt; }
+      .contenedor{ max-width:none; padding:0; }
+      .control, .acciones, .no-imprimir{ display:none !important; }
+      header.principal{ box-shadow:none; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+      .pregunta, .intro, #resultado{ box-shadow:none; border:1px solid #ccc; page-break-inside:avoid; }
+      .opcion, .pnum, .ptema, header.principal, #resultado, .barra span{
+        -webkit-print-color-adjust:exact; print-color-adjust:exact;
+      }
+      a[href]::after{ content:""; }
+    }
+    @media(max-width:560px){
+      header.principal h1{ font-size:21px; }
+      .pregunta{ padding:16px; }
+    }
+  </style>
+</head>
+<body>
+<div class="contenedor">
+
+  <header class="principal">
+    <h1>Evaluación final sumativa · Matemáticas, Nivel 1</h1>
+    <div class="meta">
+      Spanish ASE Math: Level 1 · Tema 8, lección 8.3 · City Colleges of Chicago · Harry S. Truman College<br>
+      25 preguntas · tiempo máximo: 60 minutos · calculadora TI-30XS permitida (limpie la memoria antes)
+    </div>
+  </header>
+
+  <!-- Datos del estudiante -->
+  <div class="ident no-imprimir">
+    <div class="campo">
+      <label for="f_nombre">Nombre del estudiante</label>
+      <input type="text" id="f_nombre" autocomplete="off" />
+    </div>
+    <div class="campo">
+      <label for="f_fecha">Fecha</label>
+      <input type="text" id="f_fecha" placeholder="dd/mm/aaaa" autocomplete="off" />
+    </div>
+  </div>
+
+  <!-- Barra de control -->
+  <div class="control">
+    <span class="reloj" id="reloj" aria-live="off">Tiempo restante: 60:00</span>
+    <span class="progreso" id="progreso">Respondidas: 0 de 25</span>
+  </div>
+
+  <!-- Instrucciones -->
+  <section class="intro">
+    <p>Lea cada pregunta con calma y seleccione <strong>una</strong> respuesta. La evaluación reúne los ocho temas
+      del Nivel 1: operaciones, fracciones y decimales, medidas, geometría y datos. Al terminar, pulse
+      <strong>«Entregar examen»</strong>; podrá exportar su resultado en <strong>TXT</strong> o en <strong>PDF</strong>.
+      Si el tiempo se agota, el examen se entrega automáticamente.</p>
+  </section>
+
+  <!-- Quiz (generado por JavaScript) -->
+  <form id="quiz"></form>
+
+  <div class="acciones no-imprimir">
+    <button type="button" class="btn btn-prim" id="btn-entregar">Entregar examen</button>
+    <button type="button" class="btn btn-sec" id="btn-txt" style="display:none;">⬇️ Exportar resultado (TXT)</button>
+    <button type="button" class="btn btn-sec" id="btn-pdf" style="display:none;">🖨️ Exportar resultado (PDF)</button>
+  </div>
+
+  <!-- Resultado -->
+  <div id="resultado" role="status" aria-live="polite"></div>
+
+  <footer>
+    Evaluación final sumativa — Spanish ASE Math, Nivel 1 · Harry S. Truman College, City Colleges of Chicago.<br>
+    © José M. Fernández, ABE/ASE Math Master Teacher. Licencia
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="license">CC BY-NC-SA 4.0</a>.
+  </footer>
+
+</div>
+
+<script>
+/* ════════════════════════════════════════════════════════════════
+   EVALUACIÓN FINAL SUMATIVA — NIVEL 1
+   25 preguntas · 5 por hilo temático · solo contenidos del Nivel 1.
+   ════════════════════════════════════════════════════════════════ */
+
+/* Banco: cada pregunta guarda el TEXTO de la opción correcta (no el índice),
+   así las opciones pueden barajarse sin perder la respuesta. */
+var BANCO = [
+  /* ── Operaciones con enteros (Temas 1–2) ── */
+  {tema:"Operaciones",  enun:"Una caja trae 8 paquetes y cada paquete tiene 25 unidades. ¿Cuántas unidades hay en total?",
+   ops:["200","33","175","160"], correcta:"200"},
+  {tema:"Operaciones",  enun:"¿Cuánto es 144 ÷ 12?",
+   ops:["12","11","14","132"], correcta:"12"},
+  {tema:"Operaciones",  enun:"¿Cuánto es 47 + 86?",
+   ops:["133","123","143","1213"], correcta:"133"},
+  {tema:"Operaciones",  enun:"¿Cuánto es 305 − 178?",
+   ops:["127","137","117","233"], correcta:"127"},
+  {tema:"Operaciones",  enun:"Un salón tiene 6 filas de 9 sillas cada una. ¿Cuántas sillas hay en total?",
+   ops:["54","15","45","63"], correcta:"54"},
+
+  /* ── Fracciones y decimales (Temas 3–4) ── */
+  {tema:"Decimales",    enun:"Una persona compra artículos por $8.50 y $3.75. ¿Cuánto gastó en total?",
+   ops:["$12.25","$11.25","$12.75","$4.75"], correcta:"$12.25"},
+  {tema:"Fracciones",   enun:"¿Cuánto es 1/4 + 2/4?",
+   ops:["3/4","3/8","2/4","3/16"], correcta:"3/4"},
+  {tema:"Fracciones",   enun:"Se comió 3/5 de una pizza. ¿Qué fracción de la pizza quedó?",
+   ops:["2/5","3/5","1/5","5/3"], correcta:"2/5"},
+  {tema:"Decimales",    enun:"¿Qué fracción equivale a 0.75?",
+   ops:["3/4","7/5","1/4","75/10"], correcta:"3/4"},
+  {tema:"Decimales",    enun:"Paga con $20.00 una compra de $13.45. ¿Cuánto cambio recibe?",
+   ops:["$6.55","$7.55","$6.65","$33.45"], correcta:"$6.55"},
+
+  /* ── Medidas (Tema 6) ── */
+  {tema:"Medidas",      enun:"¿Cuántas pulgadas hay en 2 pies? (1 pie = 12 pulgadas)",
+   ops:["24 pulgadas","14 pulgadas","6 pulgadas","12 pulgadas"], correcta:"24 pulgadas"},
+  {tema:"Tiempo",       enun:"Una reunión empieza a las 3:20 p. m. y dura 1 hora y 30 minutos. ¿A qué hora termina?",
+   ops:["4:50 p. m.","4:30 p. m.","5:50 p. m.","4:20 p. m."], correcta:"4:50 p. m."},
+  {tema:"Medidas",      enun:"¿Cuántas onzas hay en 3 libras? (1 libra = 16 onzas)",
+   ops:["48 onzas","19 onzas","32 onzas","16 onzas"], correcta:"48 onzas"},
+  {tema:"Tiempo",       enun:"¿Cuántos minutos hay en 2 horas y media?",
+   ops:["150 minutos","120 minutos","250 minutos","145 minutos"], correcta:"150 minutos"},
+  {tema:"Medidas",      enun:"Una receta pide 500 mililitros de leche. ¿A cuántos litros equivale? (1 L = 1000 ml)",
+   ops:["0.5 L","5 L","50 L","0.05 L"], correcta:"0.5 L"},
+
+  /* ── Geometría: perímetro y área (Tema 7) ── */
+  {tema:"Geometría",    enun:"¿Cuál es el perímetro de un cuadrado de 6 m de lado?",
+   ops:["24 m","12 m","36 m","18 m"], correcta:"24 m"},
+  {tema:"Geometría",    enun:"¿Cuál es el área de un rectángulo de 9 m de base y 3 m de altura?",
+   ops:["27 m²","12 m²","24 m²","36 m²"], correcta:"27 m²"},
+  {tema:"Geometría",    enun:"¿Cuál es el área de un triángulo de 10 cm de base y 4 cm de altura?",
+   ops:["20 cm²","40 cm²","14 cm²","28 cm²"], correcta:"20 cm²"},
+  {tema:"Geometría",    enun:"¿Cuál es el perímetro de un rectángulo de 8 m de base y 5 m de altura?",
+   ops:["26 m","40 m","13 m","18 m"], correcta:"26 m"},
+  {tema:"Geometría",    enun:"Para poner una cerca alrededor de un terreno, ¿qué medida se necesita calcular?",
+   ops:["El perímetro","El área","El volumen","La altura"], correcta:"El perímetro"},
+
+  /* ── Tablas y gráficas (Tema 8) ── */
+  {tema:"Tablas",       enun:"Las tres notas de un estudiante son 80, 90 y 70. ¿Cuál es el promedio?",
+   ops:["80","90","240","70"], correcta:"80"},
+  {tema:"Gráficas",     enun:"En una gráfica de líneas, los gastos suben mes a mes. ¿Qué tendencia muestra?",
+   ops:["Creciente","Decreciente","Estable","Nula"], correcta:"Creciente"},
+  {tema:"Tablas",       enun:"En una tabla aparecen los valores 12, 18, 9 y 15. ¿Cuál es el valor máximo?",
+   ops:["18","9","15","54"], correcta:"18"},
+  {tema:"Tablas",       enun:"Una columna de gastos muestra $25, $30 y $45. ¿Cuál es el total de la columna?",
+   ops:["$100","$90","$75","$110"], correcta:"$100"},
+  {tema:"Tablas",       enun:"En una semana, el día de más sueño fueron 9 horas y el de menos, 5 horas. ¿Cuál es la diferencia?",
+   ops:["4 horas","14 horas","5 horas","9 horas"], correcta:"4 horas"}
+];
+
+var TOTAL = BANCO.length;       /* 25 */
+var APRUEBA = 18;               /* mínimo para aprobar (consistente con Nivel 2) */
+var entregado = false;
+var preguntas = [];             /* estado de render: {enun, tema, correctaTxt, elegida, nodo} */
+
+/* ── Fisher-Yates (no muta el arreglo recibido) ── */
+function barajar(arr){
+  var a = arr.slice();
+  for(var i = a.length - 1; i > 0; i--){
+    var j = Math.floor(Math.random() * (i + 1));
+    var t = a[i]; a[i] = a[j]; a[j] = t;
+  }
+  return a;
+}
+
+function escaparTexto(s){
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+
+/* ── Generar el examen ── */
+function generarExamen(){
+  var cont = document.getElementById('quiz');
+  cont.innerHTML = '';
+  preguntas = [];
+
+  var ordenadas = barajar(BANCO);
+
+  ordenadas.forEach(function(p, i){
+    var opsBarajadas = barajar(p.ops);
+
+    var bloque = document.createElement('div');
+    bloque.className = 'pregunta';
+
+    var html =
+      '<div class="pcab">' +
+        '<span class="pnum">Pregunta ' + (i + 1) + '</span>' +
+        '<span class="ptema">' + escaparTexto(p.tema) + '</span>' +
+      '</div>' +
+      '<p class="enun">' + escaparTexto(p.enun) + '</p>' +
+      '<div class="opciones" role="group" aria-label="Opciones de la pregunta ' + (i + 1) + '"></div>';
+    bloque.innerHTML = html;
+
+    var estado = { enun:p.enun, tema:p.tema, correctaTxt:p.correcta, elegida:null, nodo:bloque };
+
+    var grupo = bloque.querySelector('.opciones');
+    opsBarajadas.forEach(function(texto){
+      var btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'opcion';
+      btn.textContent = texto;
+      btn.addEventListener('click', function(){
+        if(entregado) return;
+        grupo.querySelectorAll('.opcion').forEach(function(o){ o.classList.remove('elegida'); });
+        btn.classList.add('elegida');
+        estado.elegida = texto;
+        actualizarProgreso();
+      });
+      grupo.appendChild(btn);
+    });
+
+    preguntas.push(estado);
+    cont.appendChild(bloque);
+  });
+
+  actualizarProgreso();
+}
+
+function actualizarProgreso(){
+  var n = preguntas.filter(function(p){ return p.elegida !== null; }).length;
+  document.getElementById('progreso').textContent = 'Respondidas: ' + n + ' de ' + TOTAL;
+}
+
+/* ── Temporizador (60 minutos) ── */
+var restante = 60 * 60;
+var temporizador = setInterval(function(){
+  var m = Math.floor(restante / 60), s = restante % 60;
+  var reloj = document.getElementById('reloj');
+  reloj.textContent = 'Tiempo restante: ' + (m < 10 ? '0' : '') + m + ':' + (s < 10 ? '0' : '') + s;
+  if(restante <= 300){ reloj.classList.add('alerta'); }   /* alerta en los últimos 5 min */
+  restante--;
+  if(restante < 0){
+    clearInterval(temporizador);
+    entregarExamen(true);
+  }
+}, 1000);
+
+/* ── Entregar y calificar ── */
+var reporteTXT = '';
+
+function entregarExamen(automatico){
+  if(entregado) return;
+
+  var sinResponder = preguntas.filter(function(p){ return p.elegida === null; }).length;
+  if(!automatico && sinResponder > 0){
+    var seguir = confirm('Le quedan ' + sinResponder + ' pregunta(s) sin responder. ¿Desea entregar de todas formas?');
+    if(!seguir) return;
+  }
+
+  entregado = true;
+  clearInterval(temporizador);
+
+  var aciertos = 0;
+  var porTema = {};
+
+  preguntas.forEach(function(p, i){
+    var grupo = p.nodo.querySelector('.opciones');
+    var botones = grupo.querySelectorAll('.opcion');
+    var acerto = (p.elegida === p.correctaTxt);
+    if(acerto) aciertos++;
+
+    porTema[p.tema] = porTema[p.tema] || { ok:0, total:0 };
+    porTema[p.tema].total++;
+    if(acerto) porTema[p.tema].ok++;
+
+    botones.forEach(function(b){
+      b.disabled = true;
+      b.classList.remove('elegida');
+      if(b.textContent === p.correctaTxt){ b.classList.add('correcta'); }
+      else if(b.textContent === p.elegida){ b.classList.add('incorrecta'); }
+    });
+  });
+
+  mostrarResultado(aciertos, porTema, automatico);
+  construirReporteTXT(aciertos, porTema, automatico);
+
+  document.getElementById('btn-entregar').style.display = 'none';
+  document.getElementById('btn-txt').style.display = 'inline-block';
+  document.getElementById('btn-pdf').style.display = 'inline-block';
+}
+
+function mostrarResultado(aciertos, porTema, automatico){
+  var caja = document.getElementById('resultado');
+  var pct = Math.round(aciertos / TOTAL * 100);
+  var aprobado = aciertos >= APRUEBA;
+
+  var filas = '';
+  Object.keys(porTema).forEach(function(t){
+    filas += '<tr><td>' + escaparTexto(t) + '</td><td class="r">' +
+             porTema[t].ok + ' / ' + porTema[t].total + '</td></tr>';
+  });
+
+  caja.className = 'visible ' + (aprobado ? 'aprob' : 'repro');
+  caja.innerHTML =
+    (automatico ? '<p style="margin:0 0 6px;color:var(--ambar);font-weight:600;">⏱️ El tiempo se agotó: el examen se entregó automáticamente.</p>' : '') +
+    '<div class="puntaje">' + aciertos + ' / ' + TOTAL + '</div>' +
+    '<div class="barra" aria-hidden="true"><span style="width:' + pct + '%"></span></div>' +
+    '<p class="mensaje"><strong>' + (aprobado ? 'APROBADO' : 'NO aprobado') + '</strong> · ' + pct + '% · ' +
+      (aprobado
+        ? 'Domina los contenidos del Nivel 1. ¡Felicidades por completar el nivel!'
+        : 'Repase los temas con menos aciertos y reintente. El mínimo para aprobar es ' + APRUEBA + ' de ' + TOTAL + '.') +
+    '</p>' +
+    '<div class="desglose"><h3>Aciertos por tema</h3><table>' +
+      '<thead><tr><th>Tema</th><th style="text-align:right;">Aciertos</th></tr></thead>' +
+      '<tbody>' + filas + '</tbody></table></div>';
+
+  caja.scrollIntoView({ behavior:'smooth', block:'center' });
+}
+
+function construirReporteTXT(aciertos, porTema, automatico){
+  var nombre = (document.getElementById('f_nombre').value || '').trim() || '(sin nombre)';
+  var fecha  = (document.getElementById('f_fecha').value  || '').trim() || '(sin fecha)';
+  var pct = Math.round(aciertos / TOTAL * 100);
+  var aprobado = aciertos >= APRUEBA;
+
+  var r = '';
+  r += 'EVALUACIÓN FINAL SUMATIVA — SPANISH ASE MATH, NIVEL 1\n';
+  r += 'Harry S. Truman College — City Colleges of Chicago\n';
+  r += '------------------------------------------------------------\n';
+  r += 'Estudiante: ' + nombre + '\n';
+  r += 'Fecha:      ' + fecha + '\n';
+  if(automatico){ r += 'Nota:       el tiempo se agotó (entrega automática)\n'; }
+  r += '------------------------------------------------------------\n\n';
+
+  preguntas.forEach(function(p, i){
+    var acerto = (p.elegida === p.correctaTxt);
+    r += 'Pregunta ' + (i + 1) + ' [' + p.tema + ']: ' + (acerto ? 'Correcta' : 'Incorrecta') + '\n';
+    r += '   Enunciado: ' + p.enun + '\n';
+    r += '   Su respuesta:      ' + (p.elegida === null ? '(sin responder)' : p.elegida) + '\n';
+    r += '   Respuesta correcta: ' + p.correctaTxt + '\n\n';
+  });
+
+  r += '------------------------------------------------------------\n';
+  r += 'ACIERTOS POR TEMA\n';
+  Object.keys(porTema).forEach(function(t){
+    r += '   ' + t + ': ' + porTema[t].ok + ' / ' + porTema[t].total + '\n';
+  });
+  r += '------------------------------------------------------------\n';
+  r += 'RESULTADO: ' + aciertos + ' de ' + TOTAL + ' (' + pct + '%) — ' +
+       (aprobado ? 'APROBADO' : 'NO aprobado') + '\n';
+  r += 'Mínimo para aprobar: ' + APRUEBA + ' de ' + TOTAL + '\n';
+
+  reporteTXT = r;
+}
+
+/* ── Exportaciones ── */
+document.getElementById('btn-txt').addEventListener('click', function(){
+  var nombre = (document.getElementById('f_nombre').value || 'estudiante').trim().replace(/[^\wáéíóúñ ]/gi, '').replace(/\s+/g, '_') || 'estudiante';
+  var blob = new Blob([reporteTXT], { type:'text/plain;charset=utf-8' });
+  var a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'Resultado_Nivel1_' + nombre + '.txt';
+  a.click();
+});
+
+document.getElementById('btn-pdf').addEventListener('click', function(){
+  window.print();   /* el usuario elige «Guardar como PDF» en el destino de impresión */
+});
+
+document.getElementById('btn-entregar').addEventListener('click', function(){ entregarExamen(false); });
+
+/* ── Arranque ── */
+window.addEventListener('DOMContentLoaded', generarExamen);
+</script>
+</body>
+</html>

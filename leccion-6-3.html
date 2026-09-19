@@ -1,0 +1,1402 @@
+<!DOCTYPE html>
+
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Lección 6.3 · Problemas aplicados de medición — Matemáticas Nivel 1</title>
+<style>
+      :root {
+        --azul: #4e342e;
+        --azul-osc: #3e2723;
+        --azul-cl: #efebe9;
+        --tinta: #1a2330;
+        --gris: #5b6675;
+        --linea: #dde3ea;
+        --crema: #f6f4ee;
+        --papel: #ffffff;
+        --verde: #276b44;
+        --verde-cl: #e7f4ec;
+        --ambar: #7d4e00;
+        --ambar-cl: #fdf3df;
+        --rojo: #b5342a;
+        --rojo-cl: #fdecea;
+        --sombra: 0 2px 10px rgba(62, 39, 35, 0.12);
+      }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        font-family: 'Segoe UI', 'Helvetica Neue', system-ui, sans-serif;
+        background: var(--crema);
+        color: var(--tinta);
+        line-height: 1.65;
+        font-size: 17px;
+      }
+      .envoltura {
+        max-width: 880px;
+        margin: 0 auto;
+        padding: 0 20px 80px;
+      }
+
+      header.principal {
+        background: linear-gradient(135deg, #3e2723 0%, #4e342e 55%, #6d4c41 100%);
+        color: #fff;
+        padding: 46px 38px 40px;
+        border-radius: 0 0 22px 22px;
+        box-shadow: 0 6px 22px rgba(62, 39, 35, 0.3);
+      }
+      .envoltura-header {
+        max-width: 880px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+      .ruta {
+        font-size: 13px;
+        letter-spacing: 0.6px;
+        text-transform: uppercase;
+        opacity: 0.85;
+        margin-bottom: 14px;
+      }
+      header.principal h1 {
+        font-size: 30px;
+        font-weight: 700;
+        line-height: 1.25;
+        margin-bottom: 8px;
+      }
+      header.principal .lema {
+        font-size: 16px;
+        opacity: 0.93;
+        font-weight: 400;
+        max-width: 620px;
+      }
+      .chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 20px;
+      }
+      .chip {
+        background: rgba(255, 255, 255, 0.16);
+        border: 1px solid rgba(255, 255, 255, 0.28);
+        padding: 6px 14px;
+        border-radius: 30px;
+        font-size: 13px;
+        font-weight: 600;
+      }
+
+      section {
+        background: var(--papel);
+        margin-top: 22px;
+        padding: 30px 34px;
+        border-radius: 14px;
+        box-shadow: var(--sombra);
+      }
+      .num-seccion {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 34px;
+        height: 34px;
+        background: var(--azul);
+        color: #fff;
+        border-radius: 9px;
+        font-weight: 700;
+        font-size: 17px;
+        margin-right: 12px;
+        flex-shrink: 0;
+      }
+      h2 {
+        display: flex;
+        align-items: center;
+        font-size: 23px;
+        color: var(--azul-osc);
+        margin-bottom: 16px;
+        font-weight: 700;
+      }
+      h3 {
+        font-size: 18px;
+        color: var(--azul-osc);
+        margin: 22px 0 10px;
+        font-weight: 700;
+      }
+      p {
+        margin: 11px 0;
+      }
+      ul,
+      ol {
+        margin: 11px 0 11px 26px;
+      }
+      li {
+        margin: 6px 0;
+      }
+      strong {
+        color: var(--azul-osc);
+      }
+
+      .caja {
+        border-radius: 11px;
+        padding: 18px 22px;
+        margin: 18px 0;
+        border-left: 5px solid;
+      }
+      .caja-objetivo {
+        background: var(--azul-cl);
+        border-color: var(--azul);
+      }
+      .caja-objetivo h2 {
+        margin-bottom: 10px;
+      }
+      .caja-tip {
+        background: var(--verde-cl);
+        border-color: var(--verde);
+      }
+      .caja-tip strong {
+        color: var(--verde);
+      }
+      .caja-ojo {
+        background: var(--ambar-cl);
+        border-color: var(--ambar);
+      }
+      .caja-ojo strong {
+        color: var(--ambar);
+      }
+      .caja-recurso {
+        background: #eef2f7;
+        border-color: var(--gris);
+      }
+
+      .etiqueta {
+        display: inline-block;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+        padding: 3px 10px;
+        border-radius: 5px;
+        margin-bottom: 6px;
+      }
+      .et-verde {
+        background: var(--verde);
+        color: #fff;
+      }
+      .et-ambar {
+        background: var(--ambar);
+        color: #fff;
+      }
+      .et-azul {
+        background: var(--azul);
+        color: #fff;
+      }
+
+      .modalidades {
+        display: flex;
+        gap: 14px;
+        margin-top: 14px;
+        flex-wrap: wrap;
+      }
+      .modo {
+        flex: 1;
+        min-width: 240px;
+        border-radius: 9px;
+        padding: 13px 16px;
+        background: #fff;
+        border: 1px solid var(--linea);
+      }
+      .modo-pres {
+        border-top: 4px solid var(--azul);
+      }
+      .modo-line {
+        border-top: 4px solid var(--verde);
+      }
+      .modo .modo-tit {
+        display: block;
+        font-weight: 700;
+        font-size: 14px;
+        margin-bottom: 5px;
+      }
+      .modo-pres .modo-tit {
+        color: var(--azul-osc);
+      }
+      .modo-line .modo-tit {
+        color: var(--verde);
+      }
+      .modo p {
+        margin: 4px 0 0;
+        font-size: 15px;
+      }
+
+      /* ── REFERENCIA RÁPIDA ── */
+      .ref-rapida {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+        margin: 14px 0;
+      }
+      .ref-bloque {
+        flex: 1;
+        min-width: 180px;
+        background: var(--azul-cl);
+        border-radius: 10px;
+        padding: 12px 15px;
+        border-bottom: 4px solid var(--azul);
+      }
+      .ref-bloque .rt {
+        font-weight: 700;
+        color: var(--azul-osc);
+        font-size: 14px;
+        margin-bottom: 5px;
+      }
+      .ref-bloque .rd {
+        font-size: 13.5px;
+        color: var(--gris);
+        font-family: 'Consolas', monospace;
+        line-height: 1.7;
+      }
+
+      /* ── 3 PASOS ── */
+      .pasos-tarjeta {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin: 16px 0;
+      }
+      .pasos-tarjeta .pt {
+        flex: 1;
+        min-width: 170px;
+        background: var(--azul-cl);
+        border-radius: 10px;
+        padding: 13px 15px;
+        border-bottom: 4px solid var(--azul);
+      }
+      .pasos-tarjeta .pt .ptn {
+        display: inline-block;
+        background: var(--azul);
+        color: #fff;
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        text-align: center;
+        line-height: 24px;
+        font-weight: 700;
+        font-size: 13px;
+        margin-bottom: 5px;
+      }
+      .pasos-tarjeta .pt strong {
+        display: block;
+        font-size: 14px;
+        margin-bottom: 3px;
+      }
+      .pasos-tarjeta .pt span.txt {
+        font-size: 13.5px;
+        color: var(--gris);
+      }
+
+      .ejemplo {
+        background: var(--crema);
+        border: 1px dashed var(--azul);
+        border-radius: 11px;
+        padding: 18px 22px;
+        margin: 18px 0;
+      }
+      .ejemplo .titulo-ej {
+        font-weight: 700;
+        color: var(--azul-osc);
+        margin-bottom: 8px;
+        font-size: 15px;
+      }
+      .paso {
+        margin: 8px 0 8px 4px;
+        padding-left: 32px;
+        position: relative;
+      }
+      .paso .n {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 24px;
+        height: 24px;
+        background: var(--azul);
+        color: #fff;
+        border-radius: 50%;
+        font-size: 13px;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .practica {
+        border: 2px solid var(--azul-cl);
+        border-radius: 12px;
+        padding: 20px 22px;
+        margin: 20px 0;
+        background: #fdfcfb;
+      }
+      .practica .cabe {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 6px;
+      }
+      .practica .cabe .ico {
+        font-size: 22px;
+      }
+      .practica .cabe h3 {
+        font-size: 16px;
+        color: var(--azul-osc);
+        margin: 0;
+      }
+      .pregunta-int {
+        font-size: 17px;
+        font-weight: 600;
+        margin: 14px 0 12px;
+      }
+      .opciones {
+        display: flex;
+        flex-direction: column;
+        gap: 9px;
+      }
+      .opcion {
+        border: 2px solid var(--linea);
+        border-radius: 9px;
+        padding: 11px 16px;
+        cursor: pointer;
+        background: #fff;
+        transition: 0.16s;
+        font-size: 16px;
+        text-align: left;
+        font-family: inherit;
+        color: var(--tinta);
+      }
+      .opcion:hover {
+        border-color: var(--azul);
+        background: var(--azul-cl);
+      }
+      .opcion.correcta {
+        border-color: var(--verde);
+        background: var(--verde-cl);
+        font-weight: 600;
+      }
+      .opcion.incorrecta {
+        border-color: var(--rojo);
+        background: var(--rojo-cl);
+      }
+      .opcion:disabled {
+        cursor: default;
+      }
+      .respuesta-int {
+        margin-top: 12px;
+        padding: 11px 15px;
+        border-radius: 8px;
+        font-size: 15px;
+        display: none;
+      }
+      .respuesta-int.bien {
+        background: var(--verde-cl);
+        color: var(--verde);
+        display: block;
+      }
+      .respuesta-int.mal {
+        background: var(--rojo-cl);
+        color: var(--rojo);
+        display: block;
+      }
+
+      .btn {
+        font-family: inherit;
+        font-size: 15px;
+        font-weight: 600;
+        padding: 9px 20px;
+        background: var(--azul);
+        color: #fff;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: 0.16s;
+      }
+      .btn:hover {
+        background: var(--azul-osc);
+      }
+      .btn-sec {
+        background: #fff;
+        color: var(--azul);
+        border: 2px solid var(--azul);
+      }
+      .btn-sec:hover {
+        background: var(--azul-cl);
+      }
+
+      .quiz-bloque {
+        margin: 18px 0;
+        padding: 18px 20px;
+        border-radius: 11px;
+        background: var(--crema);
+        border: 1px solid var(--linea);
+      }
+      .quiz-bloque .qnum {
+        display: inline-block;
+        background: var(--azul-osc);
+        color: #fff;
+        font-size: 13px;
+        font-weight: 700;
+        padding: 3px 11px;
+        border-radius: 20px;
+        margin-bottom: 8px;
+      }
+      .quiz-bloque .pregunta {
+        font-weight: 600;
+        font-size: 16px;
+        margin-bottom: 12px;
+      }
+      .marcador {
+        text-align: center;
+        padding: 26px;
+        border-radius: 13px;
+        margin-top: 20px;
+        display: none;
+      }
+      .marcador.visible {
+        display: block;
+      }
+      .marcador .puntaje {
+        font-size: 46px;
+        font-weight: 800;
+        margin: 6px 0;
+      }
+      .marcador .mensaje {
+        font-size: 17px;
+      }
+      .barra-prog {
+        height: 10px;
+        background: var(--linea);
+        border-radius: 6px;
+        overflow: hidden;
+        margin: 14px 0;
+      }
+      .barra-prog span {
+        display: block;
+        height: 100%;
+        background: var(--verde);
+        width: 0;
+        transition: width 0.5s;
+      }
+
+      .tabla-rubrica {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 14px 0;
+        font-size: 14px;
+      }
+      .tabla-rubrica th,
+      .tabla-rubrica td {
+        border: 1px solid var(--linea);
+        padding: 10px 12px;
+        text-align: left;
+        vertical-align: top;
+      }
+      .tabla-rubrica thead th {
+        background: var(--azul-osc);
+        color: #fff;
+        font-size: 13px;
+      }
+      .tabla-rubrica tbody th {
+        font-weight: 600;
+        color: var(--azul-osc);
+        background: var(--azul-cl);
+        font-size: 14px;
+        text-align: left;
+      }
+      .nivel-cab {
+        background: #2f3d46;
+        color: #fff;
+        text-align: center;
+      }
+
+      .cierre {
+        background: linear-gradient(135deg, #3e2723, #6d4c41);
+        color: #fff;
+        border-radius: 14px;
+        padding: 28px 32px;
+        margin-top: 24px;
+      }
+      .cierre h2 {
+        color: #fff;
+      }
+      .cierre strong {
+        color: #eafde6;
+        font-weight: 700;
+      }
+      .cierre .num-seccion {
+        background: rgba(255, 255, 255, 0.22);
+      }
+      .flecha-sig {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: rgba(255, 255, 255, 0.16);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        padding: 10px 18px;
+        border-radius: 9px;
+        margin-top: 12px;
+        font-weight: 600;
+        font-size: 15px;
+      }
+
+      footer {
+        text-align: center;
+        padding: 30px 20px;
+        color: var(--gris);
+        font-size: 13px;
+      }
+
+      @media (max-width: 560px) {
+        header.principal {
+          padding: 34px 22px;
+        }
+        header.principal h1 {
+          font-size: 24px;
+        }
+        section {
+          padding: 24px 20px;
+        }
+      }
+
+      /* ── FOCO VISIBLE (WCAG 2.4.7) ── */
+      a:focus-visible,
+      button:focus-visible,
+      [tabindex]:focus-visible {
+        outline: 3px solid var(--azul-osc);
+        outline-offset: 2px;
+      }
+
+      /* ── MOVIMIENTO REDUCIDO ── */
+      @media (prefers-reduced-motion: reduce) {
+        * {
+          transition: none !important;
+        }
+        html {
+          scroll-behavior: auto;
+        }
+      }
+
+      /* ── MARCAS DE RESPUESTA (no depender del color) ── */
+      .marca {
+        font-weight: 700;
+        margin-right: 6px;
+      }
+      .opcion.elegida {
+        border-color: var(--azul);
+        background: var(--azul-cl);
+      }
+      .opcion:disabled {
+        color: var(--tinta);
+        opacity: 1;
+      }
+
+      /* ── TABLAS RESPONSIVAS (DUA) ── */
+      .tabla-scroll {
+        overflow-x: auto;
+        overflow-y: hidden;
+        -webkit-overflow-scrolling: touch;
+        max-width: 100%;
+        margin: 18px 0 0;
+        border: 1px solid var(--linea);
+        border-radius: 8px;
+        background: var(--papel);
+      }
+      .tabla-scroll:focus,
+      .tabla-scroll:focus-visible {
+        outline: 3px solid var(--azul);
+        outline-offset: 2px;
+      }
+      .tabla-scroll > table {
+        margin: 0;
+        min-width: 100%;
+      }
+      .aviso-desliza {
+        margin: 8px 0 18px;
+        padding: 8px 12px;
+        font-size: 14px;
+        font-weight: 600;
+        color: #5c3900;
+        background: #fdf3df;
+        border-left: 4px solid #5c3900;
+        border-radius: 5px;
+      }
+      .cap-oculto {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0 0 0 0);
+        white-space: nowrap;
+        border: 0;
+      }
+      @media print {
+        .tabla-scroll {
+          overflow: visible;
+          border: 0;
+        }
+        .aviso-desliza {
+          display: none;
+        }
+      }
+    </style>
+</head>
+<body>
+<header class="principal">
+<div class="envoltura-header">
+<p class="ruta">Matemáticas · Nivel 1 · Tema 6 — Sistemas de medidas y el tiempo</p>
+<h1>Lección 6.3 · Problemas aplicados de medición en contexto real</h1>
+<p class="lema">Poner en práctica todo lo aprendido: medir en la cocina, la salud, la construcción, el viaje y el trabajo.</p>
+<div class="chips">
+<span class="chip"><span aria-hidden="true">⏱️</span> 4 horas (2 sinc. + 2 asinc.)</span>
+<span class="chip"><span aria-hidden="true">🛠️</span> Problemas auténticos</span>
+<span class="chip"><span aria-hidden="true">📘</span> Steck-Vaughn</span>
+</div>
+</div>
+</header>
+<div class="envoltura">
+<!-- OBJETIVOS -->
+<section>
+<div class="caja caja-objetivo">
+<h2>
+<span aria-hidden="true" class="num-seccion">🎯</span>
+            Objetivos de la clase
+          </h2>
+<p>Al terminar esta lección, usted podrá:</p>
+<ul>
+<li>
+<strong>Identificar</strong>
+              el sistema de medida (inglés o métrico) que usa un problema.
+            </li>
+<li>
+<strong>Seleccionar</strong>
+              la unidad apropiada para resolver.
+            </li>
+<li>
+<strong>Convertir</strong>
+              entre unidades cuando el problema lo requiera.
+            </li>
+<li>
+<strong>Calcular</strong>
+              el resultado final con la unidad correcta en contextos auténticos.
+            </li>
+</ul>
+</div>
+</section>
+<!-- CIERRE DEL TEMA -->
+<section>
+<h2>
+<span aria-hidden="true" class="num-seccion">1</span>
+          El cierre del Tema 6: medir en la vida real
+        </h2>
+<p>
+          En la
+          <strong>Lección 6.1</strong>
+          aprendió el sistema inglés y en la
+          <strong>6.2</strong>
+          el sistema métrico, el tiempo y la temperatura. Hoy se juntan todas esas herramientas.
+        </p>
+<p>
+          Los problemas de esta lección son
+          <strong>auténticos</strong>
+          : situaciones reales de la cocina, la salud, la construcción, el viaje y el trabajo. En la vida no le dicen "use el sistema métrico" — usted tiene que
+          <strong>leer con cuidado</strong>
+          , ver qué unidades aparecen y decidir qué hacer.
+        </p>
+<div class="caja caja-tip">
+<span class="etiqueta et-verde">Lo más importante</span>
+<p>
+            Antes de calcular,
+            <strong>lea el enunciado completo</strong>
+            e identifique: ¿qué se mide (longitud, peso, capacidad, tiempo)? ¿qué sistema usa? ¿necesito convertir antes de operar?
+          </p>
+</div>
+</section>
+<!-- REFERENCIA RÁPIDA -->
+<section>
+<h2>
+<span aria-hidden="true" class="num-seccion">2</span>
+          Su hoja de referencia de medidas
+        </h2>
+<p>Aquí están, juntas, todas las equivalencias del Tema 6. Téngalas a mano mientras resuelve:</p>
+<div class="ref-rapida">
+<div class="ref-bloque">
+<p class="rt"><span aria-hidden="true">📏</span> Longitud (inglés)</p>
+<p class="rd">
+              12 in = 1 ft
+              <br/>
+              3 ft = 1 yd
+              <br/>
+              5 280 ft = 1 mi
+            </p>
+</div>
+<div class="ref-bloque">
+<p class="rt"><span aria-hidden="true">⚖️</span> Peso (inglés)</p>
+<p class="rd">
+              16 oz = 1 lb
+              <br/>
+              2 000 lb = 1 ton
+            </p>
+</div>
+<div class="ref-bloque">
+<p class="rt"><span aria-hidden="true">🥤</span> Capacidad (inglés)</p>
+<p class="rd">
+              8 fl oz = 1 cup
+              <br/>
+              2 cups = 1 pint
+              <br/>
+              2 pints = 1 qt
+              <br/>
+              4 qt = 1 gal
+            </p>
+</div>
+</div>
+<div class="ref-rapida">
+<div class="ref-bloque">
+<p class="rt"><span aria-hidden="true">📐</span> Métrico</p>
+<p class="rd">
+              kilo = ×1 000
+              <br/>
+              centi = ÷100
+              <br/>
+              mili = ÷1 000
+              <br/>
+              (escalera ×10 / ÷10)
+            </p>
+</div>
+<div class="ref-bloque">
+<p class="rt"><span aria-hidden="true">🕐</span> Tiempo</p>
+<p class="rd">
+              60 seg = 1 min
+              <br/>
+              60 min = 1 hora
+              <br/>
+              24 horas = 1 día
+            </p>
+</div>
+<div class="ref-bloque">
+<p class="rt"><span aria-hidden="true">🌡️</span> Temperatura</p>
+<p class="rd">
+              °F = (°C×9÷5)+32
+              <br/>
+              °C = (°F−32)×5÷9
+            </p>
+</div>
+</div>
+</section>
+<!-- MÉTODO DE 3 PASOS -->
+<section>
+<h2>
+<span aria-hidden="true" class="num-seccion">3</span>
+          El método para problemas de medición
+        </h2>
+<p>Para cualquier problema de medición, siga estos tres pasos:</p>
+<div class="pasos-tarjeta">
+<div class="pt">
+<span aria-hidden="true" class="ptn">1</span>
+<strong>Identifico</strong>
+<span class="txt">¿Qué se mide y en qué sistema? ¿Las unidades son iguales o distintas?</span>
+</div>
+<div class="pt">
+<span aria-hidden="true" class="ptn">2</span>
+<strong>Convierto si hace falta</strong>
+<span class="txt">Si las unidades son distintas, las igualo antes de operar.</span>
+</div>
+<div class="pt">
+<span aria-hidden="true" class="ptn">3</span>
+<strong>Calculo y respondo</strong>
+<span class="txt">Hago la operación y expreso el resultado con su unidad.</span>
+</div>
+</div>
+<h3>Ejemplo resuelto: un problema de cocina</h3>
+<div class="ejemplo">
+<p class="titulo-ej"><span aria-hidden="true">📋</span> "Una receta necesita 2 cuartos de leche, pero usted solo tiene tazas medidoras. ¿Cuántas tazas debe medir?"</p>
+<p class="paso">
+<span aria-hidden="true" class="n">1</span>
+<strong>Identifico:</strong>
+            es capacidad, sistema inglés. El problema da cuartos, pero necesito tazas: unidades distintas.
+          </p>
+<p class="paso">
+<span aria-hidden="true" class="n">2</span>
+<strong>Convierto:</strong>
+            1 cuarto = 2 pintas, y 1 pinta = 2 tazas, así que 1 cuarto = 4 tazas. Paso de cuarto (grande) a taza (pequeña): multiplico.
+          </p>
+<p class="paso">
+<span aria-hidden="true" class="n">3</span>
+<strong>Calculo:</strong>
+            2 cuartos × 4 = 8 tazas.
+          </p>
+<p class="paso">
+<span aria-hidden="true" class="n">✓</span>
+            Debe medir
+            <strong>8 tazas</strong>
+            de leche.
+          </p>
+</div>
+<div class="practica">
+<div class="cabe">
+<span aria-hidden="true" class="ico">✏️</span>
+<h3>Práctica 1 — Problema de salud</h3>
+</div>
+<p class="pregunta-int" id="t-p1">Un médico recomienda tomar 2 000 mililitros de agua al día. ¿Cuántos litros son? (1 litro = 1 000 mililitros)</p>
+<div aria-labelledby="t-p1" class="opciones" data-quiz="p1" role="group">
+<button class="opcion" data-correcta="no" type="button">20 litros</button>
+<button class="opcion" data-correcta="si" type="button">2 litros</button>
+<button class="opcion" data-correcta="no" type="button">200 litros</button>
+<button class="opcion" data-correcta="no" type="button">0.2 litros</button>
+</div>
+<div aria-live="polite" class="respuesta-int" id="r-p1" role="status"></div>
+</div>
+<div class="practica">
+<div class="cabe">
+<span aria-hidden="true" class="ico">✏️</span>
+<h3>Práctica 2 — Problema de construcción</h3>
+</div>
+<p class="pregunta-int" id="t-p2">Un carpintero necesita una tabla de 2 yardas, pero la tienda la vende por pies. ¿Cuántos pies debe pedir? (1 yarda = 3 pies)</p>
+<div aria-labelledby="t-p2" class="opciones" data-quiz="p2" role="group">
+<button class="opcion" data-correcta="no" type="button">5 pies</button>
+<button class="opcion" data-correcta="si" type="button">6 pies</button>
+<button class="opcion" data-correcta="no" type="button">2 pies</button>
+<button class="opcion" data-correcta="no" type="button">24 pies</button>
+</div>
+<div aria-live="polite" class="respuesta-int" id="r-p2" role="status"></div>
+</div>
+</section>
+<!-- MÁS CONTEXTOS -->
+<section>
+<h2>
+<span aria-hidden="true" class="num-seccion">4</span>
+          Problemas de viaje y de trabajo
+        </h2>
+<p>Los problemas de medición también aparecen en los viajes (distancias, tiempo) y en el trabajo (peso de materiales, horas). Veamos dos ejemplos más.</p>
+<div class="ejemplo">
+<p class="titulo-ej"><span aria-hidden="true">📋</span> Viaje — "Un viaje en carro dura 3 horas y 45 minutos. Si sale a las 9:30 am, ¿a qué hora llega?"</p>
+<p class="paso">
+<span aria-hidden="true" class="n">1</span>
+<strong>Identifico:</strong>
+            es un cálculo de tiempo con cruce de horas.
+          </p>
+<p class="paso">
+<span aria-hidden="true" class="n">2</span>
+            Sumo las horas: 9:30 + 3 horas = 12:30 pm.
+          </p>
+<p class="paso">
+<span aria-hidden="true" class="n">3</span>
+            Sumo los minutos: 12:30 + 45 min = 1:15 pm (30 + 45 = 75 min = 1 hora y 15 min).
+          </p>
+<p class="paso">
+<span aria-hidden="true" class="n">✓</span>
+            Llega a la
+            <strong>1:15 pm</strong>
+            .
+          </p>
+</div>
+<div class="ejemplo">
+<p class="titulo-ej"><span aria-hidden="true">📋</span> Trabajo — "Un técnico carga 3 cajas de 8 libras cada una. ¿Cuántas onzas carga en total?"</p>
+<p class="paso">
+<span aria-hidden="true" class="n">1</span>
+<strong>Identifico:</strong>
+            es peso, sistema inglés. Pide el total en onzas.
+          </p>
+<p class="paso">
+<span aria-hidden="true" class="n">2</span>
+            Primero el peso total en libras: 3 cajas × 8 lb = 24 lb.
+          </p>
+<p class="paso">
+<span aria-hidden="true" class="n">3</span>
+            Convierto a onzas (1 lb = 16 oz, paso a unidad más pequeña: multiplico): 24 × 16 = 384 oz.
+          </p>
+<p class="paso">
+<span aria-hidden="true" class="n">✓</span>
+            Carga
+            <strong>384 onzas</strong>
+            en total.
+          </p>
+</div>
+<div class="caja caja-ojo">
+<span class="etiqueta et-ambar">¡Ojo! El orden importa</span>
+<p>
+            En problemas de varios pasos, fíjese en qué va primero. A veces hay que
+            <strong>operar y luego convertir</strong>
+            (como el ejemplo del técnico); otras veces,
+            <strong>convertir y luego operar</strong>
+            . Léalo con calma y decida el orden antes de calcular.
+          </p>
+</div>
+<div class="practica">
+<div class="cabe">
+<span aria-hidden="true" class="ico">✏️</span>
+<h3>Práctica 3 — Problema de trabajo</h3>
+</div>
+<p class="pregunta-int" id="t-p3">Un trabajador llena 5 botellas de 2 litros cada una. ¿Cuántos litros de líquido usó en total?</p>
+<div aria-labelledby="t-p3" class="opciones" data-quiz="p3" role="group">
+<button class="opcion" data-correcta="no" type="button">7 litros</button>
+<button class="opcion" data-correcta="si" type="button">10 litros</button>
+<button class="opcion" data-correcta="no" type="button">2.5 litros</button>
+<button class="opcion" data-correcta="no" type="button">25 litros</button>
+</div>
+<div aria-live="polite" class="respuesta-int" id="r-p3" role="status"></div>
+</div>
+<div class="practica">
+<div class="cabe">
+<span aria-hidden="true" class="ico">✏️</span>
+<h3>Práctica 4 — Problema de viaje</h3>
+</div>
+<p class="pregunta-int" id="t-p4">Un tren sale a las 6:20 am y el viaje dura 2 horas y 50 minutos. ¿A qué hora llega?</p>
+<div aria-labelledby="t-p4" class="opciones" data-quiz="p4" role="group">
+<button class="opcion" data-correcta="no" type="button">8:70 am</button>
+<button class="opcion" data-correcta="si" type="button">9:10 am</button>
+<button class="opcion" data-correcta="no" type="button">8:10 am</button>
+<button class="opcion" data-correcta="no" type="button">9:50 am</button>
+</div>
+<div aria-live="polite" class="respuesta-int" id="r-p4" role="status"></div>
+</div>
+</section>
+<!-- PRÁCTICA GUIADA -->
+<section>
+<h2>
+<span aria-hidden="true" class="num-seccion">5</span>
+          Práctica guiada en clase
+        </h2>
+<p>
+          Estas actividades se hacen
+          <strong>en la sesión sincrónica</strong>
+          . Cada actividad incluye una variante para la
+          <strong>clase presencial</strong>
+          y otra para la
+          <strong>clase en línea</strong>
+          ; el objetivo de aprendizaje es el mismo en ambas.
+        </p>
+<div class="caja caja-recurso">
+<span class="etiqueta et-azul">Actividad A · "El técnico del edificio"</span>
+<p>Escenario completo de un técnico de mantenimiento que debe resolver varios problemas de medición de su jornada.</p>
+<div class="modalidades">
+<div class="modo modo-pres">
+<span class="modo-tit">🏫 Presencial</span>
+<p>
+                Reparta la "orden de trabajo" del técnico: cuántos metros de cable comprar (dato en pies), cuánto pesan los materiales (dato en kilos), cuántas horas trabajará (horario dado). En
+                equipos, resuelven toda la orden.
+              </p>
+</div>
+<div class="modo modo-line">
+<span class="modo-tit">💻 En línea</span>
+<p>Comparta la orden de trabajo en una diapositiva. En salas pequeñas (breakout rooms), los equipos resuelven cada problema y al volver presentan una parte al grupo grande.</p>
+</div>
+</div>
+</div>
+<div class="caja caja-recurso">
+<span class="etiqueta et-azul">Actividad B · "Identificar antes de resolver"</span>
+<p>Los estudiantes practican el paso 1: leer un problema e identificar qué se mide, qué sistema usa y si hay que convertir — sin resolverlo todavía.</p>
+<div class="modalidades">
+<div class="modo modo-pres">
+<span class="modo-tit">🏫 Presencial</span>
+<p>El profesor lee problemas en voz alta. Tras cada uno, los estudiantes anotan en su pizarra qué se mide y si hace falta convertir. Se comparan las respuestas antes de resolver.</p>
+</div>
+<div class="modo modo-line">
+<span class="modo-tit">💻 En línea</span>
+<p>Muestre los problemas en diapositivas. Los estudiantes escriben en el chat la identificación (qué se mide, qué sistema, si convertir). El grupo revisa juntos antes de resolver.</p>
+</div>
+</div>
+</div>
+<div class="caja caja-recurso">
+<span class="etiqueta et-azul">Actividad C · Foro "Una medida de mi vida"</span>
+<p>Cada estudiante trae un problema de medición real de su trabajo o su vida diaria y lo comparte con el grupo.</p>
+<div class="modalidades">
+<div class="modo modo-pres">
+<span class="modo-tit">🏫 Presencial</span>
+<p>Cada estudiante escribe en una tarjeta un problema de medición real (de su trabajo, su cocina, su hogar). Las tarjetas se intercambian; cada quien resuelve la que recibió.</p>
+</div>
+<div class="modo modo-line">
+<span class="modo-tit">💻 En línea</span>
+<p>Cada estudiante publica su problema de medición en el foro de Brightspace y resuelve el de un compañero respondiendo a su mensaje. El autor confirma la solución.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- TAREA ASINCRÓNICA -->
+<section>
+<h2>
+<span aria-hidden="true" class="num-seccion">6</span>
+          Tarea asincrónica
+        </h2>
+<p>
+          Estas actividades se realizan
+          <strong>por su cuenta</strong>
+          , dentro de las 2 horas asincrónicas de la lección.
+        </p>
+<ul>
+<li>
+<strong>MyOpenMath:</strong>
+            complete los
+            <strong>10 problemas aplicados</strong>
+            de medición (mezcla de sistemas y tipos de medida). Cada uno da retroalimentación inmediata.
+          </li>
+<li>
+<strong>Foro de Brightspace:</strong>
+            publique un problema de medición real de su trabajo o su vida diaria y resuelva el de un compañero.
+          </li>
+<li>
+<strong>Brightspace:</strong>
+            realice el quiz de la lección (abajo puede practicarlo antes).
+          </li>
+</ul>
+</section>
+<!-- QUIZ -->
+<section>
+<h2>
+<span aria-hidden="true" class="num-seccion">7</span>
+          Quiz de práctica
+        </h2>
+<p>
+          Responda las
+          <strong>8 preguntas</strong>
+          . Al final verá su puntaje y podrá repasar lo que falló. Puede repetir el quiz las veces que quiera.
+        </p>
+<div id="quiz">
+<div class="quiz-bloque">
+<span class="qnum">Pregunta 1</span>
+<p class="pregunta" id="t-q1">Antes de resolver un problema de medición, lo primero que conviene hacer es:</p>
+<div aria-labelledby="t-q1" class="opciones" data-q="1" role="group">
+<button class="opcion" data-c="no" type="button">Buscar de inmediato la respuesta entre las opciones.</button>
+<button class="opcion" data-c="si" type="button">Identificar qué se mide, qué sistema usa y si hay que convertir.</button>
+<button class="opcion" data-c="no" type="button">Multiplicar todos los números del enunciado.</button>
+<button class="opcion" data-c="no" type="button">Convertir siempre a millas.</button>
+</div>
+</div>
+<div class="quiz-bloque">
+<span class="qnum">Pregunta 2</span>
+<p class="pregunta" id="t-q2">Una receta pide 3 libras de harina. ¿Cuántas onzas son? (1 lb = 16 oz)</p>
+<div aria-labelledby="t-q2" class="opciones" data-q="2" role="group">
+<button class="opcion" data-c="no" type="button">19 onzas</button>
+<button class="opcion" data-c="si" type="button">48 onzas</button>
+<button class="opcion" data-c="no" type="button">8 onzas</button>
+<button class="opcion" data-c="no" type="button">3 onzas</button>
+</div>
+</div>
+<div class="quiz-bloque">
+<span class="qnum">Pregunta 3</span>
+<p class="pregunta" id="t-q3">Una botella tiene 1 500 mililitros de jugo. ¿Cuántos litros son? (1 L = 1 000 mL)</p>
+<div aria-labelledby="t-q3" class="opciones" data-q="3" role="group">
+<button class="opcion" data-c="si" type="button">1.5 litros</button>
+<button class="opcion" data-c="no" type="button">15 litros</button>
+<button class="opcion" data-c="no" type="button">150 litros</button>
+<button class="opcion" data-c="no" type="button">0.15 litros</button>
+</div>
+</div>
+<div class="quiz-bloque">
+<span class="qnum">Pregunta 4</span>
+<p class="pregunta" id="t-q4">Un cuarto necesita 5 yardas de alfombra. La tienda la vende en pies. ¿Cuántos pies son? (1 yd = 3 ft)</p>
+<div aria-labelledby="t-q4" class="opciones" data-q="4" role="group">
+<button class="opcion" data-c="no" type="button">8 pies</button>
+<button class="opcion" data-c="si" type="button">15 pies</button>
+<button class="opcion" data-c="no" type="button">5 pies</button>
+<button class="opcion" data-c="no" type="button">2 pies</button>
+</div>
+</div>
+<div class="quiz-bloque">
+<span class="qnum">Pregunta 5</span>
+<p class="pregunta" id="t-q5">Un trabajo empieza a las 8:00 am y dura 6 horas y 30 minutos. ¿A qué hora termina?</p>
+<div aria-labelledby="t-q5" class="opciones" data-q="5" role="group">
+<button class="opcion" data-c="si" type="button">2:30 pm</button>
+<button class="opcion" data-c="no" type="button">2:00 pm</button>
+<button class="opcion" data-c="no" type="button">1:30 pm</button>
+<button class="opcion" data-c="no" type="button">3:30 pm</button>
+</div>
+</div>
+<div class="quiz-bloque">
+<span class="qnum">Pregunta 6</span>
+<p class="pregunta" id="t-q6">Un cocinero usa 4 envases de 2 cuartos de caldo cada uno. ¿Cuántos cuartos usó en total?</p>
+<div aria-labelledby="t-q6" class="opciones" data-q="6" role="group">
+<button class="opcion" data-c="no" type="button">6 cuartos</button>
+<button class="opcion" data-c="si" type="button">8 cuartos</button>
+<button class="opcion" data-c="no" type="button">2 cuartos</button>
+<button class="opcion" data-c="no" type="button">16 cuartos</button>
+</div>
+</div>
+<div class="quiz-bloque">
+<span class="qnum">Pregunta 7</span>
+<p class="pregunta" id="t-q7">Un atleta corre 3 kilómetros. ¿Cuántos metros recorrió? (1 km = 1 000 m)</p>
+<div aria-labelledby="t-q7" class="opciones" data-q="7" role="group">
+<button class="opcion" data-c="no" type="button">300 metros</button>
+<button class="opcion" data-c="si" type="button">3 000 metros</button>
+<button class="opcion" data-c="no" type="button">30 metros</button>
+<button class="opcion" data-c="no" type="button">0.003 metros</button>
+</div>
+</div>
+<div class="quiz-bloque">
+<span class="qnum">Pregunta 8</span>
+<p class="pregunta" id="t-q8">Un técnico carga 6 sacos de 10 libras cada uno. ¿Cuántas onzas carga en total? (1 lb = 16 oz)</p>
+<div aria-labelledby="t-q8" class="opciones" data-q="8" role="group">
+<button class="opcion" data-c="no" type="button">60 onzas</button>
+<button class="opcion" data-c="si" type="button">960 onzas</button>
+<button class="opcion" data-c="no" type="button">96 onzas</button>
+<button class="opcion" data-c="no" type="button">600 onzas</button>
+</div>
+</div>
+</div>
+<div style="text-align: center; margin-top: 18px">
+<button class="btn" id="btn-calificar" type="button">Ver mi resultado</button>
+<button class="btn btn-sec" id="btn-reintentar" style="display: none" type="button">Intentar de nuevo</button>
+</div>
+<div aria-live="polite" class="marcador" id="marcador" role="status">
+<div aria-hidden="true" class="barra-prog"><span id="barra"></span></div>
+<p class="puntaje" id="puntaje"></p>
+<p class="mensaje" id="mensaje"></p>
+</div>
+</section>
+<!-- RÚBRICA -->
+<section>
+<h2>
+<span aria-hidden="true" class="num-seccion">8</span>
+          Rúbrica de evaluación
+        </h2>
+<p>Rúbrica integradora de medición. Cada criterio se evalúa en cuatro niveles.</p>
+<div aria-label="Rúbrica de evaluación: criterios y sus niveles de logro (tabla desplazable horizontalmente)" class="tabla-scroll" role="region" tabindex="0"><table class="tabla-rubrica"><caption class="cap-oculto">Rúbrica de evaluación: criterios y sus niveles de logro</caption>
+<thead>
+<tr>
+<th scope="col">Criterio</th>
+<th class="nivel-cab" scope="col">Logrado (4)</th>
+<th class="nivel-cab" scope="col">Satisfactorio (3)</th>
+<th class="nivel-cab" scope="col">En proceso (2)</th>
+<th class="nivel-cab" scope="col">Por reforzar (1)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th scope="row">Identifica el sistema de medida</th>
+<td>Reconoce siempre el sistema y el tipo de medida del problema.</td>
+<td>Identifica el sistema correctamente casi siempre.</td>
+<td>Confunde el sistema en algunos problemas.</td>
+<td>No identifica el sistema de medida.</td>
+</tr>
+<tr>
+<th scope="row">Selecciona la unidad apropiada</th>
+<td>Elige siempre la unidad adecuada al contexto.</td>
+<td>Elige la unidad apropiada casi siempre.</td>
+<td>Elige unidades poco prácticas.</td>
+<td>No relaciona la unidad con el problema.</td>
+</tr>
+<tr>
+<th scope="row">Convierte cuando es necesario</th>
+<td>Convierte sin errores y en el orden correcto.</td>
+<td>Convierte bien con un descuido aislado.</td>
+<td>Convierte mal o en el momento equivocado.</td>
+<td>No realiza la conversión necesaria.</td>
+</tr>
+<tr>
+<th scope="row">Calcula el resultado final</th>
+<td>Obtiene el resultado exacto con la unidad correcta.</td>
+<td>Calcula bien con la unidad correcta.</td>
+<td>Calcula con errores u omite la unidad.</td>
+<td>No llega al resultado.</td>
+</tr>
+</tbody>
+</table></div><p class="aviso-desliza"><span aria-hidden="true">↔</span> Deslice la tabla horizontalmente para ver todas las columnas.</p>
+</section>
+<!-- CIERRE -->
+<div class="cierre">
+<h2>
+<span aria-hidden="true" class="num-seccion">➡️</span>
+          Lo que viene en el próximo tema
+        </h2>
+<p>
+          Con esta lección cierra el
+          <strong>Tema 6 · Sistemas de medidas y el tiempo</strong>
+          . Ya sabe medir y convertir en los dos sistemas y resolver problemas reales de medición.
+        </p>
+<p>
+          En el
+          <strong>Tema 7 · Geometría</strong>
+          dará un paso natural: pasará de medir longitudes y pesos a medir
+          <strong>figuras</strong>
+          . La
+          <strong>Lección 7.1 · Clasificación de figuras 2D</strong>
+          le enseñará a reconocer y nombrar los polígonos —triángulos, cuadrados, rectángulos— por sus lados y sus ángulos.
+        </p>
+<p class="flecha-sig">➡️  Próxima: Tema 7 · Lección 7.1 · Clasificación de figuras 2D</p>
+</div>
+</div>
+<footer>
+      Matemáticas · Nivel 1 · Lección 6.3 — Spanish ASE Math · AE 0170-0321
+      <br/>
+      City Colleges of Chicago · Truman College · Prof. José M. Fernández
+    </footer>
+<script>
+      // ── PRÁCTICA INTERACTIVA ──
+      var respuestasPractica = {
+        p1: '2 000 mL = 2 litros. Paso de mililitros a litros (unidad más grande): divido entre 1 000. 2 000 ÷ 1 000 = 2.',
+        p2: '2 yardas = 6 pies. Paso de yardas a pies (unidad más pequeña): multiplico. 2 × 3 = 6 pies.',
+        p3: '5 botellas × 2 litros = 10 litros. Es una multiplicación: grupos iguales de 2 litros.',
+        p4: '6:20 + 2 h 50 min: sumo las horas (6:20 + 2 h = 8:20) y los minutos (8:20 + 50 min = 9:10, porque 20 + 50 = 70 min = 1 h 10 min). Llega a las 9:10 am.'
+      };
+
+      document.querySelectorAll('.opciones[data-quiz]').forEach(function (grupo) {
+        var id = grupo.getAttribute('data-quiz');
+        grupo.querySelectorAll('.opcion').forEach(function (op) {
+          op.addEventListener('click', function () {
+            var acerto = op.getAttribute('data-correcta') === 'si';
+            grupo.querySelectorAll('.opcion').forEach(function (o) {
+              o.disabled = true;
+              if (o.getAttribute('data-correcta') === 'si') {
+                o.classList.add('correcta');
+                o.insertAdjacentHTML('afterbegin', '<span class="marca">\u2713 Correcta:</span> ');
+              }
+            });
+            if (!acerto) {
+              op.classList.add('incorrecta');
+              op.insertAdjacentHTML('afterbegin', '<span class="marca">\u2717 Su respuesta:</span> ');
+            }
+            var r = document.getElementById('r-' + id);
+            r.className = 'respuesta-int ' + (acerto ? 'bien' : 'mal');
+            r.textContent = (acerto ? 'Correcto. ' : 'Revise: ') + respuestasPractica[id];
+          });
+        });
+      });
+
+      // ── QUIZ FINAL ──
+      var totalPreguntas = 8;
+      var seleccion = {};
+
+      document.querySelectorAll('#quiz .opciones').forEach(function (grupo) {
+        var q = grupo.getAttribute('data-q');
+        grupo.querySelectorAll('.opcion').forEach(function (op) {
+          op.setAttribute('aria-pressed', 'false');
+          op.addEventListener('click', function () {
+            grupo.querySelectorAll('.opcion').forEach(function (o) {
+              o.classList.remove('elegida');
+              o.setAttribute('aria-pressed', 'false');
+            });
+            op.classList.add('elegida');
+            op.setAttribute('aria-pressed', 'true');
+            seleccion[q] = op;
+          });
+        });
+      });
+
+      document.getElementById('btn-calificar').addEventListener('click', function () {
+        var correctas = 0;
+        document.querySelectorAll('#quiz .opciones').forEach(function (grupo) {
+          var q = grupo.getAttribute('data-q');
+          grupo.querySelectorAll('.opcion').forEach(function (o) {
+            o.disabled = true;
+            if (o.getAttribute('data-c') === 'si') {
+              o.classList.add('correcta');
+              o.insertAdjacentHTML('afterbegin', '<span class="marca">\u2713 Correcta:</span> ');
+            }
+          });
+          var elegida = seleccion[q];
+          if (elegida) {
+            if (elegida.getAttribute('data-c') === 'si') {
+              correctas++;
+            } else {
+              elegida.classList.add('incorrecta');
+              elegida.insertAdjacentHTML('afterbegin', '<span class="marca">\u2717 Su respuesta:</span> ');
+            }
+          }
+        });
+
+        var marc = document.getElementById('marcador');
+        var pct = Math.round((correctas / totalPreguntas) * 100);
+        document.getElementById('puntaje').textContent = correctas + ' de ' + totalPreguntas + ' correctas';
+
+        var msg, color;
+        if (pct >= 88) {
+          msg = 'Excelente. Cerró el Tema 6 resolviendo problemas reales de medición. Está listo para el Tema 7.';
+          color = '#e7f4ec';
+        } else if (pct >= 63) {
+          msg = 'Buen trabajo. Repase las preguntas marcadas como incorrectas y vuelva a intentarlo.';
+          color = '#fdf3df';
+        } else {
+          msg = 'Repasemos juntos. Vuelva a leer las secciones 2, 3 y 4, y reintente el quiz.';
+          color = '#fdecea';
+        }
+
+        marc.style.background = color;
+        document.getElementById('mensaje').textContent = msg;
+        marc.classList.add('visible');
+        document.getElementById('barra').style.width = pct + '%';
+        document.getElementById('btn-calificar').style.display = 'none';
+
+        var reintentar = document.getElementById('btn-reintentar');
+        reintentar.style.display = 'inline-block';
+        reintentar.focus();
+      });
+
+      document.getElementById('btn-reintentar').addEventListener('click', function () {
+        document.querySelectorAll('#quiz .opcion').forEach(function (o) {
+          o.disabled = false;
+          o.classList.remove('correcta', 'incorrecta', 'elegida');
+          o.setAttribute('aria-pressed', 'false');
+          var marca = o.querySelector('.marca');
+          if (marca) {
+            marca.remove();
+          }
+        });
+        for (var k in seleccion) {
+          delete seleccion[k];
+        }
+        document.getElementById('marcador').classList.remove('visible');
+        document.getElementById('puntaje').textContent = '';
+        document.getElementById('mensaje').textContent = '';
+        document.getElementById('btn-calificar').style.display = 'inline-block';
+        document.getElementById('btn-reintentar').style.display = 'none';
+        var primera = document.querySelector('#quiz .opcion');
+        if (primera) {
+          primera.focus();
+        }
+      });
+
+      // ── TABLAS RESPONSIVAS ──
+      // Los contenedores y avisos ya están en el marcado, para que los
+      // revisores que no ejecutan JavaScript los detecten.
+      (function () {
+        var TEXTO_AVISO = '\u2194 Deslice la tabla horizontalmente para ver todas las columnas.';
+        var pares = [];
+
+        document.querySelectorAll('table').forEach(function (t) {
+          var caja = t.parentNode;
+          if (!caja.classList.contains('tabla-scroll')) {
+            var cap = t.querySelector('caption');
+            var etiqueta = (cap ? cap.textContent.trim() : 'Tabla de datos') + ' (tabla desplazable horizontalmente)';
+            var nueva = document.createElement('div');
+            nueva.className = 'tabla-scroll';
+            nueva.setAttribute('role', 'region');
+            nueva.setAttribute('tabindex', '0');
+            nueva.setAttribute('aria-label', etiqueta);
+            t.parentNode.insertBefore(nueva, t);
+            nueva.appendChild(t);
+            caja = nueva;
+          }
+          var aviso = caja.nextElementSibling;
+          if (!aviso || !aviso.classList.contains('aviso-desliza')) {
+            aviso = document.createElement('p');
+            aviso.className = 'aviso-desliza';
+            aviso.textContent = TEXTO_AVISO;
+            caja.parentNode.insertBefore(aviso, caja.nextSibling);
+          }
+          pares.push({ caja: caja, aviso: aviso });
+        });
+
+        function actualizar() {
+          pares.forEach(function (p) {
+            p.aviso.style.display = p.caja.scrollWidth > p.caja.clientWidth + 2 ? 'block' : 'none';
+          });
+        }
+        actualizar();
+
+        var tm;
+        window.addEventListener('resize', function () {
+          clearTimeout(tm);
+          tm = setTimeout(actualizar, 150);
+        });
+      })();
+    </script>
+</body>
+</html>

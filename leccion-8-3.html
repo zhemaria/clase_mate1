@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+
+<!--
+  Lección 8.3 · Proyecto final integrador + introducción al GED — Spanish ASE Math, Nivel 1
+  © José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago.
+  Licencia: CC BY-NC-SA 4.0  (https://creativecommons.org/licenses/by-nc-sa/4.0/)
+  El proyecto y la evaluación final viven en archivos aparte:
+    · plantilla-proyecto-final-nivel1.html  (plantilla de trabajo rellenable)
+    · evaluacion-final-nivel1.html           (evaluación sumativa de 25 preguntas)
+-->
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta content="José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago" name="author"/>
+<meta content="CC BY-NC-SA 4.0" name="license"/>
+<link href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="license"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Lección 8.3 · Proyecto final integrador — Matemáticas Nivel 1</title>
+<style>
+  :root{
+    --azul:#1b5e20; --azul-osc:#0d3b11; --azul-cl:#e8f5e9;
+    --tinta:#1a2330; --gris:#5b6675; --linea:#dde3ea;
+    --crema:#f6f4ee; --papel:#ffffff;
+    --verde:#276b44; --verde-cl:#e7f4ec;
+    --ambar:#7d4e00; --ambar-cl:#fdf3df;
+    --rojo:#b5342a; --rojo-cl:#fdecea;
+    --oro:#8a6508;
+    --sombra:0 2px 10px rgba(13,59,17,.12);
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    font-family:'Segoe UI','Helvetica Neue',system-ui,sans-serif;
+    background:var(--crema); color:var(--tinta);
+    line-height:1.65; font-size:17px;
+  }
+  .envoltura{max-width:880px;margin:0 auto;padding:0 20px 80px;}
+
+  header.principal{
+    background:linear-gradient(135deg,#0d3b11 0%,#1b5e20 55%,#2e7d32 100%);
+    color:#fff;padding:46px 38px 40px;border-radius:0 0 22px 22px;
+    box-shadow:0 6px 22px rgba(13,59,17,.30);
+  }
+  .envoltura-header{max-width:880px;margin:0 auto;padding:0 20px;}
+  .ruta{font-size:13px;letter-spacing:.6px;text-transform:uppercase;opacity:.85;margin-bottom:14px;}
+  header.principal h1{font-size:30px;font-weight:700;line-height:1.25;margin-bottom:8px;}
+  header.principal .lema{font-size:16px;opacity:.93;font-weight:400;max-width:620px;}
+  .chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px;}
+  .chip{
+    background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.28);
+    padding:6px 14px;border-radius:30px;font-size:13px;font-weight:600;
+  }
+
+  section{
+    background:var(--papel);margin-top:22px;padding:30px 34px;
+    border-radius:14px;box-shadow:var(--sombra);
+  }
+  .num-seccion{
+    display:inline-flex;align-items:center;justify-content:center;
+    width:34px;height:34px;background:var(--azul);color:#fff;
+    border-radius:9px;font-weight:700;font-size:17px;margin-right:12px;flex-shrink:0;
+  }
+  h2{display:flex;align-items:center;font-size:23px;color:var(--azul-osc);margin-bottom:16px;font-weight:700;}
+  h3{font-size:18px;color:var(--azul-osc);margin:22px 0 10px;font-weight:700;}
+  p{margin:11px 0;}
+  ul,ol{margin:11px 0 11px 26px;}
+  li{margin:6px 0;}
+  strong{color:var(--azul-osc);}
+
+  .caja{border-radius:11px;padding:18px 22px;margin:18px 0;border-left:5px solid;}
+  .caja-objetivo{background:var(--azul-cl);border-color:var(--azul);}
+  .caja-objetivo h2{margin-bottom:10px;}
+  .caja-tip{background:var(--verde-cl);border-color:var(--verde);}
+  .caja-tip strong{color:var(--verde);}
+  .caja-ojo{background:var(--ambar-cl);border-color:var(--ambar);}
+  .caja-ojo strong{color:var(--ambar);}
+  .caja-recurso{background:#eef2f7;border-color:var(--gris);}
+  .caja-ged{background:#fff8e6;border-color:var(--oro);}
+  .caja-ged strong{color:var(--oro);}
+
+  .etiqueta{
+    display:inline-block;font-size:12px;font-weight:700;letter-spacing:.5px;
+    text-transform:uppercase;padding:3px 10px;border-radius:5px;margin-bottom:6px;
+  }
+  .et-verde{background:var(--verde);color:#fff;}
+  .et-ambar{background:var(--ambar);color:#fff;}
+  .et-azul{background:var(--azul);color:#fff;}
+  .et-oro{background:var(--oro);color:#fff;}
+
+  .modalidades{display:flex;gap:14px;margin-top:14px;flex-wrap:wrap;}
+  .modo{
+    flex:1;min-width:240px;border-radius:9px;padding:13px 16px;
+    background:#fff;border:1px solid var(--linea);
+  }
+  .modo-pres{border-top:4px solid var(--azul);}
+  .modo-line{border-top:4px solid var(--verde);}
+  .modo .modo-tit{display:block;font-weight:700;font-size:14px;margin-bottom:5px;}
+  .modo-pres .modo-tit{color:var(--azul-osc);}
+  .modo-line .modo-tit{color:var(--verde);}
+  .modo p{margin:4px 0 0;font-size:15px;}
+
+  /* ── RECORRIDO DE TEMAS ── */
+  .recorrido{display:flex;gap:10px;flex-wrap:wrap;margin:16px 0;}
+  .tema-chip{
+    flex:1;min-width:150px;background:var(--azul-cl);border-radius:10px;
+    padding:11px 13px;border-left:4px solid var(--azul);
+  }
+  .tema-chip .tn{font-weight:700;color:var(--azul-osc);font-size:13.5px;}
+  .tema-chip .td{font-size:12.5px;color:var(--gris);}
+
+  /* ── PASOS DEL PROYECTO ── */
+  .proyecto-pasos{margin:16px 0;}
+  .pp{
+    display:flex;gap:14px;align-items:flex-start;margin:12px 0;
+    background:var(--crema);border-radius:10px;padding:14px 16px;
+    border-left:4px solid var(--verde);
+  }
+  .pp .ppn{
+    flex-shrink:0;width:34px;height:34px;background:var(--verde);color:#fff;
+    border-radius:50%;display:flex;align-items:center;justify-content:center;
+    font-weight:700;font-size:16px;
+  }
+  .pp .ppc strong{color:var(--azul-osc);font-size:15px;}
+  .pp .ppc p{margin:3px 0 0;font-size:14.5px;}
+
+  /* ── TABLA EJEMPLO PROYECTO ── */
+  .tabla-datos{width:100%;border-collapse:collapse;margin:12px 0;font-size:15px;}
+  .tabla-datos th,.tabla-datos td{border:1px solid var(--linea);padding:9px 12px;text-align:center;}
+  .tabla-datos thead th{background:var(--azul-osc);color:#fff;font-size:13px;}
+  .tabla-datos tbody td:first-child{background:var(--azul-cl);font-weight:700;color:var(--azul-osc);text-align:left;}
+
+  .ejemplo{
+    background:var(--crema);border:1px dashed var(--azul);
+    border-radius:11px;padding:18px 22px;margin:18px 0;
+  }
+  .ejemplo .titulo-ej{font-weight:700;color:var(--azul-osc);margin-bottom:8px;font-size:15px;}
+  .paso{margin:8px 0 8px 4px;padding-left:32px;position:relative;}
+  .paso .n{
+    position:absolute;left:0;top:0;width:24px;height:24px;background:var(--azul);
+    color:#fff;border-radius:50%;font-size:13px;font-weight:700;
+    display:flex;align-items:center;justify-content:center;
+  }
+
+  .practica{
+    border:2px solid var(--azul-cl);border-radius:12px;
+    padding:20px 22px;margin:20px 0;background:#fbfdfb;
+  }
+  .practica .cabe{display:flex;align-items:center;gap:10px;margin-bottom:6px;}
+  .practica .cabe .ico{font-size:22px;}
+  .practica .cabe h3{font-size:16px;color:var(--azul-osc);}
+  .pregunta-int{font-size:17px;font-weight:600;margin:14px 0 12px;}
+  .opciones{display:flex;flex-direction:column;gap:9px;}
+  .opcion{
+    border:2px solid var(--linea);border-radius:9px;padding:11px 16px;
+    cursor:pointer;background:#fff;transition:.16s;font-size:16px;
+    text-align:left;font-family:inherit;color:var(--tinta);
+  }
+  .opcion:hover{border-color:var(--azul);background:var(--azul-cl);}
+  .opcion.correcta{border-color:var(--verde);background:var(--verde-cl);font-weight:600;}
+  .opcion.incorrecta{border-color:var(--rojo);background:var(--rojo-cl);}
+  .opcion:disabled{cursor:default;}
+  .respuesta-int{margin-top:12px;padding:11px 15px;border-radius:8px;font-size:15px;display:none;}
+  .respuesta-int.bien{background:var(--verde-cl);color:var(--verde);display:block;}
+  .respuesta-int.mal{background:var(--rojo-cl);color:var(--rojo);display:block;}
+
+  .btn{
+    font-family:inherit;font-size:15px;font-weight:600;padding:9px 20px;
+    background:var(--azul);color:#fff;border:none;border-radius:8px;cursor:pointer;transition:.16s;
+  }
+  .btn:hover{background:var(--azul-osc);}
+  .btn-sec{background:#fff;color:var(--azul);border:2px solid var(--azul);}
+  .btn-sec:hover{background:var(--azul-cl);}
+
+  .quiz-bloque{margin:18px 0;padding:18px 20px;border-radius:11px;background:var(--crema);border:1px solid var(--linea);}
+  .quiz-bloque .qnum{
+    display:inline-block;background:var(--azul-osc);color:#fff;font-size:13px;
+    font-weight:700;padding:3px 11px;border-radius:20px;margin-bottom:8px;
+  }
+  .quiz-bloque .qtema{
+    display:inline-block;background:var(--oro);color:#fff;font-size:11px;
+    font-weight:700;padding:3px 9px;border-radius:20px;margin-left:6px;
+  }
+  .quiz-bloque .pregunta{font-weight:600;font-size:16px;margin-bottom:12px;}
+  .marcador{text-align:center;padding:26px;border-radius:13px;margin-top:20px;display:none;}
+  .marcador.visible{display:block;}
+  .marcador .puntaje{font-size:46px;font-weight:800;margin:6px 0;}
+  .marcador .mensaje{font-size:17px;}
+  .barra-prog{height:10px;background:var(--linea);border-radius:6px;overflow:hidden;margin:14px 0;}
+  .barra-prog span{display:block;height:100%;background:var(--verde);width:0;transition:width .5s;}
+
+  .tabla-rubrica{width:100%;border-collapse:collapse;margin:14px 0;font-size:14px;}
+  .tabla-rubrica th,.tabla-rubrica td{border:1px solid var(--linea);padding:10px 12px;text-align:left;vertical-align:top;}
+  .tabla-rubrica thead th{background:var(--azul-osc);color:#fff;font-size:13px;}
+  .tabla-rubrica tbody th{font-weight:600;color:var(--azul-osc);background:var(--azul-cl);font-size:14px;text-align:left;}
+  .nivel-cab{background:#2f3d46;color:#fff;text-align:center;}
+
+  .cierre{
+    background:linear-gradient(135deg,#0d3b11,#2e7d32);color:#fff;
+    border-radius:14px;padding:30px 34px;margin-top:24px;
+  }
+  .cierre h2{color:#fff;}
+  .cierre strong{color:#9BFF8F;font-weight:700;text-shadow:0 1px 2px rgba(0,0,0,.45);}
+  .cierre .num-seccion{background:rgba(255,255,255,.22);}
+  .diploma{
+    background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.3);
+    border-radius:12px;padding:20px 24px;margin-top:16px;text-align:center;
+  }
+  .diploma .dico{font-size:40px;}
+  .diploma .dtit{font-size:19px;font-weight:700;margin:6px 0;}
+
+  footer{text-align:center;padding:30px 20px;color:var(--gris);font-size:13px;}
+
+  @media(max-width:560px){
+    header.principal{padding:34px 22px;}
+    header.principal h1{font-size:24px;}
+    section{padding:24px 20px;}
+  }
+
+      /* ── FOCO VISIBLE (WCAG 2.4.7) ── */
+      a:focus-visible,
+      button:focus-visible,
+      [tabindex]:focus-visible {
+        outline: 3px solid var(--azul-osc);
+        outline-offset: 2px;
+      }
+
+      /* ── MOVIMIENTO REDUCIDO ── */
+      @media (prefers-reduced-motion: reduce) {
+        * {
+          transition: none !important;
+        }
+        html {
+          scroll-behavior: auto;
+        }
+      }
+
+      /* ── MARCAS DE RESPUESTA (no depender del color) ── */
+      .marca {
+        font-weight: 700;
+        margin-right: 6px;
+      }
+      .opcion.elegida {
+        border-color: var(--azul);
+        background: var(--azul-cl);
+      }
+      .opcion:disabled {
+        color: var(--tinta);
+        opacity: 1;
+      }
+
+      /* ── TABLAS RESPONSIVAS (DUA) ── */
+      .tabla-scroll {
+        overflow-x: auto;
+        overflow-y: hidden;
+        -webkit-overflow-scrolling: touch;
+        max-width: 100%;
+        margin: 18px 0 0;
+        border: 1px solid var(--linea);
+        border-radius: 8px;
+        background: var(--papel);
+      }
+      .tabla-scroll:focus,
+      .tabla-scroll:focus-visible {
+        outline: 3px solid var(--azul);
+        outline-offset: 2px;
+      }
+      .tabla-scroll > table {
+        margin: 0;
+        min-width: 100%;
+      }
+      .aviso-desliza {
+        margin: 8px 0 18px;
+        padding: 8px 12px;
+        font-size: 14px;
+        font-weight: 600;
+        color: #5c3900;
+        background: #fdf3df;
+        border-left: 4px solid #5c3900;
+        border-radius: 5px;
+      }
+      .cap-oculto {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0 0 0 0);
+        white-space: nowrap;
+        border: 0;
+      }
+      @media print {
+        .tabla-scroll {
+          overflow: visible;
+          border: 0;
+        }
+        .aviso-desliza {
+          display: none;
+        }
+      }
+    </style>
+</head>
+<body>
+<header class="principal">
+<div class="envoltura-header">
+<p class="ruta">Matemáticas · Nivel 1 · Tema 8 — Tablas, gráficas y proyecto final</p>
+<h1>Lección 8.3 · Proyecto final integrador + introducción al GED</h1>
+<p class="lema">La última lección del Nivel 1: reunir todo lo aprendido en un proyecto personal y prepararse para el GED.</p>
+<div class="chips">
+<span class="chip"><span aria-hidden="true">⏱️</span> 4 horas (2 sinc. + 2 asinc.)</span>
+<span class="chip"><span aria-hidden="true">🎓</span> Proyecto + evaluación final</span>
+<span class="chip"><span aria-hidden="true">📘</span> Steck-Vaughn</span>
+</div>
+</div>
+</header>
+<div class="envoltura">
+<!-- OBJETIVOS -->
+<section>
+<div class="caja caja-objetivo">
+<h2><span aria-hidden="true" class="num-seccion">🎯</span>Objetivos de la clase</h2>
+<p>Al terminar esta lección, usted podrá:</p>
+<ul>
+<li><strong>Crear</strong> el proyecto integrador "Mi gráfica de la vida": tabla, gráfica, párrafo y cálculos.</li>
+<li><strong>Presentar</strong> su proyecto de forma oral, clara y ordenada.</li>
+<li><strong>Resolver</strong> preguntas tipo GED que combinan todos los temas del nivel.</li>
+<li><strong>Reconocer</strong> cómo lo aprendido en el Nivel 1 lo prepara para el examen GED.</li>
+</ul>
+</div>
+</section>
+<!-- TODO EL CAMINO -->
+<section>
+<h2><span aria-hidden="true" class="num-seccion">1</span>El final del camino del Nivel 1</h2>
+<p>Felicidades: ha llegado a la <strong>última lección del Nivel 1</strong>. A lo largo del curso recorrió ocho temas, y cada uno le dejó una herramienta:</p>
+<ul class="recorrido">
+<li class="tema-chip"><p class="tn">Temas 1–2</p><p class="td">Las cuatro operaciones con enteros</p></li>
+<li class="tema-chip"><p class="tn">Tema 3</p><p class="td">Decimales</p></li>
+<li class="tema-chip"><p class="tn">Tema 4</p><p class="td">Fracciones</p></li>
+</ul>
+<ul class="recorrido">
+<li class="tema-chip"><p class="tn">Tema 5</p><p class="td">Patrones y álgebra inicial</p></li>
+<li class="tema-chip"><p class="tn">Tema 6</p><p class="td">Medidas y tiempo</p></li>
+<li class="tema-chip"><p class="tn">Tema 7</p><p class="td">Geometría</p></li>
+<li class="tema-chip"><p class="tn">Tema 8</p><p class="td">Tablas y gráficas</p></li>
+</ul>
+<p>Esta lección tiene dos partes. Primero, un <strong>proyecto</strong> que reúne lo aprendido en algo personal y propio. Después, una <strong>evaluación final</strong> con preguntas tipo GED que combinan todos los temas.</p>
+<div class="caja caja-tip">
+<span class="etiqueta et-verde">No es un examen para temer</span>
+<p>Todo lo que verá hoy ya lo practicó, tema por tema, a lo largo del curso. Esta lección no enseña nada nuevo: le muestra <strong>cuánto ha aprendido</strong>.</p>
+</div>
+</section>
+<!-- EL PROYECTO -->
+<section>
+<h2><span aria-hidden="true" class="num-seccion">2</span>El proyecto: "Mi gráfica de la vida"</h2>
+<p>El proyecto integrador se llama <strong>"Mi gráfica de la vida"</strong>. La idea es sencilla: usted elige un dato de su propia vida, lo registra durante varios días y lo presenta usando todo lo que aprendió en el Tema 8.</p>
+<div class="caja caja-recurso">
+<span class="etiqueta et-azul">📥 Plantilla de trabajo del proyecto</span>
+<p>Para desarrollar y entregar su proyecto, use el archivo <strong>«plantilla-proyecto-final-nivel1.html»</strong>.
+        Es una plantilla rellenable que se completa en el navegador: usted escribe la tabla, la plantilla dibuja
+        la <strong>gráfica de barras</strong> y calcula sola el total, el promedio y la diferencia. Su trabajo se
+        guarda automáticamente y, al terminar, lo exporta como <strong>PDF</strong> para entregarlo.</p>
+</div>
+<ol class="proyecto-pasos">
+<li class="pp">
+<p class="ppn">1</p>
+<div class="ppc">
+<strong>Elija un dato personal y medible</strong>
+<p>Por ejemplo: las horas de sueño cada noche, los gastos de cada día, los minutos de estudio, los vasos de agua que toma. Algo de su vida que pueda contar con un número.</p>
+</div>
+</li>
+<li class="pp">
+<p class="ppn">2</p>
+<div class="ppc">
+<strong>Haga una tabla con 5 datos</strong>
+<p>Registre ese dato durante 5 días y organícelo en una tabla, como aprendió en la Lección 8.1.</p>
+</div>
+</li>
+<li class="pp">
+<p class="ppn">3</p>
+<div class="ppc">
+<strong>Construya una gráfica de barras</strong>
+<p>Con título, ejes y escala, como practicó en la Lección 8.2. Una barra por cada día.</p>
+</div>
+</li>
+<li class="pp">
+<p class="ppn">4</p>
+<div class="ppc">
+<strong>Escriba un párrafo descriptivo</strong>
+<p>Describa con al menos 3 datos de la gráfica qué muestra: el día de mayor valor, el de menor, la tendencia.</p>
+</div>
+</li>
+<li class="pp">
+<p class="ppn">5</p>
+<div class="ppc">
+<strong>Haga los cálculos básicos</strong>
+<p>Calcule el total, el promedio y la diferencia entre el valor más alto y el más bajo.</p>
+</div>
+</li>
+</ol>
+<h3>Un ejemplo del proyecto</h3>
+<div class="ejemplo">
+<p class="titulo-ej"><span aria-hidden="true">📋</span> Proyecto de ejemplo: "Mis horas de sueño"</p>
+<div aria-label="Tabla de datos de la lección (tabla desplazable horizontalmente)" class="tabla-scroll" role="region" tabindex="0"><table class="tabla-datos"><caption class="cap-oculto">Tabla de datos de la lección</caption>
+<thead>
+<tr><th scope="col">Día</th><th scope="col">Lun</th><th scope="col">Mar</th><th scope="col">Mié</th><th scope="col">Jue</th><th scope="col">Vie</th></tr>
+</thead>
+<tbody>
+<tr><th scope="row">Horas de sueño</th><td>7</td><td>6</td><td>8</td><td>5</td><td>9</td></tr>
+</tbody>
+</table></div><p class="aviso-desliza"><span aria-hidden="true">↔</span> Deslice la tabla horizontalmente para ver todas las columnas.</p>
+<p class="paso"><span aria-hidden="true" class="n">→</span><strong>Total:</strong> 7 + 6 + 8 + 5 + 9 = 35 horas.</p>
+<p class="paso"><span aria-hidden="true" class="n">→</span><strong>Promedio:</strong> 35 ÷ 5 = 7 horas por noche.</p>
+<p class="paso"><span aria-hidden="true" class="n">→</span><strong>Diferencia</strong> entre el máximo (9) y el mínimo (5): 9 − 5 = 4 horas.</p>
+<p class="paso"><span aria-hidden="true" class="n">→</span><strong>Párrafo:</strong> "Dormí más el viernes (9 horas) y menos el jueves (5 horas). En promedio dormí 7 horas por noche. Me gustaría dormir más parejo."</p>
+</div>
+<div class="practica">
+<div class="cabe"><span aria-hidden="true" class="ico">✏️</span><h3>Práctica 1 — Cálculo del proyecto</h3></div>
+<p class="pregunta-int" id="t-p1">En el proyecto de ejemplo, las horas de sueño fueron 7, 6, 8, 5 y 9. ¿Cuál es el promedio?</p>
+<div aria-labelledby="t-p1" class="opciones" data-quiz="p1" role="group">
+<button class="opcion" data-correcta="no" type="button">35 horas</button>
+<button class="opcion" data-correcta="si" type="button">7 horas</button>
+<button class="opcion" data-correcta="no" type="button">9 horas</button>
+<button class="opcion" data-correcta="no" type="button">5 horas</button>
+</div>
+<div aria-live="polite" class="respuesta-int" id="r-p1" role="status"></div>
+</div>
+<div class="practica">
+<div class="cabe"><span aria-hidden="true" class="ico">✏️</span><h3>Práctica 2 — Cálculo del proyecto</h3></div>
+<p class="pregunta-int" id="t-p2">En ese mismo proyecto, ¿cuál es la diferencia entre el día de más sueño y el de menos sueño?</p>
+<div aria-labelledby="t-p2" class="opciones" data-quiz="p2" role="group">
+<button class="opcion" data-correcta="no" type="button">14 horas</button>
+<button class="opcion" data-correcta="si" type="button">4 horas</button>
+<button class="opcion" data-correcta="no" type="button">9 horas</button>
+<button class="opcion" data-correcta="no" type="button">2 horas</button>
+</div>
+<div aria-live="polite" class="respuesta-int" id="r-p2" role="status"></div>
+</div>
+</section>
+<!-- PRESENTAR -->
+<section>
+<h2><span aria-hidden="true" class="num-seccion">3</span>Presentar el proyecto</h2>
+<p>Una parte importante del proyecto es <strong>presentarlo oralmente</strong> al grupo, en unos 3 a 4 minutos. Presentar lo que uno hizo es una destreza valiosa — en el estudio y en el trabajo.</p>
+<div class="caja caja-tip">
+<span class="etiqueta et-verde">Cómo presentar bien</span>
+<p>Diga primero <strong>qué dato eligió</strong> y por qué. Luego <strong>muestre su gráfica</strong> y explique qué se ve. Después comparta sus <strong>cálculos</strong> (total, promedio, diferencia). Termine con una <strong>reflexión</strong>: ¿qué aprendió de sus propios datos? Hable claro y con calma.</p>
+</div>
+<div class="caja caja-ojo">
+<span class="etiqueta et-ambar">Frases para comentar el proyecto de un compañero</span>
+<p>Al comentar el trabajo de otra persona, use frases respetuosas: <strong>"Entendí bien que..."</strong>, <strong>"Quiero preguntarte sobre..."</strong>, <strong>"Tu gráfica muestra que..."</strong>. La retroalimentación amable ayuda a todos a mejorar.</p>
+</div>
+</section>
+<!-- INTRODUCCIÓN AL GED -->
+<section>
+<h2><span aria-hidden="true" class="num-seccion">4</span>Una mirada al examen GED</h2>
+<p>El <strong>GED</strong> es el examen que otorga el certificado equivalente al diploma de escuela secundaria. La sección de matemáticas evalúa, en buena parte, lo mismo que usted practicó en este nivel.</p>
+<div class="caja caja-ged">
+<span class="etiqueta et-oro">Lo que ya tiene a su favor</span>
+<p>Las preguntas del GED de matemáticas combinan operaciones, fracciones, decimales, medidas, geometría y datos — <strong>los ocho temas de este Nivel 1</strong>. Cada lección que completó fue un paso hacia ese examen.</p>
+</div>
+<h3>Consejos para las preguntas tipo GED</h3>
+<ul>
+<li><strong>Lea con calma:</strong> use el método de los 4 pasos que practicó desde la Lección 1.3.</li>
+<li><strong>Identifique el tema:</strong> ¿es de operaciones, de medidas, de geometría, de datos? Eso le dice qué herramienta usar.</li>
+<li><strong>Use la calculadora con cuidado:</strong> el GED permite la TI-30XS. Recuerde limpiar la memoria antes de cada problema.</li>
+<li><strong>Verifique:</strong> revise siempre si su respuesta tiene sentido, como aprendió en todo el curso.</li>
+</ul>
+<div class="caja caja-tip">
+<span class="etiqueta et-verde">El Nivel 1 es la base</span>
+<p>Este nivel le dio los <strong>cimientos</strong>. El Nivel 2 construirá sobre ellos —números negativos, porcentajes, proporciones— acercándolo aún más al examen GED completo.</p>
+</div>
+<div class="practica">
+<div class="cabe"><span aria-hidden="true" class="ico">✏️</span><h3>Práctica 3 — Pregunta tipo GED</h3></div>
+<p class="pregunta-int" id="t-p3">Una persona compra 3 camisas de $12 cada una. Paga con $50. ¿Cuánto cambio recibe?</p>
+<div aria-labelledby="t-p3" class="opciones" data-quiz="p3" role="group">
+<button class="opcion" data-correcta="no" type="button">$36</button>
+<button class="opcion" data-correcta="si" type="button">$14</button>
+<button class="opcion" data-correcta="no" type="button">$38</button>
+<button class="opcion" data-correcta="no" type="button">$26</button>
+</div>
+<div aria-live="polite" class="respuesta-int" id="r-p3" role="status"></div>
+</div>
+<div class="practica">
+<div class="cabe"><span aria-hidden="true" class="ico">✏️</span><h3>Práctica 4 — Pregunta tipo GED</h3></div>
+<p class="pregunta-int" id="t-p4">Un cuarto rectangular mide 5 m de base y 4 m de altura. ¿Cuántos metros cuadrados de piso tiene?</p>
+<div aria-labelledby="t-p4" class="opciones" data-quiz="p4" role="group">
+<button class="opcion" data-correcta="no" type="button">18 m²</button>
+<button class="opcion" data-correcta="si" type="button">20 m²</button>
+<button class="opcion" data-correcta="no" type="button">9 m²</button>
+<button class="opcion" data-correcta="no" type="button">40 m²</button>
+</div>
+<div aria-live="polite" class="respuesta-int" id="r-p4" role="status"></div>
+</div>
+</section>
+<!-- PRÁCTICA GUIADA -->
+<section>
+<h2><span aria-hidden="true" class="num-seccion">5</span>Práctica guiada en clase</h2>
+<p>Estas actividades se hacen <strong>en la sesión sincrónica</strong>. Cada actividad incluye una variante para la <strong>clase presencial</strong> y otra para la <strong>clase en línea</strong>; el objetivo de aprendizaje es el mismo en ambas.</p>
+<div class="caja caja-recurso">
+<span class="etiqueta et-azul">Actividad A · "Comparto mi gráfica"</span>
+<p>Cada estudiante presenta su proyecto "Mi gráfica de la vida" al grupo y responde preguntas de los compañeros.</p>
+<div class="modalidades">
+<div class="modo modo-pres">
+<span class="modo-tit">🏫 Presencial</span>
+<p>Cada estudiante pasa al frente y presenta su proyecto en 3–4 minutos, mostrando su gráfica. Responde 1–2 preguntas de los compañeros. El grupo da retroalimentación con la rúbrica del proyecto.</p>
+</div>
+<div class="modo modo-line">
+<span class="modo-tit">💻 En línea</span>
+<p>Cada estudiante comparte su pantalla y presenta su proyecto en 3–4 minutos. Los compañeros hacen 1–2 preguntas por micrófono o chat, usando las frases modelo de retroalimentación.</p>
+</div>
+</div>
+</div>
+<div class="caja caja-recurso">
+<span class="etiqueta et-azul">Actividad B · "Repaso tipo GED"</span>
+<p>En equipos, los estudiantes resuelven preguntas tipo GED de distintos temas, como repaso para la evaluación final.</p>
+<div class="modalidades">
+<div class="modo modo-pres">
+<span class="modo-tit">🏫 Presencial</span>
+<p>Forme equipos. Cada equipo recibe un juego de preguntas tipo GED (mezcla de los ocho temas). Resuelven juntos, identificando primero a qué tema pertenece cada pregunta.</p>
+</div>
+<div class="modo modo-line">
+<span class="modo-tit">💻 En línea</span>
+<p>En salas pequeñas (breakout rooms), los equipos resuelven las preguntas tipo GED en un documento compartido. Al volver al grupo grande, repasan juntos las más difíciles.</p>
+</div>
+</div>
+</div>
+<div class="caja caja-recurso">
+<span class="etiqueta et-azul">Actividad C · "Lo que aprendí en el Nivel 1"</span>
+<p>Los estudiantes reflexionan sobre su recorrido por los ocho temas del nivel.</p>
+<div class="modalidades">
+<div class="modo modo-pres">
+<span class="modo-tit">🏫 Presencial</span>
+<p>Cada estudiante escribe en una tarjeta el tema que más le gustó y uno que quiere seguir practicando. Se comparten en círculo, celebrando el avance de todo el grupo.</p>
+</div>
+<div class="modo modo-line">
+<span class="modo-tit">💻 En línea</span>
+<p>Cada estudiante publica en el foro una breve reflexión: qué tema disfrutó más y cuál quiere reforzar. El grupo lee y comenta, cerrando el nivel con palabras de ánimo.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- TAREA ASINCRÓNICA -->
+<section>
+<h2><span aria-hidden="true" class="num-seccion">6</span>Tarea asincrónica</h2>
+<p>Estas actividades se realizan <strong>por su cuenta</strong>, dentro de las 2 horas asincrónicas de la lección.</p>
+<ul>
+<li><strong>Proyecto:</strong> complete su proyecto "Mi gráfica de la vida" en la plantilla <strong>«plantilla-proyecto-final-nivel1.html»</strong> (tabla, gráfica, párrafo y cálculos) y súbalo a Brightspace en PDF.</li>
+<li><strong>Foro de Brightspace:</strong> comente el proyecto de <strong>dos compañeros</strong> usando las frases modelo ("Entendí bien que... / Quiero preguntarte sobre... / Tu gráfica muestra...").</li>
+<li><strong>Evaluación final:</strong> realice la <strong>evaluación final sumativa</strong> de 25 preguntas en el archivo <strong>«evaluacion-final-nivel1.html»</strong> (abajo puede practicar una versión breve antes).</li>
+</ul>
+</section>
+<!-- QUIZ - EVALUACIÓN FINAL -->
+<section>
+<h2><span aria-hidden="true" class="num-seccion">7</span>Práctica para la evaluación final</h2>
+<p>La <strong>evaluación final sumativa</strong> tiene <strong>25 preguntas</strong> que mezclan los ocho temas (5 de operaciones, 5 de fracciones y decimales, 5 de medidas, 5 de geometría y 5 de tablas y gráficas), con calculadora TI-30XS permitida (recuerde limpiar la memoria).</p>
+<div class="caja caja-ged">
+<span class="etiqueta et-oro">📝 Evaluación final sumativa (archivo independiente)</span>
+<p>La evaluación completa de 25 preguntas está en el archivo <strong>«evaluacion-final-nivel1.html»</strong>.
+        Tiene <strong>temporizador de 60 minutos</strong>, corrige automáticamente y le permite exportar su
+        resultado en <strong>TXT</strong> o en <strong>PDF</strong>. La práctica de abajo (10 preguntas) le prepara
+        para ella con confianza.</p>
+</div>
+<p>Aquí tiene una <strong>versión breve de práctica con 10 preguntas</strong>, una de cada tema, para que llegue con confianza. Cada pregunta indica de qué tema es.</p>
+<div id="quiz">
+<div class="quiz-bloque">
+<span class="qnum">Pregunta 1</span><span class="qtema">Temas 1–2 · Operaciones</span>
+<p class="pregunta" id="t-q1">Una caja trae 8 paquetes y cada paquete tiene 25 unidades. ¿Cuántas unidades hay en total?</p>
+<div aria-labelledby="t-q1" class="opciones" data-q="1" role="group">
+<button class="opcion" data-c="no" type="button">33</button>
+<button class="opcion" data-c="si" type="button">200</button>
+<button class="opcion" data-c="no" type="button">175</button>
+<button class="opcion" data-c="no" type="button">160</button>
+</div>
+</div>
+<div class="quiz-bloque">
+<span class="qnum">Pregunta 2</span><span class="qtema">Tema 3 · Decimales</span>
+<p class="pregunta" id="t-q2">Una persona compra artículos por $8.50 y $3.75. ¿Cuánto gastó en total?</p>
+<div aria-labelledby="t-q2" class="opciones" data-q="2" role="group">
+<button class="opcion" data-c="si" type="button">$12.25</button>
+<button class="opcion" data-c="no" type="button">$11.25</button>
+<button class="opcion" data-c="no" type="button">$12.75</button>
+<button class="opcion" data-c="no" type="button">$4.75</button>
+</div>
+</div>
+<div class="quiz-bloque">
+<span class="qnum">Pregunta 3</span><span class="qtema">Tema 4 · Fracciones</span>
+<p class="pregunta" id="t-q3">¿Cuánto es <strong>1/4 + 2/4</strong>?</p>
+<div aria-labelledby="t-q3" class="opciones" data-q="3" role="group">
+<button class="opcion" data-c="si" type="button">3/4</button>
+<button class="opcion" data-c="no" type="button">3/8</button>
+<button class="opcion" data-c="no" type="button">2/4</button>
+<button class="opcion" data-c="no" type="button">3/16</button>
+</div>
+</div>
+<div class="quiz-bloque">
+<span class="qnum">Pregunta 4</span><span class="qtema">Tema 5 · Álgebra inicial</span>
+<p class="pregunta" id="t-q4">Resuelva: <strong>x + 7 = 16</strong></p>
+<div aria-labelledby="t-q4" class="opciones" data-q="4" role="group">
+<button class="opcion" data-c="si" type="button">x = 9</button>
+<button class="opcion" data-c="no" type="button">x = 23</button>
+<button class="opcion" data-c="no" type="button">x = 7</button>
+<button class="opcion" data-c="no" type="button">x = 112</button>
+</div>
+</div>
+<div class="quiz-bloque">
+<span class="qnum">Pregunta 5</span><span class="qtema">Tema 6 · Medidas</span>
+<p class="pregunta" id="t-q5">¿Cuántas pulgadas hay en 2 pies? (1 pie = 12 pulgadas)</p>
+<div aria-labelledby="t-q5" class="opciones" data-q="5" role="group">
+<button class="opcion" data-c="si" type="button">24 pulgadas</button>
+<button class="opcion" data-c="no" type="button">14 pulgadas</button>
+<button class="opcion" data-c="no" type="button">6 pulgadas</button>
+<button class="opcion" data-c="no" type="button">12 pulgadas</button>
+</div>
+</div>
+<div class="quiz-bloque">
+<span class="qnum">Pregunta 6</span><span class="qtema">Tema 6 · Tiempo</span>
+<p class="pregunta" id="t-q6">Una reunión empieza a las 3:20 pm y dura 1 hora y 30 minutos. ¿A qué hora termina?</p>
+<div aria-labelledby="t-q6" class="opciones" data-q="6" role="group">
+<button class="opcion" data-c="si" type="button">4:50 pm</button>
+<button class="opcion" data-c="no" type="button">4:30 pm</button>
+<button class="opcion" data-c="no" type="button">5:50 pm</button>
+<button class="opcion" data-c="no" type="button">4:20 pm</button>
+</div>
+</div>
+<div class="quiz-bloque">
+<span class="qnum">Pregunta 7</span><span class="qtema">Tema 7 · Perímetro</span>
+<p class="pregunta" id="t-q7">¿Cuál es el perímetro de un cuadrado de 6 m de lado?</p>
+<div aria-labelledby="t-q7" class="opciones" data-q="7" role="group">
+<button class="opcion" data-c="si" type="button">24 m</button>
+<button class="opcion" data-c="no" type="button">12 m</button>
+<button class="opcion" data-c="no" type="button">36 m</button>
+<button class="opcion" data-c="no" type="button">18 m</button>
+</div>
+</div>
+<div class="quiz-bloque">
+<span class="qnum">Pregunta 8</span><span class="qtema">Tema 7 · Área</span>
+<p class="pregunta" id="t-q8">¿Cuál es el área de un rectángulo de 9 m de base y 3 m de altura?</p>
+<div aria-labelledby="t-q8" class="opciones" data-q="8" role="group">
+<button class="opcion" data-c="si" type="button">27 m²</button>
+<button class="opcion" data-c="no" type="button">12 m²</button>
+<button class="opcion" data-c="no" type="button">24 m²</button>
+<button class="opcion" data-c="no" type="button">36 m²</button>
+</div>
+</div>
+<div class="quiz-bloque">
+<span class="qnum">Pregunta 9</span><span class="qtema">Tema 8 · Tablas</span>
+<p class="pregunta" id="t-q9">En una columna de notas aparecen 80, 90 y 70. ¿Cuál es el promedio?</p>
+<div aria-labelledby="t-q9" class="opciones" data-q="9" role="group">
+<button class="opcion" data-c="si" type="button">80</button>
+<button class="opcion" data-c="no" type="button">90</button>
+<button class="opcion" data-c="no" type="button">240</button>
+<button class="opcion" data-c="no" type="button">70</button>
+</div>
+</div>
+<div class="quiz-bloque">
+<span class="qnum">Pregunta 10</span><span class="qtema">Tema 8 · Gráficas</span>
+<p class="pregunta" id="t-q10">En una gráfica de líneas, los gastos suben mes a mes. ¿Qué tendencia muestra?</p>
+<div aria-labelledby="t-q10" class="opciones" data-q="10" role="group">
+<button class="opcion" data-c="si" type="button">Creciente</button>
+<button class="opcion" data-c="no" type="button">Decreciente</button>
+<button class="opcion" data-c="no" type="button">Estable</button>
+</div>
+</div>
+</div>
+<div style="text-align:center;margin-top:18px;">
+<button class="btn" id="btn-calificar" type="button">Ver mi resultado</button>
+<button class="btn btn-sec" id="btn-reintentar" style="display:none;" type="button">Intentar de nuevo</button>
+</div>
+<div aria-live="polite" class="marcador" id="marcador" role="status">
+<div aria-hidden="true" class="barra-prog"><span id="barra"></span></div>
+<p class="puntaje" id="puntaje"></p>
+<p class="mensaje" id="mensaje"></p>
+</div>
+</section>
+<!-- RÚBRICA -->
+<section>
+<h2><span aria-hidden="true" class="num-seccion">8</span>Rúbrica del proyecto final</h2>
+<p>Rúbrica analítica del proyecto "Mi gráfica de la vida" (5 criterios × 4 niveles). La nota del proyecto se combina con la de la evaluación final.</p>
+<div aria-label="Rúbrica de evaluación: criterios y sus niveles de logro (tabla desplazable horizontalmente)" class="tabla-scroll" role="region" tabindex="0"><table class="tabla-rubrica"><caption class="cap-oculto">Rúbrica de evaluación: criterios y sus niveles de logro</caption>
+<thead>
+<tr>
+<th scope="col">Criterio</th>
+<th class="nivel-cab" scope="col">Logrado (4)</th>
+<th class="nivel-cab" scope="col">Satisfactorio (3)</th>
+<th class="nivel-cab" scope="col">En proceso (2)</th>
+<th class="nivel-cab" scope="col">Por reforzar (1)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th scope="row">Tabla de datos</th>
+<td>Tabla completa, con 5 datos, correcta y bien organizada.</td>
+<td>Tabla completa con un detalle menor.</td>
+<td>Tabla incompleta o con datos confusos.</td>
+<td>No presenta la tabla.</td>
+</tr>
+<tr>
+<th scope="row">Gráfica de barras</th>
+<td>Gráfica con título, ejes, escala y barras bien etiquetadas.</td>
+<td>Gráfica correcta con un elemento por mejorar.</td>
+<td>Gráfica sin escala o sin etiquetas.</td>
+<td>No presenta la gráfica.</td>
+</tr>
+<tr>
+<th scope="row">Párrafo descriptivo</th>
+<td>Describe la gráfica con al menos 3 datos y lenguaje claro.</td>
+<td>Describe la gráfica con 2 datos.</td>
+<td>Descripción vaga o con un solo dato.</td>
+<td>No presenta el párrafo.</td>
+</tr>
+<tr>
+<th scope="row">Cálculos</th>
+<td>Total, promedio y diferencia correctos.</td>
+<td>La mayoría de los cálculos correctos.</td>
+<td>Cálculos con varios errores.</td>
+<td>No presenta los cálculos.</td>
+</tr>
+<tr>
+<th scope="row">Presentación oral</th>
+<td>Presentación clara, audible y bien organizada.</td>
+<td>Presentación comprensible.</td>
+<td>Presentación poco clara o muy breve.</td>
+<td>No presenta el proyecto.</td>
+</tr>
+</tbody>
+</table></div><p class="aviso-desliza"><span aria-hidden="true">↔</span> Deslice la tabla horizontalmente para ver todas las columnas.</p>
+</section>
+<!-- CIERRE -->
+<div class="cierre">
+<h2><span aria-hidden="true" class="num-seccion">🎓</span>¡Ha completado el Nivel 1!</h2>
+<p>Con esta lección cierra el <strong>Tema 8</strong> y, con él, <strong>todo el Spanish ASE Math: Level 1</strong>. Recorrió los ocho temas: las cuatro operaciones, los decimales, las fracciones, los patrones y el álgebra inicial, las medidas, la geometría y los datos.</p>
+<div class="diploma">
+<p class="dico">🎓</p>
+<p class="dtit">Nivel 1 · Completado</p>
+<p style="margin:4px 0 0;font-size:14.5px;">Usted construyó una base sólida de matemáticas. Cada operación, cada figura y cada gráfica que practicó son herramientas que ya le pertenecen.</p>
+</div>
+<p style="margin-top:16px;">El camino sigue. El <strong>Nivel 2</strong> tomará estos cimientos y construirá sobre ellos: números negativos, el orden completo de operaciones, porcentajes, proporciones e interés simple — acercándolo cada vez más al examen GED. <strong>Felicidades por llegar hasta aquí.</strong></p>
+</div>
+</div>
+<footer>
+  Matemáticas · Nivel 1 · Lección 8.3 — Spanish ASE Math · AE 0170-0321<br/>
+  City Colleges of Chicago · Truman College · Prof. José M. Fernández<br/>
+  © José M. Fernández, ABE/ASE Math Master Teacher. Licencia
+  <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="license" style="color:#2e7d32;">CC BY-NC-SA 4.0</a>.
+</footer>
+<script>
+      // ── PRÁCTICA INTERACTIVA ──
+      var respuestasPractica = {
+      p1:"Promedio = (7 + 6 + 8 + 5 + 9) ÷ 5 = 35 ÷ 5 = 7 horas por noche.",
+      p2:"El máximo fue 9 horas (viernes) y el mínimo 5 (jueves). La diferencia: 9 − 5 = 4 horas.",
+      p3:"3 camisas × $12 = $36. Luego el cambio: $50 − $36 = $14.",
+      p4:"Área = base × altura = 5 × 4 = 20 m². El área va en unidades cuadradas."
+      };
+
+      document.querySelectorAll('.opciones[data-quiz]').forEach(function (grupo) {
+        var id = grupo.getAttribute('data-quiz');
+        grupo.querySelectorAll('.opcion').forEach(function (op) {
+          op.addEventListener('click', function () {
+            var acerto = op.getAttribute('data-correcta') === 'si';
+            grupo.querySelectorAll('.opcion').forEach(function (o) {
+              o.disabled = true;
+              if (o.getAttribute('data-correcta') === 'si') {
+                o.classList.add('correcta');
+                o.insertAdjacentHTML('afterbegin', '<span class="marca">\u2713 Correcta:</span> ');
+              }
+            });
+            if (!acerto) {
+              op.classList.add('incorrecta');
+              op.insertAdjacentHTML('afterbegin', '<span class="marca">\u2717 Su respuesta:</span> ');
+            }
+            var r = document.getElementById('r-' + id);
+            r.className = 'respuesta-int ' + (acerto ? 'bien' : 'mal');
+            r.textContent = (acerto ? 'Correcto. ' : 'Revise: ') + respuestasPractica[id];
+          });
+        });
+      });
+
+      // ── QUIZ FINAL ──
+      var totalPreguntas = 10;
+      var seleccion = {};
+
+      document.querySelectorAll('#quiz .opciones').forEach(function (grupo) {
+        var q = grupo.getAttribute('data-q');
+        grupo.querySelectorAll('.opcion').forEach(function (op) {
+          op.setAttribute('aria-pressed', 'false');
+          op.addEventListener('click', function () {
+            grupo.querySelectorAll('.opcion').forEach(function (o) {
+              o.classList.remove('elegida');
+              o.setAttribute('aria-pressed', 'false');
+            });
+            op.classList.add('elegida');
+            op.setAttribute('aria-pressed', 'true');
+            seleccion[q] = op;
+          });
+        });
+      });
+
+      document.getElementById('btn-calificar').addEventListener('click', function () {
+        var correctas = 0;
+        document.querySelectorAll('#quiz .opciones').forEach(function (grupo) {
+          var q = grupo.getAttribute('data-q');
+          grupo.querySelectorAll('.opcion').forEach(function (o) {
+            o.disabled = true;
+            if (o.getAttribute('data-c') === 'si') {
+              o.classList.add('correcta');
+              o.insertAdjacentHTML('afterbegin', '<span class="marca">\u2713 Correcta:</span> ');
+            }
+          });
+          var elegida = seleccion[q];
+          if (elegida) {
+            if (elegida.getAttribute('data-c') === 'si') {
+              correctas++;
+            } else {
+              elegida.classList.add('incorrecta');
+              elegida.insertAdjacentHTML('afterbegin', '<span class="marca">\u2717 Su respuesta:</span> ');
+            }
+          }
+        });
+
+        var marc = document.getElementById('marcador');
+        var pct = Math.round((correctas / totalPreguntas) * 100);
+        document.getElementById('puntaje').textContent = correctas + ' de ' + totalPreguntas + ' correctas';
+
+        var msg, color;
+        if (pct >= 88) {
+          msg = 'Excelente. Domina los ocho temas del Nivel 1. Está listo para la evaluación final y para el Nivel 2.';
+          color = '#e7f4ec';
+        } else if (pct >= 63) {
+          msg = 'Buen trabajo. Repase las preguntas marcadas como incorrectas y vuelva a intentarlo.';
+          color = '#fdf3df';
+        } else {
+          msg = 'Repasemos juntos. Vuelva a las lecciones de los temas en rojo y reintente esta práctica.';
+          color = '#fdecea';
+        }
+
+        marc.style.background = color;
+        document.getElementById('mensaje').textContent = msg;
+        marc.classList.add('visible');
+        document.getElementById('barra').style.width = pct + '%';
+        document.getElementById('btn-calificar').style.display = 'none';
+
+        var reintentar = document.getElementById('btn-reintentar');
+        reintentar.style.display = 'inline-block';
+        reintentar.focus();
+      });
+
+      document.getElementById('btn-reintentar').addEventListener('click', function () {
+        document.querySelectorAll('#quiz .opcion').forEach(function (o) {
+          o.disabled = false;
+          o.classList.remove('correcta', 'incorrecta', 'elegida');
+          o.setAttribute('aria-pressed', 'false');
+          var marca = o.querySelector('.marca');
+          if (marca) {
+            marca.remove();
+          }
+        });
+        for (var k in seleccion) {
+          delete seleccion[k];
+        }
+        document.getElementById('marcador').classList.remove('visible');
+        document.getElementById('puntaje').textContent = '';
+        document.getElementById('mensaje').textContent = '';
+        document.getElementById('btn-calificar').style.display = 'inline-block';
+        document.getElementById('btn-reintentar').style.display = 'none';
+        var primera = document.querySelector('#quiz .opcion');
+        if (primera) {
+          primera.focus();
+        }
+      });
+
+      // ── TABLAS RESPONSIVAS ──
+      // Los contenedores y avisos ya están en el marcado, para que los
+      // revisores que no ejecutan JavaScript los detecten.
+      (function () {
+        var TEXTO_AVISO = '\u2194 Deslice la tabla horizontalmente para ver todas las columnas.';
+        var pares = [];
+
+        document.querySelectorAll('table').forEach(function (t) {
+          var caja = t.parentNode;
+          if (!caja.classList.contains('tabla-scroll')) {
+            var cap = t.querySelector('caption');
+            var etiqueta = (cap ? cap.textContent.trim() : 'Tabla de datos') + ' (tabla desplazable horizontalmente)';
+            var nueva = document.createElement('div');
+            nueva.className = 'tabla-scroll';
+            nueva.setAttribute('role', 'region');
+            nueva.setAttribute('tabindex', '0');
+            nueva.setAttribute('aria-label', etiqueta);
+            t.parentNode.insertBefore(nueva, t);
+            nueva.appendChild(t);
+            caja = nueva;
+          }
+          var aviso = caja.nextElementSibling;
+          if (!aviso || !aviso.classList.contains('aviso-desliza')) {
+            aviso = document.createElement('p');
+            aviso.className = 'aviso-desliza';
+            aviso.textContent = TEXTO_AVISO;
+            caja.parentNode.insertBefore(aviso, caja.nextSibling);
+          }
+          pares.push({ caja: caja, aviso: aviso });
+        });
+
+        function actualizar() {
+          pares.forEach(function (p) {
+            p.aviso.style.display = p.caja.scrollWidth > p.caja.clientWidth + 2 ? 'block' : 'none';
+          });
+        }
+        actualizar();
+
+        var tm;
+        window.addEventListener('resize', function () {
+          clearTimeout(tm);
+          tm = setTimeout(actualizar, 150);
+        });
+      })();
+    </script>
+</body>
+</html>
