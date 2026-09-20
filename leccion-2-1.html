@@ -1,10 +1,13 @@
-<!doctype html>
+<!DOCTYPE html>
+<!-- Lección 2.1 · Matemáticas Nivel 1 · GEDparaHispanos
+     José M. Fernández · CC BY-NC-SA 4.0 -->
+
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Lección 2.1 · Multiplicación de números enteros — Matemáticas Nivel 1</title>
-    <style>
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Lección 2.1 · Multiplicación de números enteros — Matemáticas Nivel 1</title><meta content="CC BY-NC-SA 4.0" name="license"/><link href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" rel="license"/>
+<style>
       :root {
         --azul: #00695c;
         --azul-osc: #004d40;
@@ -188,44 +191,6 @@
       .et-azul {
         background: var(--azul);
         color: #fff;
-      }
-
-      /* ── MODALIDADES ── */
-      .modalidades {
-        display: flex;
-        gap: 14px;
-        margin-top: 14px;
-        flex-wrap: wrap;
-      }
-      .modo {
-        flex: 1;
-        min-width: 240px;
-        border-radius: 9px;
-        padding: 13px 16px;
-        background: #fff;
-        border: 1px solid var(--linea);
-      }
-      .modo-pres {
-        border-top: 4px solid var(--azul);
-      }
-      .modo-line {
-        border-top: 4px solid var(--verde);
-      }
-      .modo .modo-tit {
-        display: block;
-        font-weight: 700;
-        font-size: 14px;
-        margin-bottom: 5px;
-      }
-      .modo-pres .modo-tit {
-        color: var(--azul-osc);
-      }
-      .modo-line .modo-tit {
-        color: var(--verde);
-      }
-      .modo p {
-        margin: 4px 0 0;
-        font-size: 15px;
       }
 
       /* ── CUENTA EN COLUMNA ── */
@@ -700,66 +665,85 @@
           padding: 14px 18px;
         }
       }
-    </style>
-  </head>
-  <body>
-    <header class="principal">
-      <div class="envoltura-header">
-        <div class="ruta">Matemáticas · Nivel 1 · Tema 2 — Multiplicación y división</div>
-        <h1>Lección 2.1 · Multiplicación de números enteros</h1>
-        <p class="lema">Multiplicar es sumar muchas veces lo mismo, pero más rápido. El algoritmo estándar con productos parciales.</p>
-        <div class="chips">
-          <span class="chip">⏱️ 4 horas (2 sinc. + 2 asinc.)</span>
-          <span class="chip">📘 MyOpenMath</span>
-          <span class="chip">✖️ Tablas hasta 12×12</span>
-        </div>
-      </div>
-    </header>
+    
+  /* ── ÍNDICE DE LA LECCIÓN ── */
+  .indice{
+    background:var(--papel); border:1px solid var(--linea); border-left:6px solid var(--azul);
+    border-radius:10px; padding:16px 20px; margin:26px 0;
+  }
+  .indice h2{ font-size:1.05rem; margin:0 0 10px; color:var(--azul-osc); border:0; padding:0; }
+  .indice ol{ margin:0; padding-left:1.3em; }
+  .indice li{ margin:4px 0; }
+  .indice a{ color:var(--azul-osc); text-decoration:underline; }
+  .indice a:hover{ color:var(--azul); }
+  .indice a:focus-visible,.volver-indice:focus-visible{ outline:3px solid #b05e00; outline-offset:2px; }
+  .volver-indice{
+    position:fixed; right:18px; bottom:18px; z-index:60;
+    background:var(--azul-osc); color:#fff; border-radius:999px;
+    padding:10px 16px; font-weight:700; font-size:.92rem; text-decoration:none;
+    box-shadow:0 2px 10px rgba(0,0,0,.28);
+  }
+  .volver-indice:hover{ background:var(--azul); color:#fff; }
+  footer .licencia a{ color:#fff; text-decoration:underline; }
+  @media print{ .indice,.volver-indice{ display:none; } }
+</style>
+</head>
+<body>
+<header class="principal">
+<div class="envoltura-header">
+<div class="ruta">Matemáticas · Nivel 1 · Tema 2 — Multiplicación y división</div>
+<h1>Lección 2.1 · Multiplicación de números enteros</h1>
+<p class="lema">Multiplicar es sumar muchas veces lo mismo, pero más rápido. El algoritmo estándar con productos parciales.</p>
+<div class="chips">
+<span class="chip"><span aria-hidden="true">⏱️</span> Unas 4 horas, a su ritmo</span>
 
-    <div class="envoltura">
-      <!-- OBJETIVOS -->
-      <section>
-        <div class="caja caja-objetivo">
-          <h2>
-            <span class="num-seccion">🎯</span>
-            Objetivos de la clase
+<span class="chip">✖️ Tablas hasta 12×12</span>
+</div>
+</div>
+</header>
+<div class="envoltura">
+<!-- OBJETIVOS -->
+<section>
+<div class="caja caja-objetivo">
+<h2>
+<span class="num-seccion">🎯</span>
+            Objetivos de la lección
           </h2>
-          <p>Al terminar esta lección, usted podrá:</p>
-          <ul>
-            <li>
-              <strong>Entender</strong>
+<p>Al terminar esta lección, usted podrá:</p>
+<ul>
+<li>
+<strong>Entender</strong>
               la multiplicación como una suma repetida y dominar las tablas de multiplicar hasta 12 × 12.
             </li>
-            <li>
-              <strong>Multiplicar</strong>
+<li>
+<strong>Multiplicar</strong>
               números de varios dígitos usando el algoritmo estándar con productos parciales.
             </li>
-            <li>
-              <strong>Aplicar</strong>
+<li>
+<strong>Aplicar</strong>
               las propiedades conmutativa, asociativa y distributiva para simplificar cálculos.
             </li>
-            <li>
-              <strong>Verificar</strong>
+<li>
+<strong>Verificar</strong>
               un producto usando la estimación (redondear y multiplicar).
             </li>
-          </ul>
-        </div>
-      </section>
-
-      <!-- QUÉ ES MULTIPLICAR -->
-      <section>
-        <h2>
-          <span class="num-seccion">1</span>
+</ul>
+</div>
+</section><nav aria-labelledby="indice-titulo" class="indice" id="indice"><h2 id="indice-titulo">Contenido de la lección</h2><ol><li><a href="#s-que-significa-multiplicar">¿Qué significa multiplicar?</a></li><li><a href="#s-las-tablas-de-multiplicar-y-las-propiedades">Las tablas de multiplicar y las propiedades</a></li><li><a href="#s-multiplicar-por-un-numero-de-un-digito">Multiplicar por un número de un dígito</a></li><li><a href="#s-multiplicar-por-un-numero-de-dos-digitos">Multiplicar por un número de dos dígitos</a></li><li><a href="#s-verificar-con-la-estimacion">Verificar con la estimación</a></li><li><a href="#s-tarea">Tarea</a></li><li><a href="#s-quiz-de-practica">Quiz de práctica</a></li><li><a href="#s-rubrica-de-evaluacion">Rúbrica de evaluación</a></li><li><a href="#s-lo-que-viene-en-la-proxima-leccion">Lo que viene en la próxima lección</a></li></ol></nav>
+<!-- QUÉ ES MULTIPLICAR -->
+<section>
+<h2 id="s-que-significa-multiplicar">
+<span class="num-seccion">1</span>
           ¿Qué significa multiplicar?
         </h2>
-        <p>
+<p>
           En el
           <strong>Tema 1</strong>
           aprendió a sumar. La multiplicación nace de ahí:
           <strong>multiplicar es sumar el mismo número varias veces</strong>
           , pero de forma más corta y rápida.
         </p>
-        <p>
+<p>
           Imagine que compra
           <strong>4 paquetes</strong>
           de agua y cada paquete trae
@@ -768,41 +752,39 @@
           <strong>4 × 6 = 24</strong>
           . El resultado es el mismo, pero la multiplicación es mucho más rápida — y se vuelve indispensable con números grandes.
         </p>
-
-        <p style="text-align: center">
-          <span class="arreglo" style="grid-template-columns: repeat(6, 20px)">
-            <span class="punto"></span>
-            <span class="punto"></span>
-            <span class="punto"></span>
-            <span class="punto"></span>
-            <span class="punto"></span>
-            <span class="punto"></span>
-            <span class="punto"></span>
-            <span class="punto"></span>
-            <span class="punto"></span>
-            <span class="punto"></span>
-            <span class="punto"></span>
-            <span class="punto"></span>
-            <span class="punto"></span>
-            <span class="punto"></span>
-            <span class="punto"></span>
-            <span class="punto"></span>
-            <span class="punto"></span>
-            <span class="punto"></span>
-            <span class="punto"></span>
-            <span class="punto"></span>
-            <span class="punto"></span>
-            <span class="punto"></span>
-            <span class="punto"></span>
-            <span class="punto"></span>
-          </span>
-          <br />
-          <small style="color: var(--gris)">4 filas de 6 = 24 &nbsp;·&nbsp; este "arreglo" muestra por qué 4 × 6 = 24</small>
-        </p>
-
-        <div class="caja caja-tip">
-          <span class="etiqueta et-verde">Vocabulario</span>
-          <p>
+<p style="text-align: center">
+<span class="arreglo" style="grid-template-columns: repeat(6, 20px)">
+<span class="punto"></span>
+<span class="punto"></span>
+<span class="punto"></span>
+<span class="punto"></span>
+<span class="punto"></span>
+<span class="punto"></span>
+<span class="punto"></span>
+<span class="punto"></span>
+<span class="punto"></span>
+<span class="punto"></span>
+<span class="punto"></span>
+<span class="punto"></span>
+<span class="punto"></span>
+<span class="punto"></span>
+<span class="punto"></span>
+<span class="punto"></span>
+<span class="punto"></span>
+<span class="punto"></span>
+<span class="punto"></span>
+<span class="punto"></span>
+<span class="punto"></span>
+<span class="punto"></span>
+<span class="punto"></span>
+<span class="punto"></span>
+</span>
+<br/>
+<small style="color: var(--gris)">4 filas de 6 = 24  ·  este "arreglo" muestra por qué 4 × 6 = 24</small>
+</p>
+<div class="caja caja-tip">
+<span class="etiqueta et-verde">Vocabulario</span>
+<p>
             En
             <strong>4 × 6 = 24</strong>
             , los números 4 y 6 se llaman
@@ -811,610 +793,481 @@
             <strong>producto</strong>
             .
           </p>
-        </div>
-      </section>
-
-      <!-- TABLAS Y PROPIEDADES -->
-      <section>
-        <h2>
-          <span class="num-seccion">2</span>
+</div>
+</section>
+<!-- TABLAS Y PROPIEDADES -->
+<section>
+<h2 id="s-las-tablas-de-multiplicar-y-las-propiedades">
+<span class="num-seccion">2</span>
           Las tablas de multiplicar y las propiedades
         </h2>
-        <p>
+<p>
           Para multiplicar con rapidez conviene
           <strong>conocer bien las tablas hasta 12 × 12</strong>
           . No es para memorizar bajo presión, sino para tenerlas como herramienta de apoyo, igual que un carpintero conoce sus medidas.
         </p>
-
-        <h3>Tres propiedades que le facilitan la vida</h3>
-        <ul>
-          <li>
-            <strong>Conmutativa:</strong>
+<h3>Tres propiedades que le facilitan la vida</h3>
+<ul>
+<li>
+<strong>Conmutativa:</strong>
             el orden de los factores no cambia el producto.
-            <br />
-            <span class="nota-tabla">7 × 8 = 8 × 7 = 56</span>
-          </li>
-          <li>
-            <strong>Asociativa:</strong>
+            <br/>
+<span class="nota-tabla">7 × 8 = 8 × 7 = 56</span>
+</li>
+<li>
+<strong>Asociativa:</strong>
             al multiplicar tres números, puede agrupar como prefiera.
-            <br />
-            <span class="nota-tabla">(2 × 5) × 3 = 2 × (5 × 3) = 30</span>
-          </li>
-          <li>
-            <strong>Distributiva:</strong>
+            <br/>
+<span class="nota-tabla">(2 × 5) × 3 = 2 × (5 × 3) = 30</span>
+</li>
+<li>
+<strong>Distributiva:</strong>
             puede separar un factor en partes más fáciles.
-            <br />
-            <span class="nota-tabla">25 × 4 = (20 × 4) + (5 × 4) = 80 + 20 = 100</span>
-          </li>
-        </ul>
-        <div class="caja caja-tip">
-          <span class="etiqueta et-verde">Propiedades del 0 y del 1</span>
-          <p>
+            <br/>
+<span class="nota-tabla">25 × 4 = (20 × 4) + (5 × 4) = 80 + 20 = 100</span>
+</li>
+</ul>
+<div class="caja caja-tip">
+<span class="etiqueta et-verde">Propiedades del 0 y del 1</span>
+<p>
             Cualquier número
             <strong>multiplicado por 0 da 0</strong>
             (8 × 0 = 0). Cualquier número
             <strong>multiplicado por 1 queda igual</strong>
             (8 × 1 = 8).
           </p>
-        </div>
-        <div class="interactivos">
-          <span class="titulo-grupo">Practica en línea</span>
-
-          <a class="enlace-int" href="https://zhemaria.github.io/games/bingo_multi/" target="_blank" rel="noopener">
-            <span class="ico-int" aria-hidden="true">🧮</span>
-            <span class="txt-int">
-              <span class="titulo-int">Bingo de Multiplicación</span>
-              <span class="desc-int">Practica las tablas de multiplicación jugando</span>
-            </span>
-            <span class="flecha-int" aria-hidden="true">→</span>
-          </a>
-        </div>
-
-        <div class="practica">
-          <div class="cabe">
-            <span class="ico">✏️</span>
-            <h4>Práctica 1 — Propiedad distributiva</h4>
-          </div>
-          <p class="pregunta-int">
+</div>
+<div class="interactivos">
+<span class="titulo-grupo">Practica en línea</span>
+<a class="enlace-int" href="https://zhemaria.github.io/games/bingo_multi/" rel="noopener" target="_blank">
+<span aria-hidden="true" class="ico-int">🧮</span>
+<span class="txt-int">
+<span class="titulo-int">Bingo de Multiplicación</span>
+<span class="desc-int">Practica las tablas de multiplicación jugando</span>
+</span>
+<span aria-hidden="true" class="flecha-int">→</span>
+</a>
+</div>
+<div class="practica">
+<div class="cabe">
+<span class="ico">✏️</span>
+<h4>Práctica 1 — Propiedad distributiva</h4>
+</div>
+<p class="pregunta-int">
             Usando la propiedad distributiva, ¿cuánto es
             <strong>15 × 6</strong>
-            ? &nbsp;(Pista: 15 = 10 + 5)
+            ?  (Pista: 15 = 10 + 5)
           </p>
-          <div class="opciones" data-quiz="p1">
-            <button class="opcion" data-correcta="no">75</button>
-            <button class="opcion" data-correcta="si">90</button>
-            <button class="opcion" data-correcta="no">96</button>
-            <button class="opcion" data-correcta="no">21</button>
-          </div>
-          <div class="respuesta-int" id="r-p1"></div>
-        </div>
-      </section>
-
-      <!-- ALGORITMO 1 DÍGITO -->
-      <section>
-        <h2>
-          <span class="num-seccion">3</span>
+<div class="opciones" data-quiz="p1">
+<button class="opcion" data-correcta="no">75</button>
+<button class="opcion" data-correcta="si">90</button>
+<button class="opcion" data-correcta="no">96</button>
+<button class="opcion" data-correcta="no">21</button>
+</div>
+<div class="respuesta-int" id="r-p1"></div>
+</div>
+</section>
+<!-- ALGORITMO 1 DÍGITO -->
+<section>
+<h2 id="s-multiplicar-por-un-numero-de-un-digito">
+<span class="num-seccion">3</span>
           Multiplicar por un número de un dígito
         </h2>
-        <p>
+<p>
           Cuando los números son grandes, usamos el
           <strong>algoritmo estándar</strong>
           : multiplicamos columna por columna, de derecha a izquierda, y reagrupamos ("llevamos") igual que en la suma.
         </p>
-
-        <h3>Ejemplo resuelto: 327 × 4</h3>
-        <div class="ejemplo">
-          <div class="titulo-ej">Multiplicamos cada dígito por 4, de derecha a izquierda</div>
-          <div class="paso">
-            <span class="n">1</span>
-            <strong>Unidades:</strong>
+<h3>Ejemplo resuelto: 327 × 4</h3>
+<div class="ejemplo">
+<div class="titulo-ej">Multiplicamos cada dígito por 4, de derecha a izquierda</div>
+<div class="paso">
+<span class="n">1</span>
+<strong>Unidades:</strong>
             4 × 7 = 28. Escribo el
             <strong>8</strong>
             y llevo
             <strong>2</strong>
             .
           </div>
-          <div class="paso">
-            <span class="n">2</span>
-            <strong>Decenas:</strong>
+<div class="paso">
+<span class="n">2</span>
+<strong>Decenas:</strong>
             4 × 2 = 8, más el 2 que llevé = 10. Escribo el
             <strong>0</strong>
             y llevo
             <strong>1</strong>
             .
           </div>
-          <div class="paso">
-            <span class="n">3</span>
-            <strong>Centenas:</strong>
+<div class="paso">
+<span class="n">3</span>
+<strong>Centenas:</strong>
             4 × 3 = 12, más el 1 que llevé = 13. Escribo
             <strong>13</strong>
             .
           </div>
-          <div class="paso">
-            <span class="n">✓</span>
+<div class="paso">
+<span class="n">✓</span>
             Resultado:
             <strong>1 308</strong>
             .
           </div>
-        </div>
-        <p style="text-align: center">
-          <span class="cuenta">
-            &nbsp;&nbsp;3 2 7
-            <br />
-            <span class="signo">×</span>
-            &nbsp;&nbsp;&nbsp;&nbsp;4
-            <br />
-            <span class="raya">&nbsp;</span>
-            <span class="resultado">1 3 0 8</span>
-          </span>
-        </p>
-
-        <div class="practica">
-          <div class="cabe">
-            <span class="ico">✏️</span>
-            <h4>Práctica 2 — Multiplicar por un dígito</h4>
-          </div>
-          <p class="pregunta-int">
+</div>
+<p style="text-align: center">
+<span class="cuenta">
+              3 2 7
+            <br/>
+<span class="signo">×</span>
+                4
+            <br/>
+<span class="raya"> </span>
+<span class="resultado">1 3 0 8</span>
+</span>
+</p>
+<div class="practica">
+<div class="cabe">
+<span class="ico">✏️</span>
+<h4>Práctica 2 — Multiplicar por un dígito</h4>
+</div>
+<p class="pregunta-int">
             ¿Cuánto es
             <strong>458 × 6</strong>
             ?
           </p>
-          <div class="opciones" data-quiz="p2">
-            <button class="opcion" data-correcta="no">2 408</button>
-            <button class="opcion" data-correcta="si">2 748</button>
-            <button class="opcion" data-correcta="no">2 448</button>
-            <button class="opcion" data-correcta="no">2 758</button>
-          </div>
-          <div class="respuesta-int" id="r-p2"></div>
-        </div>
-      </section>
-
-      <!-- ALGORITMO 2 DÍGITOS -->
-      <section>
-        <h2>
-          <span class="num-seccion">4</span>
+<div class="opciones" data-quiz="p2">
+<button class="opcion" data-correcta="no">2 408</button>
+<button class="opcion" data-correcta="si">2 748</button>
+<button class="opcion" data-correcta="no">2 448</button>
+<button class="opcion" data-correcta="no">2 758</button>
+</div>
+<div class="respuesta-int" id="r-p2"></div>
+</div>
+</section>
+<!-- ALGORITMO 2 DÍGITOS -->
+<section>
+<h2 id="s-multiplicar-por-un-numero-de-dos-digitos">
+<span class="num-seccion">4</span>
           Multiplicar por un número de dos dígitos
         </h2>
-        <p>
+<p>
           Cuando el segundo factor tiene dos dígitos, hacemos
           <strong>dos multiplicaciones parciales</strong>
           y luego las sumamos. Cada parcial corresponde a un dígito del segundo factor.
         </p>
-
-        <h3>Ejemplo resuelto: 246 × 35</h3>
-        <div class="ejemplo">
-          <div class="titulo-ej">Multiplicamos por 5, luego por 30, y sumamos</div>
-          <div class="paso">
-            <span class="n">1</span>
-            <strong>Primer parcial — por las unidades (5):</strong>
+<h3>Ejemplo resuelto: 246 × 35</h3>
+<div class="ejemplo">
+<div class="titulo-ej">Multiplicamos por 5, luego por 30, y sumamos</div>
+<div class="paso">
+<span class="n">1</span>
+<strong>Primer parcial — por las unidades (5):</strong>
             246 × 5 = 1 230.
           </div>
-          <div class="paso">
-            <span class="n">2</span>
-            <strong>Segundo parcial — por las decenas (3):</strong>
+<div class="paso">
+<span class="n">2</span>
+<strong>Segundo parcial — por las decenas (3):</strong>
             246 × 3 = 738. Pero el 3 vale 30, así que
             <strong>corro el resultado un lugar a la izquierda</strong>
             : queda 7 380.
           </div>
-          <div class="paso">
-            <span class="n">3</span>
-            <strong>Sumo los parciales:</strong>
+<div class="paso">
+<span class="n">3</span>
+<strong>Sumo los parciales:</strong>
             1 230 + 7 380 = 8 610.
           </div>
-          <div class="paso">
-            <span class="n">✓</span>
+<div class="paso">
+<span class="n">✓</span>
             Resultado:
             <strong>8 610</strong>
             .
           </div>
-        </div>
-        <p style="text-align: center">
-          <span class="cuenta">
-            &nbsp;&nbsp;&nbsp;2 4 6
-            <br />
-            <span class="signo">×</span>
-            &nbsp;&nbsp;&nbsp;3 5
-            <br />
-            <span class="raya">&nbsp;</span>
-            <span class="pp1">&nbsp;1 2 3 0</span>
-            <br />
-            <span class="pp2">7 3 8 0&nbsp;</span>
-            <br />
-            <span class="raya2">&nbsp;</span>
-            <span class="resultado">8 6 1 0</span>
-          </span>
-          <br />
-          <small>El segundo parcial se corre un lugar porque el 3 está en las decenas.</small>
-        </p>
-
-        <div class="caja caja-ojo">
-          <span class="etiqueta et-ambar">¡Ojo! El error más común</span>
-          <p>
+</div>
+<p style="text-align: center">
+<span class="cuenta">
+               2 4 6
+            <br/>
+<span class="signo">×</span>
+               3 5
+            <br/>
+<span class="raya"> </span>
+<span class="pp1"> 1 2 3 0</span>
+<br/>
+<span class="pp2">7 3 8 0 </span>
+<br/>
+<span class="raya2"> </span>
+<span class="resultado">8 6 1 0</span>
+</span>
+<br/>
+<small>El segundo parcial se corre un lugar porque el 3 está en las decenas.</small>
+</p>
+<div class="caja caja-ojo">
+<span class="etiqueta et-ambar">¡Ojo! El error más común</span>
+<p>
             No olvide
             <strong>correr el segundo parcial un lugar a la izquierda</strong>
             . Muchos estudiantes ponen un
             <strong>0</strong>
             debajo de las unidades del segundo renglón para no olvidarlo: ese cero "guarda el lugar".
           </p>
-        </div>
-
-        <div class="practica">
-          <div class="cabe">
-            <span class="ico">✏️</span>
-            <h4>Práctica 3 — Multiplicar por dos dígitos</h4>
-          </div>
-          <p class="pregunta-int">
+</div>
+<div class="practica">
+<div class="cabe">
+<span class="ico">✏️</span>
+<h4>Práctica 3 — Multiplicar por dos dígitos</h4>
+</div>
+<p class="pregunta-int">
             ¿Cuánto es
             <strong>123 × 24</strong>
             ?
           </p>
-          <div class="opciones" data-quiz="p3">
-            <button class="opcion" data-correcta="no">738</button>
-            <button class="opcion" data-correcta="si">2 952</button>
-            <button class="opcion" data-correcta="no">2 852</button>
-            <button class="opcion" data-correcta="no">3 052</button>
-          </div>
-          <div class="respuesta-int" id="r-p3"></div>
-        </div>
-      </section>
-
-      <!-- VERIFICAR CON ESTIMACIÓN -->
-      <section>
-        <h2>
-          <span class="num-seccion">5</span>
+<div class="opciones" data-quiz="p3">
+<button class="opcion" data-correcta="no">738</button>
+<button class="opcion" data-correcta="si">2 952</button>
+<button class="opcion" data-correcta="no">2 852</button>
+<button class="opcion" data-correcta="no">3 052</button>
+</div>
+<div class="respuesta-int" id="r-p3"></div>
+</div>
+</section>
+<!-- VERIFICAR CON ESTIMACIÓN -->
+<section>
+<h2 id="s-verificar-con-la-estimacion">
+<span class="num-seccion">5</span>
           Verificar con la estimación
         </h2>
-        <p>
+<p>
           Después de multiplicar números grandes, conviene comprobar si el resultado es
           <strong>razonable</strong>
           . La herramienta es la
           <strong>estimación</strong>
           : redondeamos los factores y multiplicamos los números redondos, que son fáciles.
         </p>
-        <div class="ejemplo">
-          <div class="titulo-ej">Verificar 246 × 35 = 8 610 con estimación</div>
-          <div class="paso">
-            <span class="n">1</span>
+<div class="ejemplo">
+<div class="titulo-ej">Verificar 246 × 35 = 8 610 con estimación</div>
+<div class="paso">
+<span class="n">1</span>
             Redondeo los factores: 246 ≈ 250 y 35 ≈ 40.
           </div>
-          <div class="paso">
-            <span class="n">2</span>
+<div class="paso">
+<span class="n">2</span>
             Multiplico los números redondos: 250 × 40 = 10 000 (aproximado).
           </div>
-          <div class="paso">
-            <span class="n">✓</span>
+<div class="paso">
+<span class="n">✓</span>
             Mi resultado exacto, 8 610, está cerca de 10 000.
             <strong>Es razonable.</strong>
             Si me hubiera dado 861 u 86 100, sabría que cometí un error.
           </div>
-        </div>
-        <div class="caja caja-tip">
-          <span class="etiqueta et-verde">Por qué sirve</span>
-          <p>La estimación no da la respuesta exacta, pero sí detecta errores grandes: una coma fuera de lugar, un cero olvidado, un parcial mal corrido. Es su "alarma" de seguridad.</p>
-        </div>
-      </section>
+</div>
+<div class="caja caja-tip">
+<span class="etiqueta et-verde">Por qué sirve</span>
+<p>La estimación no da la respuesta exacta, pero sí detecta errores grandes: una coma fuera de lugar, un cero olvidado, un parcial mal corrido. Es su "alarma" de seguridad.</p>
+</div>
+</section>
 
-      <!-- PRÁCTICA GUIADA -->
-      <section>
-        <h2>
-          <span class="num-seccion">6</span>
-          Práctica guiada en clase
-        </h2>
-        <p>
-          Estas actividades se hacen
-          <strong>en la sesión sincrónica</strong>
-          . Cada actividad incluye una variante para la
-          <strong>clase presencial</strong>
-          y otra para la
-          <strong>clase en línea</strong>
-          ; el objetivo de aprendizaje es el mismo en ambas.
-        </p>
+<section>
+<h2 id="s-tarea">
+<span class="num-seccion">6</span>
+          Tarea
+        </h2><p>Esta parte la hace usted solo, a su ritmo. Calcule alrededor de una hora.</p><ul><li><strong>ThatQuiz.</strong> Entre en <a href="https://www.thatquiz.org/es/" rel="noopener noreferrer" target="_blank">ThatQuiz</a>, elija los ejercicios de <em>multiplicación</em> y empiece por las tablas hasta 12 × 12. Cuando las tenga fluidas, suba a multiplicaciones de dos y tres dígitos.</li><li><strong>Bingo de multiplicación.</strong> Vuelva al <a href="https://zhemaria.github.io/games/bingo_multi/" rel="noopener noreferrer" target="_blank">Bingo de multiplicación</a> unos diez minutos al día. Repetir poco y seguido fija las tablas mucho mejor que una sesión larga de una sola vez.</li><li><strong>En su vida diaria.</strong> Elija un producto que compre seguido. Calcule cuánto gastaría en 12, en 24 y en 52 unidades (un año de compras semanales). Verifique uno de los resultados con estimación.</li></ul>
 
-        <div class="caja caja-recurso">
-          <span class="etiqueta et-azul">Actividad A · "Escalera de multiplicación"</span>
-          <p>Los estudiantes practican en dificultad creciente: primero 2×1 dígitos, luego 3×1, luego 2×2, luego 3×2, subiendo "un escalón" cada vez.</p>
-          <div class="modalidades">
-            <div class="modo modo-pres">
-              <span class="modo-tit">🏫 Presencial</span>
-              <p>
-                Dibuje una escalera de cuatro escalones en la pizarra. Cada estudiante resuelve un nivel en su cuaderno y solo "sube" cuando el profesor verifica. Quien termina apoya a un compañero.
-              </p>
-            </div>
-            <div class="modo modo-line">
-              <span class="modo-tit">💻 En línea</span>
-              <p>Comparta una diapositiva con los cuatro escalones. Los estudiantes resuelven en papel y muestran cada nivel a la cámara o lo escriben en el chat antes de pasar al siguiente.</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="caja caja-recurso">
-          <span class="etiqueta et-azul">Actividad B · "Bingo de multiplicación"</span>
-          <p>Juego para afianzar las tablas hasta 12 × 12: el profesor "canta" factores y los estudiantes marcan el producto en su cartón de 5 × 5.</p>
-          <div class="modalidades">
-            <div class="modo modo-pres">
-              <span class="modo-tit">🏫 Presencial</span>
-              <p>
-                Reparta cartones de bingo impresos con productos. El profesor dice dos factores en voz alta (por ejemplo, "siete por ocho") y los estudiantes marcan el 56 si lo tienen. Gana quien
-                complete una línea.
-              </p>
-            </div>
-            <div class="modo modo-line">
-              <span class="modo-tit">💻 En línea</span>
-              <p>
-                Use un generador de cartones de bingo digital. El profesor canta los factores por micrófono; el ganador comparte su cartón por cámara para verificar. O utilice este juego de bingo de
-                multiplicación ya listo para usar:
-                <br />
-                <a href="https://zhemaria.github.io/games/bingo_multi/" target="_blank">Bingo de multiplicación</a>
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div class="caja caja-recurso">
-          <span class="etiqueta et-azul">Actividad C · "Verificar con estimación"</span>
-          <p>Los estudiantes resuelven una multiplicación exacta y, al lado, hacen la estimación para comprobar que su resultado es razonable.</p>
-          <div class="modalidades">
-            <div class="modo modo-pres">
-              <span class="modo-tit">🏫 Presencial</span>
-              <p>
-                En parejas, cada estudiante resuelve tres multiplicaciones y su compañero hace la estimación de cada una. Comparan: ¿el resultado exacto está cerca de la estimación? Luego intercambian
-                roles.
-              </p>
-            </div>
-            <div class="modo modo-line">
-              <span class="modo-tit">💻 En línea</span>
-              <p>
-                En salas pequeñas (breakout rooms) de dos, uno resuelve la multiplicación exacta y el otro la estimación, compartiendo por chat o cámara. El profesor recorre las salas para revisar.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- TAREA ASINCRÓNICA -->
-      <section>
-        <h2>
-          <span class="num-seccion">7</span>
-          Tarea asincrónica
-        </h2>
-        <p>
-          Estas actividades se realizan
-          <strong>por su cuenta</strong>
-          , dentro de las 2 horas asincrónicas de la lección.
-        </p>
-        <ul>
-          <li>
-            <strong>MyOpenMath:</strong>
-            complete los
-            <strong>10 problemas</strong>
-            de multiplicación. La plataforma da retroalimentación en cada paso del algoritmo.
-          </li>
-          <li>
-            <strong>Brightspace:</strong>
-            realice el quiz de la lección (abajo puede practicarlo antes).
-          </li>
-          <li>
-            <strong>Actividad personal:</strong>
-            elija un producto que compre seguido. Calcule cuánto gastaría en 12, en 24 y en 52 unidades (un año de compras semanales). Verifique uno de los resultados con estimación.
-          </li>
-        </ul>
-      </section>
-
-      <!-- QUIZ -->
-      <section>
-        <h2>
-          <span class="num-seccion">8</span>
+</section>
+<!-- QUIZ -->
+<section>
+<h2 id="s-quiz-de-practica">
+<span class="num-seccion">7</span>
           Quiz de práctica
         </h2>
-        <p>
+<p>
           Responda las
           <strong>8 preguntas</strong>
           . Al final verá su puntaje y podrá repasar lo que falló. Puede repetir el quiz las veces que quiera.
           <strong>Sin calculadora.</strong>
-        </p>
-
-        <form id="quiz">
-          <div class="quiz-bloque">
-            <span class="qnum">Pregunta 1</span>
-            <p class="pregunta">
+</p>
+<form id="quiz">
+<div class="quiz-bloque">
+<span class="qnum">Pregunta 1</span>
+<p class="pregunta">
               ¿Qué suma representa la multiplicación
               <strong>5 × 3</strong>
               ?
             </p>
-            <div class="opciones" data-q="1">
-              <button type="button" class="opcion" data-c="no">5 + 3</button>
-              <button type="button" class="opcion" data-c="si">3 + 3 + 3 + 3 + 3</button>
-              <button type="button" class="opcion" data-c="no">5 + 5 + 5 + 5 + 5</button>
-              <button type="button" class="opcion" data-c="no">15 + 15 + 15</button>
-            </div>
-          </div>
-
-          <div class="quiz-bloque">
-            <span class="qnum">Pregunta 2</span>
-            <p class="pregunta">
+<div class="opciones" data-q="1">
+<button class="opcion" data-c="no" type="button">5 + 3</button>
+<button class="opcion" data-c="si" type="button">3 + 3 + 3 + 3 + 3</button>
+<button class="opcion" data-c="no" type="button">5 + 5 + 5 + 5 + 5</button>
+<button class="opcion" data-c="no" type="button">15 + 15 + 15</button>
+</div>
+</div>
+<div class="quiz-bloque">
+<span class="qnum">Pregunta 2</span>
+<p class="pregunta">
               Multiplique:
               <strong>234 × 3</strong>
-            </p>
-            <div class="opciones" data-q="2">
-              <button type="button" class="opcion" data-c="si">702</button>
-              <button type="button" class="opcion" data-c="no">692</button>
-              <button type="button" class="opcion" data-c="no">237</button>
-              <button type="button" class="opcion" data-c="no">612</button>
-            </div>
-          </div>
-
-          <div class="quiz-bloque">
-            <span class="qnum">Pregunta 3</span>
-            <p class="pregunta">
+</p>
+<div class="opciones" data-q="2">
+<button class="opcion" data-c="si" type="button">702</button>
+<button class="opcion" data-c="no" type="button">692</button>
+<button class="opcion" data-c="no" type="button">237</button>
+<button class="opcion" data-c="no" type="button">612</button>
+</div>
+</div>
+<div class="quiz-bloque">
+<span class="qnum">Pregunta 3</span>
+<p class="pregunta">
               Multiplique:
               <strong>517 × 8</strong>
-            </p>
-            <div class="opciones" data-q="3">
-              <button type="button" class="opcion" data-c="no">4 086</button>
-              <button type="button" class="opcion" data-c="si">4 136</button>
-              <button type="button" class="opcion" data-c="no">4 156</button>
-              <button type="button" class="opcion" data-c="no">525</button>
-            </div>
-          </div>
-
-          <div class="quiz-bloque">
-            <span class="qnum">Pregunta 4</span>
-            <p class="pregunta">
+</p>
+<div class="opciones" data-q="3">
+<button class="opcion" data-c="no" type="button">4 086</button>
+<button class="opcion" data-c="si" type="button">4 136</button>
+<button class="opcion" data-c="no" type="button">4 156</button>
+<button class="opcion" data-c="no" type="button">525</button>
+</div>
+</div>
+<div class="quiz-bloque">
+<span class="qnum">Pregunta 4</span>
+<p class="pregunta">
               Multiplique:
               <strong>62 × 47</strong>
-            </p>
-            <div class="opciones" data-q="4">
-              <button type="button" class="opcion" data-c="no">434</button>
-              <button type="button" class="opcion" data-c="si">2 914</button>
-              <button type="button" class="opcion" data-c="no">2 814</button>
-              <button type="button" class="opcion" data-c="no">3 014</button>
-            </div>
-          </div>
-
-          <div class="quiz-bloque">
-            <span class="qnum">Pregunta 5</span>
-            <p class="pregunta">
+</p>
+<div class="opciones" data-q="4">
+<button class="opcion" data-c="no" type="button">434</button>
+<button class="opcion" data-c="si" type="button">2 914</button>
+<button class="opcion" data-c="no" type="button">2 814</button>
+<button class="opcion" data-c="no" type="button">3 014</button>
+</div>
+</div>
+<div class="quiz-bloque">
+<span class="qnum">Pregunta 5</span>
+<p class="pregunta">
               La igualdad
               <strong>9 × 6 = 6 × 9</strong>
               es un ejemplo de la propiedad:
             </p>
-            <div class="opciones" data-q="5">
-              <button type="button" class="opcion" data-c="si">Conmutativa</button>
-              <button type="button" class="opcion" data-c="no">Asociativa</button>
-              <button type="button" class="opcion" data-c="no">Distributiva</button>
-              <button type="button" class="opcion" data-c="no">Propiedad del cero</button>
-            </div>
-          </div>
-
-          <div class="quiz-bloque">
-            <span class="qnum">Pregunta 6</span>
-            <p class="pregunta">
+<div class="opciones" data-q="5">
+<button class="opcion" data-c="si" type="button">Conmutativa</button>
+<button class="opcion" data-c="no" type="button">Asociativa</button>
+<button class="opcion" data-c="no" type="button">Distributiva</button>
+<button class="opcion" data-c="no" type="button">Propiedad del cero</button>
+</div>
+</div>
+<div class="quiz-bloque">
+<span class="qnum">Pregunta 6</span>
+<p class="pregunta">
               ¿Cuánto es
               <strong>148 × 0</strong>
               ?
             </p>
-            <div class="opciones" data-q="6">
-              <button type="button" class="opcion" data-c="no">148</button>
-              <button type="button" class="opcion" data-c="si">0</button>
-              <button type="button" class="opcion" data-c="no">1 480</button>
-              <button type="button" class="opcion" data-c="no">14 800</button>
-            </div>
-          </div>
-
-          <div class="quiz-bloque">
-            <span class="qnum">Pregunta 7</span>
-            <p class="pregunta">Una caja trae 24 latas. ¿Cuántas latas hay en 35 cajas?</p>
-            <div class="opciones" data-q="7">
-              <button type="button" class="opcion" data-c="no">59 latas</button>
-              <button type="button" class="opcion" data-c="si">840 latas</button>
-              <button type="button" class="opcion" data-c="no">740 latas</button>
-              <button type="button" class="opcion" data-c="no">120 latas</button>
-            </div>
-          </div>
-
-          <div class="quiz-bloque">
-            <span class="qnum">Pregunta 8</span>
-            <p class="pregunta">
+<div class="opciones" data-q="6">
+<button class="opcion" data-c="no" type="button">148</button>
+<button class="opcion" data-c="si" type="button">0</button>
+<button class="opcion" data-c="no" type="button">1 480</button>
+<button class="opcion" data-c="no" type="button">14 800</button>
+</div>
+</div>
+<div class="quiz-bloque">
+<span class="qnum">Pregunta 7</span>
+<p class="pregunta">Una caja trae 24 latas. ¿Cuántas latas hay en 35 cajas?</p>
+<div class="opciones" data-q="7">
+<button class="opcion" data-c="no" type="button">59 latas</button>
+<button class="opcion" data-c="si" type="button">840 latas</button>
+<button class="opcion" data-c="no" type="button">740 latas</button>
+<button class="opcion" data-c="no" type="button">120 latas</button>
+</div>
+</div>
+<div class="quiz-bloque">
+<span class="qnum">Pregunta 8</span>
+<p class="pregunta">
               Un trabajador gana $145 al día. Sin hacer la cuenta exacta, ¿cuál es una buena
               <strong>estimación</strong>
               de lo que gana en 22 días?
             </p>
-            <div class="opciones" data-q="8">
-              <button type="button" class="opcion" data-c="no">Alrededor de $300</button>
-              <button type="button" class="opcion" data-c="si">Alrededor de $3 000</button>
-              <button type="button" class="opcion" data-c="no">Alrededor de $30 000</button>
-              <button type="button" class="opcion" data-c="no">Alrededor de $600</button>
-            </div>
-          </div>
-        </form>
-
-        <div style="text-align: center; margin-top: 18px">
-          <button class="btn" id="btn-calificar">Ver mi resultado</button>
-          <button class="btn btn-sec" id="btn-reintentar" style="display: none">Intentar de nuevo</button>
-        </div>
-
-        <div class="marcador" id="marcador">
-          <div class="barra-prog"><span id="barra"></span></div>
-          <div class="puntaje" id="puntaje"></div>
-          <div class="mensaje" id="mensaje"></div>
-        </div>
-      </section>
-
-      <!-- RÚBRICA -->
-      <section>
-        <h2>
-          <span class="num-seccion">9</span>
+<div class="opciones" data-q="8">
+<button class="opcion" data-c="no" type="button">Alrededor de $300</button>
+<button class="opcion" data-c="si" type="button">Alrededor de $3 000</button>
+<button class="opcion" data-c="no" type="button">Alrededor de $30 000</button>
+<button class="opcion" data-c="no" type="button">Alrededor de $600</button>
+</div>
+</div>
+</form>
+<div style="text-align: center; margin-top: 18px">
+<button class="btn" id="btn-calificar">Ver mi resultado</button>
+<button class="btn btn-sec" id="btn-reintentar" style="display: none">Intentar de nuevo</button>
+</div>
+<div class="marcador" id="marcador">
+<div class="barra-prog"><span id="barra"></span></div>
+<div class="puntaje" id="puntaje"></div>
+<div class="mensaje" id="mensaje"></div>
+</div>
+</section>
+<!-- RÚBRICA -->
+<section>
+<h2 id="s-rubrica-de-evaluacion">
+<span class="num-seccion">8</span>
           Rúbrica de evaluación
         </h2>
-        <p>Rúbrica analítica del algoritmo de multiplicación. Cada criterio se evalúa en cuatro niveles.</p>
-        <table class="tabla-rubrica">
-          <thead>
-            <tr>
-              <th>Criterio</th>
-              <th class="nivel-cab">Logrado (4)</th>
-              <th class="nivel-cab">Satisfactorio (3)</th>
-              <th class="nivel-cab">En proceso (2)</th>
-              <th class="nivel-cab">Por reforzar (1)</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Domina las tablas básicas</td>
-              <td>Recuerda con fluidez las tablas hasta 12 × 12.</td>
-              <td>Recuerda la mayoría; consulta alguna tabla difícil.</td>
-              <td>Necesita la tabla de referencia con frecuencia.</td>
-              <td>No maneja las tablas básicas.</td>
-            </tr>
-            <tr>
-              <td>Calcula los productos parciales</td>
-              <td>Obtiene cada parcial sin errores y reagrupa bien.</td>
-              <td>Calcula los parciales con un descuido aislado.</td>
-              <td>Se equivoca al llevar o al multiplicar un dígito.</td>
-              <td>No logra formar los productos parciales.</td>
-            </tr>
-            <tr>
-              <td>Suma y alinea los parciales</td>
-              <td>Corre el segundo parcial y suma sin errores.</td>
-              <td>Alinea bien; un error menor al sumar.</td>
-              <td>Olvida correr el parcial o lo alinea mal.</td>
-              <td>No combina los parciales.</td>
-            </tr>
-            <tr>
-              <td>Verifica con estimación</td>
-              <td>Estima y confirma que el producto es razonable.</td>
-              <td>Estima cuando se le pide.</td>
-              <td>Estima pero no compara con el resultado.</td>
-              <td>No verifica el resultado.</td>
-            </tr>
-          </tbody>
-        </table>
-      </section>
-
-      <!-- CIERRE -->
-      <div class="cierre">
-        <h2>
-          <span class="num-seccion">➡️</span>
+<p>Rúbrica analítica del algoritmo de multiplicación. Cada criterio se evalúa en cuatro niveles. Léala <strong>antes</strong> de empezar la tarea y úsela <strong>después</strong> para evaluar su propio trabajo con honestidad.</p>
+<table class="tabla-rubrica">
+<thead>
+<tr>
+<th>Criterio</th>
+<th class="nivel-cab">Logrado (4)</th>
+<th class="nivel-cab">Satisfactorio (3)</th>
+<th class="nivel-cab">En proceso (2)</th>
+<th class="nivel-cab">Por reforzar (1)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Domina las tablas básicas</td>
+<td>Recuerda con fluidez las tablas hasta 12 × 12.</td>
+<td>Recuerda la mayoría; consulta alguna tabla difícil.</td>
+<td>Necesita la tabla de referencia con frecuencia.</td>
+<td>No maneja las tablas básicas.</td>
+</tr>
+<tr>
+<td>Calcula los productos parciales</td>
+<td>Obtiene cada parcial sin errores y reagrupa bien.</td>
+<td>Calcula los parciales con un descuido aislado.</td>
+<td>Se equivoca al llevar o al multiplicar un dígito.</td>
+<td>No logra formar los productos parciales.</td>
+</tr>
+<tr>
+<td>Suma y alinea los parciales</td>
+<td>Corre el segundo parcial y suma sin errores.</td>
+<td>Alinea bien; un error menor al sumar.</td>
+<td>Olvida correr el parcial o lo alinea mal.</td>
+<td>No combina los parciales.</td>
+</tr>
+<tr>
+<td>Verifica con estimación</td>
+<td>Estima y confirma que el producto es razonable.</td>
+<td>Estima cuando se le pide.</td>
+<td>Estima pero no compara con el resultado.</td>
+<td>No verifica el resultado.</td>
+</tr>
+</tbody>
+</table>
+</section>
+<!-- CIERRE -->
+<div class="cierre">
+<h2 id="s-lo-que-viene-en-la-proxima-leccion">
+<span class="num-seccion">➡️</span>
           Lo que viene en la próxima lección
         </h2>
-        <p>Ya sabe multiplicar números de varios dígitos y verificar con estimación. La multiplicación tiene una operación inversa, igual que la suma tenía la resta.</p>
-        <p>
+<p>Ya sabe multiplicar números de varios dígitos y verificar con estimación. La multiplicación tiene una operación inversa, igual que la suma tenía la resta.</p>
+<p>
           En la
           <strong>Lección 2.2 · División de números enteros e interpretación del residuo</strong>
           aprenderá la división larga con el método "DMSR" (Divide, Multiplica, Sustrae, Repite) y, sobre todo, qué hacer con el
           <strong>residuo</strong>
           según lo que pida cada problema.
         </p>
-        <div class="flecha-sig">➡️ &nbsp;Próxima: Lección 2.2 · División de números enteros</div>
-      </div>
-    </div>
-
-    <footer>
-      Matemáticas · Nivel 1 · Lección 2.1 — Spanish ASE Math · AE 0170-0321
-      <br />
-      City Colleges of Chicago · Truman College · Prof. José M. Fernández
-    </footer>
-
-    <script>
+<div class="flecha-sig">➡️  Próxima: Lección 2.2 · División de números enteros</div>
+</div>
+</div>
+<footer><p>GEDparaHispanos · Matemáticas · Nivel 1 · Tema 2 · Lección 2.1</p><p>José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago</p><p class="licencia">© 2026. Esta obra está licenciada bajo <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" rel="license" target="_blank">Creative Commons Reconocimiento-NoComercial-CompartirIgual 4.0 Internacional (CC BY-NC-SA 4.0)</a>.</p></footer><a aria-label="Volver al contenido de la lección" class="volver-indice" href="#indice"><span aria-hidden="true">↑</span> Índice</a>
+<script>
       const respuestasPractica = {
         p1: '15 × 6 = (10 × 6) + (5 × 6) = 60 + 30 = 90. La propiedad distributiva separa el 15 en 10 + 5.',
         p2: '458 × 6 = 2 748. Unidades: 6×8=48 (llevo 4). Decenas: 6×5=30, +4 = 34 (llevo 3). Centenas: 6×4=24, +3 = 27.',
@@ -1505,5 +1358,5 @@
         document.getElementById('quiz').scrollIntoView({behavior: 'smooth', block: 'start'});
       });
     </script>
-  </body>
+</body>
 </html>

@@ -1,9 +1,12 @@
 <!DOCTYPE html>
+<!-- Lección 1.3 · Matemáticas Nivel 1 · GEDparaHispanos
+     José M. Fernández · CC BY-NC-SA 4.0 -->
+
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lección 1.3 · Suma y resta en problemas verbales</title>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Lección 1.3 · Suma y resta en problemas verbales</title><meta content="CC BY-NC-SA 4.0" name="license"/><link href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" rel="license"/>
 <style>
   :root{
     --azul:#1565c0; --azul-osc:#0d47a1; --azul-cl:#e3f2fd;
@@ -76,19 +79,6 @@
   .et-verde{background:var(--verde);color:#fff;}
   .et-ambar{background:var(--ambar);color:#fff;}
   .et-azul{background:var(--azul);color:#fff;}
-
-  /* ── MODALIDADES ── */
-  .modalidades{display:flex;gap:14px;margin-top:14px;flex-wrap:wrap;}
-  .modo{
-    flex:1;min-width:240px;border-radius:9px;padding:13px 16px;
-    background:#fff;border:1px solid var(--linea);
-  }
-  .modo-pres{border-top:4px solid var(--azul);}
-  .modo-line{border-top:4px solid var(--verde);}
-  .modo .modo-tit{display:block;font-weight:700;font-size:14px;margin-bottom:5px;}
-  .modo-pres .modo-tit{color:var(--azul-osc);}
-  .modo-line .modo-tit{color:var(--verde);}
-  .modo p{margin:4px 0 0;font-size:15px;}
 
   /* ── TABLA DE PALABRAS CLAVE ── */
   .tabla-clave{width:100%;border-collapse:collapse;margin:0;font-size:15px;}
@@ -232,433 +222,358 @@
     .tabla-scroll{overflow:visible; border:0;}
     .aviso-desliza{display:none;}
   }
+
+  /* ── ÍNDICE DE LA LECCIÓN ── */
+  .indice{
+    background:var(--papel); border:1px solid var(--linea); border-left:6px solid var(--azul);
+    border-radius:10px; padding:16px 20px; margin:26px 0;
+  }
+  .indice h2{ font-size:1.05rem; margin:0 0 10px; color:var(--azul-osc); border:0; padding:0; }
+  .indice ol{ margin:0; padding-left:1.3em; }
+  .indice li{ margin:4px 0; }
+  .indice a{ color:var(--azul-osc); text-decoration:underline; }
+  .indice a:hover{ color:var(--azul); }
+  .indice a:focus-visible,.volver-indice:focus-visible{ outline:3px solid #b05e00; outline-offset:2px; }
+  .volver-indice{
+    position:fixed; right:18px; bottom:18px; z-index:60;
+    background:var(--azul-osc); color:#fff; border-radius:999px;
+    padding:10px 16px; font-weight:700; font-size:.92rem; text-decoration:none;
+    box-shadow:0 2px 10px rgba(0,0,0,.28);
+  }
+  .volver-indice:hover{ background:var(--azul); color:#fff; }
+  footer .licencia a{ color:#fff; text-decoration:underline; }
+  @media print{ .indice,.volver-indice{ display:none; } }
 </style>
 </head>
 <body>
-
 <header class="principal">
-  <div class="envoltura-header">
-    <p class="ruta">Matemáticas · Nivel 1 · Tema 1 — Números enteros</p>
-    <h1>Lección 1.3 · Suma y resta en problemas verbales</h1>
-    <p class="lema">Leer un problema escrito en palabras, decidir si se suma o se resta, resolverlo y comprobar que la respuesta tiene sentido.</p>
-    <div class="chips">
-      <span class="chip"><span aria-hidden="true">⏱️</span> 4 horas (2 sincrónicas + 2 asincrónicas)</span>
-      <span class="chip"><span aria-hidden="true">📘</span> Steck-Vaughn · Brightspace</span>
-      <span class="chip"><span aria-hidden="true">🔑</span> Palabras clave</span>
-    </div>
-  </div>
+<div class="envoltura-header">
+<p class="ruta">Matemáticas · Nivel 1 · Tema 1 — Números enteros</p>
+<h1>Lección 1.3 · Suma y resta en problemas verbales</h1>
+<p class="lema">Leer un problema escrito en palabras, decidir si se suma o se resta, resolverlo y comprobar que la respuesta tiene sentido.</p>
+<div class="chips">
+<span class="chip"><span aria-hidden="true">⏱️</span> Unas 4 horas, a su ritmo</span>
+
+<span class="chip"><span aria-hidden="true">🔑</span> Palabras clave</span>
+</div>
+</div>
 </header>
-
 <div class="envoltura">
-
 <!-- OBJETIVOS -->
 <section>
-  <div class="caja caja-objetivo">
-    <h2><span class="num-seccion" aria-hidden="true">🎯</span>Objetivos de la clase</h2>
-    <p>Al terminar esta lección, usted podrá:</p>
-    <ul>
-      <li><strong>Identificar</strong> si un problema verbal requiere suma o resta, usando las palabras clave del enunciado.</li>
-      <li><strong>Traducir</strong> el problema a una operación y resolverlo con el algoritmo estándar.</li>
-      <li><strong>Verificar</strong> que la respuesta tiene sentido en el contexto real del problema.</li>
-      <li><strong>Reconocer</strong> e ignorar la información que no se necesita para resolver.</li>
-    </ul>
-  </div>
-</section>
-
+<div class="caja caja-objetivo">
+<h2><span aria-hidden="true" class="num-seccion">🎯</span>Objetivos de la lección</h2>
+<p>Al terminar esta lección, usted podrá:</p>
+<ul>
+<li><strong>Identificar</strong> si un problema verbal requiere suma o resta, usando las palabras clave del enunciado.</li>
+<li><strong>Traducir</strong> el problema a una operación y resolverlo con el algoritmo estándar.</li>
+<li><strong>Verificar</strong> que la respuesta tiene sentido en el contexto real del problema.</li>
+<li><strong>Reconocer</strong> e ignorar la información que no se necesita para resolver.</li>
+</ul>
+</div>
+</section><nav aria-labelledby="indice-titulo" class="indice" id="indice"><h2 id="indice-titulo">Contenido de la lección</h2><ol><li><a href="#s-de-la-cuenta-al-problema-real">De la cuenta al problema real</a></li><li><a href="#s-las-palabras-clave">Las palabras clave</a></li><li><a href="#s-el-metodo-de-los-4-pasos">El método de los 4 pasos</a></li><li><a href="#s-practiquemos-sumo-o-resto">Practiquemos: ¿sumo o resto?</a></li><li><a href="#s-problemas-de-dos-operaciones">Problemas de dos operaciones</a></li><li><a href="#s-tarea">Tarea</a></li><li><a href="#s-quiz-de-practica">Quiz de práctica</a></li><li><a href="#s-rubrica-de-evaluacion">Rúbrica de evaluación</a></li><li><a href="#s-lo-que-viene-en-el-proximo-tema">Lo que viene en el próximo tema</a></li></ol></nav>
 <!-- CONEXIÓN -->
 <section>
-  <h2><span class="num-seccion" aria-hidden="true">1</span>De la cuenta al problema real</h2>
-  <p>En la <strong>Lección 1.2</strong> aprendió a sumar y a restar con el algoritmo estándar. Pero en la vida real los números no llegan ya ordenados en columnas: llegan dentro de una <strong>situación</strong> — una factura, un viaje, un sueldo, un inventario.</p>
-  <p>El reto de hoy no es <em>calcular</em> (eso ya lo sabe), sino <strong>decidir qué calcular</strong>. La pregunta más importante frente a un problema verbal es: <strong>"¿esto se suma o se resta?"</strong> Esta lección le da herramientas para responderla con seguridad.</p>
-  <div class="caja caja-tip">
-    <span class="etiqueta et-verde">Idea clave</span>
-    <p>Sumamos cuando <strong>juntamos</strong> cantidades o algo <strong>aumenta</strong>. Restamos cuando <strong>quitamos</strong>, buscamos <strong>cuánto queda</strong> o comparamos para hallar una <strong>diferencia</strong>.</p>
-  </div>
+<h2 id="s-de-la-cuenta-al-problema-real"><span aria-hidden="true" class="num-seccion">1</span>De la cuenta al problema real</h2>
+<p>En la <strong>Lección 1.2</strong> aprendió a sumar y a restar con el algoritmo estándar. Pero en la vida real los números no llegan ya ordenados en columnas: llegan dentro de una <strong>situación</strong> — una factura, un viaje, un sueldo, un inventario.</p>
+<p>El reto de hoy no es <em>calcular</em> (eso ya lo sabe), sino <strong>decidir qué calcular</strong>. La pregunta más importante frente a un problema verbal es: <strong>"¿esto se suma o se resta?"</strong> Esta lección le da herramientas para responderla con seguridad.</p>
+<div class="caja caja-tip">
+<span class="etiqueta et-verde">Idea clave</span>
+<p>Sumamos cuando <strong>juntamos</strong> cantidades o algo <strong>aumenta</strong>. Restamos cuando <strong>quitamos</strong>, buscamos <strong>cuánto queda</strong> o comparamos para hallar una <strong>diferencia</strong>.</p>
+</div>
 </section>
-
 <!-- PALABRAS CLAVE -->
 <section>
-  <h2><span class="num-seccion" aria-hidden="true">2</span>Las palabras clave</h2>
-  <p>Ciertas palabras del enunciado son <strong>pistas</strong> que indican la operación. Aprenderlas le da una ventaja enorme. Esta es su tabla de referencia:</p>
-
-  <div class="tabla-scroll" role="region" tabindex="0" aria-label="Palabras clave que indican suma o resta (tabla desplazable horizontalmente)">
-    <table class="tabla-clave">
-      <caption class="cap-oculto">Palabras clave del enunciado que indican si hay que sumar o restar</caption>
-      <thead>
-        <tr>
-          <th scope="col" class="suma"><span aria-hidden="true">➕</span> Indican suma</th>
-          <th scope="col" class="resta"><span aria-hidden="true">➖</span> Indican resta</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>
-            <ul>
-              <li>en total, la suma</li>
-              <li>juntos, en conjunto</li>
-              <li>aumentó, se agregó</li>
-              <li>ganó, recibió más</li>
-              <li>¿cuántos hay ahora?</li>
-            </ul>
-          </td>
-          <td>
-            <ul>
-              <li>cuánto queda, sobra</li>
-              <li>la diferencia, cuánto más</li>
-              <li>disminuyó, se quitó</li>
-              <li>gastó, perdió, vendió</li>
-              <li>¿cuánto menos?</li>
-            </ul>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-  <p class="aviso-desliza"><span aria-hidden="true">↔</span> Deslice la tabla horizontalmente para ver todas las columnas.</p>
-
-  <div class="caja caja-ojo">
-    <span class="etiqueta et-ambar">¡Ojo!</span>
-    <p><strong>Las palabras clave ayudan, pero no piense solo en ellas.</strong> Son una guía, no una regla absoluta. Lo más seguro es siempre <strong>imaginar la situación</strong>: ¿las cantidades se están juntando o se está quitando algo? Esa imagen mental nunca falla.</p>
-  </div>
+<h2 id="s-las-palabras-clave"><span aria-hidden="true" class="num-seccion">2</span>Las palabras clave</h2>
+<p>Ciertas palabras del enunciado son <strong>pistas</strong> que indican la operación. Aprenderlas le da una ventaja enorme. Esta es su tabla de referencia:</p>
+<div aria-label="Palabras clave que indican suma o resta (tabla desplazable horizontalmente)" class="tabla-scroll" role="region" tabindex="0">
+<table class="tabla-clave">
+<caption class="cap-oculto">Palabras clave del enunciado que indican si hay que sumar o restar</caption>
+<thead>
+<tr>
+<th class="suma" scope="col"><span aria-hidden="true">➕</span> Indican suma</th>
+<th class="resta" scope="col"><span aria-hidden="true">➖</span> Indican resta</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<ul>
+<li>en total, la suma</li>
+<li>juntos, en conjunto</li>
+<li>aumentó, se agregó</li>
+<li>ganó, recibió más</li>
+<li>¿cuántos hay ahora?</li>
+</ul>
+</td>
+<td>
+<ul>
+<li>cuánto queda, sobra</li>
+<li>la diferencia, cuánto más</li>
+<li>disminuyó, se quitó</li>
+<li>gastó, perdió, vendió</li>
+<li>¿cuánto menos?</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p class="aviso-desliza"><span aria-hidden="true">↔</span> Deslice la tabla horizontalmente para ver todas las columnas.</p>
+<div class="caja caja-ojo">
+<span class="etiqueta et-ambar">¡Ojo!</span>
+<p><strong>Las palabras clave ayudan, pero no piense solo en ellas.</strong> Son una guía, no una regla absoluta. Lo más seguro es siempre <strong>imaginar la situación</strong>: ¿las cantidades se están juntando o se está quitando algo? Esa imagen mental nunca falla.</p>
+</div>
 </section>
-
 <!-- LOS 4 PASOS -->
 <section>
-  <h2><span class="num-seccion" aria-hidden="true">3</span>El método de los 4 pasos</h2>
-  <p>Para resolver cualquier problema verbal con seguridad, siga siempre estos cuatro pasos en orden:</p>
-
-  <ol class="pasos-tarjeta">
-    <li class="pt"><span class="ptn" aria-hidden="true">1</span> <strong>Leo y subrayo</strong> <span class="txt">Leo el problema completo. Subrayo los datos (los números) y lo que me preguntan.</span></li>
-    <li class="pt"><span class="ptn" aria-hidden="true">2</span> <strong>Decido la operación</strong> <span class="txt">¿Se juntan cantidades o se quita algo? Busco las palabras clave.</span></li>
-    <li class="pt"><span class="ptn" aria-hidden="true">3</span> <strong>Resuelvo</strong> <span class="txt">Planteo la operación en columna y la calculo con el algoritmo estándar.</span></li>
-    <li class="pt"><span class="ptn" aria-hidden="true">4</span> <strong>¿Tiene sentido?</strong> <span class="txt">Reviso la respuesta con su unidad. ¿Es lógica para la situación?</span></li>
-  </ol>
-
-  <h3>Ejemplo resuelto con los 4 pasos</h3>
-  <div class="ejemplo">
-    <p class="titulo-ej"><span aria-hidden="true">📋</span> "Una familia tenía $1 850 ahorrados. Este mes ahorraron $475 más. ¿Cuánto tienen ahorrado ahora?"</p>
-    <p class="paso"><span class="n" aria-hidden="true">1</span><strong>Paso 1 — Leo y subrayo:</strong> datos → $1 850 y $475. Pregunta → cuánto tienen <em>ahora</em>.</p>
-    <p class="paso"><span class="n" aria-hidden="true">2</span><strong>Paso 2 — Decido:</strong> "ahorraron más" y "¿cuánto hay ahora?" indican que las cantidades se <em>juntan</em>. Es una <strong>suma</strong>.</p>
-    <p class="paso"><span class="n" aria-hidden="true">3</span><strong>Paso 3 — Resuelvo:</strong> 1 850 + 475 = <strong>2 325</strong>.</p>
-    <p class="paso"><span class="n" aria-hidden="true">4</span><strong>Paso 4 — ¿Tiene sentido?</strong> Sí: ahorraron más, así que el total ($2 325) debe ser mayor que lo que tenían ($1 850). La respuesta es <strong>$2 325</strong>.</p>
-  </div>
-
-  <h3>Otro ejemplo: ahora una resta</h3>
-  <div class="ejemplo">
-    <p class="titulo-ej"><span aria-hidden="true">📋</span> "Un carro tenía 92 480 millas. El año pasado tenía 87 315 millas. ¿Cuántas millas recorrió en un año?"</p>
-    <p class="paso"><span class="n" aria-hidden="true">1</span><strong>Paso 1 — Leo y subrayo:</strong> datos → 92 480 y 87 315. Pregunta → cuántas millas recorrió (la diferencia).</p>
-    <p class="paso"><span class="n" aria-hidden="true">2</span><strong>Paso 2 — Decido:</strong> comparar dos cantidades para hallar una <em>diferencia</em> es una <strong>resta</strong>.</p>
-    <p class="paso"><span class="n" aria-hidden="true">3</span><strong>Paso 3 — Resuelvo:</strong> 92 480 − 87 315 = <strong>5 165</strong>.</p>
-    <p class="paso"><span class="n" aria-hidden="true">4</span><strong>Paso 4 — ¿Tiene sentido?</strong> Sí: recorrer 5 165 millas en un año es razonable. La respuesta es <strong>5 165 millas</strong>.</p>
-  </div>
+<h2 id="s-el-metodo-de-los-4-pasos"><span aria-hidden="true" class="num-seccion">3</span>El método de los 4 pasos</h2>
+<p>Para resolver cualquier problema verbal con seguridad, siga siempre estos cuatro pasos en orden:</p>
+<ol class="pasos-tarjeta">
+<li class="pt"><span aria-hidden="true" class="ptn">1</span> <strong>Leo y subrayo</strong> <span class="txt">Leo el problema completo. Subrayo los datos (los números) y lo que me preguntan.</span></li>
+<li class="pt"><span aria-hidden="true" class="ptn">2</span> <strong>Decido la operación</strong> <span class="txt">¿Se juntan cantidades o se quita algo? Busco las palabras clave.</span></li>
+<li class="pt"><span aria-hidden="true" class="ptn">3</span> <strong>Resuelvo</strong> <span class="txt">Planteo la operación en columna y la calculo con el algoritmo estándar.</span></li>
+<li class="pt"><span aria-hidden="true" class="ptn">4</span> <strong>¿Tiene sentido?</strong> <span class="txt">Reviso la respuesta con su unidad. ¿Es lógica para la situación?</span></li>
+</ol>
+<h3>Ejemplo resuelto con los 4 pasos</h3>
+<div class="ejemplo">
+<p class="titulo-ej"><span aria-hidden="true">📋</span> "Una familia tenía $1 850 ahorrados. Este mes ahorraron $475 más. ¿Cuánto tienen ahorrado ahora?"</p>
+<p class="paso"><span aria-hidden="true" class="n">1</span><strong>Paso 1 — Leo y subrayo:</strong> datos → $1 850 y $475. Pregunta → cuánto tienen <em>ahora</em>.</p>
+<p class="paso"><span aria-hidden="true" class="n">2</span><strong>Paso 2 — Decido:</strong> "ahorraron más" y "¿cuánto hay ahora?" indican que las cantidades se <em>juntan</em>. Es una <strong>suma</strong>.</p>
+<p class="paso"><span aria-hidden="true" class="n">3</span><strong>Paso 3 — Resuelvo:</strong> 1 850 + 475 = <strong>2 325</strong>.</p>
+<p class="paso"><span aria-hidden="true" class="n">4</span><strong>Paso 4 — ¿Tiene sentido?</strong> Sí: ahorraron más, así que el total ($2 325) debe ser mayor que lo que tenían ($1 850). La respuesta es <strong>$2 325</strong>.</p>
+</div>
+<h3>Otro ejemplo: ahora una resta</h3>
+<div class="ejemplo">
+<p class="titulo-ej"><span aria-hidden="true">📋</span> "Un carro tenía 92 480 millas. El año pasado tenía 87 315 millas. ¿Cuántas millas recorrió en un año?"</p>
+<p class="paso"><span aria-hidden="true" class="n">1</span><strong>Paso 1 — Leo y subrayo:</strong> datos → 92 480 y 87 315. Pregunta → cuántas millas recorrió (la diferencia).</p>
+<p class="paso"><span aria-hidden="true" class="n">2</span><strong>Paso 2 — Decido:</strong> comparar dos cantidades para hallar una <em>diferencia</em> es una <strong>resta</strong>.</p>
+<p class="paso"><span aria-hidden="true" class="n">3</span><strong>Paso 3 — Resuelvo:</strong> 92 480 − 87 315 = <strong>5 165</strong>.</p>
+<p class="paso"><span aria-hidden="true" class="n">4</span><strong>Paso 4 — ¿Tiene sentido?</strong> Sí: recorrer 5 165 millas en un año es razonable. La respuesta es <strong>5 165 millas</strong>.</p>
+</div>
 </section>
-
 <!-- PRÁCTICA -->
 <section>
-  <h2><span class="num-seccion" aria-hidden="true">4</span>Practiquemos: ¿sumo o resto?</h2>
-
-  <div class="practica">
-    <div class="cabe">
-      <span class="ico" aria-hidden="true">✏️</span>
-      <h3>Práctica 1 — Identificar la operación</h3>
-    </div>
-    <p class="pregunta-int" id="t-p1">"En una bodega había 640 cajas. El camión se llevó 285 cajas. ¿Cuántas cajas quedaron?" ¿Qué operación se necesita?</p>
-    <div class="opciones" data-quiz="p1" role="group" aria-labelledby="t-p1">
-      <button type="button" class="opcion" data-correcta="no">Suma: 640 + 285</button>
-      <button type="button" class="opcion" data-correcta="si">Resta: 640 − 285</button>
-      <button type="button" class="opcion" data-correcta="no">No hay datos suficientes</button>
-    </div>
-    <div class="respuesta-int" id="r-p1" role="status" aria-live="polite"></div>
-  </div>
-
-  <div class="practica">
-    <div class="cabe">
-      <span class="ico" aria-hidden="true">✏️</span>
-      <h3>Práctica 2 — Resolver el problema</h3>
-    </div>
-    <p class="pregunta-int" id="t-p2">"Una tienda vendió 1 348 artículos en enero y 1 576 en febrero. ¿Cuántos artículos vendió en total en los dos meses?"</p>
-    <div class="opciones" data-quiz="p2" role="group" aria-labelledby="t-p2">
-      <button type="button" class="opcion" data-correcta="no">228 artículos</button>
-      <button type="button" class="opcion" data-correcta="si">2 924 artículos</button>
-      <button type="button" class="opcion" data-correcta="no">2 814 artículos</button>
-      <button type="button" class="opcion" data-correcta="no">2 824 artículos</button>
-    </div>
-    <div class="respuesta-int" id="r-p2" role="status" aria-live="polite"></div>
-  </div>
-
-  <div class="practica">
-    <div class="cabe">
-      <span class="ico" aria-hidden="true">✏️</span>
-      <h3>Práctica 3 — Información que no se necesita</h3>
-    </div>
-    <p class="pregunta-int" id="t-p3">"María trabaja 8 horas al día. Esta semana ganó $620 y la semana pasada ganó $580. ¿Cuánto ganó en las dos semanas?" ¿Qué dato no se necesita?</p>
-    <div class="opciones" data-quiz="p3" role="group" aria-labelledby="t-p3">
-      <button type="button" class="opcion" data-correcta="si">Las 8 horas al día</button>
-      <button type="button" class="opcion" data-correcta="no">Los $620 de esta semana</button>
-      <button type="button" class="opcion" data-correcta="no">Los $580 de la semana pasada</button>
-      <button type="button" class="opcion" data-correcta="no">Todos los datos se necesitan</button>
-    </div>
-    <div class="respuesta-int" id="r-p3" role="status" aria-live="polite"></div>
-  </div>
-
-  <div class="caja caja-tip">
-    <span class="etiqueta et-verde">Consejo</span>
-    <p>Algunos problemas incluyen datos que <strong>no hacen falta</strong>. Por eso el Paso 1 es subrayar: si un número no responde a lo que le preguntan, déjelo de lado sin miedo.</p>
-  </div>
+<h2 id="s-practiquemos-sumo-o-resto"><span aria-hidden="true" class="num-seccion">4</span>Practiquemos: ¿sumo o resto?</h2>
+<div class="practica">
+<div class="cabe">
+<span aria-hidden="true" class="ico">✏️</span>
+<h3>Práctica 1 — Identificar la operación</h3>
+</div>
+<p class="pregunta-int" id="t-p1">"En una bodega había 640 cajas. El camión se llevó 285 cajas. ¿Cuántas cajas quedaron?" ¿Qué operación se necesita?</p>
+<div aria-labelledby="t-p1" class="opciones" data-quiz="p1" role="group">
+<button class="opcion" data-correcta="no" type="button">Suma: 640 + 285</button>
+<button class="opcion" data-correcta="si" type="button">Resta: 640 − 285</button>
+<button class="opcion" data-correcta="no" type="button">No hay datos suficientes</button>
+</div>
+<div aria-live="polite" class="respuesta-int" id="r-p1" role="status"></div>
+</div>
+<div class="practica">
+<div class="cabe">
+<span aria-hidden="true" class="ico">✏️</span>
+<h3>Práctica 2 — Resolver el problema</h3>
+</div>
+<p class="pregunta-int" id="t-p2">"Una tienda vendió 1 348 artículos en enero y 1 576 en febrero. ¿Cuántos artículos vendió en total en los dos meses?"</p>
+<div aria-labelledby="t-p2" class="opciones" data-quiz="p2" role="group">
+<button class="opcion" data-correcta="no" type="button">228 artículos</button>
+<button class="opcion" data-correcta="si" type="button">2 924 artículos</button>
+<button class="opcion" data-correcta="no" type="button">2 814 artículos</button>
+<button class="opcion" data-correcta="no" type="button">2 824 artículos</button>
+</div>
+<div aria-live="polite" class="respuesta-int" id="r-p2" role="status"></div>
+</div>
+<div class="practica">
+<div class="cabe">
+<span aria-hidden="true" class="ico">✏️</span>
+<h3>Práctica 3 — Información que no se necesita</h3>
+</div>
+<p class="pregunta-int" id="t-p3">"María trabaja 8 horas al día. Esta semana ganó $620 y la semana pasada ganó $580. ¿Cuánto ganó en las dos semanas?" ¿Qué dato no se necesita?</p>
+<div aria-labelledby="t-p3" class="opciones" data-quiz="p3" role="group">
+<button class="opcion" data-correcta="si" type="button">Las 8 horas al día</button>
+<button class="opcion" data-correcta="no" type="button">Los $620 de esta semana</button>
+<button class="opcion" data-correcta="no" type="button">Los $580 de la semana pasada</button>
+<button class="opcion" data-correcta="no" type="button">Todos los datos se necesitan</button>
+</div>
+<div aria-live="polite" class="respuesta-int" id="r-p3" role="status"></div>
+</div>
+<div class="caja caja-tip">
+<span class="etiqueta et-verde">Consejo</span>
+<p>Algunos problemas incluyen datos que <strong>no hacen falta</strong>. Por eso el Paso 1 es subrayar: si un número no responde a lo que le preguntan, déjelo de lado sin miedo.</p>
+</div>
 </section>
-
 <!-- PROBLEMAS DE DOS PASOS -->
 <section>
-  <h2><span class="num-seccion" aria-hidden="true">5</span>Problemas de dos operaciones</h2>
-  <p>Algunos problemas necesitan <strong>dos operaciones</strong>, una después de la otra. La clave es resolverlos por partes, en orden.</p>
-
-  <div class="ejemplo">
-    <p class="titulo-ej"><span aria-hidden="true">📋</span> "Un taller tenía 350 piezas. Recibió 180 piezas nuevas y luego usó 215 en una reparación. ¿Cuántas piezas tiene ahora?"</p>
-    <p class="paso"><span class="n" aria-hidden="true">1</span><strong>Paso 1 — Recibió piezas (suma):</strong> 350 + 180 = 530 piezas.</p>
-    <p class="paso"><span class="n" aria-hidden="true">2</span><strong>Paso 2 — Usó piezas (resta):</strong> 530 − 215 = 315 piezas.</p>
-    <p class="paso"><span class="n" aria-hidden="true">3</span><strong>Resultado:</strong> el taller tiene ahora <strong>315 piezas</strong>.</p>
-  </div>
-
-  <div class="caja caja-ojo">
-    <span class="etiqueta et-ambar">¡Ojo!</span>
-    <p>En un problema de dos pasos, el resultado de la primera operación se usa en la segunda. Resuelva siempre <strong>una parte a la vez</strong> y anote el resultado intermedio.</p>
-  </div>
+<h2 id="s-problemas-de-dos-operaciones"><span aria-hidden="true" class="num-seccion">5</span>Problemas de dos operaciones</h2>
+<p>Algunos problemas necesitan <strong>dos operaciones</strong>, una después de la otra. La clave es resolverlos por partes, en orden.</p>
+<div class="ejemplo">
+<p class="titulo-ej"><span aria-hidden="true">📋</span> "Un taller tenía 350 piezas. Recibió 180 piezas nuevas y luego usó 215 en una reparación. ¿Cuántas piezas tiene ahora?"</p>
+<p class="paso"><span aria-hidden="true" class="n">1</span><strong>Paso 1 — Recibió piezas (suma):</strong> 350 + 180 = 530 piezas.</p>
+<p class="paso"><span aria-hidden="true" class="n">2</span><strong>Paso 2 — Usó piezas (resta):</strong> 530 − 215 = 315 piezas.</p>
+<p class="paso"><span aria-hidden="true" class="n">3</span><strong>Resultado:</strong> el taller tiene ahora <strong>315 piezas</strong>.</p>
+</div>
+<div class="caja caja-ojo">
+<span class="etiqueta et-ambar">¡Ojo!</span>
+<p>En un problema de dos pasos, el resultado de la primera operación se usa en la segunda. Resuelva siempre <strong>una parte a la vez</strong> y anote el resultado intermedio.</p>
+</div>
 </section>
 
-<!-- PRÁCTICA GUIADA -->
 <section>
-  <h2><span class="num-seccion" aria-hidden="true">6</span>Práctica guiada en clase</h2>
-  <p>Estas actividades se hacen <strong>en la sesión sincrónica</strong>. Cada actividad incluye una variante para la <strong>clase presencial</strong> y otra para la <strong>clase en línea</strong>; el objetivo de aprendizaje es el mismo en ambas.</p>
+<h2 id="s-tarea"><span aria-hidden="true" class="num-seccion">6</span>Tarea</h2><p>Esta parte la hace usted solo, a su ritmo. Calcule alrededor de una hora.</p><ul><li><strong>ThatQuiz.</strong> Entre en <a href="https://www.thatquiz.org/es/" rel="noopener noreferrer" target="_blank">ThatQuiz</a> y practique <em>suma</em> y <em>resta</em> de varios dígitos hasta que el cálculo le salga sin pensarlo. Así, cuando lea un problema verbal, toda su atención estará en entender la situación y no en la cuenta.</li><li><strong>Invente su propio problema.</strong> Escriba un problema verbal de suma o resta con datos reales de su vida —gastos, distancias, horas de trabajo—. Déjelo reposar un día. Al día siguiente resuélvalo con los 4 pasos, como si se lo hubiera puesto otra persona: así descubre si estaba bien redactado.</li><li><strong>En su vida diaria.</strong> Piense en una compra grande reciente. Plantee un problema de dos pasos: cuánto tenía, cuánto gastó, cuánto le quedó. Resuélvalo con los 4 pasos y pregúntese al final si la respuesta tiene sentido.</li></ul>
 
-  <div class="caja caja-recurso">
-    <span class="etiqueta et-azul">Actividad A · "Detectives de palabras clave"</span>
-    <p>Los estudiantes leen problemas verbales y los clasifican como suma o resta antes de resolverlos, subrayando las palabras clave que los guían.</p>
-    <div class="modalidades">
-      <div class="modo modo-pres">
-        <span class="modo-tit"><span aria-hidden="true">🏫</span> Presencial</span>
-        <p>Reparta tarjetas con problemas impresos. Cada estudiante subraya las palabras clave con marcador y coloca la tarjeta en una de dos columnas en la pizarra: "SUMA" o "RESTA". El grupo revisa la clasificación en conjunto.</p>
-      </div>
-      <div class="modo modo-line">
-        <span class="modo-tit"><span aria-hidden="true">💻</span> En línea</span>
-        <p>Muestre los problemas en diapositivas. Los estudiantes escriben en el chat la palabra clave que detectaron y si es suma o resta. Como alternativa, use una pizarra colaborativa con dos columnas para arrastrar cada problema.</p>
-      </div>
-    </div>
-  </div>
-
-  <div class="caja caja-recurso">
-    <span class="etiqueta et-azul">Actividad B · "Los 4 pasos en parejas"</span>
-    <p>Cada pareja resuelve cuatro problemas usando la tarjeta de los 4 pasos como guía visual, escribiendo lo que hicieron en cada paso.</p>
-    <div class="modalidades">
-      <div class="modo modo-pres">
-        <span class="modo-tit"><span aria-hidden="true">🏫</span> Presencial</span>
-        <p>Cada pareja recibe una hoja con cuatro problemas y la tarjeta de los 4 pasos impresa. Resuelven juntos, alternando quién escribe. El profesor pasa por las mesas para apoyar.</p>
-      </div>
-      <div class="modo modo-line">
-        <span class="modo-tit"><span aria-hidden="true">💻</span> En línea</span>
-        <p>En salas pequeñas (breakout rooms) de dos, los estudiantes resuelven los cuatro problemas en un documento compartido o en papel. El profesor recorre las salas y revisa el progreso.</p>
-      </div>
-    </div>
-  </div>
-
-  <div class="caja caja-recurso">
-    <span class="etiqueta et-azul">Actividad C · Foro "El problema de mi vida real"</span>
-    <p>Cada estudiante inventa un problema verbal de suma o resta con datos de su propia vida (gastos, distancias, trabajo) y resuelve el de un compañero.</p>
-    <div class="modalidades">
-      <div class="modo modo-pres">
-        <span class="modo-tit"><span aria-hidden="true">🏫</span> Presencial</span>
-        <p>Cada estudiante escribe su problema en una tarjeta. Las tarjetas se intercambian al azar dentro del salón; cada quien resuelve el problema que recibió y lo devuelve a su autor para verificar.</p>
-      </div>
-      <div class="modo modo-line">
-        <span class="modo-tit"><span aria-hidden="true">💻</span> En línea</span>
-        <p>Cada estudiante publica su problema en el foro de Brightspace y resuelve el de al menos un compañero respondiendo a su mensaje. El autor confirma si la solución es correcta.</p>
-      </div>
-    </div>
-  </div>
 </section>
-
-<!-- TAREA ASINCRÓNICA -->
-<section>
-  <h2><span class="num-seccion" aria-hidden="true">7</span>Tarea asincrónica</h2>
-  <p>Estas actividades se realizan <strong>por su cuenta</strong>, dentro de las 2 horas asincrónicas de la lección. Encontrará los enlaces a continuación de la lección.</p>
-  <ul>
-    <li><strong>Foro de Brightspace:</strong> publique un problema verbal de suma o resta que usted invente con datos reales de su vida cotidiana. Después, elija el problema de un compañero y resuélvalo.</li>
-    <li><strong>Brightspace:</strong> realice el quiz de la lección.</li>
-    <li><strong>Actividad personal:</strong> piense en una compra grande reciente. Plantee un problema de dos pasos: cuánto tenía, cuánto gastó, cuánto le quedó. Resuélvalo con los 4 pasos.</li>
-  </ul>
-</section>
-
 <!-- QUIZ -->
 <section>
-  <h2><span class="num-seccion" aria-hidden="true">8</span>Quiz de práctica</h2>
-  <p>Responda las <strong>8 preguntas</strong>. Al final verá su puntaje y podrá repasar lo que falló. Puede repetir el quiz las veces que quiera.</p>
-
-  <div id="quiz">
-    <div class="quiz-bloque">
-      <p class="qnum">Pregunta 1</p>
-      <p class="pregunta" id="t-q1">"Un autobús llevaba 47 pasajeros. En la parada subieron 18 más. ¿Cuántos pasajeros hay ahora?" ¿Qué operación se usa?</p>
-      <div class="opciones" data-q="1" role="group" aria-labelledby="t-q1">
-        <button type="button" class="opcion" data-c="si">Suma</button>
-        <button type="button" class="opcion" data-c="no">Resta</button>
-      </div>
-    </div>
-
-    <div class="quiz-bloque">
-      <p class="qnum">Pregunta 2</p>
-      <p class="pregunta" id="t-q2">"Pedro tenía $530 y gastó $185 en el supermercado. ¿Cuánto dinero le queda?"</p>
-      <div class="opciones" data-q="2" role="group" aria-labelledby="t-q2">
-        <button type="button" class="opcion" data-c="no">$715</button>
-        <button type="button" class="opcion" data-c="si">$345</button>
-        <button type="button" class="opcion" data-c="no">$455</button>
-        <button type="button" class="opcion" data-c="no">$355</button>
-      </div>
-    </div>
-
-    <div class="quiz-bloque">
-      <p class="qnum">Pregunta 3</p>
-      <p class="pregunta" id="t-q3">"Una ciudad tenía 124 600 habitantes. Después de un año tiene 131 250. ¿En cuántos habitantes aumentó?"</p>
-      <div class="opciones" data-q="3" role="group" aria-labelledby="t-q3">
-        <button type="button" class="opcion" data-c="no">255 850 habitantes</button>
-        <button type="button" class="opcion" data-c="si">6 650 habitantes</button>
-        <button type="button" class="opcion" data-c="no">7 650 habitantes</button>
-        <button type="button" class="opcion" data-c="no">6 550 habitantes</button>
-      </div>
-    </div>
-
-    <div class="quiz-bloque">
-      <p class="qnum">Pregunta 4</p>
-      <p class="pregunta" id="t-q4">¿Cuál de estas palabras indica que se debe <strong>restar</strong>?</p>
-      <div class="opciones" data-q="4" role="group" aria-labelledby="t-q4">
-        <button type="button" class="opcion" data-c="no">"en total"</button>
-        <button type="button" class="opcion" data-c="no">"juntos"</button>
-        <button type="button" class="opcion" data-c="si">"la diferencia"</button>
-        <button type="button" class="opcion" data-c="no">"aumentó"</button>
-      </div>
-    </div>
-
-    <div class="quiz-bloque">
-      <p class="qnum">Pregunta 5</p>
-      <p class="pregunta" id="t-q5">"Ana corre 5 días por semana. Esta semana corrió 12 millas y la pasada 9 millas. ¿Cuántas millas corrió en las dos semanas?" ¿Qué dato no se necesita?</p>
-      <div class="opciones" data-q="5" role="group" aria-labelledby="t-q5">
-        <button type="button" class="opcion" data-c="si">Que corre 5 días por semana</button>
-        <button type="button" class="opcion" data-c="no">Las 12 millas de esta semana</button>
-        <button type="button" class="opcion" data-c="no">Las 9 millas de la semana pasada</button>
-        <button type="button" class="opcion" data-c="no">Todos los datos se necesitan</button>
-      </div>
-    </div>
-
-    <div class="quiz-bloque">
-      <p class="qnum">Pregunta 6</p>
-      <p class="pregunta" id="t-q6">"Un almacén tenía 1 200 cajas. Llegaron 450 y se despacharon 680. ¿Cuántas cajas quedan?"</p>
-      <div class="opciones" data-q="6" role="group" aria-labelledby="t-q6">
-        <button type="button" class="opcion" data-c="no">2 330 cajas</button>
-        <button type="button" class="opcion" data-c="si">970 cajas</button>
-        <button type="button" class="opcion" data-c="no">1 430 cajas</button>
-        <button type="button" class="opcion" data-c="no">70 cajas</button>
-      </div>
-    </div>
-
-    <div class="quiz-bloque">
-      <p class="qnum">Pregunta 7</p>
-      <p class="pregunta" id="t-q7">"Un trabajador ganó $2 340 en un mes. Pagó $1 580 de renta. ¿Cuánto le quedó para el resto de gastos?"</p>
-      <div class="opciones" data-q="7" role="group" aria-labelledby="t-q7">
-        <button type="button" class="opcion" data-c="no">$3 920</button>
-        <button type="button" class="opcion" data-c="si">$760</button>
-        <button type="button" class="opcion" data-c="no">$860</button>
-        <button type="button" class="opcion" data-c="no">$1 240</button>
-      </div>
-    </div>
-
-    <div class="quiz-bloque">
-      <p class="qnum">Pregunta 8</p>
-      <p class="pregunta" id="t-q8">Después de resolver un problema, usted obtiene que un carro "recorrió menos 300 millas". ¿Qué debe pensar?</p>
-      <div class="opciones" data-q="8" role="group" aria-labelledby="t-q8">
-        <button type="button" class="opcion" data-c="si">La respuesta no tiene sentido; debo revisar la operación.</button>
-        <button type="button" class="opcion" data-c="no">Está bien, las millas pueden ser negativas.</button>
-        <button type="button" class="opcion" data-c="no">Debo sumarle 300 para arreglarla.</button>
-        <button type="button" class="opcion" data-c="no">Es correcto si el carro retrocedió.</button>
-      </div>
-    </div>
-  </div>
-
-  <p style="text-align:center;margin-top:18px;">
-    <button type="button" class="btn" id="btn-calificar">Ver mi resultado</button>
-    <button type="button" class="btn btn-sec" id="btn-reintentar" style="display:none;">Intentar de nuevo</button>
-  </p>
-
-  <div class="marcador" id="marcador" role="status" aria-live="polite">
-    <div class="barra-prog" aria-hidden="true"><span id="barra"></span></div>
-    <p class="puntaje" id="puntaje"></p>
-    <p class="mensaje" id="mensaje"></p>
-  </div>
+<h2 id="s-quiz-de-practica"><span aria-hidden="true" class="num-seccion">7</span>Quiz de práctica</h2>
+<p>Responda las <strong>8 preguntas</strong>. Al final verá su puntaje y podrá repasar lo que falló. Puede repetir el quiz las veces que quiera.</p>
+<div id="quiz">
+<div class="quiz-bloque">
+<p class="qnum">Pregunta 1</p>
+<p class="pregunta" id="t-q1">"Un autobús llevaba 47 pasajeros. En la parada subieron 18 más. ¿Cuántos pasajeros hay ahora?" ¿Qué operación se usa?</p>
+<div aria-labelledby="t-q1" class="opciones" data-q="1" role="group">
+<button class="opcion" data-c="si" type="button">Suma</button>
+<button class="opcion" data-c="no" type="button">Resta</button>
+</div>
+</div>
+<div class="quiz-bloque">
+<p class="qnum">Pregunta 2</p>
+<p class="pregunta" id="t-q2">"Pedro tenía $530 y gastó $185 en el supermercado. ¿Cuánto dinero le queda?"</p>
+<div aria-labelledby="t-q2" class="opciones" data-q="2" role="group">
+<button class="opcion" data-c="no" type="button">$715</button>
+<button class="opcion" data-c="si" type="button">$345</button>
+<button class="opcion" data-c="no" type="button">$455</button>
+<button class="opcion" data-c="no" type="button">$355</button>
+</div>
+</div>
+<div class="quiz-bloque">
+<p class="qnum">Pregunta 3</p>
+<p class="pregunta" id="t-q3">"Una ciudad tenía 124 600 habitantes. Después de un año tiene 131 250. ¿En cuántos habitantes aumentó?"</p>
+<div aria-labelledby="t-q3" class="opciones" data-q="3" role="group">
+<button class="opcion" data-c="no" type="button">255 850 habitantes</button>
+<button class="opcion" data-c="si" type="button">6 650 habitantes</button>
+<button class="opcion" data-c="no" type="button">7 650 habitantes</button>
+<button class="opcion" data-c="no" type="button">6 550 habitantes</button>
+</div>
+</div>
+<div class="quiz-bloque">
+<p class="qnum">Pregunta 4</p>
+<p class="pregunta" id="t-q4">¿Cuál de estas palabras indica que se debe <strong>restar</strong>?</p>
+<div aria-labelledby="t-q4" class="opciones" data-q="4" role="group">
+<button class="opcion" data-c="no" type="button">"en total"</button>
+<button class="opcion" data-c="no" type="button">"juntos"</button>
+<button class="opcion" data-c="si" type="button">"la diferencia"</button>
+<button class="opcion" data-c="no" type="button">"aumentó"</button>
+</div>
+</div>
+<div class="quiz-bloque">
+<p class="qnum">Pregunta 5</p>
+<p class="pregunta" id="t-q5">"Ana corre 5 días por semana. Esta semana corrió 12 millas y la pasada 9 millas. ¿Cuántas millas corrió en las dos semanas?" ¿Qué dato no se necesita?</p>
+<div aria-labelledby="t-q5" class="opciones" data-q="5" role="group">
+<button class="opcion" data-c="si" type="button">Que corre 5 días por semana</button>
+<button class="opcion" data-c="no" type="button">Las 12 millas de esta semana</button>
+<button class="opcion" data-c="no" type="button">Las 9 millas de la semana pasada</button>
+<button class="opcion" data-c="no" type="button">Todos los datos se necesitan</button>
+</div>
+</div>
+<div class="quiz-bloque">
+<p class="qnum">Pregunta 6</p>
+<p class="pregunta" id="t-q6">"Un almacén tenía 1 200 cajas. Llegaron 450 y se despacharon 680. ¿Cuántas cajas quedan?"</p>
+<div aria-labelledby="t-q6" class="opciones" data-q="6" role="group">
+<button class="opcion" data-c="no" type="button">2 330 cajas</button>
+<button class="opcion" data-c="si" type="button">970 cajas</button>
+<button class="opcion" data-c="no" type="button">1 430 cajas</button>
+<button class="opcion" data-c="no" type="button">70 cajas</button>
+</div>
+</div>
+<div class="quiz-bloque">
+<p class="qnum">Pregunta 7</p>
+<p class="pregunta" id="t-q7">"Un trabajador ganó $2 340 en un mes. Pagó $1 580 de renta. ¿Cuánto le quedó para el resto de gastos?"</p>
+<div aria-labelledby="t-q7" class="opciones" data-q="7" role="group">
+<button class="opcion" data-c="no" type="button">$3 920</button>
+<button class="opcion" data-c="si" type="button">$760</button>
+<button class="opcion" data-c="no" type="button">$860</button>
+<button class="opcion" data-c="no" type="button">$1 240</button>
+</div>
+</div>
+<div class="quiz-bloque">
+<p class="qnum">Pregunta 8</p>
+<p class="pregunta" id="t-q8">Después de resolver un problema, usted obtiene que un carro "recorrió menos 300 millas". ¿Qué debe pensar?</p>
+<div aria-labelledby="t-q8" class="opciones" data-q="8" role="group">
+<button class="opcion" data-c="si" type="button">La respuesta no tiene sentido; debo revisar la operación.</button>
+<button class="opcion" data-c="no" type="button">Está bien, las millas pueden ser negativas.</button>
+<button class="opcion" data-c="no" type="button">Debo sumarle 300 para arreglarla.</button>
+<button class="opcion" data-c="no" type="button">Es correcto si el carro retrocedió.</button>
+</div>
+</div>
+</div>
+<p style="text-align:center;margin-top:18px;">
+<button class="btn" id="btn-calificar" type="button">Ver mi resultado</button>
+<button class="btn btn-sec" id="btn-reintentar" style="display:none;" type="button">Intentar de nuevo</button>
+</p>
+<div aria-live="polite" class="marcador" id="marcador" role="status">
+<div aria-hidden="true" class="barra-prog"><span id="barra"></span></div>
+<p class="puntaje" id="puntaje"></p>
+<p class="mensaje" id="mensaje"></p>
+</div>
 </section>
-
 <!-- RÚBRICA -->
 <section>
-  <h2><span class="num-seccion" aria-hidden="true">9</span>Rúbrica de evaluación</h2>
-  <p>Rúbrica del proceso de resolución de problemas, basada en los 4 pasos. Cada paso se evalúa en cuatro niveles (16 puntos en total).</p>
-
-  <div class="tabla-scroll" role="region" tabindex="0" aria-label="Rúbrica de resolución de problemas verbales (tabla desplazable horizontalmente)">
-    <table class="tabla-rubrica">
-      <caption class="cap-oculto">Rúbrica de evaluación: los cuatro pasos de resolución y sus niveles Logrado, Satisfactorio, En proceso y Por reforzar</caption>
-      <thead>
-        <tr>
-          <th scope="col">Criterio (paso)</th>
-          <th scope="col" class="nivel-cab">Logrado (4)</th>
-          <th scope="col" class="nivel-cab">Satisfactorio (3)</th>
-          <th scope="col" class="nivel-cab">En proceso (2)</th>
-          <th scope="col" class="nivel-cab">Por reforzar (1)</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <th scope="row">1. Identifica qué se pide</th>
-          <td>Subraya con precisión los datos y la pregunta, e ignora la información que sobra.</td>
-          <td>Identifica datos y pregunta correctamente.</td>
-          <td>Identifica la pregunta pero incluye datos que no se necesitan.</td>
-          <td>No distingue qué se le pregunta.</td>
-        </tr>
-        <tr>
-          <th scope="row">2. Selecciona la operación</th>
-          <td>Elige suma o resta con seguridad y justifica con la situación.</td>
-          <td>Elige la operación correcta casi siempre.</td>
-          <td>Duda; se apoya solo en palabras clave aisladas.</td>
-          <td>Elige la operación equivocada.</td>
-        </tr>
-        <tr>
-          <th scope="row">3. Calcula correctamente</th>
-          <td>Resuelve sin errores aritméticos, incluso en dos pasos.</td>
-          <td>Resuelve bien; un descuido aislado.</td>
-          <td>Comete errores de reagrupación.</td>
-          <td>No logra completar el cálculo.</td>
-        </tr>
-        <tr>
-          <th scope="row">4. Interpreta la respuesta</th>
-          <td>Expresa la respuesta con unidades y verifica que es lógica.</td>
-          <td>Expresa la respuesta con unidades.</td>
-          <td>Da el número pero sin unidad ni revisión.</td>
-          <td>No interpreta el resultado.</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-  <p class="aviso-desliza"><span aria-hidden="true">↔</span> Deslice la tabla horizontalmente para ver todas las columnas.</p>
+<h2 id="s-rubrica-de-evaluacion"><span aria-hidden="true" class="num-seccion">8</span>Rúbrica de evaluación</h2>
+<p>Rúbrica del proceso de resolución de problemas, basada en los 4 pasos. Cada paso se evalúa en cuatro niveles (16 puntos en total). Léala <strong>antes</strong> de empezar la tarea y úsela <strong>después</strong> para evaluar su propio trabajo con honestidad.</p>
+<div aria-label="Rúbrica de resolución de problemas verbales (tabla desplazable horizontalmente)" class="tabla-scroll" role="region" tabindex="0">
+<table class="tabla-rubrica">
+<caption class="cap-oculto">Rúbrica de evaluación: los cuatro pasos de resolución y sus niveles Logrado, Satisfactorio, En proceso y Por reforzar</caption>
+<thead>
+<tr>
+<th scope="col">Criterio (paso)</th>
+<th class="nivel-cab" scope="col">Logrado (4)</th>
+<th class="nivel-cab" scope="col">Satisfactorio (3)</th>
+<th class="nivel-cab" scope="col">En proceso (2)</th>
+<th class="nivel-cab" scope="col">Por reforzar (1)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th scope="row">1. Identifica qué se pide</th>
+<td>Subraya con precisión los datos y la pregunta, e ignora la información que sobra.</td>
+<td>Identifica datos y pregunta correctamente.</td>
+<td>Identifica la pregunta pero incluye datos que no se necesitan.</td>
+<td>No distingue qué se le pregunta.</td>
+</tr>
+<tr>
+<th scope="row">2. Selecciona la operación</th>
+<td>Elige suma o resta con seguridad y justifica con la situación.</td>
+<td>Elige la operación correcta casi siempre.</td>
+<td>Duda; se apoya solo en palabras clave aisladas.</td>
+<td>Elige la operación equivocada.</td>
+</tr>
+<tr>
+<th scope="row">3. Calcula correctamente</th>
+<td>Resuelve sin errores aritméticos, incluso en dos pasos.</td>
+<td>Resuelve bien; un descuido aislado.</td>
+<td>Comete errores de reagrupación.</td>
+<td>No logra completar el cálculo.</td>
+</tr>
+<tr>
+<th scope="row">4. Interpreta la respuesta</th>
+<td>Expresa la respuesta con unidades y verifica que es lógica.</td>
+<td>Expresa la respuesta con unidades.</td>
+<td>Da el número pero sin unidad ni revisión.</td>
+<td>No interpreta el resultado.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p class="aviso-desliza"><span aria-hidden="true">↔</span> Deslice la tabla horizontalmente para ver todas las columnas.</p>
 </section>
-
 <!-- CIERRE -->
 <section class="cierre">
-  <h2><span class="num-seccion" aria-hidden="true">➡️</span>Lo que viene en el próximo tema</h2>
-  <p>Con esta lección cierra el <strong>Tema 1 · Números enteros</strong>. Ya sabe leer, escribir, comparar, redondear, sumar y restar números enteros, y resolver problemas verbales con esas operaciones.</p>
-  <p>En el <strong>Tema 2 · Multiplicación y división de números enteros</strong> dará el siguiente paso. La <strong>Lección 2.1 · Multiplicación de números enteros multidigitales</strong> le mostrará que multiplicar es una forma rápida de sumar muchas veces lo mismo — y aprenderá el algoritmo estándar de la multiplicación.</p>
-  <p class="flecha-sig"><span aria-hidden="true">➡️</span> Próxima: Lección 2.1 · Multiplicación de números enteros</p>
+<h2 id="s-lo-que-viene-en-el-proximo-tema"><span aria-hidden="true" class="num-seccion">➡️</span>Lo que viene en el próximo tema</h2>
+<p>Con esta lección cierra el <strong>Tema 1 · Números enteros</strong>. Ya sabe leer, escribir, comparar, redondear, sumar y restar números enteros, y resolver problemas verbales con esas operaciones.</p>
+<p>En el <strong>Tema 2 · Multiplicación y división de números enteros</strong> dará el siguiente paso. La <strong>Lección 2.1 · Multiplicación de números enteros multidigitales</strong> le mostrará que multiplicar es una forma rápida de sumar muchas veces lo mismo — y aprenderá el algoritmo estándar de la multiplicación.</p>
+<p class="flecha-sig"><span aria-hidden="true">➡️</span> Próxima: Lección 2.1 · Multiplicación de números enteros</p>
 </section>
-
 </div>
-
-<footer>
-  <p>Matemáticas · Nivel 1 · Lección 1.3 — Spanish ASE Math · AE 0170-0321<br>
-  City Colleges of Chicago · Truman College · Prof. José M. Fernández</p>
-</footer>
-
+<footer><p>GEDparaHispanos · Matemáticas · Nivel 1 · Tema 1 · Lección 1.3</p><p>José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago</p><p class="licencia">© 2026. Esta obra está licenciada bajo <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" rel="license" target="_blank">Creative Commons Reconocimiento-NoComercial-CompartirIgual 4.0 Internacional (CC BY-NC-SA 4.0)</a>.</p></footer><a aria-label="Volver al contenido de la lección" class="volver-indice" href="#indice"><span aria-hidden="true">↑</span> Índice</a>
 <script>
   // ── PRÁCTICA INTERACTIVA ──
   var respuestasPractica = {

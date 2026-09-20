@@ -1,9 +1,12 @@
-<!doctype html>
+<!DOCTYPE html>
+<!-- Lección 3.2 · Matemáticas Nivel 1 · GEDparaHispanos
+     José M. Fernández · CC BY-NC-SA 4.0 -->
+
 <html lang="es">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Lección 3.2 · Operaciones con decimales — Matemáticas Nivel 1</title>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Lección 3.2 · Operaciones con decimales — Matemáticas Nivel 1</title><meta content="CC BY-NC-SA 4.0" name="license"/><link href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" rel="license"/>
 <style>
   :root{
     --azul:#283593; --azul-osc:#1a237e; --azul-cl:#e8eaf6;
@@ -61,45 +64,6 @@
   .caja-ojo{background:var(--ambar-cl);border-color:var(--ambar);}
   .caja-ojo strong{color:var(--ambar);}
   .caja-recurso{background:#eef2f7;border-color:var(--gris);}
-
-  /* ── CAJA CALCULADORA ── */
-  .caja-calc{
-    background:#1a237e;color:#fff;border-radius:12px;padding:20px 24px;margin:20px 0;
-    border-left:5px solid #ffca28;
-  }
-  .caja-calc .et-calc{
-    display:inline-block;background:#ffca28;color:#1a237e;font-weight:700;
-    font-size:12px;letter-spacing:.5px;text-transform:uppercase;
-    padding:3px 10px;border-radius:5px;margin-bottom:8px;
-  }
-  .caja-calc h3{color:#fff;margin-top:6px;}
-  .caja-calc strong{color:#ffe082;}
-  .caja-calc ul{margin-left:24px;}
-  .caja-calc .tecla{
-    display:inline-block;background:#fff;color:#1a237e;border-radius:5px;
-    padding:1px 8px;font-family:'Consolas',monospace;font-weight:700;font-size:14px;
-    border:1px solid #c5cae9;
-  }
-
-  .etiqueta{
-    display:inline-block;font-size:12px;font-weight:700;letter-spacing:.5px;
-    text-transform:uppercase;padding:3px 10px;border-radius:5px;margin-bottom:6px;
-  }
-  .et-verde{background:var(--verde);color:#fff;}
-  .et-ambar{background:var(--ambar);color:#fff;}
-  .et-azul{background:var(--azul);color:#fff;}
-
-  .modalidades{display:flex;gap:14px;margin-top:14px;flex-wrap:wrap;}
-  .modo{
-    flex:1;min-width:240px;border-radius:9px;padding:13px 16px;
-    background:#fff;border:1px solid var(--linea);
-  }
-  .modo-pres{border-top:4px solid var(--azul);}
-  .modo-line{border-top:4px solid var(--verde);}
-  .modo .modo-tit{display:block;font-weight:700;font-size:14px;margin-bottom:5px;}
-  .modo-pres .modo-tit{color:var(--azul-osc);}
-  .modo-line .modo-tit{color:var(--verde);}
-  .modo p{margin:4px 0 0;font-size:15px;}
 
   /* ── CUENTA EN COLUMNA ── */
   .cuenta{
@@ -196,409 +160,338 @@
     section{padding:24px 20px;}
     .cuenta{font-size:21px;letter-spacing:2px;padding:14px 18px;}
   }
+
+  /* ── ÍNDICE DE LA LECCIÓN ── */
+  .indice{
+    background:var(--papel); border:1px solid var(--linea); border-left:6px solid var(--azul);
+    border-radius:10px; padding:16px 20px; margin:26px 0;
+  }
+  .indice h2{ font-size:1.05rem; margin:0 0 10px; color:var(--azul-osc); border:0; padding:0; }
+  .indice ol{ margin:0; padding-left:1.3em; }
+  .indice li{ margin:4px 0; }
+  .indice a{ color:var(--azul-osc); text-decoration:underline; }
+  .indice a:hover{ color:var(--azul); }
+  .indice a:focus-visible,.volver-indice:focus-visible{ outline:3px solid #b05e00; outline-offset:2px; }
+  .volver-indice{
+    position:fixed; right:18px; bottom:18px; z-index:60;
+    background:var(--azul-osc); color:#fff; border-radius:999px;
+    padding:10px 16px; font-weight:700; font-size:.92rem; text-decoration:none;
+    box-shadow:0 2px 10px rgba(0,0,0,.28);
+  }
+  .volver-indice:hover{ background:var(--azul); color:#fff; }
+  footer .licencia a{ color:#fff; text-decoration:underline; }
+  @media print{ .indice,.volver-indice{ display:none; } }
 </style>
 </head>
 <body>
-
 <header class="principal">
-  <div class="envoltura-header">
-    <div class="ruta">Matemáticas · Nivel 1 · Tema 3 — Decimales</div>
-    <h1>Lección 3.2 · Operaciones con decimales</h1>
-    <p class="lema">Sumar, restar, multiplicar y dividir decimales. Y conocer la calculadora TI-30XS como herramienta de verificación.</p>
-    <div class="chips">
-      <span class="chip">⏱️ 4 horas (2 sinc. + 2 asinc.)</span>
-      <span class="chip">🧮 Calculadora TI-30XS</span>
-      <span class="chip">📘 MyOpenMath</span>
-    </div>
-  </div>
-</header>
-
-<div class="envoltura">
-
-  <!-- OBJETIVOS -->
-  <section>
-    <div class="caja caja-objetivo">
-      <h2><span class="num-seccion">🎯</span>Objetivos de la clase</h2>
-      <p>Al terminar esta lección, usted podrá:</p>
-      <ul>
-        <li><strong>Sumar y restar</strong> decimales alineando correctamente el punto decimal.</li>
-        <li><strong>Multiplicar</strong> decimales contando los lugares decimales del resultado.</li>
-        <li><strong>Dividir</strong> decimales moviendo el punto del divisor y del dividendo.</li>
-        <li><strong>Usar la calculadora TI-30XS</strong> para verificar resultados, sin reemplazar el proceso en papel.</li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- LA CALCULADORA -->
-  <section>
-    <h2><span class="num-seccion">1</span>Su nueva herramienta: la calculadora TI-30XS</h2>
-    <p>A partir de esta lección conocerá la calculadora <strong>TI-30XS MultiView</strong>, la misma que se permite en el examen GED. Es una herramienta poderosa, pero hay que usarla con criterio.</p>
-
-    <div class="caja-calc">
-      <span class="et-calc">🧮 Calculadora TI-30XS</span>
-      <h3>Tres reglas de oro antes de empezar</h3>
-      <ul>
-        <li><strong>Limpie la memoria antes de calcular.</strong> Presione <span class="tecla">2nd</span> y luego <span class="tecla">CLEAR</span> (o <span class="tecla">clear var</span>) para que no queden valores de un cálculo anterior que dañen el suyo. Hágalo siempre, como un hábito.</li>
-        <li><strong>La calculadora verifica, no piensa.</strong> Primero resuelva en papel; use la calculadora solo para comprobar. En el GED tendrá que entender el procedimiento, no solo apretar teclas.</li>
-        <li><strong>Revise lo que escribió.</strong> La calculadora hace exactamente lo que usted teclea. Si pone mal un punto decimal, el resultado saldrá mal sin avisar.</li>
-      </ul>
-    </div>
-    <div class="caja caja-tip">
-      <span class="etiqueta et-verde">Por qué primero el papel</span>
-      <p>Saber operar decimales a mano le da el <strong>criterio</strong> para notar cuándo la calculadora muestra algo absurdo. Sin ese criterio, un error de tecleo pasa desapercibido. La calculadora es su asistente, no su sustituto.</p>
-    </div>
-  </section>
-
-  <!-- SUMA Y RESTA -->
-  <section>
-    <h2><span class="num-seccion">2</span>Sumar y restar decimales: alinear el punto</h2>
-    <p>Sumar y restar decimales es igual que con los enteros (Lección 1.2), con <strong>una sola regla nueva</strong>: hay que <strong>alinear el punto decimal</strong>. Los puntos quedan uno debajo del otro, en una columna recta.</p>
-    <p>Si los números tienen distinta cantidad de cifras decimales, <strong>agregue ceros a la derecha</strong> para igualarlos — recuerde de la Lección 3.1 que esos ceros no cambian el valor.</p>
-
-    <h3>Ejemplo resuelto: 12.4 + 3.85</h3>
-    <div class="ejemplo">
-      <div class="titulo-ej">Alineamos el punto y completamos con ceros</div>
-      <div class="paso"><span class="n">1</span>Escribo 12.4 como <strong>12.40</strong> para que tenga las mismas cifras que 3.85.</div>
-      <div class="paso"><span class="n">2</span>Alineo los puntos, uno debajo del otro, y sumo columna por columna como con enteros.</div>
-      <div class="paso"><span class="n">3</span>El punto del resultado baja <strong>en la misma columna</strong> que los demás puntos.</div>
-      <div class="paso"><span class="n">✓</span>Resultado: <strong>16.25</strong>.</div>
-    </div>
-    <p style="text-align:center;">
-      <span class="cuenta">
-        1 2<span class="punto">.</span>4 0<br>
-        <span class="signo">+</span>&nbsp;&nbsp;3<span class="punto">.</span>8 5<br>
-        <span class="raya">&nbsp;</span>
-        <span class="resultado">1 6<span class="punto">.</span>2 5</span>
-      </span>
-    </p>
-
-    <div class="caja caja-ojo">
-      <span class="etiqueta et-ambar">¡Ojo!</span>
-      <p>El error más común es alinear los números <em>por la derecha</em> como si fueran enteros. En decimales se alinea <strong>por el punto</strong>. Sume siempre 12.40 con 3.85, nunca 12.4 "pegado" a 3.85.</p>
-    </div>
-
-    <div class="practica">
-      <div class="cabe"><span class="ico">✏️</span><h4>Práctica 1 — Suma de decimales</h4></div>
-      <p class="pregunta-int">¿Cuánto es <strong>7.6 + 14.28</strong>?</p>
-      <div class="opciones" data-quiz="p1">
-        <button class="opcion" data-correcta="no">21.34</button>
-        <button class="opcion" data-correcta="si">21.88</button>
-        <button class="opcion" data-correcta="no">90.4</button>
-        <button class="opcion" data-correcta="no">21.28</button>
-      </div>
-      <div class="respuesta-int" id="r-p1"></div>
-    </div>
-
-    <div class="practica">
-      <div class="cabe"><span class="ico">✏️</span><h4>Práctica 2 — Resta de decimales</h4></div>
-      <p class="pregunta-int">Usted paga una cuenta de <strong>$13.75</strong> con un billete de <strong>$20</strong>. ¿Cuánto cambio recibe?</p>
-      <div class="opciones" data-quiz="p2">
-        <button class="opcion" data-correcta="no">$7.25</button>
-        <button class="opcion" data-correcta="si">$6.25</button>
-        <button class="opcion" data-correcta="no">$6.75</button>
-        <button class="opcion" data-correcta="no">$7.75</button>
-      </div>
-      <div class="respuesta-int" id="r-p2"></div>
-    </div>
-  </section>
-
-  <!-- MULTIPLICACIÓN -->
-  <section>
-    <h2><span class="num-seccion">3</span>Multiplicar decimales: contar los lugares</h2>
-    <p>Para multiplicar decimales, la sorpresa es agradable: <strong>al principio se ignora el punto</strong>. Se multiplica como si fueran enteros (Lección 2.1) y, al final, se coloca el punto contando lugares.</p>
-    <div class="caja caja-tip">
-      <span class="etiqueta et-verde">La regla del conteo</span>
-      <p>Cuente cuántas cifras decimales tienen <strong>los dos factores juntos</strong>. El resultado debe tener <strong>esa misma cantidad</strong> de cifras decimales.</p>
-    </div>
-
-    <h3>Ejemplo resuelto: 4.6 × 2.3</h3>
-    <div class="ejemplo">
-      <div class="titulo-ej">Multiplico sin el punto, luego cuento</div>
-      <div class="paso"><span class="n">1</span>Ignoro los puntos: multiplico 46 × 23 = 1058.</div>
-      <div class="paso"><span class="n">2</span>Cuento las cifras decimales: 4.6 tiene 1, y 2.3 tiene 1. En total <strong>2 cifras decimales</strong>.</div>
-      <div class="paso"><span class="n">3</span>Coloco el punto en el resultado para que tenga 2 cifras decimales: 1058 → <strong>10.58</strong>.</div>
-      <div class="paso"><span class="n">✓</span>Resultado: <strong>4.6 × 2.3 = 10.58</strong>.</div>
-    </div>
-    <div class="caja caja-ojo">
-      <span class="etiqueta et-ambar">Verifique con estimación</span>
-      <p>4.6 ≈ 5 y 2.3 ≈ 2, así que el resultado debe rondar 5 × 2 = 10. Como 10.58 está cerca de 10, el punto quedó bien. Si hubiera dado 105.8 o 1.058, sabría que lo coloqué mal.</p>
-    </div>
-
-    <div class="practica">
-      <div class="cabe"><span class="ico">✏️</span><h4>Práctica 3 — Multiplicación de decimales</h4></div>
-      <p class="pregunta-int">¿Cuánto es <strong>3.2 × 1.5</strong>?</p>
-      <div class="opciones" data-quiz="p3">
-        <button class="opcion" data-correcta="no">48</button>
-        <button class="opcion" data-correcta="si">4.8</button>
-        <button class="opcion" data-correcta="no">0.48</button>
-        <button class="opcion" data-correcta="no">4.7</button>
-      </div>
-      <div class="respuesta-int" id="r-p3"></div>
-    </div>
-  </section>
-
-  <!-- DIVISIÓN -->
-  <section>
-    <h2><span class="num-seccion">4</span>Dividir decimales: mover el punto</h2>
-    <p>Dividir es más fácil si el <strong>divisor</strong> (el número entre el que dividimos) es un número entero. El truco es <strong>mover el punto decimal</strong> del divisor hasta volverlo entero — y mover el punto del dividendo <strong>la misma cantidad de lugares</strong>.</p>
-
-    <h3>Ejemplo resuelto: 9.45 ÷ 0.5</h3>
-    <div class="ejemplo">
-      <div class="titulo-ej">Convierto el divisor en entero</div>
-      <div class="paso"><span class="n">1</span>El divisor es 0.5. Muevo su punto <strong>1 lugar</strong> a la derecha: 0.5 → 5 (ya es entero).</div>
-      <div class="paso"><span class="n">2</span>Muevo el punto del dividendo <strong>la misma cantidad — 1 lugar</strong>: 9.45 → 94.5.</div>
-      <div class="paso"><span class="n">3</span>Ahora divido 94.5 ÷ 5 con la división larga. El punto del cociente <strong>sube derecho</strong> desde el dividendo.</div>
-      <div class="paso"><span class="n">✓</span>Resultado: <strong>9.45 ÷ 0.5 = 18.9</strong>.</div>
-    </div>
-    <div class="caja caja-ojo">
-      <span class="etiqueta et-ambar">¡Ojo!</span>
-      <p>Los dos puntos se mueven <strong>la misma cantidad de lugares y en la misma dirección</strong>. Si mueve uno y olvida el otro, el resultado quedará 10 o 100 veces equivocado.</p>
-    </div>
-
-    <div class="practica">
-      <div class="cabe"><span class="ico">✏️</span><h4>Práctica 4 — División de decimales</h4></div>
-      <p class="pregunta-int">¿Cuánto es <strong>8.4 ÷ 4</strong>?</p>
-      <div class="opciones" data-quiz="p4">
-        <button class="opcion" data-correcta="no">21</button>
-        <button class="opcion" data-correcta="si">2.1</button>
-        <button class="opcion" data-correcta="no">0.21</button>
-        <button class="opcion" data-correcta="no">2.4</button>
-      </div>
-      <div class="respuesta-int" id="r-p4"></div>
-    </div>
-  </section>
-
-  <!-- PRÁCTICA GUIADA -->
-  <section>
-    <h2><span class="num-seccion">5</span>Práctica guiada en clase</h2>
-    <p>Estas actividades se hacen <strong>en la sesión sincrónica</strong>. Cada actividad incluye una variante para la <strong>clase presencial</strong> y otra para la <strong>clase en línea</strong>; el objetivo de aprendizaje es el mismo en ambas. En todas, el orden es: <strong>resolver en papel primero, verificar con la TI-30XS después</strong>.</p>
-
-    <div class="caja caja-recurso">
-      <span class="etiqueta et-azul">Actividad A · "Cuatro estaciones"</span>
-      <p>La clase rota por cuatro estaciones —suma, resta, multiplicación y división de decimales—; en cada una resuelven en papel y luego verifican con la calculadora.</p>
-      <div class="modalidades">
-        <div class="modo modo-pres">
-          <span class="modo-tit">🏫 Presencial</span>
-          <p>Monte cuatro mesas, una por operación, con cuatro problemas cada una. Los grupos rotan cada 15 minutos. En cada estación resuelven en papel y comprueban con la TI-30XS antes de pasar a la siguiente.</p>
-        </div>
-        <div class="modo modo-line">
-          <span class="modo-tit">💻 En línea</span>
-          <p>Cree cuatro salas pequeñas (breakout rooms), una por operación. Los grupos rotan de sala cada 15 minutos. En cada una resuelven en papel, muestran a la cámara y verifican con la calculadora.</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="caja caja-recurso">
-      <span class="etiqueta et-azul">Actividad B · "Conozco mi TI-30XS"</span>
-      <p>Los estudiantes practican el manejo básico de la calculadora: limpiar la memoria, escribir un decimal y comprobar una operación.</p>
-      <div class="modalidades">
-        <div class="modo modo-pres">
-          <span class="modo-tit">🏫 Presencial</span>
-          <p>El profesor proyecta o muestra una TI-30XS y guía paso a paso: cómo limpiar la memoria, dónde está la tecla del punto, cómo verificar una suma. Cada estudiante repite en su propia calculadora.</p>
-        </div>
-        <div class="modo modo-line">
-          <span class="modo-tit">💻 En línea</span>
-          <p>El profesor comparte pantalla con una calculadora TI-30XS (física apuntada por cámara o un emulador) y guía cada paso. Los estudiantes replican en su calculadora y reportan en el chat el resultado obtenido.</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="caja caja-recurso">
-      <span class="etiqueta et-azul">Actividad C · "La compra del mercado"</span>
-      <p>Simulación de una compra: los estudiantes suman precios decimales, calculan el total y el cambio, y verifican con la calculadora.</p>
-      <div class="modalidades">
-        <div class="modo modo-pres">
-          <span class="modo-tit">🏫 Presencial</span>
-          <p>Reparta una "lista de compras" con 6 a 8 artículos con precios decimales. Cada estudiante calcula el total y el cambio de un billete dado, en papel, y verifica con la TI-30XS.</p>
-        </div>
-        <div class="modo modo-line">
-          <span class="modo-tit">💻 En línea</span>
-          <p>Comparta la lista de compras en una diapositiva. Los estudiantes calculan total y cambio en papel y publican el resultado en el chat; luego verifican con la calculadora y comentan si coincidió.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- TAREA ASINCRÓNICA -->
-  <section>
-    <h2><span class="num-seccion">6</span>Tarea asincrónica</h2>
-    <p>Estas actividades se realizan <strong>por su cuenta</strong>, dentro de las 2 horas asincrónicas de la lección.</p>
-    <ul>
-      <li><strong>MyOpenMath:</strong> complete los <strong>12 problemas</strong> de operaciones con decimales (suma, resta, multiplicación y división). Resuelva primero en papel y use MyOpenMath para comprobar.</li>
-      <li><strong>Brightspace:</strong> realice el quiz de la lección (abajo puede practicarlo antes). Recuerde: el quiz es <strong>sin calculadora</strong>.</li>
-      <li><strong>Actividad personal:</strong> tome un recibo real. Sume dos precios, reste uno y verifique todo con su calculadora TI-30XS, recordando limpiar la memoria antes de empezar.</li>
-    </ul>
-  </section>
-
-  <!-- QUIZ -->
-  <section>
-    <h2><span class="num-seccion">7</span>Quiz de práctica</h2>
-    <p>Responda las <strong>8 preguntas</strong>. Al final verá su puntaje y podrá repasar lo que falló. Puede repetir el quiz las veces que quiera. <strong>Sin calculadora.</strong></p>
-
-    <form id="quiz">
-      <div class="quiz-bloque">
-        <span class="qnum">Pregunta 1</span>
-        <p class="pregunta">Para sumar o restar decimales, lo primero que se debe hacer es:</p>
-        <div class="opciones" data-q="1">
-          <button type="button" class="opcion" data-c="no">Alinear los números por la derecha.</button>
-          <button type="button" class="opcion" data-c="si">Alinear el punto decimal de los números.</button>
-          <button type="button" class="opcion" data-c="no">Quitar todos los puntos decimales.</button>
-          <button type="button" class="opcion" data-c="no">Multiplicar primero por 10.</button>
-        </div>
-      </div>
-
-      <div class="quiz-bloque">
-        <span class="qnum">Pregunta 2</span>
-        <p class="pregunta">Sume: <strong>5.7 + 2.65</strong></p>
-        <div class="opciones" data-q="2">
-          <button type="button" class="opcion" data-c="si">8.35</button>
-          <button type="button" class="opcion" data-c="no">8.72</button>
-          <button type="button" class="opcion" data-c="no">3.22</button>
-          <button type="button" class="opcion" data-c="no">7.35</button>
-        </div>
-      </div>
-
-      <div class="quiz-bloque">
-        <span class="qnum">Pregunta 3</span>
-        <p class="pregunta">Reste: <strong>10 − 3.46</strong></p>
-        <div class="opciones" data-q="3">
-          <button type="button" class="opcion" data-c="no">7.46</button>
-          <button type="button" class="opcion" data-c="si">6.54</button>
-          <button type="button" class="opcion" data-c="no">6.46</button>
-          <button type="button" class="opcion" data-c="no">7.54</button>
-        </div>
-      </div>
-
-      <div class="quiz-bloque">
-        <span class="qnum">Pregunta 4</span>
-        <p class="pregunta">En la multiplicación <strong>2.4 × 3.6</strong>, ¿cuántas cifras decimales tendrá el resultado?</p>
-        <div class="opciones" data-q="4">
-          <button type="button" class="opcion" data-c="no">1 cifra decimal</button>
-          <button type="button" class="opcion" data-c="si">2 cifras decimales</button>
-          <button type="button" class="opcion" data-c="no">3 cifras decimales</button>
-          <button type="button" class="opcion" data-c="no">Ninguna</button>
-        </div>
-      </div>
-
-      <div class="quiz-bloque">
-        <span class="qnum">Pregunta 5</span>
-        <p class="pregunta">Multiplique: <strong>0.7 × 0.4</strong></p>
-        <div class="opciones" data-q="5">
-          <button type="button" class="opcion" data-c="no">2.8</button>
-          <button type="button" class="opcion" data-c="no">0.11</button>
-          <button type="button" class="opcion" data-c="si">0.28</button>
-          <button type="button" class="opcion" data-c="no">28</button>
-        </div>
-      </div>
-
-      <div class="quiz-bloque">
-        <span class="qnum">Pregunta 6</span>
-        <p class="pregunta">Divida: <strong>6.5 ÷ 5</strong></p>
-        <div class="opciones" data-q="6">
-          <button type="button" class="opcion" data-c="si">1.3</button>
-          <button type="button" class="opcion" data-c="no">13</button>
-          <button type="button" class="opcion" data-c="no">0.13</button>
-          <button type="button" class="opcion" data-c="no">1.5</button>
-        </div>
-      </div>
-
-      <div class="quiz-bloque">
-        <span class="qnum">Pregunta 7</span>
-        <p class="pregunta">Antes de usar la calculadora TI-30XS para verificar, ¿qué hábito conviene tener siempre?</p>
-        <div class="opciones" data-q="7">
-          <button type="button" class="opcion" data-c="si">Limpiar la memoria de la calculadora.</button>
-          <button type="button" class="opcion" data-c="no">Apagarla y volverla a encender tres veces.</button>
-          <button type="button" class="opcion" data-c="no">No revisar lo que se teclea, la calculadora nunca falla.</button>
-          <button type="button" class="opcion" data-c="no">Usarla en vez de resolver en papel.</button>
-        </div>
-      </div>
-
-      <div class="quiz-bloque">
-        <span class="qnum">Pregunta 8</span>
-        <p class="pregunta">En una tienda, tres artículos cuestan $4.99, $2.50 y $7.25. ¿Cuánto cuesta el total?</p>
-        <div class="opciones" data-q="8">
-          <button type="button" class="opcion" data-c="no">$13.74</button>
-          <button type="button" class="opcion" data-c="si">$14.74</button>
-          <button type="button" class="opcion" data-c="no">$14.64</button>
-          <button type="button" class="opcion" data-c="no">$15.74</button>
-        </div>
-      </div>
-    </form>
-
-    <div style="text-align:center;margin-top:18px;">
-      <button class="btn" id="btn-calificar">Ver mi resultado</button>
-      <button class="btn btn-sec" id="btn-reintentar" style="display:none;">Intentar de nuevo</button>
-    </div>
-
-    <div class="marcador" id="marcador">
-      <div class="barra-prog"><span id="barra"></span></div>
-      <div class="puntaje" id="puntaje"></div>
-      <div class="mensaje" id="mensaje"></div>
-    </div>
-  </section>
-
-  <!-- RÚBRICA -->
-  <section>
-    <h2><span class="num-seccion">8</span>Rúbrica de evaluación</h2>
-    <p>Rúbrica analítica de proceso. Cada criterio se evalúa en cuatro niveles.</p>
-    <table class="tabla-rubrica">
-      <thead>
-        <tr>
-          <th>Criterio</th>
-          <th class="nivel-cab">Logrado (4)</th>
-          <th class="nivel-cab">Satisfactorio (3)</th>
-          <th class="nivel-cab">En proceso (2)</th>
-          <th class="nivel-cab">Por reforzar (1)</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Alinea el punto en suma y resta</td>
-          <td>Alinea siempre por el punto y completa con ceros.</td>
-          <td>Alinea correctamente casi siempre.</td>
-          <td>Alinea por la derecha como si fueran enteros.</td>
-          <td>No alinea el punto decimal.</td>
-        </tr>
-        <tr>
-          <td>Coloca el punto en la multiplicación</td>
-          <td>Cuenta bien los lugares y coloca el punto sin errores.</td>
-          <td>Coloca el punto bien casi siempre.</td>
-          <td>Multiplica bien pero ubica mal el punto.</td>
-          <td>No aplica la regla del conteo de lugares.</td>
-        </tr>
-        <tr>
-          <td>Mueve el punto en la división</td>
-          <td>Mueve los dos puntos la misma cantidad y divide correctamente.</td>
-          <td>Mueve el punto bien; un descuido aislado.</td>
-          <td>Mueve un punto y olvida el otro.</td>
-          <td>No logra dividir con decimales.</td>
-        </tr>
-        <tr>
-          <td>Usa la calculadora con criterio</td>
-          <td>Verifica con la TI-30XS tras resolver en papel y limpia la memoria.</td>
-          <td>Usa la calculadora para verificar cuando se le indica.</td>
-          <td>Usa la calculadora pero no resuelve en papel.</td>
-          <td>Depende de la calculadora sin entender el proceso.</td>
-        </tr>
-      </tbody>
-    </table>
-  </section>
-
-  <!-- CIERRE -->
-  <div class="cierre">
-    <h2><span class="num-seccion">➡️</span>Lo que viene en la próxima lección</h2>
-    <p>Ya sabe operar con decimales en las cuatro operaciones y verificar con la calculadora <strong>TI-30XS</strong>. En la <strong>Lección 3.3 · Decimales en contexto y equivalencias fracción–decimal</strong> aprenderá a convertir fracciones comunes en decimales y al revés, y a resolver problemas reales de compras, distancias y medidas con decimales.</p>
-    <p>Esa lección es también un <strong>puente hacia el Tema 4</strong>, donde estudiará las fracciones a fondo. Verá que decimales y fracciones son dos formas de escribir lo mismo: <strong>partes de un entero</strong>.</p>
-    <div class="flecha-sig">➡️ &nbsp;Próxima: Lección 3.3 · Decimales en contexto y equivalencias fracción–decimal</div>
-  </div>
+<div class="envoltura-header">
+<div class="ruta">Matemáticas · Nivel 1 · Tema 3 — Decimales</div>
+<h1>Lección 3.2 · Operaciones con decimales</h1>
+<p class="lema">Sumar, restar, multiplicar y dividir decimales. Y conocer la calculadora TI-30XS como herramienta de verificación.</p>
+<div class="chips">
+<span class="chip"><span aria-hidden="true">⏱️</span> Unas 4 horas, a su ritmo</span>
+<span class="chip">🧮 Calculadora TI-30XS</span>
 
 </div>
+</div>
+</header>
+<div class="envoltura">
+<!-- OBJETIVOS -->
+<section>
+<div class="caja caja-objetivo">
+<h2><span class="num-seccion">🎯</span>Objetivos de la lección</h2>
+<p>Al terminar esta lección, usted podrá:</p>
+<ul>
+<li><strong>Sumar y restar</strong> decimales alineando correctamente el punto decimal.</li>
+<li><strong>Multiplicar</strong> decimales contando los lugares decimales del resultado.</li>
+<li><strong>Dividir</strong> decimales moviendo el punto del divisor y del dividendo.</li>
+<li><strong>Usar la calculadora TI-30XS</strong> para verificar resultados, sin reemplazar el proceso en papel.</li>
+</ul>
+</div>
+</section><nav aria-labelledby="indice-titulo" class="indice" id="indice"><h2 id="indice-titulo">Contenido de la lección</h2><ol><li><a href="#s-su-nueva-herramienta-la-calculadora-ti-30xs">Su nueva herramienta: la calculadora TI-30XS</a></li><li><a href="#s-sumar-y-restar-decimales-alinear-el-punto">Sumar y restar decimales: alinear el punto</a></li><li><a href="#s-multiplicar-decimales-contar-los-lugares">Multiplicar decimales: contar los lugares</a></li><li><a href="#s-dividir-decimales-mover-el-punto">Dividir decimales: mover el punto</a></li><li><a href="#s-tarea">Tarea</a></li><li><a href="#s-quiz-de-practica">Quiz de práctica</a></li><li><a href="#s-rubrica-de-evaluacion">Rúbrica de evaluación</a></li><li><a href="#s-lo-que-viene-en-la-proxima-leccion">Lo que viene en la próxima lección</a></li></ol></nav>
+<!-- LA CALCULADORA -->
+<section>
+<h2 id="s-su-nueva-herramienta-la-calculadora-ti-30xs"><span class="num-seccion">1</span>Su nueva herramienta: la calculadora TI-30XS</h2>
+<p>A partir de esta lección conocerá la calculadora <strong>TI-30XS MultiView</strong>, la misma que se permite en el examen GED. Es una herramienta poderosa, pero hay que usarla con criterio.</p>
+<div class="caja-calc">
+<span class="et-calc">🧮 Calculadora TI-30XS</span>
+<h3>Tres reglas de oro antes de empezar</h3>
+<ul>
+<li><strong>Limpie la memoria antes de calcular.</strong> Presione <span class="tecla">2nd</span> y luego <span class="tecla">CLEAR</span> (o <span class="tecla">clear var</span>) para que no queden valores de un cálculo anterior que dañen el suyo. Hágalo siempre, como un hábito.</li>
+<li><strong>La calculadora verifica, no piensa.</strong> Primero resuelva en papel; use la calculadora solo para comprobar. En el GED tendrá que entender el procedimiento, no solo apretar teclas.</li>
+<li><strong>Revise lo que escribió.</strong> La calculadora hace exactamente lo que usted teclea. Si pone mal un punto decimal, el resultado saldrá mal sin avisar.</li>
+</ul>
+</div>
+<div class="caja caja-tip">
+<span class="etiqueta et-verde">Por qué primero el papel</span>
+<p>Saber operar decimales a mano le da el <strong>criterio</strong> para notar cuándo la calculadora muestra algo absurdo. Sin ese criterio, un error de tecleo pasa desapercibido. La calculadora es su asistente, no su sustituto.</p>
+</div>
+</section>
+<!-- SUMA Y RESTA -->
+<section>
+<h2 id="s-sumar-y-restar-decimales-alinear-el-punto"><span class="num-seccion">2</span>Sumar y restar decimales: alinear el punto</h2>
+<p>Sumar y restar decimales es igual que con los enteros (Lección 1.2), con <strong>una sola regla nueva</strong>: hay que <strong>alinear el punto decimal</strong>. Los puntos quedan uno debajo del otro, en una columna recta.</p>
+<p>Si los números tienen distinta cantidad de cifras decimales, <strong>agregue ceros a la derecha</strong> para igualarlos — recuerde de la Lección 3.1 que esos ceros no cambian el valor.</p>
+<h3>Ejemplo resuelto: 12.4 + 3.85</h3>
+<div class="ejemplo">
+<div class="titulo-ej">Alineamos el punto y completamos con ceros</div>
+<div class="paso"><span class="n">1</span>Escribo 12.4 como <strong>12.40</strong> para que tenga las mismas cifras que 3.85.</div>
+<div class="paso"><span class="n">2</span>Alineo los puntos, uno debajo del otro, y sumo columna por columna como con enteros.</div>
+<div class="paso"><span class="n">3</span>El punto del resultado baja <strong>en la misma columna</strong> que los demás puntos.</div>
+<div class="paso"><span class="n">✓</span>Resultado: <strong>16.25</strong>.</div>
+</div>
+<p style="text-align:center;">
+<span class="cuenta">
+        1 2<span class="punto">.</span>4 0<br/>
+<span class="signo">+</span>  3<span class="punto">.</span>8 5<br/>
+<span class="raya"> </span>
+<span class="resultado">1 6<span class="punto">.</span>2 5</span>
+</span>
+</p>
+<div class="caja caja-ojo">
+<span class="etiqueta et-ambar">¡Ojo!</span>
+<p>El error más común es alinear los números <em>por la derecha</em> como si fueran enteros. En decimales se alinea <strong>por el punto</strong>. Sume siempre 12.40 con 3.85, nunca 12.4 "pegado" a 3.85.</p>
+</div>
+<div class="practica">
+<div class="cabe"><span class="ico">✏️</span><h4>Práctica 1 — Suma de decimales</h4></div>
+<p class="pregunta-int">¿Cuánto es <strong>7.6 + 14.28</strong>?</p>
+<div class="opciones" data-quiz="p1">
+<button class="opcion" data-correcta="no">21.34</button>
+<button class="opcion" data-correcta="si">21.88</button>
+<button class="opcion" data-correcta="no">90.4</button>
+<button class="opcion" data-correcta="no">21.28</button>
+</div>
+<div class="respuesta-int" id="r-p1"></div>
+</div>
+<div class="practica">
+<div class="cabe"><span class="ico">✏️</span><h4>Práctica 2 — Resta de decimales</h4></div>
+<p class="pregunta-int">Usted paga una cuenta de <strong>$13.75</strong> con un billete de <strong>$20</strong>. ¿Cuánto cambio recibe?</p>
+<div class="opciones" data-quiz="p2">
+<button class="opcion" data-correcta="no">$7.25</button>
+<button class="opcion" data-correcta="si">$6.25</button>
+<button class="opcion" data-correcta="no">$6.75</button>
+<button class="opcion" data-correcta="no">$7.75</button>
+</div>
+<div class="respuesta-int" id="r-p2"></div>
+</div>
+</section>
+<!-- MULTIPLICACIÓN -->
+<section>
+<h2 id="s-multiplicar-decimales-contar-los-lugares"><span class="num-seccion">3</span>Multiplicar decimales: contar los lugares</h2>
+<p>Para multiplicar decimales, la sorpresa es agradable: <strong>al principio se ignora el punto</strong>. Se multiplica como si fueran enteros (Lección 2.1) y, al final, se coloca el punto contando lugares.</p>
+<div class="caja caja-tip">
+<span class="etiqueta et-verde">La regla del conteo</span>
+<p>Cuente cuántas cifras decimales tienen <strong>los dos factores juntos</strong>. El resultado debe tener <strong>esa misma cantidad</strong> de cifras decimales.</p>
+</div>
+<h3>Ejemplo resuelto: 4.6 × 2.3</h3>
+<div class="ejemplo">
+<div class="titulo-ej">Multiplico sin el punto, luego cuento</div>
+<div class="paso"><span class="n">1</span>Ignoro los puntos: multiplico 46 × 23 = 1058.</div>
+<div class="paso"><span class="n">2</span>Cuento las cifras decimales: 4.6 tiene 1, y 2.3 tiene 1. En total <strong>2 cifras decimales</strong>.</div>
+<div class="paso"><span class="n">3</span>Coloco el punto en el resultado para que tenga 2 cifras decimales: 1058 → <strong>10.58</strong>.</div>
+<div class="paso"><span class="n">✓</span>Resultado: <strong>4.6 × 2.3 = 10.58</strong>.</div>
+</div>
+<div class="caja caja-ojo">
+<span class="etiqueta et-ambar">Verifique con estimación</span>
+<p>4.6 ≈ 5 y 2.3 ≈ 2, así que el resultado debe rondar 5 × 2 = 10. Como 10.58 está cerca de 10, el punto quedó bien. Si hubiera dado 105.8 o 1.058, sabría que lo coloqué mal.</p>
+</div>
+<div class="practica">
+<div class="cabe"><span class="ico">✏️</span><h4>Práctica 3 — Multiplicación de decimales</h4></div>
+<p class="pregunta-int">¿Cuánto es <strong>3.2 × 1.5</strong>?</p>
+<div class="opciones" data-quiz="p3">
+<button class="opcion" data-correcta="no">48</button>
+<button class="opcion" data-correcta="si">4.8</button>
+<button class="opcion" data-correcta="no">0.48</button>
+<button class="opcion" data-correcta="no">4.7</button>
+</div>
+<div class="respuesta-int" id="r-p3"></div>
+</div>
+</section>
+<!-- DIVISIÓN -->
+<section>
+<h2 id="s-dividir-decimales-mover-el-punto"><span class="num-seccion">4</span>Dividir decimales: mover el punto</h2>
+<p>Dividir es más fácil si el <strong>divisor</strong> (el número entre el que dividimos) es un número entero. El truco es <strong>mover el punto decimal</strong> del divisor hasta volverlo entero — y mover el punto del dividendo <strong>la misma cantidad de lugares</strong>.</p>
+<h3>Ejemplo resuelto: 9.45 ÷ 0.5</h3>
+<div class="ejemplo">
+<div class="titulo-ej">Convierto el divisor en entero</div>
+<div class="paso"><span class="n">1</span>El divisor es 0.5. Muevo su punto <strong>1 lugar</strong> a la derecha: 0.5 → 5 (ya es entero).</div>
+<div class="paso"><span class="n">2</span>Muevo el punto del dividendo <strong>la misma cantidad — 1 lugar</strong>: 9.45 → 94.5.</div>
+<div class="paso"><span class="n">3</span>Ahora divido 94.5 ÷ 5 con la división larga. El punto del cociente <strong>sube derecho</strong> desde el dividendo.</div>
+<div class="paso"><span class="n">✓</span>Resultado: <strong>9.45 ÷ 0.5 = 18.9</strong>.</div>
+</div>
+<div class="caja caja-ojo">
+<span class="etiqueta et-ambar">¡Ojo!</span>
+<p>Los dos puntos se mueven <strong>la misma cantidad de lugares y en la misma dirección</strong>. Si mueve uno y olvida el otro, el resultado quedará 10 o 100 veces equivocado.</p>
+</div>
+<div class="practica">
+<div class="cabe"><span class="ico">✏️</span><h4>Práctica 4 — División de decimales</h4></div>
+<p class="pregunta-int">¿Cuánto es <strong>8.4 ÷ 4</strong>?</p>
+<div class="opciones" data-quiz="p4">
+<button class="opcion" data-correcta="no">21</button>
+<button class="opcion" data-correcta="si">2.1</button>
+<button class="opcion" data-correcta="no">0.21</button>
+<button class="opcion" data-correcta="no">2.4</button>
+</div>
+<div class="respuesta-int" id="r-p4"></div>
+</div>
+</section>
 
-<footer>
-  Matemáticas · Nivel 1 · Lección 3.2 — Spanish ASE Math · AE 0170-0321<br>
-  City Colleges of Chicago · Truman College · Prof. José M. Fernández
-</footer>
+<section>
+<h2 id="s-tarea"><span class="num-seccion">5</span>Tarea</h2><p>Esta parte la hace usted solo, a su ritmo. Calcule alrededor de una hora. Regla de oro: resuelva primero en papel y use la calculadora únicamente para comprobar.</p><ul><li><strong>ThatQuiz.</strong> Entre en <a href="https://www.thatquiz.org/es/" rel="noopener noreferrer" target="_blank">ThatQuiz</a> y practique las cuatro operaciones con <em>decimales</em>. Haga cada ejercicio en papel antes de escribir la respuesta.</li><li><strong>Con papel y lápiz.</strong> Resuelva doce operaciones con decimales —tres de cada operación— y verifique cada una con la TI-30XS. Cuando no coincidan, busque el error antes de seguir: casi siempre está en el punto decimal.</li><li><strong>En su vida diaria.</strong> Tome un recibo real. Sume dos precios, reste uno y verifique todo con la calculadora, recordando limpiar la memoria antes de empezar.</li></ul>
 
+</section>
+<!-- QUIZ -->
+<section>
+<h2 id="s-quiz-de-practica"><span class="num-seccion">6</span>Quiz de práctica</h2>
+<p>Responda las <strong>8 preguntas</strong>. Al final verá su puntaje y podrá repasar lo que falló. Puede repetir el quiz las veces que quiera. <strong>Sin calculadora.</strong></p>
+<form id="quiz">
+<div class="quiz-bloque">
+<span class="qnum">Pregunta 1</span>
+<p class="pregunta">Para sumar o restar decimales, lo primero que se debe hacer es:</p>
+<div class="opciones" data-q="1">
+<button class="opcion" data-c="no" type="button">Alinear los números por la derecha.</button>
+<button class="opcion" data-c="si" type="button">Alinear el punto decimal de los números.</button>
+<button class="opcion" data-c="no" type="button">Quitar todos los puntos decimales.</button>
+<button class="opcion" data-c="no" type="button">Multiplicar primero por 10.</button>
+</div>
+</div>
+<div class="quiz-bloque">
+<span class="qnum">Pregunta 2</span>
+<p class="pregunta">Sume: <strong>5.7 + 2.65</strong></p>
+<div class="opciones" data-q="2">
+<button class="opcion" data-c="si" type="button">8.35</button>
+<button class="opcion" data-c="no" type="button">8.72</button>
+<button class="opcion" data-c="no" type="button">3.22</button>
+<button class="opcion" data-c="no" type="button">7.35</button>
+</div>
+</div>
+<div class="quiz-bloque">
+<span class="qnum">Pregunta 3</span>
+<p class="pregunta">Reste: <strong>10 − 3.46</strong></p>
+<div class="opciones" data-q="3">
+<button class="opcion" data-c="no" type="button">7.46</button>
+<button class="opcion" data-c="si" type="button">6.54</button>
+<button class="opcion" data-c="no" type="button">6.46</button>
+<button class="opcion" data-c="no" type="button">7.54</button>
+</div>
+</div>
+<div class="quiz-bloque">
+<span class="qnum">Pregunta 4</span>
+<p class="pregunta">En la multiplicación <strong>2.4 × 3.6</strong>, ¿cuántas cifras decimales tendrá el resultado?</p>
+<div class="opciones" data-q="4">
+<button class="opcion" data-c="no" type="button">1 cifra decimal</button>
+<button class="opcion" data-c="si" type="button">2 cifras decimales</button>
+<button class="opcion" data-c="no" type="button">3 cifras decimales</button>
+<button class="opcion" data-c="no" type="button">Ninguna</button>
+</div>
+</div>
+<div class="quiz-bloque">
+<span class="qnum">Pregunta 5</span>
+<p class="pregunta">Multiplique: <strong>0.7 × 0.4</strong></p>
+<div class="opciones" data-q="5">
+<button class="opcion" data-c="no" type="button">2.8</button>
+<button class="opcion" data-c="no" type="button">0.11</button>
+<button class="opcion" data-c="si" type="button">0.28</button>
+<button class="opcion" data-c="no" type="button">28</button>
+</div>
+</div>
+<div class="quiz-bloque">
+<span class="qnum">Pregunta 6</span>
+<p class="pregunta">Divida: <strong>6.5 ÷ 5</strong></p>
+<div class="opciones" data-q="6">
+<button class="opcion" data-c="si" type="button">1.3</button>
+<button class="opcion" data-c="no" type="button">13</button>
+<button class="opcion" data-c="no" type="button">0.13</button>
+<button class="opcion" data-c="no" type="button">1.5</button>
+</div>
+</div>
+<div class="quiz-bloque">
+<span class="qnum">Pregunta 7</span>
+<p class="pregunta">Antes de usar la calculadora TI-30XS para verificar, ¿qué hábito conviene tener siempre?</p>
+<div class="opciones" data-q="7">
+<button class="opcion" data-c="si" type="button">Limpiar la memoria de la calculadora.</button>
+<button class="opcion" data-c="no" type="button">Apagarla y volverla a encender tres veces.</button>
+<button class="opcion" data-c="no" type="button">No revisar lo que se teclea, la calculadora nunca falla.</button>
+<button class="opcion" data-c="no" type="button">Usarla en vez de resolver en papel.</button>
+</div>
+</div>
+<div class="quiz-bloque">
+<span class="qnum">Pregunta 8</span>
+<p class="pregunta">En una tienda, tres artículos cuestan $4.99, $2.50 y $7.25. ¿Cuánto cuesta el total?</p>
+<div class="opciones" data-q="8">
+<button class="opcion" data-c="no" type="button">$13.74</button>
+<button class="opcion" data-c="si" type="button">$14.74</button>
+<button class="opcion" data-c="no" type="button">$14.64</button>
+<button class="opcion" data-c="no" type="button">$15.74</button>
+</div>
+</div>
+</form>
+<div style="text-align:center;margin-top:18px;">
+<button class="btn" id="btn-calificar">Ver mi resultado</button>
+<button class="btn btn-sec" id="btn-reintentar" style="display:none;">Intentar de nuevo</button>
+</div>
+<div class="marcador" id="marcador">
+<div class="barra-prog"><span id="barra"></span></div>
+<div class="puntaje" id="puntaje"></div>
+<div class="mensaje" id="mensaje"></div>
+</div>
+</section>
+<!-- RÚBRICA -->
+<section>
+<h2 id="s-rubrica-de-evaluacion"><span class="num-seccion">7</span>Rúbrica de evaluación</h2>
+<p>Rúbrica analítica de proceso. Cada criterio se evalúa en cuatro niveles. Léala <strong>antes</strong> de empezar la tarea y úsela <strong>después</strong> para evaluar su propio trabajo con honestidad.</p>
+<table class="tabla-rubrica">
+<thead>
+<tr>
+<th>Criterio</th>
+<th class="nivel-cab">Logrado (4)</th>
+<th class="nivel-cab">Satisfactorio (3)</th>
+<th class="nivel-cab">En proceso (2)</th>
+<th class="nivel-cab">Por reforzar (1)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Alinea el punto en suma y resta</td>
+<td>Alinea siempre por el punto y completa con ceros.</td>
+<td>Alinea correctamente casi siempre.</td>
+<td>Alinea por la derecha como si fueran enteros.</td>
+<td>No alinea el punto decimal.</td>
+</tr>
+<tr>
+<td>Coloca el punto en la multiplicación</td>
+<td>Cuenta bien los lugares y coloca el punto sin errores.</td>
+<td>Coloca el punto bien casi siempre.</td>
+<td>Multiplica bien pero ubica mal el punto.</td>
+<td>No aplica la regla del conteo de lugares.</td>
+</tr>
+<tr>
+<td>Mueve el punto en la división</td>
+<td>Mueve los dos puntos la misma cantidad y divide correctamente.</td>
+<td>Mueve el punto bien; un descuido aislado.</td>
+<td>Mueve un punto y olvida el otro.</td>
+<td>No logra dividir con decimales.</td>
+</tr>
+<tr>
+<td>Usa la calculadora con criterio</td>
+<td>Verifica con la TI-30XS tras resolver en papel y limpia la memoria.</td>
+<td>Usa la calculadora para verificar cuando se le indica.</td>
+<td>Usa la calculadora pero no resuelve en papel.</td>
+<td>Depende de la calculadora sin entender el proceso.</td>
+</tr>
+</tbody>
+</table>
+</section>
+<!-- CIERRE -->
+<div class="cierre">
+<h2 id="s-lo-que-viene-en-la-proxima-leccion"><span class="num-seccion">➡️</span>Lo que viene en la próxima lección</h2>
+<p>Ya sabe operar con decimales en las cuatro operaciones y verificar con la calculadora <strong>TI-30XS</strong>. En la <strong>Lección 3.3 · Decimales en contexto y equivalencias fracción–decimal</strong> aprenderá a convertir fracciones comunes en decimales y al revés, y a resolver problemas reales de compras, distancias y medidas con decimales.</p>
+<p>Esa lección es también un <strong>puente hacia el Tema 4</strong>, donde estudiará las fracciones a fondo. Verá que decimales y fracciones son dos formas de escribir lo mismo: <strong>partes de un entero</strong>.</p>
+<div class="flecha-sig">➡️  Próxima: Lección 3.3 · Decimales en contexto y equivalencias fracción–decimal</div>
+</div>
+</div>
+<footer><p>GEDparaHispanos · Matemáticas · Nivel 1 · Tema 3 · Lección 3.2</p><p>José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago</p><p class="licencia">© 2026. Esta obra está licenciada bajo <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" rel="license" target="_blank">Creative Commons Reconocimiento-NoComercial-CompartirIgual 4.0 Internacional (CC BY-NC-SA 4.0)</a>.</p></footer><a aria-label="Volver al contenido de la lección" class="volver-indice" href="#indice"><span aria-hidden="true">↑</span> Índice</a>
 <script>
   const respuestasPractica = {
     p1:"7.6 + 14.28 = 21.88. Escriba 7.6 como 7.60, alinee los puntos y sume: 7.60 + 14.28 = 21.88.",
@@ -682,6 +575,5 @@
     document.getElementById('quiz').scrollIntoView({behavior:'smooth', block:'start'});
   });
 </script>
-
 </body>
 </html>

@@ -1,10 +1,12 @@
 <!DOCTYPE html>
+<!-- Lección 8.1 · Matemáticas Nivel 1 · GEDparaHispanos
+     José M. Fernández · CC BY-NC-SA 4.0 -->
 
 <html lang="es">
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Lección 8.1 · Leer e interpretar tablas de datos — Matemáticas Nivel 1</title>
+<title>Lección 8.1 · Leer e interpretar tablas de datos — Matemáticas Nivel 1</title><meta content="CC BY-NC-SA 4.0" name="license"/><link href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" rel="license"/>
 <style>
   :root{
     --azul:#1b5e20; --azul-osc:#0d3b11; --azul-cl:#e8f5e9;
@@ -69,21 +71,7 @@
   }
   .et-verde{background:var(--verde);color:#fff;}
   .et-ambar{background:var(--ambar);color:#fff;}
-  .et-azul{background:var(--azul);color:#fff;}
-
-  .modalidades{display:flex;gap:14px;margin-top:14px;flex-wrap:wrap;}
-  .modo{
-    flex:1;min-width:240px;border-radius:9px;padding:13px 16px;
-    background:#fff;border:1px solid var(--linea);
-  }
-  .modo-pres{border-top:4px solid var(--azul);}
-  .modo-line{border-top:4px solid var(--verde);}
-  .modo .modo-tit{display:block;font-weight:700;font-size:14px;margin-bottom:5px;}
-  .modo-pres .modo-tit{color:var(--azul-osc);}
-  .modo-line .modo-tit{color:var(--verde);}
-  .modo p{margin:4px 0 0;font-size:15px;}
-
-  /* ── TABLA DE DATOS ── */
+  .et-azul{background:var(--azul);color:#fff;}/* ── TABLA DE DATOS ── */
   .tabla-datos{width:100%;border-collapse:collapse;margin:14px 0;font-size:16px;}
   .tabla-datos caption{
     font-weight:700;color:var(--azul-osc);text-align:left;
@@ -276,7 +264,28 @@
           display: none;
         }
       }
-    </style>
+    
+  /* ── ÍNDICE DE LA LECCIÓN ── */
+  .indice{
+    background:var(--papel); border:1px solid var(--linea); border-left:6px solid var(--azul);
+    border-radius:10px; padding:16px 20px; margin:26px 0;
+  }
+  .indice h2{ font-size:1.05rem; margin:0 0 10px; color:var(--azul-osc); border:0; padding:0; }
+  .indice ol{ margin:0; padding-left:1.3em; }
+  .indice li{ margin:4px 0; }
+  .indice a{ color:var(--azul-osc); text-decoration:underline; }
+  .indice a:hover{ color:var(--azul); }
+  .indice a:focus-visible,.volver-indice:focus-visible{ outline:3px solid #b05e00; outline-offset:2px; }
+  .volver-indice{
+    position:fixed; right:18px; bottom:18px; z-index:60;
+    background:var(--azul-osc); color:#fff; border-radius:999px;
+    padding:10px 16px; font-weight:700; font-size:.92rem; text-decoration:none;
+    box-shadow:0 2px 10px rgba(0,0,0,.28);
+  }
+  .volver-indice:hover{ background:var(--azul); color:#fff; }
+  footer .licencia a{ color:#fff; text-decoration:underline; }
+  @media print{ .indice,.volver-indice{ display:none; } }
+</style>
 </head>
 <body>
 <header class="principal">
@@ -285,9 +294,9 @@
 <h1>Lección 8.1 · Leer e interpretar tablas de datos</h1>
 <p class="lema">Sacar información de las tablas que aparecen a diario y describir con palabras lo que muestran.</p>
 <div class="chips">
-<span class="chip"><span aria-hidden="true">⏱️</span> 4 horas (2 sinc. + 2 asinc.)</span>
+<span class="chip"><span aria-hidden="true">⏱️</span> Unas 4 horas, a su ritmo</span>
 <span class="chip"><span aria-hidden="true">📊</span> Tablas de datos</span>
-<span class="chip"><span aria-hidden="true">📘</span> Steck-Vaughn</span>
+
 </div>
 </div>
 </header>
@@ -295,7 +304,7 @@
 <!-- OBJETIVOS -->
 <section>
 <div class="caja caja-objetivo">
-<h2><span aria-hidden="true" class="num-seccion">🎯</span>Objetivos de la clase</h2>
+<h2><span aria-hidden="true" class="num-seccion">🎯</span>Objetivos de la lección</h2>
 <p>Al terminar esta lección, usted podrá:</p>
 <ul>
 <li><strong>Leer</strong> tablas de datos de varias columnas y entender qué muestran.</li>
@@ -304,10 +313,10 @@
 <li><strong>Describir</strong> con oraciones completas lo que muestran los datos.</li>
 </ul>
 </div>
-</section>
+</section><nav aria-labelledby="indice-titulo" class="indice" id="indice"><h2 id="indice-titulo">Contenido de la lección</h2><ol><li><a href="#s-el-ultimo-tema-entender-los-datos">El último tema: entender los datos</a></li><li><a href="#s-como-leer-una-tabla-primero-mirela-bien">Cómo leer una tabla: primero, mírela bien</a></li><li><a href="#s-comparar-y-calcular-con-los-datos">Comparar y calcular con los datos</a></li><li><a href="#s-describir-los-datos-con-palabras">Describir los datos con palabras</a></li><li><a href="#s-tarea">Tarea</a></li><li><a href="#s-quiz-de-practica">Quiz de práctica</a></li><li><a href="#s-rubrica-de-evaluacion">Rúbrica de evaluación</a></li><li><a href="#s-lo-que-viene-en-la-proxima-leccion">Lo que viene en la próxima lección</a></li></ol></nav>
 <!-- LOS DATOS EN LA VIDA -->
 <section>
-<h2><span aria-hidden="true" class="num-seccion">1</span>El último tema: entender los datos</h2>
+<h2 id="s-el-ultimo-tema-entender-los-datos"><span aria-hidden="true" class="num-seccion">1</span>El último tema: entender los datos</h2>
 <p>Ha llegado al <strong>Tema 8</strong>, el último del Nivel 1. Después de la aritmética, el álgebra inicial, las medidas y la geometría, este tema trata de algo presente en todas partes: los <strong>datos</strong>.</p>
 <p>Todos los días vemos información organizada en <strong>tablas</strong>: la lista de precios de una tienda, el horario de los autobuses, las notas de un boletín, la tabla nutricional de un producto. Saber leer una tabla es una destreza práctica — y aparece mucho en el examen GED.</p>
 <div class="caja caja-tip">
@@ -317,7 +326,7 @@
 </section>
 <!-- CÓMO LEER UNA TABLA -->
 <section>
-<h2><span aria-hidden="true" class="num-seccion">2</span>Cómo leer una tabla: primero, mírela bien</h2>
+<h2 id="s-como-leer-una-tabla-primero-mirela-bien"><span aria-hidden="true" class="num-seccion">2</span>Cómo leer una tabla: primero, mírela bien</h2>
 <p>Antes de responder cualquier pregunta, conviene <strong>leer la tabla</strong> y entender qué muestra. Siga estos cuatro pasos:</p>
 <ol class="pasos-leer">
 <li class="pl">
@@ -376,7 +385,7 @@
 </section>
 <!-- COMPARAR Y CALCULAR -->
 <section>
-<h2><span aria-hidden="true" class="num-seccion">3</span>Comparar y calcular con los datos</h2>
+<h2 id="s-comparar-y-calcular-con-los-datos"><span aria-hidden="true" class="num-seccion">3</span>Comparar y calcular con los datos</h2>
 <p>Una tabla no sirve solo para localizar datos. También se pueden <strong>comparar</strong> valores y hacer <strong>cálculos</strong> con ellos. Usemos una tabla con más columnas:</p>
 <div aria-label="Temperatura máxima (°F) en tres ciudades (tabla desplazable horizontalmente)" class="tabla-scroll" role="region" tabindex="0"><table class="tabla-datos">
 <caption>Temperatura máxima (°F) en tres ciudades</caption>
@@ -442,7 +451,7 @@
 </section>
 <!-- DESCRIBIR CON PALABRAS -->
 <section>
-<h2><span aria-hidden="true" class="num-seccion">4</span>Describir los datos con palabras</h2>
+<h2 id="s-describir-los-datos-con-palabras"><span aria-hidden="true" class="num-seccion">4</span>Describir los datos con palabras</h2>
 <p>El último paso, y uno muy valioso, es <strong>explicar con una oración completa</strong> lo que muestra un dato. No basta con decir un número: hay que decir <em>qué significa</em>.</p>
 <div class="caja caja-tip">
 <span class="etiqueta et-verde">De un número a una oración</span>
@@ -453,66 +462,14 @@
 <p>"La tabla muestra que..." · "El valor más alto es... porque..." · "Comparando X con Y, se ve que..." · "En total..." · "En promedio...". Estas frases ayudan a expresar con claridad lo que dicen los datos.</p>
 </div>
 </section>
-<!-- PRÁCTICA GUIADA -->
+
 <section>
-<h2><span aria-hidden="true" class="num-seccion">5</span>Práctica guiada en clase</h2>
-<p>Estas actividades se hacen <strong>en la sesión sincrónica</strong>. Cada actividad incluye una variante para la <strong>clase presencial</strong> y otra para la <strong>clase en línea</strong>; el objetivo de aprendizaje es el mismo en ambas.</p>
-<div class="caja caja-recurso">
-<span class="etiqueta et-azul">Actividad A · "El reportero de datos"</span>
-<p>En parejas, un estudiante hace de reportero y formula preguntas sobre una tabla; el otro responde usando los datos.</p>
-<div class="modalidades">
-<div class="modo modo-pres">
-<span class="modo-tit">🏫 Presencial</span>
-<p>Reparta una tabla a cada pareja. Un estudiante hace 5 preguntas sobre la tabla (localizar, comparar, calcular) y el otro responde con los datos. Luego intercambian roles.</p>
-</div>
-<div class="modo modo-line">
-<span class="modo-tit">💻 En línea</span>
-<p>En salas pequeñas (breakout rooms) de dos, comparta la tabla. Un estudiante escribe sus 5 preguntas en el chat y el compañero responde. Después intercambian. El profesor recorre las salas.</p>
-</div>
-</div>
-</div>
-<div class="caja caja-recurso">
-<span class="etiqueta et-azul">Actividad B · "Promedio y rango"</span>
-<p>Los estudiantes practican calcular el promedio y el rango (máximo menos mínimo) de una columna de datos.</p>
-<div class="modalidades">
-<div class="modo modo-pres">
-<span class="modo-tit">🏫 Presencial</span>
-<p>Reparta tablas con una columna de datos numéricos. Cada estudiante calcula el promedio y el rango sin calculadora, y compara con un compañero.</p>
-</div>
-<div class="modo modo-line">
-<span class="modo-tit">💻 En línea</span>
-<p>Muestre las tablas en una diapositiva. Los estudiantes calculan el promedio y el rango en papel y publican sus resultados en el chat. El grupo revisa los procedimientos.</p>
-</div>
-</div>
-</div>
-<div class="caja caja-recurso">
-<span class="etiqueta et-azul">Actividad C · "Describir la tabla"</span>
-<p>Los estudiantes escriben oraciones completas que describen lo que muestra una tabla.</p>
-<div class="modalidades">
-<div class="modo modo-pres">
-<span class="modo-tit">🏫 Presencial</span>
-<p>Dada una tabla, cada estudiante escribe tres oraciones que describan datos distintos (un máximo, una comparación, un total). Se leen varias en voz alta y el grupo comenta.</p>
-</div>
-<div class="modo modo-line">
-<span class="modo-tit">💻 En línea</span>
-<p>Comparta la tabla en una diapositiva. Los estudiantes escriben sus tres oraciones descriptivas en el chat o en un documento compartido. El grupo comenta las mejores descripciones.</p>
-</div>
-</div>
-</div>
-</section>
-<!-- TAREA ASINCRÓNICA -->
-<section>
-<h2><span aria-hidden="true" class="num-seccion">6</span>Tarea asincrónica</h2>
-<p>Estas actividades se realizan <strong>por su cuenta</strong>, dentro de las 2 horas asincrónicas de la lección.</p>
-<ul>
-<li><strong>Brightspace:</strong> resuelva las <strong>3 tablas</strong> con 10 preguntas de comprensión (localizar, comparar, calcular, describir).</li>
-<li><strong>Brightspace:</strong> realice el quiz de la lección (abajo puede practicarlo antes).</li>
-<li><strong>Actividad personal:</strong> busque una tabla en su vida diaria (un recibo, un horario, una tabla nutricional). Escriba tres oraciones describiendo lo que muestra.</li>
-</ul>
+<h2 id="s-tarea"><span aria-hidden="true" class="num-seccion">5</span>Tarea</h2><p>Esta parte la hace usted solo, a su ritmo. Calcule alrededor de una hora.</p><ul><li><strong>ThatQuiz.</strong> Entre en <a href="https://www.thatquiz.org/es/" rel="noopener noreferrer" target="_blank">ThatQuiz</a> y busque los ejercicios de <em>tablas</em> y <em>lectura de datos</em>. Si no encuentra ese tema, practique las cuatro operaciones: una vez que localiza el dato en la tabla, lo que queda es una cuenta.</li><li><strong>Con papel y lápiz.</strong> Tome tres tablas cualesquiera y, para cada una, escriba y conteste cuatro preguntas propias: una de localizar un dato, una de comparar dos, una de calcular con ellos y una de describir lo que muestra la tabla en conjunto. Inventar la pregunta enseña tanto como contestarla.</li><li><strong>En su vida diaria.</strong> Busque una tabla real: un recibo, un horario de autobús, una tabla nutricional. Escriba tres oraciones describiendo lo que muestra, sin copiar números sueltos: diga qué pasa con ellos.</li></ul>
+
 </section>
 <!-- QUIZ -->
 <section>
-<h2><span aria-hidden="true" class="num-seccion">7</span>Quiz de práctica</h2>
+<h2 id="s-quiz-de-practica"><span aria-hidden="true" class="num-seccion">6</span>Quiz de práctica</h2>
 <p>Responda las <strong>8 preguntas</strong> sobre la siguiente tabla. Al final verá su puntaje y podrá repasar lo que falló.</p>
 <div aria-label="Notas de cuatro estudiantes en tres materias (de 0 a 100) (tabla desplazable horizontalmente)" class="tabla-scroll" role="region" tabindex="0"><table class="tabla-datos">
 <caption>Notas de cuatro estudiantes en tres materias (de 0 a 100)</caption>
@@ -619,8 +576,8 @@
 </section>
 <!-- RÚBRICA -->
 <section>
-<h2><span aria-hidden="true" class="num-seccion">8</span>Rúbrica de evaluación</h2>
-<p>Rúbrica de lectura de tablas. Cada criterio se evalúa en cuatro niveles.</p>
+<h2 id="s-rubrica-de-evaluacion"><span aria-hidden="true" class="num-seccion">7</span>Rúbrica de evaluación</h2>
+<p>Rúbrica de lectura de tablas. Cada criterio se evalúa en cuatro niveles. Léala <strong>antes</strong> de empezar la tarea y úsela <strong>después</strong> para evaluar su propio trabajo con honestidad.</p>
 <div aria-label="Rúbrica de evaluación: criterios y sus niveles de logro (tabla desplazable horizontalmente)" class="tabla-scroll" role="region" tabindex="0"><table class="tabla-rubrica"><caption class="cap-oculto">Rúbrica de evaluación: criterios y sus niveles de logro</caption>
 <thead>
 <tr>
@@ -665,16 +622,13 @@
 </section>
 <!-- CIERRE -->
 <div class="cierre">
-<h2><span aria-hidden="true" class="num-seccion">➡️</span>Lo que viene en la próxima lección</h2>
+<h2 id="s-lo-que-viene-en-la-proxima-leccion"><span aria-hidden="true" class="num-seccion">➡️</span>Lo que viene en la próxima lección</h2>
 <p>Ya sabe leer una tabla, localizar datos, compararlos, calcular promedios y describir lo que muestran. Tiene la base para trabajar con información organizada.</p>
 <p>En la <strong>Lección 8.2 · Gráficas de barras y de líneas</strong> verá otra forma de presentar los datos — ya no en números dentro de una tabla, sino en <strong>dibujos</strong>. Aprenderá a leer gráficas de barras y de líneas, a identificar tendencias y a construir su propia gráfica.</p>
 <p class="flecha-sig">➡️  Próxima: Lección 8.2 · Gráficas de barras y de líneas</p>
 </div>
 </div>
-<footer>
-  Matemáticas · Nivel 1 · Lección 8.1 — Spanish ASE Math · AE 0170-0321<br/>
-  City Colleges of Chicago · Truman College · Prof. José M. Fernández
-</footer>
+<footer><p>GEDparaHispanos · Matemáticas · Nivel 1 · Tema 8 · Lección 8.1</p><p>José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago</p><p class="licencia">© 2026. Esta obra está licenciada bajo <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" rel="license" target="_blank">Creative Commons Reconocimiento-NoComercial-CompartirIgual 4.0 Internacional (CC BY-NC-SA 4.0)</a>.</p></footer><a aria-label="Volver al contenido de la lección" class="volver-indice" href="#indice"><span aria-hidden="true">↑</span> Índice</a>
 <script>
       // ── PRÁCTICA INTERACTIVA ──
       var respuestasPractica = {

@@ -1,9 +1,12 @@
-<!doctype html>
+<!DOCTYPE html>
+<!-- Lección 3.3 · Matemáticas Nivel 1 · GEDparaHispanos
+     José M. Fernández · CC BY-NC-SA 4.0 -->
+
 <html lang="es">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Lección 3.3 · Decimales en contexto y equivalencias — Matemáticas Nivel 1</title>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Lección 3.3 · Decimales en contexto y equivalencias — Matemáticas Nivel 1</title><meta content="CC BY-NC-SA 4.0" name="license"/><link href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" rel="license"/>
 <style>
   :root{
     --azul:#283593; --azul-osc:#1a237e; --azul-cl:#e8eaf6;
@@ -68,21 +71,7 @@
   }
   .et-verde{background:var(--verde);color:#fff;}
   .et-ambar{background:var(--ambar);color:#fff;}
-  .et-azul{background:var(--azul);color:#fff;}
-
-  .modalidades{display:flex;gap:14px;margin-top:14px;flex-wrap:wrap;}
-  .modo{
-    flex:1;min-width:240px;border-radius:9px;padding:13px 16px;
-    background:#fff;border:1px solid var(--linea);
-  }
-  .modo-pres{border-top:4px solid var(--azul);}
-  .modo-line{border-top:4px solid var(--verde);}
-  .modo .modo-tit{display:block;font-weight:700;font-size:14px;margin-bottom:5px;}
-  .modo-pres .modo-tit{color:var(--azul-osc);}
-  .modo-line .modo-tit{color:var(--verde);}
-  .modo p{margin:4px 0 0;font-size:15px;}
-
-  /* ── TABLA DE EQUIVALENCIAS ── */
+  .et-azul{background:var(--azul);color:#fff;}/* ── TABLA DE EQUIVALENCIAS ── */
   .tabla-equiv{width:100%;border-collapse:collapse;margin:16px 0;font-size:16px;}
   .tabla-equiv th,.tabla-equiv td{border:1px solid var(--linea);padding:11px 12px;text-align:center;}
   .tabla-equiv th{background:var(--azul-osc);color:#fff;font-size:14px;}
@@ -180,407 +169,336 @@
     header.principal h1{font-size:24px;}
     section{padding:24px 20px;}
   }
+
+  /* ── ÍNDICE DE LA LECCIÓN ── */
+  .indice{
+    background:var(--papel); border:1px solid var(--linea); border-left:6px solid var(--azul);
+    border-radius:10px; padding:16px 20px; margin:26px 0;
+  }
+  .indice h2{ font-size:1.05rem; margin:0 0 10px; color:var(--azul-osc); border:0; padding:0; }
+  .indice ol{ margin:0; padding-left:1.3em; }
+  .indice li{ margin:4px 0; }
+  .indice a{ color:var(--azul-osc); text-decoration:underline; }
+  .indice a:hover{ color:var(--azul); }
+  .indice a:focus-visible,.volver-indice:focus-visible{ outline:3px solid #b05e00; outline-offset:2px; }
+  .volver-indice{
+    position:fixed; right:18px; bottom:18px; z-index:60;
+    background:var(--azul-osc); color:#fff; border-radius:999px;
+    padding:10px 16px; font-weight:700; font-size:.92rem; text-decoration:none;
+    box-shadow:0 2px 10px rgba(0,0,0,.28);
+  }
+  .volver-indice:hover{ background:var(--azul); color:#fff; }
+  footer .licencia a{ color:#fff; text-decoration:underline; }
+  @media print{ .indice,.volver-indice{ display:none; } }
 </style>
 </head>
 <body>
-
 <header class="principal">
-  <div class="envoltura-header">
-    <div class="ruta">Matemáticas · Nivel 1 · Tema 3 — Decimales</div>
-    <h1>Lección 3.3 · Decimales en contexto y equivalencias fracción–decimal</h1>
-    <p class="lema">Convertir entre fracciones y decimales, y resolver problemas reales de compras, distancias y medidas.</p>
-    <div class="chips">
-      <span class="chip">⏱️ 4 horas (2 sinc. + 2 asinc.)</span>
-      <span class="chip">🔄 Fracción ↔ decimal</span>
-      <span class="chip">📘 Steck-Vaughn</span>
-    </div>
-  </div>
-</header>
-
-<div class="envoltura">
-
-  <!-- OBJETIVOS -->
-  <section>
-    <div class="caja caja-objetivo">
-      <h2><span class="num-seccion">🎯</span>Objetivos de la clase</h2>
-      <p>Al terminar esta lección, usted podrá:</p>
-      <ul>
-        <li><strong>Convertir</strong> una fracción común a decimal dividiendo el numerador entre el denominador.</li>
-        <li><strong>Convertir</strong> un decimal a fracción y simplificarla.</li>
-        <li><strong>Reconocer</strong> las equivalencias fracción–decimal más comunes.</li>
-        <li><strong>Resolver</strong> problemas de contexto real con decimales: compras, distancias, medidas y cambio.</li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- DOS FORMAS, UN VALOR -->
-  <section>
-    <h2><span class="num-seccion">1</span>Dos formas de escribir lo mismo</h2>
-    <p>En la <strong>Lección 3.1</strong> vimos que un decimal es una <strong>parte de un entero</strong>. Una fracción también lo es. De hecho, son <strong>dos maneras de escribir el mismo valor</strong>.</p>
-    <p>Piénselo con dinero: <strong>medio dólar</strong> se puede escribir como la fracción <span class="fraccion"><span class="num">1</span><span class="den">2</span></span> de dólar, o como el decimal <strong>$0.50</strong>. Es la misma cantidad de dinero — solo cambia la forma de escribirla.</p>
-    <div class="caja caja-tip">
-      <span class="etiqueta et-verde">Idea clave</span>
-      <p>La barra de una fracción significa <strong>"dividido entre"</strong>. La fracción <span class="fraccion"><span class="num">3</span><span class="den">4</span></span> quiere decir, literalmente, <strong>3 ÷ 4</strong>. Esa es la llave para convertir cualquier fracción en decimal.</p>
-    </div>
-  </section>
-
-  <!-- FRACCIÓN A DECIMAL -->
-  <section>
-    <h2><span class="num-seccion">2</span>De fracción a decimal: dividir</h2>
-    <p>Para convertir una fracción en decimal, se <strong>divide el numerador (arriba) entre el denominador (abajo)</strong>. Use la división de decimales que aprendió en la Lección 3.2: si el numerador es menor, agregue un punto y ceros.</p>
-
-    <h3>Ejemplo resuelto: convertir <span class="fraccion" style="font-size:15px;"><span class="num">3</span><span class="den">4</span></span> a decimal</h3>
-    <div class="ejemplo">
-      <div class="titulo-ej">La fracción 3/4 significa 3 ÷ 4</div>
-      <div class="paso"><span class="n">1</span>Planteo la división: 3 ÷ 4. Como 3 es menor que 4, escribo <strong>3.00</strong> y pongo el punto en el cociente.</div>
-      <div class="paso"><span class="n">2</span>Divido: 30 ÷ 4 = 7, con residuo 2. Bajo el otro cero: 20 ÷ 4 = 5, exacto.</div>
-      <div class="paso"><span class="n">✓</span>Resultado: <span class="fraccion" style="font-size:15px;"><span class="num">3</span><span class="den">4</span></span> = <strong>0.75</strong>.</div>
-    </div>
-    <div class="caja caja-tip">
-      <span class="etiqueta et-verde">Verifique con la TI-30XS</span>
-      <p>Después de dividir en papel, compruebe con la calculadora: teclee 3 ÷ 4 y debe aparecer 0.75. Recuerde limpiar la memoria antes. La calculadora confirma; el papel le enseña.</p>
-    </div>
-
-    <div class="practica">
-      <div class="cabe"><span class="ico">✏️</span><h4>Práctica 1 — Fracción a decimal</h4></div>
-      <p class="pregunta-int">¿A qué decimal equivale la fracción <span class="fraccion"><span class="num">1</span><span class="den">5</span></span>?</p>
-      <div class="opciones" data-quiz="p1">
-        <button class="opcion" data-correcta="no">0.5</button>
-        <button class="opcion" data-correcta="si">0.2</button>
-        <button class="opcion" data-correcta="no">0.15</button>
-        <button class="opcion" data-correcta="no">1.5</button>
-      </div>
-      <div class="respuesta-int" id="r-p1"></div>
-    </div>
-  </section>
-
-  <!-- DECIMAL A FRACCIÓN -->
-  <section>
-    <h2><span class="num-seccion">3</span>De decimal a fracción: leer y simplificar</h2>
-    <p>Para convertir un decimal en fracción, use lo que aprendió en la Lección 3.1: <strong>el nombre del último lugar le da el denominador</strong>.</p>
-    <ul>
-      <li>Si el decimal llega a las <strong>décimas</strong> → el denominador es <strong>10</strong>.</li>
-      <li>Si llega a las <strong>centésimas</strong> → el denominador es <strong>100</strong>.</li>
-      <li>Si llega a las <strong>milésimas</strong> → el denominador es <strong>1000</strong>.</li>
-    </ul>
-
-    <div class="ejemplo">
-      <div class="titulo-ej">Convertir 0.6 a fracción</div>
-      <div class="paso"><span class="n">1</span>0.6 son "seis décimas". El numerador es 6, el denominador es 10: <span class="fraccion" style="font-size:15px;"><span class="num">6</span><span class="den">10</span></span>.</div>
-      <div class="paso"><span class="n">2</span>Simplifico: 6 y 10 se pueden dividir entre 2. 6 ÷ 2 = 3, 10 ÷ 2 = 5.</div>
-      <div class="paso"><span class="n">✓</span>Resultado: 0.6 = <span class="fraccion" style="font-size:15px;"><span class="num">3</span><span class="den">5</span></span>.</div>
-    </div>
-    <div class="caja caja-ojo">
-      <span class="etiqueta et-ambar">¡Ojo!</span>
-      <p>Una fracción está <strong>simplificada</strong> cuando el numerador y el denominador ya no se pueden dividir entre el mismo número. La simplificación de fracciones se estudia a fondo en el Tema 4; aquí basta con reducir las más sencillas.</p>
-    </div>
-  </section>
-
-  <!-- TABLA DE EQUIVALENCIAS -->
-  <section>
-    <h2><span class="num-seccion">4</span>Equivalencias que conviene memorizar</h2>
-    <p>Algunas equivalencias aparecen tan seguido —en precios, recetas, medidas— que vale la pena <strong>recordarlas de memoria</strong>. Esta es su tabla de referencia:</p>
-
-    <table class="tabla-equiv">
-      <thead>
-        <tr><th>Fracción</th><th>Decimal</th><th>Dónde aparece</th></tr>
-      </thead>
-      <tbody>
-        <tr><td class="frac">1/2</td><td class="dec">0.5</td><td>medio dólar, media hora</td></tr>
-        <tr><td class="frac">1/4</td><td class="dec">0.25</td><td>un cuarto, 25 centavos</td></tr>
-        <tr><td class="frac">3/4</td><td class="dec">0.75</td><td>tres cuartos, 75 centavos</td></tr>
-        <tr><td class="frac">1/5</td><td class="dec">0.2</td><td>una quinta parte</td></tr>
-        <tr><td class="frac">1/10</td><td class="dec">0.1</td><td>una décima parte</td></tr>
-        <tr><td class="frac">1/3</td><td class="dec">≈ 0.33</td><td>un tercio (decimal periódico)</td></tr>
-      </tbody>
-    </table>
-    <div class="caja caja-ojo">
-      <span class="etiqueta et-ambar">Un caso especial: 1/3</span>
-      <p>Al dividir 1 ÷ 3 el resultado es 0.3333... y los 3 nunca terminan. Es un <strong>decimal periódico</strong>. Para la vida diaria lo redondeamos a 0.33. Los decimales periódicos se ven con más detalle en niveles posteriores.</p>
-    </div>
-
-    <div class="practica">
-      <div class="cabe"><span class="ico">✏️</span><h4>Práctica 2 — Decimal a fracción</h4></div>
-      <p class="pregunta-int">El decimal <strong>0.25</strong> equivale a la fracción:</p>
-      <div class="opciones" data-quiz="p2">
-        <button class="opcion" data-correcta="no"><span class="fraccion"><span class="num">1</span><span class="den">2</span></span></button>
-        <button class="opcion" data-correcta="si"><span class="fraccion"><span class="num">1</span><span class="den">4</span></span></button>
-        <button class="opcion" data-correcta="no"><span class="fraccion"><span class="num">2</span><span class="den">5</span></span></button>
-        <button class="opcion" data-correcta="no"><span class="fraccion"><span class="num">3</span><span class="den">4</span></span></button>
-      </div>
-      <div class="respuesta-int" id="r-p2"></div>
-    </div>
-  </section>
-
-  <!-- DECIMALES EN CONTEXTO -->
-  <section>
-    <h2><span class="num-seccion">5</span>Decimales en problemas de la vida real</h2>
-    <p>Los decimales aparecen en todas partes: compras, distancias, medidas, cambio. Use siempre el <strong>método de los 4 pasos</strong> de la Lección 1.3: leo y subrayo, decido la operación, resuelvo, verifico que tiene sentido.</p>
-
-    <div class="ejemplo">
-      <div class="titulo-ej">📋 "Compra de mercado: pan $2.50, leche $3.75 y huevos $4.20. Si paga con $20, ¿cuánto cambio recibe?"</div>
-      <div class="paso"><span class="n">1</span><strong>Subrayo:</strong> precios $2.50, $3.75, $4.20; pago $20; pregunta → el cambio.</div>
-      <div class="paso"><span class="n">2</span><strong>Decido:</strong> primero sumo los precios (juntar), luego resto del pago (cambio). Son dos pasos.</div>
-      <div class="paso"><span class="n">3</span><strong>Resuelvo:</strong> 2.50 + 3.75 + 4.20 = 10.45. Después: 20.00 − 10.45 = 9.55.</div>
-      <div class="paso"><span class="n">✓</span><strong>¿Tiene sentido?</strong> El cambio ($9.55) es menor que lo que pagó ($20). La respuesta es <strong>$9.55</strong>.</div>
-    </div>
-
-    <div class="practica">
-      <div class="cabe"><span class="ico">✏️</span><h4>Práctica 3 — Problema de contexto</h4></div>
-      <p class="pregunta-int">Una persona camina 1.8 km en la mañana y 2.35 km en la tarde. ¿Cuántos kilómetros caminó en total?</p>
-      <div class="opciones" data-quiz="p3">
-        <button class="opcion" data-correcta="no">3.53 km</button>
-        <button class="opcion" data-correcta="si">4.15 km</button>
-        <button class="opcion" data-correcta="no">4.05 km</button>
-        <button class="opcion" data-correcta="no">2.53 km</button>
-      </div>
-      <div class="respuesta-int" id="r-p3"></div>
-    </div>
-
-    <div class="practica">
-      <div class="cabe"><span class="ico">✏️</span><h4>Práctica 4 — Problema de contexto</h4></div>
-      <p class="pregunta-int">Un galón de gasolina cuesta $3.40. ¿Cuánto cuestan 6 galones?</p>
-      <div class="opciones" data-quiz="p4">
-        <button class="opcion" data-correcta="no">$9.40</button>
-        <button class="opcion" data-correcta="si">$20.40</button>
-        <button class="opcion" data-correcta="no">$18.40</button>
-        <button class="opcion" data-correcta="no">$2.04</button>
-      </div>
-      <div class="respuesta-int" id="r-p4"></div>
-    </div>
-  </section>
-
-  <!-- PRÁCTICA GUIADA -->
-  <section>
-    <h2><span class="num-seccion">6</span>Práctica guiada en clase</h2>
-    <p>Estas actividades se hacen <strong>en la sesión sincrónica</strong>. Cada actividad incluye una variante para la <strong>clase presencial</strong> y otra para la <strong>clase en línea</strong>; el objetivo de aprendizaje es el mismo en ambas.</p>
-
-    <div class="caja caja-recurso">
-      <span class="etiqueta et-azul">Actividad A · "Memorama fracción–decimal"</span>
-      <p>Juego de parejas para afianzar las equivalencias más comunes: cada fracción se empareja con su decimal.</p>
-      <div class="modalidades">
-        <div class="modo modo-pres">
-          <span class="modo-tit">🏫 Presencial</span>
-          <p>Reparta tarjetas: la mitad con fracciones, la mitad con decimales. Boca abajo sobre la mesa, los estudiantes voltean dos por turno buscando la pareja equivalente (1/2 con 0.5, etc.). Gana quien junte más parejas.</p>
-        </div>
-        <div class="modo modo-line">
-          <span class="modo-tit">💻 En línea</span>
-          <p>Use un memorama digital o una diapositiva con tarjetas numeradas que los estudiantes "voltean" diciendo el número. En salas pequeñas, compiten por encontrar las parejas fracción–decimal.</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="caja caja-recurso">
-      <span class="etiqueta et-azul">Actividad B · "La compra del mercado"</span>
-      <p>Simulación de compra: los estudiantes calculan el total de varios artículos, el cambio, y el precio de "la mitad" de un artículo (practicando fracción → decimal).</p>
-      <div class="modalidades">
-        <div class="modo modo-pres">
-          <span class="modo-tit">🏫 Presencial</span>
-          <p>Reparta listas de 8 artículos con precios decimales. Cada estudiante calcula total y cambio en papel, y luego el precio de la mitad de un artículo. Verifican con la TI-30XS y comparan en parejas.</p>
-        </div>
-        <div class="modo modo-line">
-          <span class="modo-tit">💻 En línea</span>
-          <p>Comparta la lista de compras en una diapositiva. Los estudiantes calculan en papel, publican el total y el cambio en el chat, y verifican con la calculadora.</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="caja caja-recurso">
-      <span class="etiqueta et-azul">Actividad C · Foro "Precio y fracción"</span>
-      <p>Cada estudiante busca un precio real y escribe su equivalente en fracción, conectando la vida diaria con las dos formas de escribir un número.</p>
-      <div class="modalidades">
-        <div class="modo modo-pres">
-          <span class="modo-tit">🏫 Presencial</span>
-          <p>Cada estudiante trae un volante o recibo. Elige un precio, lo comparte con el grupo y, entre todos, escriben una fracción equivalente o cercana. Se comentan los casos en el pizarrón.</p>
-        </div>
-        <div class="modo modo-line">
-          <span class="modo-tit">💻 En línea</span>
-          <p>Cada estudiante busca un precio en una tienda en línea, lo publica en el foro de Brightspace con su equivalencia en fracción, y comenta la publicación de un compañero.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- TAREA ASINCRÓNICA -->
-  <section>
-    <h2><span class="num-seccion">7</span>Tarea asincrónica</h2>
-    <p>Estas actividades se realizan <strong>por su cuenta</strong>, dentro de las 2 horas asincrónicas de la lección.</p>
-    <ul>
-      <li><strong>Foro de Brightspace:</strong> publique un precio real de una tienda en línea y escriba su equivalencia en fracción. Comente la publicación de un compañero.</li>
-      <li><strong>Brightspace:</strong> realice el quiz de la lección (abajo puede practicarlo antes).</li>
-      <li><strong>Actividad personal:</strong> revise una receta de cocina. Identifique las medidas que aparecen como fracción (½ taza, ¾ de cucharada) y escríbalas como decimal.</li>
-    </ul>
-  </section>
-
-  <!-- QUIZ -->
-  <section>
-    <h2><span class="num-seccion">8</span>Quiz de práctica</h2>
-    <p>Responda las <strong>8 preguntas</strong>. Al final verá su puntaje y podrá repasar lo que falló. Puede repetir el quiz las veces que quiera.</p>
-
-    <form id="quiz">
-      <div class="quiz-bloque">
-        <span class="qnum">Pregunta 1</span>
-        <p class="pregunta">La barra de una fracción significa:</p>
-        <div class="opciones" data-q="1">
-          <button type="button" class="opcion" data-c="no">"multiplicado por"</button>
-          <button type="button" class="opcion" data-c="si">"dividido entre"</button>
-          <button type="button" class="opcion" data-c="no">"más"</button>
-          <button type="button" class="opcion" data-c="no">"menos"</button>
-        </div>
-      </div>
-
-      <div class="quiz-bloque">
-        <span class="qnum">Pregunta 2</span>
-        <p class="pregunta">¿A qué decimal equivale <strong>3/4</strong>?</p>
-        <div class="opciones" data-q="2">
-          <button type="button" class="opcion" data-c="no">0.34</button>
-          <button type="button" class="opcion" data-c="si">0.75</button>
-          <button type="button" class="opcion" data-c="no">0.5</button>
-          <button type="button" class="opcion" data-c="no">0.7</button>
-        </div>
-      </div>
-
-      <div class="quiz-bloque">
-        <span class="qnum">Pregunta 3</span>
-        <p class="pregunta">¿A qué decimal equivale <strong>1/2</strong>?</p>
-        <div class="opciones" data-q="3">
-          <button type="button" class="opcion" data-c="si">0.5</button>
-          <button type="button" class="opcion" data-c="no">0.12</button>
-          <button type="button" class="opcion" data-c="no">0.25</button>
-          <button type="button" class="opcion" data-c="no">1.2</button>
-        </div>
-      </div>
-
-      <div class="quiz-bloque">
-        <span class="qnum">Pregunta 4</span>
-        <p class="pregunta">El decimal <strong>0.7</strong> equivale a la fracción:</p>
-        <div class="opciones" data-q="4">
-          <button type="button" class="opcion" data-c="no">7/100</button>
-          <button type="button" class="opcion" data-c="si">7/10</button>
-          <button type="button" class="opcion" data-c="no">1/7</button>
-          <button type="button" class="opcion" data-c="no">7/1000</button>
-        </div>
-      </div>
-
-      <div class="quiz-bloque">
-        <span class="qnum">Pregunta 5</span>
-        <p class="pregunta">Al dividir 1 ÷ 3, el resultado 0.333... se llama un decimal:</p>
-        <div class="opciones" data-q="5">
-          <button type="button" class="opcion" data-c="no">exacto</button>
-          <button type="button" class="opcion" data-c="si">periódico</button>
-          <button type="button" class="opcion" data-c="no">entero</button>
-          <button type="button" class="opcion" data-c="no">negativo</button>
-        </div>
-      </div>
-
-      <div class="quiz-bloque">
-        <span class="qnum">Pregunta 6</span>
-        <p class="pregunta">Una tabla mide 2.6 metros y se le corta un pedazo de 0.85 metros. ¿Cuánto mide la tabla ahora?</p>
-        <div class="opciones" data-q="6">
-          <button type="button" class="opcion" data-c="no">1.85 m</button>
-          <button type="button" class="opcion" data-c="si">1.75 m</button>
-          <button type="button" class="opcion" data-c="no">3.45 m</button>
-          <button type="button" class="opcion" data-c="no">2.25 m</button>
-        </div>
-      </div>
-
-      <div class="quiz-bloque">
-        <span class="qnum">Pregunta 7</span>
-        <p class="pregunta">Un kilo de arroz cuesta $1.25. ¿Cuánto cuestan 4 kilos?</p>
-        <div class="opciones" data-q="7">
-          <button type="button" class="opcion" data-c="no">$4.25</button>
-          <button type="button" class="opcion" data-c="si">$5.00</button>
-          <button type="button" class="opcion" data-c="no">$5.25</button>
-          <button type="button" class="opcion" data-c="no">$4.00</button>
-        </div>
-      </div>
-
-      <div class="quiz-bloque">
-        <span class="qnum">Pregunta 8</span>
-        <p class="pregunta">Usted compra artículos por $6.80 y $5.45, y paga con $15. ¿Cuánto cambio recibe?</p>
-        <div class="opciones" data-q="8">
-          <button type="button" class="opcion" data-c="no">$3.75</button>
-          <button type="button" class="opcion" data-c="si">$2.75</button>
-          <button type="button" class="opcion" data-c="no">$2.65</button>
-          <button type="button" class="opcion" data-c="no">$12.25</button>
-        </div>
-      </div>
-    </form>
-
-    <div style="text-align:center;margin-top:18px;">
-      <button class="btn" id="btn-calificar">Ver mi resultado</button>
-      <button class="btn btn-sec" id="btn-reintentar" style="display:none;">Intentar de nuevo</button>
-    </div>
-
-    <div class="marcador" id="marcador">
-      <div class="barra-prog"><span id="barra"></span></div>
-      <div class="puntaje" id="puntaje"></div>
-      <div class="mensaje" id="mensaje"></div>
-    </div>
-  </section>
-
-  <!-- RÚBRICA -->
-  <section>
-    <h2><span class="num-seccion">9</span>Rúbrica de evaluación</h2>
-    <p>Rúbrica de conversión y aplicación. Cada criterio se evalúa en cuatro niveles.</p>
-    <table class="tabla-rubrica">
-      <thead>
-        <tr>
-          <th>Criterio</th>
-          <th class="nivel-cab">Logrado (4)</th>
-          <th class="nivel-cab">Satisfactorio (3)</th>
-          <th class="nivel-cab">En proceso (2)</th>
-          <th class="nivel-cab">Por reforzar (1)</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Convierte fracción a decimal</td>
-          <td>Divide numerador entre denominador sin errores.</td>
-          <td>Convierte bien con un descuido aislado.</td>
-          <td>Plantea la división pero se equivoca al dividir.</td>
-          <td>No relaciona la fracción con la división.</td>
-        </tr>
-        <tr>
-          <td>Convierte decimal a fracción</td>
-          <td>Identifica el denominador por el último lugar y simplifica.</td>
-          <td>Escribe la fracción correcta sin simplificar.</td>
-          <td>Confunde el denominador (10, 100, 1000).</td>
-          <td>No logra escribir la fracción.</td>
-        </tr>
-        <tr>
-          <td>Reconoce equivalencias comunes</td>
-          <td>Recuerda de memoria 1/2, 1/4, 3/4, 1/5, 1/10.</td>
-          <td>Recuerda la mayoría de las equivalencias.</td>
-          <td>Recuerda solo 1/2 y 1/4.</td>
-          <td>No reconoce las equivalencias.</td>
-        </tr>
-        <tr>
-          <td>Resuelve problemas de contexto</td>
-          <td>Resuelve con exactitud, con unidades y verificación.</td>
-          <td>Resuelve correctamente con unidades.</td>
-          <td>Plantea bien pero comete errores de cálculo.</td>
-          <td>No interpreta el problema.</td>
-        </tr>
-      </tbody>
-    </table>
-  </section>
-
-  <!-- CIERRE -->
-  <div class="cierre">
-    <h2><span class="num-seccion">➡️</span>Lo que viene en el próximo tema</h2>
-    <p>Con esta lección cierra el <strong>Tema 3 · Decimales</strong>. Ya sabe leer, comparar, redondear y operar decimales, convertirlos a fracciones y resolver problemas reales con ellos.</p>
-    <p>En el <strong>Tema 4 · Fracciones</strong> estudiará a fondo la otra forma de escribir partes de un entero. La <strong>Lección 4.1 · Fracciones equivalentes, simplificar y comparar</strong> le mostrará cómo una misma cantidad se puede escribir con muchas fracciones distintas, y cómo encontrar la forma más simple — esa idea de "simplificar" que apenas asomó en esta lección.</p>
-    <div class="flecha-sig">➡️ &nbsp;Próxima: Tema 4 · Lección 4.1 · Fracciones equivalentes, simplificar y comparar</div>
-  </div>
+<div class="envoltura-header">
+<div class="ruta">Matemáticas · Nivel 1 · Tema 3 — Decimales</div>
+<h1>Lección 3.3 · Decimales en contexto y equivalencias fracción–decimal</h1>
+<p class="lema">Convertir entre fracciones y decimales, y resolver problemas reales de compras, distancias y medidas.</p>
+<div class="chips">
+<span class="chip"><span aria-hidden="true">⏱️</span> Unas 4 horas, a su ritmo</span>
+<span class="chip">🔄 Fracción ↔ decimal</span>
 
 </div>
+</div>
+</header>
+<div class="envoltura">
+<!-- OBJETIVOS -->
+<section>
+<div class="caja caja-objetivo">
+<h2><span class="num-seccion">🎯</span>Objetivos de la lección</h2>
+<p>Al terminar esta lección, usted podrá:</p>
+<ul>
+<li><strong>Convertir</strong> una fracción común a decimal dividiendo el numerador entre el denominador.</li>
+<li><strong>Convertir</strong> un decimal a fracción y simplificarla.</li>
+<li><strong>Reconocer</strong> las equivalencias fracción–decimal más comunes.</li>
+<li><strong>Resolver</strong> problemas de contexto real con decimales: compras, distancias, medidas y cambio.</li>
+</ul>
+</div>
+</section><nav aria-labelledby="indice-titulo" class="indice" id="indice"><h2 id="indice-titulo">Contenido de la lección</h2><ol><li><a href="#s-dos-formas-de-escribir-lo-mismo">Dos formas de escribir lo mismo</a></li><li><a href="#s-de-fraccion-a-decimal-dividir">De fracción a decimal: dividir</a></li><li><a href="#s-de-decimal-a-fraccion-leer-y-simplificar">De decimal a fracción: leer y simplificar</a></li><li><a href="#s-equivalencias-que-conviene-memorizar">Equivalencias que conviene memorizar</a></li><li><a href="#s-decimales-en-problemas-de-la-vida-real">Decimales en problemas de la vida real</a></li><li><a href="#s-tarea">Tarea</a></li><li><a href="#s-quiz-de-practica">Quiz de práctica</a></li><li><a href="#s-rubrica-de-evaluacion">Rúbrica de evaluación</a></li><li><a href="#s-lo-que-viene-en-el-proximo-tema">Lo que viene en el próximo tema</a></li></ol></nav>
+<!-- DOS FORMAS, UN VALOR -->
+<section>
+<h2 id="s-dos-formas-de-escribir-lo-mismo"><span class="num-seccion">1</span>Dos formas de escribir lo mismo</h2>
+<p>En la <strong>Lección 3.1</strong> vimos que un decimal es una <strong>parte de un entero</strong>. Una fracción también lo es. De hecho, son <strong>dos maneras de escribir el mismo valor</strong>.</p>
+<p>Piénselo con dinero: <strong>medio dólar</strong> se puede escribir como la fracción <span class="fraccion"><span class="num">1</span><span class="den">2</span></span> de dólar, o como el decimal <strong>$0.50</strong>. Es la misma cantidad de dinero — solo cambia la forma de escribirla.</p>
+<div class="caja caja-tip">
+<span class="etiqueta et-verde">Idea clave</span>
+<p>La barra de una fracción significa <strong>"dividido entre"</strong>. La fracción <span class="fraccion"><span class="num">3</span><span class="den">4</span></span> quiere decir, literalmente, <strong>3 ÷ 4</strong>. Esa es la llave para convertir cualquier fracción en decimal.</p>
+</div>
+</section>
+<!-- FRACCIÓN A DECIMAL -->
+<section>
+<h2 id="s-de-fraccion-a-decimal-dividir"><span class="num-seccion">2</span>De fracción a decimal: dividir</h2>
+<p>Para convertir una fracción en decimal, se <strong>divide el numerador (arriba) entre el denominador (abajo)</strong>. Use la división de decimales que aprendió en la Lección 3.2: si el numerador es menor, agregue un punto y ceros.</p>
+<h3>Ejemplo resuelto: convertir <span class="fraccion" style="font-size:15px;"><span class="num">3</span><span class="den">4</span></span> a decimal</h3>
+<div class="ejemplo">
+<div class="titulo-ej">La fracción 3/4 significa 3 ÷ 4</div>
+<div class="paso"><span class="n">1</span>Planteo la división: 3 ÷ 4. Como 3 es menor que 4, escribo <strong>3.00</strong> y pongo el punto en el cociente.</div>
+<div class="paso"><span class="n">2</span>Divido: 30 ÷ 4 = 7, con residuo 2. Bajo el otro cero: 20 ÷ 4 = 5, exacto.</div>
+<div class="paso"><span class="n">✓</span>Resultado: <span class="fraccion" style="font-size:15px;"><span class="num">3</span><span class="den">4</span></span> = <strong>0.75</strong>.</div>
+</div>
+<div class="caja caja-tip">
+<span class="etiqueta et-verde">Verifique con la TI-30XS</span>
+<p>Después de dividir en papel, compruebe con la calculadora: teclee 3 ÷ 4 y debe aparecer 0.75. Recuerde limpiar la memoria antes. La calculadora confirma; el papel le enseña.</p>
+</div>
+<div class="practica">
+<div class="cabe"><span class="ico">✏️</span><h4>Práctica 1 — Fracción a decimal</h4></div>
+<p class="pregunta-int">¿A qué decimal equivale la fracción <span class="fraccion"><span class="num">1</span><span class="den">5</span></span>?</p>
+<div class="opciones" data-quiz="p1">
+<button class="opcion" data-correcta="no">0.5</button>
+<button class="opcion" data-correcta="si">0.2</button>
+<button class="opcion" data-correcta="no">0.15</button>
+<button class="opcion" data-correcta="no">1.5</button>
+</div>
+<div class="respuesta-int" id="r-p1"></div>
+</div>
+</section>
+<!-- DECIMAL A FRACCIÓN -->
+<section>
+<h2 id="s-de-decimal-a-fraccion-leer-y-simplificar"><span class="num-seccion">3</span>De decimal a fracción: leer y simplificar</h2>
+<p>Para convertir un decimal en fracción, use lo que aprendió en la Lección 3.1: <strong>el nombre del último lugar le da el denominador</strong>.</p>
+<ul>
+<li>Si el decimal llega a las <strong>décimas</strong> → el denominador es <strong>10</strong>.</li>
+<li>Si llega a las <strong>centésimas</strong> → el denominador es <strong>100</strong>.</li>
+<li>Si llega a las <strong>milésimas</strong> → el denominador es <strong>1000</strong>.</li>
+</ul>
+<div class="ejemplo">
+<div class="titulo-ej">Convertir 0.6 a fracción</div>
+<div class="paso"><span class="n">1</span>0.6 son "seis décimas". El numerador es 6, el denominador es 10: <span class="fraccion" style="font-size:15px;"><span class="num">6</span><span class="den">10</span></span>.</div>
+<div class="paso"><span class="n">2</span>Simplifico: 6 y 10 se pueden dividir entre 2. 6 ÷ 2 = 3, 10 ÷ 2 = 5.</div>
+<div class="paso"><span class="n">✓</span>Resultado: 0.6 = <span class="fraccion" style="font-size:15px;"><span class="num">3</span><span class="den">5</span></span>.</div>
+</div>
+<div class="caja caja-ojo">
+<span class="etiqueta et-ambar">¡Ojo!</span>
+<p>Una fracción está <strong>simplificada</strong> cuando el numerador y el denominador ya no se pueden dividir entre el mismo número. La simplificación de fracciones se estudia a fondo en el Tema 4; aquí basta con reducir las más sencillas.</p>
+</div>
+</section>
+<!-- TABLA DE EQUIVALENCIAS -->
+<section>
+<h2 id="s-equivalencias-que-conviene-memorizar"><span class="num-seccion">4</span>Equivalencias que conviene memorizar</h2>
+<p>Algunas equivalencias aparecen tan seguido —en precios, recetas, medidas— que vale la pena <strong>recordarlas de memoria</strong>. Esta es su tabla de referencia:</p>
+<table class="tabla-equiv">
+<thead>
+<tr><th>Fracción</th><th>Decimal</th><th>Dónde aparece</th></tr>
+</thead>
+<tbody>
+<tr><td class="frac">1/2</td><td class="dec">0.5</td><td>medio dólar, media hora</td></tr>
+<tr><td class="frac">1/4</td><td class="dec">0.25</td><td>un cuarto, 25 centavos</td></tr>
+<tr><td class="frac">3/4</td><td class="dec">0.75</td><td>tres cuartos, 75 centavos</td></tr>
+<tr><td class="frac">1/5</td><td class="dec">0.2</td><td>una quinta parte</td></tr>
+<tr><td class="frac">1/10</td><td class="dec">0.1</td><td>una décima parte</td></tr>
+<tr><td class="frac">1/3</td><td class="dec">≈ 0.33</td><td>un tercio (decimal periódico)</td></tr>
+</tbody>
+</table>
+<div class="caja caja-ojo">
+<span class="etiqueta et-ambar">Un caso especial: 1/3</span>
+<p>Al dividir 1 ÷ 3 el resultado es 0.3333... y los 3 nunca terminan. Es un <strong>decimal periódico</strong>. Para la vida diaria lo redondeamos a 0.33. Los decimales periódicos se ven con más detalle en niveles posteriores.</p>
+</div>
+<div class="practica">
+<div class="cabe"><span class="ico">✏️</span><h4>Práctica 2 — Decimal a fracción</h4></div>
+<p class="pregunta-int">El decimal <strong>0.25</strong> equivale a la fracción:</p>
+<div class="opciones" data-quiz="p2">
+<button class="opcion" data-correcta="no"><span class="fraccion"><span class="num">1</span><span class="den">2</span></span></button>
+<button class="opcion" data-correcta="si"><span class="fraccion"><span class="num">1</span><span class="den">4</span></span></button>
+<button class="opcion" data-correcta="no"><span class="fraccion"><span class="num">2</span><span class="den">5</span></span></button>
+<button class="opcion" data-correcta="no"><span class="fraccion"><span class="num">3</span><span class="den">4</span></span></button>
+</div>
+<div class="respuesta-int" id="r-p2"></div>
+</div>
+</section>
+<!-- DECIMALES EN CONTEXTO -->
+<section>
+<h2 id="s-decimales-en-problemas-de-la-vida-real"><span class="num-seccion">5</span>Decimales en problemas de la vida real</h2>
+<p>Los decimales aparecen en todas partes: compras, distancias, medidas, cambio. Use siempre el <strong>método de los 4 pasos</strong> de la Lección 1.3: leo y subrayo, decido la operación, resuelvo, verifico que tiene sentido.</p>
+<div class="ejemplo">
+<div class="titulo-ej">📋 "Compra de mercado: pan $2.50, leche $3.75 y huevos $4.20. Si paga con $20, ¿cuánto cambio recibe?"</div>
+<div class="paso"><span class="n">1</span><strong>Subrayo:</strong> precios $2.50, $3.75, $4.20; pago $20; pregunta → el cambio.</div>
+<div class="paso"><span class="n">2</span><strong>Decido:</strong> primero sumo los precios (juntar), luego resto del pago (cambio). Son dos pasos.</div>
+<div class="paso"><span class="n">3</span><strong>Resuelvo:</strong> 2.50 + 3.75 + 4.20 = 10.45. Después: 20.00 − 10.45 = 9.55.</div>
+<div class="paso"><span class="n">✓</span><strong>¿Tiene sentido?</strong> El cambio ($9.55) es menor que lo que pagó ($20). La respuesta es <strong>$9.55</strong>.</div>
+</div>
+<div class="practica">
+<div class="cabe"><span class="ico">✏️</span><h4>Práctica 3 — Problema de contexto</h4></div>
+<p class="pregunta-int">Una persona camina 1.8 km en la mañana y 2.35 km en la tarde. ¿Cuántos kilómetros caminó en total?</p>
+<div class="opciones" data-quiz="p3">
+<button class="opcion" data-correcta="no">3.53 km</button>
+<button class="opcion" data-correcta="si">4.15 km</button>
+<button class="opcion" data-correcta="no">4.05 km</button>
+<button class="opcion" data-correcta="no">2.53 km</button>
+</div>
+<div class="respuesta-int" id="r-p3"></div>
+</div>
+<div class="practica">
+<div class="cabe"><span class="ico">✏️</span><h4>Práctica 4 — Problema de contexto</h4></div>
+<p class="pregunta-int">Un galón de gasolina cuesta $3.40. ¿Cuánto cuestan 6 galones?</p>
+<div class="opciones" data-quiz="p4">
+<button class="opcion" data-correcta="no">$9.40</button>
+<button class="opcion" data-correcta="si">$20.40</button>
+<button class="opcion" data-correcta="no">$18.40</button>
+<button class="opcion" data-correcta="no">$2.04</button>
+</div>
+<div class="respuesta-int" id="r-p4"></div>
+</div>
+</section>
 
-<footer>
-  Matemáticas · Nivel 1 · Lección 3.3 — Spanish ASE Math · AE 0170-0321<br>
-  City Colleges of Chicago · Truman College · Prof. José M. Fernández
-</footer>
+<section>
+<h2 id="s-tarea"><span class="num-seccion">6</span>Tarea</h2><p>Esta parte la hace usted solo, a su ritmo. Calcule alrededor de una hora. Con ella cierra el Tema 3.</p><ul><li><strong>ThatQuiz.</strong> Entre en <a href="https://www.thatquiz.org/es/" rel="noopener noreferrer" target="_blank">ThatQuiz</a> y practique la conversión entre <em>fracciones</em> y <em>decimales</em> en los dos sentidos. Es la destreza que más se usa después en porcentajes.</li><li><strong>Con papel y lápiz.</strong> Escriba de memoria la tabla de equivalencias que conviene saber (1/2, 1/4, 3/4, 1/5, 1/10, 1/3). Después compruébela dividiendo. Repita el ejercicio al día siguiente sin mirar.</li><li><strong>En su vida diaria.</strong> Busque un precio real en una tienda en línea y escriba su equivalencia en fracción. Después revise una receta de cocina: las medidas que aparecen como fracción (½ taza, ¾ de cucharada), escríbalas como decimal.</li></ul>
 
+</section>
+<!-- QUIZ -->
+<section>
+<h2 id="s-quiz-de-practica"><span class="num-seccion">7</span>Quiz de práctica</h2>
+<p>Responda las <strong>8 preguntas</strong>. Al final verá su puntaje y podrá repasar lo que falló. Puede repetir el quiz las veces que quiera.</p>
+<form id="quiz">
+<div class="quiz-bloque">
+<span class="qnum">Pregunta 1</span>
+<p class="pregunta">La barra de una fracción significa:</p>
+<div class="opciones" data-q="1">
+<button class="opcion" data-c="no" type="button">"multiplicado por"</button>
+<button class="opcion" data-c="si" type="button">"dividido entre"</button>
+<button class="opcion" data-c="no" type="button">"más"</button>
+<button class="opcion" data-c="no" type="button">"menos"</button>
+</div>
+</div>
+<div class="quiz-bloque">
+<span class="qnum">Pregunta 2</span>
+<p class="pregunta">¿A qué decimal equivale <strong>3/4</strong>?</p>
+<div class="opciones" data-q="2">
+<button class="opcion" data-c="no" type="button">0.34</button>
+<button class="opcion" data-c="si" type="button">0.75</button>
+<button class="opcion" data-c="no" type="button">0.5</button>
+<button class="opcion" data-c="no" type="button">0.7</button>
+</div>
+</div>
+<div class="quiz-bloque">
+<span class="qnum">Pregunta 3</span>
+<p class="pregunta">¿A qué decimal equivale <strong>1/2</strong>?</p>
+<div class="opciones" data-q="3">
+<button class="opcion" data-c="si" type="button">0.5</button>
+<button class="opcion" data-c="no" type="button">0.12</button>
+<button class="opcion" data-c="no" type="button">0.25</button>
+<button class="opcion" data-c="no" type="button">1.2</button>
+</div>
+</div>
+<div class="quiz-bloque">
+<span class="qnum">Pregunta 4</span>
+<p class="pregunta">El decimal <strong>0.7</strong> equivale a la fracción:</p>
+<div class="opciones" data-q="4">
+<button class="opcion" data-c="no" type="button">7/100</button>
+<button class="opcion" data-c="si" type="button">7/10</button>
+<button class="opcion" data-c="no" type="button">1/7</button>
+<button class="opcion" data-c="no" type="button">7/1000</button>
+</div>
+</div>
+<div class="quiz-bloque">
+<span class="qnum">Pregunta 5</span>
+<p class="pregunta">Al dividir 1 ÷ 3, el resultado 0.333... se llama un decimal:</p>
+<div class="opciones" data-q="5">
+<button class="opcion" data-c="no" type="button">exacto</button>
+<button class="opcion" data-c="si" type="button">periódico</button>
+<button class="opcion" data-c="no" type="button">entero</button>
+<button class="opcion" data-c="no" type="button">negativo</button>
+</div>
+</div>
+<div class="quiz-bloque">
+<span class="qnum">Pregunta 6</span>
+<p class="pregunta">Una tabla mide 2.6 metros y se le corta un pedazo de 0.85 metros. ¿Cuánto mide la tabla ahora?</p>
+<div class="opciones" data-q="6">
+<button class="opcion" data-c="no" type="button">1.85 m</button>
+<button class="opcion" data-c="si" type="button">1.75 m</button>
+<button class="opcion" data-c="no" type="button">3.45 m</button>
+<button class="opcion" data-c="no" type="button">2.25 m</button>
+</div>
+</div>
+<div class="quiz-bloque">
+<span class="qnum">Pregunta 7</span>
+<p class="pregunta">Un kilo de arroz cuesta $1.25. ¿Cuánto cuestan 4 kilos?</p>
+<div class="opciones" data-q="7">
+<button class="opcion" data-c="no" type="button">$4.25</button>
+<button class="opcion" data-c="si" type="button">$5.00</button>
+<button class="opcion" data-c="no" type="button">$5.25</button>
+<button class="opcion" data-c="no" type="button">$4.00</button>
+</div>
+</div>
+<div class="quiz-bloque">
+<span class="qnum">Pregunta 8</span>
+<p class="pregunta">Usted compra artículos por $6.80 y $5.45, y paga con $15. ¿Cuánto cambio recibe?</p>
+<div class="opciones" data-q="8">
+<button class="opcion" data-c="no" type="button">$3.75</button>
+<button class="opcion" data-c="si" type="button">$2.75</button>
+<button class="opcion" data-c="no" type="button">$2.65</button>
+<button class="opcion" data-c="no" type="button">$12.25</button>
+</div>
+</div>
+</form>
+<div style="text-align:center;margin-top:18px;">
+<button class="btn" id="btn-calificar">Ver mi resultado</button>
+<button class="btn btn-sec" id="btn-reintentar" style="display:none;">Intentar de nuevo</button>
+</div>
+<div class="marcador" id="marcador">
+<div class="barra-prog"><span id="barra"></span></div>
+<div class="puntaje" id="puntaje"></div>
+<div class="mensaje" id="mensaje"></div>
+</div>
+</section>
+<!-- RÚBRICA -->
+<section>
+<h2 id="s-rubrica-de-evaluacion"><span class="num-seccion">8</span>Rúbrica de evaluación</h2>
+<p>Rúbrica de conversión y aplicación. Cada criterio se evalúa en cuatro niveles. Léala <strong>antes</strong> de empezar la tarea y úsela <strong>después</strong> para evaluar su propio trabajo con honestidad.</p>
+<table class="tabla-rubrica">
+<thead>
+<tr>
+<th>Criterio</th>
+<th class="nivel-cab">Logrado (4)</th>
+<th class="nivel-cab">Satisfactorio (3)</th>
+<th class="nivel-cab">En proceso (2)</th>
+<th class="nivel-cab">Por reforzar (1)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Convierte fracción a decimal</td>
+<td>Divide numerador entre denominador sin errores.</td>
+<td>Convierte bien con un descuido aislado.</td>
+<td>Plantea la división pero se equivoca al dividir.</td>
+<td>No relaciona la fracción con la división.</td>
+</tr>
+<tr>
+<td>Convierte decimal a fracción</td>
+<td>Identifica el denominador por el último lugar y simplifica.</td>
+<td>Escribe la fracción correcta sin simplificar.</td>
+<td>Confunde el denominador (10, 100, 1000).</td>
+<td>No logra escribir la fracción.</td>
+</tr>
+<tr>
+<td>Reconoce equivalencias comunes</td>
+<td>Recuerda de memoria 1/2, 1/4, 3/4, 1/5, 1/10.</td>
+<td>Recuerda la mayoría de las equivalencias.</td>
+<td>Recuerda solo 1/2 y 1/4.</td>
+<td>No reconoce las equivalencias.</td>
+</tr>
+<tr>
+<td>Resuelve problemas de contexto</td>
+<td>Resuelve con exactitud, con unidades y verificación.</td>
+<td>Resuelve correctamente con unidades.</td>
+<td>Plantea bien pero comete errores de cálculo.</td>
+<td>No interpreta el problema.</td>
+</tr>
+</tbody>
+</table>
+</section>
+<!-- CIERRE -->
+<div class="cierre">
+<h2 id="s-lo-que-viene-en-el-proximo-tema"><span class="num-seccion">➡️</span>Lo que viene en el próximo tema</h2>
+<p>Con esta lección cierra el <strong>Tema 3 · Decimales</strong>. Ya sabe leer, comparar, redondear y operar decimales, convertirlos a fracciones y resolver problemas reales con ellos.</p>
+<p>En el <strong>Tema 4 · Fracciones</strong> estudiará a fondo la otra forma de escribir partes de un entero. La <strong>Lección 4.1 · Fracciones equivalentes, simplificar y comparar</strong> le mostrará cómo una misma cantidad se puede escribir con muchas fracciones distintas, y cómo encontrar la forma más simple — esa idea de "simplificar" que apenas asomó en esta lección.</p>
+<div class="flecha-sig">➡️  Próxima: Tema 4 · Lección 4.1 · Fracciones equivalentes, simplificar y comparar</div>
+</div>
+</div>
+<footer><p>GEDparaHispanos · Matemáticas · Nivel 1 · Tema 3 · Lección 3.3</p><p>José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago</p><p class="licencia">© 2026. Esta obra está licenciada bajo <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" rel="license" target="_blank">Creative Commons Reconocimiento-NoComercial-CompartirIgual 4.0 Internacional (CC BY-NC-SA 4.0)</a>.</p></footer><a aria-label="Volver al contenido de la lección" class="volver-indice" href="#indice"><span aria-hidden="true">↑</span> Índice</a>
 <script>
   const respuestasPractica = {
     p1:"1/5 significa 1 ÷ 5 = 0.2. Una quinta parte de un entero es dos décimas.",
@@ -664,6 +582,5 @@
     document.getElementById('quiz').scrollIntoView({behavior:'smooth', block:'start'});
   });
 </script>
-
 </body>
 </html>

@@ -1,10 +1,12 @@
 <!DOCTYPE html>
+<!-- Lección 5.2 · Matemáticas Nivel 1 · GEDparaHispanos
+     José M. Fernández · CC BY-NC-SA 4.0 -->
 
 <html lang="es">
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Lección 5.2 · Lenguaje algebraico e incógnitas simples — Matemáticas Nivel 1</title>
+<title>Lección 5.2 · Lenguaje algebraico e incógnitas simples — Matemáticas Nivel 1</title><meta content="CC BY-NC-SA 4.0" name="license"/><link href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" rel="license"/>
 <style>
       :root {
         --azul: #bf4500;
@@ -189,46 +191,7 @@
       .et-azul {
         background: var(--azul);
         color: #fff;
-      }
-
-      .modalidades {
-        display: flex;
-        gap: 14px;
-        margin-top: 14px;
-        flex-wrap: wrap;
-      }
-      .modo {
-        flex: 1;
-        min-width: 240px;
-        border-radius: 9px;
-        padding: 13px 16px;
-        background: #fff;
-        border: 1px solid var(--linea);
-      }
-      .modo-pres {
-        border-top: 4px solid var(--azul);
-      }
-      .modo-line {
-        border-top: 4px solid var(--verde);
-      }
-      .modo .modo-tit {
-        display: block;
-        font-weight: 700;
-        font-size: 14px;
-        margin-bottom: 5px;
-      }
-      .modo-pres .modo-tit {
-        color: var(--azul-osc);
-      }
-      .modo-line .modo-tit {
-        color: var(--verde);
-      }
-      .modo p {
-        margin: 4px 0 0;
-        font-size: 15px;
-      }
-
-      /* ── TABLA DE TRADUCCIÓN ── */
+      }/* ── TABLA DE TRADUCCIÓN ── */
       .tabla-trad {
         width: 100%;
         border-collapse: collapse;
@@ -664,7 +627,28 @@
           display: none;
         }
       }
-    </style>
+    
+  /* ── ÍNDICE DE LA LECCIÓN ── */
+  .indice{
+    background:var(--papel); border:1px solid var(--linea); border-left:6px solid var(--azul);
+    border-radius:10px; padding:16px 20px; margin:26px 0;
+  }
+  .indice h2{ font-size:1.05rem; margin:0 0 10px; color:var(--azul-osc); border:0; padding:0; }
+  .indice ol{ margin:0; padding-left:1.3em; }
+  .indice li{ margin:4px 0; }
+  .indice a{ color:var(--azul-osc); text-decoration:underline; }
+  .indice a:hover{ color:var(--azul); }
+  .indice a:focus-visible,.volver-indice:focus-visible{ outline:3px solid #b05e00; outline-offset:2px; }
+  .volver-indice{
+    position:fixed; right:18px; bottom:18px; z-index:60;
+    background:var(--azul-osc); color:#fff; border-radius:999px;
+    padding:10px 16px; font-weight:700; font-size:.92rem; text-decoration:none;
+    box-shadow:0 2px 10px rgba(0,0,0,.28);
+  }
+  .volver-indice:hover{ background:var(--azul); color:#fff; }
+  footer .licencia a{ color:#fff; text-decoration:underline; }
+  @media print{ .indice,.volver-indice{ display:none; } }
+</style>
 </head>
 <body>
 <header class="principal">
@@ -673,9 +657,9 @@
 <h1>Lección 5.2 · Lenguaje algebraico e incógnitas simples</h1>
 <p class="lema">Escribir con símbolos lo que antes decíamos con palabras. Las matemáticas empiezan a usar su propio idioma.</p>
 <div class="chips">
-<span class="chip"><span aria-hidden="true">⏱️</span> 4 horas (2 sinc. + 2 asinc.)</span>
+<span class="chip"><span aria-hidden="true">⏱️</span> Unas 4 horas, a su ritmo</span>
 <span class="chip"><span aria-hidden="true">⚖️</span> Modelo de la balanza</span>
-<span class="chip"><span aria-hidden="true">📘</span> MyOpenMath</span>
+
 </div>
 </div>
 </header>
@@ -685,7 +669,7 @@
 <div class="caja caja-objetivo">
 <h2>
 <span aria-hidden="true" class="num-seccion">🎯</span>
-            Objetivos de la clase
+            Objetivos de la lección
           </h2>
 <p>Al terminar esta lección, usted podrá:</p>
 <ul>
@@ -707,10 +691,10 @@
             </li>
 </ul>
 </div>
-</section>
+</section><nav aria-labelledby="indice-titulo" class="indice" id="indice"><h2 id="indice-titulo">Contenido de la lección</h2><ol><li><a href="#s-el-idioma-del-algebra">El idioma del álgebra</a></li><li><a href="#s-traducir-palabras-a-simbolos">Traducir palabras a símbolos</a></li><li><a href="#s-la-ecuacion-una-balanza-en-equilibrio">La ecuación: una balanza en equilibrio</a></li><li><a href="#s-resolver-con-la-operacion-inversa">Resolver con la operación inversa</a></li><li><a href="#s-verificar-la-solucion">Verificar la solución</a></li><li><a href="#s-tarea">Tarea</a></li><li><a href="#s-quiz-de-practica">Quiz de práctica</a></li><li><a href="#s-rubrica-de-evaluacion">Rúbrica de evaluación</a></li><li><a href="#s-lo-que-viene-en-la-proxima-leccion">Lo que viene en la próxima lección</a></li></ol></nav>
 <!-- EL IDIOMA DEL ÁLGEBRA -->
 <section>
-<h2>
+<h2 id="s-el-idioma-del-algebra">
 <span aria-hidden="true" class="num-seccion">1</span>
           El idioma del álgebra
         </h2>
@@ -745,7 +729,7 @@
 </section>
 <!-- TRADUCIR -->
 <section>
-<h2>
+<h2 id="s-traducir-palabras-a-simbolos">
 <span aria-hidden="true" class="num-seccion">2</span>
           Traducir palabras a símbolos
         </h2>
@@ -851,7 +835,7 @@
 </section>
 <!-- LA BALANZA -->
 <section>
-<h2>
+<h2 id="s-la-ecuacion-una-balanza-en-equilibrio">
 <span aria-hidden="true" class="num-seccion">3</span>
           La ecuación: una balanza en equilibrio
         </h2>
@@ -892,7 +876,7 @@
 </section>
 <!-- RESOLVER CON OPERACIÓN INVERSA -->
 <section>
-<h2>
+<h2 id="s-resolver-con-la-operacion-inversa">
 <span aria-hidden="true" class="num-seccion">4</span>
           Resolver con la operación inversa
         </h2>
@@ -1001,7 +985,7 @@
 </section>
 <!-- VERIFICAR -->
 <section>
-<h2>
+<h2 id="s-verificar-la-solucion">
 <span aria-hidden="true" class="num-seccion">5</span>
           Verificar la solución
         </h2>
@@ -1034,100 +1018,18 @@
           </p>
 </div>
 </section>
-<!-- PRÁCTICA GUIADA -->
+
 <section>
-<h2>
+<h2 id="s-tarea">
 <span aria-hidden="true" class="num-seccion">6</span>
-          Práctica guiada en clase
-        </h2>
-<p>
-          Estas actividades se hacen
-          <strong>en la sesión sincrónica</strong>
-          . Cada actividad incluye una variante para la
-          <strong>clase presencial</strong>
-          y otra para la
-          <strong>clase en línea</strong>
-          ; el objetivo de aprendizaje es el mismo en ambas.
-        </p>
-<div class="caja caja-recurso">
-<span class="etiqueta et-azul">Actividad A · "La balanza misteriosa"</span>
-<p>Los estudiantes resuelven ecuaciones representándolas como una balanza con una caja misteriosa.</p>
-<div class="modalidades">
-<div class="modo modo-pres">
-<span class="modo-tit">🏫 Presencial</span>
-<p>
-                El profesor usa una balanza real (o dibujada en la pizarra): coloca pesas conocidas y una caja cerrada. Los estudiantes deducen el peso de la caja y escriben la ecuación
-                correspondiente.
-              </p>
-</div>
-<div class="modo modo-line">
-<span class="modo-tit">💻 En línea</span>
-<p>Use un applet de balanza de ecuaciones o una diapositiva con una balanza dibujada. Los estudiantes deducen el valor de la caja misteriosa y lo escriben en el chat con su ecuación.</p>
-</div>
-</div>
-</div>
-<div class="caja caja-recurso">
-<span class="etiqueta et-azul">Actividad B · "Traductor de frases"</span>
-<p>Los estudiantes traducen frases en palabras a expresiones algebraicas, y también al revés.</p>
-<div class="modalidades">
-<div class="modo modo-pres">
-<span class="modo-tit">🏫 Presencial</span>
-<p>Reparta tarjetas: unas con frases en palabras, otras con expresiones algebraicas. Los estudiantes buscan la pareja correcta (la frase con su expresión) y la pegan en la pizarra.</p>
-</div>
-<div class="modo modo-line">
-<span class="modo-tit">💻 En línea</span>
-<p>Muestre frases y expresiones en una diapositiva numeradas. Los estudiantes emparejan en el chat (por ejemplo, "frase 3 ↔ expresión B"). El grupo revisa las parejas juntos.</p>
-</div>
-</div>
-</div>
-<div class="caja caja-recurso">
-<span class="etiqueta et-azul">Actividad C · "Resuelve y verifica"</span>
-<p>Los estudiantes resuelven ecuaciones de un paso y verifican cada solución sustituyendo el valor.</p>
-<div class="modalidades">
-<div class="modo modo-pres">
-<span class="modo-tit">🏫 Presencial</span>
-<p>En parejas, cada estudiante resuelve cuatro ecuaciones y el compañero verifica sustituyendo el valor en la ecuación original. Luego intercambian roles.</p>
-</div>
-<div class="modo modo-line">
-<span class="modo-tit">💻 En línea</span>
-<p>
-                En salas pequeñas (breakout rooms) de dos, uno resuelve y comparte la solución; el compañero la verifica sustituyendo, en voz alta. Luego intercambian. El profesor recorre las salas.
-              </p>
-</div>
-</div>
-</div>
-</section>
-<!-- TAREA ASINCRÓNICA -->
-<section>
-<h2>
-<span aria-hidden="true" class="num-seccion">7</span>
-          Tarea asincrónica
-        </h2>
-<p>
-          Estas actividades se realizan
-          <strong>por su cuenta</strong>
-          , dentro de las 2 horas asincrónicas de la lección.
-        </p>
-<ul>
-<li>
-<strong>MyOpenMath:</strong>
-            complete los ejercicios de traducir frases y resolver ecuaciones de un paso. Cada uno da retroalimentación inmediata.  N1-MOM 5.2 · Lenguaje algebraico e incógnitas simples
-          </li>
-<li>
-<strong>Brightspace:</strong>
-            realice el quiz de la lección Lenguaje algebraico.
-          </li>
-<li>
-<strong>Actividad personal:</strong>
-            piense en una situación de su vida con un dato desconocido (por ejemplo, "tenía un dinero, gasté $20 y me quedaron $35; ¿cuánto tenía?"). Escríbala como una ecuación con incógnita y
-            resuélvala.
-          </li>
-</ul>
+          Tarea
+        </h2><p>Esta parte la hace usted solo, a su ritmo. Calcule alrededor de una hora.</p><ul><li><strong>ThatQuiz.</strong> Entre en <a href="https://www.thatquiz.org/es/" rel="noopener noreferrer" target="_blank">ThatQuiz</a> y practique <em>ecuaciones de un paso</em> en la sección de álgebra. Empiece con sumas y restas, y después pase a multiplicación y división.</li><li><strong>Con papel y lápiz.</strong> Traduzca diez frases a símbolos: "el doble de un número", "cinco menos que un número", "un número dividido entre tres"… Después invente la frase al revés: escriba <em>x</em> + 12 = 40 y redacte una situación real que esa ecuación describa.</li><li><strong>En su vida diaria.</strong> Piense en una situación suya con un dato desconocido: "tenía un dinero, gasté $20 y me quedaron $35; ¿cuánto tenía?". Escríbala como ecuación, resuélvala con la operación inversa y verifique sustituyendo.</li></ul>
+
 </section>
 <!-- QUIZ -->
 <section>
-<h2>
-<span aria-hidden="true" class="num-seccion">8</span>
+<h2 id="s-quiz-de-practica">
+<span aria-hidden="true" class="num-seccion">7</span>
           Quiz de práctica
         </h2>
 <p>
@@ -1249,11 +1151,11 @@
 </section>
 <!-- RÚBRICA -->
 <section>
-<h2>
-<span aria-hidden="true" class="num-seccion">9</span>
+<h2 id="s-rubrica-de-evaluacion">
+<span aria-hidden="true" class="num-seccion">8</span>
           Rúbrica de evaluación
         </h2>
-<p>Rúbrica de introducción al álgebra. Cada criterio se evalúa en cuatro niveles.</p>
+<p>Rúbrica de introducción al álgebra. Cada criterio se evalúa en cuatro niveles. Léala <strong>antes</strong> de empezar la tarea y úsela <strong>después</strong> para evaluar su propio trabajo con honestidad.</p>
 <div aria-label="Rúbrica de evaluación (tabla desplazable horizontalmente)" class="tabla-scroll" role="region" tabindex="0"><table class="tabla-rubrica"><caption class="cap-oculto">Rúbrica de evaluación: criterios y sus niveles de logro</caption>
 <thead>
 <tr>
@@ -1298,7 +1200,7 @@
 </section>
 <!-- CIERRE -->
 <div class="cierre">
-<h2>
+<h2 id="s-lo-que-viene-en-la-proxima-leccion">
 <span aria-hidden="true" class="num-seccion">➡️</span>
           Lo que viene en la próxima lección
         </h2>
@@ -1312,11 +1214,7 @@
 <p class="flecha-sig">➡️  Próxima: Lección 5.3 · Problemas verbales de un paso con las cuatro operaciones</p>
 </div>
 </div>
-<footer>
-      Matemáticas · Nivel 1 · Lección 5.2 — Spanish ASE Math · AE 0170-0321
-      <br/>
-      City Colleges of Chicago · Truman College · Prof. José M. Fernández
-    </footer>
+<footer><p>GEDparaHispanos · Matemáticas · Nivel 1 · Tema 5 · Lección 5.2</p><p>José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago</p><p class="licencia">© 2026. Esta obra está licenciada bajo <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" rel="license" target="_blank">Creative Commons Reconocimiento-NoComercial-CompartirIgual 4.0 Internacional (CC BY-NC-SA 4.0)</a>.</p></footer><a aria-label="Volver al contenido de la lección" class="volver-indice" href="#indice"><span aria-hidden="true">↑</span> Índice</a>
 <script>
       // ── PRÁCTICA INTERACTIVA ──
       var respuestasPractica = {

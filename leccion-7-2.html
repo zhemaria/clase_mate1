@@ -1,10 +1,12 @@
 <!DOCTYPE html>
+<!-- Lección 7.2 · Matemáticas Nivel 1 · GEDparaHispanos
+     José M. Fernández · CC BY-NC-SA 4.0 -->
 
 <html lang="es">
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Lección 7.2 · Perímetro de polígonos — Matemáticas Nivel 1</title>
+<title>Lección 7.2 · Perímetro de polígonos — Matemáticas Nivel 1</title><meta content="CC BY-NC-SA 4.0" name="license"/><link href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" rel="license"/>
 <style>
       :root {
         --azul: #37474f;
@@ -190,46 +192,7 @@
       .et-azul {
         background: var(--acento);
         color: #fff;
-      }
-
-      .modalidades {
-        display: flex;
-        gap: 14px;
-        margin-top: 14px;
-        flex-wrap: wrap;
-      }
-      .modo {
-        flex: 1;
-        min-width: 240px;
-        border-radius: 9px;
-        padding: 13px 16px;
-        background: #fff;
-        border: 1px solid var(--linea);
-      }
-      .modo-pres {
-        border-top: 4px solid var(--acento);
-      }
-      .modo-line {
-        border-top: 4px solid var(--verde);
-      }
-      .modo .modo-tit {
-        display: block;
-        font-weight: 700;
-        font-size: 14px;
-        margin-bottom: 5px;
-      }
-      .modo-pres .modo-tit {
-        color: var(--azul-osc);
-      }
-      .modo-line .modo-tit {
-        color: var(--verde);
-      }
-      .modo p {
-        margin: 4px 0 0;
-        font-size: 15px;
-      }
-
-      /* ── FÓRMULAS ── */
+      }/* ── FÓRMULAS ── */
       .formulas {
         display: flex;
         gap: 14px;
@@ -633,7 +596,28 @@
           display: none;
         }
       }
-    </style>
+    
+  /* ── ÍNDICE DE LA LECCIÓN ── */
+  .indice{
+    background:var(--papel); border:1px solid var(--linea); border-left:6px solid var(--azul);
+    border-radius:10px; padding:16px 20px; margin:26px 0;
+  }
+  .indice h2{ font-size:1.05rem; margin:0 0 10px; color:var(--azul-osc); border:0; padding:0; }
+  .indice ol{ margin:0; padding-left:1.3em; }
+  .indice li{ margin:4px 0; }
+  .indice a{ color:var(--azul-osc); text-decoration:underline; }
+  .indice a:hover{ color:var(--azul); }
+  .indice a:focus-visible,.volver-indice:focus-visible{ outline:3px solid #b05e00; outline-offset:2px; }
+  .volver-indice{
+    position:fixed; right:18px; bottom:18px; z-index:60;
+    background:var(--azul-osc); color:#fff; border-radius:999px;
+    padding:10px 16px; font-weight:700; font-size:.92rem; text-decoration:none;
+    box-shadow:0 2px 10px rgba(0,0,0,.28);
+  }
+  .volver-indice:hover{ background:var(--azul); color:#fff; }
+  footer .licencia a{ color:#fff; text-decoration:underline; }
+  @media print{ .indice,.volver-indice{ display:none; } }
+</style>
 </head>
 <body>
 <header class="principal">
@@ -642,9 +626,9 @@
 <h1>Lección 7.2 · Perímetro de polígonos</h1>
 <p class="lema">Calcular la distancia alrededor de una figura: para cercar, enmarcar o bordear.</p>
 <div class="chips">
-<span class="chip"><span aria-hidden="true">⏱️</span> 4 horas (2 sinc. + 2 asinc.)</span>
+<span class="chip"><span aria-hidden="true">⏱️</span> Unas 4 horas, a su ritmo</span>
 <span class="chip"><span aria-hidden="true">📏</span> Perímetro</span>
-<span class="chip"><span aria-hidden="true">📘</span> MyOpenMath</span>
+
 </div>
 </div>
 </header>
@@ -654,7 +638,7 @@
 <div class="caja caja-objetivo">
 <h2>
 <span aria-hidden="true" class="num-seccion">🎯</span>
-            Objetivos de la clase
+            Objetivos de la lección
           </h2>
 <p>Al terminar esta lección, usted podrá:</p>
 <ul>
@@ -676,10 +660,10 @@
             </li>
 </ul>
 </div>
-</section>
+</section><nav aria-labelledby="indice-titulo" class="indice" id="indice"><h2 id="indice-titulo">Contenido de la lección</h2><ol><li><a href="#s-que-es-el-perimetro">¿Qué es el perímetro?</a></li><li><a href="#s-perimetro-sumar-todos-los-lados">Perímetro: sumar todos los lados</a></li><li><a href="#s-formulas-para-el-cuadrado-y-el-rectangulo">Fórmulas para el cuadrado y el rectángulo</a></li><li><a href="#s-hallar-un-lado-cuando-se-conoce-el-perimetro">Hallar un lado cuando se conoce el perímetro</a></li><li><a href="#s-problemas-reales-de-perimetro">Problemas reales de perímetro</a></li><li><a href="#s-tarea">Tarea</a></li><li><a href="#s-quiz-de-practica">Quiz de práctica</a></li><li><a href="#s-rubrica-de-evaluacion">Rúbrica de evaluación</a></li><li><a href="#s-lo-que-viene-en-la-proxima-leccion">Lo que viene en la próxima lección</a></li></ol></nav>
 <!-- QUÉ ES -->
 <section>
-<h2>
+<h2 id="s-que-es-el-perimetro">
 <span aria-hidden="true" class="num-seccion">1</span>
           ¿Qué es el perímetro?
         </h2>
@@ -722,7 +706,7 @@
 </section>
 <!-- SUMAR LADOS -->
 <section>
-<h2>
+<h2 id="s-perimetro-sumar-todos-los-lados">
 <span aria-hidden="true" class="num-seccion">2</span>
           Perímetro: sumar todos los lados
         </h2>
@@ -787,7 +771,7 @@
 </section>
 <!-- FÓRMULAS -->
 <section>
-<h2>
+<h2 id="s-formulas-para-el-cuadrado-y-el-rectangulo">
 <span aria-hidden="true" class="num-seccion">3</span>
           Fórmulas para el cuadrado y el rectángulo
         </h2>
@@ -890,7 +874,7 @@
 </section>
 <!-- LADO DESCONOCIDO -->
 <section>
-<h2>
+<h2 id="s-hallar-un-lado-cuando-se-conoce-el-perimetro">
 <span aria-hidden="true" class="num-seccion">4</span>
           Hallar un lado cuando se conoce el perímetro
         </h2>
@@ -960,7 +944,7 @@
 </section>
 <!-- PROBLEMAS REALES -->
 <section>
-<h2>
+<h2 id="s-problemas-reales-de-perimetro">
 <span aria-hidden="true" class="num-seccion">5</span>
           Problemas reales de perímetro
         </h2>
@@ -1001,102 +985,18 @@
 <div aria-live="polite" class="respuesta-int" id="r-p5" role="status"></div>
 </div>
 </section>
-<!-- PRÁCTICA GUIADA -->
+
 <section>
-<h2>
+<h2 id="s-tarea">
 <span aria-hidden="true" class="num-seccion">6</span>
-          Práctica guiada en clase
-        </h2>
-<p>
-          Estas actividades se hacen
-          <strong>en la sesión sincrónica</strong>
-          . Cada actividad incluye una variante para la
-          <strong>clase presencial</strong>
-          y otra para la
-          <strong>clase en línea</strong>
-          ; el objetivo de aprendizaje es el mismo en ambas.
-        </p>
-<div class="caja caja-recurso">
-<span class="etiqueta et-azul">Actividad A · "Medir y calcular"</span>
-<p>Los estudiantes miden figuras dibujadas con una regla, calculan el perímetro y verifican midiendo de nuevo.</p>
-<div class="modalidades">
-<div class="modo modo-pres">
-<span class="modo-tit">🏫 Presencial</span>
-<p>Reparta hojas con figuras dibujadas en cuadrícula. Cada estudiante mide los lados con la regla, calcula el perímetro y compara su resultado con el de un compañero.</p>
-</div>
-<div class="modo modo-line">
-<span class="modo-tit">💻 En línea</span>
-<p>Comparta figuras con sus medidas marcadas en una diapositiva. Los estudiantes calculan el perímetro en papel y publican el resultado en el chat. El grupo revisa juntos.</p>
-</div>
-</div>
-</div>
-<div class="caja caja-recurso">
-<span class="etiqueta et-azul">Actividad B · "El jardinero"</span>
-<p>A partir del plano de un jardín irregular de 5 lados, los estudiantes calculan cuántos metros de cerca se necesitan.</p>
-<div class="modalidades">
-<div class="modo modo-pres">
-<span class="modo-tit">🏫 Presencial</span>
-<p>
-                Reparta el plano del jardín irregular con las medidas de sus 5 lados. En parejas, los estudiantes calculan el perímetro. Luego diseñan su propio jardín rectangular con un perímetro
-                dado (por ejemplo, 24 m): ¿cuántas dimensiones distintas son posibles?
-              </p>
-</div>
-<div class="modo modo-line">
-<span class="modo-tit">💻 En línea</span>
-<p>
-                Comparta el plano del jardín en una diapositiva. Los estudiantes calculan la cerca necesaria y publican su respuesta. Para el reto del jardín de 24 m, proponen dimensiones en el chat y
-                el grupo las compara.
-              </p>
-</div>
-</div>
-</div>
-<div class="caja caja-recurso">
-<span class="etiqueta et-azul">Actividad C · "El lado que falta"</span>
-<p>Los estudiantes practican hallar un lado desconocido a partir del perímetro conocido.</p>
-<div class="modalidades">
-<div class="modo modo-pres">
-<span class="modo-tit">🏫 Presencial</span>
-<p>Reparta tarjetas con figuras donde se da el perímetro y faltan uno o más lados. Cada estudiante plantea la ecuación y despeja el lado faltante; verifican en parejas.</p>
-</div>
-<div class="modo modo-line">
-<span class="modo-tit">💻 En línea</span>
-<p>Muestre las figuras con lado faltante en diapositivas. Los estudiantes escriben en el chat la ecuación y el lado que hallaron. El grupo revisa los procedimientos juntos.</p>
-</div>
-</div>
-</div>
-</section>
-<!-- TAREA ASINCRÓNICA -->
-<section>
-<h2>
-<span aria-hidden="true" class="num-seccion">7</span>
-          Tarea asincrónica
-        </h2>
-<p>
-          Estas actividades se realizan
-          <strong>por su cuenta</strong>
-          , dentro de las 2 horas asincrónicas de la lección.
-        </p>
-<ul>
-<li>
-<strong>MyOpenMath:</strong>
-            complete los
-            <strong>8 problemas</strong>
-            de perímetro (calcular el perímetro y hallar lados faltantes). Cada uno da retroalimentación inmediata.
-          </li>
-<li>
-<strong>Brightspace:</strong>
-            realice el quiz de la lección (abajo puede practicarlo antes).
-          </li>
-<li>
-<strong>Actividad personal:</strong>
-            mida con una cinta el perímetro de una mesa, una ventana o una habitación de su casa. Anote las medidas y el perímetro total.
-          </li>
-</ul>
+          Tarea
+        </h2><p>Esta parte la hace usted solo, a su ritmo. Calcule alrededor de una hora, con la cinta de medir a mano.</p><ul><li><strong>ThatQuiz.</strong> Entre en <a href="https://www.thatquiz.org/es/" rel="noopener noreferrer" target="_blank">ThatQuiz</a> y practique los ejercicios de <em>perímetro</em>. Cuando los resuelva con soltura, busque los que dan el perímetro y piden un lado: ese es el tipo que más se atraviesa en el GED.</li><li><strong>Con papel y lápiz.</strong> Resuelva ocho problemas: cuatro de calcular el perímetro y cuatro de hallar un lado que falta. En cada uno dibuje la figura y escriba la medida sobre cada lado antes de sumar. El dibujo evita la mitad de los errores.</li><li><strong>En su casa.</strong> Mida con una cinta el perímetro de una mesa, una ventana y una habitación. Anote las medidas de cada lado y el total. De paso, calcule cuánta moldura o cuánto cordón necesitaría para rodear cada una.</li></ul>
+
 </section>
 <!-- QUIZ -->
 <section>
-<h2>
-<span aria-hidden="true" class="num-seccion">8</span>
+<h2 id="s-quiz-de-practica">
+<span aria-hidden="true" class="num-seccion">7</span>
           Quiz de práctica
         </h2>
 <p>
@@ -1198,11 +1098,11 @@
 </section>
 <!-- RÚBRICA -->
 <section>
-<h2>
-<span aria-hidden="true" class="num-seccion">9</span>
+<h2 id="s-rubrica-de-evaluacion">
+<span aria-hidden="true" class="num-seccion">8</span>
           Rúbrica de evaluación
         </h2>
-<p>Rúbrica de cálculo de perímetro. Cada criterio se evalúa en cuatro niveles.</p>
+<p>Rúbrica de cálculo de perímetro. Cada criterio se evalúa en cuatro niveles. Léala <strong>antes</strong> de empezar la tarea y úsela <strong>después</strong> para evaluar su propio trabajo con honestidad.</p>
 <div aria-label="Rúbrica de evaluación: criterios y sus niveles de logro (tabla desplazable horizontalmente)" class="tabla-scroll" role="region" tabindex="0"><table class="tabla-rubrica"><caption class="cap-oculto">Rúbrica de evaluación: criterios y sus niveles de logro</caption>
 <thead>
 <tr>
@@ -1247,7 +1147,7 @@
 </section>
 <!-- CIERRE -->
 <div class="cierre">
-<h2>
+<h2 id="s-lo-que-viene-en-la-proxima-leccion">
 <span aria-hidden="true" class="num-seccion">➡️</span>
           Lo que viene en la próxima lección
         </h2>
@@ -1263,11 +1163,7 @@
 <p class="flecha-sig">➡️  Próxima: Lección 7.3 · Área de rectángulos y triángulos</p>
 </div>
 </div>
-<footer>
-      Matemáticas · Nivel 1 · Lección 7.2 — Spanish ASE Math · AE 0170-0321
-      <br/>
-      City Colleges of Chicago · Truman College · Prof. José M. Fernández
-    </footer>
+<footer><p>GEDparaHispanos · Matemáticas · Nivel 1 · Tema 7 · Lección 7.2</p><p>José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago</p><p class="licencia">© 2026. Esta obra está licenciada bajo <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" rel="license" target="_blank">Creative Commons Reconocimiento-NoComercial-CompartirIgual 4.0 Internacional (CC BY-NC-SA 4.0)</a>.</p></footer><a aria-label="Volver al contenido de la lección" class="volver-indice" href="#indice"><span aria-hidden="true">↑</span> Índice</a>
 <script>
       // ── PRÁCTICA INTERACTIVA ──
       var respuestasPractica = {

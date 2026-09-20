@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 
+<!-- Lección 8.3 · Matemáticas Nivel 1 · GEDparaHispanos
+     José M. Fernández · CC BY-NC-SA 4.0 -->
 <!--
   Lección 8.3 · Proyecto final integrador + introducción al GED — Spanish ASE Math, Nivel 1
   © José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago.
@@ -12,10 +14,10 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago" name="author"/>
-<meta content="CC BY-NC-SA 4.0" name="license"/>
-<link href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="license"/>
+
+
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Lección 8.3 · Proyecto final integrador — Matemáticas Nivel 1</title>
+<title>Lección 8.3 · Proyecto final integrador — Matemáticas Nivel 1</title><meta content="CC BY-NC-SA 4.0" name="license"/><link href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" rel="license"/>
 <style>
   :root{
     --azul:#1b5e20; --azul-osc:#0d3b11; --azul-cl:#e8f5e9;
@@ -84,21 +86,7 @@
   .et-verde{background:var(--verde);color:#fff;}
   .et-ambar{background:var(--ambar);color:#fff;}
   .et-azul{background:var(--azul);color:#fff;}
-  .et-oro{background:var(--oro);color:#fff;}
-
-  .modalidades{display:flex;gap:14px;margin-top:14px;flex-wrap:wrap;}
-  .modo{
-    flex:1;min-width:240px;border-radius:9px;padding:13px 16px;
-    background:#fff;border:1px solid var(--linea);
-  }
-  .modo-pres{border-top:4px solid var(--azul);}
-  .modo-line{border-top:4px solid var(--verde);}
-  .modo .modo-tit{display:block;font-weight:700;font-size:14px;margin-bottom:5px;}
-  .modo-pres .modo-tit{color:var(--azul-osc);}
-  .modo-line .modo-tit{color:var(--verde);}
-  .modo p{margin:4px 0 0;font-size:15px;}
-
-  /* ── RECORRIDO DE TEMAS ── */
+  .et-oro{background:var(--oro);color:#fff;}/* ── RECORRIDO DE TEMAS ── */
   .recorrido{display:flex;gap:10px;flex-wrap:wrap;margin:16px 0;}
   .tema-chip{
     flex:1;min-width:150px;background:var(--azul-cl);border-radius:10px;
@@ -297,7 +285,28 @@
           display: none;
         }
       }
-    </style>
+    
+  /* ── ÍNDICE DE LA LECCIÓN ── */
+  .indice{
+    background:var(--papel); border:1px solid var(--linea); border-left:6px solid var(--azul);
+    border-radius:10px; padding:16px 20px; margin:26px 0;
+  }
+  .indice h2{ font-size:1.05rem; margin:0 0 10px; color:var(--azul-osc); border:0; padding:0; }
+  .indice ol{ margin:0; padding-left:1.3em; }
+  .indice li{ margin:4px 0; }
+  .indice a{ color:var(--azul-osc); text-decoration:underline; }
+  .indice a:hover{ color:var(--azul); }
+  .indice a:focus-visible,.volver-indice:focus-visible{ outline:3px solid #b05e00; outline-offset:2px; }
+  .volver-indice{
+    position:fixed; right:18px; bottom:18px; z-index:60;
+    background:var(--azul-osc); color:#fff; border-radius:999px;
+    padding:10px 16px; font-weight:700; font-size:.92rem; text-decoration:none;
+    box-shadow:0 2px 10px rgba(0,0,0,.28);
+  }
+  .volver-indice:hover{ background:var(--azul); color:#fff; }
+  footer .licencia a{ color:#fff; text-decoration:underline; }
+  @media print{ .indice,.volver-indice{ display:none; } }
+</style>
 </head>
 <body>
 <header class="principal">
@@ -306,9 +315,8 @@
 <h1>Lección 8.3 · Proyecto final integrador + introducción al GED</h1>
 <p class="lema">La última lección del Nivel 1: reunir todo lo aprendido en un proyecto personal y prepararse para el GED.</p>
 <div class="chips">
-<span class="chip"><span aria-hidden="true">⏱️</span> 4 horas (2 sinc. + 2 asinc.)</span>
+<span class="chip"><span aria-hidden="true">⏱️</span> Unas 4 horas, a su ritmo</span>
 <span class="chip"><span aria-hidden="true">🎓</span> Proyecto + evaluación final</span>
-<span class="chip"><span aria-hidden="true">📘</span> Steck-Vaughn</span>
 </div>
 </div>
 </header>
@@ -316,7 +324,7 @@
 <!-- OBJETIVOS -->
 <section>
 <div class="caja caja-objetivo">
-<h2><span aria-hidden="true" class="num-seccion">🎯</span>Objetivos de la clase</h2>
+<h2><span aria-hidden="true" class="num-seccion">🎯</span>Objetivos de la lección</h2>
 <p>Al terminar esta lección, usted podrá:</p>
 <ul>
 <li><strong>Crear</strong> el proyecto integrador "Mi gráfica de la vida": tabla, gráfica, párrafo y cálculos.</li>
@@ -325,10 +333,10 @@
 <li><strong>Reconocer</strong> cómo lo aprendido en el Nivel 1 lo prepara para el examen GED.</li>
 </ul>
 </div>
-</section>
+</section><nav aria-labelledby="indice-titulo" class="indice" id="indice"><h2 id="indice-titulo">Contenido de la lección</h2><ol><li><a href="#s-el-final-del-camino-del-nivel-1">El final del camino del Nivel 1</a></li><li><a href="#s-el-proyecto-mi-grafica-de-la-vida">El proyecto: "Mi gráfica de la vida"</a></li><li><a href="#s-explicar-el-proyecto-en-voz-alta">Explicar el proyecto en voz alta</a></li><li><a href="#s-una-mirada-al-examen-ged">Una mirada al examen GED</a></li><li><a href="#s-tarea">Tarea</a></li><li><a href="#s-practica-para-la-evaluacion-final">Práctica para la evaluación final</a></li><li><a href="#s-rubrica-del-proyecto-final">Rúbrica del proyecto final</a></li><li><a href="#s-ha-completado-el-nivel-1">¡Ha completado el Nivel 1!</a></li></ol></nav>
 <!-- TODO EL CAMINO -->
 <section>
-<h2><span aria-hidden="true" class="num-seccion">1</span>El final del camino del Nivel 1</h2>
+<h2 id="s-el-final-del-camino-del-nivel-1"><span aria-hidden="true" class="num-seccion">1</span>El final del camino del Nivel 1</h2>
 <p>Felicidades: ha llegado a la <strong>última lección del Nivel 1</strong>. A lo largo del curso recorrió ocho temas, y cada uno le dejó una herramienta:</p>
 <ul class="recorrido">
 <li class="tema-chip"><p class="tn">Temas 1–2</p><p class="td">Las cuatro operaciones con enteros</p></li>
@@ -349,7 +357,7 @@
 </section>
 <!-- EL PROYECTO -->
 <section>
-<h2><span aria-hidden="true" class="num-seccion">2</span>El proyecto: "Mi gráfica de la vida"</h2>
+<h2 id="s-el-proyecto-mi-grafica-de-la-vida"><span aria-hidden="true" class="num-seccion">2</span>El proyecto: "Mi gráfica de la vida"</h2>
 <p>El proyecto integrador se llama <strong>"Mi gráfica de la vida"</strong>. La idea es sencilla: usted elige un dato de su propia vida, lo registra durante varios días y lo presenta usando todo lo que aprendió en el Tema 8.</p>
 <div class="caja caja-recurso">
 <span class="etiqueta et-azul">📥 Plantilla de trabajo del proyecto</span>
@@ -436,20 +444,12 @@
 </section>
 <!-- PRESENTAR -->
 <section>
-<h2><span aria-hidden="true" class="num-seccion">3</span>Presentar el proyecto</h2>
-<p>Una parte importante del proyecto es <strong>presentarlo oralmente</strong> al grupo, en unos 3 a 4 minutos. Presentar lo que uno hizo es una destreza valiosa — en el estudio y en el trabajo.</p>
-<div class="caja caja-tip">
-<span class="etiqueta et-verde">Cómo presentar bien</span>
-<p>Diga primero <strong>qué dato eligió</strong> y por qué. Luego <strong>muestre su gráfica</strong> y explique qué se ve. Después comparta sus <strong>cálculos</strong> (total, promedio, diferencia). Termine con una <strong>reflexión</strong>: ¿qué aprendió de sus propios datos? Hable claro y con calma.</p>
-</div>
-<div class="caja caja-ojo">
-<span class="etiqueta et-ambar">Frases para comentar el proyecto de un compañero</span>
-<p>Al comentar el trabajo de otra persona, use frases respetuosas: <strong>"Entendí bien que..."</strong>, <strong>"Quiero preguntarte sobre..."</strong>, <strong>"Tu gráfica muestra que..."</strong>. La retroalimentación amable ayuda a todos a mejorar.</p>
-</div>
+<h2 id="s-explicar-el-proyecto-en-voz-alta"><span aria-hidden="true" class="num-seccion">3</span>Explicar el proyecto en voz alta</h2><p>Cuando termine el proyecto, <strong>explíquelo en voz alta</strong> durante tres o cuatro minutos, como si se lo contara a alguien que no sabe nada del tema. Puede hacerlo frente a un familiar, o grabarse con el teléfono y escucharse después. Parece un detalle, pero es el filtro más honesto que existe: lo que no se puede explicar en voz alta todavía no se entendió del todo.</p><div class="caja caja-tip"><span class="etiqueta et-verde">Cómo explicarlo bien</span><p>Diga primero <strong>qué dato eligió</strong> y por qué. Luego <strong>muestre su gráfica</strong> y explique qué se ve en ella. Después comparta sus <strong>cálculos</strong> (total, promedio, diferencia). Termine con una <strong>reflexión</strong>: ¿qué aprendió de sus propios datos? Hable claro y con calma.</p></div><div class="caja caja-ojo"><span class="etiqueta et-ambar">Preguntas que debe hacerse al escucharse</span><p>Después de grabarse, escuche la explicación con estas tres preguntas en la mano: <strong>«¿Se entiende qué dato medí?»</strong>, <strong>«¿Expliqué qué muestra la gráfica o solo leí números?»</strong>, <strong>«¿Dije qué aprendí de mis propios datos?»</strong>. Donde la respuesta sea que no, ahí hay que volver.</p></div>
+
 </section>
 <!-- INTRODUCCIÓN AL GED -->
 <section>
-<h2><span aria-hidden="true" class="num-seccion">4</span>Una mirada al examen GED</h2>
+<h2 id="s-una-mirada-al-examen-ged"><span aria-hidden="true" class="num-seccion">4</span>Una mirada al examen GED</h2>
 <p>El <strong>GED</strong> es el examen que otorga el certificado equivalente al diploma de escuela secundaria. La sección de matemáticas evalúa, en buena parte, lo mismo que usted practicó en este nivel.</p>
 <div class="caja caja-ged">
 <span class="etiqueta et-oro">Lo que ya tiene a su favor</span>
@@ -489,66 +489,13 @@
 <div aria-live="polite" class="respuesta-int" id="r-p4" role="status"></div>
 </div>
 </section>
-<!-- PRÁCTICA GUIADA -->
+
 <section>
-<h2><span aria-hidden="true" class="num-seccion">5</span>Práctica guiada en clase</h2>
-<p>Estas actividades se hacen <strong>en la sesión sincrónica</strong>. Cada actividad incluye una variante para la <strong>clase presencial</strong> y otra para la <strong>clase en línea</strong>; el objetivo de aprendizaje es el mismo en ambas.</p>
-<div class="caja caja-recurso">
-<span class="etiqueta et-azul">Actividad A · "Comparto mi gráfica"</span>
-<p>Cada estudiante presenta su proyecto "Mi gráfica de la vida" al grupo y responde preguntas de los compañeros.</p>
-<div class="modalidades">
-<div class="modo modo-pres">
-<span class="modo-tit">🏫 Presencial</span>
-<p>Cada estudiante pasa al frente y presenta su proyecto en 3–4 minutos, mostrando su gráfica. Responde 1–2 preguntas de los compañeros. El grupo da retroalimentación con la rúbrica del proyecto.</p>
-</div>
-<div class="modo modo-line">
-<span class="modo-tit">💻 En línea</span>
-<p>Cada estudiante comparte su pantalla y presenta su proyecto en 3–4 minutos. Los compañeros hacen 1–2 preguntas por micrófono o chat, usando las frases modelo de retroalimentación.</p>
-</div>
-</div>
-</div>
-<div class="caja caja-recurso">
-<span class="etiqueta et-azul">Actividad B · "Repaso tipo GED"</span>
-<p>En equipos, los estudiantes resuelven preguntas tipo GED de distintos temas, como repaso para la evaluación final.</p>
-<div class="modalidades">
-<div class="modo modo-pres">
-<span class="modo-tit">🏫 Presencial</span>
-<p>Forme equipos. Cada equipo recibe un juego de preguntas tipo GED (mezcla de los ocho temas). Resuelven juntos, identificando primero a qué tema pertenece cada pregunta.</p>
-</div>
-<div class="modo modo-line">
-<span class="modo-tit">💻 En línea</span>
-<p>En salas pequeñas (breakout rooms), los equipos resuelven las preguntas tipo GED en un documento compartido. Al volver al grupo grande, repasan juntos las más difíciles.</p>
-</div>
-</div>
-</div>
-<div class="caja caja-recurso">
-<span class="etiqueta et-azul">Actividad C · "Lo que aprendí en el Nivel 1"</span>
-<p>Los estudiantes reflexionan sobre su recorrido por los ocho temas del nivel.</p>
-<div class="modalidades">
-<div class="modo modo-pres">
-<span class="modo-tit">🏫 Presencial</span>
-<p>Cada estudiante escribe en una tarjeta el tema que más le gustó y uno que quiere seguir practicando. Se comparten en círculo, celebrando el avance de todo el grupo.</p>
-</div>
-<div class="modo modo-line">
-<span class="modo-tit">💻 En línea</span>
-<p>Cada estudiante publica en el foro una breve reflexión: qué tema disfrutó más y cuál quiere reforzar. El grupo lee y comenta, cerrando el nivel con palabras de ánimo.</p>
-</div>
-</div>
-</div>
-</section>
-<!-- TAREA ASINCRÓNICA -->
-<section>
-<h2><span aria-hidden="true" class="num-seccion">6</span>Tarea asincrónica</h2>
-<p>Estas actividades se realizan <strong>por su cuenta</strong>, dentro de las 2 horas asincrónicas de la lección.</p>
-<ul>
-<li><strong>Proyecto:</strong> complete su proyecto "Mi gráfica de la vida" en la plantilla <strong>«plantilla-proyecto-final-nivel1.html»</strong> (tabla, gráfica, párrafo y cálculos) y súbalo a Brightspace en PDF.</li>
-<li><strong>Foro de Brightspace:</strong> comente el proyecto de <strong>dos compañeros</strong> usando las frases modelo ("Entendí bien que... / Quiero preguntarte sobre... / Tu gráfica muestra...").</li>
-<li><strong>Evaluación final:</strong> realice la <strong>evaluación final sumativa</strong> de 25 preguntas en el archivo <strong>«evaluacion-final-nivel1.html»</strong> (abajo puede practicar una versión breve antes).</li>
-</ul>
+<h2 id="s-tarea"><span aria-hidden="true" class="num-seccion">5</span>Tarea</h2><p>Esta es la última tarea del Nivel 1 y la más larga: dese dos o tres sesiones tranquilas.</p><ul><li><strong>El proyecto.</strong> Complete su proyecto «Mi gráfica de la vida» en la plantilla <em>plantilla-proyecto-final-nivel1.html</em>: tabla de datos, gráfica, párrafo de descripción y cálculos (total, promedio y diferencia). Guárdelo en PDF para tenerlo suyo.</li><li><strong>Revíselo con ojos nuevos.</strong> Deje el proyecto reposar un día. Al día siguiente léalo como si fuera de otra persona y use las frases modelo con usted mismo: «Entendí bien que…», «Quiero preguntarme sobre…», «Mi gráfica muestra que…». Lo que no se entienda solo, corríjalo.</li><li><strong>La evaluación final.</strong> Realice la evaluación final de 25 preguntas en <em>evaluacion-final-nivel1.html</em>. Hágala de una sentada, sin interrupciones y sin consultar las lecciones: así sabrá de verdad dónde está parado antes de pasar al Nivel 2.</li></ul>
 </section>
 <!-- QUIZ - EVALUACIÓN FINAL -->
 <section>
-<h2><span aria-hidden="true" class="num-seccion">7</span>Práctica para la evaluación final</h2>
+<h2 id="s-practica-para-la-evaluacion-final"><span aria-hidden="true" class="num-seccion">6</span>Práctica para la evaluación final</h2>
 <p>La <strong>evaluación final sumativa</strong> tiene <strong>25 preguntas</strong> que mezclan los ocho temas (5 de operaciones, 5 de fracciones y decimales, 5 de medidas, 5 de geometría y 5 de tablas y gráficas), con calculadora TI-30XS permitida (recuerde limpiar la memoria).</p>
 <div class="caja caja-ged">
 <span class="etiqueta et-oro">📝 Evaluación final sumativa (archivo independiente)</span>
@@ -671,8 +618,8 @@
 </section>
 <!-- RÚBRICA -->
 <section>
-<h2><span aria-hidden="true" class="num-seccion">8</span>Rúbrica del proyecto final</h2>
-<p>Rúbrica analítica del proyecto "Mi gráfica de la vida" (5 criterios × 4 niveles). La nota del proyecto se combina con la de la evaluación final.</p>
+<h2 id="s-rubrica-del-proyecto-final"><span aria-hidden="true" class="num-seccion">7</span>Rúbrica del proyecto final</h2>
+<p>Rúbrica analítica del proyecto "Mi gráfica de la vida" (5 criterios × 4 niveles). La nota del proyecto se combina con la de la evaluación final. Léala <strong>antes</strong> de empezar la tarea y úsela <strong>después</strong> para evaluar su propio trabajo con honestidad.</p>
 <div aria-label="Rúbrica de evaluación: criterios y sus niveles de logro (tabla desplazable horizontalmente)" class="tabla-scroll" role="region" tabindex="0"><table class="tabla-rubrica"><caption class="cap-oculto">Rúbrica de evaluación: criterios y sus niveles de logro</caption>
 <thead>
 <tr>
@@ -724,7 +671,7 @@
 </section>
 <!-- CIERRE -->
 <div class="cierre">
-<h2><span aria-hidden="true" class="num-seccion">🎓</span>¡Ha completado el Nivel 1!</h2>
+<h2 id="s-ha-completado-el-nivel-1"><span aria-hidden="true" class="num-seccion">🎓</span>¡Ha completado el Nivel 1!</h2>
 <p>Con esta lección cierra el <strong>Tema 8</strong> y, con él, <strong>todo el Spanish ASE Math: Level 1</strong>. Recorrió los ocho temas: las cuatro operaciones, los decimales, las fracciones, los patrones y el álgebra inicial, las medidas, la geometría y los datos.</p>
 <div class="diploma">
 <p class="dico">🎓</p>
@@ -734,12 +681,7 @@
 <p style="margin-top:16px;">El camino sigue. El <strong>Nivel 2</strong> tomará estos cimientos y construirá sobre ellos: números negativos, el orden completo de operaciones, porcentajes, proporciones e interés simple — acercándolo cada vez más al examen GED. <strong>Felicidades por llegar hasta aquí.</strong></p>
 </div>
 </div>
-<footer>
-  Matemáticas · Nivel 1 · Lección 8.3 — Spanish ASE Math · AE 0170-0321<br/>
-  City Colleges of Chicago · Truman College · Prof. José M. Fernández<br/>
-  © José M. Fernández, ABE/ASE Math Master Teacher. Licencia
-  <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="license" style="color:#2e7d32;">CC BY-NC-SA 4.0</a>.
-</footer>
+<footer><p>GEDparaHispanos · Matemáticas · Nivel 1 · Tema 8 · Lección 8.3</p><p>José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago</p><p class="licencia">© 2026. Esta obra está licenciada bajo <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" rel="license" target="_blank">Creative Commons Reconocimiento-NoComercial-CompartirIgual 4.0 Internacional (CC BY-NC-SA 4.0)</a>.</p></footer><a aria-label="Volver al contenido de la lección" class="volver-indice" href="#indice"><span aria-hidden="true">↑</span> Índice</a>
 <script>
       // ── PRÁCTICA INTERACTIVA ──
       var respuestasPractica = {

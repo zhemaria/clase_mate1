@@ -1,9 +1,11 @@
 <!DOCTYPE html>
+<!-- Lección 8.2 · Matemáticas Nivel 1 · GEDparaHispanos
+     José M. Fernández · CC BY-NC-SA 4.0 -->
 
 <html lang="es"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Lección 8.2 · Gráficas de barras y de líneas</title>
+<title>Lección 8.2 · Gráficas de barras y de líneas</title><meta content="CC BY-NC-SA 4.0" name="license"/><link href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" rel="license"/>
 <style>
   :root{
     --azul:#1b5e20; --azul-osc:#0d3b11; --azul-cl:#e8f5e9;
@@ -61,46 +63,6 @@
   .caja-ojo{background:var(--ambar-cl);border-color:var(--ambar);}
   .caja-ojo strong{color:var(--ambar);}
   .caja-recurso{background:#eef2f7;border-color:var(--gris);}
-
-  /* ── ENLACE INTERACTIVO ── */
-  .caja-tarea{
-    display:flex;align-items:center;gap:12px;flex-wrap:wrap;
-    background:var(--azul-cl);border:1px solid #cfe6d2;
-    border-left:5px solid var(--azul);border-radius:11px;
-    padding:13px 18px;margin:12px 0;
-  }
-  .caja-tarea .et-interactivo{
-    flex-shrink:0;background:var(--azul);color:#fff;
-    font-size:12px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;
-    padding:4px 11px;border-radius:5px;
-  }
-  .caja-tarea .enlace-interactivo{
-    font-weight:700;font-size:15.5px;color:var(--azul-osc);
-    text-decoration:none;border-bottom:2px solid var(--verde);
-    padding-bottom:1px;transition:.16s;
-  }
-  .caja-tarea .enlace-interactivo:hover{color:var(--verde);border-bottom-color:var(--azul);}
-  .caja-tarea .enlace-interactivo .flecha-ext{margin-left:5px;font-weight:400;}
-
-  .etiqueta{
-    display:inline-block;font-size:12px;font-weight:700;letter-spacing:.5px;
-    text-transform:uppercase;padding:3px 10px;border-radius:5px;margin-bottom:6px;
-  }
-  .et-verde{background:var(--verde);color:#fff;}
-  .et-ambar{background:var(--ambar);color:#fff;}
-  .et-azul{background:var(--azul);color:#fff;}
-
-  .modalidades{display:flex;gap:14px;margin-top:14px;flex-wrap:wrap;}
-  .modo{
-    flex:1;min-width:240px;border-radius:9px;padding:13px 16px;
-    background:#fff;border:1px solid var(--linea);
-  }
-  .modo-pres{border-top:4px solid var(--azul);}
-  .modo-line{border-top:4px solid var(--verde);}
-  .modo .modo-tit{display:block;font-weight:700;font-size:14px;margin-bottom:5px;}
-  .modo-pres .modo-tit{color:var(--azul-osc);}
-  .modo-line .modo-tit{color:var(--verde);}
-  .modo p{margin:4px 0 0;font-size:15px;}
 
   /* ── GRÁFICAS ── */
   .grafica-caja{
@@ -297,19 +259,40 @@
           display: none;
         }
       }
-    </style>
+    
+  /* ── ÍNDICE DE LA LECCIÓN ── */
+  .indice{
+    background:var(--papel); border:1px solid var(--linea); border-left:6px solid var(--azul);
+    border-radius:10px; padding:16px 20px; margin:26px 0;
+  }
+  .indice h2{ font-size:1.05rem; margin:0 0 10px; color:var(--azul-osc); border:0; padding:0; }
+  .indice ol{ margin:0; padding-left:1.3em; }
+  .indice li{ margin:4px 0; }
+  .indice a{ color:var(--azul-osc); text-decoration:underline; }
+  .indice a:hover{ color:var(--azul); }
+  .indice a:focus-visible,.volver-indice:focus-visible{ outline:3px solid #b05e00; outline-offset:2px; }
+  .volver-indice{
+    position:fixed; right:18px; bottom:18px; z-index:60;
+    background:var(--azul-osc); color:#fff; border-radius:999px;
+    padding:10px 16px; font-weight:700; font-size:.92rem; text-decoration:none;
+    box-shadow:0 2px 10px rgba(0,0,0,.28);
+  }
+  .volver-indice:hover{ background:var(--azul); color:#fff; }
+  footer .licencia a{ color:#fff; text-decoration:underline; }
+  @media print{ .indice,.volver-indice{ display:none; } }
+</style>
 </head><body><header class="principal">
 <div class="envoltura-header">
 <p class="ruta">Matemáticas · Nivel 1 · Tema 8 — Tablas, gráficas y proyecto final</p>
 <h1>Lección 8.2 · Gráficas de barras y de líneas</h1>
 <p class="lema">Los datos en dibujos: leer gráficas, identificar tendencias y construir la propia.</p>
-<div class="chips"><span class="chip"><span aria-hidden="true">⏱️</span> 4 horas (2 sinc. + 2 asinc.)</span> <span class="chip"><span aria-hidden="true">📊</span> Barras y líneas</span> <span class="chip"><span aria-hidden="true">📘</span> MyOpenMath</span></div>
+<div class="chips"><span class="chip"><span aria-hidden="true">⏱️</span> Unas 4 horas, a su ritmo</span> <span class="chip"><span aria-hidden="true">📊</span> Barras y líneas</span> </div>
 </div>
 </header>
 <div class="envoltura"><!-- OBJETIVOS -->
 <section>
 <div class="caja caja-objetivo">
-<h2><span aria-hidden="true" class="num-seccion">🎯</span>Objetivos de la clase</h2>
+<h2><span aria-hidden="true" class="num-seccion">🎯</span>Objetivos de la lección</h2>
 <p>Al terminar esta lección, usted podrá:</p>
 <ul>
 <li><strong>Identificar</strong> el título, los ejes y la escala de una gráfica.</li>
@@ -318,10 +301,10 @@
 <li><strong>Construir</strong> una gráfica de barras sencilla a partir de datos dados.</li>
 </ul>
 </div>
-</section>
+</section><nav aria-labelledby="indice-titulo" class="indice" id="indice"><h2 id="indice-titulo">Contenido de la lección</h2><ol><li><a href="#s-de-la-tabla-a-la-grafica">De la tabla a la gráfica</a></li><li><a href="#s-leer-una-grafica-en-5-pasos">Leer una gráfica en 5 pasos</a></li><li><a href="#s-la-grafica-de-barras">La gráfica de barras</a></li><li><a href="#s-la-grafica-de-lineas-y-las-tendencias">La gráfica de líneas y las tendencias</a></li><li><a href="#s-construir-una-grafica-de-barras">Construir una gráfica de barras</a></li><li><a href="#s-tarea">Tarea</a></li><li><a href="#s-quiz-de-practica">Quiz de práctica</a></li><li><a href="#s-rubrica-de-evaluacion">Rúbrica de evaluación</a></li><li><a href="#s-lo-que-viene-en-la-proxima-leccion">Lo que viene en la próxima lección</a></li></ol></nav>
 <!-- DE LA TABLA A LA GRÁFICA -->
 <section>
-<h2><span aria-hidden="true" class="num-seccion">1</span>De la tabla a la gráfica</h2>
+<h2 id="s-de-la-tabla-a-la-grafica"><span aria-hidden="true" class="num-seccion">1</span>De la tabla a la gráfica</h2>
 <p>En la <strong>Lección 8.1</strong> aprendió a leer los datos en una <strong>tabla</strong>, donde la información aparece como números. Hoy verá otra forma de presentar esos mismos datos: la <strong>gráfica</strong>, donde la información se vuelve un <strong>dibujo</strong>.</p>
 <p>Una gráfica tiene una gran ventaja: <strong>de un solo vistazo</strong> se ve cuál valor es mayor, cuál es menor y cómo cambian las cosas. Lo que en una tabla hay que leer número por número, en una gráfica se ve enseguida.</p>
 <div class="caja caja-tip"><span class="etiqueta et-verde">Dos gráficas muy comunes</span>
@@ -330,7 +313,7 @@
 </section>
 <!-- LEER UNA GRÁFICA -->
 <section>
-<h2><span aria-hidden="true" class="num-seccion">2</span>Leer una gráfica en 5 pasos</h2>
+<h2 id="s-leer-una-grafica-en-5-pasos"><span aria-hidden="true" class="num-seccion">2</span>Leer una gráfica en 5 pasos</h2>
 <p>Toda gráfica se lee igual. Siga estos cinco pasos antes de responder cualquier pregunta:</p>
 <div class="pasos-leer">
 <p class="pl"><span class="pln">1</span> <strong>El título</strong> <span class="txt">¿De qué trata la gráfica?</span></p>
@@ -345,7 +328,7 @@
 </section>
 <!-- GRÁFICA DE BARRAS -->
 <section>
-<h2><span aria-hidden="true" class="num-seccion">3</span>La gráfica de barras</h2>
+<h2 id="s-la-grafica-de-barras"><span aria-hidden="true" class="num-seccion">3</span>La gráfica de barras</h2>
 <p>La <strong>gráfica de barras</strong> sirve para <strong>comparar cantidades</strong>. Cada barra representa algo, y su <strong>altura</strong> indica el valor: mientras más alta la barra, más grande el valor.</p>
 <div class="grafica-caja">
 <p class="gtit">Ventas de una tienda por día (en dólares)</p>
@@ -426,7 +409,7 @@
 </section>
 <!-- GRÁFICA DE LÍNEAS -->
 <section>
-<h2><span aria-hidden="true" class="num-seccion">4</span>La gráfica de líneas y las tendencias</h2>
+<h2 id="s-la-grafica-de-lineas-y-las-tendencias"><span aria-hidden="true" class="num-seccion">4</span>La gráfica de líneas y las tendencias</h2>
 <p>La <strong>gráfica de líneas</strong> sirve para mostrar <strong>cómo cambia algo con el tiempo</strong>. Une puntos con una línea: cuando la línea sube, el valor aumenta; cuando baja, disminuye.</p>
 <div class="grafica-caja">
 <p class="gtit">Temperatura de una ciudad durante la semana (°F)</p>
@@ -534,7 +517,7 @@
 </section>
 <!-- CONSTRUIR UNA GRÁFICA -->
 <section>
-<h2><span aria-hidden="true" class="num-seccion">5</span>Construir una gráfica de barras</h2>
+<h2 id="s-construir-una-grafica-de-barras"><span aria-hidden="true" class="num-seccion">5</span>Construir una gráfica de barras</h2>
 <p>Leer gráficas es importante, pero también lo es saber <strong>hacer una</strong>. Para construir una gráfica de barras a partir de una tabla, siga estos pasos:</p>
 <div class="ejemplo">
 <p class="titulo-ej">Construir una gráfica de barras paso a paso</p>
@@ -558,57 +541,14 @@
 <div class="caja-tarea"><span class="et-interactivo">Interactivo</span> <a class="enlace-interactivo" href="https://zhemaria.github.io/graficos/barras/" rel="noopener" target="_blank">Construye un gráfico de barras<span aria-hidden="true" class="flecha-ext">↗</span></a></div>
 <div class="caja-tarea"><span class="et-interactivo">Interactivo</span> <a class="enlace-interactivo" href="https://zhemaria.github.io/graficos/lineas/" rel="noopener" target="_blank">Construye un gráfico de líneas<span aria-hidden="true" class="flecha-ext">↗</span></a></div>
 </section>
-<!-- PRÁCTICA GUIADA -->
+
 <section>
-<h2><span aria-hidden="true" class="num-seccion">6</span>Práctica guiada en clase</h2>
-<p>Estas actividades se hacen <strong>en la sesión sincrónica</strong>. Cada actividad incluye una variante para la <strong>clase presencial</strong> y otra para la <strong>clase en línea</strong>; el objetivo de aprendizaje es el mismo en ambas.</p>
-<div class="caja caja-recurso"><span class="etiqueta et-azul">Actividad A · "Mi gráfica del mes"</span>
-<p>Cada estudiante usa datos que recopiló durante dos semanas (un dato diario) para crear su propia gráfica de líneas.</p>
-<div class="modalidades">
-<div class="modo modo-pres"><span class="modo-tit">🏫 Presencial</span>
-<p>Cada estudiante trae su tabla de un dato diario recopilado durante dos semanas (temperatura, gasto diario, minutos de estudio). En papel cuadriculado, construye su gráfica de líneas y la comparte con el grupo.</p>
-</div>
-<div class="modo modo-line"><span class="modo-tit">💻 En línea</span>
-<p>Cada estudiante construye su gráfica de líneas con sus datos de dos semanas, le toma una foto o la dibuja, y la comparte en el foro. El grupo comenta las tendencias que observa.</p>
-</div>
-</div>
-</div>
-<div class="caja caja-recurso"><span class="etiqueta et-azul">Actividad B · "La gráfica del empleo"</span>
-<p>Los estudiantes interpretan una gráfica de barras real sobre el nivel de empleo en Chicago en los últimos meses.</p>
-<div class="modalidades">
-<div class="modo modo-pres"><span class="modo-tit">🏫 Presencial</span>
-<p>Reparta la gráfica de barras del empleo en Chicago. En parejas, los estudiantes responden: ¿qué mes tuvo más empleo? ¿cuál tuvo menos? ¿la tendencia general sube o baja?</p>
-</div>
-<div class="modo modo-line"><span class="modo-tit">💻 En línea</span>
-<p>Comparta la <a href="https://www.chicagofed.org/research/data/chicago-fed-labor-market-indicators/latest-release" rel="noopener" target="_blank">gráfica de empleo</a> en una diapositiva. Los estudiantes responden las preguntas de interpretación en el chat y el grupo discute la tendencia general.</p>
-</div>
-</div>
-</div>
-<div class="caja caja-recurso"><span class="etiqueta et-azul">Actividad C · "De la tabla a la gráfica"</span>
-<p>A partir de una tabla de datos, los estudiantes construyen la gráfica de barras correspondiente.</p>
-<div class="modalidades">
-<div class="modo modo-pres"><span class="modo-tit">🏫 Presencial</span>
-<p>Reparta una tabla sencilla. Cada estudiante construye en papel cuadriculado la gráfica de barras: título, ejes, escala y barras etiquetadas. Verifican en parejas.</p>
-</div>
-<div class="modo modo-line"><span class="modo-tit">💻 En línea</span>
-<p>Comparta la <a href="https://www.ccc.edu/wp-content/uploads/CCCFY24StatisticalDigest_As-of-April_29_2025.pdf" rel="noopener" target="_blank">tabla </a>en una diapositiva. Los estudiantes dibujan la gráfica en papel, la muestran a la cámara o la fotografían, y el grupo revisa que tenga título, ejes y escala correctos.</p>
-</div>
-</div>
-</div>
-</section>
-<!-- TAREA ASINCRÓNICA -->
-<section>
-<h2><span aria-hidden="true" class="num-seccion">7</span>Tarea asincrónica</h2>
-<p>Estas actividades se realizan <strong>por su cuenta</strong>, dentro de las 2 horas asincrónicas de la lección.</p>
-<ul>
-<li><strong>MyOpenMath:</strong> complete las <strong>10 preguntas</strong> de interpretación de gráficas de barras y de líneas. Cada una da retroalimentación inmediata.</li>
-<li><strong>Brightspace:</strong> realice el quiz de la lección (abajo puede practicarlo antes).</li>
-<li><strong>Preparación del proyecto final:</strong> empiece a recopilar los datos personales que usará en el proyecto de la Lección 8.3 (por ejemplo, sus horas de sueño o sus gastos durante cinco días).</li>
-</ul>
+<h2 id="s-tarea"><span aria-hidden="true" class="num-seccion">6</span>Tarea</h2><p>Esta parte la hace usted solo, a su ritmo. Calcule alrededor de una hora.</p><ul><li><strong>ThatQuiz.</strong> Entre en <a href="https://www.thatquiz.org/es/" rel="noopener noreferrer" target="_blank">ThatQuiz</a> y practique la interpretación de <em>gráficas</em> de barras y de líneas. Aplique siempre los 5 pasos de la lección antes de contestar.</li><li><strong>Con datos reales.</strong> Mire la <a href="https://www.chicagofed.org/research/data/chicago-fed-labor-market-indicators/latest-release" rel="noopener noreferrer" target="_blank">gráfica de empleo de Chicago</a> y conteste tres preguntas: qué mes tuvo más empleo, cuál tuvo menos y si la tendencia general sube o baja. Después busque una tabla del <a href="https://www.ccc.edu/wp-content/uploads/CCCFY24StatisticalDigest_As-of-April_29_2025.pdf" rel="noopener noreferrer" target="_blank">anuario estadístico de City Colleges</a> y conviértala en una gráfica de barras en papel cuadriculado: título, ejes, escala y barras etiquetadas.</li><li><strong>Prepare el proyecto final.</strong> Empiece hoy a recopilar los datos personales que usará en el proyecto de la Lección 8.3: un dato diario durante cinco días o dos semanas —horas de sueño, gastos, minutos de estudio—. Sin esos datos recogidos con tiempo, el proyecto se queda a medias.</li></ul>
+
 </section>
 <!-- QUIZ -->
 <section>
-<h2><span aria-hidden="true" class="num-seccion">8</span>Quiz de práctica</h2>
+<h2 id="s-quiz-de-practica"><span aria-hidden="true" class="num-seccion">7</span>Quiz de práctica</h2>
 <p>Responda las <strong>8 preguntas</strong>. Use las dos gráficas de esta lección como referencia. Al final verá su puntaje y podrá repasar lo que falló.</p>
 <div id="quiz">
 <div class="quiz-bloque"><span class="qnum">Pregunta 1</span>
@@ -653,8 +593,8 @@
 </section>
 <!-- RÚBRICA -->
 <section>
-<h2><span aria-hidden="true" class="num-seccion">9</span>Rúbrica de evaluación</h2>
-<p>Rúbrica de lectura y creación de gráficas. Cada criterio se evalúa en cuatro niveles.</p>
+<h2 id="s-rubrica-de-evaluacion"><span aria-hidden="true" class="num-seccion">8</span>Rúbrica de evaluación</h2>
+<p>Rúbrica de lectura y creación de gráficas. Cada criterio se evalúa en cuatro niveles. Léala <strong>antes</strong> de empezar la tarea y úsela <strong>después</strong> para evaluar su propio trabajo con honestidad.</p>
 <div aria-label="Rúbrica de evaluación: criterios y sus niveles de logro (tabla desplazable horizontalmente)" class="tabla-scroll" role="region" tabindex="0"><table class="tabla-rubrica"><caption class="cap-oculto">Rúbrica de evaluación: criterios y sus niveles de logro</caption>
 <thead>
 <tr>
@@ -699,12 +639,12 @@
 </section>
 <!-- CIERRE -->
 <div class="cierre">
-<h2><span aria-hidden="true" class="num-seccion">➡️</span>Lo que viene en la próxima lección</h2>
+<h2 id="s-lo-que-viene-en-la-proxima-leccion"><span aria-hidden="true" class="num-seccion">➡️</span>Lo que viene en la próxima lección</h2>
 <p>Ya sabe leer gráficas de barras y de líneas, identificar tendencias y construir su propia gráfica. Con la Lección 8.1 y esta, domina la lectura de datos.</p>
 <p>La <strong>Lección 8.3 · Proyecto final integrador</strong> es la última del Nivel 1. Reunirá todo lo aprendido en un proyecto personal —"Mi gráfica de la vida"— y se preparará para el examen GED con preguntas que combinan los ocho temas del nivel. ¡Está a un paso de completar el Nivel 1!</p>
 <p class="flecha-sig">➡️  Próxima: Lección 8.3 · Proyecto final integrador + introducción al GED</p>
 </div>
-<footer>Matemáticas · Nivel 1 · Lección 8.2 — Spanish ASE Math · AE 0170-0321 <br/>City Colleges of Chicago · Truman College · Prof. José M. Fernández</footer>
+<footer><p>GEDparaHispanos · Matemáticas · Nivel 1 · Tema 8 · Lección 8.2</p><p>José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago</p><p class="licencia">© 2026. Esta obra está licenciada bajo <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" rel="license" target="_blank">Creative Commons Reconocimiento-NoComercial-CompartirIgual 4.0 Internacional (CC BY-NC-SA 4.0)</a>.</p></footer><a aria-label="Volver al contenido de la lección" class="volver-indice" href="#indice"><span aria-hidden="true">↑</span> Índice</a>
 <script>
       // ── PRÁCTICA INTERACTIVA ──
       var respuestasPractica = {

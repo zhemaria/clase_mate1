@@ -1,10 +1,12 @@
 <!DOCTYPE html>
+<!-- Lección 5.3 · Matemáticas Nivel 1 · GEDparaHispanos
+     José M. Fernández · CC BY-NC-SA 4.0 -->
 
 <html lang="es">
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Lección 5.3 · Problemas verbales de un paso — Matemáticas Nivel 1</title>
+<title>Lección 5.3 · Problemas verbales de un paso — Matemáticas Nivel 1</title><meta content="CC BY-NC-SA 4.0" name="license"/><link href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" rel="license"/>
 <style>
       :root {
         --azul: #bf4500;
@@ -189,46 +191,7 @@
       .et-azul {
         background: var(--azul);
         color: #fff;
-      }
-
-      .modalidades {
-        display: flex;
-        gap: 14px;
-        margin-top: 14px;
-        flex-wrap: wrap;
-      }
-      .modo {
-        flex: 1;
-        min-width: 240px;
-        border-radius: 9px;
-        padding: 13px 16px;
-        background: #fff;
-        border: 1px solid var(--linea);
-      }
-      .modo-pres {
-        border-top: 4px solid var(--azul);
-      }
-      .modo-line {
-        border-top: 4px solid var(--verde);
-      }
-      .modo .modo-tit {
-        display: block;
-        font-weight: 700;
-        font-size: 14px;
-        margin-bottom: 5px;
-      }
-      .modo-pres .modo-tit {
-        color: var(--azul-osc);
-      }
-      .modo-line .modo-tit {
-        color: var(--verde);
-      }
-      .modo p {
-        margin: 4px 0 0;
-        font-size: 15px;
-      }
-
-      /* ── MAPA DE PALABRAS CLAVE ── */
+      }/* ── MAPA DE PALABRAS CLAVE ── */
       .mapa-clave {
         display: flex;
         gap: 12px;
@@ -682,7 +645,28 @@
           display: none;
         }
       }
-    </style>
+    
+  /* ── ÍNDICE DE LA LECCIÓN ── */
+  .indice{
+    background:var(--papel); border:1px solid var(--linea); border-left:6px solid var(--azul);
+    border-radius:10px; padding:16px 20px; margin:26px 0;
+  }
+  .indice h2{ font-size:1.05rem; margin:0 0 10px; color:var(--azul-osc); border:0; padding:0; }
+  .indice ol{ margin:0; padding-left:1.3em; }
+  .indice li{ margin:4px 0; }
+  .indice a{ color:var(--azul-osc); text-decoration:underline; }
+  .indice a:hover{ color:var(--azul); }
+  .indice a:focus-visible,.volver-indice:focus-visible{ outline:3px solid #b05e00; outline-offset:2px; }
+  .volver-indice{
+    position:fixed; right:18px; bottom:18px; z-index:60;
+    background:var(--azul-osc); color:#fff; border-radius:999px;
+    padding:10px 16px; font-weight:700; font-size:.92rem; text-decoration:none;
+    box-shadow:0 2px 10px rgba(0,0,0,.28);
+  }
+  .volver-indice:hover{ background:var(--azul); color:#fff; }
+  footer .licencia a{ color:#fff; text-decoration:underline; }
+  @media print{ .indice,.volver-indice{ display:none; } }
+</style>
 </head>
 <body>
 <header class="principal">
@@ -691,9 +675,9 @@
 <h1>Lección 5.3 · Problemas verbales de un paso con las cuatro operaciones</h1>
 <p class="lema">Unir todo el Nivel 1: leer un problema, elegir la operación, plantear la ecuación y resolverla.</p>
 <div class="chips">
-<span class="chip"><span aria-hidden="true">⏱️</span> 4 horas (2 sinc. + 2 asinc.)</span>
+<span class="chip"><span aria-hidden="true">⏱️</span> Unas 4 horas, a su ritmo</span>
 <span class="chip"><span aria-hidden="true">🔑</span> Las 4 operaciones</span>
-<span class="chip"><span aria-hidden="true">📘</span> Steck-Vaughn</span>
+
 </div>
 </div>
 </header>
@@ -703,7 +687,7 @@
 <div class="caja caja-objetivo">
 <h2>
 <span aria-hidden="true" class="num-seccion">🎯</span>
-            Objetivos de la clase
+            Objetivos de la lección
           </h2>
 <p>Al terminar esta lección, usted podrá:</p>
 <ul>
@@ -725,10 +709,10 @@
             </li>
 </ul>
 </div>
-</section>
+</section><nav aria-labelledby="indice-titulo" class="indice" id="indice"><h2 id="indice-titulo">Contenido de la lección</h2><ol><li><a href="#s-el-cierre-del-tema-5-todo-junto">El cierre del Tema 5: todo junto</a></li><li><a href="#s-mapa-completo-de-palabras-clave">Mapa completo de palabras clave</a></li><li><a href="#s-los-4-pasos-ahora-con-ecuacion">Los 4 pasos, ahora con ecuación</a></li><li><a href="#s-un-ejemplo-de-cada-operacion">Un ejemplo de cada operación</a></li><li><a href="#s-tarea">Tarea</a></li><li><a href="#s-quiz-de-practica">Quiz de práctica</a></li><li><a href="#s-rubrica-de-evaluacion">Rúbrica de evaluación</a></li><li><a href="#s-lo-que-viene-en-el-proximo-tema">Lo que viene en el próximo tema</a></li></ol></nav>
 <!-- TODO JUNTO -->
 <section>
-<h2>
+<h2 id="s-el-cierre-del-tema-5-todo-junto">
 <span aria-hidden="true" class="num-seccion">1</span>
           El cierre del Tema 5: todo junto
         </h2>
@@ -759,7 +743,7 @@
 </section>
 <!-- MAPA DE PALABRAS CLAVE -->
 <section>
-<h2>
+<h2 id="s-mapa-completo-de-palabras-clave">
 <span aria-hidden="true" class="num-seccion">2</span>
           Mapa completo de palabras clave
         </h2>
@@ -795,7 +779,7 @@
 </section>
 <!-- 4 PASOS CON ECUACIÓN -->
 <section>
-<h2>
+<h2 id="s-los-4-pasos-ahora-con-ecuacion">
 <span aria-hidden="true" class="num-seccion">3</span>
           Los 4 pasos, ahora con ecuación
         </h2>
@@ -885,7 +869,7 @@
 </section>
 <!-- LOS CUATRO TIPOS -->
 <section>
-<h2>
+<h2 id="s-un-ejemplo-de-cada-operacion">
 <span aria-hidden="true" class="num-seccion">4</span>
           Un ejemplo de cada operación
         </h2>
@@ -971,101 +955,18 @@
 <div aria-live="polite" class="respuesta-int" id="r-p4" role="status"></div>
 </div>
 </section>
-<!-- PRÁCTICA GUIADA -->
+
 <section>
-<h2>
+<h2 id="s-tarea">
 <span aria-hidden="true" class="num-seccion">5</span>
-          Práctica guiada en clase
-        </h2>
-<p>
-          Estas actividades se hacen
-          <strong>en la sesión sincrónica</strong>
-          . Cada actividad incluye una variante para la
-          <strong>clase presencial</strong>
-          y otra para la
-          <strong>clase en línea</strong>
-          ; el objetivo de aprendizaje es el mismo en ambas.
-        </p>
-<div class="caja caja-recurso">
-<span class="etiqueta et-azul">Actividad A · "Torneo de resolución"</span>
-<p>En equipos, los estudiantes resuelven una tarjeta de problema de cada operación y explican qué operación usaron y por qué.</p>
-<div class="modalidades">
-<div class="modo modo-pres">
-<span class="modo-tit">🏫 Presencial</span>
-<p>Forme equipos de tres. Cada equipo recibe cuatro tarjetas (una por operación). Resuelven todas planteando la ecuación, y un vocero explica al grupo el razonamiento de cada una.</p>
-</div>
-<div class="modo modo-line">
-<span class="modo-tit">💻 En línea</span>
-<p>En salas pequeñas (breakout rooms) de tres, los equipos resuelven los cuatro problemas en un documento compartido. Al volver al grupo grande, cada equipo presenta una solución.</p>
-</div>
-</div>
-</div>
-<div class="caja caja-recurso">
-<span class="etiqueta et-azul">Actividad B · "De la palabra a la ecuación"</span>
-<p>Los estudiantes practican el paso clave: convertir un problema escrito en una ecuación con incógnita, sin resolverla todavía.</p>
-<div class="modalidades">
-<div class="modo modo-pres">
-<span class="modo-tit">🏫 Presencial</span>
-<p>El profesor lee problemas en voz alta. Tras cada uno, los estudiantes escriben solo la ecuación en su pizarra individual y la levantan. El grupo compara las ecuaciones propuestas.</p>
-</div>
-<div class="modo modo-line">
-<span class="modo-tit">💻 En línea</span>
-<p>El profesor presenta los problemas en diapositivas. Los estudiantes escriben solo la ecuación en el chat. El grupo revisa juntos las distintas ecuaciones propuestas.</p>
-</div>
-</div>
-</div>
-<div class="caja caja-recurso">
-<span class="etiqueta et-azul">Actividad C · Foro "El problema de mi semana"</span>
-<p>Cada estudiante inventa un problema verbal con datos de su vida real y resuelve el de un compañero.</p>
-<div class="modalidades">
-<div class="modo modo-pres">
-<span class="modo-tit">🏫 Presencial</span>
-<p>
-                Cada estudiante escribe en una tarjeta un problema de su vida real (trabajo, hogar, compras). Las tarjetas se intercambian; cada quien resuelve el problema recibido y lo devuelve para
-                verificar.
-              </p>
-</div>
-<div class="modo modo-line">
-<span class="modo-tit">💻 En línea</span>
-<p>Cada estudiante publica su problema en el foro de Brightspace y resuelve el de al menos un compañero respondiendo a su mensaje. El autor confirma si la solución es correcta.</p>
-</div>
-</div>
-</div>
-</section>
-<!-- TAREA ASINCRÓNICA -->
-<section>
-<h2>
-<span aria-hidden="true" class="num-seccion">6</span>
-          Tarea asincrónica
-        </h2>
-<p>
-          Estas actividades se realizan
-          <strong>por su cuenta</strong>
-          , dentro de las 2 horas asincrónicas de la lección. Encontrará los enlaces a continuación de la lección.
-        </p>
-<ul>
-<li>
-<strong>MyOpenMath:</strong>
-            Realice los ejercicios de N1 MOM 5.3 · Problemas verbales de un paso con las cuatro operaciones
-          </li>
-<li>
-<strong>Brightspace:</strong>
-            realice el quiz de la lección Problemas verbales de un paso.
-          </li>
-<li>
-<strong>Foro de Brightspace:</strong>
-            publique un problema verbal con datos reales de su vida y resuelva el problema de un compañero, mostrando la ecuación que usó.
-          </li>
-<li>
-<strong>Actividad personal:</strong>
-            elija una situación de su semana con un dato desconocido. Escríbala como ecuación, resuélvala con la operación inversa y verifique.
-          </li>
-</ul>
+          Tarea
+        </h2><p>Esta parte la hace usted solo, a su ritmo. Calcule alrededor de una hora. Con ella cierra el Tema 5.</p><ul><li><strong>ThatQuiz.</strong> Entre en <a href="https://www.thatquiz.org/es/" rel="noopener noreferrer" target="_blank">ThatQuiz</a> y haga una tanda mezclada de las cuatro operaciones. Mezclarlas es justo lo que le exige un problema verbal: decidir cuál toca antes de calcular.</li><li><strong>Invente sus propios problemas.</strong> Escriba cuatro problemas verbales con datos reales de su vida, uno por cada operación. Déjelos reposar un día. Al día siguiente resuélvalos con los 4 pasos, escribiendo la ecuación de cada uno, como si se los hubiera puesto otra persona: así descubre si estaban bien redactados.</li><li><strong>En su vida diaria.</strong> Elija una situación de su semana con un dato desconocido. Escríbala como ecuación, resuélvala con la operación inversa y pregúntese al final si la respuesta tiene sentido en la situación real.</li></ul>
+
 </section>
 <!-- QUIZ -->
 <section>
-<h2>
-<span aria-hidden="true" class="num-seccion">7</span>
+<h2 id="s-quiz-de-practica">
+<span aria-hidden="true" class="num-seccion">6</span>
           Quiz de práctica
         </h2>
 <p>
@@ -1170,11 +1071,11 @@
 </section>
 <!-- RÚBRICA -->
 <section>
-<h2>
-<span aria-hidden="true" class="num-seccion">8</span>
+<h2 id="s-rubrica-de-evaluacion">
+<span aria-hidden="true" class="num-seccion">7</span>
           Rúbrica de evaluación
         </h2>
-<p>Rúbrica integradora de resolución de problemas. Cada criterio se evalúa en cuatro niveles.</p>
+<p>Rúbrica integradora de resolución de problemas. Cada criterio se evalúa en cuatro niveles. Léala <strong>antes</strong> de empezar la tarea y úsela <strong>después</strong> para evaluar su propio trabajo con honestidad.</p>
 <div aria-label="Rúbrica de evaluación (tabla desplazable horizontalmente)" class="tabla-scroll" role="region" tabindex="0"><table class="tabla-rubrica"><caption class="cap-oculto">Rúbrica de evaluación: criterios y sus niveles de logro</caption>
 <thead>
 <tr>
@@ -1219,7 +1120,7 @@
 </section>
 <!-- CIERRE -->
 <div class="cierre">
-<h2>
+<h2 id="s-lo-que-viene-en-el-proximo-tema">
 <span aria-hidden="true" class="num-seccion">➡️</span>
           Lo que viene en el próximo tema
         </h2>
@@ -1238,11 +1139,7 @@
 <p class="flecha-sig">➡️  Próxima: Tema 6 · Lección 6.1 · Sistema inglés: longitud, peso y capacidad</p>
 </div>
 </div>
-<footer>
-      Matemáticas · Nivel 1 · Lección 5.3 — Spanish ASE Math · AE 0170-0321
-      <br/>
-      City Colleges of Chicago · Truman College · Prof. José M. Fernández
-    </footer>
+<footer><p>GEDparaHispanos · Matemáticas · Nivel 1 · Tema 5 · Lección 5.3</p><p>José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago</p><p class="licencia">© 2026. Esta obra está licenciada bajo <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" rel="license" target="_blank">Creative Commons Reconocimiento-NoComercial-CompartirIgual 4.0 Internacional (CC BY-NC-SA 4.0)</a>.</p></footer><a aria-label="Volver al contenido de la lección" class="volver-indice" href="#indice"><span aria-hidden="true">↑</span> Índice</a>
 <script>
       // ── PRÁCTICA INTERACTIVA ──
       var respuestasPractica = {

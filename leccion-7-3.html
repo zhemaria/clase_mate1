@@ -1,10 +1,12 @@
 <!DOCTYPE html>
+<!-- Lección 7.3 · Matemáticas Nivel 1 · GEDparaHispanos
+     José M. Fernández · CC BY-NC-SA 4.0 -->
 
 <html lang="es">
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Lección 7.3 · Área de rectángulos y triángulos — Matemáticas Nivel 1</title>
+<title>Lección 7.3 · Área de rectángulos y triángulos — Matemáticas Nivel 1</title><meta content="CC BY-NC-SA 4.0" name="license"/><link href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" rel="license"/>
 <style>
       :root {
         --azul: #37474f;
@@ -190,46 +192,7 @@
       .et-azul {
         background: var(--acento);
         color: #fff;
-      }
-
-      .modalidades {
-        display: flex;
-        gap: 14px;
-        margin-top: 14px;
-        flex-wrap: wrap;
-      }
-      .modo {
-        flex: 1;
-        min-width: 240px;
-        border-radius: 9px;
-        padding: 13px 16px;
-        background: #fff;
-        border: 1px solid var(--linea);
-      }
-      .modo-pres {
-        border-top: 4px solid var(--acento);
-      }
-      .modo-line {
-        border-top: 4px solid var(--verde);
-      }
-      .modo .modo-tit {
-        display: block;
-        font-weight: 700;
-        font-size: 14px;
-        margin-bottom: 5px;
-      }
-      .modo-pres .modo-tit {
-        color: var(--azul-osc);
-      }
-      .modo-line .modo-tit {
-        color: var(--verde);
-      }
-      .modo p {
-        margin: 4px 0 0;
-        font-size: 15px;
-      }
-
-      /* ── FÓRMULAS ── */
+      }/* ── FÓRMULAS ── */
       .formulas {
         display: flex;
         gap: 14px;
@@ -741,7 +704,28 @@
           display: none;
         }
       }
-    </style>
+    
+  /* ── ÍNDICE DE LA LECCIÓN ── */
+  .indice{
+    background:var(--papel); border:1px solid var(--linea); border-left:6px solid var(--azul);
+    border-radius:10px; padding:16px 20px; margin:26px 0;
+  }
+  .indice h2{ font-size:1.05rem; margin:0 0 10px; color:var(--azul-osc); border:0; padding:0; }
+  .indice ol{ margin:0; padding-left:1.3em; }
+  .indice li{ margin:4px 0; }
+  .indice a{ color:var(--azul-osc); text-decoration:underline; }
+  .indice a:hover{ color:var(--azul); }
+  .indice a:focus-visible,.volver-indice:focus-visible{ outline:3px solid #b05e00; outline-offset:2px; }
+  .volver-indice{
+    position:fixed; right:18px; bottom:18px; z-index:60;
+    background:var(--azul-osc); color:#fff; border-radius:999px;
+    padding:10px 16px; font-weight:700; font-size:.92rem; text-decoration:none;
+    box-shadow:0 2px 10px rgba(0,0,0,.28);
+  }
+  .volver-indice:hover{ background:var(--azul); color:#fff; }
+  footer .licencia a{ color:#fff; text-decoration:underline; }
+  @media print{ .indice,.volver-indice{ display:none; } }
+</style>
 </head>
 <body>
 <header class="principal">
@@ -750,9 +734,9 @@
 <h1>Lección 7.3 · Área de rectángulos y triángulos</h1>
 <p class="lema">Medir el espacio que cubre una figura por dentro: para pisos, alfombras y pintura.</p>
 <div class="chips">
-<span class="chip"><span aria-hidden="true">⏱️</span> 4 horas (2 sinc. + 2 asinc.)</span>
+<span class="chip"><span aria-hidden="true">⏱️</span> Unas 4 horas, a su ritmo</span>
 <span class="chip"><span aria-hidden="true">📦</span> Área en unidades cuadradas</span>
-<span class="chip"><span aria-hidden="true">📘</span> MyOpenMath · Steck-Vaughn</span>
+
 </div>
 </div>
 </header>
@@ -762,7 +746,7 @@
 <div class="caja caja-objetivo">
 <h2>
 <span aria-hidden="true" class="num-seccion">🎯</span>
-            Objetivos de la clase
+            Objetivos de la lección
           </h2>
 <p>Al terminar esta lección, usted podrá:</p>
 <ul>
@@ -784,10 +768,10 @@
             </li>
 </ul>
 </div>
-</section>
+</section><nav aria-labelledby="indice-titulo" class="indice" id="indice"><h2 id="indice-titulo">Contenido de la lección</h2><ol><li><a href="#s-que-es-el-area">¿Qué es el área?</a></li><li><a href="#s-area-del-rectangulo-y-del-cuadrado">Área del rectángulo y del cuadrado</a></li><li><a href="#s-area-del-triangulo">Área del triángulo</a></li><li><a href="#s-perimetro-o-area-cual-necesito">Perímetro o área: ¿cuál necesito?</a></li><li><a href="#s-tarea">Tarea</a></li><li><a href="#s-quiz-de-practica">Quiz de práctica</a></li><li><a href="#s-rubrica-de-evaluacion">Rúbrica de evaluación</a></li><li><a href="#s-lo-que-viene-en-el-proximo-tema">Lo que viene en el próximo tema</a></li></ol></nav>
 <!-- QUÉ ES EL ÁREA -->
 <section>
-<h2>
+<h2 id="s-que-es-el-area">
 <span aria-hidden="true" class="num-seccion">1</span>
           ¿Qué es el área?
         </h2>
@@ -849,7 +833,7 @@
 </section>
 <!-- ÁREA DEL RECTÁNGULO -->
 <section>
-<h2>
+<h2 id="s-area-del-rectangulo-y-del-cuadrado">
 <span aria-hidden="true" class="num-seccion">2</span>
           Área del rectángulo y del cuadrado
         </h2>
@@ -943,7 +927,7 @@
 </section>
 <!-- ÁREA DEL TRIÁNGULO -->
 <section>
-<h2>
+<h2 id="s-area-del-triangulo">
 <span aria-hidden="true" class="num-seccion">3</span>
           Área del triángulo
         </h2>
@@ -1029,7 +1013,7 @@
 </section>
 <!-- PERÍMETRO VS ÁREA -->
 <section>
-<h2>
+<h2 id="s-perimetro-o-area-cual-necesito">
 <span aria-hidden="true" class="num-seccion">4</span>
           Perímetro o área: ¿cuál necesito?
         </h2>
@@ -1117,99 +1101,18 @@
           <span class="flecha">→</span>
 </span>
 <span class="cap-oculto"> (se abre en una ventana nueva)</span></a>
-<!-- PRÁCTICA GUIADA -->
+
 <section>
-<h2>
+<h2 id="s-tarea">
 <span aria-hidden="true" class="num-seccion">5</span>
-          Práctica guiada en clase
-        </h2>
-<p>
-          Estas actividades se hacen
-          <strong>en la sesión sincrónica</strong>
-          . Cada actividad incluye una variante para la
-          <strong>clase presencial</strong>
-          y otra para la
-          <strong>clase en línea</strong>
-          ; el objetivo de aprendizaje es el mismo en ambas.
-        </p>
-<div class="caja caja-recurso">
-<span class="etiqueta et-azul">Actividad A · "Contar cuadrados"</span>
-<p>Antes de usar la fórmula, los estudiantes descubren el área contando cuadrados en una cuadrícula.</p>
-<div class="modalidades">
-<div class="modo modo-pres">
-<span class="modo-tit">🏫 Presencial</span>
-<p>Reparta hojas con figuras dibujadas sobre cuadrícula centimétrica. Los estudiantes cuentan los cuadrados de cada figura y luego verifican que la fórmula da el mismo número.</p>
-</div>
-<div class="modo modo-line">
-<span class="modo-tit">💻 En línea</span>
-<p>Comparta figuras sobre cuadrícula en una diapositiva. Los estudiantes cuentan los cuadrados, escriben el total en el chat y comprueban con la fórmula. El grupo revisa juntos.</p>
-</div>
-</div>
-</div>
-<div class="caja caja-recurso">
-<span class="etiqueta et-azul">Actividad B · "Reforma del apartamento"</span>
-<p>A partir del plano de un apartamento simple, los estudiantes calculan el área de cada cuarto.</p>
-<div class="modalidades">
-<div class="modo modo-pres">
-<span class="modo-tit">🏫 Presencial</span>
-<p>
-                Reparta el plano de un apartamento (sala rectangular + dormitorio triangular). En parejas, los estudiantes calculan cuántos m² de piso de madera necesita la sala y cuántos m² de
-                alfombra el dormitorio.
-              </p>
-</div>
-<div class="modo modo-line">
-<span class="modo-tit">💻 En línea</span>
-<p>Comparta el plano del apartamento en una diapositiva. En salas pequeñas (breakout rooms), las parejas calculan las áreas y al volver presentan sus resultados al grupo.</p>
-</div>
-</div>
-</div>
-<div class="caja caja-recurso">
-<span class="etiqueta et-azul">Actividad C · "Perímetro Y área"</span>
-<p>Dado un mismo rectángulo, los estudiantes calculan las dos medidas y explican la diferencia.</p>
-<div class="modalidades">
-<div class="modo modo-pres">
-<span class="modo-tit">🏫 Presencial</span>
-<p>Para un rectángulo dado, cada estudiante calcula el perímetro y el área, y escribe una frase explicando para qué serviría cada uno. Se comparten varias frases en el pizarrón.</p>
-</div>
-<div class="modo modo-line">
-<span class="modo-tit">💻 En línea</span>
-<p>Muestre un rectángulo con sus medidas. Los estudiantes calculan perímetro y área, y publican en el chat una frase que explique la diferencia. El grupo comenta las respuestas.</p>
-</div>
-</div>
-</div>
-</section>
-<!-- TAREA ASINCRÓNICA -->
-<section>
-<h2>
-<span aria-hidden="true" class="num-seccion">6</span>
-          Tarea asincrónica
-        </h2>
-<p>
-          Estas actividades se realizan
-          <strong>por su cuenta</strong>
-          , dentro de las 2 horas asincrónicas de la lección.
-        </p>
-<ul>
-<li>
-<strong>MyOpenMath:</strong>
-            complete los
-            <strong>10 problemas</strong>
-            de área de rectángulos y triángulos. Cada uno da retroalimentación inmediata.
-          </li>
-<li>
-<strong>Brightspace:</strong>
-            realice el quiz de la lección (abajo puede practicarlo antes).
-          </li>
-<li>
-<strong>Actividad personal:</strong>
-            elija una habitación de su casa. Mida su base y su altura, calcule el área en metros cuadrados y piense cuánta pintura o piso necesitaría.
-          </li>
-</ul>
+          Tarea
+        </h2><p>Esta parte la hace usted solo, a su ritmo. Calcule alrededor de una hora. Con ella cierra el Tema 7.</p><ul><li><strong>ThatQuiz.</strong> Entre en <a href="https://www.thatquiz.org/es/" rel="noopener noreferrer" target="_blank">ThatQuiz</a> y practique <em>área</em> de rectángulos y de triángulos. Después haga una tanda mezclada de área y perímetro: lo difícil no es la fórmula, es decidir cuál de las dos pide el problema.</li><li><strong>Área de figuras.</strong> Vuelva al interactivo de <a href="https://zhemaria.github.io/math/area" rel="noopener noreferrer" target="_blank">área</a> y resuelva una docena de figuras. Diga en voz alta, antes de calcular, si va a multiplicar base por altura o si además tiene que dividir entre dos.</li><li><strong>En su casa.</strong> Elija una habitación. Mida su base y su altura, calcule el área y piense cuánto piso o cuánta pintura necesitaría. Después mida el perímetro de la misma habitación y note la diferencia: el piso se compra por área, la moldura por perímetro.</li></ul>
+
 </section>
 <!-- QUIZ -->
 <section>
-<h2>
-<span aria-hidden="true" class="num-seccion">7</span>
+<h2 id="s-quiz-de-practica">
+<span aria-hidden="true" class="num-seccion">6</span>
           Quiz de práctica
         </h2>
 <p>
@@ -1311,11 +1214,11 @@
 </section>
 <!-- RÚBRICA -->
 <section>
-<h2>
-<span aria-hidden="true" class="num-seccion">8</span>
+<h2 id="s-rubrica-de-evaluacion">
+<span aria-hidden="true" class="num-seccion">7</span>
           Rúbrica de evaluación
         </h2>
-<p>Rúbrica analítica de área. Cada criterio se evalúa en cuatro niveles.</p>
+<p>Rúbrica analítica de área. Cada criterio se evalúa en cuatro niveles. Léala <strong>antes</strong> de empezar la tarea y úsela <strong>después</strong> para evaluar su propio trabajo con honestidad.</p>
 <div aria-label="Rúbrica de evaluación: criterios y sus niveles de logro (tabla desplazable horizontalmente)" class="tabla-scroll" role="region" tabindex="0"><table class="tabla-rubrica"><caption class="cap-oculto">Rúbrica de evaluación: criterios y sus niveles de logro</caption>
 <thead>
 <tr>
@@ -1360,7 +1263,7 @@
 </section>
 <!-- CIERRE -->
 <div class="cierre">
-<h2>
+<h2 id="s-lo-que-viene-en-el-proximo-tema">
 <span aria-hidden="true" class="num-seccion">➡️</span>
           Lo que viene en el próximo tema
         </h2>
@@ -1381,11 +1284,7 @@
 <p class="flecha-sig">➡️  Próxima: Tema 8 · Lección 8.1 · Leer e interpretar tablas de datos</p>
 </div>
 </div>
-<footer>
-      Matemáticas · Nivel 1 · Lección 7.3 — Spanish ASE Math · AE 0170-0321
-      <br/>
-      City Colleges of Chicago · Truman College · Prof. José M. Fernández
-    </footer>
+<footer><p>GEDparaHispanos · Matemáticas · Nivel 1 · Tema 7 · Lección 7.3</p><p>José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago</p><p class="licencia">© 2026. Esta obra está licenciada bajo <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" rel="license" target="_blank">Creative Commons Reconocimiento-NoComercial-CompartirIgual 4.0 Internacional (CC BY-NC-SA 4.0)</a>.</p></footer><a aria-label="Volver al contenido de la lección" class="volver-indice" href="#indice"><span aria-hidden="true">↑</span> Índice</a>
 <script>
       // ── PRÁCTICA INTERACTIVA ──
       var respuestasPractica = {

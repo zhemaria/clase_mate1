@@ -1,9 +1,12 @@
-<!doctype html>
+<!DOCTYPE html>
+<!-- Lección 4.2 · Matemáticas Nivel 1 · GEDparaHispanos
+     José M. Fernández · CC BY-NC-SA 4.0 -->
+
 <html lang="es">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Lección 4.2 · Suma y resta de fracciones — Matemáticas Nivel 1</title>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Lección 4.2 · Suma y resta de fracciones — Matemáticas Nivel 1</title><meta content="CC BY-NC-SA 4.0" name="license"/><link href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" rel="license"/>
 <style>
   :root{
     --azul:#6a1b9a; --azul-osc:#4a148c; --azul-cl:#f3e5f5;
@@ -68,21 +71,7 @@
   }
   .et-verde{background:var(--verde);color:#fff;}
   .et-ambar{background:var(--ambar);color:#fff;}
-  .et-azul{background:var(--azul);color:#fff;}
-
-  .modalidades{display:flex;gap:14px;margin-top:14px;flex-wrap:wrap;}
-  .modo{
-    flex:1;min-width:240px;border-radius:9px;padding:13px 16px;
-    background:#fff;border:1px solid var(--linea);
-  }
-  .modo-pres{border-top:4px solid var(--azul);}
-  .modo-line{border-top:4px solid var(--verde);}
-  .modo .modo-tit{display:block;font-weight:700;font-size:14px;margin-bottom:5px;}
-  .modo-pres .modo-tit{color:var(--azul-osc);}
-  .modo-line .modo-tit{color:var(--verde);}
-  .modo p{margin:4px 0 0;font-size:15px;}
-
-  /* fracción */
+  .et-azul{background:var(--azul);color:#fff;}/* fracción */
   .fraccion{
     display:inline-flex;flex-direction:column;align-items:center;
     vertical-align:middle;margin:0 5px;font-weight:700;
@@ -188,398 +177,329 @@
     header.principal h1{font-size:24px;}
     section{padding:24px 20px;}
   }
+
+  /* ── ÍNDICE DE LA LECCIÓN ── */
+  .indice{
+    background:var(--papel); border:1px solid var(--linea); border-left:6px solid var(--azul);
+    border-radius:10px; padding:16px 20px; margin:26px 0;
+  }
+  .indice h2{ font-size:1.05rem; margin:0 0 10px; color:var(--azul-osc); border:0; padding:0; }
+  .indice ol{ margin:0; padding-left:1.3em; }
+  .indice li{ margin:4px 0; }
+  .indice a{ color:var(--azul-osc); text-decoration:underline; }
+  .indice a:hover{ color:var(--azul); }
+  .indice a:focus-visible,.volver-indice:focus-visible{ outline:3px solid #b05e00; outline-offset:2px; }
+  .volver-indice{
+    position:fixed; right:18px; bottom:18px; z-index:60;
+    background:var(--azul-osc); color:#fff; border-radius:999px;
+    padding:10px 16px; font-weight:700; font-size:.92rem; text-decoration:none;
+    box-shadow:0 2px 10px rgba(0,0,0,.28);
+  }
+  .volver-indice:hover{ background:var(--azul); color:#fff; }
+  footer .licencia a{ color:#fff; text-decoration:underline; }
+  @media print{ .indice,.volver-indice{ display:none; } }
 </style>
 </head>
 <body>
-
 <header class="principal">
-  <div class="envoltura-header">
-    <div class="ruta">Matemáticas · Nivel 1 · Tema 4 — Fracciones</div>
-    <h1>Lección 4.2 · Suma y resta de fracciones</h1>
-    <p class="lema">Sumar y restar fracciones — y descubrir por qué primero necesitan compartir el mismo denominador.</p>
-    <div class="chips">
-      <span class="chip">⏱️ 4 horas (2 sinc. + 2 asinc.)</span>
-      <span class="chip">🍕 Modelo visual de barras</span>
-      <span class="chip">📘 MyOpenMath</span>
-    </div>
-  </div>
-</header>
-
-<div class="envoltura">
-
-  <!-- OBJETIVOS -->
-  <section>
-    <div class="caja caja-objetivo">
-      <h2><span class="num-seccion">🎯</span>Objetivos de la clase</h2>
-      <p>Al terminar esta lección, usted podrá:</p>
-      <ul>
-        <li><strong>Sumar y restar</strong> fracciones que tienen el mismo denominador.</li>
-        <li><strong>Encontrar</strong> un denominador común para fracciones con denominadores distintos.</li>
-        <li><strong>Sumar y restar</strong> fracciones con denominadores distintos.</li>
-        <li><strong>Simplificar</strong> el resultado a su forma más reducida.</li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- CONEXIÓN -->
-  <section>
-    <h2><span class="num-seccion">1</span>¿Por qué importa el denominador?</h2>
-    <p>En la <strong>Lección 4.1</strong> aprendió qué es una fracción y cómo crear fracciones equivalentes. Hoy usará eso para sumar y restar.</p>
-    <p>La idea más importante de esta lección: <strong>solo se pueden sumar o restar fracciones cuando las partes son del mismo tamaño</strong>, es decir, cuando tienen el <strong>mismo denominador</strong>.</p>
-    <p>Piénselo así: si tiene 2 cuartos de pizza y le dan 1 cuarto más, todos los pedazos son "cuartos" — del mismo tamaño — y puede juntarlos sin problema: 3 cuartos. Pero si tiene cuartos y octavos mezclados, las partes son de distinto tamaño y no se pueden contar juntas hasta igualarlas.</p>
-    <div class="caja caja-tip">
-      <span class="etiqueta et-verde">Idea clave</span>
-      <p>El <strong>denominador</strong> dice el tamaño de las partes. Para sumar o restar, las partes deben ser del mismo tamaño. El <strong>numerador</strong> dice cuántas partes hay — y es lo único que se suma o se resta.</p>
-    </div>
-  </section>
-
-  <!-- MISMO DENOMINADOR -->
-  <section>
-    <h2><span class="num-seccion">2</span>Sumar y restar con el mismo denominador</h2>
-    <p>Este es el caso fácil. Cuando las fracciones ya tienen el <strong>mismo denominador</strong>:</p>
-    <ul>
-      <li><strong>Se suman (o se restan) los numeradores.</strong></li>
-      <li><strong>El denominador se queda igual</strong> — no se suma, no se cambia.</li>
-    </ul>
-
-    <div class="barras">
-      <div class="barra-fr">
-        <div class="parte lleno" style="width:20%;"></div>
-        <div class="parte lleno" style="width:20%;"></div>
-        <div class="parte lleno2" style="width:20%;"></div>
-        <div class="parte vacio" style="width:20%;"></div>
-        <div class="parte vacio" style="width:20%;"></div>
-      </div>
-      <span class="barra-etq"><span class="fraccion"><span class="num">2</span><span class="den">5</span></span> (morado) + <span class="fraccion"><span class="num">1</span><span class="den">5</span></span> (lila) = <span class="fraccion"><span class="num">3</span><span class="den">5</span></span></span>
-    </div>
-
-    <div class="ejemplo">
-      <div class="titulo-ej">Sumar 2/5 + 1/5</div>
-      <div class="paso"><span class="n">1</span>Los denominadores ya son iguales (5). Las partes son del mismo tamaño.</div>
-      <div class="paso"><span class="n">2</span>Sumo solo los numeradores: 2 + 1 = 3.</div>
-      <div class="paso"><span class="n">3</span>El denominador se queda en 5.</div>
-      <div class="paso"><span class="n">✓</span>Resultado: <span class="fraccion"><span class="num">2</span><span class="den">5</span></span> + <span class="fraccion"><span class="num">1</span><span class="den">5</span></span> = <span class="fraccion"><span class="num">3</span><span class="den">5</span></span>.</div>
-    </div>
-    <div class="caja caja-ojo">
-      <span class="etiqueta et-ambar">¡Ojo! El error más común</span>
-      <p><strong>Nunca se suman los denominadores.</strong> 2/5 + 1/5 NO es 3/10. El denominador solo dice el tamaño de la parte, y ese tamaño no cambia al juntar pedazos.</p>
-    </div>
-
-    <div class="practica">
-      <div class="cabe"><span class="ico">✏️</span><h4>Práctica 1 — Mismo denominador</h4></div>
-      <p class="pregunta-int">¿Cuánto es <span class="fraccion"><span class="num">3</span><span class="den">8</span></span> + <span class="fraccion"><span class="num">2</span><span class="den">8</span></span>?</p>
-      <div class="opciones" data-quiz="p1">
-        <button class="opcion" data-correcta="no"><span class="fraccion"><span class="num">5</span><span class="den">16</span></span></button>
-        <button class="opcion" data-correcta="si"><span class="fraccion"><span class="num">5</span><span class="den">8</span></span></button>
-        <button class="opcion" data-correcta="no"><span class="fraccion"><span class="num">6</span><span class="den">8</span></span></button>
-        <button class="opcion" data-correcta="no"><span class="fraccion"><span class="num">1</span><span class="den">8</span></span></button>
-      </div>
-      <div class="respuesta-int" id="r-p1"></div>
-    </div>
-
-    <div class="practica">
-      <div class="cabe"><span class="ico">✏️</span><h4>Práctica 2 — Resta con mismo denominador</h4></div>
-      <p class="pregunta-int">¿Cuánto es <span class="fraccion"><span class="num">7</span><span class="den">9</span></span> − <span class="fraccion"><span class="num">4</span><span class="den">9</span></span>?</p>
-      <div class="opciones" data-quiz="p2">
-        <button class="opcion" data-correcta="si"><span class="fraccion"><span class="num">3</span><span class="den">9</span></span></button>
-        <button class="opcion" data-correcta="no"><span class="fraccion"><span class="num">3</span><span class="den">0</span></span></button>
-        <button class="opcion" data-correcta="no"><span class="fraccion"><span class="num">11</span><span class="den">9</span></span></button>
-        <button class="opcion" data-correcta="no"><span class="fraccion"><span class="num">3</span><span class="den">18</span></span></button>
-      </div>
-      <div class="respuesta-int" id="r-p2"></div>
-    </div>
-  </section>
-
-  <!-- DENOMINADOR COMÚN -->
-  <section>
-    <h2><span class="num-seccion">3</span>Cuando los denominadores son distintos</h2>
-    <p>Si las fracciones tienen <strong>denominadores distintos</strong>, las partes son de distinto tamaño. Antes de sumar o restar hay que <strong>igualar los denominadores</strong>, buscando un <strong>denominador común</strong>.</p>
-
-    <h3>Cómo encontrar un denominador común</h3>
-    <div class="caja caja-tip">
-      <span class="etiqueta et-verde">Método sencillo</span>
-      <p>Busque un número en el que <strong>los dos denominadores quepan exacto</strong>. Una forma segura: revise la tabla de multiplicar del denominador mayor hasta encontrar uno que también sea múltiplo del menor. Si no encuentra otro, <strong>multiplicar los dos denominadores</strong> siempre funciona.</p>
-    </div>
-    <div class="ejemplo">
-      <div class="titulo-ej">Sumar 1/2 + 1/3</div>
-      <div class="paso"><span class="n">1</span>Denominadores distintos: 2 y 3. Busco un común. El <strong>6</strong> sirve (2 y 3 caben en 6).</div>
-      <div class="paso"><span class="n">2</span>Convierto cada fracción a sextos, usando equivalentes (Lección 4.1):<br><span class="fraccion"><span class="num">1</span><span class="den">2</span></span> = <span class="fraccion"><span class="num">3</span><span class="den">6</span></span> &nbsp;(×3) &nbsp;·&nbsp; <span class="fraccion"><span class="num">1</span><span class="den">3</span></span> = <span class="fraccion"><span class="num">2</span><span class="den">6</span></span> &nbsp;(×2).</div>
-      <div class="paso"><span class="n">3</span>Ahora que tienen el mismo denominador, sumo los numeradores: 3 + 2 = 5.</div>
-      <div class="paso"><span class="n">✓</span>Resultado: <span class="fraccion"><span class="num">1</span><span class="den">2</span></span> + <span class="fraccion"><span class="num">1</span><span class="den">3</span></span> = <span class="fraccion"><span class="num">5</span><span class="den">6</span></span>.</div>
-    </div>
-
-    <div class="practica">
-      <div class="cabe"><span class="ico">✏️</span><h4>Práctica 3 — Encontrar el denominador común</h4></div>
-      <p class="pregunta-int">Para sumar <span class="fraccion"><span class="num">1</span><span class="den">4</span></span> + <span class="fraccion"><span class="num">1</span><span class="den">6</span></span>, ¿cuál es un buen denominador común?</p>
-      <div class="opciones" data-quiz="p3">
-        <button class="opcion" data-correcta="no">10</button>
-        <button class="opcion" data-correcta="si">12</button>
-        <button class="opcion" data-correcta="no">24 es el único posible</button>
-        <button class="opcion" data-correcta="no">2</button>
-      </div>
-      <div class="respuesta-int" id="r-p3"></div>
-    </div>
-
-    <div class="practica">
-      <div class="cabe"><span class="ico">✏️</span><h4>Práctica 4 — Suma con denominadores distintos</h4></div>
-      <p class="pregunta-int">¿Cuánto es <span class="fraccion"><span class="num">1</span><span class="den">2</span></span> + <span class="fraccion"><span class="num">1</span><span class="den">4</span></span>?</p>
-      <div class="opciones" data-quiz="p4">
-        <button class="opcion" data-correcta="no"><span class="fraccion"><span class="num">2</span><span class="den">6</span></span></button>
-        <button class="opcion" data-correcta="si"><span class="fraccion"><span class="num">3</span><span class="den">4</span></span></button>
-        <button class="opcion" data-correcta="no"><span class="fraccion"><span class="num">2</span><span class="den">4</span></span></button>
-        <button class="opcion" data-correcta="no"><span class="fraccion"><span class="num">1</span><span class="den">6</span></span></button>
-      </div>
-      <div class="respuesta-int" id="r-p4"></div>
-    </div>
-  </section>
-
-  <!-- SIMPLIFICAR EL RESULTADO -->
-  <section>
-    <h2><span class="num-seccion">4</span>Simplificar el resultado</h2>
-    <p>Después de sumar o restar, hay que revisar si el resultado se puede <strong>simplificar</strong>, igual que aprendió en la Lección 4.1. Un resultado bien presentado siempre está en su forma más simple.</p>
-    <div class="ejemplo">
-      <div class="titulo-ej">Sumar y luego simplificar: 1/6 + 1/6</div>
-      <div class="paso"><span class="n">1</span>Mismo denominador: sumo numeradores. 1 + 1 = 2. Resultado: <span class="fraccion"><span class="num">2</span><span class="den">6</span></span>.</div>
-      <div class="paso"><span class="n">2</span>Reviso: ¿se puede simplificar <span class="fraccion"><span class="num">2</span><span class="den">6</span></span>? Sí, dividiendo entre 2: 2 ÷ 2 = 1, 6 ÷ 2 = 3.</div>
-      <div class="paso"><span class="n">✓</span>Resultado final, simplificado: <span class="fraccion"><span class="num">1</span><span class="den">3</span></span>.</div>
-    </div>
-    <div class="caja caja-ojo">
-      <span class="etiqueta et-ambar">Recuerde</span>
-      <p>Sumar bien no termina el trabajo. Siempre pregúntese al final: <strong>¿este resultado se puede simplificar?</strong> En el GED, la respuesta correcta suele estar en su forma más simple.</p>
-    </div>
-  </section>
-
-  <!-- PRÁCTICA GUIADA -->
-  <section>
-    <h2><span class="num-seccion">5</span>Práctica guiada en clase</h2>
-    <p>Estas actividades se hacen <strong>en la sesión sincrónica</strong>. Cada actividad incluye una variante para la <strong>clase presencial</strong> y otra para la <strong>clase en línea</strong>; el objetivo de aprendizaje es el mismo en ambas.</p>
-
-    <div class="caja caja-recurso">
-      <span class="etiqueta et-azul">Actividad A · "Sumar con tiras"</span>
-      <p>Los estudiantes suman fracciones del mismo denominador usando tiras de fracción, viendo cómo se juntan las partes.</p>
-      <div class="modalidades">
-        <div class="modo modo-pres">
-          <span class="modo-tit">🏫 Presencial</span>
-          <p>Cada estudiante usa tiras de papel divididas en partes iguales. Junta físicamente las partes de dos fracciones del mismo denominador y escribe la suma. Verifica con un compañero.</p>
-        </div>
-        <div class="modo modo-line">
-          <span class="modo-tit">💻 En línea</span>
-          <p>Use un manipulativo digital de tiras de fracción en pantalla compartida. Los estudiantes "juntan" las partes y escriben la suma en el chat. El profesor revisa con el grupo.</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="caja caja-recurso">
-      <span class="etiqueta et-azul">Actividad B · "La búsqueda del denominador común"</span>
-      <p>Los estudiantes practican encontrar denominadores comunes para pares de fracciones antes de sumarlas.</p>
-      <div class="modalidades">
-        <div class="modo modo-pres">
-          <span class="modo-tit">🏫 Presencial</span>
-          <p>El profesor escribe pares de fracciones en la pizarra. Por turnos, los estudiantes proponen un denominador común y explican cómo lo encontraron. Luego cada uno resuelve dos sumas en su cuaderno.</p>
-        </div>
-        <div class="modo modo-line">
-          <span class="modo-tit">💻 En línea</span>
-          <p>Muestre los pares de fracciones en una diapositiva. Los estudiantes escriben en el chat el denominador común que proponen. El grupo elige uno y resuelve la suma juntos en pantalla.</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="caja caja-recurso">
-      <span class="etiqueta et-azul">Actividad C · "La receta de cocina"</span>
-      <p>Problema de contexto real: los estudiantes suman cantidades fraccionarias de una receta (½ taza + ¼ taza de un ingrediente).</p>
-      <div class="modalidades">
-        <div class="modo modo-pres">
-          <span class="modo-tit">🏫 Presencial</span>
-          <p>Reparta una receta con ingredientes en fracciones. En parejas, los estudiantes calculan cantidades totales (por ejemplo, la harina total si la receta se hace dos veces) y verifican con tazas medidoras reales si están disponibles.</p>
-        </div>
-        <div class="modo modo-line">
-          <span class="modo-tit">💻 En línea</span>
-          <p>Comparta la receta en una diapositiva. Cada estudiante calcula las cantidades totales en papel y publica sus resultados en el chat. El grupo comenta los procedimientos.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- TAREA ASINCRÓNICA -->
-  <section>
-    <h2><span class="num-seccion">6</span>Tarea asincrónica</h2>
-    <p>Estas actividades se realizan <strong>por su cuenta</strong>, dentro de las 2 horas asincrónicas de la lección.</p>
-    <ul>
-      <li><strong>MyOpenMath:</strong> complete los <strong>10 problemas</strong> de suma y resta de fracciones (con igual y distinto denominador). Cada uno da retroalimentación inmediata.</li>
-      <li><strong>Brightspace:</strong> realice el quiz de la lección (abajo puede practicarlo antes).</li>
-      <li><strong>Actividad personal:</strong> piense en una tarea de su día dividida en partes (por ejemplo, dedicó ¼ de hora a una cosa y ½ hora a otra). Sume las fracciones y exprese cuánto tiempo fue en total.</li>
-    </ul>
-  </section>
-
-  <!-- QUIZ -->
-  <section>
-    <h2><span class="num-seccion">7</span>Quiz de práctica</h2>
-    <p>Responda las <strong>8 preguntas</strong>. Al final verá su puntaje y podrá repasar lo que falló. Puede repetir el quiz las veces que quiera.</p>
-
-    <form id="quiz">
-      <div class="quiz-bloque">
-        <span class="qnum">Pregunta 1</span>
-        <p class="pregunta">Al sumar dos fracciones con el mismo denominador, ¿qué se hace con el denominador?</p>
-        <div class="opciones" data-q="1">
-          <button type="button" class="opcion" data-c="no">Se suma con el otro denominador.</button>
-          <button type="button" class="opcion" data-c="si">Se queda igual.</button>
-          <button type="button" class="opcion" data-c="no">Se multiplica por 2.</button>
-          <button type="button" class="opcion" data-c="no">Se resta.</button>
-        </div>
-      </div>
-
-      <div class="quiz-bloque">
-        <span class="qnum">Pregunta 2</span>
-        <p class="pregunta">¿Cuánto es <strong>2/7 + 3/7</strong>?</p>
-        <div class="opciones" data-q="2">
-          <button type="button" class="opcion" data-c="si">5/7</button>
-          <button type="button" class="opcion" data-c="no">5/14</button>
-          <button type="button" class="opcion" data-c="no">6/7</button>
-          <button type="button" class="opcion" data-c="no">5/49</button>
-        </div>
-      </div>
-
-      <div class="quiz-bloque">
-        <span class="qnum">Pregunta 3</span>
-        <p class="pregunta">¿Cuánto es <strong>5/6 − 2/6</strong>?</p>
-        <div class="opciones" data-q="3">
-          <button type="button" class="opcion" data-c="no">3/12</button>
-          <button type="button" class="opcion" data-c="si">1/2</button>
-          <button type="button" class="opcion" data-c="no">7/6</button>
-          <button type="button" class="opcion" data-c="no">3/0</button>
-        </div>
-      </div>
-
-      <div class="quiz-bloque">
-        <span class="qnum">Pregunta 4</span>
-        <p class="pregunta">Para sumar <strong>1/3 + 1/6</strong>, ¿cuál es un buen denominador común?</p>
-        <div class="opciones" data-q="4">
-          <button type="button" class="opcion" data-c="si">6</button>
-          <button type="button" class="opcion" data-c="no">9</button>
-          <button type="button" class="opcion" data-c="no">3</button>
-          <button type="button" class="opcion" data-c="no">5</button>
-        </div>
-      </div>
-
-      <div class="quiz-bloque">
-        <span class="qnum">Pregunta 5</span>
-        <p class="pregunta">¿Cuánto es <strong>1/2 + 1/3</strong>?</p>
-        <div class="opciones" data-q="5">
-          <button type="button" class="opcion" data-c="no">2/5</button>
-          <button type="button" class="opcion" data-c="si">5/6</button>
-          <button type="button" class="opcion" data-c="no">2/6</button>
-          <button type="button" class="opcion" data-c="no">1/6</button>
-        </div>
-      </div>
-
-      <div class="quiz-bloque">
-        <span class="qnum">Pregunta 6</span>
-        <p class="pregunta">¿Cuánto es <strong>3/4 − 1/8</strong>?</p>
-        <div class="opciones" data-q="6">
-          <button type="button" class="opcion" data-c="si">5/8</button>
-          <button type="button" class="opcion" data-c="no">2/4</button>
-          <button type="button" class="opcion" data-c="no">2/8</button>
-          <button type="button" class="opcion" data-c="no">7/8</button>
-        </div>
-      </div>
-
-      <div class="quiz-bloque">
-        <span class="qnum">Pregunta 7</span>
-        <p class="pregunta">El resultado de una suma es <strong>4/8</strong>. ¿Cuál es su forma más simple?</p>
-        <div class="opciones" data-q="7">
-          <button type="button" class="opcion" data-c="no">4/8</button>
-          <button type="button" class="opcion" data-c="si">1/2</button>
-          <button type="button" class="opcion" data-c="no">2/8</button>
-          <button type="button" class="opcion" data-c="no">8/4</button>
-        </div>
-      </div>
-
-      <div class="quiz-bloque">
-        <span class="qnum">Pregunta 8</span>
-        <p class="pregunta">Una persona dedica 1/4 de hora a leer y 1/2 hora a estudiar. ¿Cuánto tiempo dedicó en total?</p>
-        <div class="opciones" data-q="8">
-          <button type="button" class="opcion" data-c="no">2/6 de hora</button>
-          <button type="button" class="opcion" data-c="si">3/4 de hora</button>
-          <button type="button" class="opcion" data-c="no">1/6 de hora</button>
-          <button type="button" class="opcion" data-c="no">2/4 de hora</button>
-        </div>
-      </div>
-    </form>
-
-    <div style="text-align:center;margin-top:18px;">
-      <button class="btn" id="btn-calificar">Ver mi resultado</button>
-      <button class="btn btn-sec" id="btn-reintentar" style="display:none;">Intentar de nuevo</button>
-    </div>
-
-    <div class="marcador" id="marcador">
-      <div class="barra-prog"><span id="barra"></span></div>
-      <div class="puntaje" id="puntaje"></div>
-      <div class="mensaje" id="mensaje"></div>
-    </div>
-  </section>
-
-  <!-- RÚBRICA -->
-  <section>
-    <h2><span class="num-seccion">8</span>Rúbrica de evaluación</h2>
-    <p>Rúbrica analítica de proceso. Cada criterio se evalúa en cuatro niveles.</p>
-    <table class="tabla-rubrica">
-      <thead>
-        <tr>
-          <th>Criterio</th>
-          <th class="nivel-cab">Logrado (4)</th>
-          <th class="nivel-cab">Satisfactorio (3)</th>
-          <th class="nivel-cab">En proceso (2)</th>
-          <th class="nivel-cab">Por reforzar (1)</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Suma y resta con igual denominador</td>
-          <td>Suma numeradores y mantiene el denominador sin errores.</td>
-          <td>Opera bien casi siempre.</td>
-          <td>A veces suma también los denominadores.</td>
-          <td>No domina el caso de igual denominador.</td>
-        </tr>
-        <tr>
-          <td>Encuentra el denominador común</td>
-          <td>Halla un denominador común con seguridad.</td>
-          <td>Encuentra un común, a veces no el menor.</td>
-          <td>Tiene dificultad para hallar el común.</td>
-          <td>No identifica un denominador común.</td>
-        </tr>
-        <tr>
-          <td>Opera con denominadores distintos</td>
-          <td>Convierte a equivalentes y opera sin errores.</td>
-          <td>Resuelve con un descuido aislado.</td>
-          <td>Convierte mal una de las fracciones.</td>
-          <td>No logra operar con distintos denominadores.</td>
-        </tr>
-        <tr>
-          <td>Simplifica el resultado</td>
-          <td>Entrega siempre el resultado en su forma más simple.</td>
-          <td>Simplifica cuando se le recuerda.</td>
-          <td>Simplifica parcialmente.</td>
-          <td>No simplifica el resultado.</td>
-        </tr>
-      </tbody>
-    </table>
-  </section>
-
-  <!-- CIERRE -->
-  <div class="cierre">
-    <h2><span class="num-seccion">➡️</span>Lo que viene en la próxima lección</h2>
-    <p>Ya sabe sumar y restar fracciones, encontrar denominadores comunes y simplificar el resultado. Sumar y restar fueron lo más laborioso — necesitaban el denominador común.</p>
-    <p>En la <strong>Lección 4.3 · Multiplicación y división de fracciones</strong> le espera una sorpresa agradable: <strong>multiplicar y dividir fracciones es más sencillo que sumarlas</strong>, porque no hace falta buscar denominador común. Con esa lección cerrará el Tema 4 y la primera mitad del Nivel 1.</p>
-    <div class="flecha-sig">➡️ &nbsp;Próxima: Lección 4.3 · Multiplicación y división de fracciones</div>
-  </div>
+<div class="envoltura-header">
+<div class="ruta">Matemáticas · Nivel 1 · Tema 4 — Fracciones</div>
+<h1>Lección 4.2 · Suma y resta de fracciones</h1>
+<p class="lema">Sumar y restar fracciones — y descubrir por qué primero necesitan compartir el mismo denominador.</p>
+<div class="chips">
+<span class="chip"><span aria-hidden="true">⏱️</span> Unas 4 horas, a su ritmo</span>
+<span class="chip">🍕 Modelo visual de barras</span>
 
 </div>
+</div>
+</header>
+<div class="envoltura">
+<!-- OBJETIVOS -->
+<section>
+<div class="caja caja-objetivo">
+<h2><span class="num-seccion">🎯</span>Objetivos de la lección</h2>
+<p>Al terminar esta lección, usted podrá:</p>
+<ul>
+<li><strong>Sumar y restar</strong> fracciones que tienen el mismo denominador.</li>
+<li><strong>Encontrar</strong> un denominador común para fracciones con denominadores distintos.</li>
+<li><strong>Sumar y restar</strong> fracciones con denominadores distintos.</li>
+<li><strong>Simplificar</strong> el resultado a su forma más reducida.</li>
+</ul>
+</div>
+</section><nav aria-labelledby="indice-titulo" class="indice" id="indice"><h2 id="indice-titulo">Contenido de la lección</h2><ol><li><a href="#s-por-que-importa-el-denominador">¿Por qué importa el denominador?</a></li><li><a href="#s-sumar-y-restar-con-el-mismo-denominador">Sumar y restar con el mismo denominador</a></li><li><a href="#s-cuando-los-denominadores-son-distintos">Cuando los denominadores son distintos</a></li><li><a href="#s-simplificar-el-resultado">Simplificar el resultado</a></li><li><a href="#s-tarea">Tarea</a></li><li><a href="#s-quiz-de-practica">Quiz de práctica</a></li><li><a href="#s-rubrica-de-evaluacion">Rúbrica de evaluación</a></li><li><a href="#s-lo-que-viene-en-la-proxima-leccion">Lo que viene en la próxima lección</a></li></ol></nav>
+<!-- CONEXIÓN -->
+<section>
+<h2 id="s-por-que-importa-el-denominador"><span class="num-seccion">1</span>¿Por qué importa el denominador?</h2>
+<p>En la <strong>Lección 4.1</strong> aprendió qué es una fracción y cómo crear fracciones equivalentes. Hoy usará eso para sumar y restar.</p>
+<p>La idea más importante de esta lección: <strong>solo se pueden sumar o restar fracciones cuando las partes son del mismo tamaño</strong>, es decir, cuando tienen el <strong>mismo denominador</strong>.</p>
+<p>Piénselo así: si tiene 2 cuartos de pizza y le dan 1 cuarto más, todos los pedazos son "cuartos" — del mismo tamaño — y puede juntarlos sin problema: 3 cuartos. Pero si tiene cuartos y octavos mezclados, las partes son de distinto tamaño y no se pueden contar juntas hasta igualarlas.</p>
+<div class="caja caja-tip">
+<span class="etiqueta et-verde">Idea clave</span>
+<p>El <strong>denominador</strong> dice el tamaño de las partes. Para sumar o restar, las partes deben ser del mismo tamaño. El <strong>numerador</strong> dice cuántas partes hay — y es lo único que se suma o se resta.</p>
+</div>
+</section>
+<!-- MISMO DENOMINADOR -->
+<section>
+<h2 id="s-sumar-y-restar-con-el-mismo-denominador"><span class="num-seccion">2</span>Sumar y restar con el mismo denominador</h2>
+<p>Este es el caso fácil. Cuando las fracciones ya tienen el <strong>mismo denominador</strong>:</p>
+<ul>
+<li><strong>Se suman (o se restan) los numeradores.</strong></li>
+<li><strong>El denominador se queda igual</strong> — no se suma, no se cambia.</li>
+</ul>
+<div class="barras">
+<div class="barra-fr">
+<div class="parte lleno" style="width:20%;"></div>
+<div class="parte lleno" style="width:20%;"></div>
+<div class="parte lleno2" style="width:20%;"></div>
+<div class="parte vacio" style="width:20%;"></div>
+<div class="parte vacio" style="width:20%;"></div>
+</div>
+<span class="barra-etq"><span class="fraccion"><span class="num">2</span><span class="den">5</span></span> (morado) + <span class="fraccion"><span class="num">1</span><span class="den">5</span></span> (lila) = <span class="fraccion"><span class="num">3</span><span class="den">5</span></span></span>
+</div>
+<div class="ejemplo">
+<div class="titulo-ej">Sumar 2/5 + 1/5</div>
+<div class="paso"><span class="n">1</span>Los denominadores ya son iguales (5). Las partes son del mismo tamaño.</div>
+<div class="paso"><span class="n">2</span>Sumo solo los numeradores: 2 + 1 = 3.</div>
+<div class="paso"><span class="n">3</span>El denominador se queda en 5.</div>
+<div class="paso"><span class="n">✓</span>Resultado: <span class="fraccion"><span class="num">2</span><span class="den">5</span></span> + <span class="fraccion"><span class="num">1</span><span class="den">5</span></span> = <span class="fraccion"><span class="num">3</span><span class="den">5</span></span>.</div>
+</div>
+<div class="caja caja-ojo">
+<span class="etiqueta et-ambar">¡Ojo! El error más común</span>
+<p><strong>Nunca se suman los denominadores.</strong> 2/5 + 1/5 NO es 3/10. El denominador solo dice el tamaño de la parte, y ese tamaño no cambia al juntar pedazos.</p>
+</div>
+<div class="practica">
+<div class="cabe"><span class="ico">✏️</span><h4>Práctica 1 — Mismo denominador</h4></div>
+<p class="pregunta-int">¿Cuánto es <span class="fraccion"><span class="num">3</span><span class="den">8</span></span> + <span class="fraccion"><span class="num">2</span><span class="den">8</span></span>?</p>
+<div class="opciones" data-quiz="p1">
+<button class="opcion" data-correcta="no"><span class="fraccion"><span class="num">5</span><span class="den">16</span></span></button>
+<button class="opcion" data-correcta="si"><span class="fraccion"><span class="num">5</span><span class="den">8</span></span></button>
+<button class="opcion" data-correcta="no"><span class="fraccion"><span class="num">6</span><span class="den">8</span></span></button>
+<button class="opcion" data-correcta="no"><span class="fraccion"><span class="num">1</span><span class="den">8</span></span></button>
+</div>
+<div class="respuesta-int" id="r-p1"></div>
+</div>
+<div class="practica">
+<div class="cabe"><span class="ico">✏️</span><h4>Práctica 2 — Resta con mismo denominador</h4></div>
+<p class="pregunta-int">¿Cuánto es <span class="fraccion"><span class="num">7</span><span class="den">9</span></span> − <span class="fraccion"><span class="num">4</span><span class="den">9</span></span>?</p>
+<div class="opciones" data-quiz="p2">
+<button class="opcion" data-correcta="si"><span class="fraccion"><span class="num">3</span><span class="den">9</span></span></button>
+<button class="opcion" data-correcta="no"><span class="fraccion"><span class="num">3</span><span class="den">0</span></span></button>
+<button class="opcion" data-correcta="no"><span class="fraccion"><span class="num">11</span><span class="den">9</span></span></button>
+<button class="opcion" data-correcta="no"><span class="fraccion"><span class="num">3</span><span class="den">18</span></span></button>
+</div>
+<div class="respuesta-int" id="r-p2"></div>
+</div>
+</section>
+<!-- DENOMINADOR COMÚN -->
+<section>
+<h2 id="s-cuando-los-denominadores-son-distintos"><span class="num-seccion">3</span>Cuando los denominadores son distintos</h2>
+<p>Si las fracciones tienen <strong>denominadores distintos</strong>, las partes son de distinto tamaño. Antes de sumar o restar hay que <strong>igualar los denominadores</strong>, buscando un <strong>denominador común</strong>.</p>
+<h3>Cómo encontrar un denominador común</h3>
+<div class="caja caja-tip">
+<span class="etiqueta et-verde">Método sencillo</span>
+<p>Busque un número en el que <strong>los dos denominadores quepan exacto</strong>. Una forma segura: revise la tabla de multiplicar del denominador mayor hasta encontrar uno que también sea múltiplo del menor. Si no encuentra otro, <strong>multiplicar los dos denominadores</strong> siempre funciona.</p>
+</div>
+<div class="ejemplo">
+<div class="titulo-ej">Sumar 1/2 + 1/3</div>
+<div class="paso"><span class="n">1</span>Denominadores distintos: 2 y 3. Busco un común. El <strong>6</strong> sirve (2 y 3 caben en 6).</div>
+<div class="paso"><span class="n">2</span>Convierto cada fracción a sextos, usando equivalentes (Lección 4.1):<br/><span class="fraccion"><span class="num">1</span><span class="den">2</span></span> = <span class="fraccion"><span class="num">3</span><span class="den">6</span></span>  (×3)  ·  <span class="fraccion"><span class="num">1</span><span class="den">3</span></span> = <span class="fraccion"><span class="num">2</span><span class="den">6</span></span>  (×2).</div>
+<div class="paso"><span class="n">3</span>Ahora que tienen el mismo denominador, sumo los numeradores: 3 + 2 = 5.</div>
+<div class="paso"><span class="n">✓</span>Resultado: <span class="fraccion"><span class="num">1</span><span class="den">2</span></span> + <span class="fraccion"><span class="num">1</span><span class="den">3</span></span> = <span class="fraccion"><span class="num">5</span><span class="den">6</span></span>.</div>
+</div>
+<div class="practica">
+<div class="cabe"><span class="ico">✏️</span><h4>Práctica 3 — Encontrar el denominador común</h4></div>
+<p class="pregunta-int">Para sumar <span class="fraccion"><span class="num">1</span><span class="den">4</span></span> + <span class="fraccion"><span class="num">1</span><span class="den">6</span></span>, ¿cuál es un buen denominador común?</p>
+<div class="opciones" data-quiz="p3">
+<button class="opcion" data-correcta="no">10</button>
+<button class="opcion" data-correcta="si">12</button>
+<button class="opcion" data-correcta="no">24 es el único posible</button>
+<button class="opcion" data-correcta="no">2</button>
+</div>
+<div class="respuesta-int" id="r-p3"></div>
+</div>
+<div class="practica">
+<div class="cabe"><span class="ico">✏️</span><h4>Práctica 4 — Suma con denominadores distintos</h4></div>
+<p class="pregunta-int">¿Cuánto es <span class="fraccion"><span class="num">1</span><span class="den">2</span></span> + <span class="fraccion"><span class="num">1</span><span class="den">4</span></span>?</p>
+<div class="opciones" data-quiz="p4">
+<button class="opcion" data-correcta="no"><span class="fraccion"><span class="num">2</span><span class="den">6</span></span></button>
+<button class="opcion" data-correcta="si"><span class="fraccion"><span class="num">3</span><span class="den">4</span></span></button>
+<button class="opcion" data-correcta="no"><span class="fraccion"><span class="num">2</span><span class="den">4</span></span></button>
+<button class="opcion" data-correcta="no"><span class="fraccion"><span class="num">1</span><span class="den">6</span></span></button>
+</div>
+<div class="respuesta-int" id="r-p4"></div>
+</div>
+</section>
+<!-- SIMPLIFICAR EL RESULTADO -->
+<section>
+<h2 id="s-simplificar-el-resultado"><span class="num-seccion">4</span>Simplificar el resultado</h2>
+<p>Después de sumar o restar, hay que revisar si el resultado se puede <strong>simplificar</strong>, igual que aprendió en la Lección 4.1. Un resultado bien presentado siempre está en su forma más simple.</p>
+<div class="ejemplo">
+<div class="titulo-ej">Sumar y luego simplificar: 1/6 + 1/6</div>
+<div class="paso"><span class="n">1</span>Mismo denominador: sumo numeradores. 1 + 1 = 2. Resultado: <span class="fraccion"><span class="num">2</span><span class="den">6</span></span>.</div>
+<div class="paso"><span class="n">2</span>Reviso: ¿se puede simplificar <span class="fraccion"><span class="num">2</span><span class="den">6</span></span>? Sí, dividiendo entre 2: 2 ÷ 2 = 1, 6 ÷ 2 = 3.</div>
+<div class="paso"><span class="n">✓</span>Resultado final, simplificado: <span class="fraccion"><span class="num">1</span><span class="den">3</span></span>.</div>
+</div>
+<div class="caja caja-ojo">
+<span class="etiqueta et-ambar">Recuerde</span>
+<p>Sumar bien no termina el trabajo. Siempre pregúntese al final: <strong>¿este resultado se puede simplificar?</strong> En el GED, la respuesta correcta suele estar en su forma más simple.</p>
+</div>
+</section>
 
-<footer>
-  Matemáticas · Nivel 1 · Lección 4.2 — Spanish ASE Math · AE 0170-0321<br>
-  City Colleges of Chicago · Truman College · Prof. José M. Fernández
-</footer>
+<section>
+<h2 id="s-tarea"><span class="num-seccion">5</span>Tarea</h2><p>Esta parte la hace usted solo, a su ritmo. Calcule alrededor de una hora.</p><ul><li><strong>ThatQuiz.</strong> Entre en <a href="https://www.thatquiz.org/es/" rel="noopener noreferrer" target="_blank">ThatQuiz</a> y practique <em>suma</em> y <em>resta de fracciones</em>. Haga primero una tanda con el mismo denominador y después otra con denominadores distintos, que es donde de verdad se aprende.</li><li><strong>Con papel y lápiz.</strong> Resuelva diez operaciones: cinco con igual denominador y cinco con distinto. En cada una escriba el denominador común que eligió <strong>antes</strong> de operar, y simplifique siempre el resultado. Si el resultado sale impropio, conviértalo a número mixto.</li><li><strong>En su vida diaria.</strong> Piense en un día suyo dividido en partes: ¼ de hora en una cosa, ½ hora en otra, ⅓ de hora en una tercera. Sume las fracciones y diga cuánto tiempo fue en total, en horas y minutos.</li></ul>
 
+</section>
+<!-- QUIZ -->
+<section>
+<h2 id="s-quiz-de-practica"><span class="num-seccion">6</span>Quiz de práctica</h2>
+<p>Responda las <strong>8 preguntas</strong>. Al final verá su puntaje y podrá repasar lo que falló. Puede repetir el quiz las veces que quiera.</p>
+<form id="quiz">
+<div class="quiz-bloque">
+<span class="qnum">Pregunta 1</span>
+<p class="pregunta">Al sumar dos fracciones con el mismo denominador, ¿qué se hace con el denominador?</p>
+<div class="opciones" data-q="1">
+<button class="opcion" data-c="no" type="button">Se suma con el otro denominador.</button>
+<button class="opcion" data-c="si" type="button">Se queda igual.</button>
+<button class="opcion" data-c="no" type="button">Se multiplica por 2.</button>
+<button class="opcion" data-c="no" type="button">Se resta.</button>
+</div>
+</div>
+<div class="quiz-bloque">
+<span class="qnum">Pregunta 2</span>
+<p class="pregunta">¿Cuánto es <strong>2/7 + 3/7</strong>?</p>
+<div class="opciones" data-q="2">
+<button class="opcion" data-c="si" type="button">5/7</button>
+<button class="opcion" data-c="no" type="button">5/14</button>
+<button class="opcion" data-c="no" type="button">6/7</button>
+<button class="opcion" data-c="no" type="button">5/49</button>
+</div>
+</div>
+<div class="quiz-bloque">
+<span class="qnum">Pregunta 3</span>
+<p class="pregunta">¿Cuánto es <strong>5/6 − 2/6</strong>?</p>
+<div class="opciones" data-q="3">
+<button class="opcion" data-c="no" type="button">3/12</button>
+<button class="opcion" data-c="si" type="button">1/2</button>
+<button class="opcion" data-c="no" type="button">7/6</button>
+<button class="opcion" data-c="no" type="button">3/0</button>
+</div>
+</div>
+<div class="quiz-bloque">
+<span class="qnum">Pregunta 4</span>
+<p class="pregunta">Para sumar <strong>1/3 + 1/6</strong>, ¿cuál es un buen denominador común?</p>
+<div class="opciones" data-q="4">
+<button class="opcion" data-c="si" type="button">6</button>
+<button class="opcion" data-c="no" type="button">9</button>
+<button class="opcion" data-c="no" type="button">3</button>
+<button class="opcion" data-c="no" type="button">5</button>
+</div>
+</div>
+<div class="quiz-bloque">
+<span class="qnum">Pregunta 5</span>
+<p class="pregunta">¿Cuánto es <strong>1/2 + 1/3</strong>?</p>
+<div class="opciones" data-q="5">
+<button class="opcion" data-c="no" type="button">2/5</button>
+<button class="opcion" data-c="si" type="button">5/6</button>
+<button class="opcion" data-c="no" type="button">2/6</button>
+<button class="opcion" data-c="no" type="button">1/6</button>
+</div>
+</div>
+<div class="quiz-bloque">
+<span class="qnum">Pregunta 6</span>
+<p class="pregunta">¿Cuánto es <strong>3/4 − 1/8</strong>?</p>
+<div class="opciones" data-q="6">
+<button class="opcion" data-c="si" type="button">5/8</button>
+<button class="opcion" data-c="no" type="button">2/4</button>
+<button class="opcion" data-c="no" type="button">2/8</button>
+<button class="opcion" data-c="no" type="button">7/8</button>
+</div>
+</div>
+<div class="quiz-bloque">
+<span class="qnum">Pregunta 7</span>
+<p class="pregunta">El resultado de una suma es <strong>4/8</strong>. ¿Cuál es su forma más simple?</p>
+<div class="opciones" data-q="7">
+<button class="opcion" data-c="no" type="button">4/8</button>
+<button class="opcion" data-c="si" type="button">1/2</button>
+<button class="opcion" data-c="no" type="button">2/8</button>
+<button class="opcion" data-c="no" type="button">8/4</button>
+</div>
+</div>
+<div class="quiz-bloque">
+<span class="qnum">Pregunta 8</span>
+<p class="pregunta">Una persona dedica 1/4 de hora a leer y 1/2 hora a estudiar. ¿Cuánto tiempo dedicó en total?</p>
+<div class="opciones" data-q="8">
+<button class="opcion" data-c="no" type="button">2/6 de hora</button>
+<button class="opcion" data-c="si" type="button">3/4 de hora</button>
+<button class="opcion" data-c="no" type="button">1/6 de hora</button>
+<button class="opcion" data-c="no" type="button">2/4 de hora</button>
+</div>
+</div>
+</form>
+<div style="text-align:center;margin-top:18px;">
+<button class="btn" id="btn-calificar">Ver mi resultado</button>
+<button class="btn btn-sec" id="btn-reintentar" style="display:none;">Intentar de nuevo</button>
+</div>
+<div class="marcador" id="marcador">
+<div class="barra-prog"><span id="barra"></span></div>
+<div class="puntaje" id="puntaje"></div>
+<div class="mensaje" id="mensaje"></div>
+</div>
+</section>
+<!-- RÚBRICA -->
+<section>
+<h2 id="s-rubrica-de-evaluacion"><span class="num-seccion">7</span>Rúbrica de evaluación</h2>
+<p>Rúbrica analítica de proceso. Cada criterio se evalúa en cuatro niveles. Léala <strong>antes</strong> de empezar la tarea y úsela <strong>después</strong> para evaluar su propio trabajo con honestidad.</p>
+<table class="tabla-rubrica">
+<thead>
+<tr>
+<th>Criterio</th>
+<th class="nivel-cab">Logrado (4)</th>
+<th class="nivel-cab">Satisfactorio (3)</th>
+<th class="nivel-cab">En proceso (2)</th>
+<th class="nivel-cab">Por reforzar (1)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Suma y resta con igual denominador</td>
+<td>Suma numeradores y mantiene el denominador sin errores.</td>
+<td>Opera bien casi siempre.</td>
+<td>A veces suma también los denominadores.</td>
+<td>No domina el caso de igual denominador.</td>
+</tr>
+<tr>
+<td>Encuentra el denominador común</td>
+<td>Halla un denominador común con seguridad.</td>
+<td>Encuentra un común, a veces no el menor.</td>
+<td>Tiene dificultad para hallar el común.</td>
+<td>No identifica un denominador común.</td>
+</tr>
+<tr>
+<td>Opera con denominadores distintos</td>
+<td>Convierte a equivalentes y opera sin errores.</td>
+<td>Resuelve con un descuido aislado.</td>
+<td>Convierte mal una de las fracciones.</td>
+<td>No logra operar con distintos denominadores.</td>
+</tr>
+<tr>
+<td>Simplifica el resultado</td>
+<td>Entrega siempre el resultado en su forma más simple.</td>
+<td>Simplifica cuando se le recuerda.</td>
+<td>Simplifica parcialmente.</td>
+<td>No simplifica el resultado.</td>
+</tr>
+</tbody>
+</table>
+</section>
+<!-- CIERRE -->
+<div class="cierre">
+<h2 id="s-lo-que-viene-en-la-proxima-leccion"><span class="num-seccion">➡️</span>Lo que viene en la próxima lección</h2>
+<p>Ya sabe sumar y restar fracciones, encontrar denominadores comunes y simplificar el resultado. Sumar y restar fueron lo más laborioso — necesitaban el denominador común.</p>
+<p>En la <strong>Lección 4.3 · Multiplicación y división de fracciones</strong> le espera una sorpresa agradable: <strong>multiplicar y dividir fracciones es más sencillo que sumarlas</strong>, porque no hace falta buscar denominador común. Con esa lección cerrará el Tema 4 y la primera mitad del Nivel 1.</p>
+<div class="flecha-sig">➡️  Próxima: Lección 4.3 · Multiplicación y división de fracciones</div>
+</div>
+</div>
+<footer><p>GEDparaHispanos · Matemáticas · Nivel 1 · Tema 4 · Lección 4.2</p><p>José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago</p><p class="licencia">© 2026. Esta obra está licenciada bajo <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" rel="license" target="_blank">Creative Commons Reconocimiento-NoComercial-CompartirIgual 4.0 Internacional (CC BY-NC-SA 4.0)</a>.</p></footer><a aria-label="Volver al contenido de la lección" class="volver-indice" href="#indice"><span aria-hidden="true">↑</span> Índice</a>
 <script>
   const respuestasPractica = {
     p1:"3/8 + 2/8 = 5/8. Mismo denominador: sume los numeradores (3 + 2 = 5) y deje el denominador en 8.",
@@ -663,6 +583,5 @@
     document.getElementById('quiz').scrollIntoView({behavior:'smooth', block:'start'});
   });
 </script>
-
 </body>
 </html>

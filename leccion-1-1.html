@@ -1,9 +1,12 @@
 <!DOCTYPE html>
+<!-- Lección 1.1 · Matemáticas Nivel 1 · GEDparaHispanos
+     José M. Fernández · CC BY-NC-SA 4.0 -->
+
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lección 1.1 · Valor posicional y números enteros</title>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Lección 1.1 · Valor posicional y números enteros</title><meta content="CC BY-NC-SA 4.0" name="license"/><link href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" rel="license"/>
 <style>
   :root{
     --azul:#1565c0; --azul-osc:#0d47a1; --azul-cl:#e3f2fd;
@@ -75,29 +78,6 @@
   .caja-ojo{background:var(--ambar-cl);border-color:var(--ambar);}
   .caja-ojo strong{color:var(--ambar);}
   .caja-recurso{background:#eef2f7;border-color:var(--gris);}
-
-  /* ── MODALIDADES PRESENCIAL / EN LÍNEA ── */
-  .modalidades{display:flex;gap:14px;margin-top:14px;flex-wrap:wrap;}
-  .modo{
-    flex:1;min-width:240px;border-radius:9px;padding:13px 16px;
-    background:#fff;border:1px solid var(--linea);
-  }
-  .modo-pres{border-top:4px solid var(--azul);}
-  .modo-line{border-top:4px solid var(--verde);}
-  .modo .modo-tit{
-    display:block;font-weight:700;font-size:14px;margin-bottom:5px;
-  }
-  .modo-pres .modo-tit{color:var(--azul-osc);}
-  .modo-line .modo-tit{color:var(--verde);}
-  .modo p{margin:4px 0 0;font-size:15px;}
-
-  .etiqueta{
-    display:inline-block;font-size:12px;font-weight:700;letter-spacing:.5px;
-    text-transform:uppercase;padding:3px 10px;border-radius:5px;margin-bottom:6px;
-  }
-  .et-verde{background:var(--verde);color:#fff;}
-  .et-ambar{background:var(--ambar);color:#fff;}
-  .et-azul{background:var(--azul);color:#fff;}
 
   /* ── TABLA DE VALOR POSICIONAL ── */
   .tabla-vp{width:100%;border-collapse:collapse;margin:0;font-size:15px;}
@@ -246,469 +226,390 @@
     .tabla-scroll{overflow:visible; border:0;}
     .aviso-desliza{display:none;}
   }
+
+  /* ── ÍNDICE DE LA LECCIÓN ── */
+  .indice{
+    background:var(--papel); border:1px solid var(--linea); border-left:6px solid var(--azul);
+    border-radius:10px; padding:16px 20px; margin:26px 0;
+  }
+  .indice h2{ font-size:1.05rem; margin:0 0 10px; color:var(--azul-osc); border:0; padding:0; }
+  .indice ol{ margin:0; padding-left:1.3em; }
+  .indice li{ margin:4px 0; }
+  .indice a{ color:var(--azul-osc); text-decoration:underline; }
+  .indice a:hover{ color:var(--azul); }
+  .indice a:focus-visible,.volver-indice:focus-visible{ outline:3px solid #b05e00; outline-offset:2px; }
+  .volver-indice{
+    position:fixed; right:18px; bottom:18px; z-index:60;
+    background:var(--azul-osc); color:#fff; border-radius:999px;
+    padding:10px 16px; font-weight:700; font-size:.92rem; text-decoration:none;
+    box-shadow:0 2px 10px rgba(0,0,0,.28);
+  }
+  .volver-indice:hover{ background:var(--azul); color:#fff; }
+  footer .licencia a{ color:#fff; text-decoration:underline; }
+  @media print{ .indice,.volver-indice{ display:none; } }
 </style>
 </head>
 <body>
-
 <header class="principal">
-  <div class="envoltura-header">
-    <p class="ruta">Matemáticas · Nivel 1 · Tema 1 — Números enteros</p>
-    <h1>Lección 1.1 · Valor posicional y números enteros</h1>
-    <p class="lema">Leer, escribir, comparar, ordenar y redondear números — la base para entender sueldos, precios, distancias y poblaciones.</p>
-    <div class="chips">
-      <span class="chip"><span aria-hidden="true">⏱️</span> 4 horas (2 sincrónicas + 2 asincrónicas)</span>
-      <span class="chip"><span aria-hidden="true">📘</span> Steck-Vaughn · MyOpenMath</span>
-      <span class="chip"><span aria-hidden="true">🎯</span> Sin calculadora</span>
-    </div>
-  </div>
+<div class="envoltura-header">
+<p class="ruta">Matemáticas · Nivel 1 · Tema 1 — Números enteros</p>
+<h1>Lección 1.1 · Valor posicional y números enteros</h1>
+<p class="lema">Leer, escribir, comparar, ordenar y redondear números — la base para entender sueldos, precios, distancias y poblaciones.</p>
+<div class="chips">
+<span class="chip"><span aria-hidden="true">⏱️</span> Unas 4 horas, a su ritmo</span>
+
+<span class="chip"><span aria-hidden="true">🎯</span> Sin calculadora</span>
+</div>
+</div>
 </header>
-
 <div class="envoltura">
-
 <!-- OBJETIVOS -->
 <section>
-  <div class="caja caja-objetivo">
-    <h2><span class="num-seccion" aria-hidden="true">🎯</span>Objetivos de la clase</h2>
-    <p>Al terminar esta lección, usted podrá:</p>
-    <ul>
-      <li><strong>Leer y escribir</strong> números enteros desde las unidades hasta los billones, con cifras y con palabras.</li>
-      <li><strong>Identificar el valor posicional</strong> de cualquier dígito dentro de un número.</li>
-      <li><strong>Comparar y ordenar</strong> números enteros usando los símbolos &gt;, &lt; e =.</li>
-      <li><strong>Redondear</strong> un número a la decena, centena o millar más cercano.</li>
-    </ul>
-  </div>
-</section>
-
+<div class="caja caja-objetivo">
+<h2><span aria-hidden="true" class="num-seccion">🎯</span>Objetivos de la lección</h2>
+<p>Al terminar esta lección, usted podrá:</p>
+<ul>
+<li><strong>Leer y escribir</strong> números enteros desde las unidades hasta los billones, con cifras y con palabras.</li>
+<li><strong>Identificar el valor posicional</strong> de cualquier dígito dentro de un número.</li>
+<li><strong>Comparar y ordenar</strong> números enteros usando los símbolos &gt;, &lt; e =.</li>
+<li><strong>Redondear</strong> un número a la decena, centena o millar más cercano.</li>
+</ul>
+</div>
+</section><nav aria-labelledby="indice-titulo" class="indice" id="indice"><h2 id="indice-titulo">Contenido de la lección</h2><ol><li><a href="#s-por-que-empezamos-por-aqui">¿Por qué empezamos por aquí?</a></li><li><a href="#s-la-tabla-de-valor-posicional">La tabla de valor posicional</a></li><li><a href="#s-practiquemos-valor-posicional">Practiquemos: valor posicional</a></li><li><a href="#s-comparar-y-ordenar-numeros">Comparar y ordenar números</a></li><li><a href="#s-redondear-numeros">Redondear números</a></li><li><a href="#s-tarea">Tarea</a></li><li><a href="#s-quiz-de-practica">Quiz de práctica</a></li><li><a href="#s-rubrica-de-evaluacion">Rúbrica de evaluación</a></li><li><a href="#s-lo-que-viene-en-la-proxima-leccion">Lo que viene en la próxima lección</a></li></ol></nav>
 <!-- POR QUÉ IMPORTA -->
 <section>
-  <h2><span class="num-seccion" aria-hidden="true">1</span>¿Por qué empezamos por aquí?</h2>
-  <p>Usted ya usa números todos los días: lee el precio en el supermercado, revisa el salario en su cheque, mira las millas en el carro o el número de su casa. Todos esos números funcionan gracias a una idea muy poderosa: <strong>el lugar donde está un dígito decide cuánto vale</strong>.</p>
-  <p>El dígito <strong>5</strong> no siempre vale cinco. En el número <strong>5</strong> vale cinco; en <strong>50</strong> vale cincuenta; en <strong>500</strong> vale quinientos. El dígito es el mismo, pero su <em>posición</em> cambió su valor. Entender esto es la base de toda la aritmética que veremos este nivel.</p>
-  <div class="caja caja-tip">
-    <span class="etiqueta et-verde">Idea clave</span>
-    <p>En nuestro sistema de números, cada vez que un dígito se mueve <strong>un lugar hacia la izquierda</strong>, su valor se hace <strong>10 veces más grande</strong>.</p>
-  </div>
+<h2 id="s-por-que-empezamos-por-aqui"><span aria-hidden="true" class="num-seccion">1</span>¿Por qué empezamos por aquí?</h2>
+<p>Usted ya usa números todos los días: lee el precio en el supermercado, revisa el salario en su cheque, mira las millas en el carro o el número de su casa. Todos esos números funcionan gracias a una idea muy poderosa: <strong>el lugar donde está un dígito decide cuánto vale</strong>.</p>
+<p>El dígito <strong>5</strong> no siempre vale cinco. En el número <strong>5</strong> vale cinco; en <strong>50</strong> vale cincuenta; en <strong>500</strong> vale quinientos. El dígito es el mismo, pero su <em>posición</em> cambió su valor. Entender esto es la base de toda la aritmética que veremos este nivel.</p>
+<div class="caja caja-tip">
+<span class="etiqueta et-verde">Idea clave</span>
+<p>En nuestro sistema de números, cada vez que un dígito se mueve <strong>un lugar hacia la izquierda</strong>, su valor se hace <strong>10 veces más grande</strong>.</p>
+</div>
 </section>
-
 <!-- LA TABLA DE VALOR POSICIONAL -->
 <section>
-  <h2><span class="num-seccion" aria-hidden="true">2</span>La tabla de valor posicional</h2>
-  <p>Los números grandes se leen más fácil si los separamos en <strong>grupos de tres dígitos</strong>. Cada grupo tiene un nombre: unidades, miles, millones, miles de millones (billones en inglés). Dentro de cada grupo siempre hay un lugar de <em>unidades</em>, uno de <em>decenas</em> y uno de <em>centenas</em>.</p>
-  <p>Veamos el número <strong>3&nbsp;482&nbsp;651</strong> ("tres millones cuatrocientos ochenta y dos mil seiscientos cincuenta y uno") colocado en la tabla:</p>
-
-  <div class="tabla-scroll" role="region" tabindex="0" aria-label="Valor posicional del número 3 482 651 (tabla desplazable horizontalmente)">
-    <table class="tabla-vp">
-      <caption class="cap-oculto">Valor posicional del número 3 482 651, con sus grupos de millones, miles y unidades</caption>
-      <thead>
-        <tr>
-          <th scope="col">Centena de millón</th>
-          <th scope="col">Decena de millón</th>
-          <th scope="col">Millón</th>
-          <th scope="col">Centena de millar</th>
-          <th scope="col">Decena de millar</th>
-          <th scope="col">Millar (mil)</th>
-          <th scope="col">Centena</th>
-          <th scope="col">Decena</th>
-          <th scope="col">Unidad</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td class="grupo-mill vacia"><span aria-hidden="true">—</span><span class="cap-oculto">Posición vacía</span></td>
-          <td class="grupo-mill vacia"><span aria-hidden="true">—</span><span class="cap-oculto">Posición vacía</span></td>
-          <td class="grupo-mill">3</td>
-          <td class="grupo-mil">4</td>
-          <td class="grupo-mil">8</td>
-          <td class="grupo-mil">2</td>
-          <td class="grupo-uni">6</td>
-          <td class="grupo-uni">5</td>
-          <td class="grupo-uni">1</td>
-        </tr>
-        <tr>
-          <td class="pie-grupo" colspan="3">Grupo de los millones</td>
-          <td class="pie-grupo" colspan="3">Grupo de los miles</td>
-          <td class="pie-grupo" colspan="3">Grupo de las unidades</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-  <p class="aviso-desliza"><span aria-hidden="true">↔</span> Deslice la tabla horizontalmente para ver todas las columnas.</p>
-
-  <p>Para <strong>leer</strong> el número, decimos cada grupo seguido de su nombre, de izquierda a derecha:</p>
-
-  <div class="ejemplo">
-    <p class="titulo-ej"><span aria-hidden="true">📖</span> Cómo leer 3 482 651</p>
-    <p class="paso"><span class="n" aria-hidden="true">1</span><strong>Paso 1.</strong> El <strong>3</strong> se lee "tres <em>millones</em>".</p>
-    <p class="paso"><span class="n" aria-hidden="true">2</span><strong>Paso 2.</strong> El <strong>482</strong> se lee "cuatrocientos ochenta y dos <em>mil</em>".</p>
-    <p class="paso"><span class="n" aria-hidden="true">3</span><strong>Paso 3.</strong> El <strong>651</strong> se lee "seiscientos cincuenta y uno".</p>
-    <p class="paso"><span class="n" aria-hidden="true">✓</span><strong>Resultado.</strong> Todo junto: "tres millones cuatrocientos ochenta y dos mil seiscientos cincuenta y uno".</p>
-  </div>
-
-  <div class="caja caja-ojo">
-    <span class="etiqueta et-ambar">¡Ojo!</span>
-    <p>El grupo de las unidades <strong>no lleva nombre</strong> al final. Decimos "tres millones, cuatrocientos ochenta y dos mil… seiscientos cincuenta y uno" — no "seiscientos cincuenta y uno <em>unidades</em>".</p>
-  </div>
+<h2 id="s-la-tabla-de-valor-posicional"><span aria-hidden="true" class="num-seccion">2</span>La tabla de valor posicional</h2>
+<p>Los números grandes se leen más fácil si los separamos en <strong>grupos de tres dígitos</strong>. Cada grupo tiene un nombre: unidades, miles, millones, miles de millones (billones en inglés). Dentro de cada grupo siempre hay un lugar de <em>unidades</em>, uno de <em>decenas</em> y uno de <em>centenas</em>.</p>
+<p>Veamos el número <strong>3 482 651</strong> ("tres millones cuatrocientos ochenta y dos mil seiscientos cincuenta y uno") colocado en la tabla:</p>
+<div aria-label="Valor posicional del número 3 482 651 (tabla desplazable horizontalmente)" class="tabla-scroll" role="region" tabindex="0">
+<table class="tabla-vp">
+<caption class="cap-oculto">Valor posicional del número 3 482 651, con sus grupos de millones, miles y unidades</caption>
+<thead>
+<tr>
+<th scope="col">Centena de millón</th>
+<th scope="col">Decena de millón</th>
+<th scope="col">Millón</th>
+<th scope="col">Centena de millar</th>
+<th scope="col">Decena de millar</th>
+<th scope="col">Millar (mil)</th>
+<th scope="col">Centena</th>
+<th scope="col">Decena</th>
+<th scope="col">Unidad</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="grupo-mill vacia"><span aria-hidden="true">—</span><span class="cap-oculto">Posición vacía</span></td>
+<td class="grupo-mill vacia"><span aria-hidden="true">—</span><span class="cap-oculto">Posición vacía</span></td>
+<td class="grupo-mill">3</td>
+<td class="grupo-mil">4</td>
+<td class="grupo-mil">8</td>
+<td class="grupo-mil">2</td>
+<td class="grupo-uni">6</td>
+<td class="grupo-uni">5</td>
+<td class="grupo-uni">1</td>
+</tr>
+<tr>
+<td class="pie-grupo" colspan="3">Grupo de los millones</td>
+<td class="pie-grupo" colspan="3">Grupo de los miles</td>
+<td class="pie-grupo" colspan="3">Grupo de las unidades</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p class="aviso-desliza"><span aria-hidden="true">↔</span> Deslice la tabla horizontalmente para ver todas las columnas.</p>
+<p>Para <strong>leer</strong> el número, decimos cada grupo seguido de su nombre, de izquierda a derecha:</p>
+<div class="ejemplo">
+<p class="titulo-ej"><span aria-hidden="true">📖</span> Cómo leer 3 482 651</p>
+<p class="paso"><span aria-hidden="true" class="n">1</span><strong>Paso 1.</strong> El <strong>3</strong> se lee "tres <em>millones</em>".</p>
+<p class="paso"><span aria-hidden="true" class="n">2</span><strong>Paso 2.</strong> El <strong>482</strong> se lee "cuatrocientos ochenta y dos <em>mil</em>".</p>
+<p class="paso"><span aria-hidden="true" class="n">3</span><strong>Paso 3.</strong> El <strong>651</strong> se lee "seiscientos cincuenta y uno".</p>
+<p class="paso"><span aria-hidden="true" class="n">✓</span><strong>Resultado.</strong> Todo junto: "tres millones cuatrocientos ochenta y dos mil seiscientos cincuenta y uno".</p>
+</div>
+<div class="caja caja-ojo">
+<span class="etiqueta et-ambar">¡Ojo!</span>
+<p>El grupo de las unidades <strong>no lleva nombre</strong> al final. Decimos "tres millones, cuatrocientos ochenta y dos mil… seiscientos cincuenta y uno" — no "seiscientos cincuenta y uno <em>unidades</em>".</p>
+</div>
 </section>
-
 <!-- PRÁCTICA 1 -->
 <section>
-  <h2><span class="num-seccion" aria-hidden="true">3</span>Practiquemos: valor posicional</h2>
-
-  <div class="practica">
-    <div class="cabe">
-      <span class="ico" aria-hidden="true">✏️</span>
-      <h3>Práctica 1 — ¿Cuánto vale el dígito?</h3>
-    </div>
-    <p class="pregunta-int" id="t-p1">En el número <strong>74&nbsp;<u>9</u>05</strong>, ¿cuánto vale el dígito <strong>9</strong>?</p>
-    <div class="opciones" data-quiz="p1" role="group" aria-labelledby="t-p1">
-      <button type="button" class="opcion" data-correcta="no">9 (nueve)</button>
-      <button type="button" class="opcion" data-correcta="no">90 (noventa)</button>
-      <button type="button" class="opcion" data-correcta="si">900 (novecientos)</button>
-      <button type="button" class="opcion" data-correcta="no">9 000 (nueve mil)</button>
-    </div>
-    <div class="respuesta-int" id="r-p1" role="status" aria-live="polite"></div>
-  </div>
-
-  <div class="practica">
-    <div class="cabe">
-      <span class="ico" aria-hidden="true">✏️</span>
-      <h3>Práctica 2 — Lectura de números</h3>
-    </div>
-    <p class="pregunta-int" id="t-p2">¿Cómo se lee el número <strong>208 040</strong>?</p>
-    <div class="opciones" data-quiz="p2" role="group" aria-labelledby="t-p2">
-      <button type="button" class="opcion" data-correcta="no">Veintiocho mil cuarenta</button>
-      <button type="button" class="opcion" data-correcta="si">Doscientos ocho mil cuarenta</button>
-      <button type="button" class="opcion" data-correcta="no">Doscientos ochenta mil cuarenta</button>
-      <button type="button" class="opcion" data-correcta="no">Dos millones ocho mil cuarenta</button>
-    </div>
-    <div class="respuesta-int" id="r-p2" role="status" aria-live="polite"></div>
-  </div>
-
-  <div class="caja caja-tip">
-    <span class="etiqueta et-verde">Truco</span>
-    <p>El <strong>cero</strong> es muy importante: es el que "guarda el lugar". En <strong>208 040</strong> los ceros indican que no hay decenas de millar, ni centenas, ni unidades. Si los quitáramos, el número cambiaría por completo.</p>
-  </div>
+<h2 id="s-practiquemos-valor-posicional"><span aria-hidden="true" class="num-seccion">3</span>Practiquemos: valor posicional</h2>
+<div class="practica">
+<div class="cabe">
+<span aria-hidden="true" class="ico">✏️</span>
+<h3>Práctica 1 — ¿Cuánto vale el dígito?</h3>
+</div>
+<p class="pregunta-int" id="t-p1">En el número <strong>74 <u>9</u>05</strong>, ¿cuánto vale el dígito <strong>9</strong>?</p>
+<div aria-labelledby="t-p1" class="opciones" data-quiz="p1" role="group">
+<button class="opcion" data-correcta="no" type="button">9 (nueve)</button>
+<button class="opcion" data-correcta="no" type="button">90 (noventa)</button>
+<button class="opcion" data-correcta="si" type="button">900 (novecientos)</button>
+<button class="opcion" data-correcta="no" type="button">9 000 (nueve mil)</button>
+</div>
+<div aria-live="polite" class="respuesta-int" id="r-p1" role="status"></div>
+</div>
+<div class="practica">
+<div class="cabe">
+<span aria-hidden="true" class="ico">✏️</span>
+<h3>Práctica 2 — Lectura de números</h3>
+</div>
+<p class="pregunta-int" id="t-p2">¿Cómo se lee el número <strong>208 040</strong>?</p>
+<div aria-labelledby="t-p2" class="opciones" data-quiz="p2" role="group">
+<button class="opcion" data-correcta="no" type="button">Veintiocho mil cuarenta</button>
+<button class="opcion" data-correcta="si" type="button">Doscientos ocho mil cuarenta</button>
+<button class="opcion" data-correcta="no" type="button">Doscientos ochenta mil cuarenta</button>
+<button class="opcion" data-correcta="no" type="button">Dos millones ocho mil cuarenta</button>
+</div>
+<div aria-live="polite" class="respuesta-int" id="r-p2" role="status"></div>
+</div>
+<div class="caja caja-tip">
+<span class="etiqueta et-verde">Truco</span>
+<p>El <strong>cero</strong> es muy importante: es el que "guarda el lugar". En <strong>208 040</strong> los ceros indican que no hay decenas de millar, ni centenas, ni unidades. Si los quitáramos, el número cambiaría por completo.</p>
+</div>
 </section>
-
 <!-- COMPARAR Y ORDENAR -->
 <section>
-  <h2><span class="num-seccion" aria-hidden="true">4</span>Comparar y ordenar números</h2>
-  <p>Comparar es decidir cuál número es <strong>mayor</strong> y cuál es <strong>menor</strong>. Usamos tres símbolos:</p>
-  <ul>
-    <li><strong>&gt;</strong> significa "es mayor que": <strong>8 &gt; 5</strong> (ocho es mayor que cinco)</li>
-    <li><strong>&lt;</strong> significa "es menor que": <strong>3 &lt; 7</strong> (tres es menor que siete)</li>
-    <li><strong>=</strong> significa "es igual a": <strong>40 = 40</strong></li>
-  </ul>
-
-  <div class="caja caja-tip">
-    <span class="etiqueta et-verde">Truco para no confundir mayor que y menor que</span>
-    <p>El símbolo es como una boca abierta: <strong>siempre "se come" al número más grande</strong>. La punta cerrada apunta al número más pequeño.</p>
-  </div>
-
-  <h3>Cómo comparar dos números, paso a paso</h3>
-  <div class="ejemplo">
-    <p class="titulo-ej">Comparar 4 729 y 4 813</p>
-    <p class="paso"><span class="n" aria-hidden="true">1</span><strong>Paso 1.</strong> Cuente los dígitos. Los dos tienen 4 dígitos: empate, hay que mirar adentro.</p>
-    <p class="paso"><span class="n" aria-hidden="true">2</span><strong>Paso 2.</strong> Compare de <strong>izquierda a derecha</strong>. Millares: 4 = 4, empate todavía.</p>
-    <p class="paso"><span class="n" aria-hidden="true">3</span><strong>Paso 3.</strong> Centenas: 7 contra 8. ¡Aquí se decide! 7 es menor que 8.</p>
-    <p class="paso"><span class="n" aria-hidden="true">✓</span><strong>Resultado.</strong> Por lo tanto: <strong>4 729 &lt; 4 813</strong>.</p>
-  </div>
-
-  <div class="caja caja-ojo">
-    <span class="etiqueta et-ambar">¡Ojo!</span>
-    <p>Si dos números tienen <strong>distinta cantidad de dígitos</strong>, el que tiene más dígitos es el mayor. Por ejemplo: <strong>1 000</strong> (4 dígitos) es mayor que <strong>999</strong> (3 dígitos).</p>
-  </div>
-
-  <div class="practica">
-    <div class="cabe">
-      <span class="ico" aria-hidden="true">✏️</span>
-      <h3>Práctica 3 — Compare</h3>
-    </div>
-    <p class="pregunta-int" id="t-p3">¿Qué símbolo va entre <strong>52 600</strong> y <strong>52 060</strong>?</p>
-    <div class="opciones" data-quiz="p3" role="group" aria-labelledby="t-p3">
-      <button type="button" class="opcion" data-correcta="si">52 600 es mayor que 52 060</button>
-      <button type="button" class="opcion" data-correcta="no">52 600 es menor que 52 060</button>
-      <button type="button" class="opcion" data-correcta="no">52 600 es igual a 52 060</button>
-    </div>
-    <div class="respuesta-int" id="r-p3" role="status" aria-live="polite"></div>
-  </div>
+<h2 id="s-comparar-y-ordenar-numeros"><span aria-hidden="true" class="num-seccion">4</span>Comparar y ordenar números</h2>
+<p>Comparar es decidir cuál número es <strong>mayor</strong> y cuál es <strong>menor</strong>. Usamos tres símbolos:</p>
+<ul>
+<li><strong>&gt;</strong> significa "es mayor que": <strong>8 &gt; 5</strong> (ocho es mayor que cinco)</li>
+<li><strong>&lt;</strong> significa "es menor que": <strong>3 &lt; 7</strong> (tres es menor que siete)</li>
+<li><strong>=</strong> significa "es igual a": <strong>40 = 40</strong></li>
+</ul>
+<div class="caja caja-tip">
+<span class="etiqueta et-verde">Truco para no confundir mayor que y menor que</span>
+<p>El símbolo es como una boca abierta: <strong>siempre "se come" al número más grande</strong>. La punta cerrada apunta al número más pequeño.</p>
+</div>
+<h3>Cómo comparar dos números, paso a paso</h3>
+<div class="ejemplo">
+<p class="titulo-ej">Comparar 4 729 y 4 813</p>
+<p class="paso"><span aria-hidden="true" class="n">1</span><strong>Paso 1.</strong> Cuente los dígitos. Los dos tienen 4 dígitos: empate, hay que mirar adentro.</p>
+<p class="paso"><span aria-hidden="true" class="n">2</span><strong>Paso 2.</strong> Compare de <strong>izquierda a derecha</strong>. Millares: 4 = 4, empate todavía.</p>
+<p class="paso"><span aria-hidden="true" class="n">3</span><strong>Paso 3.</strong> Centenas: 7 contra 8. ¡Aquí se decide! 7 es menor que 8.</p>
+<p class="paso"><span aria-hidden="true" class="n">✓</span><strong>Resultado.</strong> Por lo tanto: <strong>4 729 &lt; 4 813</strong>.</p>
+</div>
+<div class="caja caja-ojo">
+<span class="etiqueta et-ambar">¡Ojo!</span>
+<p>Si dos números tienen <strong>distinta cantidad de dígitos</strong>, el que tiene más dígitos es el mayor. Por ejemplo: <strong>1 000</strong> (4 dígitos) es mayor que <strong>999</strong> (3 dígitos).</p>
+</div>
+<div class="practica">
+<div class="cabe">
+<span aria-hidden="true" class="ico">✏️</span>
+<h3>Práctica 3 — Compare</h3>
+</div>
+<p class="pregunta-int" id="t-p3">¿Qué símbolo va entre <strong>52 600</strong> y <strong>52 060</strong>?</p>
+<div aria-labelledby="t-p3" class="opciones" data-quiz="p3" role="group">
+<button class="opcion" data-correcta="si" type="button">52 600 es mayor que 52 060</button>
+<button class="opcion" data-correcta="no" type="button">52 600 es menor que 52 060</button>
+<button class="opcion" data-correcta="no" type="button">52 600 es igual a 52 060</button>
+</div>
+<div aria-live="polite" class="respuesta-int" id="r-p3" role="status"></div>
+</div>
 </section>
-
 <!-- REDONDEAR -->
 <section>
-  <h2><span class="num-seccion" aria-hidden="true">5</span>Redondear números</h2>
-  <p>Redondear es cambiar un número por otro <strong>más fácil de usar y cercano</strong>. Lo hacemos todo el tiempo: si algo cuesta $19, decimos "como veinte dólares"; si una ciudad tiene 48 213 habitantes, decimos "casi cincuenta mil".</p>
-
-  <h3>La regla del vecino de la derecha</h3>
-  <p>Para redondear, fíjese en el dígito que está <strong>a la derecha</strong> de la posición que le piden:</p>
-  <ul>
-    <li>Si ese dígito es <strong>0, 1, 2, 3 o 4</strong> → el número se queda igual (<em>redondea hacia abajo</em>).</li>
-    <li>Si ese dígito es <strong>5, 6, 7, 8 o 9</strong> → sube uno (<em>redondea hacia arriba</em>).</li>
-    <li>En los dos casos, todos los dígitos a la derecha se vuelven <strong>cero</strong>.</li>
-  </ul>
-
-  <div class="ejemplo">
-    <p class="titulo-ej">Redondear 3 472 al millar más cercano</p>
-    <p class="paso"><span class="n" aria-hidden="true">1</span><strong>Paso 1.</strong> La posición pedida es el <strong>millar</strong>: el dígito 3.</p>
-    <p class="paso"><span class="n" aria-hidden="true">2</span><strong>Paso 2.</strong> Miro su vecino de la derecha (las centenas): es <strong>4</strong>.</p>
-    <p class="paso"><span class="n" aria-hidden="true">3</span><strong>Paso 3.</strong> 4 es menor que 5 → el millar se queda en 3, y todo lo de la derecha se hace cero.</p>
-    <p class="paso"><span class="n" aria-hidden="true">✓</span><strong>Resultado:</strong> <strong>3 000</strong>.</p>
-  </div>
-
-  <div class="ejemplo">
-    <p class="titulo-ej">Redondear 3 472 a la centena más cercana</p>
-    <p class="paso"><span class="n" aria-hidden="true">1</span><strong>Paso 1.</strong> La posición pedida es la <strong>centena</strong>: el dígito 4.</p>
-    <p class="paso"><span class="n" aria-hidden="true">2</span><strong>Paso 2.</strong> Miro su vecino de la derecha (las decenas): es <strong>7</strong>.</p>
-    <p class="paso"><span class="n" aria-hidden="true">3</span><strong>Paso 3.</strong> 7 es 5 o más → la centena sube de 4 a 5, y todo lo de la derecha se hace cero.</p>
-    <p class="paso"><span class="n" aria-hidden="true">✓</span><strong>Resultado:</strong> <strong>3 500</strong>.</p>
-  </div>
-
-  <div class="practica">
-    <div class="cabe">
-      <span class="ico" aria-hidden="true">✏️</span>
-      <h3>Práctica 4 — Redondee</h3>
-    </div>
-    <p class="pregunta-int" id="t-p4">Redondee <strong>8 651</strong> al <strong>millar</strong> más cercano.</p>
-    <div class="opciones" data-quiz="p4" role="group" aria-labelledby="t-p4">
-      <button type="button" class="opcion" data-correcta="no">8 000</button>
-      <button type="button" class="opcion" data-correcta="si">9 000</button>
-      <button type="button" class="opcion" data-correcta="no">8 700</button>
-      <button type="button" class="opcion" data-correcta="no">8 600</button>
-    </div>
-    <div class="respuesta-int" id="r-p4" role="status" aria-live="polite"></div>
-  </div>
+<h2 id="s-redondear-numeros"><span aria-hidden="true" class="num-seccion">5</span>Redondear números</h2>
+<p>Redondear es cambiar un número por otro <strong>más fácil de usar y cercano</strong>. Lo hacemos todo el tiempo: si algo cuesta $19, decimos "como veinte dólares"; si una ciudad tiene 48 213 habitantes, decimos "casi cincuenta mil".</p>
+<h3>La regla del vecino de la derecha</h3>
+<p>Para redondear, fíjese en el dígito que está <strong>a la derecha</strong> de la posición que le piden:</p>
+<ul>
+<li>Si ese dígito es <strong>0, 1, 2, 3 o 4</strong> → el número se queda igual (<em>redondea hacia abajo</em>).</li>
+<li>Si ese dígito es <strong>5, 6, 7, 8 o 9</strong> → sube uno (<em>redondea hacia arriba</em>).</li>
+<li>En los dos casos, todos los dígitos a la derecha se vuelven <strong>cero</strong>.</li>
+</ul>
+<div class="ejemplo">
+<p class="titulo-ej">Redondear 3 472 al millar más cercano</p>
+<p class="paso"><span aria-hidden="true" class="n">1</span><strong>Paso 1.</strong> La posición pedida es el <strong>millar</strong>: el dígito 3.</p>
+<p class="paso"><span aria-hidden="true" class="n">2</span><strong>Paso 2.</strong> Miro su vecino de la derecha (las centenas): es <strong>4</strong>.</p>
+<p class="paso"><span aria-hidden="true" class="n">3</span><strong>Paso 3.</strong> 4 es menor que 5 → el millar se queda en 3, y todo lo de la derecha se hace cero.</p>
+<p class="paso"><span aria-hidden="true" class="n">✓</span><strong>Resultado:</strong> <strong>3 000</strong>.</p>
+</div>
+<div class="ejemplo">
+<p class="titulo-ej">Redondear 3 472 a la centena más cercana</p>
+<p class="paso"><span aria-hidden="true" class="n">1</span><strong>Paso 1.</strong> La posición pedida es la <strong>centena</strong>: el dígito 4.</p>
+<p class="paso"><span aria-hidden="true" class="n">2</span><strong>Paso 2.</strong> Miro su vecino de la derecha (las decenas): es <strong>7</strong>.</p>
+<p class="paso"><span aria-hidden="true" class="n">3</span><strong>Paso 3.</strong> 7 es 5 o más → la centena sube de 4 a 5, y todo lo de la derecha se hace cero.</p>
+<p class="paso"><span aria-hidden="true" class="n">✓</span><strong>Resultado:</strong> <strong>3 500</strong>.</p>
+</div>
+<div class="practica">
+<div class="cabe">
+<span aria-hidden="true" class="ico">✏️</span>
+<h3>Práctica 4 — Redondee</h3>
+</div>
+<p class="pregunta-int" id="t-p4">Redondee <strong>8 651</strong> al <strong>millar</strong> más cercano.</p>
+<div aria-labelledby="t-p4" class="opciones" data-quiz="p4" role="group">
+<button class="opcion" data-correcta="no" type="button">8 000</button>
+<button class="opcion" data-correcta="si" type="button">9 000</button>
+<button class="opcion" data-correcta="no" type="button">8 700</button>
+<button class="opcion" data-correcta="no" type="button">8 600</button>
+</div>
+<div aria-live="polite" class="respuesta-int" id="r-p4" role="status"></div>
+</div>
 </section>
 
-<!-- PRÁCTICA GUIADA EN CLASE -->
 <section>
-  <h2><span class="num-seccion" aria-hidden="true">6</span>Práctica guiada en clase</h2>
-  <p>Estas actividades se hacen <strong>en la sesión sincrónica</strong>, con el grupo y el profesor. Cada actividad incluye una variante para la <strong>clase presencial</strong> y otra para la <strong>clase en línea</strong>; el objetivo de aprendizaje es el mismo en ambas.</p>
+<h2 id="s-tarea"><span aria-hidden="true" class="num-seccion">6</span>Tarea</h2><p>Esta parte la hace usted solo, a su ritmo. Calcule alrededor de una hora. Nadie le va a revisar el cuaderno: el punto es que usted mismo compruebe si de verdad lo entendió.</p><ul><li><strong>ThatQuiz.</strong> Entre en <a href="https://www.thatquiz.org/es/" rel="noopener noreferrer" target="_blank">ThatQuiz</a>, busque en el menú de la izquierda los ejercicios de <em>valor posicional</em> y de <em>comparar números</em>, fije el nivel y el número de preguntas, y practique hasta acertar por lo menos 8 de cada 10.</li><li><strong>Con papel y lápiz.</strong> Escriba cinco números de seis o siete dígitos. Para cada uno haga tres cosas: léalo en voz alta, escríbalo con palabras y redondéelo al millar más cercano.</li><li><strong>En su vida diaria.</strong> Busque tres números reales —un precio, una distancia y una población— y escríbalos con palabras. Guárdelos: le servirán en la próxima lección.</li></ul>
 
-  <div class="caja caja-recurso">
-    <span class="etiqueta et-azul">Actividad A · "¿Cuánto vale?"</span>
-    <p>Cada estudiante recibe un número de 6 a 9 dígitos y lo descompone posición por posición usando la tabla de valor posicional.</p>
-    <div class="modalidades">
-      <div class="modo modo-pres">
-        <span class="modo-tit"><span aria-hidden="true">🏫</span> Presencial</span>
-        <p>Reparta tarjetas con un número impreso a cada estudiante. En parejas, cara a cara: uno dicta el número en voz alta y el otro lo escribe en una pizarra individual o en papel — primero con palabras, después en cifras. Luego intercambian las tarjetas y los roles.</p>
-      </div>
-      <div class="modo modo-line">
-        <span class="modo-tit"><span aria-hidden="true">💻</span> En línea</span>
-        <p>Muestre cada número en una diapositiva compartida. En salas pequeñas (breakout rooms) de dos, un estudiante dicta el número por micrófono y el otro lo escribe en el chat — primero con palabras, después en cifras. El profesor recorre las salas para verificar.</p>
-      </div>
-    </div>
-  </div>
-
-  <div class="caja caja-recurso">
-    <span class="etiqueta et-azul">Actividad B · Comparar y ordenar</span>
-    <p>Ordenar de mayor a menor un conjunto de cinco números de tamaño parecido (por ejemplo, las poblaciones de cinco ciudades) y explicar el razonamiento.</p>
-    <div class="modalidades">
-      <div class="modo modo-pres">
-        <span class="modo-tit"><span aria-hidden="true">🏫</span> Presencial</span>
-        <p>Entregue a cada grupo pequeño cinco tarjetas con números. Los estudiantes las colocan físicamente sobre la mesa en orden, de mayor a menor, y un vocero explica al resto de la clase cómo decidieron el orden.</p>
-      </div>
-      <div class="modo modo-line">
-        <span class="modo-tit"><span aria-hidden="true">💻</span> En línea</span>
-        <p>Use una pizarra colaborativa (Jamboard, Whiteboard) con cinco "tarjetas" digitales que los estudiantes arrastran para ordenar. Como alternativa sin pizarra, cada grupo escribe el orden en el chat y un vocero lo explica con el micrófono.</p>
-      </div>
-    </div>
-  </div>
-
-  <div class="caja caja-recurso">
-    <span class="etiqueta et-azul">Actividad C · Redondeo en la vida real</span>
-    <p>Con precios y poblaciones reales, practicar el redondeo a la decena, la centena y el millar más cercano, y conversar sobre cuándo conviene redondear.</p>
-    <div class="modalidades">
-      <div class="modo modo-pres">
-        <span class="modo-tit"><span aria-hidden="true">🏫</span> Presencial</span>
-        <p>Lleve volantes de tiendas o periódicos reales. Cada estudiante recorta o señala tres precios y los redondea en su cuaderno. Conversación abierta en el grupo: ¿en qué situaciones de la vida diaria redondeamos sin darnos cuenta?</p>
-      </div>
-      <div class="modo modo-line">
-        <span class="modo-tit"><span aria-hidden="true">💻</span> En línea</span>
-        <p>Comparta enlaces a tiendas o periódicos digitales. Cada estudiante elige tres precios reales, los redondea y publica el resultado en el chat. Cierre con una encuesta rápida (poll) y conversación oral sobre cuándo conviene redondear.</p>
-      </div>
-    </div>
-  </div>
 </section>
-
-<!-- TAREA ASINCRÓNICA -->
-<section>
-  <h2><span class="num-seccion" aria-hidden="true">7</span>Tarea asincrónica</h2>
-  <p>Estas actividades se realizan <strong>por su cuenta</strong>, fuera del horario de clase, dentro de las 2 horas asincrónicas de la lección. Encontrará los enlaces debajo de la lección.</p>
-  <ul>
-    <li><strong>MyOpenMath:</strong> complete el conjunto de ejercicios de <em>ordenar de mayor a menor</em> y <em>redondear</em> a la decena, centena y millar. Tiene retroalimentación inmediata en cada intento.</li>
-    <li><strong>Brightspace:</strong> realice el quiz de la lección.</li>
-    <li><strong>Actividad personal:</strong> busque tres números reales de su vida cotidiana — un precio, una distancia y una población — y escríbalos con palabras. Tráigalos a la próxima clase.</li>
-  </ul>
-</section>
-
 <!-- QUIZ FINAL -->
 <section>
-  <h2><span class="num-seccion" aria-hidden="true">8</span>Quiz de práctica</h2>
-  <p>Responda las <strong>8 preguntas</strong>. Al final verá su puntaje y podrá repasar lo que falló. Puede repetir el quiz las veces que quiera.</p>
-
-  <div id="quiz">
-    <div class="quiz-bloque">
-      <p class="qnum">Pregunta 1</p>
-      <p class="pregunta" id="t-q1">¿Cuál es el valor del dígito <strong>6</strong> en el número <strong>360 000</strong>?</p>
-      <div class="opciones" data-q="1" role="group" aria-labelledby="t-q1">
-        <button type="button" class="opcion" data-c="no">6 000</button>
-        <button type="button" class="opcion" data-c="si">60 000</button>
-        <button type="button" class="opcion" data-c="no">600 000</button>
-        <button type="button" class="opcion" data-c="no">6</button>
-      </div>
-    </div>
-
-    <div class="quiz-bloque">
-      <p class="qnum">Pregunta 2</p>
-      <p class="pregunta" id="t-q2">¿Cómo se escribe con cifras "cuatro mil setecientos nueve"?</p>
-      <div class="opciones" data-q="2" role="group" aria-labelledby="t-q2">
-        <button type="button" class="opcion" data-c="no">4 790</button>
-        <button type="button" class="opcion" data-c="si">4 709</button>
-        <button type="button" class="opcion" data-c="no">4 079</button>
-        <button type="button" class="opcion" data-c="no">47 009</button>
-      </div>
-    </div>
-
-    <div class="quiz-bloque">
-      <p class="qnum">Pregunta 3</p>
-      <p class="pregunta" id="t-q3">¿Cómo se lee el número <strong>1 050 300</strong>?</p>
-      <div class="opciones" data-q="3" role="group" aria-labelledby="t-q3">
-        <button type="button" class="opcion" data-c="si">Un millón cincuenta mil trescientos</button>
-        <button type="button" class="opcion" data-c="no">Un millón quinientos mil trescientos</button>
-        <button type="button" class="opcion" data-c="no">Ciento cinco mil trescientos</button>
-        <button type="button" class="opcion" data-c="no">Un millón cincuenta mil treinta</button>
-      </div>
-    </div>
-
-    <div class="quiz-bloque">
-      <p class="qnum">Pregunta 4</p>
-      <p class="pregunta" id="t-q4">¿Qué símbolo hace verdadera la comparación entre <strong>9 080</strong> y <strong>9 800</strong>?</p>
-      <div class="opciones" data-q="4" role="group" aria-labelledby="t-q4">
-        <button type="button" class="opcion" data-c="si">9 080 es menor que 9 800</button>
-        <button type="button" class="opcion" data-c="no">9 080 es mayor que 9 800</button>
-        <button type="button" class="opcion" data-c="no">9 080 es igual a 9 800</button>
-      </div>
-    </div>
-
-    <div class="quiz-bloque">
-      <p class="qnum">Pregunta 5</p>
-      <p class="pregunta" id="t-q5">¿Cuál de estos números es el <strong>mayor</strong>?</p>
-      <div class="opciones" data-q="5" role="group" aria-labelledby="t-q5">
-        <button type="button" class="opcion" data-c="no">68 999</button>
-        <button type="button" class="opcion" data-c="si">70 100</button>
-        <button type="button" class="opcion" data-c="no">69 980</button>
-        <button type="button" class="opcion" data-c="no">70 010</button>
-      </div>
-    </div>
-
-    <div class="quiz-bloque">
-      <p class="qnum">Pregunta 6</p>
-      <p class="pregunta" id="t-q6">Redondee <strong>2 347</strong> a la <strong>centena</strong> más cercana.</p>
-      <div class="opciones" data-q="6" role="group" aria-labelledby="t-q6">
-        <button type="button" class="opcion" data-c="no">2 400</button>
-        <button type="button" class="opcion" data-c="si">2 300</button>
-        <button type="button" class="opcion" data-c="no">2 000</button>
-        <button type="button" class="opcion" data-c="no">2 350</button>
-      </div>
-    </div>
-
-    <div class="quiz-bloque">
-      <p class="qnum">Pregunta 7</p>
-      <p class="pregunta" id="t-q7">Redondee <strong>15 962</strong> al <strong>millar</strong> más cercano.</p>
-      <div class="opciones" data-q="7" role="group" aria-labelledby="t-q7">
-        <button type="button" class="opcion" data-c="no">15 000</button>
-        <button type="button" class="opcion" data-c="si">16 000</button>
-        <button type="button" class="opcion" data-c="no">15 900</button>
-        <button type="button" class="opcion" data-c="no">20 000</button>
-      </div>
-    </div>
-
-    <div class="quiz-bloque">
-      <p class="qnum">Pregunta 8</p>
-      <p class="pregunta" id="t-q8">Una ciudad tiene <strong>483 716</strong> habitantes. ¿Cuál es el valor posicional del dígito <strong>8</strong>?</p>
-      <div class="opciones" data-q="8" role="group" aria-labelledby="t-q8">
-        <button type="button" class="opcion" data-c="no">8 000</button>
-        <button type="button" class="opcion" data-c="si">80 000</button>
-        <button type="button" class="opcion" data-c="no">800 000</button>
-        <button type="button" class="opcion" data-c="no">800</button>
-      </div>
-    </div>
-  </div>
-
-  <p style="text-align:center;margin-top:18px;">
-    <button type="button" class="btn" id="btn-calificar">Ver mi resultado</button>
-    <button type="button" class="btn btn-sec" id="btn-reintentar" style="display:none;">Intentar de nuevo</button>
-  </p>
-
-  <div class="marcador" id="marcador" role="status" aria-live="polite">
-    <div class="barra-prog" aria-hidden="true"><span id="barra"></span></div>
-    <p class="puntaje" id="puntaje"></p>
-    <p class="mensaje" id="mensaje"></p>
-  </div>
+<h2 id="s-quiz-de-practica"><span aria-hidden="true" class="num-seccion">7</span>Quiz de práctica</h2>
+<p>Responda las <strong>8 preguntas</strong>. Al final verá su puntaje y podrá repasar lo que falló. Puede repetir el quiz las veces que quiera.</p>
+<div id="quiz">
+<div class="quiz-bloque">
+<p class="qnum">Pregunta 1</p>
+<p class="pregunta" id="t-q1">¿Cuál es el valor del dígito <strong>6</strong> en el número <strong>360 000</strong>?</p>
+<div aria-labelledby="t-q1" class="opciones" data-q="1" role="group">
+<button class="opcion" data-c="no" type="button">6 000</button>
+<button class="opcion" data-c="si" type="button">60 000</button>
+<button class="opcion" data-c="no" type="button">600 000</button>
+<button class="opcion" data-c="no" type="button">6</button>
+</div>
+</div>
+<div class="quiz-bloque">
+<p class="qnum">Pregunta 2</p>
+<p class="pregunta" id="t-q2">¿Cómo se escribe con cifras "cuatro mil setecientos nueve"?</p>
+<div aria-labelledby="t-q2" class="opciones" data-q="2" role="group">
+<button class="opcion" data-c="no" type="button">4 790</button>
+<button class="opcion" data-c="si" type="button">4 709</button>
+<button class="opcion" data-c="no" type="button">4 079</button>
+<button class="opcion" data-c="no" type="button">47 009</button>
+</div>
+</div>
+<div class="quiz-bloque">
+<p class="qnum">Pregunta 3</p>
+<p class="pregunta" id="t-q3">¿Cómo se lee el número <strong>1 050 300</strong>?</p>
+<div aria-labelledby="t-q3" class="opciones" data-q="3" role="group">
+<button class="opcion" data-c="si" type="button">Un millón cincuenta mil trescientos</button>
+<button class="opcion" data-c="no" type="button">Un millón quinientos mil trescientos</button>
+<button class="opcion" data-c="no" type="button">Ciento cinco mil trescientos</button>
+<button class="opcion" data-c="no" type="button">Un millón cincuenta mil treinta</button>
+</div>
+</div>
+<div class="quiz-bloque">
+<p class="qnum">Pregunta 4</p>
+<p class="pregunta" id="t-q4">¿Qué símbolo hace verdadera la comparación entre <strong>9 080</strong> y <strong>9 800</strong>?</p>
+<div aria-labelledby="t-q4" class="opciones" data-q="4" role="group">
+<button class="opcion" data-c="si" type="button">9 080 es menor que 9 800</button>
+<button class="opcion" data-c="no" type="button">9 080 es mayor que 9 800</button>
+<button class="opcion" data-c="no" type="button">9 080 es igual a 9 800</button>
+</div>
+</div>
+<div class="quiz-bloque">
+<p class="qnum">Pregunta 5</p>
+<p class="pregunta" id="t-q5">¿Cuál de estos números es el <strong>mayor</strong>?</p>
+<div aria-labelledby="t-q5" class="opciones" data-q="5" role="group">
+<button class="opcion" data-c="no" type="button">68 999</button>
+<button class="opcion" data-c="si" type="button">70 100</button>
+<button class="opcion" data-c="no" type="button">69 980</button>
+<button class="opcion" data-c="no" type="button">70 010</button>
+</div>
+</div>
+<div class="quiz-bloque">
+<p class="qnum">Pregunta 6</p>
+<p class="pregunta" id="t-q6">Redondee <strong>2 347</strong> a la <strong>centena</strong> más cercana.</p>
+<div aria-labelledby="t-q6" class="opciones" data-q="6" role="group">
+<button class="opcion" data-c="no" type="button">2 400</button>
+<button class="opcion" data-c="si" type="button">2 300</button>
+<button class="opcion" data-c="no" type="button">2 000</button>
+<button class="opcion" data-c="no" type="button">2 350</button>
+</div>
+</div>
+<div class="quiz-bloque">
+<p class="qnum">Pregunta 7</p>
+<p class="pregunta" id="t-q7">Redondee <strong>15 962</strong> al <strong>millar</strong> más cercano.</p>
+<div aria-labelledby="t-q7" class="opciones" data-q="7" role="group">
+<button class="opcion" data-c="no" type="button">15 000</button>
+<button class="opcion" data-c="si" type="button">16 000</button>
+<button class="opcion" data-c="no" type="button">15 900</button>
+<button class="opcion" data-c="no" type="button">20 000</button>
+</div>
+</div>
+<div class="quiz-bloque">
+<p class="qnum">Pregunta 8</p>
+<p class="pregunta" id="t-q8">Una ciudad tiene <strong>483 716</strong> habitantes. ¿Cuál es el valor posicional del dígito <strong>8</strong>?</p>
+<div aria-labelledby="t-q8" class="opciones" data-q="8" role="group">
+<button class="opcion" data-c="no" type="button">8 000</button>
+<button class="opcion" data-c="si" type="button">80 000</button>
+<button class="opcion" data-c="no" type="button">800 000</button>
+<button class="opcion" data-c="no" type="button">800</button>
+</div>
+</div>
+</div>
+<p style="text-align:center;margin-top:18px;">
+<button class="btn" id="btn-calificar" type="button">Ver mi resultado</button>
+<button class="btn btn-sec" id="btn-reintentar" style="display:none;" type="button">Intentar de nuevo</button>
+</p>
+<div aria-live="polite" class="marcador" id="marcador" role="status">
+<div aria-hidden="true" class="barra-prog"><span id="barra"></span></div>
+<p class="puntaje" id="puntaje"></p>
+<p class="mensaje" id="mensaje"></p>
+</div>
 </section>
-
 <!-- RÚBRICA -->
 <section>
-  <h2><span class="num-seccion" aria-hidden="true">9</span>Rúbrica de evaluación</h2>
-  <p>Lista de cotejo de valor posicional. Cada criterio se evalúa como <strong>Logrado</strong>, <strong>En proceso</strong> o <strong>Por reforzar</strong>.</p>
-
-  <div class="tabla-scroll" role="region" tabindex="0" aria-label="Rúbrica de evaluación de valor posicional (tabla desplazable horizontalmente)">
-    <table class="tabla-rubrica">
-      <caption class="cap-oculto">Rúbrica de evaluación: criterios de valor posicional y descripción de los niveles Logrado, En proceso y Por reforzar</caption>
-      <thead>
-        <tr>
-          <th scope="col">Criterio</th>
-          <th scope="col" class="nivel-cab">Logrado</th>
-          <th scope="col" class="nivel-cab">En proceso</th>
-          <th scope="col" class="nivel-cab">Por reforzar</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <th scope="row">Identifica el valor posicional</th>
-          <td>Identifica correctamente la posición de cualquier dígito hasta los millones.</td>
-          <td>Acierta en números de hasta 4 dígitos; duda con números mayores.</td>
-          <td>Confunde el valor del dígito con el dígito mismo.</td>
-        </tr>
-        <tr>
-          <th scope="row">Lee y escribe números</th>
-          <td>Escribe con palabras y cifras sin errores, incluso con ceros intermedios.</td>
-          <td>Comete errores menores con los ceros o con un grupo.</td>
-          <td>No relaciona la palabra con la cifra correcta.</td>
-        </tr>
-        <tr>
-          <th scope="row">Compara dos números</th>
-          <td>Usa los símbolos mayor que, menor que e igual correctamente y explica su razonamiento.</td>
-          <td>Compara bien pero a veces invierte el símbolo.</td>
-          <td>No logra decidir cuál número es mayor.</td>
-        </tr>
-        <tr>
-          <th scope="row">Redondea a la posición indicada</th>
-          <td>Redondea correctamente a decena, centena y millar.</td>
-          <td>Aplica la regla pero se equivoca al poner los ceros.</td>
-          <td>No aplica la regla del vecino de la derecha.</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-  <p class="aviso-desliza"><span aria-hidden="true">↔</span> Deslice la tabla horizontalmente para ver todas las columnas.</p>
+<h2 id="s-rubrica-de-evaluacion"><span aria-hidden="true" class="num-seccion">8</span>Rúbrica de evaluación</h2>
+<p>Lista de cotejo de valor posicional. Cada criterio se evalúa como <strong>Logrado</strong>, <strong>En proceso</strong> o <strong>Por reforzar</strong>. Léala <strong>antes</strong> de empezar la tarea y úsela <strong>después</strong> para evaluar su propio trabajo con honestidad.</p>
+<div aria-label="Rúbrica de evaluación de valor posicional (tabla desplazable horizontalmente)" class="tabla-scroll" role="region" tabindex="0">
+<table class="tabla-rubrica">
+<caption class="cap-oculto">Rúbrica de evaluación: criterios de valor posicional y descripción de los niveles Logrado, En proceso y Por reforzar</caption>
+<thead>
+<tr>
+<th scope="col">Criterio</th>
+<th class="nivel-cab" scope="col">Logrado</th>
+<th class="nivel-cab" scope="col">En proceso</th>
+<th class="nivel-cab" scope="col">Por reforzar</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th scope="row">Identifica el valor posicional</th>
+<td>Identifica correctamente la posición de cualquier dígito hasta los millones.</td>
+<td>Acierta en números de hasta 4 dígitos; duda con números mayores.</td>
+<td>Confunde el valor del dígito con el dígito mismo.</td>
+</tr>
+<tr>
+<th scope="row">Lee y escribe números</th>
+<td>Escribe con palabras y cifras sin errores, incluso con ceros intermedios.</td>
+<td>Comete errores menores con los ceros o con un grupo.</td>
+<td>No relaciona la palabra con la cifra correcta.</td>
+</tr>
+<tr>
+<th scope="row">Compara dos números</th>
+<td>Usa los símbolos mayor que, menor que e igual correctamente y explica su razonamiento.</td>
+<td>Compara bien pero a veces invierte el símbolo.</td>
+<td>No logra decidir cuál número es mayor.</td>
+</tr>
+<tr>
+<th scope="row">Redondea a la posición indicada</th>
+<td>Redondea correctamente a decena, centena y millar.</td>
+<td>Aplica la regla pero se equivoca al poner los ceros.</td>
+<td>No aplica la regla del vecino de la derecha.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p class="aviso-desliza"><span aria-hidden="true">↔</span> Deslice la tabla horizontalmente para ver todas las columnas.</p>
 </section>
-
 <!-- CIERRE -->
 <section class="cierre">
-  <h2><span class="num-seccion" aria-hidden="true">➡️</span>Lo que viene en la próxima lección</h2>
-  <p>Ya sabe leer, escribir, comparar y redondear números enteros. Ahora vamos a <strong>operar</strong> con ellos. En la <strong>Lección 1.2 · Suma y resta de números enteros multidigitales</strong> aprenderá el algoritmo estándar con reagrupación —"llevar" y "pedir prestado"— y a verificar sus respuestas con la operación inversa.</p>
-  <p>El valor posicional que aprendió hoy es la base de todo: sumar y restar funciona precisamente porque alineamos las unidades con las unidades, las decenas con las decenas, y así sucesivamente.</p>
-  <p class="flecha-sig"><span aria-hidden="true">➡️</span> Próxima: Lección 1.2 · Suma y resta de números enteros</p>
+<h2 id="s-lo-que-viene-en-la-proxima-leccion"><span aria-hidden="true" class="num-seccion">➡️</span>Lo que viene en la próxima lección</h2>
+<p>Ya sabe leer, escribir, comparar y redondear números enteros. Ahora vamos a <strong>operar</strong> con ellos. En la <strong>Lección 1.2 · Suma y resta de números enteros multidigitales</strong> aprenderá el algoritmo estándar con reagrupación —"llevar" y "pedir prestado"— y a verificar sus respuestas con la operación inversa.</p>
+<p>El valor posicional que aprendió hoy es la base de todo: sumar y restar funciona precisamente porque alineamos las unidades con las unidades, las decenas con las decenas, y así sucesivamente.</p>
+<p class="flecha-sig"><span aria-hidden="true">➡️</span> Próxima: Lección 1.2 · Suma y resta de números enteros</p>
 </section>
-
 </div>
-
-<footer>
-  <p>Matemáticas · Nivel 1 · Lección 1.1 — Spanish ASE Math · AE 0170-0321<br>
-  City Colleges of Chicago · Truman College · Prof. José M. Fernández</p>
-</footer>
-
+<footer><p>GEDparaHispanos · Matemáticas · Nivel 1 · Tema 1 · Lección 1.1</p><p>José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago</p><p class="licencia">© 2026. Esta obra está licenciada bajo <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" rel="license" target="_blank">Creative Commons Reconocimiento-NoComercial-CompartirIgual 4.0 Internacional (CC BY-NC-SA 4.0)</a>.</p></footer><a aria-label="Volver al contenido de la lección" class="volver-indice" href="#indice"><span aria-hidden="true">↑</span> Índice</a>
 <script>
   // ── PRÁCTICA INTERACTIVA ──
   var respuestasPractica = {

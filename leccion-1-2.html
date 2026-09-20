@@ -1,9 +1,12 @@
-<!doctype html>
+<!DOCTYPE html>
+<!-- Lección 1.2 · Matemáticas Nivel 1 · GEDparaHispanos
+     José M. Fernández · CC BY-NC-SA 4.0 -->
+
 <html lang="es">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Lección 1.2 · Suma y resta de números enteros — Matemáticas Nivel 1</title>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Lección 1.2 · Suma y resta de números enteros — Matemáticas Nivel 1</title><meta content="CC BY-NC-SA 4.0" name="license"/><link href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" rel="license"/>
 <style>
   :root{
     --azul:#1565c0; --azul-osc:#0d47a1; --azul-cl:#e3f2fd;
@@ -61,29 +64,6 @@
   .caja-ojo{background:var(--ambar-cl);border-color:var(--ambar);}
   .caja-ojo strong{color:var(--ambar);}
   .caja-recurso{background:#eef2f7;border-color:var(--gris);}
-
-  /* ── MODALIDADES PRESENCIAL / EN LÍNEA ── */
-  .modalidades{display:flex;gap:14px;margin-top:14px;flex-wrap:wrap;}
-  .modo{
-    flex:1;min-width:240px;border-radius:9px;padding:13px 16px;
-    background:#fff;border:1px solid var(--linea);
-  }
-  .modo-pres{border-top:4px solid var(--azul);}
-  .modo-line{border-top:4px solid var(--verde);}
-  .modo .modo-tit{
-    display:block;font-weight:700;font-size:14px;margin-bottom:5px;
-  }
-  .modo-pres .modo-tit{color:var(--azul-osc);}
-  .modo-line .modo-tit{color:var(--verde);}
-  .modo p{margin:4px 0 0;font-size:15px;}
-
-  .etiqueta{
-    display:inline-block;font-size:12px;font-weight:700;letter-spacing:.5px;
-    text-transform:uppercase;padding:3px 10px;border-radius:5px;margin-bottom:6px;
-  }
-  .et-verde{background:var(--verde);color:#fff;}
-  .et-ambar{background:var(--ambar);color:#fff;}
-  .et-azul{background:var(--azul);color:#fff;}
 
   /* ── SUMA/RESTA EN COLUMNA ── */
   .cuenta{
@@ -180,398 +160,329 @@
     section{padding:24px 20px;}
     .cuenta{font-size:23px;letter-spacing:4px;padding:14px 18px;}
   }
+
+  /* ── ÍNDICE DE LA LECCIÓN ── */
+  .indice{
+    background:var(--papel); border:1px solid var(--linea); border-left:6px solid var(--azul);
+    border-radius:10px; padding:16px 20px; margin:26px 0;
+  }
+  .indice h2{ font-size:1.05rem; margin:0 0 10px; color:var(--azul-osc); border:0; padding:0; }
+  .indice ol{ margin:0; padding-left:1.3em; }
+  .indice li{ margin:4px 0; }
+  .indice a{ color:var(--azul-osc); text-decoration:underline; }
+  .indice a:hover{ color:var(--azul); }
+  .indice a:focus-visible,.volver-indice:focus-visible{ outline:3px solid #b05e00; outline-offset:2px; }
+  .volver-indice{
+    position:fixed; right:18px; bottom:18px; z-index:60;
+    background:var(--azul-osc); color:#fff; border-radius:999px;
+    padding:10px 16px; font-weight:700; font-size:.92rem; text-decoration:none;
+    box-shadow:0 2px 10px rgba(0,0,0,.28);
+  }
+  .volver-indice:hover{ background:var(--azul); color:#fff; }
+  footer .licencia a{ color:#fff; text-decoration:underline; }
+  @media print{ .indice,.volver-indice{ display:none; } }
 </style>
 </head>
 <body>
-
 <header class="principal">
-  <div class="envoltura-header">
-    <div class="ruta">Matemáticas · Nivel 1 · Tema 1 — Números enteros</div>
-    <h1>Lección 1.2 · Suma y resta de números enteros</h1>
-    <p class="lema">El algoritmo estándar con reagrupación: "llevar" en la suma, "pedir prestado" en la resta, y verificar con la operación inversa.</p>
-    <div class="chips">
-      <span class="chip">⏱️ 4 horas (2 sinc. + 2 asinc.)</span>
-      <span class="chip">🧱 Bloques base-10</span>
-      <span class="chip">🎯 Calculadora solo para verificar</span>
-    </div>
-  </div>
-</header>
-
-<div class="envoltura">
-
-  <!-- OBJETIVOS -->
-  <section>
-    <div class="caja caja-objetivo">
-      <h2><span class="num-seccion">🎯</span>Objetivos de la clase</h2>
-      <p>Al terminar esta lección, usted podrá:</p>
-      <ul>
-        <li><strong>Sumar</strong> números enteros de varios dígitos con el algoritmo estándar, aplicando la reagrupación ("llevar").</li>
-        <li><strong>Restar</strong> números enteros de varios dígitos aplicando la reagrupación ("pedir prestado"), incluso cuando hay ceros.</li>
-        <li><strong>Verificar</strong> el resultado de una suma o una resta usando la operación inversa.</li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- REPASO Y CONEXIÓN -->
-  <section>
-    <h2><span class="num-seccion">1</span>Recordemos antes de empezar</h2>
-    <p>En la <strong>Lección 1.1</strong> aprendió que cada dígito tiene un valor según su posición: unidades, decenas, centenas, millares. Esa idea es justo la que hace posible sumar y restar.</p>
-    <p>La regla de oro de hoy es sencilla: <strong>solo se suman o se restan dígitos de la misma posición</strong> — unidades con unidades, decenas con decenas, centenas con centenas. Por eso, lo primero siempre es <strong>alinear los números por la derecha</strong>, uno debajo del otro.</p>
-    <div class="caja caja-tip">
-      <span class="etiqueta et-verde">Idea clave</span>
-      <p>Sumar y restar "en columna" funciona porque cada columna es una posición distinta. Mantener las columnas derechas no es decoración: es lo que hace correcta la operación.</p>
-    </div>
-  </section>
-
-  <!-- SUMA -->
-  <section>
-    <h2><span class="num-seccion">2</span>Sumar con reagrupación ("llevar")</h2>
-    <p>Cuando sumamos una columna y el resultado es <strong>10 o más</strong>, no cabe un solo dígito en esa posición. Entonces <strong>reagrupamos</strong>: dejamos el dígito de las unidades y "llevamos" el otro a la siguiente columna de la izquierda. En la vida diaria es como cambiar 10 monedas de $1 por un billete de $10.</p>
-
-    <h3>Ejemplo resuelto: 367 + 158</h3>
-    <div class="ejemplo">
-      <div class="titulo-ej">Sumamos columna por columna, de derecha a izquierda</div>
-      <div class="paso"><span class="n">1</span><strong>Unidades:</strong> 7 + 8 = 15. Escribo el <strong>5</strong> y llevo <strong>1</strong> a las decenas.</div>
-      <div class="paso"><span class="n">2</span><strong>Decenas:</strong> 1 (que llevé) + 6 + 5 = 12. Escribo el <strong>2</strong> y llevo <strong>1</strong> a las centenas.</div>
-      <div class="paso"><span class="n">3</span><strong>Centenas:</strong> 1 (que llevé) + 3 + 1 = 5. Escribo el <strong>5</strong>.</div>
-      <div class="paso"><span class="n">✓</span>Resultado: <strong>525</strong>.</div>
-    </div>
-    <p style="text-align:center;">
-      <span class="cuenta">
-        <span class="lleva">¹&nbsp;¹&nbsp;&nbsp;</span>
-        &nbsp;&nbsp;3 6 7<br>
-        <span class="signo">+</span>&nbsp;1 5 8<br>
-        <span class="raya">&nbsp;</span>
-        <span class="resultado">&nbsp;&nbsp;5 2 5</span>
-      </span>
-    </p>
-
-    <div class="caja caja-ojo">
-      <span class="etiqueta et-ambar">¡Ojo!</span>
-      <p>El número que "lleva" siempre es un <strong>1</strong> en la suma de dos números (a veces hasta 2 si suma muchos). No olvide sumarlo en la columna siguiente: es el error más común.</p>
-    </div>
-
-    <div class="practica">
-      <div class="cabe"><span class="ico">✏️</span><h4>Práctica 1 — Suma con reagrupación</h4></div>
-      <p class="pregunta-int">¿Cuánto es <strong>2 845 + 678</strong>?</p>
-      <div class="opciones" data-quiz="p1">
-        <button class="opcion" data-correcta="no">3 413</button>
-        <button class="opcion" data-correcta="si">3 523</button>
-        <button class="opcion" data-correcta="no">2 413</button>
-        <button class="opcion" data-correcta="no">3 423</button>
-      </div>
-      <div class="respuesta-int" id="r-p1"></div>
-    </div>
-  </section>
-
-  <!-- RESTA -->
-  <section>
-    <h2><span class="num-seccion">3</span>Restar con reagrupación ("pedir prestado")</h2>
-    <p>Cuando en una columna el dígito de arriba es <strong>menor</strong> que el de abajo, no podemos restar directamente. Entonces <strong>pedimos prestado</strong>: tomamos 1 de la columna de la izquierda, que vale 10 en nuestra columna. Es como romper un billete de $10 en 10 monedas de $1.</p>
-
-    <h3>Ejemplo resuelto: 624 − 158</h3>
-    <div class="ejemplo">
-      <div class="titulo-ej">Restamos columna por columna, de derecha a izquierda</div>
-      <div class="paso"><span class="n">1</span><strong>Unidades:</strong> 4 − 8 no se puede. Pido prestado a las decenas: el 4 se vuelve 14, y el 2 de las decenas baja a 1. Ahora 14 − 8 = <strong>6</strong>.</div>
-      <div class="paso"><span class="n">2</span><strong>Decenas:</strong> quedó 1, y 1 − 5 no se puede. Pido prestado a las centenas: el 1 se vuelve 11, y el 6 baja a 5. Ahora 11 − 5 = <strong>6</strong>.</div>
-      <div class="paso"><span class="n">3</span><strong>Centenas:</strong> quedó 5, y 5 − 1 = <strong>4</strong>.</div>
-      <div class="paso"><span class="n">✓</span>Resultado: <strong>466</strong>.</div>
-    </div>
-    <p style="text-align:center;">
-      <span class="cuenta">
-        <span class="lleva"><span style="color:#c0392b;">⁵&nbsp;¹¹&nbsp;¹⁴</span></span>
-        &nbsp;&nbsp;6 2 4<br>
-        <span class="signo">−</span>&nbsp;1 5 8<br>
-        <span class="raya">&nbsp;</span>
-        <span class="resultado">&nbsp;&nbsp;4 6 6</span>
-      </span>
-    </p>
-
-    <h3>Restar cuando hay ceros</h3>
-    <p>Restar de un número con ceros (como 4 003) parece difícil, pero la regla es la misma: si la columna vecina es <strong>0</strong>, esa columna también tiene que pedir prestado a la siguiente, y el cero se convierte en 9.</p>
-    <div class="ejemplo">
-      <div class="titulo-ej">Ejemplo: 4 003 − 1 547</div>
-      <div class="paso"><span class="n">1</span>Unidades: 3 − 7 no se puede. Pero las decenas son 0 y las centenas también. El préstamo viene desde los millares.</div>
-      <div class="paso"><span class="n">2</span>El 4 baja a 3; el primer 0 se vuelve 9; el segundo 0 se vuelve 9; el 3 de las unidades se vuelve 13.</div>
-      <div class="paso"><span class="n">3</span>Ahora resto cada columna: 13−7=6, 9−4=5, 9−5=4, 3−1=2.</div>
-      <div class="paso"><span class="n">✓</span>Resultado: <strong>2 456</strong>.</div>
-    </div>
-
-    <div class="practica">
-      <div class="cabe"><span class="ico">✏️</span><h4>Práctica 2 — Resta con reagrupación</h4></div>
-      <p class="pregunta-int">¿Cuánto es <strong>703 − 268</strong>?</p>
-      <div class="opciones" data-quiz="p2">
-        <button class="opcion" data-correcta="no">565</button>
-        <button class="opcion" data-correcta="si">435</button>
-        <button class="opcion" data-correcta="no">445</button>
-        <button class="opcion" data-correcta="no">535</button>
-      </div>
-      <div class="respuesta-int" id="r-p2"></div>
-    </div>
-  </section>
-
-  <!-- VERIFICAR -->
-  <section>
-    <h2><span class="num-seccion">4</span>Verificar con la operación inversa</h2>
-    <p>La suma y la resta son <strong>operaciones inversas</strong>: una deshace a la otra. Esto nos da una forma poderosa de comprobar si una respuesta está bien, <em>sin necesidad de calculadora</em>.</p>
-    <div class="caja caja-tip">
-      <span class="etiqueta et-verde">Cómo verificar</span>
-      <ul style="margin-bottom:0;">
-        <li>Verificar una <strong>suma</strong>: al resultado réstele uno de los sumandos. Debe darle el otro sumando.<br>
-            <em>367 + 158 = 525 &nbsp;→&nbsp; comprobación: 525 − 158 = 367 ✓</em></li>
-        <li>Verificar una <strong>resta</strong>: al resultado súmele lo que restó. Debe darle el número original.<br>
-            <em>624 − 158 = 466 &nbsp;→&nbsp; comprobación: 466 + 158 = 624 ✓</em></li>
-      </ul>
-    </div>
-    <div class="caja caja-ojo">
-      <span class="etiqueta et-ambar">Uso de la calculadora</span>
-      <p>En esta lección la calculadora se usa <strong>solo para verificar</strong>, nunca para reemplazar el proceso en papel. El examen GED le pedirá entender el procedimiento, no solo apretar teclas.</p>
-    </div>
-
-    <div class="practica">
-      <div class="cabe"><span class="ico">✏️</span><h4>Práctica 3 — Verificación</h4></div>
-      <p class="pregunta-int">Un estudiante dice que <strong>846 − 379 = 467</strong>. ¿Cómo verifica si tiene razón?</p>
-      <div class="opciones" data-quiz="p3">
-        <button class="opcion" data-correcta="no">Restando 467 − 379</button>
-        <button class="opcion" data-correcta="si">Sumando 467 + 379 y viendo si da 846</button>
-        <button class="opcion" data-correcta="no">Sumando 846 + 379</button>
-        <button class="opcion" data-correcta="no">No se puede verificar sin calculadora</button>
-      </div>
-      <div class="respuesta-int" id="r-p3"></div>
-    </div>
-  </section>
-
-  <!-- PRÁCTICA GUIADA -->
-  <section>
-    <h2><span class="num-seccion">5</span>Práctica guiada en clase</h2>
-    <p>Estas actividades se hacen <strong>en la sesión sincrónica</strong>, con el grupo y el profesor. Cada actividad incluye una variante para la <strong>clase presencial</strong> y otra para la <strong>clase en línea</strong>; el objetivo de aprendizaje es el mismo en ambas. El trabajo avanza en tres rondas, de lo más simple a lo más complejo.</p>
-
-    <div class="caja caja-recurso">
-      <span class="etiqueta et-azul">Ronda 1 · Sin reagrupación</span>
-      <p>Cuatro operaciones de suma y resta donde ninguna columna pasa de 9. El objetivo es afianzar la alineación correcta de los dígitos.</p>
-      <div class="modalidades">
-        <div class="modo modo-pres">
-          <span class="modo-tit">🏫 Presencial</span>
-          <p>Use papel cuadriculado para que cada columna caiga en su casilla. El profesor resuelve la primera en la pizarra; los estudiantes hacen las otras tres en su cuaderno y comparan con el compañero de al lado.</p>
-        </div>
-        <div class="modo modo-line">
-          <span class="modo-tit">💻 En línea</span>
-          <p>El profesor comparte pantalla con una cuadrícula digital y resuelve la primera. Los estudiantes resuelven las otras tres en papel cuadriculado en casa y muestran el resultado a la cámara, o lo escriben en el chat.</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="caja caja-recurso">
-      <span class="etiqueta et-azul">Ronda 2 · Con reagrupación</span>
-      <p>Seis operaciones que requieren llevar o pedir prestado, incluyendo un caso con ceros en el número de arriba.</p>
-      <div class="modalidades">
-        <div class="modo modo-pres">
-          <span class="modo-tit">🏫 Presencial</span>
-          <p>Modele primero con <strong>bloques base-10</strong> físicos: muestre cómo 10 cubos de unidad se cambian por una barra de decena (llevar) y cómo una barra se rompe en 10 unidades (pedir prestado). Después, los estudiantes resuelven en papel.</p>
-        </div>
-        <div class="modo modo-line">
-          <span class="modo-tit">💻 En línea</span>
-          <p>Use bloques base-10 virtuales (por ejemplo, el manipulativo digital de Didax o Toy Theater) en pantalla compartida para modelar el "llevar" y el "pedir prestado". Después, los estudiantes resuelven en papel y muestran el resultado a la cámara.</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="caja caja-recurso">
-      <span class="etiqueta et-azul">Ronda 3 · Verificar en parejas</span>
-      <p>Un estudiante resuelve la operación y el compañero la verifica con la operación inversa. Luego intercambian los roles.</p>
-      <div class="modalidades">
-        <div class="modo modo-pres">
-          <span class="modo-tit">🏫 Presencial</span>
-          <p>En parejas cara a cara, intercambian cuadernos: uno resuelve, el otro verifica con la operación inversa y marca con visto bueno o señala dónde está el error. Luego cambian de rol.</p>
-        </div>
-        <div class="modo modo-line">
-          <span class="modo-tit">💻 En línea</span>
-          <p>En salas pequeñas (breakout rooms) de dos, un estudiante resuelve y comparte su resultado por cámara o chat; el compañero lo verifica con la operación inversa en voz alta. Luego intercambian los roles. El profesor recorre las salas.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- TAREA ASINCRÓNICA -->
-  <section>
-    <h2><span class="num-seccion">6</span>Tarea asincrónica</h2>
-    <p>Estas actividades se realizan <strong>por su cuenta</strong>, dentro de las 2 horas asincrónicas de la lección.</p>
-    <ul>
-      <li><strong>MyOpenMath:</strong> complete los <strong>8 problemas</strong> de suma y resta con algoritmo estándar. Cada problema da retroalimentación inmediata en cada paso.</li>
-      <li><strong>Brightspace:</strong> realice el quiz de la lección (abajo puede practicarlo antes).</li>
-      <li><strong>Actividad personal:</strong> revise un recibo o factura de su casa. Sume dos cantidades y reste una tercera. Verifique sus resultados con la operación inversa.</li>
-    </ul>
-  </section>
-
-  <!-- QUIZ -->
-  <section>
-    <h2><span class="num-seccion">7</span>Quiz de práctica</h2>
-    <p>Responda las <strong>8 preguntas</strong>. Al final verá su puntaje y podrá repasar lo que falló. Puede repetir el quiz las veces que quiera.</p>
-
-    <form id="quiz">
-      <div class="quiz-bloque">
-        <span class="qnum">Pregunta 1</span>
-        <p class="pregunta">Sume: <strong>456 + 237</strong></p>
-        <div class="opciones" data-q="1">
-          <button type="button" class="opcion" data-c="no">683</button>
-          <button type="button" class="opcion" data-c="si">693</button>
-          <button type="button" class="opcion" data-c="no">793</button>
-          <button type="button" class="opcion" data-c="no">593</button>
-        </div>
-      </div>
-
-      <div class="quiz-bloque">
-        <span class="qnum">Pregunta 2</span>
-        <p class="pregunta">Sume: <strong>1 689 + 2 575</strong></p>
-        <div class="opciones" data-q="2">
-          <button type="button" class="opcion" data-c="no">4 154</button>
-          <button type="button" class="opcion" data-c="si">4 264</button>
-          <button type="button" class="opcion" data-c="no">3 264</button>
-          <button type="button" class="opcion" data-c="no">4 364</button>
-        </div>
-      </div>
-
-      <div class="quiz-bloque">
-        <span class="qnum">Pregunta 3</span>
-        <p class="pregunta">Reste: <strong>872 − 345</strong></p>
-        <div class="opciones" data-q="3">
-          <button type="button" class="opcion" data-c="si">527</button>
-          <button type="button" class="opcion" data-c="no">537</button>
-          <button type="button" class="opcion" data-c="no">427</button>
-          <button type="button" class="opcion" data-c="no">517</button>
-        </div>
-      </div>
-
-      <div class="quiz-bloque">
-        <span class="qnum">Pregunta 4</span>
-        <p class="pregunta">Reste: <strong>5 000 − 2 364</strong></p>
-        <div class="opciones" data-q="4">
-          <button type="button" class="opcion" data-c="no">2 736</button>
-          <button type="button" class="opcion" data-c="si">2 636</button>
-          <button type="button" class="opcion" data-c="no">3 636</button>
-          <button type="button" class="opcion" data-c="no">2 646</button>
-        </div>
-      </div>
-
-      <div class="quiz-bloque">
-        <span class="qnum">Pregunta 5</span>
-        <p class="pregunta">Al sumar la columna de las unidades obtuvo 13. ¿Qué debe hacer?</p>
-        <div class="opciones" data-q="5">
-          <button type="button" class="opcion" data-c="no">Escribir 13 en las unidades.</button>
-          <button type="button" class="opcion" data-c="si">Escribir el 3 y llevar 1 a las decenas.</button>
-          <button type="button" class="opcion" data-c="no">Escribir el 1 y llevar 3 a las decenas.</button>
-          <button type="button" class="opcion" data-c="no">Empezar la suma otra vez.</button>
-        </div>
-      </div>
-
-      <div class="quiz-bloque">
-        <span class="qnum">Pregunta 6</span>
-        <p class="pregunta">¿Cómo verifica que <strong>518 + 263 = 781</strong> es correcto?</p>
-        <div class="opciones" data-q="6">
-          <button type="button" class="opcion" data-c="si">Comprobando que 781 − 263 = 518.</button>
-          <button type="button" class="opcion" data-c="no">Comprobando que 781 + 263 = 518.</button>
-          <button type="button" class="opcion" data-c="no">Comprobando que 518 + 781 = 263.</button>
-          <button type="button" class="opcion" data-c="no">No hay forma de verificarlo.</button>
-        </div>
-      </div>
-
-      <div class="quiz-bloque">
-        <span class="qnum">Pregunta 7</span>
-        <p class="pregunta">En una tienda había 1 240 productos. Llegaron 685 más y se vendieron 478. ¿Cuántos productos hay ahora?</p>
-        <div class="opciones" data-q="7">
-          <button type="button" class="opcion" data-c="no">1 033</button>
-          <button type="button" class="opcion" data-c="si">1 447</button>
-          <button type="button" class="opcion" data-c="no">2 403</button>
-          <button type="button" class="opcion" data-c="no">1 357</button>
-        </div>
-      </div>
-
-      <div class="quiz-bloque">
-        <span class="qnum">Pregunta 8</span>
-        <p class="pregunta">Una familia ganó $3 150 en un mes y gastó $2 487. ¿Cuánto les quedó?</p>
-        <div class="opciones" data-q="8">
-          <button type="button" class="opcion" data-c="no">$773</button>
-          <button type="button" class="opcion" data-c="si">$663</button>
-          <button type="button" class="opcion" data-c="no">$5 637</button>
-          <button type="button" class="opcion" data-c="no">$1 663</button>
-        </div>
-      </div>
-    </form>
-
-    <div style="text-align:center;margin-top:18px;">
-      <button class="btn" id="btn-calificar">Ver mi resultado</button>
-      <button class="btn btn-sec" id="btn-reintentar" style="display:none;">Intentar de nuevo</button>
-    </div>
-
-    <div class="marcador" id="marcador">
-      <div class="barra-prog"><span id="barra"></span></div>
-      <div class="puntaje" id="puntaje"></div>
-      <div class="mensaje" id="mensaje"></div>
-    </div>
-  </section>
-
-  <!-- RÚBRICA -->
-  <section>
-    <h2><span class="num-seccion">8</span>Rúbrica de evaluación</h2>
-    <p>Rúbrica analítica de proceso. Cada criterio se evalúa en cuatro niveles.</p>
-    <table class="tabla-rubrica">
-      <thead>
-        <tr>
-          <th>Criterio</th>
-          <th class="nivel-cab">Logrado (4)</th>
-          <th class="nivel-cab">Satisfactorio (3)</th>
-          <th class="nivel-cab">En proceso (2)</th>
-          <th class="nivel-cab">Por reforzar (1)</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Alinea los dígitos</td>
-          <td>Alinea siempre por la derecha, posición con posición.</td>
-          <td>Alinea correctamente casi siempre.</td>
-          <td>Alinea bien con números cortos; falla con largos.</td>
-          <td>No alinea las posiciones.</td>
-        </tr>
-        <tr>
-          <td>Aplica la reagrupación en la suma</td>
-          <td>Lleva correctamente en todas las columnas.</td>
-          <td>Lleva bien casi siempre; un descuido aislado.</td>
-          <td>Olvida llevar o suma mal el dígito que llevó.</td>
-          <td>No reagrupa al sumar.</td>
-        </tr>
-        <tr>
-          <td>Aplica "pedir prestado" en la resta</td>
-          <td>Pide prestado correctamente, incluso con ceros.</td>
-          <td>Resta bien; duda solo con ceros intermedios.</td>
-          <td>Pide prestado mal o resta el menor del mayor por columna.</td>
-          <td>No reagrupa al restar.</td>
-        </tr>
-        <tr>
-          <td>Verifica con la operación inversa</td>
-          <td>Verifica siempre y detecta sus propios errores.</td>
-          <td>Verifica cuando se le pide.</td>
-          <td>Intenta verificar pero usa la operación equivocada.</td>
-          <td>No verifica el resultado.</td>
-        </tr>
-      </tbody>
-    </table>
-  </section>
-
-  <!-- CIERRE -->
-  <div class="cierre">
-    <h2><span class="num-seccion">➡️</span>Lo que viene en la próxima lección</h2>
-    <p>Ya sabe sumar y restar con el algoritmo estándar y verificar sus respuestas. En la <strong>Lección 1.3 · Suma y resta en problemas verbales</strong> aprenderá a leer un problema en palabras, identificar las "palabras clave" que indican si se suma o se resta, plantear la operación y comprobar que la respuesta tiene sentido en la situación real.</p>
-    <p>El cálculo que practicó hoy es la herramienta; la próxima lección le enseña <strong>cuándo</strong> y <strong>por qué</strong> usarla.</p>
-    <div class="flecha-sig">➡️ &nbsp;Próxima: Lección 1.3 · Suma y resta en problemas verbales</div>
-  </div>
-
+<div class="envoltura-header">
+<div class="ruta">Matemáticas · Nivel 1 · Tema 1 — Números enteros</div>
+<h1>Lección 1.2 · Suma y resta de números enteros</h1>
+<p class="lema">El algoritmo estándar con reagrupación: "llevar" en la suma, "pedir prestado" en la resta, y verificar con la operación inversa.</p>
+<div class="chips">
+<span class="chip"><span aria-hidden="true">⏱️</span> Unas 4 horas, a su ritmo</span>
+<span class="chip">🧱 Bloques base-10</span>
+<span class="chip">🎯 Calculadora solo para verificar</span>
 </div>
+</div>
+</header>
+<div class="envoltura">
+<!-- OBJETIVOS -->
+<section>
+<div class="caja caja-objetivo">
+<h2><span class="num-seccion">🎯</span>Objetivos de la lección</h2>
+<p>Al terminar esta lección, usted podrá:</p>
+<ul>
+<li><strong>Sumar</strong> números enteros de varios dígitos con el algoritmo estándar, aplicando la reagrupación ("llevar").</li>
+<li><strong>Restar</strong> números enteros de varios dígitos aplicando la reagrupación ("pedir prestado"), incluso cuando hay ceros.</li>
+<li><strong>Verificar</strong> el resultado de una suma o una resta usando la operación inversa.</li>
+</ul>
+</div>
+</section><nav aria-labelledby="indice-titulo" class="indice" id="indice"><h2 id="indice-titulo">Contenido de la lección</h2><ol><li><a href="#s-recordemos-antes-de-empezar">Recordemos antes de empezar</a></li><li><a href="#s-sumar-con-reagrupacion-llevar">Sumar con reagrupación ("llevar")</a></li><li><a href="#s-restar-con-reagrupacion-pedir-prestado">Restar con reagrupación ("pedir prestado")</a></li><li><a href="#s-verificar-con-la-operacion-inversa">Verificar con la operación inversa</a></li><li><a href="#s-tarea">Tarea</a></li><li><a href="#s-quiz-de-practica">Quiz de práctica</a></li><li><a href="#s-rubrica-de-evaluacion">Rúbrica de evaluación</a></li><li><a href="#s-lo-que-viene-en-la-proxima-leccion">Lo que viene en la próxima lección</a></li></ol></nav>
+<!-- REPASO Y CONEXIÓN -->
+<section>
+<h2 id="s-recordemos-antes-de-empezar"><span class="num-seccion">1</span>Recordemos antes de empezar</h2>
+<p>En la <strong>Lección 1.1</strong> aprendió que cada dígito tiene un valor según su posición: unidades, decenas, centenas, millares. Esa idea es justo la que hace posible sumar y restar.</p>
+<p>La regla de oro de hoy es sencilla: <strong>solo se suman o se restan dígitos de la misma posición</strong> — unidades con unidades, decenas con decenas, centenas con centenas. Por eso, lo primero siempre es <strong>alinear los números por la derecha</strong>, uno debajo del otro.</p>
+<div class="caja caja-tip">
+<span class="etiqueta et-verde">Idea clave</span>
+<p>Sumar y restar "en columna" funciona porque cada columna es una posición distinta. Mantener las columnas derechas no es decoración: es lo que hace correcta la operación.</p>
+</div>
+</section>
+<!-- SUMA -->
+<section>
+<h2 id="s-sumar-con-reagrupacion-llevar"><span class="num-seccion">2</span>Sumar con reagrupación ("llevar")</h2>
+<p>Cuando sumamos una columna y el resultado es <strong>10 o más</strong>, no cabe un solo dígito en esa posición. Entonces <strong>reagrupamos</strong>: dejamos el dígito de las unidades y "llevamos" el otro a la siguiente columna de la izquierda. En la vida diaria es como cambiar 10 monedas de $1 por un billete de $10.</p>
+<h3>Ejemplo resuelto: 367 + 158</h3>
+<div class="ejemplo">
+<div class="titulo-ej">Sumamos columna por columna, de derecha a izquierda</div>
+<div class="paso"><span class="n">1</span><strong>Unidades:</strong> 7 + 8 = 15. Escribo el <strong>5</strong> y llevo <strong>1</strong> a las decenas.</div>
+<div class="paso"><span class="n">2</span><strong>Decenas:</strong> 1 (que llevé) + 6 + 5 = 12. Escribo el <strong>2</strong> y llevo <strong>1</strong> a las centenas.</div>
+<div class="paso"><span class="n">3</span><strong>Centenas:</strong> 1 (que llevé) + 3 + 1 = 5. Escribo el <strong>5</strong>.</div>
+<div class="paso"><span class="n">✓</span>Resultado: <strong>525</strong>.</div>
+</div>
+<p style="text-align:center;">
+<span class="cuenta">
+<span class="lleva">¹ ¹  </span>
+          3 6 7<br/>
+<span class="signo">+</span> 1 5 8<br/>
+<span class="raya"> </span>
+<span class="resultado">  5 2 5</span>
+</span>
+</p>
+<div class="caja caja-ojo">
+<span class="etiqueta et-ambar">¡Ojo!</span>
+<p>El número que "lleva" siempre es un <strong>1</strong> en la suma de dos números (a veces hasta 2 si suma muchos). No olvide sumarlo en la columna siguiente: es el error más común.</p>
+</div>
+<div class="practica">
+<div class="cabe"><span class="ico">✏️</span><h4>Práctica 1 — Suma con reagrupación</h4></div>
+<p class="pregunta-int">¿Cuánto es <strong>2 845 + 678</strong>?</p>
+<div class="opciones" data-quiz="p1">
+<button class="opcion" data-correcta="no">3 413</button>
+<button class="opcion" data-correcta="si">3 523</button>
+<button class="opcion" data-correcta="no">2 413</button>
+<button class="opcion" data-correcta="no">3 423</button>
+</div>
+<div class="respuesta-int" id="r-p1"></div>
+</div>
+</section>
+<!-- RESTA -->
+<section>
+<h2 id="s-restar-con-reagrupacion-pedir-prestado"><span class="num-seccion">3</span>Restar con reagrupación ("pedir prestado")</h2>
+<p>Cuando en una columna el dígito de arriba es <strong>menor</strong> que el de abajo, no podemos restar directamente. Entonces <strong>pedimos prestado</strong>: tomamos 1 de la columna de la izquierda, que vale 10 en nuestra columna. Es como romper un billete de $10 en 10 monedas de $1.</p>
+<h3>Ejemplo resuelto: 624 − 158</h3>
+<div class="ejemplo">
+<div class="titulo-ej">Restamos columna por columna, de derecha a izquierda</div>
+<div class="paso"><span class="n">1</span><strong>Unidades:</strong> 4 − 8 no se puede. Pido prestado a las decenas: el 4 se vuelve 14, y el 2 de las decenas baja a 1. Ahora 14 − 8 = <strong>6</strong>.</div>
+<div class="paso"><span class="n">2</span><strong>Decenas:</strong> quedó 1, y 1 − 5 no se puede. Pido prestado a las centenas: el 1 se vuelve 11, y el 6 baja a 5. Ahora 11 − 5 = <strong>6</strong>.</div>
+<div class="paso"><span class="n">3</span><strong>Centenas:</strong> quedó 5, y 5 − 1 = <strong>4</strong>.</div>
+<div class="paso"><span class="n">✓</span>Resultado: <strong>466</strong>.</div>
+</div>
+<p style="text-align:center;">
+<span class="cuenta">
+<span class="lleva"><span style="color:#c0392b;">⁵ ¹¹ ¹⁴</span></span>
+          6 2 4<br/>
+<span class="signo">−</span> 1 5 8<br/>
+<span class="raya"> </span>
+<span class="resultado">  4 6 6</span>
+</span>
+</p>
+<h3>Restar cuando hay ceros</h3>
+<p>Restar de un número con ceros (como 4 003) parece difícil, pero la regla es la misma: si la columna vecina es <strong>0</strong>, esa columna también tiene que pedir prestado a la siguiente, y el cero se convierte en 9.</p>
+<div class="ejemplo">
+<div class="titulo-ej">Ejemplo: 4 003 − 1 547</div>
+<div class="paso"><span class="n">1</span>Unidades: 3 − 7 no se puede. Pero las decenas son 0 y las centenas también. El préstamo viene desde los millares.</div>
+<div class="paso"><span class="n">2</span>El 4 baja a 3; el primer 0 se vuelve 9; el segundo 0 se vuelve 9; el 3 de las unidades se vuelve 13.</div>
+<div class="paso"><span class="n">3</span>Ahora resto cada columna: 13−7=6, 9−4=5, 9−5=4, 3−1=2.</div>
+<div class="paso"><span class="n">✓</span>Resultado: <strong>2 456</strong>.</div>
+</div>
+<div class="practica">
+<div class="cabe"><span class="ico">✏️</span><h4>Práctica 2 — Resta con reagrupación</h4></div>
+<p class="pregunta-int">¿Cuánto es <strong>703 − 268</strong>?</p>
+<div class="opciones" data-quiz="p2">
+<button class="opcion" data-correcta="no">565</button>
+<button class="opcion" data-correcta="si">435</button>
+<button class="opcion" data-correcta="no">445</button>
+<button class="opcion" data-correcta="no">535</button>
+</div>
+<div class="respuesta-int" id="r-p2"></div>
+</div>
+</section>
+<!-- VERIFICAR -->
+<section>
+<h2 id="s-verificar-con-la-operacion-inversa"><span class="num-seccion">4</span>Verificar con la operación inversa</h2>
+<p>La suma y la resta son <strong>operaciones inversas</strong>: una deshace a la otra. Esto nos da una forma poderosa de comprobar si una respuesta está bien, <em>sin necesidad de calculadora</em>.</p>
+<div class="caja caja-tip">
+<span class="etiqueta et-verde">Cómo verificar</span>
+<ul style="margin-bottom:0;">
+<li>Verificar una <strong>suma</strong>: al resultado réstele uno de los sumandos. Debe darle el otro sumando.<br/>
+<em>367 + 158 = 525  →  comprobación: 525 − 158 = 367 ✓</em></li>
+<li>Verificar una <strong>resta</strong>: al resultado súmele lo que restó. Debe darle el número original.<br/>
+<em>624 − 158 = 466  →  comprobación: 466 + 158 = 624 ✓</em></li>
+</ul>
+</div>
+<div class="caja caja-ojo">
+<span class="etiqueta et-ambar">Uso de la calculadora</span>
+<p>En esta lección la calculadora se usa <strong>solo para verificar</strong>, nunca para reemplazar el proceso en papel. El examen GED le pedirá entender el procedimiento, no solo apretar teclas.</p>
+</div>
+<div class="practica">
+<div class="cabe"><span class="ico">✏️</span><h4>Práctica 3 — Verificación</h4></div>
+<p class="pregunta-int">Un estudiante dice que <strong>846 − 379 = 467</strong>. ¿Cómo verifica si tiene razón?</p>
+<div class="opciones" data-quiz="p3">
+<button class="opcion" data-correcta="no">Restando 467 − 379</button>
+<button class="opcion" data-correcta="si">Sumando 467 + 379 y viendo si da 846</button>
+<button class="opcion" data-correcta="no">Sumando 846 + 379</button>
+<button class="opcion" data-correcta="no">No se puede verificar sin calculadora</button>
+</div>
+<div class="respuesta-int" id="r-p3"></div>
+</div>
+</section>
 
-<footer>
-  Matemáticas · Nivel 1 · Lección 1.2 — Spanish ASE Math · AE 0170-0321<br>
-  City Colleges of Chicago · Truman College · Prof. José M. Fernández
-</footer>
+<section>
+<h2 id="s-tarea"><span class="num-seccion">5</span>Tarea</h2><p>Esta parte la hace usted solo, a su ritmo. Calcule alrededor de una hora, con el cuaderno abierto.</p><ul><li><strong>ThatQuiz.</strong> Entre en <a href="https://www.thatquiz.org/es/" rel="noopener noreferrer" target="_blank">ThatQuiz</a>, elija los ejercicios de <em>suma</em> y de <em>resta</em> con números de varios dígitos y suba el nivel poco a poco. Resuelva primero en papel y después escriba la respuesta.</li><li><strong>Con papel y lápiz.</strong> Haga ocho operaciones con el algoritmo estándar —cuatro sumas y cuatro restas con reagrupación— y verifique cada una con la operación inversa. Si las dos cuentas no coinciden, el error está en una de las dos.</li><li><strong>En su vida diaria.</strong> Tome un recibo o una factura de su casa. Sume dos cantidades y reste una tercera. Compruebe el resultado con la operación inversa antes de mirar la calculadora.</li></ul>
 
+</section>
+<!-- QUIZ -->
+<section>
+<h2 id="s-quiz-de-practica"><span class="num-seccion">6</span>Quiz de práctica</h2>
+<p>Responda las <strong>8 preguntas</strong>. Al final verá su puntaje y podrá repasar lo que falló. Puede repetir el quiz las veces que quiera.</p>
+<form id="quiz">
+<div class="quiz-bloque">
+<span class="qnum">Pregunta 1</span>
+<p class="pregunta">Sume: <strong>456 + 237</strong></p>
+<div class="opciones" data-q="1">
+<button class="opcion" data-c="no" type="button">683</button>
+<button class="opcion" data-c="si" type="button">693</button>
+<button class="opcion" data-c="no" type="button">793</button>
+<button class="opcion" data-c="no" type="button">593</button>
+</div>
+</div>
+<div class="quiz-bloque">
+<span class="qnum">Pregunta 2</span>
+<p class="pregunta">Sume: <strong>1 689 + 2 575</strong></p>
+<div class="opciones" data-q="2">
+<button class="opcion" data-c="no" type="button">4 154</button>
+<button class="opcion" data-c="si" type="button">4 264</button>
+<button class="opcion" data-c="no" type="button">3 264</button>
+<button class="opcion" data-c="no" type="button">4 364</button>
+</div>
+</div>
+<div class="quiz-bloque">
+<span class="qnum">Pregunta 3</span>
+<p class="pregunta">Reste: <strong>872 − 345</strong></p>
+<div class="opciones" data-q="3">
+<button class="opcion" data-c="si" type="button">527</button>
+<button class="opcion" data-c="no" type="button">537</button>
+<button class="opcion" data-c="no" type="button">427</button>
+<button class="opcion" data-c="no" type="button">517</button>
+</div>
+</div>
+<div class="quiz-bloque">
+<span class="qnum">Pregunta 4</span>
+<p class="pregunta">Reste: <strong>5 000 − 2 364</strong></p>
+<div class="opciones" data-q="4">
+<button class="opcion" data-c="no" type="button">2 736</button>
+<button class="opcion" data-c="si" type="button">2 636</button>
+<button class="opcion" data-c="no" type="button">3 636</button>
+<button class="opcion" data-c="no" type="button">2 646</button>
+</div>
+</div>
+<div class="quiz-bloque">
+<span class="qnum">Pregunta 5</span>
+<p class="pregunta">Al sumar la columna de las unidades obtuvo 13. ¿Qué debe hacer?</p>
+<div class="opciones" data-q="5">
+<button class="opcion" data-c="no" type="button">Escribir 13 en las unidades.</button>
+<button class="opcion" data-c="si" type="button">Escribir el 3 y llevar 1 a las decenas.</button>
+<button class="opcion" data-c="no" type="button">Escribir el 1 y llevar 3 a las decenas.</button>
+<button class="opcion" data-c="no" type="button">Empezar la suma otra vez.</button>
+</div>
+</div>
+<div class="quiz-bloque">
+<span class="qnum">Pregunta 6</span>
+<p class="pregunta">¿Cómo verifica que <strong>518 + 263 = 781</strong> es correcto?</p>
+<div class="opciones" data-q="6">
+<button class="opcion" data-c="si" type="button">Comprobando que 781 − 263 = 518.</button>
+<button class="opcion" data-c="no" type="button">Comprobando que 781 + 263 = 518.</button>
+<button class="opcion" data-c="no" type="button">Comprobando que 518 + 781 = 263.</button>
+<button class="opcion" data-c="no" type="button">No hay forma de verificarlo.</button>
+</div>
+</div>
+<div class="quiz-bloque">
+<span class="qnum">Pregunta 7</span>
+<p class="pregunta">En una tienda había 1 240 productos. Llegaron 685 más y se vendieron 478. ¿Cuántos productos hay ahora?</p>
+<div class="opciones" data-q="7">
+<button class="opcion" data-c="no" type="button">1 033</button>
+<button class="opcion" data-c="si" type="button">1 447</button>
+<button class="opcion" data-c="no" type="button">2 403</button>
+<button class="opcion" data-c="no" type="button">1 357</button>
+</div>
+</div>
+<div class="quiz-bloque">
+<span class="qnum">Pregunta 8</span>
+<p class="pregunta">Una familia ganó $3 150 en un mes y gastó $2 487. ¿Cuánto les quedó?</p>
+<div class="opciones" data-q="8">
+<button class="opcion" data-c="no" type="button">$773</button>
+<button class="opcion" data-c="si" type="button">$663</button>
+<button class="opcion" data-c="no" type="button">$5 637</button>
+<button class="opcion" data-c="no" type="button">$1 663</button>
+</div>
+</div>
+</form>
+<div style="text-align:center;margin-top:18px;">
+<button class="btn" id="btn-calificar">Ver mi resultado</button>
+<button class="btn btn-sec" id="btn-reintentar" style="display:none;">Intentar de nuevo</button>
+</div>
+<div class="marcador" id="marcador">
+<div class="barra-prog"><span id="barra"></span></div>
+<div class="puntaje" id="puntaje"></div>
+<div class="mensaje" id="mensaje"></div>
+</div>
+</section>
+<!-- RÚBRICA -->
+<section>
+<h2 id="s-rubrica-de-evaluacion"><span class="num-seccion">7</span>Rúbrica de evaluación</h2>
+<p>Rúbrica analítica de proceso. Cada criterio se evalúa en cuatro niveles. Léala <strong>antes</strong> de empezar la tarea y úsela <strong>después</strong> para evaluar su propio trabajo con honestidad.</p>
+<table class="tabla-rubrica">
+<thead>
+<tr>
+<th>Criterio</th>
+<th class="nivel-cab">Logrado (4)</th>
+<th class="nivel-cab">Satisfactorio (3)</th>
+<th class="nivel-cab">En proceso (2)</th>
+<th class="nivel-cab">Por reforzar (1)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Alinea los dígitos</td>
+<td>Alinea siempre por la derecha, posición con posición.</td>
+<td>Alinea correctamente casi siempre.</td>
+<td>Alinea bien con números cortos; falla con largos.</td>
+<td>No alinea las posiciones.</td>
+</tr>
+<tr>
+<td>Aplica la reagrupación en la suma</td>
+<td>Lleva correctamente en todas las columnas.</td>
+<td>Lleva bien casi siempre; un descuido aislado.</td>
+<td>Olvida llevar o suma mal el dígito que llevó.</td>
+<td>No reagrupa al sumar.</td>
+</tr>
+<tr>
+<td>Aplica "pedir prestado" en la resta</td>
+<td>Pide prestado correctamente, incluso con ceros.</td>
+<td>Resta bien; duda solo con ceros intermedios.</td>
+<td>Pide prestado mal o resta el menor del mayor por columna.</td>
+<td>No reagrupa al restar.</td>
+</tr>
+<tr>
+<td>Verifica con la operación inversa</td>
+<td>Verifica siempre y detecta sus propios errores.</td>
+<td>Verifica cuando se le pide.</td>
+<td>Intenta verificar pero usa la operación equivocada.</td>
+<td>No verifica el resultado.</td>
+</tr>
+</tbody>
+</table>
+</section>
+<!-- CIERRE -->
+<div class="cierre">
+<h2 id="s-lo-que-viene-en-la-proxima-leccion"><span class="num-seccion">➡️</span>Lo que viene en la próxima lección</h2>
+<p>Ya sabe sumar y restar con el algoritmo estándar y verificar sus respuestas. En la <strong>Lección 1.3 · Suma y resta en problemas verbales</strong> aprenderá a leer un problema en palabras, identificar las "palabras clave" que indican si se suma o se resta, plantear la operación y comprobar que la respuesta tiene sentido en la situación real.</p>
+<p>El cálculo que practicó hoy es la herramienta; la próxima lección le enseña <strong>cuándo</strong> y <strong>por qué</strong> usarla.</p>
+<div class="flecha-sig">➡️  Próxima: Lección 1.3 · Suma y resta en problemas verbales</div>
+</div>
+</div>
+<footer><p>GEDparaHispanos · Matemáticas · Nivel 1 · Tema 1 · Lección 1.2</p><p>José M. Fernández, ABE/ASE Math Master Teacher, Harry S. Truman College — City Colleges of Chicago</p><p class="licencia">© 2026. Esta obra está licenciada bajo <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" rel="license" target="_blank">Creative Commons Reconocimiento-NoComercial-CompartirIgual 4.0 Internacional (CC BY-NC-SA 4.0)</a>.</p></footer><a aria-label="Volver al contenido de la lección" class="volver-indice" href="#indice"><span aria-hidden="true">↑</span> Índice</a>
 <script>
   const respuestasPractica = {
     p1:"2 845 + 678 = 3 523. Unidades: 5+8=13 (llevo 1). Decenas: 1+4+7=12 (llevo 1). Centenas: 1+8+6=15 (llevo 1). Millares: 1+2=3.",
@@ -654,6 +565,5 @@
     document.getElementById('quiz').scrollIntoView({behavior:'smooth', block:'start'});
   });
 </script>
-
 </body>
 </html>
