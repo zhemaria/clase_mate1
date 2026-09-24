@@ -725,6 +725,18 @@
   .volver-indice:hover{ background:var(--azul); color:#fff; }
   footer .licencia a{ color:#fff; text-decoration:underline; }
   @media print{ .indice,.volver-indice{ display:none; } }
+
+  /* Tarjeta de enlace al interactivo de la lección (una por subtema) */
+  section > .enlace-interactivo{display:flex;align-items:flex-start;gap:14px;background:var(--azul-cl);
+    border:2px solid var(--azul);border-left:6px solid var(--azul);border-radius:10px;
+    padding:16px 20px;margin:22px 0 4px;text-decoration:none;color:var(--azul-osc);transition:background .15s;}
+  section > .enlace-interactivo:hover{filter:brightness(.95);}
+  section > .enlace-interactivo:focus-visible{outline:3px solid var(--azul-osc);outline-offset:3px;}
+  section > .enlace-interactivo .ei-icono{font-size:26px;line-height:1;flex-shrink:0;}
+  section > .enlace-interactivo .ei-titulo{display:block;font-weight:700;font-size:16px;color:var(--azul-osc);}
+  section > .enlace-interactivo .ei-sub{display:block;font-size:15px;color:#333;margin:4px 0 8px;}
+  section > .enlace-interactivo .ei-cta{display:inline-block;background:var(--azul);color:#fff;font-size:14px;
+    font-weight:700;padding:6px 14px;border-radius:6px;}
 </style>
 </head>
 <body>
@@ -830,6 +842,15 @@
             : 5 × 3 = 15 cuadrados. Esa multiplicación es la base de la fórmula del área.
           </p>
 </div>
+  <a class="enlace-interactivo" href="https://zhemaria.github.io/algebra/n1-l7-3.html#que-es" target="_blank" rel="noopener noreferrer"
+     aria-label="Abrir el interactivo: ¿qué es el área? (se abre en una pestaña nueva)">
+    <span class="ei-icono" aria-hidden="true">🔗</span>
+    <span class="ei-cuerpo">
+      <span class="ei-titulo">Refuerce con el interactivo: ¿qué es el área?</span>
+      <span class="ei-sub">Cuente cuadritos y entienda por qué el área va en unidades cuadradas.</span>
+      <span class="ei-cta">Abrir el interactivo <span aria-hidden="true">›</span></span>
+    </span>
+  </a>
 </section>
 <!-- ÁREA DEL RECTÁNGULO -->
 <section>
@@ -924,6 +945,15 @@
 </div>
 <div aria-live="polite" class="respuesta-int" id="r-p2" role="status"></div>
 </div>
+  <a class="enlace-interactivo" href="https://zhemaria.github.io/algebra/n1-l7-3.html#rectangulo" target="_blank" rel="noopener noreferrer"
+     aria-label="Abrir el interactivo: área del rectángulo y del cuadrado (se abre en una pestaña nueva)">
+    <span class="ei-icono" aria-hidden="true">🔗</span>
+    <span class="ei-cuerpo">
+      <span class="ei-titulo">Refuerce con el interactivo: área del rectángulo y del cuadrado</span>
+      <span class="ei-sub">Multiplique filas por columnas y aplique A = base × altura.</span>
+      <span class="ei-cta">Abrir el interactivo <span aria-hidden="true">›</span></span>
+    </span>
+  </a>
 </section>
 <!-- ÁREA DEL TRIÁNGULO -->
 <section>
@@ -1010,6 +1040,15 @@
 </div>
 <div aria-live="polite" class="respuesta-int" id="r-p4" role="status"></div>
 </div>
+  <a class="enlace-interactivo" href="https://zhemaria.github.io/algebra/n1-l7-3.html#triangulo" target="_blank" rel="noopener noreferrer"
+     aria-label="Abrir el interactivo: área del triángulo (se abre en una pestaña nueva)">
+    <span class="ei-icono" aria-hidden="true">🔗</span>
+    <span class="ei-cuerpo">
+      <span class="ei-titulo">Refuerce con el interactivo: área del triángulo</span>
+      <span class="ei-sub">Vea el triángulo como la mitad de un rectángulo y calcule su área.</span>
+      <span class="ei-cta">Abrir el interactivo <span aria-hidden="true">›</span></span>
+    </span>
+  </a>
 </section>
 <!-- PERÍMETRO VS ÁREA -->
 <section>
@@ -1081,20 +1120,29 @@
 </div>
 <div aria-live="polite" class="respuesta-int" id="r-p6" role="status"></div>
 </div>
+  <a class="enlace-interactivo" href="https://zhemaria.github.io/algebra/n1-l7-3.html#perimetro-o-area" target="_blank" rel="noopener noreferrer"
+     aria-label="Abrir el interactivo: ¿perímetro o área? (se abre en una pestaña nueva)">
+    <span class="ei-icono" aria-hidden="true">🔗</span>
+    <span class="ei-cuerpo">
+      <span class="ei-titulo">Refuerce con el interactivo: ¿perímetro o área?</span>
+      <span class="ei-sub">Decida si el problema pide medir el borde o el interior.</span>
+      <span class="ei-cta">Abrir el interactivo <span aria-hidden="true">›</span></span>
+    </span>
+  </a>
 </section>
-<!-- ===== TARJETA INTERACTIVA:  Balanceo químico ===== -->
-<a class="tarjeta-interactiva" href="https://zhemaria.github.io/math/area" rel="noopener" target="_blank">
+<!-- ===== TARJETA INTERACTIVA: Área y perímetro ===== -->
+<a class="tarjeta-interactiva" href="https://zhemaria.github.io/math/area" rel="noopener noreferrer" target="_blank">
 <div class="ti-cabecera">
 <span aria-hidden="true" class="ti-icono">📎</span>
 <span class="ti-eyebrow">Recurso interactivo</span>
 </div>
-<h3><span aria-hidden="true">🗺️</span> Área y Perímetro</h3>
+<h3><span aria-hidden="true">🗺️</span> Área y perímetro</h3>
 <p class="ti-descripcion">
-          Practica el cálculo del
+          Practique el cálculo del
           <strong>área</strong>
           y del
           <strong>perímetro</strong>
-          de forma interactiva. Practicarás las medidas de lados, alturas.
+          de forma interactiva, con las medidas de lados y alturas.
         </p>
 <span class="ti-cta">
           ▶ Abrir el interactivo

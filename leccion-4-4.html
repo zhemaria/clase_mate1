@@ -207,6 +207,18 @@
   .volver-indice:hover{ background:var(--azul); color:#fff; }
   footer .licencia a{ color:#fff; text-decoration:underline; }
   @media print{ .indice,.volver-indice{ display:none; } }
+
+  /* Tarjeta de enlace al interactivo de la lección (una por subtema) */
+  section > .enlace-interactivo{display:flex;align-items:flex-start;gap:14px;background:var(--azul-cl);
+    border:2px solid var(--azul);border-left:6px solid var(--azul);border-radius:10px;
+    padding:16px 20px;margin:22px 0 4px;text-decoration:none;color:var(--azul-osc);transition:background .15s;}
+  section > .enlace-interactivo:hover{filter:brightness(.95);}
+  section > .enlace-interactivo:focus-visible{outline:3px solid var(--azul-osc);outline-offset:3px;}
+  section > .enlace-interactivo .ei-icono{font-size:26px;line-height:1;flex-shrink:0;}
+  section > .enlace-interactivo .ei-titulo{display:block;font-weight:700;font-size:16px;color:var(--azul-osc);}
+  section > .enlace-interactivo .ei-sub{display:block;font-size:15px;color:#333;margin:4px 0 8px;}
+  section > .enlace-interactivo .ei-cta{display:inline-block;background:var(--azul);color:#fff;font-size:14px;
+    font-weight:700;padding:6px 14px;border-radius:6px;}
 </style>
 </head>
 <body>
@@ -283,6 +295,15 @@
 </div>
 <div class="respuesta-int" id="r-p1"></div>
 </div>
+  <a class="enlace-interactivo" href="https://zhemaria.github.io/algebra/n1-l4-4.html#convertir" target="_blank" rel="noopener noreferrer"
+     aria-label="Abrir el interactivo: mixto e impropio (se abre en una pestaña nueva)">
+    <span class="ei-icono" aria-hidden="true">🔗</span>
+    <span class="ei-cuerpo">
+      <span class="ei-titulo">Refuerce con el interactivo: mixto e impropio</span>
+      <span class="ei-sub">Convierta de número mixto a fracción impropia y de vuelta.</span>
+      <span class="ei-cta">Abrir el interactivo <span aria-hidden="true">›</span></span>
+    </span>
+  </a>
 </section>
 <!-- MULTIPLICAR Y DIVIDIR -->
 <section>
@@ -335,6 +356,15 @@
 </div>
 <div class="respuesta-int" id="r-p3"></div>
 </div>
+  <a class="enlace-interactivo" href="https://zhemaria.github.io/algebra/n1-l4-4.html#multiplicar-dividir" target="_blank" rel="noopener noreferrer"
+     aria-label="Abrir el interactivo: multiplicar y dividir mixtos (se abre en una pestaña nueva)">
+    <span class="ei-icono" aria-hidden="true">🔗</span>
+    <span class="ei-cuerpo">
+      <span class="ei-titulo">Refuerce con el interactivo: multiplicar y dividir mixtos</span>
+      <span class="ei-sub">Pase todo a impropias y aplique las reglas de la Lección 4.3.</span>
+      <span class="ei-cta">Abrir el interactivo <span aria-hidden="true">›</span></span>
+    </span>
+  </a>
 </section>
 <!-- SUMAR Y RESTAR -->
 <section>
@@ -376,6 +406,15 @@
 </div>
 <div class="respuesta-int" id="r-p4"></div>
 </div>
+  <a class="enlace-interactivo" href="https://zhemaria.github.io/algebra/n1-l4-4.html#sumar-restar" target="_blank" rel="noopener noreferrer"
+     aria-label="Abrir el interactivo: sumar y restar mixtos (se abre en una pestaña nueva)">
+    <span class="ei-icono" aria-hidden="true">🔗</span>
+    <span class="ei-cuerpo">
+      <span class="ei-titulo">Refuerce con el interactivo: sumar y restar mixtos</span>
+      <span class="ei-sub">Opere enteros con enteros y fracciones con fracciones, y pida prestado cuando haga falta.</span>
+      <span class="ei-cta">Abrir el interactivo <span aria-hidden="true">›</span></span>
+    </span>
+  </a>
 </section>
 <!-- CONTEXTO -->
 <section>
@@ -399,11 +438,29 @@
 </div>
 <div class="respuesta-int" id="r-p5"></div>
 </div>
+  <a class="enlace-interactivo" href="https://zhemaria.github.io/algebra/n1-l4-4.html#contexto" target="_blank" rel="noopener noreferrer"
+     aria-label="Abrir el interactivo: mixtos en la vida real (se abre en una pestaña nueva)">
+    <span class="ei-icono" aria-hidden="true">🔗</span>
+    <span class="ei-cuerpo">
+      <span class="ei-titulo">Refuerce con el interactivo: mixtos en la vida real</span>
+      <span class="ei-sub">Resuelva problemas de carpintería, recetas y tiempo con números mixtos.</span>
+      <span class="ei-cta">Abrir el interactivo <span aria-hidden="true">›</span></span>
+    </span>
+  </a>
 </section>
 
 <section>
 <h2 id="s-tarea"><span class="num-seccion">6</span>Tarea</h2><p>Esta parte la hace usted solo, a su ritmo. Calcule alrededor de una hora. Con ella cierra el Tema 4.</p><ul><li><strong>ThatQuiz.</strong> Entre en <a href="https://www.thatquiz.org/es/" rel="noopener noreferrer" target="_blank">ThatQuiz</a> y practique operaciones con <em>números mixtos</em> y la conversión entre <em>mixto e impropio</em>. Si no encuentra el tema de mixtos, practique fracciones impropias: es la misma destreza escrita de otra forma.</li><li><strong>Con papel y lápiz.</strong> Escriba seis números mixtos, conviértalos a impropios y vuelva a convertirlos a mixtos. Si no regresa al mismo número, el error está en la ida o en la vuelta y conviene encontrarlo ahora. Después resuelva ocho operaciones, dos de cada una de las cuatro.</li><li><strong>En su cocina.</strong> Tome una receta con cantidades en números mixtos (1½ taza, 2¾ cucharadas). Calcule cuánto necesitaría al doble y anótelo también en número mixto, no en fracción impropia: así se lee mejor al cocinar.</li></ul>
 
+  <a class="enlace-interactivo" href="https://zhemaria.github.io/algebra/n1-l4-4.html#fracciomania" target="_blank" rel="noopener noreferrer"
+     aria-label="Abrir el interactivo: Fracciomanía (se abre en una pestaña nueva)">
+    <span class="ei-icono" aria-hidden="true">🔗</span>
+    <span class="ei-cuerpo">
+      <span class="ei-titulo">Refuerce con el interactivo: Fracciomanía</span>
+      <span class="ei-sub">Cierre el Tema 4 jugando con las cuatro operaciones con fracciones.</span>
+      <span class="ei-cta">Abrir el interactivo <span aria-hidden="true">›</span></span>
+    </span>
+  </a>
 </section>
 <!-- QUIZ -->
 <section>

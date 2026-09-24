@@ -656,6 +656,18 @@
   .volver-indice:hover{ background:var(--azul); color:#fff; }
   footer .licencia a{ color:#fff; text-decoration:underline; }
   @media print{ .indice,.volver-indice{ display:none; } }
+
+  /* Tarjeta de enlace al interactivo de la lección (una por subtema) */
+  section > .enlace-interactivo{display:flex;align-items:flex-start;gap:14px;background:var(--azul-cl);
+    border:2px solid var(--azul);border-left:6px solid var(--azul);border-radius:10px;
+    padding:16px 20px;margin:22px 0 4px;text-decoration:none;color:var(--azul-osc);transition:background .15s;}
+  section > .enlace-interactivo:hover{filter:brightness(.95);}
+  section > .enlace-interactivo:focus-visible{outline:3px solid var(--azul-osc);outline-offset:3px;}
+  section > .enlace-interactivo .ei-icono{font-size:26px;line-height:1;flex-shrink:0;}
+  section > .enlace-interactivo .ei-titulo{display:block;font-weight:700;font-size:16px;color:var(--azul-osc);}
+  section > .enlace-interactivo .ei-sub{display:block;font-size:15px;color:#333;margin:4px 0 8px;}
+  section > .enlace-interactivo .ei-cta{display:inline-block;background:var(--azul);color:#fff;font-size:14px;
+    font-weight:700;padding:6px 14px;border-radius:6px;}
 </style>
 </head>
 <body>
@@ -794,6 +806,15 @@
 </div>
 <div aria-live="polite" class="respuesta-int" id="r-p1" role="status"></div>
 </div>
+  <a class="enlace-interactivo" href="https://zhemaria.github.io/algebra/n1-l7-1.html#angulos" target="_blank" rel="noopener noreferrer"
+     aria-label="Abrir el interactivo: los tipos de ángulo (se abre en una pestaña nueva)">
+    <span class="ei-icono" aria-hidden="true">🔗</span>
+    <span class="ei-cuerpo">
+      <span class="ei-titulo">Refuerce con el interactivo: los tipos de ángulo</span>
+      <span class="ei-sub">Clasifique ángulos en agudos, rectos, obtusos y llanos según su medida.</span>
+      <span class="ei-cta">Abrir el interactivo <span aria-hidden="true">›</span></span>
+    </span>
+  </a>
 </section>
 <!-- POLÍGONOS -->
 <section>
@@ -862,6 +883,15 @@
 </div>
 <div aria-live="polite" class="respuesta-int" id="r-p2" role="status"></div>
 </div>
+  <a class="enlace-interactivo" href="https://zhemaria.github.io/algebra/n1-l7-1.html#poligonos" target="_blank" rel="noopener noreferrer"
+     aria-label="Abrir el interactivo: polígonos por número de lados (se abre en una pestaña nueva)">
+    <span class="ei-icono" aria-hidden="true">🔗</span>
+    <span class="ei-cuerpo">
+      <span class="ei-titulo">Refuerce con el interactivo: polígonos por número de lados</span>
+      <span class="ei-sub">Cuente lados, vértices y ángulos y ponga nombre a cada polígono.</span>
+      <span class="ei-cta">Abrir el interactivo <span aria-hidden="true">›</span></span>
+    </span>
+  </a>
 </section>
 <!-- TRIÁNGULOS -->
 <section>
@@ -910,6 +940,15 @@
 </div>
 <div aria-live="polite" class="respuesta-int" id="r-p3" role="status"></div>
 </div>
+  <a class="enlace-interactivo" href="https://zhemaria.github.io/algebra/n1-l7-1.html#triangulos" target="_blank" rel="noopener noreferrer"
+     aria-label="Abrir el interactivo: triángulos por sus lados (se abre en una pestaña nueva)">
+    <span class="ei-icono" aria-hidden="true">🔗</span>
+    <span class="ei-cuerpo">
+      <span class="ei-titulo">Refuerce con el interactivo: triángulos por sus lados</span>
+      <span class="ei-sub">Lea las rayitas y distinga triángulos equiláteros, isósceles y escalenos.</span>
+      <span class="ei-cta">Abrir el interactivo <span aria-hidden="true">›</span></span>
+    </span>
+  </a>
 </section>
 <!-- CUADRILÁTEROS -->
 <section>
@@ -1007,6 +1046,24 @@
 </div>
 <div aria-live="polite" class="respuesta-int" id="r-p4" role="status"></div>
 </div>
+  <a class="enlace-interactivo" href="https://zhemaria.github.io/algebra/n1-l7-1.html#cuadrilateros" target="_blank" rel="noopener noreferrer"
+     aria-label="Abrir el interactivo: cuadriláteros (se abre en una pestaña nueva)">
+    <span class="ei-icono" aria-hidden="true">🔗</span>
+    <span class="ei-cuerpo">
+      <span class="ei-titulo">Refuerce con el interactivo: cuadriláteros</span>
+      <span class="ei-sub">Use las marcas de lados iguales, paralelos y ángulos rectos para identificar cada figura.</span>
+      <span class="ei-cta">Abrir el interactivo <span aria-hidden="true">›</span></span>
+    </span>
+  </a>
+  <a class="enlace-interactivo" href="https://zhemaria.github.io/algebra/n1-l7-1.html#reto" target="_blank" rel="noopener noreferrer"
+     aria-label="Abrir el interactivo: reto, ¿qué figura es? (se abre en una pestaña nueva)">
+    <span class="ei-icono" aria-hidden="true">🔗</span>
+    <span class="ei-cuerpo">
+      <span class="ei-titulo">Póngase a prueba: reto «¿qué figura es?»</span>
+      <span class="ei-sub">Use el árbol de decisión para identificar cualquier cuadrilátero por sus ángulos y lados.</span>
+      <span class="ei-cta">Abrir el reto <span aria-hidden="true">›</span></span>
+    </span>
+  </a>
 </section>
 
 <section>

@@ -247,6 +247,18 @@
   .volver-indice:hover{ background:var(--azul); color:#fff; }
   footer .licencia a{ color:#fff; text-decoration:underline; }
   @media print{ .indice,.volver-indice{ display:none; } }
+
+  /* Tarjeta de enlace al interactivo de la lección (una por subtema) */
+  section > .enlace-interactivo{display:flex;align-items:flex-start;gap:14px;background:var(--azul-cl);
+    border:2px solid var(--azul);border-left:6px solid var(--azul);border-radius:10px;
+    padding:16px 20px;margin:22px 0 4px;text-decoration:none;color:var(--azul-osc);transition:background .15s;}
+  section > .enlace-interactivo:hover{filter:brightness(.95);}
+  section > .enlace-interactivo:focus-visible{outline:3px solid var(--azul-osc);outline-offset:3px;}
+  section > .enlace-interactivo .ei-icono{font-size:26px;line-height:1;flex-shrink:0;}
+  section > .enlace-interactivo .ei-titulo{display:block;font-weight:700;font-size:16px;color:var(--azul-osc);}
+  section > .enlace-interactivo .ei-sub{display:block;font-size:15px;color:#333;margin:4px 0 8px;}
+  section > .enlace-interactivo .ei-cta{display:inline-block;background:var(--azul);color:#fff;font-size:14px;
+    font-weight:700;padding:6px 14px;border-radius:6px;}
 </style>
 </head>
 <body>
@@ -340,6 +352,15 @@
 <span class="etiqueta et-ambar">¡Ojo!</span>
 <p>El grupo de las unidades <strong>no lleva nombre</strong> al final. Decimos "tres millones, cuatrocientos ochenta y dos mil… seiscientos cincuenta y uno" — no "seiscientos cincuenta y uno <em>unidades</em>".</p>
 </div>
+  <a class="enlace-interactivo" href="https://zhemaria.github.io/algebra/n1-l1-1.html#valor-posicional" target="_blank" rel="noopener noreferrer"
+     aria-label="Abrir el interactivo: la tabla de valor posicional (se abre en una pestaña nueva)">
+    <span class="ei-icono" aria-hidden="true">🔗</span>
+    <span class="ei-cuerpo">
+      <span class="ei-titulo">Refuerce con el interactivo: la tabla de valor posicional</span>
+      <span class="ei-sub">Descubra cuánto vale cada dígito según el lugar que ocupa.</span>
+      <span class="ei-cta">Abrir el interactivo <span aria-hidden="true">›</span></span>
+    </span>
+  </a>
 </section>
 <!-- PRÁCTICA 1 -->
 <section>
@@ -376,6 +397,15 @@
 <span class="etiqueta et-verde">Truco</span>
 <p>El <strong>cero</strong> es muy importante: es el que "guarda el lugar". En <strong>208 040</strong> los ceros indican que no hay decenas de millar, ni centenas, ni unidades. Si los quitáramos, el número cambiaría por completo.</p>
 </div>
+  <a class="enlace-interactivo" href="https://zhemaria.github.io/algebra/n1-l1-1.html#leer-escribir" target="_blank" rel="noopener noreferrer"
+     aria-label="Abrir el interactivo: leer y escribir números (se abre en una pestaña nueva)">
+    <span class="ei-icono" aria-hidden="true">🔗</span>
+    <span class="ei-cuerpo">
+      <span class="ei-titulo">Refuerce con el interactivo: leer y escribir números</span>
+      <span class="ei-sub">Pase números a palabras y palabras a números, grupo por grupo.</span>
+      <span class="ei-cta">Abrir el interactivo <span aria-hidden="true">›</span></span>
+    </span>
+  </a>
 </section>
 <!-- COMPARAR Y ORDENAR -->
 <section>
@@ -415,6 +445,15 @@
 </div>
 <div aria-live="polite" class="respuesta-int" id="r-p3" role="status"></div>
 </div>
+  <a class="enlace-interactivo" href="https://zhemaria.github.io/algebra/n1-l1-1.html#comparar" target="_blank" rel="noopener noreferrer"
+     aria-label="Abrir el interactivo: comparar y ordenar (se abre en una pestaña nueva)">
+    <span class="ei-icono" aria-hidden="true">🔗</span>
+    <span class="ei-cuerpo">
+      <span class="ei-titulo">Refuerce con el interactivo: comparar y ordenar</span>
+      <span class="ei-sub">Use los símbolos &gt;, &lt; e = y ordene números de menor a mayor.</span>
+      <span class="ei-cta">Abrir el interactivo <span aria-hidden="true">›</span></span>
+    </span>
+  </a>
 </section>
 <!-- REDONDEAR -->
 <section>
@@ -455,6 +494,15 @@
 </div>
 <div aria-live="polite" class="respuesta-int" id="r-p4" role="status"></div>
 </div>
+  <a class="enlace-interactivo" href="https://zhemaria.github.io/algebra/n1-l1-1.html#redondear" target="_blank" rel="noopener noreferrer"
+     aria-label="Abrir el interactivo: redondear (se abre en una pestaña nueva)">
+    <span class="ei-icono" aria-hidden="true">🔗</span>
+    <span class="ei-cuerpo">
+      <span class="ei-titulo">Refuerce con el interactivo: redondear</span>
+      <span class="ei-sub">Aplique la regla del vecino de la derecha a decenas, centenas y millares.</span>
+      <span class="ei-cta">Abrir el interactivo <span aria-hidden="true">›</span></span>
+    </span>
+  </a>
 </section>
 
 <section>

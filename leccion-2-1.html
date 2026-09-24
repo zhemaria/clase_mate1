@@ -686,6 +686,18 @@
   .volver-indice:hover{ background:var(--azul); color:#fff; }
   footer .licencia a{ color:#fff; text-decoration:underline; }
   @media print{ .indice,.volver-indice{ display:none; } }
+
+  /* Tarjeta de enlace al interactivo de la lección (una por subtema) */
+  section > .enlace-interactivo{display:flex;align-items:flex-start;gap:14px;background:var(--azul-cl);
+    border:2px solid var(--azul);border-left:6px solid var(--azul);border-radius:10px;
+    padding:16px 20px;margin:22px 0 4px;text-decoration:none;color:var(--azul-osc);transition:background .15s;}
+  section > .enlace-interactivo:hover{filter:brightness(.95);}
+  section > .enlace-interactivo:focus-visible{outline:3px solid var(--azul-osc);outline-offset:3px;}
+  section > .enlace-interactivo .ei-icono{font-size:26px;line-height:1;flex-shrink:0;}
+  section > .enlace-interactivo .ei-titulo{display:block;font-weight:700;font-size:16px;color:var(--azul-osc);}
+  section > .enlace-interactivo .ei-sub{display:block;font-size:15px;color:#333;margin:4px 0 8px;}
+  section > .enlace-interactivo .ei-cta{display:inline-block;background:var(--azul);color:#fff;font-size:14px;
+    font-weight:700;padding:6px 14px;border-radius:6px;}
 </style>
 </head>
 <body>
@@ -794,6 +806,15 @@
             .
           </p>
 </div>
+  <a class="enlace-interactivo" href="https://zhemaria.github.io/algebra/n1-l2-1.html#significado" target="_blank" rel="noopener noreferrer"
+     aria-label="Abrir el interactivo: ¿qué significa multiplicar? (se abre en una pestaña nueva)">
+    <span class="ei-icono" aria-hidden="true">🔗</span>
+    <span class="ei-cuerpo">
+      <span class="ei-titulo">Refuerce con el interactivo: ¿qué significa multiplicar?</span>
+      <span class="ei-sub">Vea la multiplicación como una suma repetida y reconozca los factores y el producto.</span>
+      <span class="ei-cta">Abrir el interactivo <span aria-hidden="true">›</span></span>
+    </span>
+  </a>
 </section>
 <!-- TABLAS Y PROPIEDADES -->
 <section>
@@ -866,6 +887,15 @@
 </div>
 <div class="respuesta-int" id="r-p1"></div>
 </div>
+  <a class="enlace-interactivo" href="https://zhemaria.github.io/algebra/n1-l2-1.html#tablas-propiedades" target="_blank" rel="noopener noreferrer"
+     aria-label="Abrir el interactivo: las tablas y las propiedades (se abre en una pestaña nueva)">
+    <span class="ei-icono" aria-hidden="true">🔗</span>
+    <span class="ei-cuerpo">
+      <span class="ei-titulo">Refuerce con el interactivo: las tablas y las propiedades</span>
+      <span class="ei-sub">Explore la tabla hasta 12 × 12 y descubra la propiedad conmutativa en cada casilla.</span>
+      <span class="ei-cta">Abrir el interactivo <span aria-hidden="true">›</span></span>
+    </span>
+  </a>
 </section>
 <!-- ALGORITMO 1 DÍGITO -->
 <section>
@@ -942,6 +972,15 @@
 </div>
 <div class="respuesta-int" id="r-p2"></div>
 </div>
+  <a class="enlace-interactivo" href="https://zhemaria.github.io/algebra/n1-l2-1.html#un-digito" target="_blank" rel="noopener noreferrer"
+     aria-label="Abrir el interactivo: multiplicar por un dígito (se abre en una pestaña nueva)">
+    <span class="ei-icono" aria-hidden="true">🔗</span>
+    <span class="ei-cuerpo">
+      <span class="ei-titulo">Refuerce con el interactivo: multiplicar por un dígito</span>
+      <span class="ei-sub">Multiplique columna por columna, de derecha a izquierda, y practique cuándo se lleva.</span>
+      <span class="ei-cta">Abrir el interactivo <span aria-hidden="true">›</span></span>
+    </span>
+  </a>
 </section>
 <!-- ALGORITMO 2 DÍGITOS -->
 <section>
@@ -1027,6 +1066,15 @@
 </div>
 <div class="respuesta-int" id="r-p3"></div>
 </div>
+  <a class="enlace-interactivo" href="https://zhemaria.github.io/algebra/n1-l2-1.html#dos-digitos" target="_blank" rel="noopener noreferrer"
+     aria-label="Abrir el interactivo: multiplicar por dos dígitos (se abre en una pestaña nueva)">
+    <span class="ei-icono" aria-hidden="true">🔗</span>
+    <span class="ei-cuerpo">
+      <span class="ei-titulo">Refuerce con el interactivo: multiplicar por dos dígitos</span>
+      <span class="ei-sub">Haga los dos productos parciales, corra el segundo un lugar y súmelos.</span>
+      <span class="ei-cta">Abrir el interactivo <span aria-hidden="true">›</span></span>
+    </span>
+  </a>
 </section>
 <!-- VERIFICAR CON ESTIMACIÓN -->
 <section>
@@ -1062,6 +1110,15 @@
 <span class="etiqueta et-verde">Por qué sirve</span>
 <p>La estimación no da la respuesta exacta, pero sí detecta errores grandes: una coma fuera de lugar, un cero olvidado, un parcial mal corrido. Es su "alarma" de seguridad.</p>
 </div>
+  <a class="enlace-interactivo" href="https://zhemaria.github.io/algebra/n1-l2-1.html#estimar" target="_blank" rel="noopener noreferrer"
+     aria-label="Abrir el interactivo: verificar con la estimación (se abre en una pestaña nueva)">
+    <span class="ei-icono" aria-hidden="true">🔗</span>
+    <span class="ei-cuerpo">
+      <span class="ei-titulo">Refuerce con el interactivo: verificar con la estimación</span>
+      <span class="ei-sub">Redondee los factores y compruebe si el producto es razonable.</span>
+      <span class="ei-cta">Abrir el interactivo <span aria-hidden="true">›</span></span>
+    </span>
+  </a>
 </section>
 
 <section>

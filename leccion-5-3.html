@@ -666,6 +666,18 @@
   .volver-indice:hover{ background:var(--azul); color:#fff; }
   footer .licencia a{ color:#fff; text-decoration:underline; }
   @media print{ .indice,.volver-indice{ display:none; } }
+
+  /* Tarjeta de enlace al interactivo de la lección (una por subtema) */
+  section > .enlace-interactivo{display:flex;align-items:flex-start;gap:14px;background:var(--azul-cl);
+    border:2px solid var(--azul);border-left:6px solid var(--azul);border-radius:10px;
+    padding:16px 20px;margin:22px 0 4px;text-decoration:none;color:var(--azul-osc);transition:background .15s;}
+  section > .enlace-interactivo:hover{filter:brightness(.95);}
+  section > .enlace-interactivo:focus-visible{outline:3px solid var(--azul-osc);outline-offset:3px;}
+  section > .enlace-interactivo .ei-icono{font-size:26px;line-height:1;flex-shrink:0;}
+  section > .enlace-interactivo .ei-titulo{display:block;font-weight:700;font-size:16px;color:var(--azul-osc);}
+  section > .enlace-interactivo .ei-sub{display:block;font-size:15px;color:#333;margin:4px 0 8px;}
+  section > .enlace-interactivo .ei-cta{display:inline-block;background:var(--azul);color:#fff;font-size:14px;
+    font-weight:700;padding:6px 14px;border-radius:6px;}
 </style>
 </head>
 <body>
@@ -776,6 +788,15 @@
             : ¿se juntan cosas, se quita algo, se repiten grupos iguales, o se reparte un total?
           </p>
 </div>
+  <a class="enlace-interactivo" href="https://zhemaria.github.io/algebra/n1-l5-3.html#palabras-clave" target="_blank" rel="noopener noreferrer"
+     aria-label="Abrir el interactivo: mapa de palabras clave (se abre en una pestaña nueva)">
+    <span class="ei-icono" aria-hidden="true">🔗</span>
+    <span class="ei-cuerpo">
+      <span class="ei-titulo">Refuerce con el interactivo: mapa de palabras clave</span>
+      <span class="ei-sub">Clasifique las palabras clave de las cuatro operaciones.</span>
+      <span class="ei-cta">Abrir el interactivo <span aria-hidden="true">›</span></span>
+    </span>
+  </a>
 </section>
 <!-- 4 PASOS CON ECUACIÓN -->
 <section>
@@ -866,6 +887,15 @@
 </div>
 <div aria-live="polite" class="respuesta-int" id="r-p2" role="status"></div>
 </div>
+  <a class="enlace-interactivo" href="https://zhemaria.github.io/algebra/n1-l5-3.html#cuatro-pasos" target="_blank" rel="noopener noreferrer"
+     aria-label="Abrir el interactivo: los 4 pasos, con ecuación (se abre en una pestaña nueva)">
+    <span class="ei-icono" aria-hidden="true">🔗</span>
+    <span class="ei-cuerpo">
+      <span class="ei-titulo">Refuerce con el interactivo: los 4 pasos, con ecuación</span>
+      <span class="ei-sub">Escriba la ecuación del problema y despéjela con la operación inversa.</span>
+      <span class="ei-cta">Abrir el interactivo <span aria-hidden="true">›</span></span>
+    </span>
+  </a>
 </section>
 <!-- LOS CUATRO TIPOS -->
 <section>
@@ -954,6 +984,15 @@
 </div>
 <div aria-live="polite" class="respuesta-int" id="r-p4" role="status"></div>
 </div>
+  <a class="enlace-interactivo" href="https://zhemaria.github.io/algebra/n1-l5-3.html#cada-operacion" target="_blank" rel="noopener noreferrer"
+     aria-label="Abrir el interactivo: un problema de cada operación (se abre en una pestaña nueva)">
+    <span class="ei-icono" aria-hidden="true">🔗</span>
+    <span class="ei-cuerpo">
+      <span class="ei-titulo">Refuerce con el interactivo: un problema de cada operación</span>
+      <span class="ei-sub">Resuelva un problema de suma, resta, multiplicación y división con ecuación.</span>
+      <span class="ei-cta">Abrir el interactivo <span aria-hidden="true">›</span></span>
+    </span>
+  </a>
 </section>
 
 <section>

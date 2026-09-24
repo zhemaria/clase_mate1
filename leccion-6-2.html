@@ -751,6 +751,18 @@
   .volver-indice:hover{ background:var(--azul); color:#fff; }
   footer .licencia a{ color:#fff; text-decoration:underline; }
   @media print{ .indice,.volver-indice{ display:none; } }
+
+  /* Tarjeta de enlace al interactivo de la lección (una por subtema) */
+  section > .enlace-interactivo{display:flex;align-items:flex-start;gap:14px;background:var(--azul-cl);
+    border:2px solid var(--azul);border-left:6px solid var(--azul);border-radius:10px;
+    padding:16px 20px;margin:22px 0 4px;text-decoration:none;color:var(--azul-osc);transition:background .15s;}
+  section > .enlace-interactivo:hover{filter:brightness(.95);}
+  section > .enlace-interactivo:focus-visible{outline:3px solid var(--azul-osc);outline-offset:3px;}
+  section > .enlace-interactivo .ei-icono{font-size:26px;line-height:1;flex-shrink:0;}
+  section > .enlace-interactivo .ei-titulo{display:block;font-weight:700;font-size:16px;color:var(--azul-osc);}
+  section > .enlace-interactivo .ei-sub{display:block;font-size:15px;color:#333;margin:4px 0 8px;}
+  section > .enlace-interactivo .ei-cta{display:inline-block;background:var(--azul);color:#fff;font-size:14px;
+    font-weight:700;padding:6px 14px;border-radius:6px;}
 </style>
 </head>
 <body>
@@ -832,6 +844,15 @@
             significa una milésima (un mililitro = la milésima parte de un litro).
           </p>
 </div>
+  <a class="enlace-interactivo" href="https://zhemaria.github.io/algebra/n1-l6-2.html#metrico" target="_blank" rel="noopener noreferrer"
+     aria-label="Abrir el interactivo: el sistema métrico (se abre en una pestaña nueva)">
+    <span class="ei-icono" aria-hidden="true">🔗</span>
+    <span class="ei-cuerpo">
+      <span class="ei-titulo">Refuerce con el interactivo: el sistema métrico</span>
+      <span class="ei-sub">Conozca el metro, el gramo y el litro y sus prefijos de diez en diez.</span>
+      <span class="ei-cta">Abrir el interactivo <span aria-hidden="true">›</span></span>
+    </span>
+  </a>
 </section>
 <!-- LA ESCALERA MÉTRICA -->
 <section>
@@ -982,6 +1003,15 @@
 </div>
 <div aria-live="polite" class="respuesta-int" id="r-p2" role="status"></div>
 </div>
+  <a class="enlace-interactivo" href="https://zhemaria.github.io/algebra/n1-l6-2.html#escalera" target="_blank" rel="noopener noreferrer"
+     aria-label="Abrir el interactivo: la escalera métrica (se abre en una pestaña nueva)">
+    <span class="ei-icono" aria-hidden="true">🔗</span>
+    <span class="ei-cuerpo">
+      <span class="ei-titulo">Refuerce con el interactivo: la escalera métrica</span>
+      <span class="ei-sub">Suba y baje escalones: dividir o multiplicar por 10 en cada paso.</span>
+      <span class="ei-cta">Abrir el interactivo <span aria-hidden="true">›</span></span>
+    </span>
+  </a>
 </section>
 <!-- EL TIEMPO -->
 <section>
@@ -1064,6 +1094,15 @@
 </div>
 <div aria-live="polite" class="respuesta-int" id="r-p3" role="status"></div>
 </div>
+  <a class="enlace-interactivo" href="https://zhemaria.github.io/algebra/n1-l6-2.html#hora" target="_blank" rel="noopener noreferrer"
+     aria-label="Abrir el interactivo: leer la hora y calcular duraciones (se abre en una pestaña nueva)">
+    <span class="ei-icono" aria-hidden="true">🔗</span>
+    <span class="ei-cuerpo">
+      <span class="ei-titulo">Refuerce con el interactivo: leer la hora y calcular duraciones</span>
+      <span class="ei-sub">Lea el reloj de agujas y calcule a qué hora termina una actividad.</span>
+      <span class="ei-cta">Abrir el interactivo <span aria-hidden="true">›</span></span>
+    </span>
+  </a>
 </section>
 <!-- TEMPERATURA -->
 <section>
@@ -1148,6 +1187,15 @@
 </div>
 <div aria-live="polite" class="respuesta-int" id="r-p4" role="status"></div>
 </div>
+  <a class="enlace-interactivo" href="https://zhemaria.github.io/algebra/n1-l6-2.html#temperatura" target="_blank" rel="noopener noreferrer"
+     aria-label="Abrir el interactivo: Fahrenheit y Celsius (se abre en una pestaña nueva)">
+    <span class="ei-icono" aria-hidden="true">🔗</span>
+    <span class="ei-cuerpo">
+      <span class="ei-titulo">Refuerce con el interactivo: Fahrenheit y Celsius</span>
+      <span class="ei-sub">Ubique temperaturas en los dos termómetros usando los puntos de referencia.</span>
+      <span class="ei-cta">Abrir el interactivo <span aria-hidden="true">›</span></span>
+    </span>
+  </a>
 </section>
 
 <section>

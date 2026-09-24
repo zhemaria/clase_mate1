@@ -285,6 +285,18 @@
   .volver-indice:hover{ background:var(--azul); color:#fff; }
   footer .licencia a{ color:#fff; text-decoration:underline; }
   @media print{ .indice,.volver-indice{ display:none; } }
+
+  /* Tarjeta de enlace al interactivo de la lección (una por subtema) */
+  section > .enlace-interactivo{display:flex;align-items:flex-start;gap:14px;background:var(--azul-cl);
+    border:2px solid var(--azul);border-left:6px solid var(--azul);border-radius:10px;
+    padding:16px 20px;margin:22px 0 4px;text-decoration:none;color:var(--azul-osc);transition:background .15s;}
+  section > .enlace-interactivo:hover{filter:brightness(.95);}
+  section > .enlace-interactivo:focus-visible{outline:3px solid var(--azul-osc);outline-offset:3px;}
+  section > .enlace-interactivo .ei-icono{font-size:26px;line-height:1;flex-shrink:0;}
+  section > .enlace-interactivo .ei-titulo{display:block;font-weight:700;font-size:16px;color:var(--azul-osc);}
+  section > .enlace-interactivo .ei-sub{display:block;font-size:15px;color:#333;margin:4px 0 8px;}
+  section > .enlace-interactivo .ei-cta{display:inline-block;background:var(--azul);color:#fff;font-size:14px;
+    font-weight:700;padding:6px 14px;border-radius:6px;}
 </style>
 </head>
 <body>
@@ -382,6 +394,15 @@
 </div>
 <div aria-live="polite" class="respuesta-int" id="r-p1" role="status"></div>
 </div>
+  <a class="enlace-interactivo" href="https://zhemaria.github.io/algebra/n1-l8-1.html#leer-tabla" target="_blank" rel="noopener noreferrer"
+     aria-label="Abrir el interactivo: cómo leer una tabla (se abre en una pestaña nueva)">
+    <span class="ei-icono" aria-hidden="true">🔗</span>
+    <span class="ei-cuerpo">
+      <span class="ei-titulo">Refuerce con el interactivo: cómo leer una tabla</span>
+      <span class="ei-sub">Practique los cuatro pasos: título, encabezados, unidades y el dato que busca.</span>
+      <span class="ei-cta">Abrir el interactivo <span aria-hidden="true">›</span></span>
+    </span>
+  </a>
 </section>
 <!-- COMPARAR Y CALCULAR -->
 <section>
@@ -448,6 +469,15 @@
 </div>
 <div aria-live="polite" class="respuesta-int" id="r-p4" role="status"></div>
 </div>
+  <a class="enlace-interactivo" href="https://zhemaria.github.io/algebra/n1-l8-1.html#comparar-calcular" target="_blank" rel="noopener noreferrer"
+     aria-label="Abrir el interactivo: comparar y calcular (se abre en una pestaña nueva)">
+    <span class="ei-icono" aria-hidden="true">🔗</span>
+    <span class="ei-cuerpo">
+      <span class="ei-titulo">Refuerce con el interactivo: comparar y calcular</span>
+      <span class="ei-sub">Calcule diferencias, totales, promedios, máximos y mínimos con los datos de una tabla.</span>
+      <span class="ei-cta">Abrir el interactivo <span aria-hidden="true">›</span></span>
+    </span>
+  </a>
 </section>
 <!-- DESCRIBIR CON PALABRAS -->
 <section>
@@ -461,6 +491,15 @@
 <span class="etiqueta et-ambar">Frases útiles para describir datos</span>
 <p>"La tabla muestra que..." · "El valor más alto es... porque..." · "Comparando X con Y, se ve que..." · "En total..." · "En promedio...". Estas frases ayudan a expresar con claridad lo que dicen los datos.</p>
 </div>
+  <a class="enlace-interactivo" href="https://zhemaria.github.io/algebra/n1-l8-1.html#describir" target="_blank" rel="noopener noreferrer"
+     aria-label="Abrir el interactivo: describir los datos con palabras (se abre en una pestaña nueva)">
+    <span class="ei-icono" aria-hidden="true">🔗</span>
+    <span class="ei-cuerpo">
+      <span class="ei-titulo">Refuerce con el interactivo: describir los datos con palabras</span>
+      <span class="ei-sub">Elija la oración que explica bien el dato: qué es, qué representa y de dónde sale.</span>
+      <span class="ei-cta">Abrir el interactivo <span aria-hidden="true">›</span></span>
+    </span>
+  </a>
 </section>
 
 <section>

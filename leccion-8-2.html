@@ -280,6 +280,18 @@
   .volver-indice:hover{ background:var(--azul); color:#fff; }
   footer .licencia a{ color:#fff; text-decoration:underline; }
   @media print{ .indice,.volver-indice{ display:none; } }
+
+  /* Tarjeta de enlace al interactivo de la lección (una por subtema) */
+  section > .enlace-interactivo{display:flex;align-items:flex-start;gap:14px;background:var(--azul-cl);
+    border:2px solid var(--azul);border-left:6px solid var(--azul);border-radius:10px;
+    padding:16px 20px;margin:22px 0 4px;text-decoration:none;color:var(--azul-osc);transition:background .15s;}
+  section > .enlace-interactivo:hover{filter:brightness(.95);}
+  section > .enlace-interactivo:focus-visible{outline:3px solid var(--azul-osc);outline-offset:3px;}
+  section > .enlace-interactivo .ei-icono{font-size:26px;line-height:1;flex-shrink:0;}
+  section > .enlace-interactivo .ei-titulo{display:block;font-weight:700;font-size:16px;color:var(--azul-osc);}
+  section > .enlace-interactivo .ei-sub{display:block;font-size:15px;color:#333;margin:4px 0 8px;}
+  section > .enlace-interactivo .ei-cta{display:inline-block;background:var(--azul);color:#fff;font-size:14px;
+    font-weight:700;padding:6px 14px;border-radius:6px;}
 </style>
 </head><body><header class="principal">
 <div class="envoltura-header">
@@ -325,6 +337,15 @@
 <div class="caja caja-ojo"><span class="etiqueta et-ambar">¡Ojo con la escala!</span>
 <p>Los <strong>ejes</strong> son las dos líneas: una abajo (horizontal) y una al lado (vertical). La <strong>escala</strong> dice de cuánto en cuánto van los números — pueden ir de 1 en 1, de 5 en 5, de 10 en 10. Si no mira la escala, puede leer mal todos los valores.</p>
 </div>
+  <a class="enlace-interactivo" href="https://zhemaria.github.io/algebra/n1-l8-2.html#cinco-pasos" target="_blank" rel="noopener noreferrer"
+     aria-label="Abrir el interactivo: leer una gráfica en 5 pasos (se abre en una pestaña nueva)">
+    <span class="ei-icono" aria-hidden="true">🔗</span>
+    <span class="ei-cuerpo">
+      <span class="ei-titulo">Refuerce con el interactivo: leer una gráfica en 5 pasos</span>
+      <span class="ei-sub">Recorra título, ejes, escala, valores y tendencia sobre una gráfica real.</span>
+      <span class="ei-cta">Abrir el interactivo <span aria-hidden="true">›</span></span>
+    </span>
+  </a>
 </section>
 <!-- GRÁFICA DE BARRAS -->
 <section>
@@ -406,6 +427,15 @@
 <div aria-labelledby="t-p2" class="opciones" data-quiz="p2" role="group"><button class="opcion" data-correcta="no" type="button">Lunes</button> <button class="opcion" data-correcta="no" type="button">Martes</button> <button class="opcion" data-correcta="si" type="button">Miércoles</button> <button class="opcion" data-correcta="no" type="button">Jueves</button></div>
 <div aria-live="polite" class="respuesta-int" id="r-p2" role="status"></div>
 </div>
+  <a class="enlace-interactivo" href="https://zhemaria.github.io/algebra/n1-l8-2.html#barras" target="_blank" rel="noopener noreferrer"
+     aria-label="Abrir el interactivo: la gráfica de barras (se abre en una pestaña nueva)">
+    <span class="ei-icono" aria-hidden="true">🔗</span>
+    <span class="ei-cuerpo">
+      <span class="ei-titulo">Refuerce con el interactivo: la gráfica de barras</span>
+      <span class="ei-sub">Lea y compare cantidades a partir de la altura de las barras.</span>
+      <span class="ei-cta">Abrir el interactivo <span aria-hidden="true">›</span></span>
+    </span>
+  </a>
 </section>
 <!-- GRÁFICA DE LÍNEAS -->
 <section>
@@ -514,6 +544,15 @@
 <div aria-labelledby="t-p4" class="opciones" data-quiz="p4" role="group"><button class="opcion" data-correcta="no" type="button">Creciente</button> <button class="opcion" data-correcta="si" type="button">Decreciente</button> <button class="opcion" data-correcta="no" type="button">Estable</button></div>
 <div aria-live="polite" class="respuesta-int" id="r-p4" role="status"></div>
 </div>
+  <a class="enlace-interactivo" href="https://zhemaria.github.io/algebra/n1-l8-2.html#lineas" target="_blank" rel="noopener noreferrer"
+     aria-label="Abrir el interactivo: la gráfica de líneas (se abre en una pestaña nueva)">
+    <span class="ei-icono" aria-hidden="true">🔗</span>
+    <span class="ei-cuerpo">
+      <span class="ei-titulo">Refuerce con el interactivo: la gráfica de líneas</span>
+      <span class="ei-sub">Lea los puntos e identifique si la tendencia es creciente, decreciente o estable.</span>
+      <span class="ei-cta">Abrir el interactivo <span aria-hidden="true">›</span></span>
+    </span>
+  </a>
 </section>
 <!-- CONSTRUIR UNA GRÁFICA -->
 <section>
@@ -540,6 +579,15 @@
 </div>
 <div class="caja-tarea"><span class="et-interactivo">Interactivo</span> <a class="enlace-interactivo" href="https://zhemaria.github.io/graficos/barras/" rel="noopener" target="_blank">Construye un gráfico de barras<span aria-hidden="true" class="flecha-ext">↗</span></a></div>
 <div class="caja-tarea"><span class="et-interactivo">Interactivo</span> <a class="enlace-interactivo" href="https://zhemaria.github.io/graficos/lineas/" rel="noopener" target="_blank">Construye un gráfico de líneas<span aria-hidden="true" class="flecha-ext">↗</span></a></div>
+  <a class="enlace-interactivo" href="https://zhemaria.github.io/algebra/n1-l8-2.html#construir" target="_blank" rel="noopener noreferrer"
+     aria-label="Abrir el interactivo: construir una gráfica (se abre en una pestaña nueva)">
+    <span class="ei-icono" aria-hidden="true">🔗</span>
+    <span class="ei-cuerpo">
+      <span class="ei-titulo">Refuerce con el interactivo: construir una gráfica</span>
+      <span class="ei-sub">Levante las barras a partir de una tabla, con una escala cómoda y desde el cero.</span>
+      <span class="ei-cta">Abrir el interactivo <span aria-hidden="true">›</span></span>
+    </span>
+  </a>
 </section>
 
 <section>
