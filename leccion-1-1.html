@@ -445,6 +445,29 @@
 </div>
 <div aria-live="polite" class="respuesta-int" id="r-p3" role="status"></div>
 </div>
+<h3>Ordenar una lista de números</h3>
+<p><strong>Ordenar</strong> es poner los números en fila de <strong>menor a mayor</strong> (o de mayor a menor). Se comparan de dos en dos, con los mismos pasos.</p>
+<div class="ejemplo">
+<p class="titulo-ej">Ordenar 52 060 · 50 620 · 52 600 · 50 260 de menor a mayor</p>
+<p class="paso"><span aria-hidden="true" class="n">1</span><strong>Paso 1.</strong> Todos tienen 5 dígitos. Miro los millares: dos empiezan con <strong>50</strong> mil y dos con <strong>52</strong> mil. Los de 50 van primero.</p>
+<p class="paso"><span aria-hidden="true" class="n">2</span><strong>Paso 2.</strong> Comparo 50 620 y 50 260. Centenas: 6 contra 2. Va primero 50 260.</p>
+<p class="paso"><span aria-hidden="true" class="n">3</span><strong>Paso 3.</strong> Comparo 52 060 y 52 600. Centenas: 0 contra 6. Va primero 52 060.</p>
+<p class="paso"><span aria-hidden="true" class="n">✓</span><strong>Resultado:</strong> 50 260 &lt; 50 620 &lt; 52 060 &lt; 52 600</p>
+</div>
+<div class="practica">
+<div class="cabe">
+<span aria-hidden="true" class="ico">✏️</span>
+<h3>Práctica 3b — Ordene</h3>
+</div>
+<p class="pregunta-int" id="t-p5">¿Cuál lista está ordenada de <strong>menor a mayor</strong>?</p>
+<div aria-labelledby="t-p5" class="opciones" data-quiz="p5" role="group">
+<button class="opcion" data-correcta="si" type="button">31 470 · 31 740 · 34 170 · 37 410</button>
+<button class="opcion" data-correcta="no" type="button">31 740 · 31 470 · 34 170 · 37 410</button>
+<button class="opcion" data-correcta="no" type="button">37 410 · 34 170 · 31 740 · 31 470</button>
+<button class="opcion" data-correcta="no" type="button">31 470 · 34 170 · 31 740 · 37 410</button>
+</div>
+<div aria-live="polite" class="respuesta-int" id="r-p5" role="status"></div>
+</div>
   <a class="enlace-interactivo" href="https://zhemaria.github.io/algebra/n1-l1-1.html#comparar" target="_blank" rel="noopener noreferrer"
      aria-label="Abrir el interactivo: comparar y ordenar (se abre en una pestaña nueva)">
     <span class="ei-icono" aria-hidden="true">🔗</span>
@@ -458,7 +481,11 @@
 <!-- REDONDEAR -->
 <section>
 <h2 id="s-redondear-numeros"><span aria-hidden="true" class="num-seccion">5</span>Redondear números</h2>
-<p>Redondear es cambiar un número por otro <strong>más fácil de usar y cercano</strong>. Lo hacemos todo el tiempo: si algo cuesta $19, decimos "como veinte dólares"; si una ciudad tiene 48 213 habitantes, decimos "casi cincuenta mil".</p>
+<p>Redondear es cambiar un número por otro <strong>más fácil de usar y cercano</strong>. Lo hacemos todo el tiempo: si algo cuesta $19, decimos "como veinte dólares"; si una ciudad tiene 48 213 habitantes, podemos decir "unos 48 000".</p>
+<div class="caja caja-tip">
+<span class="etiqueta et-verde">¿Qué quiere decir «más cercano»?</span>
+<p>Redondear a la <strong>centena más cercana</strong> es elegir el número de centenas exactas (100, 200, 300…) que queda <strong>más cerca</strong>. Por ejemplo, <strong>347</strong> está entre 300 y 400, y queda más cerca de 300: se redondea a <strong>300</strong>. La regla que sigue es un atajo para encontrarlo rápido.</p>
+</div>
 <h3>La regla del vecino de la derecha</h3>
 <p>Para redondear, fíjese en el dígito que está <strong>a la derecha</strong> de la posición que le piden:</p>
 <ul>
@@ -480,6 +507,18 @@
 <p class="paso"><span aria-hidden="true" class="n">3</span><strong>Paso 3.</strong> 7 es 5 o más → la centena sube de 4 a 5, y todo lo de la derecha se hace cero.</p>
 <p class="paso"><span aria-hidden="true" class="n">✓</span><strong>Resultado:</strong> <strong>3 500</strong>.</p>
 </div>
+<div class="ejemplo">
+<p class="titulo-ej">Redondear 286 a la decena más cercana</p>
+<p class="paso"><span aria-hidden="true" class="n">1</span><strong>Paso 1.</strong> La posición pedida es la <strong>decena</strong>: el dígito 8.</p>
+<p class="paso"><span aria-hidden="true" class="n">2</span><strong>Paso 2.</strong> Miro su vecino de la derecha (las unidades): es <strong>6</strong>.</p>
+<p class="paso"><span aria-hidden="true" class="n">3</span><strong>Paso 3.</strong> 6 es 5 o más → la decena sube de 8 a 9, y las unidades se hacen cero.</p>
+<p class="paso"><span aria-hidden="true" class="n">✓</span><strong>Resultado:</strong> <strong>290</strong>.</p>
+</div>
+<div class="caja caja-ojo">
+<span class="etiqueta et-ambar">Dos casos especiales</span>
+<p><strong>Justo en la mitad.</strong> 350 está exactamente a la mitad entre 300 y 400. En este curso, la mitad <strong>redondea hacia arriba</strong>: 350 → 400. Por eso la regla dice «5 o más».</p>
+<p><strong>Cuando el dígito es 9.</strong> Redondee <strong>9 650</strong> al millar más cercano. El vecino es 6, así que el 9 sube uno. Pero 9 + 1 = 10: se escribe <strong>0</strong> en los millares y se <strong>lleva 1</strong> a la posición de la izquierda. El resultado es <strong>10 000</strong>.</p>
+</div>
 <div class="practica">
 <div class="cabe">
 <span aria-hidden="true" class="ico">✏️</span>
@@ -493,6 +532,20 @@
 <button class="opcion" data-correcta="no" type="button">8 600</button>
 </div>
 <div aria-live="polite" class="respuesta-int" id="r-p4" role="status"></div>
+</div>
+<div class="practica">
+<div class="cabe">
+<span aria-hidden="true" class="ico">✏️</span>
+<h3>Práctica 5 — Redondee con un 9</h3>
+</div>
+<p class="pregunta-int" id="t-p6">Redondee <strong>39 712</strong> al <strong>millar</strong> más cercano.</p>
+<div aria-labelledby="t-p6" class="opciones" data-quiz="p6" role="group">
+<button class="opcion" data-correcta="no" type="button">39 000</button>
+<button class="opcion" data-correcta="si" type="button">40 000</button>
+<button class="opcion" data-correcta="no" type="button">30 000</button>
+<button class="opcion" data-correcta="no" type="button">39 700</button>
+</div>
+<div aria-live="polite" class="respuesta-int" id="r-p6" role="status"></div>
 </div>
   <a class="enlace-interactivo" href="https://zhemaria.github.io/algebra/n1-l1-1.html#redondear" target="_blank" rel="noopener noreferrer"
      aria-label="Abrir el interactivo: redondear (se abre en una pestaña nueva)">
@@ -664,7 +717,9 @@
     p1:"En 74 905, el 9 está en la posición de las centenas, así que vale 900.",
     p2:"208 se lee 'doscientos ocho' (grupo de los miles) y 040 se lee 'cuarenta'.",
     p3:"En 52 600 el 6 está en las centenas; en 52 060 el 6 está en las decenas. Por eso 52 600 es mayor.",
-    p4:"El vecino de la derecha del millar es 6 (las centenas). 6 es 5 o más, así que el millar sube de 8 a 9: 9 000."
+    p4:"El vecino de la derecha del millar es 6 (las centenas). 6 es 5 o más, así que el millar sube de 8 a 9: 9 000.",
+    p5:"Primero los millares: 31, 31, 34, 37. Entre los dos de 31 mil deciden las centenas: 4 es menor que 7. Orden: 31 470 < 31 740 < 34 170 < 37 410.",
+    p6:"El millar es 9 y su vecino de la derecha es 7, así que sube. 9 + 1 = 10: se escribe 0 en los millares y se lleva 1 a las decenas de millar, donde el 3 pasa a 4. Resultado: 40 000."
   };
 
   document.querySelectorAll('.opciones[data-quiz]').forEach(function(grupo){
